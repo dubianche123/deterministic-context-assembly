@@ -1,3 +1,10 @@
+<div align="right">
+  <sub>
+    <a href="README.md">English</a> | 
+    <strong>中文</strong>
+  </sub>
+</div>
+
 # The Norn Machine: Deterministic Context Assembly
 
 ## 一份关于脱离传统RAG依赖的低延迟AI交互架构的白皮书
