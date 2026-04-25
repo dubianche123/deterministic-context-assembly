@@ -5,9 +5,9 @@
   </sub>
 </div>
 
-# The Norn Machine: Deterministic Context Assembly
+# The Norn Machine（诺恩织机）: 确定性上下文组装——一个无服务器、无状态的云原生提示词引擎
 
-## 一份关于脱离传统RAG依赖的低延迟AI交互架构的白皮书
+## 在极短上下文窗口下，构建不依赖 RAG 的云原生提示词引擎
 
 ---
 
