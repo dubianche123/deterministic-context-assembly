@@ -5,9 +5,10 @@
   </sub>
 </div>
 
-# The Norn Machine: Deterministic Context Assembly
+# The Norn Machine: Deterministic Context Assembly — A Serverless, Stateless Prompt Engine
 
-## A White Paper on a Low-Latency AI Interaction Architecture That Breaks Free from Traditional RAG Dependency
+## Building a Cloud-Native Prompt Engine for Ultra-Short Context Windows, Without RAG.
+
 
 ---
 
