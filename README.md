@@ -22,6 +22,17 @@ The project is built around a simple engineering principle:
 
 Underneath the visual interface, the frontend records only lightweight behavioral signals, the backend compresses them into a stable behavioral profile, and the model turns that bounded profile into readable language. The system does not store user sessions or raw choices in a database.
 
+## Architecture Visualization
+
+![C4-style dataflow architecture](the-norn-machine/docs/c4-dataflow.svg)
+
+This C4-style view separates the two kinds of computation that the project deliberately keeps apart:
+
+- **Solid black path**: deterministic, typed data flow from the browser to API Gateway and Lambda.
+- **Dashed red path**: probabilistic language rendering from Lambda to Amazon Bedrock.
+
+The key compression point sits inside Lambda. Raw interaction history can grow past 15,000 input tokens in an overflow session, but Fast Thinker folds that history into a fixed behavioral skeleton of roughly 2,000 prompt tokens before the model sees it. That is the core claim of the system: the LLM should not be asked to carry unbounded history when code can assemble the relevant state first.
+
 ## Benchmark Evidence
 
 The benchmark is where the architectural claim becomes measurable. We compared the production-style deterministic context assembly against a naive, unoptimized version that concatenates every selected card's raw metadata directly into the original prompt.
@@ -35,13 +46,20 @@ The benchmark is where the architectural claim becomes measurable. We compared t
 | Estimated cost, 20 calls | $0.0873 | $0.1649 | 47.0% lower cost |
 | Overflow scene input tokens | 2,387 | 11,286 | 4.7x less context in long sessions |
 
+**Overflow case study**
+
+| Scenario | Original Prompt | Optimized Prompt | What Changed |
+|:--|:--:|:--:|:--|
+| 30 rounds / 80 selections | 15,107 input tokens | 2,383 input tokens | Raw card history becomes a bounded behavioral profile |
+| Same scenario latency | 9,373ms | 6,179ms | End-to-end latency drops after context growth is contained |
+
 Before analyzing the data, we define three interaction depths: **short context scenes (sparse scenes, 1-5 selections)**, **sufficient context scenes (dense scenes, 6-20 selections)**, and **excessive context scenes (overflow scenes, >20 selections)**.
 
 In sparse scenes, the optimized prompt is not always shorter than the original prompt. Because there is very little raw metadata to send in these cases, our optimized pipeline deliberately allocates a fixed context budget toward system rules, few-shot examples, and a structured behavioral skeleton. This ensures that the model can still produce high-quality, stylistically consistent answers even with minimal input.
 
 The true architectural advantage lies in its remarkable **token consistency**. As the interaction depth progresses into dense and overflow scenes, the original prompt grows continuously with every selection (reaching up to 15,107 tokens in our tests). The optimized prompt, however, remains tightly bounded between 1,800 and 2,400 tokens. This happens because the Fast Thinker deterministic layer compresses all card traits into a fixed-format behavioral profile *before* passing any data to the LLM. Whether the user selects 1 or 80 cards, the model receives this highly distilled profile instead of a raw historical log.
 
-For Time To First Token (TTFT), the test data reveals a counter-intuitive phenomenon: although the optimized input context is drastically shorter, the TTFT slightly increases (914ms optimized vs. 867ms original). This is not an anomaly, but a direct result of the architectural tradeoff. An LLM's processing latency depends not just on raw token count, but heavily on **cognitive load** (instruction complexity). The original prompt is merely a simple concatenation of homogenous JSON data, which the model can scan extremely quickly. In contrast, the optimized prompt consists of high-density structural constraints (System Prompt) and complex few-shot examples. The model's attention mechanism (especially in the Claude series) requires more computational time to comprehend and strictly follow these rules. This is the core exchange of deterministic compression: we pay a negligible upfront "understanding" cost to completely eliminate context bloat, ultimately winning back a 16.2% advantage in total end-to-end latency.
+For Time To First Token (TTFT), the test data is intentionally reported rather than hidden: the optimized pipeline is slightly slower on first token (914ms optimized vs. 867ms original). TTFT is sensitive to provider scheduling, prompt structure, and single-run variance, so this project does not claim a first-token speedup. The measured win is elsewhere: bounded context growth, lower generated-output burden, lower total latency, and lower cost once the interaction becomes non-trivial.
 
 The impact on cost is even more striking. Based on our current tests, using the original prompt with an average length of 5,179 tokens results in an average total cost of $0.1649 (approx. ¥1.2 RMB) across 20 calls. By employing the deterministic compression architecture, this drops to an average of $0.0873 (approx. ¥0.6 RMB), instantly saving 47% in calling costs. In extreme overflow scenes, this advantage in consistency expands to over 80% cost savings.
 
@@ -60,9 +78,15 @@ The Norn Machine uses a narrower model role. The LLM is not asked to infer every
 
 The model is still valuable, but its responsibility is language rendering rather than decision authority.
 
-## Architecture
+| Overflow Interaction Problem | Traditional Agentic Pattern | The Norn Machine Pattern |
+|:--|:--|:--|
+| Who owns global logic? | The LLM must infer state, enforce rules, remember context, and write the answer in one pass. | Python owns feature extraction, routing, limits, and fallback behavior; the LLM renders bounded language. |
+| What happens as history grows? | Prompt size grows with the raw log and can drift toward context overflow. | Raw selections are compressed into a fixed-format behavioral profile before model invocation. |
+| Latency profile | More history usually means more input to scan and less predictable total latency. | Benchmark shows 16.2% lower average end-to-end latency across 20 Bedrock calls. |
+| Rule adherence | Rules compete with long raw context inside the same model prompt. | Hard limits, fallback paths, and output guardrails are enforced outside the model where possible. |
+| Failure mode | The user may see brittle model behavior or infrastructure-shaped errors. | Deterministic fallback text keeps the user experience coherent when the model path is blocked. |
 
-![The Norn Machine architecture](the-norn-machine/Norn-Machine.drawio.svg)
+## Architecture
 
 This architecture shows how the MVP is built. CloudFront is the public HTTPS entry, S3 serves the static frontend, API Gateway protects the backend with an API key and usage plan, Lambda runs deterministic context assembly, and Amazon Bedrock renders the final language output.
 
@@ -89,25 +113,43 @@ The Fast Thinker is pure deterministic Python. It is the core of the project: th
 
 Each card carries a four-axis coordinate vector plus curated traits, motifs, scenes, and rationales. For every selected card, Fast Thinker calculates a selection weight:
 
-```text
-selection_weight = exp(round_number / total_rounds) * hesitation_bonus
-```
+$$
+W_i = \exp\left(\frac{r_i}{R}\right) \times \beta_{h,i}
+$$
+
+Where \(r_i\) is the round in which card \(i\) was selected, \(R\) is total rounds, and \(\beta_{h,i}\) is the capped hesitation multiplier:
+
+$$
+\beta_{h,i} = 1 + \hat{d}_{r_i} \times (1.12 - 1.00)
+$$
+
+$$
+\hat{d}_r = \frac{\operatorname{clip}(d_r, 0, 45000) - d_{min}}{\max(d_{max} - d_{min}, 1)}
+$$
 
 Later rounds therefore count more, because later choices usually reflect a sharper preference after the player has seen more of the card space. Hesitation is deliberately small: round duration is normalized inside the current session and can only move a card from `1.0x` to `1.12x`, because image loading and rendering can pollute timing data.
 
 The final coordinate is a weighted average:
 
-```text
-final_axis_value = sum(card_axis_value * selection_weight) / sum(selection_weight)
-```
+$$
+\bar{x}_{dim} = \frac{\sum_i W_i \cdot x_{i,dim}}{\sum_i W_i}
+$$
 
 Deselection is handled separately because canceling an already selected card is a stronger signal than merely taking time. The system counts deselection events, estimates a revision strength, nudges the openness/closure axis toward more revision, and adds traits such as choice review or repeated calibration into the same aggregation pass.
 
+$$
+S_{revision} = \min\left(\frac{D / R}{1.5}, 1\right)
+$$
+
+$$
+\bar{x}_{J/P}' = \bar{x}_{J/P} - S_{revision} \times 2.4
+$$
+
 The same weights also aggregate traits, motifs, scenes, and rationales. Finally, the signature signal is chosen from motifs by combining frequency with cosine alignment against the final coordinate vector:
 
-```text
-signature_score = weighted_frequency * (1 + max(cosine_similarity, 0))
-```
+$$
+score(m) = F_m \times \left(1 + \max(\cos(\bar{x}_m, \bar{x}), 0)\right)
+$$
 
 That gives the result one concrete word-level hook without letting the model turn the answer into a list of selected objects.
 
@@ -150,6 +192,21 @@ The frontend is a static app. The reveal scene uses a canvas particle sequence:
 This timing matters because the animation's appearance should belong to the reading, not finish silently while the API is still loading.
 
 Music is user-gesture bound: it starts when the player begins the test, which keeps browser autoplay behavior predictable.
+
+## Edge Cases And Guardrails
+
+The system is designed to degrade through deterministic code paths before exposing model or infrastructure failure to the user.
+
+| Edge Case | Deterministic Control Point | User-Facing Behavior |
+|:--|:--|:--|
+| Player selects no cards | Frontend and Lambda both recognize empty `selections` | A fixed mystical reading is returned without calling Bedrock. |
+| Bedrock call fails or is blocked | `slow_thinker` catches the exception or guardrail intervention | A safe fallback reading replaces the model output. |
+| Model mentions internal fields or cross-user comparison | Backend output guardrail scans banned fragments such as coordinates, confidence, and "previous player" phrasing | The output is replaced with a neutral guarded response. |
+| Dialogue exceeds allowed turns | Server recalculates the turn limit from total rounds | The conversation closes with deterministic lockout text. |
+| Dialogue input exceeds 100 characters | Frontend and backend both validate length | The request is rejected before model invocation. |
+| Runtime API config is missing in local preview | Frontend config loader detects missing endpoint/key | The page shows an in-world unavailable-backend reading instead of hanging. |
+
+This is the practical value of keeping the model outside the control plane. The model can fail, be blocked, or produce an unsafe phrase, but the surrounding code still owns the final boundary of the experience.
 
 ## Security And Privacy
 
@@ -198,6 +255,7 @@ The benchmark suite is kept in the repository so the numbers above can be inspec
 - [`benchmark_prompts.json`](the-norn-machine/backend/benchmark/benchmark_prompts.json): stores the optimized and naive prompt pairs used for the benchmark.
 - [`benchmark_results.json`](the-norn-machine/backend/benchmark/benchmark_results.json): stores raw API measurements and the aggregate summary.
 - [`benchmark_summary.svg`](the-norn-machine/backend/benchmark/benchmark_summary.svg): visualizes the context-growth curve used in this README.
+- [`c4-dataflow.svg`](the-norn-machine/docs/c4-dataflow.svg): visualizes deterministic and probabilistic data boundaries in the runtime architecture.
 
 ## Conclusion
 
