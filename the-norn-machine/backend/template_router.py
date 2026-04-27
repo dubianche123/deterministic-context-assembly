@@ -274,10 +274,8 @@ def _build_commonality_summary(analysis: dict) -> str:
 def _build_stats_summary(analysis: dict) -> str:
     """For overflow mode: code-generated statistical summary before LLM sees data."""
     lines = [
-        f"[代码层统计摘要]",
+        f"[本次选择摘要]",
         f"总轮数: {analysis['total_rounds']}, 总选择数: {analysis['total_selections']}",
-        f"坐标均值: E/I={analysis['coords_avg']['E_I']}, S/N={analysis['coords_avg']['S_N']}, "
-        f"T/F={analysis['coords_avg']['T_F']}, J/P={analysis['coords_avg']['J_P']}",
         f"高频特质: {'、'.join(analysis['top_traits'][:5])}",
         f"情感底色: {_build_emotional_texture(analysis)}",
         f"画面锚点: {_build_concrete_anchors(analysis)}",
