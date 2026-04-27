@@ -16,8 +16,16 @@ SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 PROJECT_DIR="$(dirname "$SCRIPT_DIR")"
 BACKEND_DIR="${PROJECT_DIR}/backend"
 FRONTEND_DIR="${PROJECT_DIR}/frontend"
+FRONTEND_BUILD_DIR=$(mktemp -d "${PROJECT_DIR}/frontend_build_XXXXXX")
 FRONTEND_BUCKET="norn-machine-frontend-726725835094-ap-northeast-1"
 FRONTEND_CLOUDFRONT_DOMAIN="d3gncg0hircdt9.cloudfront.net"
+FRONTEND_DISTRIBUTION_ID="E7VCP8VRJBJOB"
+
+cleanup() {
+  rm -rf "${FRONTEND_BUILD_DIR}"
+  rm -f "${PROJECT_DIR}/lambda_package.zip"
+}
+trap cleanup EXIT
 
 echo ""
 echo "  ✦ The Norn Machine — Backend Deployment"
@@ -331,36 +339,44 @@ fi
 
 API_ENDPOINT="https://${API_ID}.execute-api.${REGION}.amazonaws.com/${STAGE_NAME}"
 
-# ─── 6. Update Frontend with API Endpoint ───────────────
-echo "📝 [6/7] Updating frontend with API endpoint..."
+# ─── 6. Build Frontend Runtime Config ───────────────
+echo "📝 [6/7] Preparing frontend runtime config..."
 
-# Update app.js with real endpoint and API key
-cd "${FRONTEND_DIR}"
-python3 -c "
-import re
-with open('app.js', 'r') as f:
-    content = f.read()
-content = re.sub(
-    r\"const API_ENDPOINT = '.*?'\",
-    \"const API_ENDPOINT = '${API_ENDPOINT}'\",
-    content
+rsync -a \
+  --exclude "deploy_to_s3.sh" \
+  --exclude ".DS_Store" \
+  --exclude "*.sh" \
+  "${FRONTEND_DIR}/" "${FRONTEND_BUILD_DIR}/"
+
+# Keep the live endpoint and API key out of the checked-in frontend source.
+export API_ENDPOINT API_KEY_VALUE FRONTEND_BUILD_DIR
+python3 - <<'PY'
+import json
+import os
+from pathlib import Path
+
+build_dir = Path(os.environ["FRONTEND_BUILD_DIR"])
+payload = {
+    "apiEndpoint": os.environ["API_ENDPOINT"],
+    "apiKey": os.environ["API_KEY_VALUE"],
+}
+build_dir.joinpath("runtime-config.js").write_text(
+    "window.__NORN_CONFIG__ = " + json.dumps(payload, ensure_ascii=False, indent=2) + ";\n",
+    encoding="utf-8",
 )
-# Add API key header to fetch call
-if 'x-api-key' not in content:
-    content = content.replace(
-        \"'Content-Type': 'application/json'\",
-        \"'Content-Type': 'application/json', 'x-api-key': '${API_KEY_VALUE}'\"
-    )
-with open('app.js', 'w') as f:
-    f.write(content)
-print('   → Frontend app.js updated with API endpoint + key')
-"
+print("   → runtime-config.js generated.")
+PY
 
 # Redeploy frontend to S3
-aws s3 sync "${FRONTEND_DIR}/" "s3://${FRONTEND_BUCKET}/" \
+aws s3 sync "${FRONTEND_BUILD_DIR}/" "s3://${FRONTEND_BUCKET}/" \
   --region "${REGION}" \
   --exclude "deploy_to_s3.sh" --exclude ".DS_Store" --exclude "*.sh" > /dev/null
 echo "   → Frontend redeployed to S3."
+
+aws cloudfront create-invalidation \
+  --distribution-id "${FRONTEND_DISTRIBUTION_ID}" \
+  --paths "/index.html" "/app.js" "/runtime-config.js" "/style.css" "/data/*" "/Drifting_Near_the_Core.mp3" > /dev/null
+echo "   → CloudFront invalidation submitted."
 
 # ─── 7. Summary ─────────────────────────────────────────
 echo ""
@@ -368,7 +384,7 @@ echo "  ════════════════════════
 echo "  ✦ Backend Deployment Complete!"
 echo ""
 echo "  🔗 API Endpoint : ${API_ENDPOINT}/analyze"
-echo "  🔑 API Key      : ${API_KEY_VALUE}"
+echo "  🔑 API Key      : [written to runtime-config.js]"
 echo "  ⚡ Lambda       : ${FUNCTION_NAME}"
 echo "  🌐 Frontend     : https://${FRONTEND_CLOUDFRONT_DOMAIN}"
 echo ""
@@ -377,3 +393,4 @@ echo ""
 
 # Clean up
 rm -f "${PROJECT_DIR}/lambda_package.zip"
+rm -rf "${FRONTEND_BUILD_DIR}"

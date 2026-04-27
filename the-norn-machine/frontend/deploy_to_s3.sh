@@ -68,19 +68,23 @@ echo "   → Direct S3 website endpoint disabled; CloudFront remains the public 
 
 # ─── 3. Sync Files ───────────────────────────────────────
 echo "🚀 [3/6] Uploading frontend files..."
+# runtime-config.js is owned by backend deployment and should be preserved here.
 aws s3 sync "${SCRIPT_DIR}/" "s3://${BUCKET_NAME}/" \
   --region "${REGION}" \
   --exclude "deploy_to_s3.sh" \
   --exclude ".DS_Store" \
+  --exclude "runtime-config.js" \
   --exclude "*.sh" \
   --cache-control "max-age=300" \
   --content-type "text/html" \
   --exclude "*" --include "*.html"
 
+# runtime-config.js is owned by backend deployment and should be preserved here.
 aws s3 sync "${SCRIPT_DIR}/" "s3://${BUCKET_NAME}/" \
   --region "${REGION}" \
   --exclude "deploy_to_s3.sh" \
   --exclude ".DS_Store" \
+  --exclude "runtime-config.js" \
   --exclude "*.sh" \
   --exclude "*.html" \
   --cache-control "max-age=3600"

@@ -10,20 +10,23 @@
 ## A serverless, stateless cloud-native prompt engine
 
 **Version**: 2.0 MVP  
-**Author**: Leo Wang  
-**Date**: April 2026
+**Author**: Leo  
+**Date**: April 2026  
+**Live MVP**: [https://d3gncg0hircdt9.cloudfront.net/](https://d3gncg0hircdt9.cloudfront.net/)
 
-The Norn Machine is an AI personality-reading experiment built around a simple engineering principle:
+The Norn Machine is a deterministic context-assembly engine wrapped in an intuitive image-selection personality-reading interface. The visible product is a ritual-like demo, but the core subject is a method: how to capture lightweight behavior, assemble bounded context, optimize prompts, and run the whole loop as a cloud-native LLM application.
+
+The project is built around a simple engineering principle:
 
 **Deterministic code should make the judgment. The language model should render the judgment.**
 
-The product looks like an intuitive card-selection ritual. Underneath, the frontend records only lightweight behavioral signals, the backend compresses them into a stable behavioral profile, and the model turns that profile into a readable result. The system does not store user sessions or raw choices in a database.
+Underneath the visual interface, the frontend records only lightweight behavioral signals, the backend compresses them into a stable behavioral profile, and the model turns that bounded profile into readable language. The system does not store user sessions or raw choices in a database.
 
 ## Why This Exists
 
 Many LLM applications let the model do everything at once: infer intent, remember context, choose facts, enforce safety, and write the answer. That is flexible, but it also creates inconsistent outputs, long prompts, higher latency, and more room for hallucination.
 
-The Norn Machine uses a narrower model role. It sends the LLM a compact, structured profile:
+The Norn Machine uses a narrower model role. The LLM is not asked to infer everything from raw interaction history. It receives a compact, structured profile:
 
 - decision style
 - relationship pattern
@@ -32,7 +35,7 @@ The Norn Machine uses a narrower model role. It sends the LLM a compact, structu
 - suggestion
 - optional emotional and visual anchors
 
-The model is still valuable, but it is treated as a renderer rather than an oracle.
+The model is still valuable, but its responsibility is language rendering rather than decision authority.
 
 ## Architecture
 
@@ -136,7 +139,7 @@ Music is user-gesture bound: it starts when the player begins the test, which ke
 
 ## Transferable Pattern
 
-The useful pattern is not personality testing itself. It is:
+The useful pattern is not the personality-reading theme itself. It is:
 
 **implicit behavior capture + deterministic state compression + model-rendered language**
 
@@ -165,6 +168,6 @@ The image manager exists to keep those concepts consistent across the card set: 
 
 ## Conclusion
 
-The Norn Machine is a small product, but it tests a larger architectural stance: the more important the judgment is, the less casually it should be delegated to the model. Code should compress and constrain the world; the model should make that compressed world feel alive.
+The Norn Machine is a small demo, but it tests a larger architectural stance: when the judgment matters, the system should make the judgment traceable before asking the model to speak. Code compresses and constrains the world; the model makes that compressed world readable.
 
 <p align="center"><sub>The Norn Machine: A serverless, stateless prompt engine</sub></p>

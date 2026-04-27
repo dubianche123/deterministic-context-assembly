@@ -7,13 +7,34 @@
   'use strict';
 
   // ─── Config ──────────────────────────────────────────────
-  const API_ENDPOINT = 'https://kqdr3gfbs2.execute-api.ap-northeast-1.amazonaws.com/prod'; // Will be set after backend deployment
+  const runtimeConfig = (window.__NORN_CONFIG__ && typeof window.__NORN_CONFIG__ === 'object')
+    ? window.__NORN_CONFIG__
+    : {};
+  const API_ENDPOINT = normalizeApiEndpoint(runtimeConfig.apiEndpoint);
+  const API_KEY = normalizeConfigValue(runtimeConfig.apiKey);
   const DIALOGUE_REVEAL_DELAY_MS = 1600;
   const EMPTY_SELECTION_READING = [
     '你没有选择任何一张画面，这本身也是一次选择。',
     '织机把这看作一种停在门槛上的姿势：你没有急着把自己交给某个符号，也没有让一瞬间的吸引替你决定方向。也许此刻最像你的，不是某个答案，而是对答案保持距离的那一下迟疑。',
     '这不是空白。它更像一枚没有落下的骰子：命运已经被拿在手里，只是你暂时不愿让它发出声音。',
   ].join('\n\n');
+  const CONFIG_MISSING_READING = [
+    '织机暂时还没有接上后端入口。',
+    '这不是你的选择失效，而是页面还缺少可用的 API 配置。',
+    '等部署完成，结果就会继续展开。',
+  ].join('\n\n');
+
+  function normalizeConfigValue(value) {
+    return typeof value === 'string' ? value.trim() : '';
+  }
+
+  function normalizeApiEndpoint(value) {
+    return normalizeConfigValue(value).replace(/\/+$/, '');
+  }
+
+  function hasBackendConfig() {
+    return Boolean(API_ENDPOINT && API_KEY);
+  }
 
   // ─── State ───────────────────────────────────────────────
   const state = {
@@ -242,14 +263,22 @@
       return;
     }
 
-    // Call API (if endpoint configured)
-    if (API_ENDPOINT) {
-      callAnalyzeAPI(payload);
+    if (!hasBackendConfig()) {
+      renderMissingBackendReading(payload);
+      return;
     }
+
+    // Call API (if endpoint configured)
+    callAnalyzeAPI(payload);
   }
 
   // ─── API Call ────────────────────────────────────────────
   async function callAnalyzeAPI(payload) {
+    if (!hasBackendConfig()) {
+      console.warn('[Norn] Backend config missing; skipping analysis request.');
+      return;
+    }
+
     try {
       const resp = await fetch(`${API_ENDPOINT}/analyze`, {
         method: 'POST',
@@ -293,6 +322,23 @@
     updateDialogueMeta();
     setDialogueStatus(getDialogueReadyText());
     renderReading(EMPTY_SELECTION_READING);
+  }
+
+  function renderMissingBackendReading(payload) {
+    state.analysisResult = {
+      mbti_type: 'XXXX',
+      confidence: {},
+      reading: CONFIG_MISSING_READING,
+      mode: 'unconfigured',
+      total_rounds: payload.total_rounds,
+      total_selections: state.selectedCards.length,
+      config_missing: true,
+      max_dialogue_turns: getDialogueLimit(payload.total_rounds),
+    };
+    state.dialogueLimit = getDialogueLimit(payload.total_rounds);
+    updateDialogueMeta();
+    setDialogueStatus('后端入口尚未配置。');
+    renderReading(CONFIG_MISSING_READING);
   }
 
   function renderReading(reading) {
@@ -346,6 +392,7 @@
 
   function scheduleDialoguePanel() {
     if (!dom.dialoguePanel || state.dialogueRevealTimer) return;
+    if (state.analysisResult && state.analysisResult.config_missing) return;
 
     state.dialogueRevealTimer = setTimeout(() => {
       state.dialogueRevealTimer = null;
@@ -360,6 +407,10 @@
   async function handleDialogueSubmit(event) {
     event.preventDefault();
     if (state.dialogueLocked) return;
+    if (!hasBackendConfig()) {
+      setDialogueStatus('后端入口尚未配置。');
+      return;
+    }
 
     const message = dom.dialogueInput.value.trim();
     if (!message) return;
@@ -467,10 +518,13 @@
   }
 
   function buildApiHeaders() {
-    return {
+    const headers = {
       'Content-Type': 'application/json',
-      'x-api-key': 'zbwUtOMX0W8gKty6g9V1i9zWDf0IZBJ487ZdIP60'
     };
+    if (API_KEY) {
+      headers['x-api-key'] = API_KEY;
+    }
+    return headers;
   }
 
   function formatDialogueError(err) {
