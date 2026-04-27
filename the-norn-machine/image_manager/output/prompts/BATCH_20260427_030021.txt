@@ -1,0 +1,71 @@
+请为下面每个 image_id 分别生成一张独立图片。
+这是一组用于 The Norn Machine Demo 的人格视觉素材，不要把它们都画成同一个男性角色。
+
+硬性要求：
+1. 每个 image_id 是不同任务，必须严格遵守各自的 Subject rule。
+2. 可以没有人物；可以是女性、男性、中性人物、双人或多人；不要自动默认为男性。
+3. 画面里不要出现可读文字、编号、Logo、水印、对话框。
+4. 每张图可以有不同画风，但要保持成品感和视觉叙事质量。
+5. 回复里请用 image_id 标注每张图，方便我下载后重命名。
+
+图片任务：
+
+[1] image_id: NORN_0061
+MBTI: ISTP / role_group: Explorer
+layer1_coords: {"E_I": -8, "S_N": -8, "T_F": 8, "J_P": -8}
+visual_rationale: 工具、机械、户外装备与安静实操能力；可以没有人，或一个专注动作的人。
+scene: 工具卷包 / tool roll of safe mechanical tools bolts and oil stains
+subject_rule: human_presence=none; subject_mode=environment_or_object_only; gender_mode=not_applicable; people_count=0
+style_family: minimal_action_noir; palette: cool_metal; composition: action_freeze
+motifs: 工具卷, 螺栓, 油迹, 布面, 阴影
+layer3_direction:
+- 工具卷包不是单纯背景，而是 ISTP 的人格张力被转译成可见空间后的结果。
+- 镜头应优先呈现工具卷、螺栓、油迹等意象；画面不需要出现人物，重点应落在空间、物件与痕迹本身。
+- 整体气质应贴近Explorer组的动手、冷静、工具，使用 minimal_action_noir 与 action_freeze 表达，而不是依赖固定男主角叙事。
+English image prompt: minimal_action_noir, cool_metal, action_freeze. Scene: tool roll of safe mechanical tools bolts and oil stains. Subject rule: none human presence, environment_or_object_only, gender mode not_applicable, people count 0. Visual motifs: 工具卷, 螺栓, 油迹, 布面, 阴影. Personality metaphor for ISTP (Explorer): 动手, 冷静, 工具, 即时问题, 独立; 工具、机械、户外装备与安静实操能力；可以没有人，或一个专注动作的人。 Create one coherent finished illustration, strong visual storytelling, no readable text, no logo, no watermark.
+Negative prompt: readable text, logo, watermark, signature, UI, speech bubble, low quality, blurry, distorted hands, extra limbs, duplicate face
+
+[2] image_id: NORN_0062
+MBTI: ISFP / role_group: Explorer
+layer1_coords: {"E_I": -8, "S_N": -8, "T_F": -8, "J_P": -8}
+visual_rationale: 触感、色彩、个人审美与安静行动；单人、局部物件或自然手作痕迹都合适。
+scene: 森林写生点 / forest sketch spot with paper brushes and low stool
+subject_rule: human_presence=none; subject_mode=environment_or_object_only; gender_mode=not_applicable; people_count=0
+style_family: ink_and_wash_nature; palette: cream_olive; composition: tactile_tabletop
+motifs: 画纸, 画笔, 矮凳, 树影, 背包
+layer3_direction:
+- 森林写生点不是单纯背景，而是 ISFP 的人格张力被转译成可见空间后的结果。
+- 镜头应优先呈现画纸、画笔、矮凳等意象；画面不需要出现人物，重点应落在空间、物件与痕迹本身。
+- 整体气质应贴近Explorer组的感受、审美、当下，使用 ink_and_wash_nature 与 tactile_tabletop 表达，而不是依赖固定男主角叙事。
+English image prompt: ink_and_wash_nature, cream_olive, tactile_tabletop. Scene: forest sketch spot with paper brushes and low stool. Subject rule: none human presence, environment_or_object_only, gender mode not_applicable, people count 0. Visual motifs: 画纸, 画笔, 矮凳, 树影, 背包. Personality metaphor for ISFP (Explorer): 感受, 审美, 当下, 温柔反叛, 手作; 触感、色彩、个人审美与安静行动；单人、局部物件或自然手作痕迹都合适。 Create one coherent finished illustration, strong visual storytelling, no readable text, no logo, no watermark.
+Negative prompt: readable text, logo, watermark, signature, UI, speech bubble, low quality, blurry, distorted hands, extra limbs, duplicate face
+
+[3] image_id: NORN_0063
+MBTI: ESTP / role_group: Explorer
+layer1_coords: {"E_I": 8, "S_N": -8, "T_F": 8, "J_P": -8}
+visual_rationale: 高动能、公共场景、竞技、街头和即时反应；通常应有运动感和多人环境。
+scene: 机车车库出发 / motor garage right before departure with helmets and bright doors
+subject_rule: human_presence=none; subject_mode=environment_or_object_only; gender_mode=not_applicable; people_count=0
+style_family: bold_marker_illustration; palette: sun_bleached; composition: crowded_depth
+motifs: 机车, 头盔, 车库门, 灯, 轮胎
+layer3_direction:
+- 机车车库出发不是单纯背景，而是 ESTP 的人格张力被转译成可见空间后的结果。
+- 镜头应优先呈现机车、头盔、车库门等意象；画面不需要出现人物，重点应落在空间、物件与痕迹本身。
+- 整体气质应贴近Explorer组的行动、冒险、现场反应，使用 bold_marker_illustration 与 crowded_depth 表达，而不是依赖固定男主角叙事。
+English image prompt: bold_marker_illustration, sun_bleached, crowded_depth. Scene: motor garage right before departure with helmets and bright doors. Subject rule: none human presence, environment_or_object_only, gender mode not_applicable, people count 0. Visual motifs: 机车, 头盔, 车库门, 灯, 轮胎. Personality metaphor for ESTP (Explorer): 行动, 冒险, 现场反应, 身体性, 刺激; 高动能、公共场景、竞技、街头和即时反应；通常应有运动感和多人环境。 Create one coherent finished illustration, strong visual storytelling, no readable text, no logo, no watermark.
+Negative prompt: readable text, logo, watermark, signature, UI, speech bubble, low quality, blurry, distorted hands, extra limbs, duplicate face
+
+[4] image_id: NORN_0064
+MBTI: ESFP / role_group: Explorer
+layer1_coords: {"E_I": 8, "S_N": -8, "T_F": -8, "J_P": -8}
+visual_rationale: 表演、聚光灯、色彩与即时快乐传染；画面可以大胆、热闹、舞台化。
+scene: 纸屑舞池 / dance floor covered in confetti and glossy reflections
+subject_rule: human_presence=none; subject_mode=environment_or_object_only; gender_mode=not_applicable; people_count=0
+style_family: colorful_film_still; palette: glossy_teal; composition: rhythmic_pattern
+motifs: 纸屑, 舞池, 灯球, 反光, 脚步
+layer3_direction:
+- 纸屑舞池不是单纯背景，而是 ESFP 的人格张力被转译成可见空间后的结果。
+- 镜头应优先呈现纸屑、舞池、灯球等意象；画面不需要出现人物，重点应落在空间、物件与痕迹本身。
+- 整体气质应贴近Explorer组的表演、感染力、感官，使用 colorful_film_still 与 rhythmic_pattern 表达，而不是依赖固定男主角叙事。
+English image prompt: colorful_film_still, glossy_teal, rhythmic_pattern. Scene: dance floor covered in confetti and glossy reflections. Subject rule: none human presence, environment_or_object_only, gender mode not_applicable, people count 0. Visual motifs: 纸屑, 舞池, 灯球, 反光, 脚步. Personality metaphor for ESFP (Explorer): 表演, 感染力, 感官, 欢乐, 现场魅力; 表演、聚光灯、色彩与即时快乐传染；画面可以大胆、热闹、舞台化。 Create one coherent finished illustration, strong visual storytelling, no readable text, no logo, no watermark.
+Negative prompt: readable text, logo, watermark, signature, UI, speech bubble, low quality, blurry, distorted hands, extra limbs, duplicate face

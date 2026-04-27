@@ -1,0 +1,71 @@
+请为下面每个 image_id 分别生成一张独立图片。
+这是一组用于 The Norn Machine Demo 的人格视觉素材，不要把它们都画成同一个男性角色。
+
+硬性要求：
+1. 每个 image_id 是不同任务，必须严格遵守各自的 Subject rule。
+2. 可以没有人物；可以是女性、男性、中性人物、双人或多人；不要自动默认为男性。
+3. 画面里不要出现可读文字、编号、Logo、水印、对话框。
+4. 每张图可以有不同画风，但要保持成品感和视觉叙事质量。
+5. 回复里请用 image_id 标注每张图，方便我下载后重命名。
+
+图片任务：
+
+[1] image_id: NORN_0101
+MBTI: INFJ / role_group: Diplomat
+layer1_coords: {"E_I": -8, "S_N": 8, "T_F": -8, "J_P": 8}
+visual_rationale: 安静连接、象征门槛、灯塔、咨询室与温柔但坚定的方向感；双人或空场景都成立。
+scene: 雨窗侧影 / soft silhouette beside a rain window with plants and reflections
+subject_rule: human_presence=single; subject_mode=single_female_figure; gender_mode=female; people_count=1
+style_family: soft_editorial_illustration; palette: mist_green; composition: off_center_negative_space
+motifs: 雨窗, 植物, 侧影, 反射, 室内光
+layer3_direction:
+- 雨窗侧影不是单纯背景，而是 INFJ 的人格张力被转译成可见空间后的结果。
+- 镜头应优先呈现雨窗、植物、侧影等意象；可以出现一个人物，但人物应服务于场景气质，而不是占满画面。
+- 整体气质应贴近Diplomat组的洞察、共情、愿景，使用 soft_editorial_illustration 与 off_center_negative_space 表达，而不是依赖固定男主角叙事。
+English image prompt: soft_editorial_illustration, mist_green, off_center_negative_space. Scene: soft silhouette beside a rain window with plants and reflections. Subject rule: single human presence, single_female_figure, gender mode female, people count 1. Visual motifs: 雨窗, 植物, 侧影, 反射, 室内光. Personality metaphor for INFJ (Diplomat): 洞察, 共情, 愿景, 边界, 静水深流; 安静连接、象征门槛、灯塔、咨询室与温柔但坚定的方向感；双人或空场景都成立。 Create one coherent finished illustration, strong visual storytelling, no readable text, no logo, no watermark.
+Negative prompt: readable text, logo, watermark, signature, UI, speech bubble, low quality, blurry, distorted hands, extra limbs, duplicate face
+
+[2] image_id: NORN_0102
+MBTI: INFP / role_group: Diplomat
+layer1_coords: {"E_I": -8, "S_N": 8, "T_F": -8, "J_P": -8}
+visual_rationale: 私密世界、手作物、自然意象与梦境场景；经常可以没有人物，因为核心是内在价值的外化。
+scene: 信件河 / shallow indoor river carrying folded letters through a quiet room
+subject_rule: human_presence=single; subject_mode=single_ambiguous_figure; gender_mode=ambiguous; people_count=1
+style_family: soft_surreal_collage; palette: soft_green_peach; composition: floating_center
+motifs: 室内小河, 折信, 木地板, 柔光, 纸船
+layer3_direction:
+- 信件河不是单纯背景，而是 INFP 的人格张力被转译成可见空间后的结果。
+- 镜头应优先呈现室内小河、折信、木地板等意象；可以出现一个人物，但人物应服务于场景气质，而不是占满画面。
+- 整体气质应贴近Diplomat组的理想、内省、想象，使用 soft_surreal_collage 与 floating_center 表达，而不是依赖固定男主角叙事。
+English image prompt: soft_surreal_collage, soft_green_peach, floating_center. Scene: shallow indoor river carrying folded letters through a quiet room. Subject rule: single human presence, single_ambiguous_figure, gender mode ambiguous, people count 1. Visual motifs: 室内小河, 折信, 木地板, 柔光, 纸船. Personality metaphor for INFP (Diplomat): 理想, 内省, 想象, 柔软, 个人神话; 私密世界、手作物、自然意象与梦境场景；经常可以没有人物，因为核心是内在价值的外化。 Create one coherent finished illustration, strong visual storytelling, no readable text, no logo, no watermark.
+Negative prompt: readable text, logo, watermark, signature, UI, speech bubble, low quality, blurry, distorted hands, extra limbs, duplicate face
+
+[3] image_id: NORN_0103
+MBTI: ENFJ / role_group: Diplomat
+layer1_coords: {"E_I": 8, "S_N": 8, "T_F": -8, "J_P": 8}
+visual_rationale: 人际连接、公共表达、引导与照亮他人的场景；适合双人和多人。
+scene: 屋顶演说 / rooftop gathering at sunset with one figure addressing friends
+subject_rule: human_presence=single; subject_mode=single_female_figure; gender_mode=female; people_count=1
+style_family: poster_like_humanist; palette: rose_gold_teal; composition: open_stage
+motifs: 屋顶, 夕阳, 朋友, 风, 城市
+layer3_direction:
+- 屋顶演说不是单纯背景，而是 ENFJ 的人格张力被转译成可见空间后的结果。
+- 镜头应优先呈现屋顶、夕阳、朋友等意象；可以出现一个人物，但人物应服务于场景气质，而不是占满画面。
+- 整体气质应贴近Diplomat组的引导、连接、感染力，使用 poster_like_humanist 与 open_stage 表达，而不是依赖固定男主角叙事。
+English image prompt: poster_like_humanist, rose_gold_teal, open_stage. Scene: rooftop gathering at sunset with one figure addressing friends. Subject rule: single human presence, single_female_figure, gender mode female, people count 1. Visual motifs: 屋顶, 夕阳, 朋友, 风, 城市. Personality metaphor for ENFJ (Diplomat): 引导, 连接, 感染力, 责任感, 理想组织; 人际连接、公共表达、引导与照亮他人的场景；适合双人和多人。 Create one coherent finished illustration, strong visual storytelling, no readable text, no logo, no watermark.
+Negative prompt: readable text, logo, watermark, signature, UI, speech bubble, low quality, blurry, distorted hands, extra limbs, duplicate face
+
+[4] image_id: NORN_0104
+MBTI: ENFP / role_group: Diplomat
+layer1_coords: {"E_I": 8, "S_N": 8, "T_F": -8, "J_P": -8}
+visual_rationale: 多彩、开放、流动的可能性场域；热闹、群像、拼贴都合适。
+scene: 风筝草地 / field of kites held by a loosely gathered group in strong wind
+subject_rule: human_presence=single; subject_mode=single_ambiguous_figure; gender_mode=ambiguous; people_count=1
+style_family: graffiti_zine; palette: warm_confetti; composition: radiating_center
+motifs: 风筝, 草地, 人群, 风, 天空
+layer3_direction:
+- 风筝草地不是单纯背景，而是 ENFP 的人格张力被转译成可见空间后的结果。
+- 镜头应优先呈现风筝、草地、人群等意象；可以出现一个人物，但人物应服务于场景气质，而不是占满画面。
+- 整体气质应贴近Diplomat组的灵感、自由、联结，使用 graffiti_zine 与 radiating_center 表达，而不是依赖固定男主角叙事。
+English image prompt: graffiti_zine, warm_confetti, radiating_center. Scene: field of kites held by a loosely gathered group in strong wind. Subject rule: single human presence, single_ambiguous_figure, gender mode ambiguous, people count 1. Visual motifs: 风筝, 草地, 人群, 风, 天空. Personality metaphor for ENFP (Diplomat): 灵感, 自由, 联结, 可能性, 热烈; 多彩、开放、流动的可能性场域；热闹、群像、拼贴都合适。 Create one coherent finished illustration, strong visual storytelling, no readable text, no logo, no watermark.
+Negative prompt: readable text, logo, watermark, signature, UI, speech bubble, low quality, blurry, distorted hands, extra limbs, duplicate face

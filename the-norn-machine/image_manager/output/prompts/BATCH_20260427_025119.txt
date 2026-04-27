@@ -1,0 +1,71 @@
+请为下面每个 image_id 分别生成一张独立图片。
+这是一组用于 The Norn Machine Demo 的人格视觉素材，不要把它们都画成同一个男性角色。
+
+硬性要求：
+1. 每个 image_id 是不同任务，必须严格遵守各自的 Subject rule。
+2. 可以没有人物；可以是女性、男性、中性人物、双人或多人；不要自动默认为男性。
+3. 画面里不要出现可读文字、编号、Logo、水印、对话框。
+4. 每张图可以有不同画风，但要保持成品感和视觉叙事质量。
+5. 回复里请用 image_id 标注每张图，方便我下载后重命名。
+
+图片任务：
+
+[1] image_id: NORN_0033
+MBTI: INTJ / role_group: Analyst
+layer1_coords: {"E_I": -8, "S_N": 8, "T_F": 8, "J_P": 8}
+visual_rationale: 低社交密度、空旷规划空间、长期推演、结构压过人物；可以没有人，或只有很小的中性人影。
+scene: 粗野主义图书馆 / brutalist concrete library atrium with no visible readers
+subject_rule: human_presence=none; subject_mode=environment_or_object_only; gender_mode=not_applicable; people_count=0
+style_family: ink_noir_storyboard; palette: black_white_accent; composition: isometric_grid
+motifs: 混凝土墙, 悬空走廊, 编号书架, 斜射光, 深阴影
+layer3_direction:
+- 粗野主义图书馆不是单纯背景，而是 INTJ 的人格张力被转译成可见空间后的结果。
+- 镜头应优先呈现混凝土墙、悬空走廊、编号书架等意象；画面不需要出现人物，重点应落在空间、物件与痕迹本身。
+- 整体气质应贴近Analyst组的战略、系统、远景，使用 ink_noir_storyboard 与 isometric_grid 表达，而不是依赖固定男主角叙事。
+English image prompt: ink_noir_storyboard, black_white_accent, isometric_grid. Scene: brutalist concrete library atrium with no visible readers. Subject rule: none human presence, environment_or_object_only, gender mode not_applicable, people count 0. Visual motifs: 混凝土墙, 悬空走廊, 编号书架, 斜射光, 深阴影. Personality metaphor for INTJ (Analyst): 战略, 系统, 远景, 克制, 独立; 低社交密度、空旷规划空间、长期推演、结构压过人物；可以没有人，或只有很小的中性人影。 Create one coherent finished illustration, strong visual storytelling, no readable text, no logo, no watermark.
+Negative prompt: readable text, logo, watermark, signature, UI, speech bubble, low quality, blurry, distorted hands, extra limbs, duplicate face
+
+[2] image_id: NORN_0034
+MBTI: INTP / role_group: Analyst
+layer1_coords: {"E_I": -8, "S_N": 8, "T_F": 8, "J_P": -8}
+visual_rationale: 开放问题、未完成实验、草稿式空间、低社交压力；画面像仍在生长的思维图。
+scene: 黑板天象馆 / chalkboard planetarium with orbital doodles and question marks
+subject_rule: human_presence=none; subject_mode=environment_or_object_only; gender_mode=not_applicable; people_count=0
+style_family: chalkboard_cosmos; palette: muted_cyan; composition: floating_fragments
+motifs: 黑板, 粉笔轨道, 星点, 擦痕, 圆规
+layer3_direction:
+- 黑板天象馆不是单纯背景，而是 INTP 的人格张力被转译成可见空间后的结果。
+- 镜头应优先呈现黑板、粉笔轨道、星点等意象；画面不需要出现人物，重点应落在空间、物件与痕迹本身。
+- 整体气质应贴近Analyst组的理论、好奇、解构，使用 chalkboard_cosmos 与 floating_fragments 表达，而不是依赖固定男主角叙事。
+English image prompt: chalkboard_cosmos, muted_cyan, floating_fragments. Scene: chalkboard planetarium with orbital doodles and question marks. Subject rule: none human presence, environment_or_object_only, gender mode not_applicable, people count 0. Visual motifs: 黑板, 粉笔轨道, 星点, 擦痕, 圆规. Personality metaphor for INTP (Analyst): 理论, 好奇, 解构, 悖论, 松散秩序; 开放问题、未完成实验、草稿式空间、低社交压力；画面像仍在生长的思维图。 Create one coherent finished illustration, strong visual storytelling, no readable text, no logo, no watermark.
+Negative prompt: readable text, logo, watermark, signature, UI, speech bubble, low quality, blurry, distorted hands, extra limbs, duplicate face
+
+[3] image_id: NORN_0035
+MBTI: ENTJ / role_group: Analyst
+layer1_coords: {"E_I": 8, "S_N": 8, "T_F": 8, "J_P": 8}
+visual_rationale: 高能量战略调度、团队协同、明确目标；人群应体现组织性而非混乱。
+scene: 建设现场高台 / high platform overlooking cranes and a district under construction
+subject_rule: human_presence=single; subject_mode=single_female_figure; gender_mode=female; people_count=1
+style_family: corporate_noir_poster; palette: crimson_gray; composition: triangular_grouping
+motifs: 吊车, 安全帽, 城市骨架, 风, 俯视
+layer3_direction:
+- 建设现场高台不是单纯背景，而是 ENTJ 的人格张力被转译成可见空间后的结果。
+- 镜头应优先呈现吊车、安全帽、城市骨架等意象；可以出现一个人物，但人物应服务于场景气质，而不是占满画面。
+- 整体气质应贴近Analyst组的组织、领导、目标，使用 corporate_noir_poster 与 triangular_grouping 表达，而不是依赖固定男主角叙事。
+English image prompt: corporate_noir_poster, crimson_gray, triangular_grouping. Scene: high platform overlooking cranes and a district under construction. Subject rule: single human presence, single_female_figure, gender mode female, people count 1. Visual motifs: 吊车, 安全帽, 城市骨架, 风, 俯视. Personality metaphor for ENTJ (Analyst): 组织, 领导, 目标, 效率, 扩张; 高能量战略调度、团队协同、明确目标；人群应体现组织性而非混乱。 Create one coherent finished illustration, strong visual storytelling, no readable text, no logo, no watermark.
+Negative prompt: readable text, logo, watermark, signature, UI, speech bubble, low quality, blurry, distorted hands, extra limbs, duplicate face
+
+[4] image_id: NORN_0036
+MBTI: ENTP / role_group: Analyst
+layer1_coords: {"E_I": 8, "S_N": 8, "T_F": 8, "J_P": -8}
+visual_rationale: 多点碰撞、即兴辩论、发明现场与挑衅性图像语言；可以热闹、破碎、跳跃。
+scene: 街头争论壁画 / street mural turning debate into arrows and expressive shapes
+subject_rule: human_presence=single; subject_mode=single_ambiguous_figure; gender_mode=ambiguous; people_count=1
+style_family: comic_panel_energy; palette: black_white_pop; composition: split_panel
+motifs: 喷漆墙, 箭头, 表情形状, 路灯, 人群
+layer3_direction:
+- 街头争论壁画不是单纯背景，而是 ENTP 的人格张力被转译成可见空间后的结果。
+- 镜头应优先呈现喷漆墙、箭头、表情形状等意象；可以出现一个人物，但人物应服务于场景气质，而不是占满画面。
+- 整体气质应贴近Analyst组的辩论、发明、挑衅，使用 comic_panel_energy 与 split_panel 表达，而不是依赖固定男主角叙事。
+English image prompt: comic_panel_energy, black_white_pop, split_panel. Scene: street mural turning debate into arrows and expressive shapes. Subject rule: single human presence, single_ambiguous_figure, gender mode ambiguous, people count 1. Visual motifs: 喷漆墙, 箭头, 表情形状, 路灯, 人群. Personality metaphor for ENTP (Analyst): 辩论, 发明, 挑衅, 快速联想, 开放结局; 多点碰撞、即兴辩论、发明现场与挑衅性图像语言；可以热闹、破碎、跳跃。 Create one coherent finished illustration, strong visual storytelling, no readable text, no logo, no watermark.
+Negative prompt: readable text, logo, watermark, signature, UI, speech bubble, low quality, blurry, distorted hands, extra limbs, duplicate face

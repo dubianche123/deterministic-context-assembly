@@ -1,0 +1,71 @@
+请为下面每个 image_id 分别生成一张独立图片。
+这是一组用于 The Norn Machine Demo 的人格视觉素材，不要把它们都画成同一个男性角色。
+
+硬性要求：
+1. 每个 image_id 是不同任务，必须严格遵守各自的 Subject rule。
+2. 可以没有人物；可以是女性、男性、中性人物、双人或多人；不要自动默认为男性。
+3. 画面里不要出现可读文字、编号、Logo、水印、对话框。
+4. 每张图可以有不同画风，但要保持成品感和视觉叙事质量。
+5. 回复里请用 image_id 标注每张图，方便我下载后重命名。
+
+图片任务：
+
+[1] image_id: NORN_0205
+MBTI: ISTP / role_group: Explorer
+layer1_coords: {"E_I": -8, "S_N": -8, "T_F": 8, "J_P": -8}
+visual_rationale: 工具、机械、户外装备与安静实操能力；可以没有人，或一个专注动作的人。
+scene: 相机维修垫 / camera repair mat with tiny screws and lenses
+subject_rule: human_presence=none; subject_mode=environment_or_object_only; gender_mode=not_applicable; people_count=0
+style_family: technical_marker_sketch; palette: oil_black_gray; composition: close_mechanical_detail
+motifs: 相机, 镜头, 小螺丝, 维修垫, 镊子
+layer3_direction:
+- 相机维修垫不是单纯背景，而是 ISTP 的人格张力被转译成可见空间后的结果。
+- 镜头应优先呈现相机、镜头、小螺丝等意象；画面不需要出现人物，重点应落在空间、物件与痕迹本身。
+- 整体气质应贴近Explorer组的动手、冷静、工具，使用 technical_marker_sketch 与 close_mechanical_detail 表达，而不是依赖固定男主角叙事。
+English image prompt: technical_marker_sketch, oil_black_gray, close_mechanical_detail. Scene: camera repair mat with tiny screws and lenses. Subject rule: none human presence, environment_or_object_only, gender mode not_applicable, people count 0. Visual motifs: 相机, 镜头, 小螺丝, 维修垫, 镊子. Personality metaphor for ISTP (Explorer): 动手, 冷静, 工具, 即时问题, 独立; 工具、机械、户外装备与安静实操能力；可以没有人，或一个专注动作的人。 Create one coherent finished illustration, strong visual storytelling, no readable text, no logo, no watermark.
+Negative prompt: readable text, logo, watermark, signature, UI, speech bubble, low quality, blurry, distorted hands, extra limbs, duplicate face
+
+[2] image_id: NORN_0206
+MBTI: ISFP / role_group: Explorer
+layer1_coords: {"E_I": -8, "S_N": -8, "T_F": -8, "J_P": -8}
+visual_rationale: 触感、色彩、个人审美与安静行动；单人、局部物件或自然手作痕迹都合适。
+scene: 安静后台服装 / backstage costume corner after a performance
+subject_rule: human_presence=single; subject_mode=single_female_figure; gender_mode=female; people_count=1
+style_family: soft_gouache; palette: earthy_pastel; composition: intimate_close
+motifs: 服装, 镜子, 椅子, 灯泡, 布料
+layer3_direction:
+- 安静后台服装不是单纯背景，而是 ISFP 的人格张力被转译成可见空间后的结果。
+- 镜头应优先呈现服装、镜子、椅子等意象；可以出现一个人物，但人物应服务于场景气质，而不是占满画面。
+- 整体气质应贴近Explorer组的感受、审美、当下，使用 soft_gouache 与 intimate_close 表达，而不是依赖固定男主角叙事。
+English image prompt: soft_gouache, earthy_pastel, intimate_close. Scene: backstage costume corner after a performance. Subject rule: single human presence, single_female_figure, gender mode female, people count 1. Visual motifs: 服装, 镜子, 椅子, 灯泡, 布料. Personality metaphor for ISFP (Explorer): 感受, 审美, 当下, 温柔反叛, 手作; 触感、色彩、个人审美与安静行动；单人、局部物件或自然手作痕迹都合适。 Create one coherent finished illustration, strong visual storytelling, no readable text, no logo, no watermark.
+Negative prompt: readable text, logo, watermark, signature, UI, speech bubble, low quality, blurry, distorted hands, extra limbs, duplicate face
+
+[3] image_id: NORN_0207
+MBTI: ESTP / role_group: Explorer
+layer1_coords: {"E_I": 8, "S_N": -8, "T_F": 8, "J_P": -8}
+visual_rationale: 高动能、公共场景、竞技、街头和即时反应；通常应有运动感和多人环境。
+scene: 街舞圈 / dance battle circle with dynamic body motion
+subject_rule: human_presence=multi; subject_mode=small_group_or_crowd; gender_mode=mixed; people_count=4
+style_family: graffiti_sports_poster; palette: saturated_high_contrast; composition: dynamic_diagonal
+motifs: 舞圈, 人群, 地面, 音箱, 速度线
+layer3_direction:
+- 街舞圈不是单纯背景，而是 ESTP 的人格张力被转译成可见空间后的结果。
+- 镜头应优先呈现舞圈、人群、地面等意象；多人场面可以出现，但需要让群体结构与人格倾向相互对应。
+- 整体气质应贴近Explorer组的行动、冒险、现场反应，使用 graffiti_sports_poster 与 dynamic_diagonal 表达，而不是依赖固定男主角叙事。
+English image prompt: graffiti_sports_poster, saturated_high_contrast, dynamic_diagonal. Scene: dance battle circle with dynamic body motion. Subject rule: multi human presence, small_group_or_crowd, gender mode mixed, people count 4. Visual motifs: 舞圈, 人群, 地面, 音箱, 速度线. Personality metaphor for ESTP (Explorer): 行动, 冒险, 现场反应, 身体性, 刺激; 高动能、公共场景、竞技、街头和即时反应；通常应有运动感和多人环境。 Create one coherent finished illustration, strong visual storytelling, no readable text, no logo, no watermark.
+Negative prompt: readable text, logo, watermark, signature, UI, speech bubble, low quality, blurry, distorted hands, extra limbs, duplicate face
+
+[4] image_id: NORN_0208
+MBTI: ESFP / role_group: Explorer
+layer1_coords: {"E_I": 8, "S_N": -8, "T_F": -8, "J_P": -8}
+visual_rationale: 表演、聚光灯、色彩与即时快乐传染；画面可以大胆、热闹、舞台化。
+scene: 马戏排练 / circus rehearsal corner with props fabric and warm spotlight
+subject_rule: human_presence=multi; subject_mode=small_group_or_crowd; gender_mode=mixed; people_count=4
+style_family: stage_poster_bright; palette: hot_pink_gold; composition: spotlight_center
+motifs: 马戏道具, 布料, 聚光, 圆环, 木箱
+layer3_direction:
+- 马戏排练不是单纯背景，而是 ESFP 的人格张力被转译成可见空间后的结果。
+- 镜头应优先呈现马戏道具、布料、聚光等意象；多人场面可以出现，但需要让群体结构与人格倾向相互对应。
+- 整体气质应贴近Explorer组的表演、感染力、感官，使用 stage_poster_bright 与 spotlight_center 表达，而不是依赖固定男主角叙事。
+English image prompt: stage_poster_bright, hot_pink_gold, spotlight_center. Scene: circus rehearsal corner with props fabric and warm spotlight. Subject rule: multi human presence, small_group_or_crowd, gender mode mixed, people count 4. Visual motifs: 马戏道具, 布料, 聚光, 圆环, 木箱. Personality metaphor for ESFP (Explorer): 表演, 感染力, 感官, 欢乐, 现场魅力; 表演、聚光灯、色彩与即时快乐传染；画面可以大胆、热闹、舞台化。 Create one coherent finished illustration, strong visual storytelling, no readable text, no logo, no watermark.
+Negative prompt: readable text, logo, watermark, signature, UI, speech bubble, low quality, blurry, distorted hands, extra limbs, duplicate face

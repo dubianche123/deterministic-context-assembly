@@ -1,0 +1,71 @@
+请为下面每个 image_id 分别生成一张独立图片。
+这是一组用于 The Norn Machine Demo 的人格视觉素材，不要把它们都画成同一个男性角色。
+
+硬性要求：
+1. 每个 image_id 是不同任务，必须严格遵守各自的 Subject rule。
+2. 可以没有人物；可以是女性、男性、中性人物、双人或多人；不要自动默认为男性。
+3. 画面里不要出现可读文字、编号、Logo、水印、对话框。
+4. 每张图可以有不同画风，但要保持成品感和视觉叙事质量。
+5. 回复里请用 image_id 标注每张图，方便我下载后重命名。
+
+图片任务：
+
+[1] image_id: NORN_0049
+MBTI: INTJ / role_group: Analyst
+layer1_coords: {"E_I": -8, "S_N": 8, "T_F": 8, "J_P": 8}
+visual_rationale: 低社交密度、空旷规划空间、长期推演、结构压过人物；可以没有人，或只有很小的中性人影。
+scene: 封闭档案核心 / sealed archive core with black cabinets and one illuminated drawer
+subject_rule: human_presence=none; subject_mode=environment_or_object_only; gender_mode=not_applicable; people_count=0
+style_family: isometric_system_map; palette: desaturated_silver; composition: long_corridor_perspective
+motifs: 黑色档案柜, 索引卡, 唯一亮起抽屉, 金属地面, 静默通道
+layer3_direction:
+- 封闭档案核心不是单纯背景，而是 INTJ 的人格张力被转译成可见空间后的结果。
+- 镜头应优先呈现黑色档案柜、索引卡、唯一亮起抽屉等意象；画面不需要出现人物，重点应落在空间、物件与痕迹本身。
+- 整体气质应贴近Analyst组的战略、系统、远景，使用 isometric_system_map 与 long_corridor_perspective 表达，而不是依赖固定男主角叙事。
+English image prompt: isometric_system_map, desaturated_silver, long_corridor_perspective. Scene: sealed archive core with black cabinets and one illuminated drawer. Subject rule: none human presence, environment_or_object_only, gender mode not_applicable, people count 0. Visual motifs: 黑色档案柜, 索引卡, 唯一亮起抽屉, 金属地面, 静默通道. Personality metaphor for INTJ (Analyst): 战略, 系统, 远景, 克制, 独立; 低社交密度、空旷规划空间、长期推演、结构压过人物；可以没有人，或只有很小的中性人影。 Create one coherent finished illustration, strong visual storytelling, no readable text, no logo, no watermark.
+Negative prompt: readable text, logo, watermark, signature, UI, speech bubble, low quality, blurry, distorted hands, extra limbs, duplicate face
+
+[2] image_id: NORN_0050
+MBTI: INTP / role_group: Analyst
+layer1_coords: {"E_I": -8, "S_N": 8, "T_F": 8, "J_P": -8}
+visual_rationale: 开放问题、未完成实验、草稿式空间、低社交压力；画面像仍在生长的思维图。
+scene: 递归楼梯书桌 / desk surrounded by impossible small staircases and open books
+subject_rule: human_presence=none; subject_mode=environment_or_object_only; gender_mode=not_applicable; people_count=0
+style_family: soft_glitch_minimal; palette: dusty_violet; composition: desk_level_view
+motifs: 小楼梯, 摊开的书, 铅笔, 杯子, 阴影错位
+layer3_direction:
+- 递归楼梯书桌不是单纯背景，而是 INTP 的人格张力被转译成可见空间后的结果。
+- 镜头应优先呈现小楼梯、摊开的书、铅笔等意象；画面不需要出现人物，重点应落在空间、物件与痕迹本身。
+- 整体气质应贴近Analyst组的理论、好奇、解构，使用 soft_glitch_minimal 与 desk_level_view 表达，而不是依赖固定男主角叙事。
+English image prompt: soft_glitch_minimal, dusty_violet, desk_level_view. Scene: desk surrounded by impossible small staircases and open books. Subject rule: none human presence, environment_or_object_only, gender mode not_applicable, people count 0. Visual motifs: 小楼梯, 摊开的书, 铅笔, 杯子, 阴影错位. Personality metaphor for INTP (Analyst): 理论, 好奇, 解构, 悖论, 松散秩序; 开放问题、未完成实验、草稿式空间、低社交压力；画面像仍在生长的思维图。 Create one coherent finished illustration, strong visual storytelling, no readable text, no logo, no watermark.
+Negative prompt: readable text, logo, watermark, signature, UI, speech bubble, low quality, blurry, distorted hands, extra limbs, duplicate face
+
+[3] image_id: NORN_0051
+MBTI: ENTJ / role_group: Analyst
+layer1_coords: {"E_I": 8, "S_N": 8, "T_F": 8, "J_P": 8}
+visual_rationale: 高能量战略调度、团队协同、明确目标；人群应体现组织性而非混乱。
+scene: 战略竞选墙 / wall of routes deadlines and colored blocks without readable text
+subject_rule: human_presence=none; subject_mode=environment_or_object_only; gender_mode=not_applicable; people_count=0
+style_family: high_contrast_strategy_map; palette: clean_white_black; composition: vertical_power_frame
+motifs: 路线, 色块, 图钉, 任务卡, 灯箱
+layer3_direction:
+- 战略竞选墙不是单纯背景，而是 ENTJ 的人格张力被转译成可见空间后的结果。
+- 镜头应优先呈现路线、色块、图钉等意象；画面不需要出现人物，重点应落在空间、物件与痕迹本身。
+- 整体气质应贴近Analyst组的组织、领导、目标，使用 high_contrast_strategy_map 与 vertical_power_frame 表达，而不是依赖固定男主角叙事。
+English image prompt: high_contrast_strategy_map, clean_white_black, vertical_power_frame. Scene: wall of routes deadlines and colored blocks without readable text. Subject rule: none human presence, environment_or_object_only, gender mode not_applicable, people count 0. Visual motifs: 路线, 色块, 图钉, 任务卡, 灯箱. Personality metaphor for ENTJ (Analyst): 组织, 领导, 目标, 效率, 扩张; 高能量战略调度、团队协同、明确目标；人群应体现组织性而非混乱。 Create one coherent finished illustration, strong visual storytelling, no readable text, no logo, no watermark.
+Negative prompt: readable text, logo, watermark, signature, UI, speech bubble, low quality, blurry, distorted hands, extra limbs, duplicate face
+
+[4] image_id: NORN_0052
+MBTI: ENTP / role_group: Analyst
+layer1_coords: {"E_I": 8, "S_N": 8, "T_F": 8, "J_P": -8}
+visual_rationale: 多点碰撞、即兴辩论、发明现场与挑衅性图像语言；可以热闹、破碎、跳跃。
+scene: 分屏点子风暴 / split-screen contradictory ideas crashing together
+subject_rule: human_presence=none; subject_mode=environment_or_object_only; gender_mode=not_applicable; people_count=0
+style_family: neon_marker_sketch; palette: high_saturation_mix; composition: off_balance_center
+motifs: 分屏, 爆炸云, 纸片, 符号, 强色块
+layer3_direction:
+- 分屏点子风暴不是单纯背景，而是 ENTP 的人格张力被转译成可见空间后的结果。
+- 镜头应优先呈现分屏、爆炸云、纸片等意象；画面不需要出现人物，重点应落在空间、物件与痕迹本身。
+- 整体气质应贴近Analyst组的辩论、发明、挑衅，使用 neon_marker_sketch 与 off_balance_center 表达，而不是依赖固定男主角叙事。
+English image prompt: neon_marker_sketch, high_saturation_mix, off_balance_center. Scene: split-screen contradictory ideas crashing together. Subject rule: none human presence, environment_or_object_only, gender mode not_applicable, people count 0. Visual motifs: 分屏, 爆炸云, 纸片, 符号, 强色块. Personality metaphor for ENTP (Analyst): 辩论, 发明, 挑衅, 快速联想, 开放结局; 多点碰撞、即兴辩论、发明现场与挑衅性图像语言；可以热闹、破碎、跳跃。 Create one coherent finished illustration, strong visual storytelling, no readable text, no logo, no watermark.
+Negative prompt: readable text, logo, watermark, signature, UI, speech bubble, low quality, blurry, distorted hands, extra limbs, duplicate face

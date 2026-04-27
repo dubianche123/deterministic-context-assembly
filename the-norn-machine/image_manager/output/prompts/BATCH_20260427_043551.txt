@@ -1,0 +1,71 @@
+请为下面每个 image_id 分别生成一张独立图片。
+这是一组用于 The Norn Machine Demo 的人格视觉素材，不要把它们都画成同一个男性角色。
+
+硬性要求：
+1. 每个 image_id 是不同任务，必须严格遵守各自的 Subject rule。
+2. 可以没有人物；可以是女性、男性、中性人物、双人或多人；不要自动默认为男性。
+3. 画面里不要出现可读文字、编号、Logo、水印、对话框。
+4. 每张图可以有不同画风，但要保持成品感和视觉叙事质量。
+5. 回复里请用 image_id 标注每张图，方便我下载后重命名。
+
+图片任务：
+
+[1] image_id: NORN_0157
+MBTI: ISTP / role_group: Explorer
+layer1_coords: {"E_I": -8, "S_N": -8, "T_F": 8, "J_P": -8}
+visual_rationale: 工具、机械、户外装备与安静实操能力；可以没有人，或一个专注动作的人。
+scene: 锁机构模型 / cutaway model of a complex lock mechanism purely technical
+subject_rule: human_presence=single; subject_mode=single_ambiguous_figure; gender_mode=ambiguous; people_count=1
+style_family: gritty_documentary; palette: toolbox_red_gray; composition: diagonal_tool_layout
+motifs: 锁芯, 剖面, 弹簧, 金属, 白底
+layer3_direction:
+- 锁机构模型不是单纯背景，而是 ISTP 的人格张力被转译成可见空间后的结果。
+- 镜头应优先呈现锁芯、剖面、弹簧等意象；可以出现一个人物，但人物应服务于场景气质，而不是占满画面。
+- 整体气质应贴近Explorer组的动手、冷静、工具，使用 gritty_documentary 与 diagonal_tool_layout 表达，而不是依赖固定男主角叙事。
+English image prompt: gritty_documentary, toolbox_red_gray, diagonal_tool_layout. Scene: cutaway model of a complex lock mechanism purely technical. Subject rule: single human presence, single_ambiguous_figure, gender mode ambiguous, people count 1. Visual motifs: 锁芯, 剖面, 弹簧, 金属, 白底. Personality metaphor for ISTP (Explorer): 动手, 冷静, 工具, 即时问题, 独立; 工具、机械、户外装备与安静实操能力；可以没有人，或一个专注动作的人。 Create one coherent finished illustration, strong visual storytelling, no readable text, no logo, no watermark.
+Negative prompt: readable text, logo, watermark, signature, UI, speech bubble, low quality, blurry, distorted hands, extra limbs, duplicate face
+
+[2] image_id: NORN_0158
+MBTI: ISFP / role_group: Explorer
+layer1_coords: {"E_I": -8, "S_N": -8, "T_F": -8, "J_P": -8}
+visual_rationale: 触感、色彩、个人审美与安静行动；单人、局部物件或自然手作痕迹都合适。
+scene: 手作面具桌 / handmade mask table with feathers paint and fabric scraps
+subject_rule: human_presence=none; subject_mode=environment_or_object_only; gender_mode=not_applicable; people_count=0
+style_family: textile_collage; palette: moss_rose; composition: organic_asymmetry
+motifs: 面具, 羽毛, 颜料, 布片, 剪刀
+layer3_direction:
+- 手作面具桌不是单纯背景，而是 ISFP 的人格张力被转译成可见空间后的结果。
+- 镜头应优先呈现面具、羽毛、颜料等意象；画面不需要出现人物，重点应落在空间、物件与痕迹本身。
+- 整体气质应贴近Explorer组的感受、审美、当下，使用 textile_collage 与 organic_asymmetry 表达，而不是依赖固定男主角叙事。
+English image prompt: textile_collage, moss_rose, organic_asymmetry. Scene: handmade mask table with feathers paint and fabric scraps. Subject rule: none human presence, environment_or_object_only, gender mode not_applicable, people count 0. Visual motifs: 面具, 羽毛, 颜料, 布片, 剪刀. Personality metaphor for ISFP (Explorer): 感受, 审美, 当下, 温柔反叛, 手作; 触感、色彩、个人审美与安静行动；单人、局部物件或自然手作痕迹都合适。 Create one coherent finished illustration, strong visual storytelling, no readable text, no logo, no watermark.
+Negative prompt: readable text, logo, watermark, signature, UI, speech bubble, low quality, blurry, distorted hands, extra limbs, duplicate face
+
+[3] image_id: NORN_0159
+MBTI: ESTP / role_group: Explorer
+layer1_coords: {"E_I": 8, "S_N": -8, "T_F": 8, "J_P": -8}
+visual_rationale: 高动能、公共场景、竞技、街头和即时反应；通常应有运动感和多人环境。
+scene: 餐车高峰 / food truck rush with fast hands and bright sign shapes
+subject_rule: human_presence=single; subject_mode=single_female_figure; gender_mode=female; people_count=1
+style_family: kinetic_comic_frame; palette: orange_cyan; composition: motion_freeze
+motifs: 餐车, 手, 蒸汽, 灯牌形, 队伍
+layer3_direction:
+- 餐车高峰不是单纯背景，而是 ESTP 的人格张力被转译成可见空间后的结果。
+- 镜头应优先呈现餐车、手、蒸汽等意象；可以出现一个人物，但人物应服务于场景气质，而不是占满画面。
+- 整体气质应贴近Explorer组的行动、冒险、现场反应，使用 kinetic_comic_frame 与 motion_freeze 表达，而不是依赖固定男主角叙事。
+English image prompt: kinetic_comic_frame, orange_cyan, motion_freeze. Scene: food truck rush with fast hands and bright sign shapes. Subject rule: single human presence, single_female_figure, gender mode female, people count 1. Visual motifs: 餐车, 手, 蒸汽, 灯牌形, 队伍. Personality metaphor for ESTP (Explorer): 行动, 冒险, 现场反应, 身体性, 刺激; 高动能、公共场景、竞技、街头和即时反应；通常应有运动感和多人环境。 Create one coherent finished illustration, strong visual storytelling, no readable text, no logo, no watermark.
+Negative prompt: readable text, logo, watermark, signature, UI, speech bubble, low quality, blurry, distorted hands, extra limbs, duplicate face
+
+[4] image_id: NORN_0160
+MBTI: ESFP / role_group: Explorer
+layer1_coords: {"E_I": 8, "S_N": -8, "T_F": -8, "J_P": -8}
+visual_rationale: 表演、聚光灯、色彩与即时快乐传染；画面可以大胆、热闹、舞台化。
+scene: 露天音乐会 / open-air concert seen from within the crowd
+subject_rule: human_presence=single; subject_mode=single_female_figure; gender_mode=female; people_count=1
+style_family: glam_editorial_illustration; palette: stage_purple_orange; composition: crowd_depth
+motifs: 舞台, 人群, 灯束, 天空, 手臂
+layer3_direction:
+- 露天音乐会不是单纯背景，而是 ESFP 的人格张力被转译成可见空间后的结果。
+- 镜头应优先呈现舞台、人群、灯束等意象；可以出现一个人物，但人物应服务于场景气质，而不是占满画面。
+- 整体气质应贴近Explorer组的表演、感染力、感官，使用 glam_editorial_illustration 与 crowd_depth 表达，而不是依赖固定男主角叙事。
+English image prompt: glam_editorial_illustration, stage_purple_orange, crowd_depth. Scene: open-air concert seen from within the crowd. Subject rule: single human presence, single_female_figure, gender mode female, people count 1. Visual motifs: 舞台, 人群, 灯束, 天空, 手臂. Personality metaphor for ESFP (Explorer): 表演, 感染力, 感官, 欢乐, 现场魅力; 表演、聚光灯、色彩与即时快乐传染；画面可以大胆、热闹、舞台化。 Create one coherent finished illustration, strong visual storytelling, no readable text, no logo, no watermark.
+Negative prompt: readable text, logo, watermark, signature, UI, speech bubble, low quality, blurry, distorted hands, extra limbs, duplicate face

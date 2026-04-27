@@ -1,0 +1,4087 @@
+{
+  "schema_version": "2.0-curated",
+  "coordinate_convention": "E_I positive=E; S_N positive=N; T_F positive=T; J_P positive=J",
+  "global_negative_prompt": "readable text, logo, watermark, signature, UI, speech bubble, low quality, blurry, distorted hands, extra limbs, duplicate face",
+  "types": {
+    "INTJ": {
+      "role_group": "Analyst",
+      "layer1_coords": {
+        "E_I": -8,
+        "S_N": 8,
+        "T_F": 8,
+        "J_P": 8
+      },
+      "trait_keywords": [
+        "战略",
+        "系统",
+        "远景",
+        "克制",
+        "独立"
+      ],
+      "visual_rationale": "低社交密度、空旷规划空间、长期推演、结构压过人物；可以没有人，或只有很小的中性人影。",
+      "style_cycle": [
+        "architectural_blueprint",
+        "monochrome_brutalist_graphic",
+        "ink_noir_storyboard",
+        "isometric_system_map"
+      ],
+      "subject_cycle": [
+        {
+          "human_presence": "none",
+          "subject_mode": "environment_or_object_only",
+          "gender_mode": "not_applicable",
+          "people_count": 0
+        },
+        {
+          "human_presence": "single",
+          "subject_mode": "single_ambiguous_figure",
+          "gender_mode": "ambiguous",
+          "people_count": 1
+        },
+        {
+          "human_presence": "none",
+          "subject_mode": "environment_or_object_only",
+          "gender_mode": "not_applicable",
+          "people_count": 0
+        },
+        {
+          "human_presence": "none",
+          "subject_mode": "environment_or_object_only",
+          "gender_mode": "not_applicable",
+          "people_count": 0
+        }
+      ],
+      "palette_cycle": [
+        "cold_monochrome",
+        "deep_blue_gray",
+        "black_white_accent",
+        "desaturated_silver"
+      ],
+      "composition_cycle": [
+        "axial_symmetry",
+        "large_negative_space",
+        "isometric_grid",
+        "long_corridor_perspective"
+      ],
+      "scenes": [
+        {
+          "scene_id": "INTJ_01",
+          "scene_cn": "无人战略室",
+          "scene_en": "empty strategy room with city plans and cold light",
+          "motifs": [
+            "城市平面图",
+            "红色标记点",
+            "长桌",
+            "冷光",
+            "封闭门"
+          ]
+        },
+        {
+          "scene_id": "INTJ_02",
+          "scene_cn": "深夜观测台",
+          "scene_en": "deserted observatory console facing a star map",
+          "motifs": [
+            "星图",
+            "仪器刻度",
+            "黑色窗框",
+            "孤立椅子",
+            "远方光点"
+          ]
+        },
+        {
+          "scene_id": "INTJ_03",
+          "scene_cn": "粗野主义图书馆",
+          "scene_en": "brutalist concrete library atrium with no visible readers",
+          "motifs": [
+            "混凝土墙",
+            "悬空走廊",
+            "编号书架",
+            "斜射光",
+            "深阴影"
+          ]
+        },
+        {
+          "scene_id": "INTJ_04",
+          "scene_cn": "封闭档案核心",
+          "scene_en": "sealed archive core with black cabinets and one illuminated drawer",
+          "motifs": [
+            "黑色档案柜",
+            "索引卡",
+            "唯一亮起抽屉",
+            "金属地面",
+            "静默通道"
+          ]
+        },
+        {
+          "scene_id": "INTJ_05",
+          "scene_cn": "屋顶棋盘",
+          "scene_en": "rooftop chessboard overlooking a sleeping city",
+          "motifs": [
+            "棋盘",
+            "夜城天际线",
+            "未完成残局",
+            "风",
+            "玻璃围栏"
+          ]
+        },
+        {
+          "scene_id": "INTJ_06",
+          "scene_cn": "地下地图室",
+          "scene_en": "underground map room with projected routes crossing a silent table",
+          "motifs": [
+            "投影路线",
+            "石墙",
+            "长桌",
+            "蓝色网格",
+            "封存入口"
+          ]
+        },
+        {
+          "scene_id": "INTJ_07",
+          "scene_cn": "机械大教堂",
+          "scene_en": "cathedral-like machine hall with symmetrical turbines",
+          "motifs": [
+            "涡轮",
+            "拱形机械结构",
+            "门槛",
+            "冷雾",
+            "对称轴"
+          ]
+        },
+        {
+          "scene_id": "INTJ_08",
+          "scene_cn": "黑玻璃办公室",
+          "scene_en": "black-glass office after midnight with whiteboard reflections",
+          "motifs": [
+            "玻璃反射",
+            "白板图",
+            "空椅",
+            "远处灯带",
+            "垂直线条"
+          ]
+        },
+        {
+          "scene_id": "INTJ_09",
+          "scene_cn": "枯山水网格",
+          "scene_en": "dry garden redesigned as a precise decision grid",
+          "motifs": [
+            "枯山水",
+            "石子网格",
+            "黑色石块",
+            "直线耙纹",
+            "低矮围墙"
+          ]
+        },
+        {
+          "scene_id": "INTJ_10",
+          "scene_cn": "无终点电梯厅",
+          "scene_en": "silent elevator lobby with many floor indicators and no open doors",
+          "motifs": [
+            "电梯门",
+            "楼层指示灯",
+            "镜面墙",
+            "无人走廊",
+            "冷色地砖"
+          ]
+        },
+        {
+          "scene_id": "INTJ_11",
+          "scene_cn": "轨道指挥图",
+          "scene_en": "minimal orbital command diagram projected over a dark table",
+          "motifs": [
+            "轨道线",
+            "行星节点",
+            "暗色桌面",
+            "细线投影",
+            "空房间"
+          ]
+        },
+        {
+          "scene_id": "INTJ_12",
+          "scene_cn": "混凝土楼梯井",
+          "scene_en": "concrete stairwell spiraling upward to a single unseen light",
+          "motifs": [
+            "旋转楼梯",
+            "混凝土纹理",
+            "单一光源",
+            "锐利阴影",
+            "扶手"
+          ]
+        },
+        {
+          "scene_id": "INTJ_13",
+          "scene_cn": "封存温室",
+          "scene_en": "closed experimental greenhouse with numbered transparent plant chambers",
+          "motifs": [
+            "实验温室",
+            "透明舱",
+            "编号标签",
+            "植物根系",
+            "白色灯管"
+          ]
+        },
+        {
+          "scene_id": "INTJ_14",
+          "scene_cn": "静默推演室",
+          "scene_en": "silent war-room table with abstract terrain and probability lines",
+          "motifs": [
+            "地形块",
+            "概率线",
+            "金属筹码",
+            "暗色墙面",
+            "俯视构图"
+          ]
+        },
+        {
+          "scene_id": "INTJ_15",
+          "scene_cn": "终端雨窗",
+          "scene_en": "terminal screen beside rain-streaked window showing abstract graphs",
+          "motifs": [
+            "终端屏幕",
+            "雨痕玻璃",
+            "抽象曲线",
+            "黑色键盘",
+            "城市光斑"
+          ]
+        },
+        {
+          "scene_id": "INTJ_16",
+          "scene_cn": "锁柜中的模型城",
+          "scene_en": "miniature model city locked inside a glass cabinet",
+          "motifs": [
+            "模型城市",
+            "玻璃柜",
+            "窄光束",
+            "编号底座",
+            "阴影边界"
+          ]
+        }
+      ]
+    },
+    "INTP": {
+      "role_group": "Analyst",
+      "layer1_coords": {
+        "E_I": -8,
+        "S_N": 8,
+        "T_F": 8,
+        "J_P": -8
+      },
+      "trait_keywords": [
+        "理论",
+        "好奇",
+        "解构",
+        "悖论",
+        "松散秩序"
+      ],
+      "visual_rationale": "开放问题、未完成实验、草稿式空间、低社交压力；画面像仍在生长的思维图。",
+      "style_cycle": [
+        "pencil_diagram_sketch",
+        "surreal_notebook_collage",
+        "chalkboard_cosmos",
+        "soft_glitch_minimal"
+      ],
+      "subject_cycle": [
+        {
+          "human_presence": "none",
+          "subject_mode": "environment_or_object_only",
+          "gender_mode": "not_applicable",
+          "people_count": 0
+        },
+        {
+          "human_presence": "single",
+          "subject_mode": "single_ambiguous_figure",
+          "gender_mode": "ambiguous",
+          "people_count": 1
+        },
+        {
+          "human_presence": "none",
+          "subject_mode": "environment_or_object_only",
+          "gender_mode": "not_applicable",
+          "people_count": 0
+        },
+        {
+          "human_presence": "none",
+          "subject_mode": "environment_or_object_only",
+          "gender_mode": "not_applicable",
+          "people_count": 0
+        }
+      ],
+      "palette_cycle": [
+        "graphite_gray",
+        "paper_ivory",
+        "muted_cyan",
+        "dusty_violet"
+      ],
+      "composition_cycle": [
+        "loose_asymmetric",
+        "diagram_sprawl",
+        "floating_fragments",
+        "desk_level_view"
+      ],
+      "scenes": [
+        {
+          "scene_id": "INTP_01",
+          "scene_cn": "无限笔记本",
+          "scene_en": "open notebook whose diagrams extend beyond the page into the room",
+          "motifs": [
+            "笔记本",
+            "箭头",
+            "边注",
+            "漂浮图形",
+            "纸屑"
+          ]
+        },
+        {
+          "scene_id": "INTP_02",
+          "scene_cn": "废弃实验角",
+          "scene_en": "messy lab corner with harmless prototypes and cables",
+          "motifs": [
+            "原型零件",
+            "电线",
+            "玻璃罐",
+            "便签形状",
+            "旧台灯"
+          ]
+        },
+        {
+          "scene_id": "INTP_03",
+          "scene_cn": "黑板天象馆",
+          "scene_en": "chalkboard planetarium with orbital doodles and question marks",
+          "motifs": [
+            "黑板",
+            "粉笔轨道",
+            "星点",
+            "擦痕",
+            "圆规"
+          ]
+        },
+        {
+          "scene_id": "INTP_04",
+          "scene_cn": "递归楼梯书桌",
+          "scene_en": "desk surrounded by impossible small staircases and open books",
+          "motifs": [
+            "小楼梯",
+            "摊开的书",
+            "铅笔",
+            "杯子",
+            "阴影错位"
+          ]
+        },
+        {
+          "scene_id": "INTP_05",
+          "scene_cn": "阁楼服务器",
+          "scene_en": "quiet attic with old servers and paper diagrams",
+          "motifs": [
+            "旧服务器",
+            "纸质拓扑图",
+            "指示灯",
+            "木梁",
+            "灰尘"
+          ]
+        },
+        {
+          "scene_id": "INTP_06",
+          "scene_cn": "未完成桌游",
+          "scene_en": "unfinished abstract board game with invented rules on the floor",
+          "motifs": [
+            "棋子",
+            "自制卡牌",
+            "空格地图",
+            "骰子",
+            "散落纸条"
+          ]
+        },
+        {
+          "scene_id": "INTP_07",
+          "scene_cn": "镜中方程室",
+          "scene_en": "room of mirrors reflecting diagrams into contradictory patterns",
+          "motifs": [
+            "镜面",
+            "线图",
+            "重复反射",
+            "窄门",
+            "冷色光"
+          ]
+        },
+        {
+          "scene_id": "INTP_08",
+          "scene_cn": "图书馆地面摊图",
+          "scene_en": "library floor covered with open books connected by colored thread",
+          "motifs": [
+            "摊开的书",
+            "彩线",
+            "书架脚部",
+            "索引卡",
+            "落灰窗光"
+          ]
+        },
+        {
+          "scene_id": "INTP_09",
+          "scene_cn": "漂浮工具箱",
+          "scene_en": "toolbox floating slightly open with tools as unsolved symbols",
+          "motifs": [
+            "工具箱",
+            "螺丝刀",
+            "小齿轮",
+            "悬浮影子",
+            "白色背景"
+          ]
+        },
+        {
+          "scene_id": "INTP_10",
+          "scene_cn": "地下室无线电图",
+          "scene_en": "basement radio table with signal maps and wave patterns",
+          "motifs": [
+            "无线电",
+            "旋钮",
+            "信号图",
+            "地下室墙",
+            "耳机"
+          ]
+        },
+        {
+          "scene_id": "INTP_11",
+          "scene_cn": "茶杯拓扑",
+          "scene_en": "tea cup beside a topology sketch, steam forming impossible loops",
+          "motifs": [
+            "茶杯",
+            "蒸汽环",
+            "拓扑草图",
+            "铅笔屑",
+            "桌面纹理"
+          ]
+        },
+        {
+          "scene_id": "INTP_12",
+          "scene_cn": "错误模型博物馆",
+          "scene_en": "small shelf museum of failed miniature models",
+          "motifs": [
+            "失败模型",
+            "玻璃罩",
+            "空白标签",
+            "小灯",
+            "木架"
+          ]
+        },
+        {
+          "scene_id": "INTP_13",
+          "scene_cn": "阁楼星座地图",
+          "scene_en": "attic ceiling covered with homemade constellation maps and string",
+          "motifs": [
+            "星座图",
+            "细绳",
+            "图钉",
+            "旧箱子",
+            "斜屋顶"
+          ]
+        },
+        {
+          "scene_id": "INTP_14",
+          "scene_cn": "透明立方谜题",
+          "scene_en": "transparent cubes stacked in a puzzle formation on a white table",
+          "motifs": [
+            "透明立方",
+            "折射",
+            "白桌",
+            "阴影网格",
+            "微小标记"
+          ]
+        },
+        {
+          "scene_id": "INTP_15",
+          "scene_cn": "算法鱼缸",
+          "scene_en": "fish tank with tiny mechanical fish swimming through diagram lines",
+          "motifs": [
+            "鱼缸",
+            "机械鱼",
+            "水泡",
+            "线图",
+            "柔光"
+          ]
+        },
+        {
+          "scene_id": "INTP_16",
+          "scene_cn": "无标签门墙",
+          "scene_en": "wall full of unlabeled small doors opening to abstract scenes",
+          "motifs": [
+            "小门",
+            "抽象小景",
+            "墙面",
+            "门缝光",
+            "细小铰链"
+          ]
+        }
+      ]
+    },
+    "ENTJ": {
+      "role_group": "Analyst",
+      "layer1_coords": {
+        "E_I": 8,
+        "S_N": 8,
+        "T_F": 8,
+        "J_P": 8
+      },
+      "trait_keywords": [
+        "组织",
+        "领导",
+        "目标",
+        "效率",
+        "扩张"
+      ],
+      "visual_rationale": "高能量战略调度、团队协同、明确目标；人群应体现组织性而非混乱。",
+      "style_cycle": [
+        "cinematic_command_deck",
+        "sharp_editorial_graphic",
+        "corporate_noir_poster",
+        "high_contrast_strategy_map"
+      ],
+      "subject_cycle": [
+        {
+          "human_presence": "multi",
+          "subject_mode": "small_group_or_crowd",
+          "gender_mode": "mixed",
+          "people_count": 4
+        },
+        {
+          "human_presence": "pair",
+          "subject_mode": "two_people_relational_scene",
+          "gender_mode": "mixed_or_unspecified",
+          "people_count": 2
+        },
+        {
+          "human_presence": "single",
+          "subject_mode": "single_female_figure",
+          "gender_mode": "female",
+          "people_count": 1
+        },
+        {
+          "human_presence": "none",
+          "subject_mode": "environment_or_object_only",
+          "gender_mode": "not_applicable",
+          "people_count": 0
+        }
+      ],
+      "palette_cycle": [
+        "black_gold",
+        "steel_blue",
+        "crimson_gray",
+        "clean_white_black"
+      ],
+      "composition_cycle": [
+        "commanding_center",
+        "strong_leading_lines",
+        "triangular_grouping",
+        "vertical_power_frame"
+      ],
+      "scenes": [
+        {
+          "scene_id": "ENTJ_01",
+          "scene_cn": "运营指挥大厅",
+          "scene_en": "operations floor with coordinated teams around abstract dashboards",
+          "motifs": [
+            "调度屏",
+            "耳麦",
+            "队列",
+            "光带",
+            "移动身影"
+          ]
+        },
+        {
+          "scene_id": "ENTJ_02",
+          "scene_cn": "峰会长桌",
+          "scene_en": "long summit table prepared for a decisive vote",
+          "motifs": [
+            "长桌",
+            "文件",
+            "水杯",
+            "空白名牌",
+            "强光"
+          ]
+        },
+        {
+          "scene_id": "ENTJ_03",
+          "scene_cn": "建设现场高台",
+          "scene_en": "high platform overlooking cranes and a district under construction",
+          "motifs": [
+            "吊车",
+            "安全帽",
+            "城市骨架",
+            "风",
+            "俯视"
+          ]
+        },
+        {
+          "scene_id": "ENTJ_04",
+          "scene_cn": "战略竞选墙",
+          "scene_en": "wall of routes deadlines and colored blocks without readable text",
+          "motifs": [
+            "路线",
+            "色块",
+            "图钉",
+            "任务卡",
+            "灯箱"
+          ]
+        },
+        {
+          "scene_id": "ENTJ_05",
+          "scene_cn": "舰桥指挥位",
+          "scene_en": "command bridge facing a stormy horizon with crew silhouettes",
+          "motifs": [
+            "舰桥",
+            "风暴海面",
+            "控制台",
+            "队形",
+            "窗光"
+          ]
+        },
+        {
+          "scene_id": "ENTJ_06",
+          "scene_cn": "高层电梯上行",
+          "scene_en": "glass elevator rising through a tower atrium",
+          "motifs": [
+            "玻璃电梯",
+            "中庭",
+            "城市网格",
+            "垂直线",
+            "反射"
+          ]
+        },
+        {
+          "scene_id": "ENTJ_07",
+          "scene_cn": "谈判舞台",
+          "scene_en": "two negotiation teams facing across a lit minimalist stage",
+          "motifs": [
+            "两组人",
+            "聚光灯",
+            "桌面",
+            "暗背景",
+            "边界线"
+          ]
+        },
+        {
+          "scene_id": "ENTJ_08",
+          "scene_cn": "发射倒计时室",
+          "scene_en": "countdown room with disciplined console rows and distant rocket silhouette",
+          "motifs": [
+            "控制台",
+            "倒计时形状",
+            "火箭剪影",
+            "队列",
+            "蓝光"
+          ]
+        },
+        {
+          "scene_id": "ENTJ_09",
+          "scene_cn": "城市模型推演",
+          "scene_en": "large city model with routes and expansion zones marked by light",
+          "motifs": [
+            "模型城",
+            "光路",
+            "区域块",
+            "手势",
+            "黑桌"
+          ]
+        },
+        {
+          "scene_id": "ENTJ_10",
+          "scene_cn": "发布会后台",
+          "scene_en": "backstage moment before a major announcement",
+          "motifs": [
+            "西装轮廓",
+            "线缆",
+            "幕布",
+            "提示灯",
+            "紧张秩序"
+          ]
+        },
+        {
+          "scene_id": "ENTJ_11",
+          "scene_cn": "危机看板",
+          "scene_en": "crisis board reorganized into clean task columns",
+          "motifs": [
+            "看板",
+            "色块",
+            "磁贴",
+            "阴影",
+            "站立身影"
+          ]
+        },
+        {
+          "scene_id": "ENTJ_12",
+          "scene_cn": "机场塔台",
+          "scene_en": "airport control room directing streams of runway light",
+          "motifs": [
+            "塔台",
+            "跑道光",
+            "雷达形状",
+            "耳机",
+            "玻璃"
+          ]
+        },
+        {
+          "scene_id": "ENTJ_13",
+          "scene_cn": "塔楼大堂中轴",
+          "scene_en": "monumental tower lobby with clear central axis and purposeful figures",
+          "motifs": [
+            "大堂",
+            "中轴",
+            "石材",
+            "小人影",
+            "竖线"
+          ]
+        },
+        {
+          "scene_id": "ENTJ_14",
+          "scene_cn": "工厂线俯视",
+          "scene_en": "top-down synchronized factory lines and moving supervisors",
+          "motifs": [
+            "流水线",
+            "黄线",
+            "机器臂",
+            "监督者",
+            "俯视"
+          ]
+        },
+        {
+          "scene_id": "ENTJ_15",
+          "scene_cn": "推演沙盘",
+          "scene_en": "strategic sand table with abstract terrain and coordinated markers",
+          "motifs": [
+            "沙盘",
+            "地形",
+            "标记旗",
+            "手套",
+            "暗墙"
+          ]
+        },
+        {
+          "scene_id": "ENTJ_16",
+          "scene_cn": "未来城区蓝图",
+          "scene_en": "futuristic district plan projected with confident directional arrows",
+          "motifs": [
+            "蓝图",
+            "箭头",
+            "楼群",
+            "投影",
+            "长桌"
+          ]
+        }
+      ]
+    },
+    "ENTP": {
+      "role_group": "Analyst",
+      "layer1_coords": {
+        "E_I": 8,
+        "S_N": 8,
+        "T_F": 8,
+        "J_P": -8
+      },
+      "trait_keywords": [
+        "辩论",
+        "发明",
+        "挑衅",
+        "快速联想",
+        "开放结局"
+      ],
+      "visual_rationale": "多点碰撞、即兴辩论、发明现场与挑衅性图像语言；可以热闹、破碎、跳跃。",
+      "style_cycle": [
+        "graffiti_argument_poster",
+        "pop_surreal_collage",
+        "comic_panel_energy",
+        "neon_marker_sketch"
+      ],
+      "subject_cycle": [
+        {
+          "human_presence": "multi",
+          "subject_mode": "small_group_or_crowd",
+          "gender_mode": "mixed",
+          "people_count": 4
+        },
+        {
+          "human_presence": "pair",
+          "subject_mode": "two_people_relational_scene",
+          "gender_mode": "mixed_or_unspecified",
+          "people_count": 2
+        },
+        {
+          "human_presence": "single",
+          "subject_mode": "single_ambiguous_figure",
+          "gender_mode": "ambiguous",
+          "people_count": 1
+        },
+        {
+          "human_presence": "none",
+          "subject_mode": "environment_or_object_only",
+          "gender_mode": "not_applicable",
+          "people_count": 0
+        }
+      ],
+      "palette_cycle": [
+        "electric_magenta_cyan",
+        "acid_green_orange",
+        "black_white_pop",
+        "high_saturation_mix"
+      ],
+      "composition_cycle": [
+        "collage_burst",
+        "dynamic_diagonal",
+        "split_panel",
+        "off_balance_center"
+      ],
+      "scenes": [
+        {
+          "scene_id": "ENTP_01",
+          "scene_cn": "辩论咖啡馆",
+          "scene_en": "lively cafe table where napkin sketches gestures and coffee cups collide",
+          "motifs": [
+            "咖啡杯",
+            "餐巾草图",
+            "手势",
+            "椅子",
+            "噪声形状"
+          ]
+        },
+        {
+          "scene_id": "ENTP_02",
+          "scene_cn": "车库发明夜",
+          "scene_en": "garage invention scene with absurd prototypes and harmless sparks",
+          "motifs": [
+            "车库",
+            "原型机",
+            "火花",
+            "胶带",
+            "工具"
+          ]
+        },
+        {
+          "scene_id": "ENTP_03",
+          "scene_cn": "街头争论壁画",
+          "scene_en": "street mural turning debate into arrows and expressive shapes",
+          "motifs": [
+            "喷漆墙",
+            "箭头",
+            "表情形状",
+            "路灯",
+            "人群"
+          ]
+        },
+        {
+          "scene_id": "ENTP_04",
+          "scene_cn": "分屏点子风暴",
+          "scene_en": "split-screen contradictory ideas crashing together",
+          "motifs": [
+            "分屏",
+            "爆炸云",
+            "纸片",
+            "符号",
+            "强色块"
+          ]
+        },
+        {
+          "scene_id": "ENTP_05",
+          "scene_cn": "市集改装摊",
+          "scene_en": "market booth full of modified gadgets and playful shapes",
+          "motifs": [
+            "摊位",
+            "小装置",
+            "彩旗",
+            "手",
+            "箱子"
+          ]
+        },
+        {
+          "scene_id": "ENTP_06",
+          "scene_cn": "屋顶即兴实验",
+          "scene_en": "rooftop improvised lab with wires antennas and laughing silhouettes",
+          "motifs": [
+            "屋顶",
+            "天线",
+            "电线",
+            "笑脸剪影",
+            "夜风"
+          ]
+        },
+        {
+          "scene_id": "ENTP_07",
+          "scene_cn": "地铁白板车厢",
+          "scene_en": "subway car transformed into a temporary whiteboard of routes",
+          "motifs": [
+            "地铁",
+            "白板",
+            "路线",
+            "扶手",
+            "乘客剪影"
+          ]
+        },
+        {
+          "scene_id": "ENTP_08",
+          "scene_cn": "漫画法庭",
+          "scene_en": "comic-style courtroom where arguments appear as abstract shapes",
+          "motifs": [
+            "法庭",
+            "漫画框",
+            "气泡形",
+            "桌子",
+            "聚光"
+          ]
+        },
+        {
+          "scene_id": "ENTP_09",
+          "scene_cn": "废品场机器人赛",
+          "scene_en": "junkyard robot race with spectators and handmade machines",
+          "motifs": [
+            "废品场",
+            "小机器人",
+            "观众",
+            "轮胎",
+            "尘土"
+          ]
+        },
+        {
+          "scene_id": "ENTP_10",
+          "scene_cn": "点子烟花广场",
+          "scene_en": "public square where idea bubbles explode like fireworks",
+          "motifs": [
+            "广场",
+            "烟花形",
+            "气泡",
+            "人群",
+            "灯串"
+          ]
+        },
+        {
+          "scene_id": "ENTP_11",
+          "scene_cn": "深夜播客桌",
+          "scene_en": "messy podcast table with microphones doodles and animated hands",
+          "motifs": [
+            "麦克风",
+            "涂鸦",
+            "手势",
+            "杯子",
+            "夜灯"
+          ]
+        },
+        {
+          "scene_id": "ENTP_12",
+          "scene_cn": "移动小舞台",
+          "scene_en": "portable street stage where performers argue through props",
+          "motifs": [
+            "小舞台",
+            "道具",
+            "幕布",
+            "观众",
+            "倾斜灯"
+          ]
+        },
+        {
+          "scene_id": "ENTP_13",
+          "scene_cn": "箭头迷宫",
+          "scene_en": "maze made of arrows doors and contradictory exits without words",
+          "motifs": [
+            "箭头",
+            "门",
+            "迷宫",
+            "出口形",
+            "强对比"
+          ]
+        },
+        {
+          "scene_id": "ENTP_14",
+          "scene_cn": "恶作剧图书馆",
+          "scene_en": "library corner rearranged into playful traps of books and strings",
+          "motifs": [
+            "书架",
+            "细绳",
+            "书堆",
+            "陷阱形",
+            "木椅"
+          ]
+        },
+        {
+          "scene_id": "ENTP_15",
+          "scene_cn": "雨衣阴谋板",
+          "scene_en": "bright raincoats building an intentionally ridiculous conspiracy board",
+          "motifs": [
+            "雨衣",
+            "图钉板",
+            "彩线",
+            "照片背面",
+            "雨滴"
+          ]
+        },
+        {
+          "scene_id": "ENTP_16",
+          "scene_cn": "原型嘉年华",
+          "scene_en": "carnival of half-finished inventions with chaotic joyful energy",
+          "motifs": [
+            "嘉年华",
+            "半成品",
+            "灯泡",
+            "转轮",
+            "彩带"
+          ]
+        }
+      ]
+    },
+    "INFJ": {
+      "role_group": "Diplomat",
+      "layer1_coords": {
+        "E_I": -8,
+        "S_N": 8,
+        "T_F": -8,
+        "J_P": 8
+      },
+      "trait_keywords": [
+        "洞察",
+        "共情",
+        "愿景",
+        "边界",
+        "静水深流"
+      ],
+      "visual_rationale": "安静连接、象征门槛、灯塔、咨询室与温柔但坚定的方向感；双人或空场景都成立。",
+      "style_cycle": [
+        "watercolor_symbolic",
+        "ink_lighthouse_storybook",
+        "soft_editorial_illustration",
+        "dreamlike_minimalism"
+      ],
+      "subject_cycle": [
+        {
+          "human_presence": "pair",
+          "subject_mode": "two_people_relational_scene",
+          "gender_mode": "mixed_or_unspecified",
+          "people_count": 2
+        },
+        {
+          "human_presence": "none",
+          "subject_mode": "environment_or_object_only",
+          "gender_mode": "not_applicable",
+          "people_count": 0
+        },
+        {
+          "human_presence": "single",
+          "subject_mode": "single_female_figure",
+          "gender_mode": "female",
+          "people_count": 1
+        },
+        {
+          "human_presence": "single",
+          "subject_mode": "single_ambiguous_figure",
+          "gender_mode": "ambiguous",
+          "people_count": 1
+        }
+      ],
+      "palette_cycle": [
+        "muted_teal_warm_light",
+        "soft_indigo_gold",
+        "mist_green",
+        "warm_gray_rose"
+      ],
+      "composition_cycle": [
+        "threshold_frame",
+        "gentle_center",
+        "off_center_negative_space",
+        "layered_depth"
+      ],
+      "scenes": [
+        {
+          "scene_id": "INFJ_01",
+          "scene_cn": "安静咨询室",
+          "scene_en": "quiet counseling room with two chairs warm light and trees outside",
+          "motifs": [
+            "两把椅子",
+            "窗树",
+            "暖灯",
+            "纸巾盒",
+            "地毯"
+          ]
+        },
+        {
+          "scene_id": "INFJ_02",
+          "scene_cn": "雾中灯塔",
+          "scene_en": "lighthouse beam cutting through fog over a calm dark sea",
+          "motifs": [
+            "灯塔",
+            "雾",
+            "海面",
+            "光束",
+            "岩石"
+          ]
+        },
+        {
+          "scene_id": "INFJ_03",
+          "scene_cn": "藤蔓门槛",
+          "scene_en": "half-open door covered in vines with soft light beyond",
+          "motifs": [
+            "半开门",
+            "藤蔓",
+            "光",
+            "门槛",
+            "尘埃"
+          ]
+        },
+        {
+          "scene_id": "INFJ_04",
+          "scene_cn": "信件小礼拜堂",
+          "scene_en": "small chapel-like room filled with folded letters and candles",
+          "motifs": [
+            "折信",
+            "蜡烛",
+            "木椅",
+            "拱窗",
+            "安静"
+          ]
+        },
+        {
+          "scene_id": "INFJ_05",
+          "scene_cn": "月下桥",
+          "scene_en": "narrow bridge under moonlight connecting two silent gardens",
+          "motifs": [
+            "小桥",
+            "月光",
+            "两座花园",
+            "水面",
+            "阴影"
+          ]
+        },
+        {
+          "scene_id": "INFJ_06",
+          "scene_cn": "花园长椅",
+          "scene_en": "garden bench with two cups left after a private conversation",
+          "motifs": [
+            "长椅",
+            "两只杯",
+            "落叶",
+            "花",
+            "余温"
+          ]
+        },
+        {
+          "scene_id": "INFJ_07",
+          "scene_cn": "雨窗侧影",
+          "scene_en": "soft silhouette beside a rain window with plants and reflections",
+          "motifs": [
+            "雨窗",
+            "植物",
+            "侧影",
+            "反射",
+            "室内光"
+          ]
+        },
+        {
+          "scene_id": "INFJ_08",
+          "scene_cn": "隐秘水井",
+          "scene_en": "hidden well in a forest clearing glowing faintly from below",
+          "motifs": [
+            "水井",
+            "森林空地",
+            "微光",
+            "苔藓",
+            "圆形"
+          ]
+        },
+        {
+          "scene_id": "INFJ_09",
+          "scene_cn": "纸灯小径",
+          "scene_en": "path of paper lanterns leading through mist",
+          "motifs": [
+            "纸灯",
+            "小径",
+            "雾",
+            "草地",
+            "远光"
+          ]
+        },
+        {
+          "scene_id": "INFJ_10",
+          "scene_cn": "镜池",
+          "scene_en": "still reflecting pool with one ripple disturbing a perfect reflection",
+          "motifs": [
+            "镜池",
+            "涟漪",
+            "石岸",
+            "倒影",
+            "静默"
+          ]
+        },
+        {
+          "scene_id": "INFJ_11",
+          "scene_cn": "空剧院",
+          "scene_en": "empty old theater with one warm spotlight on two chairs",
+          "motifs": [
+            "旧剧院",
+            "聚光灯",
+            "两把椅",
+            "红幕",
+            "尘埃"
+          ]
+        },
+        {
+          "scene_id": "INFJ_12",
+          "scene_cn": "种子档案",
+          "scene_en": "cabinet of preserved seeds and blank handwritten-looking labels",
+          "motifs": [
+            "种子柜",
+            "玻璃瓶",
+            "空白标签",
+            "木盒",
+            "柔光"
+          ]
+        },
+        {
+          "scene_id": "INFJ_13",
+          "scene_cn": "两室之间的窗",
+          "scene_en": "small interior window between two rooms passing gentle light",
+          "motifs": [
+            "室内窗",
+            "两房间",
+            "光线",
+            "墙面",
+            "花瓶"
+          ]
+        },
+        {
+          "scene_id": "INFJ_14",
+          "scene_cn": "夜间医院角落",
+          "scene_en": "quiet hospital corner with flowers soft monitors and resting chair",
+          "motifs": [
+            "医院角",
+            "花",
+            "监视器光",
+            "椅子",
+            "夜色"
+          ]
+        },
+        {
+          "scene_id": "INFJ_15",
+          "scene_cn": "梦境地图墙",
+          "scene_en": "wall map made of threads petals and small symbolic doors",
+          "motifs": [
+            "线",
+            "花瓣",
+            "小门",
+            "地图",
+            "软阴影"
+          ]
+        },
+        {
+          "scene_id": "INFJ_16",
+          "scene_cn": "静默果园",
+          "scene_en": "orchard at dawn with fog ladders and a basket of fruit",
+          "motifs": [
+            "果园",
+            "晨雾",
+            "梯子",
+            "篮子",
+            "露水"
+          ]
+        }
+      ]
+    },
+    "INFP": {
+      "role_group": "Diplomat",
+      "layer1_coords": {
+        "E_I": -8,
+        "S_N": 8,
+        "T_F": -8,
+        "J_P": -8
+      },
+      "trait_keywords": [
+        "理想",
+        "内省",
+        "想象",
+        "柔软",
+        "个人神话"
+      ],
+      "visual_rationale": "私密世界、手作物、自然意象与梦境场景；经常可以没有人物，因为核心是内在价值的外化。",
+      "style_cycle": [
+        "watercolor_dreamscape",
+        "colored_pencil_storybook",
+        "soft_surreal_collage",
+        "handmade_zine_illustration"
+      ],
+      "subject_cycle": [
+        {
+          "human_presence": "none",
+          "subject_mode": "environment_or_object_only",
+          "gender_mode": "not_applicable",
+          "people_count": 0
+        },
+        {
+          "human_presence": "single",
+          "subject_mode": "single_female_figure",
+          "gender_mode": "female",
+          "people_count": 1
+        },
+        {
+          "human_presence": "single",
+          "subject_mode": "single_ambiguous_figure",
+          "gender_mode": "ambiguous",
+          "people_count": 1
+        },
+        {
+          "human_presence": "none",
+          "subject_mode": "environment_or_object_only",
+          "gender_mode": "not_applicable",
+          "people_count": 0
+        }
+      ],
+      "palette_cycle": [
+        "muted_warm",
+        "lavender_cream",
+        "soft_green_peach",
+        "rainy_pastel"
+      ],
+      "composition_cycle": [
+        "off_center_negative_space",
+        "intimate_corner",
+        "floating_center",
+        "soft_layered"
+      ],
+      "scenes": [
+        {
+          "scene_id": "INFP_01",
+          "scene_cn": "雨后书店角",
+          "scene_en": "small bookstore corner after rain with plants and paper cranes",
+          "motifs": [
+            "旧书",
+            "纸鹤",
+            "雨窗",
+            "植物",
+            "暖灯"
+          ]
+        },
+        {
+          "scene_id": "INFP_02",
+          "scene_cn": "瓶中海房间",
+          "scene_en": "bedroom where tiny oceans float inside glass bottles",
+          "motifs": [
+            "玻璃瓶",
+            "小海浪",
+            "床",
+            "星光",
+            "木桌"
+          ]
+        },
+        {
+          "scene_id": "INFP_03",
+          "scene_cn": "狐狸面具花园",
+          "scene_en": "garden table with fox mask wildflowers and an unopened letter",
+          "motifs": [
+            "狐狸面具",
+            "野花",
+            "信",
+            "木桌",
+            "日影"
+          ]
+        },
+        {
+          "scene_id": "INFP_04",
+          "scene_cn": "云朵晾衣台",
+          "scene_en": "rooftop laundry line where cloth turns into small clouds",
+          "motifs": [
+            "晾衣绳",
+            "云",
+            "屋顶",
+            "夹子",
+            "微风"
+          ]
+        },
+        {
+          "scene_id": "INFP_05",
+          "scene_cn": "微型剧场盒",
+          "scene_en": "handmade miniature theater box with paper scenery and soft stars",
+          "motifs": [
+            "纸剧场",
+            "星星",
+            "幕布",
+            "小灯",
+            "剪纸"
+          ]
+        },
+        {
+          "scene_id": "INFP_06",
+          "scene_cn": "苔藓钢琴",
+          "scene_en": "old piano covered with moss in a sunlit conservatory",
+          "motifs": [
+            "旧钢琴",
+            "苔藓",
+            "玻璃房",
+            "阳光",
+            "藤蔓"
+          ]
+        },
+        {
+          "scene_id": "INFP_07",
+          "scene_cn": "信件河",
+          "scene_en": "shallow indoor river carrying folded letters through a quiet room",
+          "motifs": [
+            "室内小河",
+            "折信",
+            "木地板",
+            "柔光",
+            "纸船"
+          ]
+        },
+        {
+          "scene_id": "INFP_08",
+          "scene_cn": "卧室星象馆",
+          "scene_en": "cozy bedroom ceiling transformed into hand-painted planetarium",
+          "motifs": [
+            "卧室",
+            "星图",
+            "毯子",
+            "手绘天花",
+            "夜灯"
+          ]
+        },
+        {
+          "scene_id": "INFP_09",
+          "scene_cn": "陶瓷动物架",
+          "scene_en": "shelf of handmade ceramic animals arranged like a private council",
+          "motifs": [
+            "陶瓷动物",
+            "木架",
+            "小花",
+            "尘埃",
+            "柔色"
+          ]
+        },
+        {
+          "scene_id": "INFP_10",
+          "scene_cn": "森林公交站",
+          "scene_en": "lonely bus stop slowly overgrown by forest flowers",
+          "motifs": [
+            "公交站",
+            "森林",
+            "花",
+            "长椅",
+            "站牌无字"
+          ]
+        },
+        {
+          "scene_id": "INFP_11",
+          "scene_cn": "被面地图",
+          "scene_en": "quilt spread like a map of imaginary countries",
+          "motifs": [
+            "被子",
+            "地图纹",
+            "针脚",
+            "枕头",
+            "暖光"
+          ]
+        },
+        {
+          "scene_id": "INFP_12",
+          "scene_cn": "纸船温室",
+          "scene_en": "small greenhouse where paper boats float in trays of water",
+          "motifs": [
+            "纸船",
+            "水盘",
+            "温室",
+            "幼苗",
+            "玻璃"
+          ]
+        },
+        {
+          "scene_id": "INFP_13",
+          "scene_cn": "蓝调窗边",
+          "scene_en": "blue-hour window with curtains notebook and apartment lights",
+          "motifs": [
+            "窗帘",
+            "笔记本",
+            "蓝光",
+            "远灯",
+            "杯子"
+          ]
+        },
+        {
+          "scene_id": "INFP_14",
+          "scene_cn": "树洞信箱",
+          "scene_en": "tree hollow used as a secret mailbox in a quiet park",
+          "motifs": [
+            "树洞",
+            "信封",
+            "苔藓",
+            "公园",
+            "落叶"
+          ]
+        },
+        {
+          "scene_id": "INFP_15",
+          "scene_cn": "蝴蝶阁楼",
+          "scene_en": "attic filled with paper butterflies and soft dust beams",
+          "motifs": [
+            "纸蝴蝶",
+            "阁楼",
+            "尘光",
+            "旧箱子",
+            "木梁"
+          ]
+        },
+        {
+          "scene_id": "INFP_16",
+          "scene_cn": "月色小桌",
+          "scene_en": "small round table with tea moon-shaped cakes and a sleeping cat",
+          "motifs": [
+            "圆桌",
+            "茶",
+            "月形点心",
+            "猫",
+            "窗光"
+          ]
+        }
+      ]
+    },
+    "ENFJ": {
+      "role_group": "Diplomat",
+      "layer1_coords": {
+        "E_I": 8,
+        "S_N": 8,
+        "T_F": -8,
+        "J_P": 8
+      },
+      "trait_keywords": [
+        "引导",
+        "连接",
+        "感染力",
+        "责任感",
+        "理想组织"
+      ],
+      "visual_rationale": "人际连接、公共表达、引导与照亮他人的场景；适合双人和多人。",
+      "style_cycle": [
+        "warm_editorial_illustration",
+        "cinematic_community_scene",
+        "poster_like_humanist",
+        "soft_retro_anime"
+      ],
+      "subject_cycle": [
+        {
+          "human_presence": "multi",
+          "subject_mode": "small_group_or_crowd",
+          "gender_mode": "mixed",
+          "people_count": 4
+        },
+        {
+          "human_presence": "pair",
+          "subject_mode": "two_people_relational_scene",
+          "gender_mode": "mixed_or_unspecified",
+          "people_count": 2
+        },
+        {
+          "human_presence": "single",
+          "subject_mode": "single_female_figure",
+          "gender_mode": "female",
+          "people_count": 1
+        },
+        {
+          "human_presence": "multi",
+          "subject_mode": "small_group_or_crowd",
+          "gender_mode": "mixed",
+          "people_count": 4
+        }
+      ],
+      "palette_cycle": [
+        "warm_balanced",
+        "sunlit_amber",
+        "rose_gold_teal",
+        "community_pastel"
+      ],
+      "composition_cycle": [
+        "centered_relational",
+        "circle_grouping",
+        "open_stage",
+        "window_light_center"
+      ],
+      "scenes": [
+        {
+          "scene_id": "ENFJ_01",
+          "scene_cn": "社区工作坊",
+          "scene_en": "warm community workshop where several people build a shared project",
+          "motifs": [
+            "工作台",
+            "手",
+            "木料",
+            "窗光",
+            "笑意"
+          ]
+        },
+        {
+          "scene_id": "ENFJ_02",
+          "scene_cn": "圆形议事厅",
+          "scene_en": "townhall circle with chairs notes and attentive body language",
+          "motifs": [
+            "圆椅",
+            "便签",
+            "茶杯",
+            "手势",
+            "地毯"
+          ]
+        },
+        {
+          "scene_id": "ENFJ_03",
+          "scene_cn": "阳光教室",
+          "scene_en": "sunlit classroom where a mentor guides a small group",
+          "motifs": [
+            "黑板无字",
+            "课桌",
+            "阳光",
+            "书本",
+            "围坐"
+          ]
+        },
+        {
+          "scene_id": "ENFJ_04",
+          "scene_cn": "舞台排练",
+          "scene_en": "rehearsal stage with performers gathering around one focal gesture",
+          "motifs": [
+            "舞台",
+            "排练",
+            "聚光",
+            "手势",
+            "幕布"
+          ]
+        },
+        {
+          "scene_id": "ENFJ_05",
+          "scene_cn": "花园志愿日",
+          "scene_en": "volunteer garden day with mixed ages planting flowers together",
+          "motifs": [
+            "花苗",
+            "手套",
+            "铲子",
+            "人群",
+            "阳光"
+          ]
+        },
+        {
+          "scene_id": "ENFJ_06",
+          "scene_cn": "厨房协作",
+          "scene_en": "busy kitchen coordinated with warmth instead of chaos",
+          "motifs": [
+            "厨房",
+            "锅",
+            "围裙",
+            "传递",
+            "暖光"
+          ]
+        },
+        {
+          "scene_id": "ENFJ_07",
+          "scene_cn": "屋顶演说",
+          "scene_en": "rooftop gathering at sunset with one figure addressing friends",
+          "motifs": [
+            "屋顶",
+            "夕阳",
+            "朋友",
+            "风",
+            "城市"
+          ]
+        },
+        {
+          "scene_id": "ENFJ_08",
+          "scene_cn": "支持小组",
+          "scene_en": "support group room with soft chairs tea and calm eye contact",
+          "motifs": [
+            "软椅",
+            "茶",
+            "圆桌",
+            "窗",
+            "安静"
+          ]
+        },
+        {
+          "scene_id": "ENFJ_09",
+          "scene_cn": "节日策划墙",
+          "scene_en": "planning wall for community festival with colorful cards no text",
+          "motifs": [
+            "色卡",
+            "彩灯",
+            "桌面",
+            "植物",
+            "人影"
+          ]
+        },
+        {
+          "scene_id": "ENFJ_10",
+          "scene_cn": "舞蹈圆圈",
+          "scene_en": "small circle of dancers practicing under string lights",
+          "motifs": [
+            "舞者",
+            "灯串",
+            "木地板",
+            "圆形",
+            "节奏"
+          ]
+        },
+        {
+          "scene_id": "ENFJ_11",
+          "scene_cn": "开放图书馆活动",
+          "scene_en": "library event table with people exchanging books and ideas",
+          "motifs": [
+            "图书馆",
+            "交换书",
+            "桌子",
+            "人群",
+            "柔光"
+          ]
+        },
+        {
+          "scene_id": "ENFJ_12",
+          "scene_cn": "温室教学",
+          "scene_en": "greenhouse where one person demonstrates planting to others",
+          "motifs": [
+            "温室",
+            "盆栽",
+            "手势",
+            "泥土",
+            "玻璃"
+          ]
+        },
+        {
+          "scene_id": "ENFJ_13",
+          "scene_cn": "电台团队",
+          "scene_en": "community radio room with microphones and collaborative energy",
+          "motifs": [
+            "麦克风",
+            "耳机",
+            "团队",
+            "红灯",
+            "桌面"
+          ]
+        },
+        {
+          "scene_id": "ENFJ_14",
+          "scene_cn": "桥上灯笼",
+          "scene_en": "people hanging lanterns along a bridge at evening",
+          "motifs": [
+            "桥",
+            "灯笼",
+            "黄昏",
+            "人群",
+            "水面"
+          ]
+        },
+        {
+          "scene_id": "ENFJ_15",
+          "scene_cn": "关怀包裹桌",
+          "scene_en": "hands assembling care packages with flowers and blank notes",
+          "motifs": [
+            "包裹",
+            "花",
+            "手",
+            "空白卡",
+            "桌布"
+          ]
+        },
+        {
+          "scene_id": "ENFJ_16",
+          "scene_cn": "窗边委员会",
+          "scene_en": "small committee gathered by large windows with shared purpose",
+          "motifs": [
+            "窗",
+            "圆桌",
+            "文件",
+            "暖光",
+            "坐姿"
+          ]
+        }
+      ]
+    },
+    "ENFP": {
+      "role_group": "Diplomat",
+      "layer1_coords": {
+        "E_I": 8,
+        "S_N": 8,
+        "T_F": -8,
+        "J_P": -8
+      },
+      "trait_keywords": [
+        "灵感",
+        "自由",
+        "联结",
+        "可能性",
+        "热烈"
+      ],
+      "visual_rationale": "多彩、开放、流动的可能性场域；热闹、群像、拼贴都合适。",
+      "style_cycle": [
+        "colorful_collage",
+        "festival_poster",
+        "graffiti_zine",
+        "retro_anime_energy"
+      ],
+      "subject_cycle": [
+        {
+          "human_presence": "multi",
+          "subject_mode": "small_group_or_crowd",
+          "gender_mode": "mixed",
+          "people_count": 4
+        },
+        {
+          "human_presence": "pair",
+          "subject_mode": "two_people_relational_scene",
+          "gender_mode": "mixed_or_unspecified",
+          "people_count": 2
+        },
+        {
+          "human_presence": "single",
+          "subject_mode": "single_ambiguous_figure",
+          "gender_mode": "ambiguous",
+          "people_count": 1
+        },
+        {
+          "human_presence": "none",
+          "subject_mode": "environment_or_object_only",
+          "gender_mode": "not_applicable",
+          "people_count": 0
+        }
+      ],
+      "palette_cycle": [
+        "rainbow_muted",
+        "sunset_neon",
+        "warm_confetti",
+        "turquoise_orange"
+      ],
+      "composition_cycle": [
+        "collage_spiral",
+        "open_chaos",
+        "radiating_center",
+        "diagonal_motion"
+      ],
+      "scenes": [
+        {
+          "scene_id": "ENFP_01",
+          "scene_cn": "夜市十字路",
+          "scene_en": "night festival crossroad with lanterns music and people moving",
+          "motifs": [
+            "灯笼",
+            "人流",
+            "小吃摊",
+            "路口",
+            "音乐形"
+          ]
+        },
+        {
+          "scene_id": "ENFP_02",
+          "scene_cn": "点子野餐",
+          "scene_en": "picnic blanket covered with art supplies maps snacks and plans",
+          "motifs": [
+            "野餐布",
+            "画笔",
+            "地图",
+            "零食",
+            "草地"
+          ]
+        },
+        {
+          "scene_id": "ENFP_03",
+          "scene_cn": "站台送别",
+          "scene_en": "train platform sendoff full of bags hugs and bright departures",
+          "motifs": [
+            "站台",
+            "行李",
+            "拥抱",
+            "车灯",
+            "风"
+          ]
+        },
+        {
+          "scene_id": "ENFP_04",
+          "scene_cn": "屋顶纸屑",
+          "scene_en": "rooftop party with confetti swirling under sunset",
+          "motifs": [
+            "纸屑",
+            "屋顶",
+            "夕阳",
+            "音箱",
+            "朋友"
+          ]
+        },
+        {
+          "scene_id": "ENFP_05",
+          "scene_cn": "开放麦角落",
+          "scene_en": "open mic corner with mixed performers and warm chaos",
+          "motifs": [
+            "麦克风",
+            "小舞台",
+            "观众",
+            "灯串",
+            "椅子"
+          ]
+        },
+        {
+          "scene_id": "ENFP_06",
+          "scene_cn": "彩绘面包车",
+          "scene_en": "painted van parked by a road with doors open to lights",
+          "motifs": [
+            "面包车",
+            "彩绘",
+            "灯",
+            "公路",
+            "乐器"
+          ]
+        },
+        {
+          "scene_id": "ENFP_07",
+          "scene_cn": "风筝草地",
+          "scene_en": "field of kites held by a loosely gathered group in strong wind",
+          "motifs": [
+            "风筝",
+            "草地",
+            "人群",
+            "风",
+            "天空"
+          ]
+        },
+        {
+          "scene_id": "ENFP_08",
+          "scene_cn": "拼贴卧室墙",
+          "scene_en": "bedroom wall of photos tickets sketches and future plans",
+          "motifs": [
+            "照片",
+            "票根",
+            "草图",
+            "胶带",
+            "床"
+          ]
+        },
+        {
+          "scene_id": "ENFP_09",
+          "scene_cn": "快闪市集",
+          "scene_en": "pop-up market stall filled with handmade objects and interactions",
+          "motifs": [
+            "市集",
+            "手作物",
+            "布棚",
+            "人群",
+            "阳光"
+          ]
+        },
+        {
+          "scene_id": "ENFP_10",
+          "scene_cn": "气球房间",
+          "scene_en": "room where balloons carry small symbolic objects toward ceiling",
+          "motifs": [
+            "气球",
+            "小物",
+            "天花板",
+            "绳子",
+            "色块"
+          ]
+        },
+        {
+          "scene_id": "ENFP_11",
+          "scene_cn": "海边火圈",
+          "scene_en": "beach fire circle with friends instruments and open horizon",
+          "motifs": [
+            "篝火",
+            "海边",
+            "乐器",
+            "朋友",
+            "地平线"
+          ]
+        },
+        {
+          "scene_id": "ENFP_12",
+          "scene_cn": "地铁快闪",
+          "scene_en": "subway flashmob moment captured in colorful motion",
+          "motifs": [
+            "地铁",
+            "舞动",
+            "扶手",
+            "彩衣",
+            "速度线"
+          ]
+        },
+        {
+          "scene_id": "ENFP_13",
+          "scene_cn": "温室笑声",
+          "scene_en": "greenhouse table with people laughing while repotting strange plants",
+          "motifs": [
+            "温室",
+            "盆栽",
+            "笑声形",
+            "桌子",
+            "泥土"
+          ]
+        },
+        {
+          "scene_id": "ENFP_14",
+          "scene_cn": "窗户绘画日",
+          "scene_en": "people painting large windows with abstract colors no words",
+          "motifs": [
+            "窗",
+            "颜料",
+            "手",
+            "彩色玻璃",
+            "光"
+          ]
+        },
+        {
+          "scene_id": "ENFP_15",
+          "scene_cn": "不可能明信片",
+          "scene_en": "table of impossible postcards from places that do not exist",
+          "motifs": [
+            "明信片",
+            "幻想地标",
+            "邮票形",
+            "木桌",
+            "光"
+          ]
+        },
+        {
+          "scene_id": "ENFP_16",
+          "scene_cn": "雨中小巷舞",
+          "scene_en": "colorful alley dance in rain with reflections and movement",
+          "motifs": [
+            "雨巷",
+            "舞步",
+            "霓虹反射",
+            "水花",
+            "彩衣"
+          ]
+        }
+      ]
+    },
+    "ISTJ": {
+      "role_group": "Sentinel",
+      "layer1_coords": {
+        "E_I": -8,
+        "S_N": -8,
+        "T_F": 8,
+        "J_P": 8
+      },
+      "trait_keywords": [
+        "秩序",
+        "责任",
+        "准确",
+        "稳定",
+        "传统"
+      ],
+      "visual_rationale": "可依赖的系统、档案、工具、时间表与具体物件；重点是秩序本身。",
+      "style_cycle": [
+        "charcoal_documentary",
+        "archival_realism",
+        "muted_editorial",
+        "precise_line_drawing"
+      ],
+      "subject_cycle": [
+        {
+          "human_presence": "none",
+          "subject_mode": "environment_or_object_only",
+          "gender_mode": "not_applicable",
+          "people_count": 0
+        },
+        {
+          "human_presence": "single",
+          "subject_mode": "single_ambiguous_figure",
+          "gender_mode": "ambiguous",
+          "people_count": 1
+        },
+        {
+          "human_presence": "none",
+          "subject_mode": "environment_or_object_only",
+          "gender_mode": "not_applicable",
+          "people_count": 0
+        },
+        {
+          "human_presence": "single",
+          "subject_mode": "single_male_figure",
+          "gender_mode": "male",
+          "people_count": 1
+        }
+      ],
+      "palette_cycle": [
+        "neutral_monochrome",
+        "warm_brown_gray",
+        "navy_ivory",
+        "dusty_green"
+      ],
+      "composition_cycle": [
+        "symmetrical_ordered",
+        "grid_layout",
+        "static_center",
+        "documentary_straight"
+      ],
+      "scenes": [
+        {
+          "scene_id": "ISTJ_01",
+          "scene_cn": "档案桌",
+          "scene_en": "meticulously arranged archival desk with stamps folders and a clock",
+          "motifs": [
+            "档案盒",
+            "印章",
+            "时钟",
+            "钢笔",
+            "整齐网格"
+          ]
+        },
+        {
+          "scene_id": "ISTJ_02",
+          "scene_cn": "列车时刻室",
+          "scene_en": "railway timetable office with boards maps and wooden counters",
+          "motifs": [
+            "时刻板",
+            "地图",
+            "木柜",
+            "站台灯",
+            "空椅"
+          ]
+        },
+        {
+          "scene_id": "ISTJ_03",
+          "scene_cn": "工具墙",
+          "scene_en": "workshop wall where tools hang in exact outlines",
+          "motifs": [
+            "工具",
+            "轮廓线",
+            "挂钩",
+            "木墙",
+            "阴影"
+          ]
+        },
+        {
+          "scene_id": "ISTJ_04",
+          "scene_cn": "账本台灯",
+          "scene_en": "ledger under a desk lamp with ruler and tidy pencils",
+          "motifs": [
+            "账本",
+            "台灯",
+            "尺子",
+            "铅笔",
+            "计算器"
+          ]
+        },
+        {
+          "scene_id": "ISTJ_05",
+          "scene_cn": "制服柜",
+          "scene_en": "open uniform locker with boots aligned and gloves folded",
+          "motifs": [
+            "制服",
+            "靴子",
+            "手套",
+            "柜门",
+            "金属牌"
+          ]
+        },
+        {
+          "scene_id": "ISTJ_06",
+          "scene_cn": "旧邮局",
+          "scene_en": "old post office sorting table with boxes and parcels by route",
+          "motifs": [
+            "包裹",
+            "分拣格",
+            "麻绳",
+            "柜台",
+            "邮袋"
+          ]
+        },
+        {
+          "scene_id": "ISTJ_07",
+          "scene_cn": "法院走廊",
+          "scene_en": "quiet courthouse hallway with benches files and vertical lines",
+          "motifs": [
+            "长椅",
+            "文件夹",
+            "柱子",
+            "地砖",
+            "门"
+          ]
+        },
+        {
+          "scene_id": "ISTJ_08",
+          "scene_cn": "钟表匠桌",
+          "scene_en": "watchmaker table of gears tweezers and tiny compartments",
+          "motifs": [
+            "齿轮",
+            "镊子",
+            "小格",
+            "放大镜",
+            "铜色"
+          ]
+        },
+        {
+          "scene_id": "ISTJ_09",
+          "scene_cn": "库存货架",
+          "scene_en": "warehouse shelves with perfectly stacked boxes and blank tags",
+          "motifs": [
+            "货架",
+            "纸箱",
+            "空白标签",
+            "黄线",
+            "叉车影"
+          ]
+        },
+        {
+          "scene_id": "ISTJ_10",
+          "scene_cn": "学籍档案室",
+          "scene_en": "school record room with cabinets yearbooks and reading table",
+          "motifs": [
+            "档案柜",
+            "年鉴",
+            "桌子",
+            "日光",
+            "编号盒"
+          ]
+        },
+        {
+          "scene_id": "ISTJ_11",
+          "scene_cn": "雨衣挂钩",
+          "scene_en": "row of raincoats hung by size beside aligned umbrellas",
+          "motifs": [
+            "雨衣",
+            "雨伞",
+            "挂钩",
+            "地垫",
+            "水滴"
+          ]
+        },
+        {
+          "scene_id": "ISTJ_12",
+          "scene_cn": "维修日志",
+          "scene_en": "maintenance logbook beside a clean machine panel",
+          "motifs": [
+            "日志本",
+            "机器面板",
+            "扳手",
+            "指示灯",
+            "手套"
+          ]
+        },
+        {
+          "scene_id": "ISTJ_13",
+          "scene_cn": "图书卡片柜",
+          "scene_en": "library card catalog with drawers open in perfect rows",
+          "motifs": [
+            "卡片柜",
+            "抽屉",
+            "索引卡",
+            "木纹",
+            "静光"
+          ]
+        },
+        {
+          "scene_id": "ISTJ_14",
+          "scene_cn": "里程碑日历",
+          "scene_en": "wall calendar with colored blocks and strict alignment no text",
+          "motifs": [
+            "日历",
+            "色块",
+            "细绳",
+            "图钉",
+            "直线"
+          ]
+        },
+        {
+          "scene_id": "ISTJ_15",
+          "scene_cn": "仪式储藏间",
+          "scene_en": "storage room for ceremonial objects arranged with care",
+          "motifs": [
+            "储藏架",
+            "盒子",
+            "布料",
+            "烛台",
+            "标签空白"
+          ]
+        },
+        {
+          "scene_id": "ISTJ_16",
+          "scene_cn": "清晨公交场站",
+          "scene_en": "early morning bus depot with vehicles aligned before service",
+          "motifs": [
+            "公交车",
+            "停车线",
+            "晨雾",
+            "路灯",
+            "空场"
+          ]
+        }
+      ]
+    },
+    "ISFJ": {
+      "role_group": "Sentinel",
+      "layer1_coords": {
+        "E_I": -8,
+        "S_N": -8,
+        "T_F": -8,
+        "J_P": 8
+      },
+      "trait_keywords": [
+        "照料",
+        "记忆",
+        "稳定",
+        "温柔责任",
+        "守护"
+      ],
+      "visual_rationale": "照料、家庭性空间、记忆物件与安静可靠的支持；双人、小群体或空场景都可以。",
+      "style_cycle": [
+        "warm_documentary_illustration",
+        "soft_colored_pencil",
+        "domestic_watercolor",
+        "gentle_editorial"
+      ],
+      "subject_cycle": [
+        {
+          "human_presence": "pair",
+          "subject_mode": "two_people_relational_scene",
+          "gender_mode": "mixed_or_unspecified",
+          "people_count": 2
+        },
+        {
+          "human_presence": "none",
+          "subject_mode": "environment_or_object_only",
+          "gender_mode": "not_applicable",
+          "people_count": 0
+        },
+        {
+          "human_presence": "single",
+          "subject_mode": "single_female_figure",
+          "gender_mode": "female",
+          "people_count": 1
+        },
+        {
+          "human_presence": "multi",
+          "subject_mode": "small_group_or_crowd",
+          "gender_mode": "mixed",
+          "people_count": 4
+        }
+      ],
+      "palette_cycle": [
+        "warm_cream",
+        "honey_brown",
+        "soft_green",
+        "rose_gray"
+      ],
+      "composition_cycle": [
+        "intimate_center",
+        "tabletop_order",
+        "gentle_symmetry",
+        "window_soft_light"
+      ],
+      "scenes": [
+        {
+          "scene_id": "ISFJ_01",
+          "scene_cn": "清晨厨房",
+          "scene_en": "family kitchen in the morning with bowls steam and prepared lunches",
+          "motifs": [
+            "饭盒",
+            "碗",
+            "蒸汽",
+            "围裙",
+            "窗光"
+          ]
+        },
+        {
+          "scene_id": "ISFJ_02",
+          "scene_cn": "诊所等候角",
+          "scene_en": "clinic waiting corner with flowers blankets and soft chairs",
+          "motifs": [
+            "花",
+            "毯子",
+            "椅子",
+            "水杯",
+            "柔光"
+          ]
+        },
+        {
+          "scene_id": "ISFJ_03",
+          "scene_cn": "记忆盒桌面",
+          "scene_en": "table with memory box ribbons and small keepsakes",
+          "motifs": [
+            "记忆盒",
+            "丝带",
+            "照片背面",
+            "小物",
+            "桌布"
+          ]
+        },
+        {
+          "scene_id": "ISFJ_04",
+          "scene_cn": "缝纫房",
+          "scene_en": "sewing room with fabric thread and repaired clothes",
+          "motifs": [
+            "布料",
+            "线轴",
+            "针包",
+            "衣服",
+            "台灯"
+          ]
+        },
+        {
+          "scene_id": "ISFJ_05",
+          "scene_cn": "邻里汤门口",
+          "scene_en": "doorway with a pot of soup and covered bowls for delivery",
+          "motifs": [
+            "汤锅",
+            "门口",
+            "碗",
+            "布盖",
+            "鞋垫"
+          ]
+        },
+        {
+          "scene_id": "ISFJ_06",
+          "scene_cn": "整理后的童年房",
+          "scene_en": "childhood bedroom carefully cleaned with toys arranged",
+          "motifs": [
+            "玩具",
+            "床",
+            "书架",
+            "阳光",
+            "地毯"
+          ]
+        },
+        {
+          "scene_id": "ISFJ_07",
+          "scene_cn": "社区通知桌",
+          "scene_en": "community table with blank notice cards snacks and flowers",
+          "motifs": [
+            "通知卡",
+            "点心",
+            "花瓶",
+            "桌子",
+            "椅子"
+          ]
+        },
+        {
+          "scene_id": "ISFJ_08",
+          "scene_cn": "雨天公交座位",
+          "scene_en": "empty bus seat with folded umbrella and warm window reflections",
+          "motifs": [
+            "公交座",
+            "伞",
+            "雨窗",
+            "反光",
+            "扶手"
+          ]
+        },
+        {
+          "scene_id": "ISFJ_09",
+          "scene_cn": "医院花车",
+          "scene_en": "hospital flower cart with soft lighting and careful arrangement",
+          "motifs": [
+            "花车",
+            "病房门",
+            "柔光",
+            "水壶",
+            "卡片空白"
+          ]
+        },
+        {
+          "scene_id": "ISFJ_10",
+          "scene_cn": "双人茶桌",
+          "scene_en": "tea table set for two quiet and steady",
+          "motifs": [
+            "茶杯",
+            "点心",
+            "两把椅",
+            "桌布",
+            "暖灯"
+          ]
+        },
+        {
+          "scene_id": "ISFJ_11",
+          "scene_cn": "亚麻布柜",
+          "scene_en": "linen closet stacked with towels and lavender sachets",
+          "motifs": [
+            "毛巾",
+            "香包",
+            "木柜",
+            "整齐层",
+            "柔色"
+          ]
+        },
+        {
+          "scene_id": "ISFJ_12",
+          "scene_cn": "学校失物招领",
+          "scene_en": "lost-and-found table with neatly folded scarves and blank tags",
+          "motifs": [
+            "围巾",
+            "手套",
+            "空白标签",
+            "桌子",
+            "阳光"
+          ]
+        },
+        {
+          "scene_id": "ISFJ_13",
+          "scene_cn": "祖辈收音机",
+          "scene_en": "old radio knitting basket and warm afternoon window",
+          "motifs": [
+            "收音机",
+            "毛线篮",
+            "窗光",
+            "木椅",
+            "茶杯"
+          ]
+        },
+        {
+          "scene_id": "ISFJ_14",
+          "scene_cn": "避难所毛毯",
+          "scene_en": "shelter table where blankets and supplies are prepared",
+          "motifs": [
+            "毛毯",
+            "补给",
+            "桌子",
+            "纸箱",
+            "手"
+          ]
+        },
+        {
+          "scene_id": "ISFJ_15",
+          "scene_cn": "生日余温",
+          "scene_en": "dining table after a small birthday gathering",
+          "motifs": [
+            "蛋糕屑",
+            "蜡烛",
+            "盘子",
+            "椅子",
+            "灯光"
+          ]
+        },
+        {
+          "scene_id": "ISFJ_16",
+          "scene_cn": "小院浇花",
+          "scene_en": "small garden being watered with gloves and tools set aside",
+          "motifs": [
+            "水壶",
+            "手套",
+            "花盆",
+            "泥土",
+            "围栏"
+          ]
+        }
+      ]
+    },
+    "ESTJ": {
+      "role_group": "Sentinel",
+      "layer1_coords": {
+        "E_I": 8,
+        "S_N": -8,
+        "T_F": 8,
+        "J_P": 8
+      },
+      "trait_keywords": [
+        "执行",
+        "管理",
+        "规则",
+        "效率",
+        "现实掌控"
+      ],
+      "visual_rationale": "清晰职责、组织现场、任务分配与公共秩序；多人画面必须有结构和行动方向。",
+      "style_cycle": [
+        "documentary_operations",
+        "bold_institutional_poster",
+        "clean_corporate_editorial",
+        "industrial_realism"
+      ],
+      "subject_cycle": [
+        {
+          "human_presence": "multi",
+          "subject_mode": "small_group_or_crowd",
+          "gender_mode": "mixed",
+          "people_count": 4
+        },
+        {
+          "human_presence": "single",
+          "subject_mode": "single_female_figure",
+          "gender_mode": "female",
+          "people_count": 1
+        },
+        {
+          "human_presence": "pair",
+          "subject_mode": "two_people_relational_scene",
+          "gender_mode": "mixed_or_unspecified",
+          "people_count": 2
+        },
+        {
+          "human_presence": "none",
+          "subject_mode": "environment_or_object_only",
+          "gender_mode": "not_applicable",
+          "people_count": 0
+        }
+      ],
+      "palette_cycle": [
+        "navy_red_white",
+        "industrial_yellow_gray",
+        "clean_blue",
+        "brick_neutral"
+      ],
+      "composition_cycle": [
+        "clear_hierarchy",
+        "grid_layout",
+        "central_authority",
+        "wide_operational"
+      ],
+      "scenes": [
+        {
+          "scene_id": "ESTJ_01",
+          "scene_cn": "物流调度场",
+          "scene_en": "logistics floor with carts clipboards and organized lanes",
+          "motifs": [
+            "推车",
+            "夹板",
+            "路线",
+            "工服",
+            "货箱"
+          ]
+        },
+        {
+          "scene_id": "ESTJ_02",
+          "scene_cn": "施工晨会",
+          "scene_en": "construction briefing with helmets plans and central speaker",
+          "motifs": [
+            "安全帽",
+            "图纸",
+            "围站",
+            "吊车",
+            "清晨"
+          ]
+        },
+        {
+          "scene_id": "ESTJ_03",
+          "scene_cn": "学校集会",
+          "scene_en": "school assembly setup with aligned chairs and coordinating staff",
+          "motifs": [
+            "椅阵",
+            "讲台",
+            "工作人员",
+            "旗形",
+            "阳光"
+          ]
+        },
+        {
+          "scene_id": "ESTJ_04",
+          "scene_cn": "市政服务大厅",
+          "scene_en": "city service center with queue lines and counters arranged efficiently",
+          "motifs": [
+            "排队线",
+            "柜台",
+            "座椅",
+            "号码形",
+            "玻璃"
+          ]
+        },
+        {
+          "scene_id": "ESTJ_05",
+          "scene_cn": "仓库交接班",
+          "scene_en": "warehouse shift change with checklists and forklifts",
+          "motifs": [
+            "清单",
+            "叉车",
+            "货架",
+            "黄线",
+            "交接手势"
+          ]
+        },
+        {
+          "scene_id": "ESTJ_06",
+          "scene_cn": "餐厅出餐线",
+          "scene_en": "restaurant service line during rush hour coordinated and crisp",
+          "motifs": [
+            "出餐台",
+            "盘子",
+            "厨师",
+            "热气",
+            "队列"
+          ]
+        },
+        {
+          "scene_id": "ESTJ_07",
+          "scene_cn": "应急规划室",
+          "scene_en": "emergency planning room with maps task boards and radio equipment",
+          "motifs": [
+            "地图",
+            "任务板",
+            "无线电",
+            "桌子",
+            "灯"
+          ]
+        },
+        {
+          "scene_id": "ESTJ_08",
+          "scene_cn": "球队暂停",
+          "scene_en": "sports team timeout around a tactics board",
+          "motifs": [
+            "战术板",
+            "队员",
+            "毛巾",
+            "地板线",
+            "手势"
+          ]
+        },
+        {
+          "scene_id": "ESTJ_09",
+          "scene_cn": "工厂巡检",
+          "scene_en": "supervisor route through a factory line with safety markings",
+          "motifs": [
+            "工厂线",
+            "安全线",
+            "机器",
+            "巡检夹",
+            "头盔"
+          ]
+        },
+        {
+          "scene_id": "ESTJ_10",
+          "scene_cn": "游行准备区",
+          "scene_en": "parade preparation area with uniforms props and strict rows",
+          "motifs": [
+            "制服",
+            "道具",
+            "队列",
+            "镜子",
+            "地标"
+          ]
+        },
+        {
+          "scene_id": "ESTJ_11",
+          "scene_cn": "机场登机口整理",
+          "scene_en": "airport gate reset before boarding with ropes and seats",
+          "motifs": [
+            "登机口",
+            "隔离带",
+            "座椅",
+            "工作人员",
+            "玻璃"
+          ]
+        },
+        {
+          "scene_id": "ESTJ_12",
+          "scene_cn": "法庭日程墙",
+          "scene_en": "courtroom schedule wall represented with blocks and folders",
+          "motifs": [
+            "文件夹",
+            "色块",
+            "木墙",
+            "长椅",
+            "门"
+          ]
+        },
+        {
+          "scene_id": "ESTJ_13",
+          "scene_cn": "社区清扫组织",
+          "scene_en": "community cleanup operation with teams bags and mapped zones",
+          "motifs": [
+            "垃圾袋",
+            "分区图",
+            "手套",
+            "队伍",
+            "树"
+          ]
+        },
+        {
+          "scene_id": "ESTJ_14",
+          "scene_cn": "培训室",
+          "scene_en": "training room with manuals chairs in rows and presenter",
+          "motifs": [
+            "手册",
+            "排椅",
+            "投影形",
+            "讲者",
+            "水杯"
+          ]
+        },
+        {
+          "scene_id": "ESTJ_15",
+          "scene_cn": "派遣车库",
+          "scene_en": "dispatch garage with vehicles ready under bright lights",
+          "motifs": [
+            "车辆",
+            "灯带",
+            "路线牌",
+            "车库门",
+            "制服"
+          ]
+        },
+        {
+          "scene_id": "ESTJ_16",
+          "scene_cn": "广场布置",
+          "scene_en": "public square being set up for event with barriers and routes",
+          "motifs": [
+            "广场",
+            "围栏",
+            "帐篷",
+            "路线",
+            "工人"
+          ]
+        }
+      ]
+    },
+    "ESFJ": {
+      "role_group": "Sentinel",
+      "layer1_coords": {
+        "E_I": 8,
+        "S_N": -8,
+        "T_F": -8,
+        "J_P": 8
+      },
+      "trait_keywords": [
+        "社交照料",
+        "和谐",
+        "仪式",
+        "参与",
+        "关系维护"
+      ],
+      "visual_rationale": "聚会、仪式、共享餐桌与可见的互相照顾；适合多人和暖色，但不失秩序。",
+      "style_cycle": [
+        "warm_social_realism",
+        "festive_editorial",
+        "soft_retro_anime",
+        "colorful_domestic_poster"
+      ],
+      "subject_cycle": [
+        {
+          "human_presence": "multi",
+          "subject_mode": "small_group_or_crowd",
+          "gender_mode": "mixed",
+          "people_count": 4
+        },
+        {
+          "human_presence": "pair",
+          "subject_mode": "two_people_relational_scene",
+          "gender_mode": "mixed_or_unspecified",
+          "people_count": 2
+        },
+        {
+          "human_presence": "multi",
+          "subject_mode": "small_group_or_crowd",
+          "gender_mode": "mixed",
+          "people_count": 4
+        },
+        {
+          "human_presence": "none",
+          "subject_mode": "environment_or_object_only",
+          "gender_mode": "not_applicable",
+          "people_count": 0
+        }
+      ],
+      "palette_cycle": [
+        "warm_coral",
+        "cream_gold",
+        "soft_red_green",
+        "sunny_pastel"
+      ],
+      "composition_cycle": [
+        "dining_table_center",
+        "circle_grouping",
+        "warm_symmetry",
+        "busy_but_balanced"
+      ],
+      "scenes": [
+        {
+          "scene_id": "ESFJ_01",
+          "scene_cn": "共享晚餐桌",
+          "scene_en": "shared dinner table with many hands plates and warm conversation",
+          "motifs": [
+            "餐盘",
+            "手",
+            "汤",
+            "桌布",
+            "灯"
+          ]
+        },
+        {
+          "scene_id": "ESFJ_02",
+          "scene_cn": "婚礼准备间",
+          "scene_en": "preparation room with flowers dresses and supportive gestures",
+          "motifs": [
+            "花",
+            "礼服",
+            "镜子",
+            "手势",
+            "阳光"
+          ]
+        },
+        {
+          "scene_id": "ESFJ_03",
+          "scene_cn": "邻里聚会",
+          "scene_en": "neighborhood party courtyard with lights food and mixed-age groups",
+          "motifs": [
+            "院子",
+            "灯串",
+            "餐桌",
+            "人群",
+            "树"
+          ]
+        },
+        {
+          "scene_id": "ESFJ_04",
+          "scene_cn": "生日厨房",
+          "scene_en": "kitchen where several people decorate a cake together",
+          "motifs": [
+            "蛋糕",
+            "奶油",
+            "围裙",
+            "彩带",
+            "笑脸"
+          ]
+        },
+        {
+          "scene_id": "ESFJ_05",
+          "scene_cn": "学校义卖摊",
+          "scene_en": "school fair booth with handmade goods and friendly interactions",
+          "motifs": [
+            "摊位",
+            "手作物",
+            "零钱盒",
+            "彩旗",
+            "孩子"
+          ]
+        },
+        {
+          "scene_id": "ESFJ_06",
+          "scene_cn": "家庭合影准备",
+          "scene_en": "family photo setup before the picture with chairs and flowers",
+          "motifs": [
+            "椅子",
+            "花",
+            "相机",
+            "人群",
+            "窗光"
+          ]
+        },
+        {
+          "scene_id": "ESFJ_07",
+          "scene_cn": "茶会社团",
+          "scene_en": "tea social club with cups pastries and attentive faces",
+          "motifs": [
+            "茶杯",
+            "点心",
+            "桌子",
+            "软椅",
+            "花"
+          ]
+        },
+        {
+          "scene_id": "ESFJ_08",
+          "scene_cn": "社区舞厅",
+          "scene_en": "community dance hall with paired dancers and string lights",
+          "motifs": [
+            "舞厅",
+            "灯串",
+            "舞伴",
+            "木地板",
+            "音乐形"
+          ]
+        },
+        {
+          "scene_id": "ESFJ_09",
+          "scene_cn": "欢迎桌",
+          "scene_en": "welcome table with card shapes flowers and small gifts",
+          "motifs": [
+            "欢迎桌",
+            "小礼物",
+            "花瓶",
+            "卡片空白",
+            "桌布"
+          ]
+        },
+        {
+          "scene_id": "ESFJ_10",
+          "scene_cn": "野餐圆圈",
+          "scene_en": "picnic circle in a park with blankets and shared dishes",
+          "motifs": [
+            "野餐布",
+            "食物",
+            "草地",
+            "圆圈",
+            "阳光"
+          ]
+        },
+        {
+          "scene_id": "ESFJ_11",
+          "scene_cn": "节日食物摊",
+          "scene_en": "festival food stall serving food happily",
+          "motifs": [
+            "食物摊",
+            "蒸汽",
+            "灯笼",
+            "人群",
+            "碗"
+          ]
+        },
+        {
+          "scene_id": "ESFJ_12",
+          "scene_cn": "合唱排练",
+          "scene_en": "choir rehearsal room with semicircle formation and open folders",
+          "motifs": [
+            "合唱",
+            "半圆",
+            "乐谱无字",
+            "钢琴",
+            "窗"
+          ]
+        },
+        {
+          "scene_id": "ESFJ_13",
+          "scene_cn": "节日客厅",
+          "scene_en": "holiday living room with decorations cushions and glowing centerpiece",
+          "motifs": [
+            "客厅",
+            "装饰",
+            "抱枕",
+            "发光物",
+            "地毯"
+          ]
+        },
+        {
+          "scene_id": "ESFJ_14",
+          "scene_cn": "插花课",
+          "scene_en": "flower arrangement class with people helping each other",
+          "motifs": [
+            "花材",
+            "剪刀",
+            "花瓶",
+            "桌子",
+            "手"
+          ]
+        },
+        {
+          "scene_id": "ESFJ_15",
+          "scene_cn": "老友咖啡馆",
+          "scene_en": "cafe table of old friends with warm cups and gentle laughter",
+          "motifs": [
+            "咖啡",
+            "老友",
+            "木桌",
+            "窗",
+            "杯影"
+          ]
+        },
+        {
+          "scene_id": "ESFJ_16",
+          "scene_cn": "重逢车站",
+          "scene_en": "station reunion scene with hugs bags and warm overhead light",
+          "motifs": [
+            "车站",
+            "拥抱",
+            "行李",
+            "灯",
+            "人流"
+          ]
+        }
+      ]
+    },
+    "ISTP": {
+      "role_group": "Explorer",
+      "layer1_coords": {
+        "E_I": -8,
+        "S_N": -8,
+        "T_F": 8,
+        "J_P": -8
+      },
+      "trait_keywords": [
+        "动手",
+        "冷静",
+        "工具",
+        "即时问题",
+        "独立"
+      ],
+      "visual_rationale": "工具、机械、户外装备与安静实操能力；可以没有人，或一个专注动作的人。",
+      "style_cycle": [
+        "technical_marker_sketch",
+        "gritty_documentary",
+        "mechanical_cutaway",
+        "minimal_action_noir"
+      ],
+      "subject_cycle": [
+        {
+          "human_presence": "none",
+          "subject_mode": "environment_or_object_only",
+          "gender_mode": "not_applicable",
+          "people_count": 0
+        },
+        {
+          "human_presence": "single",
+          "subject_mode": "single_ambiguous_figure",
+          "gender_mode": "ambiguous",
+          "people_count": 1
+        },
+        {
+          "human_presence": "single",
+          "subject_mode": "single_female_figure",
+          "gender_mode": "female",
+          "people_count": 1
+        },
+        {
+          "human_presence": "none",
+          "subject_mode": "environment_or_object_only",
+          "gender_mode": "not_applicable",
+          "people_count": 0
+        }
+      ],
+      "palette_cycle": [
+        "oil_black_gray",
+        "toolbox_red_gray",
+        "desert_neutral",
+        "cool_metal"
+      ],
+      "composition_cycle": [
+        "close_mechanical_detail",
+        "diagonal_tool_layout",
+        "wide_empty_workshop",
+        "action_freeze"
+      ],
+      "scenes": [
+        {
+          "scene_id": "ISTP_01",
+          "scene_cn": "机车工作台",
+          "scene_en": "motorcycle workbench with parts laid out precisely but not prettily",
+          "motifs": [
+            "机车零件",
+            "油渍",
+            "扳手",
+            "金属台",
+            "灯"
+          ]
+        },
+        {
+          "scene_id": "ISTP_02",
+          "scene_cn": "攀岩装备地面",
+          "scene_en": "climbing gear spread on concrete before a quiet ascent",
+          "motifs": [
+            "安全带",
+            "绳索",
+            "粉袋",
+            "混凝土",
+            "鞋"
+          ]
+        },
+        {
+          "scene_id": "ISTP_03",
+          "scene_cn": "雨棚修理处",
+          "scene_en": "roadside shelter repairing a broken device in rain",
+          "motifs": [
+            "雨棚",
+            "工具",
+            "设备",
+            "水滴",
+            "路灯"
+          ]
+        },
+        {
+          "scene_id": "ISTP_04",
+          "scene_cn": "工具卷包",
+          "scene_en": "tool roll of safe mechanical tools bolts and oil stains",
+          "motifs": [
+            "工具卷",
+            "螺栓",
+            "油迹",
+            "布面",
+            "阴影"
+          ]
+        },
+        {
+          "scene_id": "ISTP_05",
+          "scene_cn": "无人机拆解",
+          "scene_en": "small drone disassembled into clean modules on a metal table",
+          "motifs": [
+            "无人机",
+            "模块",
+            "螺丝",
+            "镊子",
+            "金属"
+          ]
+        },
+        {
+          "scene_id": "ISTP_06",
+          "scene_cn": "空车库光线",
+          "scene_en": "empty garage with one work light and suspended dust",
+          "motifs": [
+            "车库",
+            "工作灯",
+            "灰尘",
+            "工具箱",
+            "地面"
+          ]
+        },
+        {
+          "scene_id": "ISTP_07",
+          "scene_cn": "自行车链条维修",
+          "scene_en": "close view of bicycle chain repair with gloved hands",
+          "motifs": [
+            "链条",
+            "手套",
+            "齿轮",
+            "润滑油",
+            "地砖"
+          ]
+        },
+        {
+          "scene_id": "ISTP_08",
+          "scene_cn": "沙地野外工具包",
+          "scene_en": "desert field kit arranged beside tire tracks",
+          "motifs": [
+            "工具包",
+            "轮胎痕",
+            "沙地",
+            "指南针",
+            "水壶"
+          ]
+        },
+        {
+          "scene_id": "ISTP_09",
+          "scene_cn": "船舶发动机角",
+          "scene_en": "boat engine compartment with wires pipes and practical lighting",
+          "motifs": [
+            "发动机",
+            "管线",
+            "电线",
+            "狭窄空间",
+            "灯"
+          ]
+        },
+        {
+          "scene_id": "ISTP_10",
+          "scene_cn": "锁机构模型",
+          "scene_en": "cutaway model of a complex lock mechanism purely technical",
+          "motifs": [
+            "锁芯",
+            "剖面",
+            "弹簧",
+            "金属",
+            "白底"
+          ]
+        },
+        {
+          "scene_id": "ISTP_11",
+          "scene_cn": "焊接面罩桌",
+          "scene_en": "welding mask gloves and cooling metal pieces after work",
+          "motifs": [
+            "面罩",
+            "手套",
+            "金属件",
+            "火花痕",
+            "桌"
+          ]
+        },
+        {
+          "scene_id": "ISTP_12",
+          "scene_cn": "滑板坡边",
+          "scene_en": "empty skate ramp edge with tools and wheels nearby",
+          "motifs": [
+            "坡道",
+            "滑轮",
+            "工具",
+            "涂鸦形",
+            "阳光"
+          ]
+        },
+        {
+          "scene_id": "ISTP_13",
+          "scene_cn": "相机维修垫",
+          "scene_en": "camera repair mat with tiny screws and lenses",
+          "motifs": [
+            "相机",
+            "镜头",
+            "小螺丝",
+            "维修垫",
+            "镊子"
+          ]
+        },
+        {
+          "scene_id": "ISTP_14",
+          "scene_cn": "森林绳桥",
+          "scene_en": "rope bridge repair scene in a quiet forest",
+          "motifs": [
+            "绳桥",
+            "木板",
+            "绳结",
+            "森林",
+            "工具"
+          ]
+        },
+        {
+          "scene_id": "ISTP_15",
+          "scene_cn": "紧凑装备架",
+          "scene_en": "compact shelf of practical outdoor gear and maps",
+          "motifs": [
+            "装备架",
+            "地图",
+            "头灯",
+            "绳索",
+            "水壶"
+          ]
+        },
+        {
+          "scene_id": "ISTP_16",
+          "scene_cn": "机房管线",
+          "scene_en": "machine room pipe junction with gauges and clean shadows",
+          "motifs": [
+            "管线",
+            "压力表",
+            "阀门",
+            "阴影",
+            "金属"
+          ]
+        }
+      ]
+    },
+    "ISFP": {
+      "role_group": "Explorer",
+      "layer1_coords": {
+        "E_I": -8,
+        "S_N": -8,
+        "T_F": -8,
+        "J_P": -8
+      },
+      "trait_keywords": [
+        "感受",
+        "审美",
+        "当下",
+        "温柔反叛",
+        "手作"
+      ],
+      "visual_rationale": "触感、色彩、个人审美与安静行动；单人、局部物件或自然手作痕迹都合适。",
+      "style_cycle": [
+        "soft_gouache",
+        "textile_collage",
+        "intimate_film_still",
+        "ink_and_wash_nature"
+      ],
+      "subject_cycle": [
+        {
+          "human_presence": "single",
+          "subject_mode": "single_female_figure",
+          "gender_mode": "female",
+          "people_count": 1
+        },
+        {
+          "human_presence": "none",
+          "subject_mode": "environment_or_object_only",
+          "gender_mode": "not_applicable",
+          "people_count": 0
+        },
+        {
+          "human_presence": "single",
+          "subject_mode": "single_ambiguous_figure",
+          "gender_mode": "ambiguous",
+          "people_count": 1
+        },
+        {
+          "human_presence": "none",
+          "subject_mode": "environment_or_object_only",
+          "gender_mode": "not_applicable",
+          "people_count": 0
+        }
+      ],
+      "palette_cycle": [
+        "earthy_pastel",
+        "moss_rose",
+        "soft_coral_blue",
+        "cream_olive"
+      ],
+      "composition_cycle": [
+        "intimate_close",
+        "organic_asymmetry",
+        "soft_negative_space",
+        "tactile_tabletop"
+      ],
+      "scenes": [
+        {
+          "scene_id": "ISFP_01",
+          "scene_cn": "陶艺工作室",
+          "scene_en": "ceramic studio with wet clay glaze tests and natural light",
+          "motifs": [
+            "陶土",
+            "釉色片",
+            "转盘",
+            "窗光",
+            "手印"
+          ]
+        },
+        {
+          "scene_id": "ISFP_02",
+          "scene_cn": "纹身图样墙",
+          "scene_en": "wall of hand-drawn tattoo flash motifs with no readable words",
+          "motifs": [
+            "图样",
+            "墙",
+            "墨线",
+            "胶带",
+            "灯"
+          ]
+        },
+        {
+          "scene_id": "ISFP_03",
+          "scene_cn": "植物染色桌",
+          "scene_en": "table of fabric dyed with flowers bowls and stained fingers",
+          "motifs": [
+            "布料",
+            "花",
+            "染碗",
+            "手指",
+            "水渍"
+          ]
+        },
+        {
+          "scene_id": "ISFP_04",
+          "scene_cn": "森林写生点",
+          "scene_en": "forest sketch spot with paper brushes and low stool",
+          "motifs": [
+            "画纸",
+            "画笔",
+            "矮凳",
+            "树影",
+            "背包"
+          ]
+        },
+        {
+          "scene_id": "ISFP_05",
+          "scene_cn": "卧室衣架",
+          "scene_en": "clothing rail of personally altered garments beside mirror",
+          "motifs": [
+            "衣架",
+            "改造衣物",
+            "镜子",
+            "针线",
+            "日光"
+          ]
+        },
+        {
+          "scene_id": "ISFP_06",
+          "scene_cn": "河石收藏",
+          "scene_en": "collection of river stones arranged by texture on a cloth",
+          "motifs": [
+            "河石",
+            "布",
+            "纹理",
+            "水痕",
+            "木桌"
+          ]
+        },
+        {
+          "scene_id": "ISFP_07",
+          "scene_cn": "小音乐房",
+          "scene_en": "small music room with guitar plants and warm floor light",
+          "motifs": [
+            "吉他",
+            "植物",
+            "地灯",
+            "地毯",
+            "窗帘"
+          ]
+        },
+        {
+          "scene_id": "ISFP_08",
+          "scene_cn": "窗边调色盘",
+          "scene_en": "paint palette by a window with softly mixed colors",
+          "motifs": [
+            "调色盘",
+            "窗",
+            "颜料",
+            "水杯",
+            "光"
+          ]
+        },
+        {
+          "scene_id": "ISFP_09",
+          "scene_cn": "市集花束",
+          "scene_en": "flower market bundle wrapped by hand with imperfect beauty",
+          "motifs": [
+            "花束",
+            "纸包",
+            "手",
+            "摊位",
+            "阳光"
+          ]
+        },
+        {
+          "scene_id": "ISFP_10",
+          "scene_cn": "手作面具桌",
+          "scene_en": "handmade mask table with feathers paint and fabric scraps",
+          "motifs": [
+            "面具",
+            "羽毛",
+            "颜料",
+            "布片",
+            "剪刀"
+          ]
+        },
+        {
+          "scene_id": "ISFP_11",
+          "scene_cn": "赤足花园路",
+          "scene_en": "garden path with bare footprints petals and soft mud",
+          "motifs": [
+            "脚印",
+            "花瓣",
+            "泥土",
+            "小径",
+            "草"
+          ]
+        },
+        {
+          "scene_id": "ISFP_12",
+          "scene_cn": "旧牛仔修补",
+          "scene_en": "close view of denim repair with colorful thread",
+          "motifs": [
+            "牛仔布",
+            "彩线",
+            "针脚",
+            "剪刀",
+            "手"
+          ]
+        },
+        {
+          "scene_id": "ISFP_13",
+          "scene_cn": "安静后台服装",
+          "scene_en": "backstage costume corner after a performance",
+          "motifs": [
+            "服装",
+            "镜子",
+            "椅子",
+            "灯泡",
+            "布料"
+          ]
+        },
+        {
+          "scene_id": "ISFP_14",
+          "scene_cn": "池塘倒影画",
+          "scene_en": "pond reflection turning into brush strokes",
+          "motifs": [
+            "池塘",
+            "倒影",
+            "笔触",
+            "荷叶",
+            "微风"
+          ]
+        },
+        {
+          "scene_id": "ISFP_15",
+          "scene_cn": "猫与日光斑",
+          "scene_en": "cat sleeping in sun patch beside art supplies",
+          "motifs": [
+            "猫",
+            "日光斑",
+            "画具",
+            "地板",
+            "植物"
+          ]
+        },
+        {
+          "scene_id": "ISFP_16",
+          "scene_cn": "手作纸灯",
+          "scene_en": "handmade paper lanterns drying in a room with plants",
+          "motifs": [
+            "纸灯",
+            "植物",
+            "晾绳",
+            "胶水",
+            "柔光"
+          ]
+        }
+      ]
+    },
+    "ESTP": {
+      "role_group": "Explorer",
+      "layer1_coords": {
+        "E_I": 8,
+        "S_N": -8,
+        "T_F": 8,
+        "J_P": -8
+      },
+      "trait_keywords": [
+        "行动",
+        "冒险",
+        "现场反应",
+        "身体性",
+        "刺激"
+      ],
+      "visual_rationale": "高动能、公共场景、竞技、街头和即时反应；通常应有运动感和多人环境。",
+      "style_cycle": [
+        "graffiti_sports_poster",
+        "kinetic_comic_frame",
+        "street_photo_energy",
+        "bold_marker_illustration"
+      ],
+      "subject_cycle": [
+        {
+          "human_presence": "multi",
+          "subject_mode": "small_group_or_crowd",
+          "gender_mode": "mixed",
+          "people_count": 4
+        },
+        {
+          "human_presence": "single",
+          "subject_mode": "single_female_figure",
+          "gender_mode": "female",
+          "people_count": 1
+        },
+        {
+          "human_presence": "pair",
+          "subject_mode": "two_people_relational_scene",
+          "gender_mode": "mixed_or_unspecified",
+          "people_count": 2
+        },
+        {
+          "human_presence": "none",
+          "subject_mode": "environment_or_object_only",
+          "gender_mode": "not_applicable",
+          "people_count": 0
+        }
+      ],
+      "palette_cycle": [
+        "saturated_high_contrast",
+        "orange_cyan",
+        "street_red_black",
+        "sun_bleached"
+      ],
+      "composition_cycle": [
+        "dynamic_diagonal",
+        "motion_freeze",
+        "low_angle_action",
+        "crowded_depth"
+      ],
+      "scenes": [
+        {
+          "scene_id": "ESTP_01",
+          "scene_cn": "街头篮球场",
+          "scene_en": "street basketball court mid-play with mixed players and painted walls",
+          "motifs": [
+            "篮球",
+            "球场线",
+            "喷漆墙",
+            "运动鞋",
+            "人群"
+          ]
+        },
+        {
+          "scene_id": "ESTP_02",
+          "scene_cn": "夜市穿行",
+          "scene_en": "fast movement through night market with lights and food stalls",
+          "motifs": [
+            "夜市",
+            "灯",
+            "摊位",
+            "水汽",
+            "人流"
+          ]
+        },
+        {
+          "scene_id": "ESTP_03",
+          "scene_cn": "屋顶跃迁",
+          "scene_en": "rooftop jump frozen in motion with city edges and wind",
+          "motifs": [
+            "屋顶",
+            "跳跃",
+            "城市边缘",
+            "风",
+            "斜线"
+          ]
+        },
+        {
+          "scene_id": "ESTP_04",
+          "scene_cn": "机车车库出发",
+          "scene_en": "motor garage right before departure with helmets and bright doors",
+          "motifs": [
+            "机车",
+            "头盔",
+            "车库门",
+            "灯",
+            "轮胎"
+          ]
+        },
+        {
+          "scene_id": "ESTP_05",
+          "scene_cn": "街机挑战",
+          "scene_en": "arcade challenge crowd around glowing machines no readable text",
+          "motifs": [
+            "街机",
+            "人群",
+            "霓虹",
+            "手柄",
+            "地毯"
+          ]
+        },
+        {
+          "scene_id": "ESTP_06",
+          "scene_cn": "沙滩排球",
+          "scene_en": "beach volleyball action moment with sun sand and silhouettes",
+          "motifs": [
+            "排球",
+            "沙滩",
+            "太阳",
+            "剪影",
+            "网"
+          ]
+        },
+        {
+          "scene_id": "ESTP_07",
+          "scene_cn": "小巷冲刺",
+          "scene_en": "narrow alley sprint with reflections and sharp turns",
+          "motifs": [
+            "小巷",
+            "水洼",
+            "奔跑",
+            "转角",
+            "灯牌形"
+          ]
+        },
+        {
+          "scene_id": "ESTP_08",
+          "scene_cn": "快闪拳台",
+          "scene_en": "pop-up boxing ring as athletic performance no violence focus",
+          "motifs": [
+            "拳台",
+            "绳圈",
+            "观众",
+            "毛巾",
+            "聚光"
+          ]
+        },
+        {
+          "scene_id": "ESTP_09",
+          "scene_cn": "滑板场入池",
+          "scene_en": "skatepark drop-in moment with friends watching",
+          "motifs": [
+            "滑板",
+            "坡道",
+            "朋友",
+            "涂鸦",
+            "护具"
+          ]
+        },
+        {
+          "scene_id": "ESTP_10",
+          "scene_cn": "餐车高峰",
+          "scene_en": "food truck rush with fast hands and bright sign shapes",
+          "motifs": [
+            "餐车",
+            "手",
+            "蒸汽",
+            "灯牌形",
+            "队伍"
+          ]
+        },
+        {
+          "scene_id": "ESTP_11",
+          "scene_cn": "雨中路口竞速",
+          "scene_en": "rain-soaked crosswalk with runners and neon reflections",
+          "motifs": [
+            "斑马线",
+            "雨",
+            "奔跑",
+            "反光",
+            "车灯"
+          ]
+        },
+        {
+          "scene_id": "ESTP_12",
+          "scene_cn": "海滩冲浪板",
+          "scene_en": "surfboards wax and group preparing for waves",
+          "motifs": [
+            "冲浪板",
+            "蜡",
+            "海浪",
+            "朋友",
+            "沙"
+          ]
+        },
+        {
+          "scene_id": "ESTP_13",
+          "scene_cn": "街舞圈",
+          "scene_en": "dance battle circle with dynamic body motion",
+          "motifs": [
+            "舞圈",
+            "人群",
+            "地面",
+            "音箱",
+            "速度线"
+          ]
+        },
+        {
+          "scene_id": "ESTP_14",
+          "scene_cn": "悬崖骑行路",
+          "scene_en": "bikes on cliff path with speed and open sky",
+          "motifs": [
+            "自行车",
+            "悬崖",
+            "天空",
+            "护栏",
+            "尘土"
+          ]
+        },
+        {
+          "scene_id": "ESTP_15",
+          "scene_cn": "仓库跑酷",
+          "scene_en": "warehouse parkour sequence with obstacles and beams",
+          "motifs": [
+            "仓库",
+            "障碍",
+            "横梁",
+            "奔跑",
+            "光束"
+          ]
+        },
+        {
+          "scene_id": "ESTP_16",
+          "scene_cn": "节日鼓点",
+          "scene_en": "festival drum scene with strong rhythm and crowd energy",
+          "motifs": [
+            "鼓",
+            "人群",
+            "彩旗",
+            "手臂",
+            "节奏"
+          ]
+        }
+      ]
+    },
+    "ESFP": {
+      "role_group": "Explorer",
+      "layer1_coords": {
+        "E_I": 8,
+        "S_N": -8,
+        "T_F": -8,
+        "J_P": -8
+      },
+      "trait_keywords": [
+        "表演",
+        "感染力",
+        "感官",
+        "欢乐",
+        "现场魅力"
+      ],
+      "visual_rationale": "表演、聚光灯、色彩与即时快乐传染；画面可以大胆、热闹、舞台化。",
+      "style_cycle": [
+        "stage_poster_bright",
+        "glam_editorial_illustration",
+        "retro_anime_performance",
+        "colorful_film_still"
+      ],
+      "subject_cycle": [
+        {
+          "human_presence": "multi",
+          "subject_mode": "small_group_or_crowd",
+          "gender_mode": "mixed",
+          "people_count": 4
+        },
+        {
+          "human_presence": "single",
+          "subject_mode": "single_female_figure",
+          "gender_mode": "female",
+          "people_count": 1
+        },
+        {
+          "human_presence": "pair",
+          "subject_mode": "two_people_relational_scene",
+          "gender_mode": "mixed_or_unspecified",
+          "people_count": 2
+        },
+        {
+          "human_presence": "none",
+          "subject_mode": "environment_or_object_only",
+          "gender_mode": "not_applicable",
+          "people_count": 0
+        }
+      ],
+      "palette_cycle": [
+        "hot_pink_gold",
+        "stage_purple_orange",
+        "confetti_bright",
+        "glossy_teal"
+      ],
+      "composition_cycle": [
+        "spotlight_center",
+        "crowd_depth",
+        "curtain_frame",
+        "rhythmic_pattern"
+      ],
+      "scenes": [
+        {
+          "scene_id": "ESFP_01",
+          "scene_cn": "后台灯镜",
+          "scene_en": "backstage mirror with lights makeup tools and costumes before a show",
+          "motifs": [
+            "灯镜",
+            "化妆品",
+            "服装",
+            "椅子",
+            "亮片"
+          ]
+        },
+        {
+          "scene_id": "ESFP_02",
+          "scene_cn": "卡拉OK房",
+          "scene_en": "karaoke room with friends colored lights and microphones",
+          "motifs": [
+            "麦克风",
+            "彩灯",
+            "沙发",
+            "朋友",
+            "屏幕无字"
+          ]
+        },
+        {
+          "scene_id": "ESFP_03",
+          "scene_cn": "街头表演",
+          "scene_en": "street performance with a small crowd and vibrant movement",
+          "motifs": [
+            "街头",
+            "观众",
+            "表演",
+            "帽子",
+            "灯"
+          ]
+        },
+        {
+          "scene_id": "ESFP_04",
+          "scene_cn": "纸屑舞池",
+          "scene_en": "dance floor covered in confetti and glossy reflections",
+          "motifs": [
+            "纸屑",
+            "舞池",
+            "灯球",
+            "反光",
+            "脚步"
+          ]
+        },
+        {
+          "scene_id": "ESFP_05",
+          "scene_cn": "派对服装架",
+          "scene_en": "costume rack bursting with textures sequins and accessories",
+          "motifs": [
+            "服装架",
+            "亮片",
+            "羽毛",
+            "墨镜",
+            "布料"
+          ]
+        },
+        {
+          "scene_id": "ESFP_06",
+          "scene_cn": "夏日泳池舞台",
+          "scene_en": "summer poolside stage with music and bright decorations",
+          "motifs": [
+            "泳池",
+            "舞台",
+            "音箱",
+            "阳光",
+            "彩旗"
+          ]
+        },
+        {
+          "scene_id": "ESFP_07",
+          "scene_cn": "节日巡游",
+          "scene_en": "festival parade with performers drums and flags no text",
+          "motifs": [
+            "巡游",
+            "鼓",
+            "旗",
+            "表演者",
+            "人群"
+          ]
+        },
+        {
+          "scene_id": "ESFP_08",
+          "scene_cn": "拍照亭瞬间",
+          "scene_en": "photo booth moment with props and laughing faces",
+          "motifs": [
+            "拍照亭",
+            "道具",
+            "笑脸",
+            "帘子",
+            "闪光"
+          ]
+        },
+        {
+          "scene_id": "ESFP_09",
+          "scene_cn": "旱冰场",
+          "scene_en": "roller rink under disco lights with colorful motion",
+          "motifs": [
+            "旱冰鞋",
+            "迪斯科灯",
+            "地板",
+            "人群",
+            "速度"
+          ]
+        },
+        {
+          "scene_id": "ESFP_10",
+          "scene_cn": "露天音乐会",
+          "scene_en": "open-air concert seen from within the crowd",
+          "motifs": [
+            "舞台",
+            "人群",
+            "灯束",
+            "天空",
+            "手臂"
+          ]
+        },
+        {
+          "scene_id": "ESFP_11",
+          "scene_cn": "甜品吧秀场",
+          "scene_en": "dessert bar styled like a tiny performance stage",
+          "motifs": [
+            "甜品",
+            "吧台",
+            "聚光",
+            "装饰",
+            "盘子"
+          ]
+        },
+        {
+          "scene_id": "ESFP_12",
+          "scene_cn": "海滩日落派对",
+          "scene_en": "beach party at sunset with dancing silhouettes",
+          "motifs": [
+            "海滩",
+            "日落",
+            "舞动",
+            "灯串",
+            "海浪"
+          ]
+        },
+        {
+          "scene_id": "ESFP_13",
+          "scene_cn": "马戏排练",
+          "scene_en": "circus rehearsal corner with props fabric and warm spotlight",
+          "motifs": [
+            "马戏道具",
+            "布料",
+            "聚光",
+            "圆环",
+            "木箱"
+          ]
+        },
+        {
+          "scene_id": "ESFP_14",
+          "scene_cn": "霓虹美甲店",
+          "scene_en": "neon nail salon as glamorous social space",
+          "motifs": [
+            "美甲台",
+            "霓虹",
+            "手",
+            "小灯",
+            "玻璃"
+          ]
+        },
+        {
+          "scene_id": "ESFP_15",
+          "scene_cn": "衣柜爆炸",
+          "scene_en": "playful wardrobe explosion of clothes and accessories",
+          "motifs": [
+            "衣柜",
+            "衣物",
+            "配饰",
+            "彩色",
+            "镜子"
+          ]
+        },
+        {
+          "scene_id": "ESFP_16",
+          "scene_cn": "街头鼓圈",
+          "scene_en": "street drum circle with energetic rhythm and smiles",
+          "motifs": [
+            "鼓圈",
+            "街头",
+            "手",
+            "人群",
+            "节奏"
+          ]
+        }
+      ]
+    }
+  }
+}

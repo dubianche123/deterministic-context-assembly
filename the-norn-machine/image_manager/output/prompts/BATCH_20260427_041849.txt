@@ -1,0 +1,71 @@
+请为下面每个 image_id 分别生成一张独立图片。
+这是一组用于 The Norn Machine Demo 的人格视觉素材，不要把它们都画成同一个男性角色。
+
+硬性要求：
+1. 每个 image_id 是不同任务，必须严格遵守各自的 Subject rule。
+2. 可以没有人物；可以是女性、男性、中性人物、双人或多人；不要自动默认为男性。
+3. 画面里不要出现可读文字、编号、Logo、水印、对话框。
+4. 每张图可以有不同画风，但要保持成品感和视觉叙事质量。
+5. 回复里请用 image_id 标注每张图，方便我下载后重命名。
+
+图片任务：
+
+[1] image_id: NORN_0141
+MBTI: ISTP / role_group: Explorer
+layer1_coords: {"E_I": -8, "S_N": -8, "T_F": 8, "J_P": -8}
+visual_rationale: 工具、机械、户外装备与安静实操能力；可以没有人，或一个专注动作的人。
+scene: 船舶发动机角 / boat engine compartment with wires pipes and practical lighting
+subject_rule: human_presence=none; subject_mode=environment_or_object_only; gender_mode=not_applicable; people_count=0
+style_family: technical_marker_sketch; palette: oil_black_gray; composition: close_mechanical_detail
+motifs: 发动机, 管线, 电线, 狭窄空间, 灯
+layer3_direction:
+- 船舶发动机角不是单纯背景，而是 ISTP 的人格张力被转译成可见空间后的结果。
+- 镜头应优先呈现发动机、管线、电线等意象；画面不需要出现人物，重点应落在空间、物件与痕迹本身。
+- 整体气质应贴近Explorer组的动手、冷静、工具，使用 technical_marker_sketch 与 close_mechanical_detail 表达，而不是依赖固定男主角叙事。
+English image prompt: technical_marker_sketch, oil_black_gray, close_mechanical_detail. Scene: boat engine compartment with wires pipes and practical lighting. Subject rule: none human presence, environment_or_object_only, gender mode not_applicable, people count 0. Visual motifs: 发动机, 管线, 电线, 狭窄空间, 灯. Personality metaphor for ISTP (Explorer): 动手, 冷静, 工具, 即时问题, 独立; 工具、机械、户外装备与安静实操能力；可以没有人，或一个专注动作的人。 Create one coherent finished illustration, strong visual storytelling, no readable text, no logo, no watermark.
+Negative prompt: readable text, logo, watermark, signature, UI, speech bubble, low quality, blurry, distorted hands, extra limbs, duplicate face
+
+[2] image_id: NORN_0142
+MBTI: ISFP / role_group: Explorer
+layer1_coords: {"E_I": -8, "S_N": -8, "T_F": -8, "J_P": -8}
+visual_rationale: 触感、色彩、个人审美与安静行动；单人、局部物件或自然手作痕迹都合适。
+scene: 市集花束 / flower market bundle wrapped by hand with imperfect beauty
+subject_rule: human_presence=single; subject_mode=single_female_figure; gender_mode=female; people_count=1
+style_family: soft_gouache; palette: earthy_pastel; composition: intimate_close
+motifs: 花束, 纸包, 手, 摊位, 阳光
+layer3_direction:
+- 市集花束不是单纯背景，而是 ISFP 的人格张力被转译成可见空间后的结果。
+- 镜头应优先呈现花束、纸包、手等意象；可以出现一个人物，但人物应服务于场景气质，而不是占满画面。
+- 整体气质应贴近Explorer组的感受、审美、当下，使用 soft_gouache 与 intimate_close 表达，而不是依赖固定男主角叙事。
+English image prompt: soft_gouache, earthy_pastel, intimate_close. Scene: flower market bundle wrapped by hand with imperfect beauty. Subject rule: single human presence, single_female_figure, gender mode female, people count 1. Visual motifs: 花束, 纸包, 手, 摊位, 阳光. Personality metaphor for ISFP (Explorer): 感受, 审美, 当下, 温柔反叛, 手作; 触感、色彩、个人审美与安静行动；单人、局部物件或自然手作痕迹都合适。 Create one coherent finished illustration, strong visual storytelling, no readable text, no logo, no watermark.
+Negative prompt: readable text, logo, watermark, signature, UI, speech bubble, low quality, blurry, distorted hands, extra limbs, duplicate face
+
+[3] image_id: NORN_0143
+MBTI: ESTP / role_group: Explorer
+layer1_coords: {"E_I": 8, "S_N": -8, "T_F": 8, "J_P": -8}
+visual_rationale: 高动能、公共场景、竞技、街头和即时反应；通常应有运动感和多人环境。
+scene: 滑板场入池 / skatepark drop-in moment with friends watching
+subject_rule: human_presence=multi; subject_mode=small_group_or_crowd; gender_mode=mixed; people_count=4
+style_family: graffiti_sports_poster; palette: saturated_high_contrast; composition: dynamic_diagonal
+motifs: 滑板, 坡道, 朋友, 涂鸦, 护具
+layer3_direction:
+- 滑板场入池不是单纯背景，而是 ESTP 的人格张力被转译成可见空间后的结果。
+- 镜头应优先呈现滑板、坡道、朋友等意象；多人场面可以出现，但需要让群体结构与人格倾向相互对应。
+- 整体气质应贴近Explorer组的行动、冒险、现场反应，使用 graffiti_sports_poster 与 dynamic_diagonal 表达，而不是依赖固定男主角叙事。
+English image prompt: graffiti_sports_poster, saturated_high_contrast, dynamic_diagonal. Scene: skatepark drop-in moment with friends watching. Subject rule: multi human presence, small_group_or_crowd, gender mode mixed, people count 4. Visual motifs: 滑板, 坡道, 朋友, 涂鸦, 护具. Personality metaphor for ESTP (Explorer): 行动, 冒险, 现场反应, 身体性, 刺激; 高动能、公共场景、竞技、街头和即时反应；通常应有运动感和多人环境。 Create one coherent finished illustration, strong visual storytelling, no readable text, no logo, no watermark.
+Negative prompt: readable text, logo, watermark, signature, UI, speech bubble, low quality, blurry, distorted hands, extra limbs, duplicate face
+
+[4] image_id: NORN_0144
+MBTI: ESFP / role_group: Explorer
+layer1_coords: {"E_I": 8, "S_N": -8, "T_F": -8, "J_P": -8}
+visual_rationale: 表演、聚光灯、色彩与即时快乐传染；画面可以大胆、热闹、舞台化。
+scene: 旱冰场 / roller rink under disco lights with colorful motion
+subject_rule: human_presence=multi; subject_mode=small_group_or_crowd; gender_mode=mixed; people_count=4
+style_family: stage_poster_bright; palette: hot_pink_gold; composition: spotlight_center
+motifs: 旱冰鞋, 迪斯科灯, 地板, 人群, 速度
+layer3_direction:
+- 旱冰场不是单纯背景，而是 ESFP 的人格张力被转译成可见空间后的结果。
+- 镜头应优先呈现旱冰鞋、迪斯科灯、地板等意象；多人场面可以出现，但需要让群体结构与人格倾向相互对应。
+- 整体气质应贴近Explorer组的表演、感染力、感官，使用 stage_poster_bright 与 spotlight_center 表达，而不是依赖固定男主角叙事。
+English image prompt: stage_poster_bright, hot_pink_gold, spotlight_center. Scene: roller rink under disco lights with colorful motion. Subject rule: multi human presence, small_group_or_crowd, gender mode mixed, people count 4. Visual motifs: 旱冰鞋, 迪斯科灯, 地板, 人群, 速度. Personality metaphor for ESFP (Explorer): 表演, 感染力, 感官, 欢乐, 现场魅力; 表演、聚光灯、色彩与即时快乐传染；画面可以大胆、热闹、舞台化。 Create one coherent finished illustration, strong visual storytelling, no readable text, no logo, no watermark.
+Negative prompt: readable text, logo, watermark, signature, UI, speech bubble, low quality, blurry, distorted hands, extra limbs, duplicate face

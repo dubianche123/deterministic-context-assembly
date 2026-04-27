@@ -1,0 +1,71 @@
+请为下面每个 image_id 分别生成一张独立图片。
+这是一组用于 The Norn Machine Demo 的人格视觉素材，不要把它们都画成同一个男性角色。
+
+硬性要求：
+1. 每个 image_id 是不同任务，必须严格遵守各自的 Subject rule。
+2. 可以没有人物；可以是女性、男性、中性人物、双人或多人；不要自动默认为男性。
+3. 画面里不要出现可读文字、编号、Logo、水印、对话框。
+4. 每张图可以有不同画风，但要保持成品感和视觉叙事质量。
+5. 回复里请用 image_id 标注每张图，方便我下载后重命名。
+
+图片任务：
+
+[1] image_id: NORN_0057
+MBTI: ISTJ / role_group: Sentinel
+layer1_coords: {"E_I": -8, "S_N": -8, "T_F": 8, "J_P": 8}
+visual_rationale: 可依赖的系统、档案、工具、时间表与具体物件；重点是秩序本身。
+scene: 账本台灯 / ledger under a desk lamp with ruler and tidy pencils
+subject_rule: human_presence=single; subject_mode=single_male_figure; gender_mode=male; people_count=1
+style_family: precise_line_drawing; palette: dusty_green; composition: documentary_straight
+motifs: 账本, 台灯, 尺子, 铅笔, 计算器
+layer3_direction:
+- 账本台灯不是单纯背景，而是 ISTJ 的人格张力被转译成可见空间后的结果。
+- 镜头应优先呈现账本、台灯、尺子等意象；可以出现一个人物，但人物应服务于场景气质，而不是占满画面。
+- 整体气质应贴近Sentinel组的秩序、责任、准确，使用 precise_line_drawing 与 documentary_straight 表达，而不是依赖固定男主角叙事。
+English image prompt: precise_line_drawing, dusty_green, documentary_straight. Scene: ledger under a desk lamp with ruler and tidy pencils. Subject rule: single human presence, single_male_figure, gender mode male, people count 1. Visual motifs: 账本, 台灯, 尺子, 铅笔, 计算器. Personality metaphor for ISTJ (Sentinel): 秩序, 责任, 准确, 稳定, 传统; 可依赖的系统、档案、工具、时间表与具体物件；重点是秩序本身。 Create one coherent finished illustration, strong visual storytelling, no readable text, no logo, no watermark.
+Negative prompt: readable text, logo, watermark, signature, UI, speech bubble, low quality, blurry, distorted hands, extra limbs, duplicate face
+
+[2] image_id: NORN_0058
+MBTI: ISFJ / role_group: Sentinel
+layer1_coords: {"E_I": -8, "S_N": -8, "T_F": -8, "J_P": 8}
+visual_rationale: 照料、家庭性空间、记忆物件与安静可靠的支持；双人、小群体或空场景都可以。
+scene: 缝纫房 / sewing room with fabric thread and repaired clothes
+subject_rule: human_presence=multi; subject_mode=small_group_or_crowd; gender_mode=mixed; people_count=4
+style_family: gentle_editorial; palette: rose_gray; composition: window_soft_light
+motifs: 布料, 线轴, 针包, 衣服, 台灯
+layer3_direction:
+- 缝纫房不是单纯背景，而是 ISFJ 的人格张力被转译成可见空间后的结果。
+- 镜头应优先呈现布料、线轴、针包等意象；多人场面可以出现，但需要让群体结构与人格倾向相互对应。
+- 整体气质应贴近Sentinel组的照料、记忆、稳定，使用 gentle_editorial 与 window_soft_light 表达，而不是依赖固定男主角叙事。
+English image prompt: gentle_editorial, rose_gray, window_soft_light. Scene: sewing room with fabric thread and repaired clothes. Subject rule: multi human presence, small_group_or_crowd, gender mode mixed, people count 4. Visual motifs: 布料, 线轴, 针包, 衣服, 台灯. Personality metaphor for ISFJ (Sentinel): 照料, 记忆, 稳定, 温柔责任, 守护; 照料、家庭性空间、记忆物件与安静可靠的支持；双人、小群体或空场景都可以。 Create one coherent finished illustration, strong visual storytelling, no readable text, no logo, no watermark.
+Negative prompt: readable text, logo, watermark, signature, UI, speech bubble, low quality, blurry, distorted hands, extra limbs, duplicate face
+
+[3] image_id: NORN_0059
+MBTI: ESTJ / role_group: Sentinel
+layer1_coords: {"E_I": 8, "S_N": -8, "T_F": 8, "J_P": 8}
+visual_rationale: 清晰职责、组织现场、任务分配与公共秩序；多人画面必须有结构和行动方向。
+scene: 市政服务大厅 / city service center with queue lines and counters arranged efficiently
+subject_rule: human_presence=none; subject_mode=environment_or_object_only; gender_mode=not_applicable; people_count=0
+style_family: industrial_realism; palette: brick_neutral; composition: wide_operational
+motifs: 排队线, 柜台, 座椅, 号码形, 玻璃
+layer3_direction:
+- 市政服务大厅不是单纯背景，而是 ESTJ 的人格张力被转译成可见空间后的结果。
+- 镜头应优先呈现排队线、柜台、座椅等意象；画面不需要出现人物，重点应落在空间、物件与痕迹本身。
+- 整体气质应贴近Sentinel组的执行、管理、规则，使用 industrial_realism 与 wide_operational 表达，而不是依赖固定男主角叙事。
+English image prompt: industrial_realism, brick_neutral, wide_operational. Scene: city service center with queue lines and counters arranged efficiently. Subject rule: none human presence, environment_or_object_only, gender mode not_applicable, people count 0. Visual motifs: 排队线, 柜台, 座椅, 号码形, 玻璃. Personality metaphor for ESTJ (Sentinel): 执行, 管理, 规则, 效率, 现实掌控; 清晰职责、组织现场、任务分配与公共秩序；多人画面必须有结构和行动方向。 Create one coherent finished illustration, strong visual storytelling, no readable text, no logo, no watermark.
+Negative prompt: readable text, logo, watermark, signature, UI, speech bubble, low quality, blurry, distorted hands, extra limbs, duplicate face
+
+[4] image_id: NORN_0060
+MBTI: ESFJ / role_group: Sentinel
+layer1_coords: {"E_I": 8, "S_N": -8, "T_F": -8, "J_P": 8}
+visual_rationale: 聚会、仪式、共享餐桌与可见的互相照顾；适合多人和暖色，但不失秩序。
+scene: 生日厨房 / kitchen where several people decorate a cake together
+subject_rule: human_presence=none; subject_mode=environment_or_object_only; gender_mode=not_applicable; people_count=0
+style_family: colorful_domestic_poster; palette: sunny_pastel; composition: busy_but_balanced
+motifs: 蛋糕, 奶油, 围裙, 彩带, 笑脸
+layer3_direction:
+- 生日厨房不是单纯背景，而是 ESFJ 的人格张力被转译成可见空间后的结果。
+- 镜头应优先呈现蛋糕、奶油、围裙等意象；画面不需要出现人物，重点应落在空间、物件与痕迹本身。
+- 整体气质应贴近Sentinel组的社交照料、和谐、仪式，使用 colorful_domestic_poster 与 busy_but_balanced 表达，而不是依赖固定男主角叙事。
+English image prompt: colorful_domestic_poster, sunny_pastel, busy_but_balanced. Scene: kitchen where several people decorate a cake together. Subject rule: none human presence, environment_or_object_only, gender mode not_applicable, people count 0. Visual motifs: 蛋糕, 奶油, 围裙, 彩带, 笑脸. Personality metaphor for ESFJ (Sentinel): 社交照料, 和谐, 仪式, 参与, 关系维护; 聚会、仪式、共享餐桌与可见的互相照顾；适合多人和暖色，但不失秩序。 Create one coherent finished illustration, strong visual storytelling, no readable text, no logo, no watermark.
+Negative prompt: readable text, logo, watermark, signature, UI, speech bubble, low quality, blurry, distorted hands, extra limbs, duplicate face

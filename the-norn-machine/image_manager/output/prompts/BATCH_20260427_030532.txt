@@ -1,0 +1,71 @@
+请为下面每个 image_id 分别生成一张独立图片。
+这是一组用于 The Norn Machine Demo 的人格视觉素材，不要把它们都画成同一个男性角色。
+
+硬性要求：
+1. 每个 image_id 是不同任务，必须严格遵守各自的 Subject rule。
+2. 可以没有人物；可以是女性、男性、中性人物、双人或多人；不要自动默认为男性。
+3. 画面里不要出现可读文字、编号、Logo、水印、对话框。
+4. 每张图可以有不同画风，但要保持成品感和视觉叙事质量。
+5. 回复里请用 image_id 标注每张图，方便我下载后重命名。
+
+图片任务：
+
+[1] image_id: NORN_0081
+MBTI: INTJ / role_group: Analyst
+layer1_coords: {"E_I": -8, "S_N": 8, "T_F": 8, "J_P": 8}
+visual_rationale: 低社交密度、空旷规划空间、长期推演、结构压过人物；可以没有人，或只有很小的中性人影。
+scene: 地下地图室 / underground map room with projected routes crossing a silent table
+subject_rule: human_presence=single; subject_mode=single_ambiguous_figure; gender_mode=ambiguous; people_count=1
+style_family: monochrome_brutalist_graphic; palette: deep_blue_gray; composition: large_negative_space
+motifs: 投影路线, 石墙, 长桌, 蓝色网格, 封存入口
+layer3_direction:
+- 地下地图室不是单纯背景，而是 INTJ 的人格张力被转译成可见空间后的结果。
+- 镜头应优先呈现投影路线、石墙、长桌等意象；可以出现一个人物，但人物应服务于场景气质，而不是占满画面。
+- 整体气质应贴近Analyst组的战略、系统、远景，使用 monochrome_brutalist_graphic 与 large_negative_space 表达，而不是依赖固定男主角叙事。
+English image prompt: monochrome_brutalist_graphic, deep_blue_gray, large_negative_space. Scene: underground map room with projected routes crossing a silent table. Subject rule: single human presence, single_ambiguous_figure, gender mode ambiguous, people count 1. Visual motifs: 投影路线, 石墙, 长桌, 蓝色网格, 封存入口. Personality metaphor for INTJ (Analyst): 战略, 系统, 远景, 克制, 独立; 低社交密度、空旷规划空间、长期推演、结构压过人物；可以没有人，或只有很小的中性人影。 Create one coherent finished illustration, strong visual storytelling, no readable text, no logo, no watermark.
+Negative prompt: readable text, logo, watermark, signature, UI, speech bubble, low quality, blurry, distorted hands, extra limbs, duplicate face
+
+[2] image_id: NORN_0082
+MBTI: INTP / role_group: Analyst
+layer1_coords: {"E_I": -8, "S_N": 8, "T_F": 8, "J_P": -8}
+visual_rationale: 开放问题、未完成实验、草稿式空间、低社交压力；画面像仍在生长的思维图。
+scene: 未完成桌游 / unfinished abstract board game with invented rules on the floor
+subject_rule: human_presence=single; subject_mode=single_ambiguous_figure; gender_mode=ambiguous; people_count=1
+style_family: surreal_notebook_collage; palette: paper_ivory; composition: diagram_sprawl
+motifs: 棋子, 自制卡牌, 空格地图, 骰子, 散落纸条
+layer3_direction:
+- 未完成桌游不是单纯背景，而是 INTP 的人格张力被转译成可见空间后的结果。
+- 镜头应优先呈现棋子、自制卡牌、空格地图等意象；可以出现一个人物，但人物应服务于场景气质，而不是占满画面。
+- 整体气质应贴近Analyst组的理论、好奇、解构，使用 surreal_notebook_collage 与 diagram_sprawl 表达，而不是依赖固定男主角叙事。
+English image prompt: surreal_notebook_collage, paper_ivory, diagram_sprawl. Scene: unfinished abstract board game with invented rules on the floor. Subject rule: single human presence, single_ambiguous_figure, gender mode ambiguous, people count 1. Visual motifs: 棋子, 自制卡牌, 空格地图, 骰子, 散落纸条. Personality metaphor for INTP (Analyst): 理论, 好奇, 解构, 悖论, 松散秩序; 开放问题、未完成实验、草稿式空间、低社交压力；画面像仍在生长的思维图。 Create one coherent finished illustration, strong visual storytelling, no readable text, no logo, no watermark.
+Negative prompt: readable text, logo, watermark, signature, UI, speech bubble, low quality, blurry, distorted hands, extra limbs, duplicate face
+
+[3] image_id: NORN_0083
+MBTI: ENTJ / role_group: Analyst
+layer1_coords: {"E_I": 8, "S_N": 8, "T_F": 8, "J_P": 8}
+visual_rationale: 高能量战略调度、团队协同、明确目标；人群应体现组织性而非混乱。
+scene: 高层电梯上行 / glass elevator rising through a tower atrium
+subject_rule: human_presence=pair; subject_mode=two_people_relational_scene; gender_mode=mixed_or_unspecified; people_count=2
+style_family: sharp_editorial_graphic; palette: steel_blue; composition: strong_leading_lines
+motifs: 玻璃电梯, 中庭, 城市网格, 垂直线, 反射
+layer3_direction:
+- 高层电梯上行不是单纯背景，而是 ENTJ 的人格张力被转译成可见空间后的结果。
+- 镜头应优先呈现玻璃电梯、中庭、城市网格等意象；双人关系可以出现，但重点是互动张力与位置关系。
+- 整体气质应贴近Analyst组的组织、领导、目标，使用 sharp_editorial_graphic 与 strong_leading_lines 表达，而不是依赖固定男主角叙事。
+English image prompt: sharp_editorial_graphic, steel_blue, strong_leading_lines. Scene: glass elevator rising through a tower atrium. Subject rule: pair human presence, two_people_relational_scene, gender mode mixed_or_unspecified, people count 2. Visual motifs: 玻璃电梯, 中庭, 城市网格, 垂直线, 反射. Personality metaphor for ENTJ (Analyst): 组织, 领导, 目标, 效率, 扩张; 高能量战略调度、团队协同、明确目标；人群应体现组织性而非混乱。 Create one coherent finished illustration, strong visual storytelling, no readable text, no logo, no watermark.
+Negative prompt: readable text, logo, watermark, signature, UI, speech bubble, low quality, blurry, distorted hands, extra limbs, duplicate face
+
+[4] image_id: NORN_0084
+MBTI: ENTP / role_group: Analyst
+layer1_coords: {"E_I": 8, "S_N": 8, "T_F": 8, "J_P": -8}
+visual_rationale: 多点碰撞、即兴辩论、发明现场与挑衅性图像语言；可以热闹、破碎、跳跃。
+scene: 屋顶即兴实验 / rooftop improvised lab with wires antennas and laughing silhouettes
+subject_rule: human_presence=pair; subject_mode=two_people_relational_scene; gender_mode=mixed_or_unspecified; people_count=2
+style_family: pop_surreal_collage; palette: acid_green_orange; composition: dynamic_diagonal
+motifs: 屋顶, 天线, 电线, 笑脸剪影, 夜风
+layer3_direction:
+- 屋顶即兴实验不是单纯背景，而是 ENTP 的人格张力被转译成可见空间后的结果。
+- 镜头应优先呈现屋顶、天线、电线等意象；双人关系可以出现，但重点是互动张力与位置关系。
+- 整体气质应贴近Analyst组的辩论、发明、挑衅，使用 pop_surreal_collage 与 dynamic_diagonal 表达，而不是依赖固定男主角叙事。
+English image prompt: pop_surreal_collage, acid_green_orange, dynamic_diagonal. Scene: rooftop improvised lab with wires antennas and laughing silhouettes. Subject rule: pair human presence, two_people_relational_scene, gender mode mixed_or_unspecified, people count 2. Visual motifs: 屋顶, 天线, 电线, 笑脸剪影, 夜风. Personality metaphor for ENTP (Analyst): 辩论, 发明, 挑衅, 快速联想, 开放结局; 多点碰撞、即兴辩论、发明现场与挑衅性图像语言；可以热闹、破碎、跳跃。 Create one coherent finished illustration, strong visual storytelling, no readable text, no logo, no watermark.
+Negative prompt: readable text, logo, watermark, signature, UI, speech bubble, low quality, blurry, distorted hands, extra limbs, duplicate face

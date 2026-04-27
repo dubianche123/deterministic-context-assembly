@@ -1,0 +1,2818 @@
+[
+  {
+    "id": "NORN_0001",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0001.png",
+    "type": "INTJ",
+    "coords": {
+      "E_I": -8,
+      "S_N": 8,
+      "T_F": 8,
+      "J_P": 8
+    }
+  },
+  {
+    "id": "NORN_0002",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0002.png",
+    "type": "INTP",
+    "coords": {
+      "E_I": -8,
+      "S_N": 8,
+      "T_F": 8,
+      "J_P": -8
+    }
+  },
+  {
+    "id": "NORN_0003",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0003.png",
+    "type": "ENTJ",
+    "coords": {
+      "E_I": 8,
+      "S_N": 8,
+      "T_F": 8,
+      "J_P": 8
+    }
+  },
+  {
+    "id": "NORN_0004",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0004.png",
+    "type": "ENTP",
+    "coords": {
+      "E_I": 8,
+      "S_N": 8,
+      "T_F": 8,
+      "J_P": -8
+    }
+  },
+  {
+    "id": "NORN_0005",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0005.png",
+    "type": "INFJ",
+    "coords": {
+      "E_I": -8,
+      "S_N": 8,
+      "T_F": -8,
+      "J_P": 8
+    }
+  },
+  {
+    "id": "NORN_0006",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0006.png",
+    "type": "INFP",
+    "coords": {
+      "E_I": -8,
+      "S_N": 8,
+      "T_F": -8,
+      "J_P": -8
+    }
+  },
+  {
+    "id": "NORN_0007",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0007.png",
+    "type": "ENFJ",
+    "coords": {
+      "E_I": 8,
+      "S_N": 8,
+      "T_F": -8,
+      "J_P": 8
+    }
+  },
+  {
+    "id": "NORN_0008",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0008.png",
+    "type": "ENFP",
+    "coords": {
+      "E_I": 8,
+      "S_N": 8,
+      "T_F": -8,
+      "J_P": -8
+    }
+  },
+  {
+    "id": "NORN_0009",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0009.png",
+    "type": "ISTJ",
+    "coords": {
+      "E_I": -8,
+      "S_N": -8,
+      "T_F": 8,
+      "J_P": 8
+    }
+  },
+  {
+    "id": "NORN_0010",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0010.png",
+    "type": "ISFJ",
+    "coords": {
+      "E_I": -8,
+      "S_N": -8,
+      "T_F": -8,
+      "J_P": 8
+    }
+  },
+  {
+    "id": "NORN_0011",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0011.png",
+    "type": "ESTJ",
+    "coords": {
+      "E_I": 8,
+      "S_N": -8,
+      "T_F": 8,
+      "J_P": 8
+    }
+  },
+  {
+    "id": "NORN_0012",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0012.png",
+    "type": "ESFJ",
+    "coords": {
+      "E_I": 8,
+      "S_N": -8,
+      "T_F": -8,
+      "J_P": 8
+    }
+  },
+  {
+    "id": "NORN_0013",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0013.png",
+    "type": "ISTP",
+    "coords": {
+      "E_I": -8,
+      "S_N": -8,
+      "T_F": 8,
+      "J_P": -8
+    }
+  },
+  {
+    "id": "NORN_0014",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0014.png",
+    "type": "ISFP",
+    "coords": {
+      "E_I": -8,
+      "S_N": -8,
+      "T_F": -8,
+      "J_P": -8
+    }
+  },
+  {
+    "id": "NORN_0015",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0015.png",
+    "type": "ESTP",
+    "coords": {
+      "E_I": 8,
+      "S_N": -8,
+      "T_F": 8,
+      "J_P": -8
+    }
+  },
+  {
+    "id": "NORN_0016",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0016.png",
+    "type": "ESFP",
+    "coords": {
+      "E_I": 8,
+      "S_N": -8,
+      "T_F": -8,
+      "J_P": -8
+    }
+  },
+  {
+    "id": "NORN_0017",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0017.png",
+    "type": "INTJ",
+    "coords": {
+      "E_I": -8,
+      "S_N": 8,
+      "T_F": 8,
+      "J_P": 8
+    }
+  },
+  {
+    "id": "NORN_0018",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0018.png",
+    "type": "INTP",
+    "coords": {
+      "E_I": -8,
+      "S_N": 8,
+      "T_F": 8,
+      "J_P": -8
+    }
+  },
+  {
+    "id": "NORN_0019",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0019.png",
+    "type": "ENTJ",
+    "coords": {
+      "E_I": 8,
+      "S_N": 8,
+      "T_F": 8,
+      "J_P": 8
+    }
+  },
+  {
+    "id": "NORN_0020",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0020.png",
+    "type": "ENTP",
+    "coords": {
+      "E_I": 8,
+      "S_N": 8,
+      "T_F": 8,
+      "J_P": -8
+    }
+  },
+  {
+    "id": "NORN_0021",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0021.png",
+    "type": "INFJ",
+    "coords": {
+      "E_I": -8,
+      "S_N": 8,
+      "T_F": -8,
+      "J_P": 8
+    }
+  },
+  {
+    "id": "NORN_0022",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0022.png",
+    "type": "INFP",
+    "coords": {
+      "E_I": -8,
+      "S_N": 8,
+      "T_F": -8,
+      "J_P": -8
+    }
+  },
+  {
+    "id": "NORN_0023",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0023.png",
+    "type": "ENFJ",
+    "coords": {
+      "E_I": 8,
+      "S_N": 8,
+      "T_F": -8,
+      "J_P": 8
+    }
+  },
+  {
+    "id": "NORN_0024",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0024.png",
+    "type": "ENFP",
+    "coords": {
+      "E_I": 8,
+      "S_N": 8,
+      "T_F": -8,
+      "J_P": -8
+    }
+  },
+  {
+    "id": "NORN_0025",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0025.png",
+    "type": "ISTJ",
+    "coords": {
+      "E_I": -8,
+      "S_N": -8,
+      "T_F": 8,
+      "J_P": 8
+    }
+  },
+  {
+    "id": "NORN_0026",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0026.png",
+    "type": "ISFJ",
+    "coords": {
+      "E_I": -8,
+      "S_N": -8,
+      "T_F": -8,
+      "J_P": 8
+    }
+  },
+  {
+    "id": "NORN_0027",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0027.png",
+    "type": "ESTJ",
+    "coords": {
+      "E_I": 8,
+      "S_N": -8,
+      "T_F": 8,
+      "J_P": 8
+    }
+  },
+  {
+    "id": "NORN_0028",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0028.png",
+    "type": "ESFJ",
+    "coords": {
+      "E_I": 8,
+      "S_N": -8,
+      "T_F": -8,
+      "J_P": 8
+    }
+  },
+  {
+    "id": "NORN_0029",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0029.png",
+    "type": "ISTP",
+    "coords": {
+      "E_I": -8,
+      "S_N": -8,
+      "T_F": 8,
+      "J_P": -8
+    }
+  },
+  {
+    "id": "NORN_0030",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0030.png",
+    "type": "ISFP",
+    "coords": {
+      "E_I": -8,
+      "S_N": -8,
+      "T_F": -8,
+      "J_P": -8
+    }
+  },
+  {
+    "id": "NORN_0031",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0031.png",
+    "type": "ESTP",
+    "coords": {
+      "E_I": 8,
+      "S_N": -8,
+      "T_F": 8,
+      "J_P": -8
+    }
+  },
+  {
+    "id": "NORN_0032",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0032.png",
+    "type": "ESFP",
+    "coords": {
+      "E_I": 8,
+      "S_N": -8,
+      "T_F": -8,
+      "J_P": -8
+    }
+  },
+  {
+    "id": "NORN_0033",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0033.png",
+    "type": "INTJ",
+    "coords": {
+      "E_I": -8,
+      "S_N": 8,
+      "T_F": 8,
+      "J_P": 8
+    }
+  },
+  {
+    "id": "NORN_0034",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0034.png",
+    "type": "INTP",
+    "coords": {
+      "E_I": -8,
+      "S_N": 8,
+      "T_F": 8,
+      "J_P": -8
+    }
+  },
+  {
+    "id": "NORN_0035",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0035.png",
+    "type": "ENTJ",
+    "coords": {
+      "E_I": 8,
+      "S_N": 8,
+      "T_F": 8,
+      "J_P": 8
+    }
+  },
+  {
+    "id": "NORN_0036",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0036.png",
+    "type": "ENTP",
+    "coords": {
+      "E_I": 8,
+      "S_N": 8,
+      "T_F": 8,
+      "J_P": -8
+    }
+  },
+  {
+    "id": "NORN_0037",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0037.png",
+    "type": "INFJ",
+    "coords": {
+      "E_I": -8,
+      "S_N": 8,
+      "T_F": -8,
+      "J_P": 8
+    }
+  },
+  {
+    "id": "NORN_0038",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0038.png",
+    "type": "INFP",
+    "coords": {
+      "E_I": -8,
+      "S_N": 8,
+      "T_F": -8,
+      "J_P": -8
+    }
+  },
+  {
+    "id": "NORN_0039",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0039.png",
+    "type": "ENFJ",
+    "coords": {
+      "E_I": 8,
+      "S_N": 8,
+      "T_F": -8,
+      "J_P": 8
+    }
+  },
+  {
+    "id": "NORN_0040",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0040.png",
+    "type": "ENFP",
+    "coords": {
+      "E_I": 8,
+      "S_N": 8,
+      "T_F": -8,
+      "J_P": -8
+    }
+  },
+  {
+    "id": "NORN_0041",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0041.png",
+    "type": "ISTJ",
+    "coords": {
+      "E_I": -8,
+      "S_N": -8,
+      "T_F": 8,
+      "J_P": 8
+    }
+  },
+  {
+    "id": "NORN_0042",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0042.png",
+    "type": "ISFJ",
+    "coords": {
+      "E_I": -8,
+      "S_N": -8,
+      "T_F": -8,
+      "J_P": 8
+    }
+  },
+  {
+    "id": "NORN_0043",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0043.png",
+    "type": "ESTJ",
+    "coords": {
+      "E_I": 8,
+      "S_N": -8,
+      "T_F": 8,
+      "J_P": 8
+    }
+  },
+  {
+    "id": "NORN_0044",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0044.png",
+    "type": "ESFJ",
+    "coords": {
+      "E_I": 8,
+      "S_N": -8,
+      "T_F": -8,
+      "J_P": 8
+    }
+  },
+  {
+    "id": "NORN_0045",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0045.png",
+    "type": "ISTP",
+    "coords": {
+      "E_I": -8,
+      "S_N": -8,
+      "T_F": 8,
+      "J_P": -8
+    }
+  },
+  {
+    "id": "NORN_0046",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0046.png",
+    "type": "ISFP",
+    "coords": {
+      "E_I": -8,
+      "S_N": -8,
+      "T_F": -8,
+      "J_P": -8
+    }
+  },
+  {
+    "id": "NORN_0047",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0047.png",
+    "type": "ESTP",
+    "coords": {
+      "E_I": 8,
+      "S_N": -8,
+      "T_F": 8,
+      "J_P": -8
+    }
+  },
+  {
+    "id": "NORN_0048",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0048.png",
+    "type": "ESFP",
+    "coords": {
+      "E_I": 8,
+      "S_N": -8,
+      "T_F": -8,
+      "J_P": -8
+    }
+  },
+  {
+    "id": "NORN_0049",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0049.png",
+    "type": "INTJ",
+    "coords": {
+      "E_I": -8,
+      "S_N": 8,
+      "T_F": 8,
+      "J_P": 8
+    }
+  },
+  {
+    "id": "NORN_0050",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0050.png",
+    "type": "INTP",
+    "coords": {
+      "E_I": -8,
+      "S_N": 8,
+      "T_F": 8,
+      "J_P": -8
+    }
+  },
+  {
+    "id": "NORN_0051",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0051.png",
+    "type": "ENTJ",
+    "coords": {
+      "E_I": 8,
+      "S_N": 8,
+      "T_F": 8,
+      "J_P": 8
+    }
+  },
+  {
+    "id": "NORN_0052",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0052.png",
+    "type": "ENTP",
+    "coords": {
+      "E_I": 8,
+      "S_N": 8,
+      "T_F": 8,
+      "J_P": -8
+    }
+  },
+  {
+    "id": "NORN_0053",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0053.png",
+    "type": "INFJ",
+    "coords": {
+      "E_I": -8,
+      "S_N": 8,
+      "T_F": -8,
+      "J_P": 8
+    }
+  },
+  {
+    "id": "NORN_0054",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0054.png",
+    "type": "INFP",
+    "coords": {
+      "E_I": -8,
+      "S_N": 8,
+      "T_F": -8,
+      "J_P": -8
+    }
+  },
+  {
+    "id": "NORN_0055",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0055.png",
+    "type": "ENFJ",
+    "coords": {
+      "E_I": 8,
+      "S_N": 8,
+      "T_F": -8,
+      "J_P": 8
+    }
+  },
+  {
+    "id": "NORN_0056",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0056.png",
+    "type": "ENFP",
+    "coords": {
+      "E_I": 8,
+      "S_N": 8,
+      "T_F": -8,
+      "J_P": -8
+    }
+  },
+  {
+    "id": "NORN_0057",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0057.png",
+    "type": "ISTJ",
+    "coords": {
+      "E_I": -8,
+      "S_N": -8,
+      "T_F": 8,
+      "J_P": 8
+    }
+  },
+  {
+    "id": "NORN_0058",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0058.png",
+    "type": "ISFJ",
+    "coords": {
+      "E_I": -8,
+      "S_N": -8,
+      "T_F": -8,
+      "J_P": 8
+    }
+  },
+  {
+    "id": "NORN_0059",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0059.png",
+    "type": "ESTJ",
+    "coords": {
+      "E_I": 8,
+      "S_N": -8,
+      "T_F": 8,
+      "J_P": 8
+    }
+  },
+  {
+    "id": "NORN_0060",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0060.png",
+    "type": "ESFJ",
+    "coords": {
+      "E_I": 8,
+      "S_N": -8,
+      "T_F": -8,
+      "J_P": 8
+    }
+  },
+  {
+    "id": "NORN_0061",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0061.png",
+    "type": "ISTP",
+    "coords": {
+      "E_I": -8,
+      "S_N": -8,
+      "T_F": 8,
+      "J_P": -8
+    }
+  },
+  {
+    "id": "NORN_0062",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0062.png",
+    "type": "ISFP",
+    "coords": {
+      "E_I": -8,
+      "S_N": -8,
+      "T_F": -8,
+      "J_P": -8
+    }
+  },
+  {
+    "id": "NORN_0063",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0063.png",
+    "type": "ESTP",
+    "coords": {
+      "E_I": 8,
+      "S_N": -8,
+      "T_F": 8,
+      "J_P": -8
+    }
+  },
+  {
+    "id": "NORN_0064",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0064.png",
+    "type": "ESFP",
+    "coords": {
+      "E_I": 8,
+      "S_N": -8,
+      "T_F": -8,
+      "J_P": -8
+    }
+  },
+  {
+    "id": "NORN_0065",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0065.png",
+    "type": "INTJ",
+    "coords": {
+      "E_I": -8,
+      "S_N": 8,
+      "T_F": 8,
+      "J_P": 8
+    }
+  },
+  {
+    "id": "NORN_0066",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0066.png",
+    "type": "INTP",
+    "coords": {
+      "E_I": -8,
+      "S_N": 8,
+      "T_F": 8,
+      "J_P": -8
+    }
+  },
+  {
+    "id": "NORN_0067",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0067.png",
+    "type": "ENTJ",
+    "coords": {
+      "E_I": 8,
+      "S_N": 8,
+      "T_F": 8,
+      "J_P": 8
+    }
+  },
+  {
+    "id": "NORN_0068",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0068.png",
+    "type": "ENTP",
+    "coords": {
+      "E_I": 8,
+      "S_N": 8,
+      "T_F": 8,
+      "J_P": -8
+    }
+  },
+  {
+    "id": "NORN_0069",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0069.png",
+    "type": "INFJ",
+    "coords": {
+      "E_I": -8,
+      "S_N": 8,
+      "T_F": -8,
+      "J_P": 8
+    }
+  },
+  {
+    "id": "NORN_0070",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0070.png",
+    "type": "INFP",
+    "coords": {
+      "E_I": -8,
+      "S_N": 8,
+      "T_F": -8,
+      "J_P": -8
+    }
+  },
+  {
+    "id": "NORN_0071",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0071.png",
+    "type": "ENFJ",
+    "coords": {
+      "E_I": 8,
+      "S_N": 8,
+      "T_F": -8,
+      "J_P": 8
+    }
+  },
+  {
+    "id": "NORN_0072",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0072.png",
+    "type": "ENFP",
+    "coords": {
+      "E_I": 8,
+      "S_N": 8,
+      "T_F": -8,
+      "J_P": -8
+    }
+  },
+  {
+    "id": "NORN_0073",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0073.png",
+    "type": "ISTJ",
+    "coords": {
+      "E_I": -8,
+      "S_N": -8,
+      "T_F": 8,
+      "J_P": 8
+    }
+  },
+  {
+    "id": "NORN_0074",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0074.png",
+    "type": "ISFJ",
+    "coords": {
+      "E_I": -8,
+      "S_N": -8,
+      "T_F": -8,
+      "J_P": 8
+    }
+  },
+  {
+    "id": "NORN_0075",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0075.png",
+    "type": "ESTJ",
+    "coords": {
+      "E_I": 8,
+      "S_N": -8,
+      "T_F": 8,
+      "J_P": 8
+    }
+  },
+  {
+    "id": "NORN_0076",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0076.png",
+    "type": "ESFJ",
+    "coords": {
+      "E_I": 8,
+      "S_N": -8,
+      "T_F": -8,
+      "J_P": 8
+    }
+  },
+  {
+    "id": "NORN_0077",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0077.png",
+    "type": "ISTP",
+    "coords": {
+      "E_I": -8,
+      "S_N": -8,
+      "T_F": 8,
+      "J_P": -8
+    }
+  },
+  {
+    "id": "NORN_0078",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0078.png",
+    "type": "ISFP",
+    "coords": {
+      "E_I": -8,
+      "S_N": -8,
+      "T_F": -8,
+      "J_P": -8
+    }
+  },
+  {
+    "id": "NORN_0079",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0079.png",
+    "type": "ESTP",
+    "coords": {
+      "E_I": 8,
+      "S_N": -8,
+      "T_F": 8,
+      "J_P": -8
+    }
+  },
+  {
+    "id": "NORN_0080",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0080.png",
+    "type": "ESFP",
+    "coords": {
+      "E_I": 8,
+      "S_N": -8,
+      "T_F": -8,
+      "J_P": -8
+    }
+  },
+  {
+    "id": "NORN_0081",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0081.png",
+    "type": "INTJ",
+    "coords": {
+      "E_I": -8,
+      "S_N": 8,
+      "T_F": 8,
+      "J_P": 8
+    }
+  },
+  {
+    "id": "NORN_0082",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0082.png",
+    "type": "INTP",
+    "coords": {
+      "E_I": -8,
+      "S_N": 8,
+      "T_F": 8,
+      "J_P": -8
+    }
+  },
+  {
+    "id": "NORN_0083",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0083.png",
+    "type": "ENTJ",
+    "coords": {
+      "E_I": 8,
+      "S_N": 8,
+      "T_F": 8,
+      "J_P": 8
+    }
+  },
+  {
+    "id": "NORN_0084",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0084.png",
+    "type": "ENTP",
+    "coords": {
+      "E_I": 8,
+      "S_N": 8,
+      "T_F": 8,
+      "J_P": -8
+    }
+  },
+  {
+    "id": "NORN_0085",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0085.png",
+    "type": "INFJ",
+    "coords": {
+      "E_I": -8,
+      "S_N": 8,
+      "T_F": -8,
+      "J_P": 8
+    }
+  },
+  {
+    "id": "NORN_0086",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0086.png",
+    "type": "INFP",
+    "coords": {
+      "E_I": -8,
+      "S_N": 8,
+      "T_F": -8,
+      "J_P": -8
+    }
+  },
+  {
+    "id": "NORN_0087",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0087.png",
+    "type": "ENFJ",
+    "coords": {
+      "E_I": 8,
+      "S_N": 8,
+      "T_F": -8,
+      "J_P": 8
+    }
+  },
+  {
+    "id": "NORN_0088",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0088.png",
+    "type": "ENFP",
+    "coords": {
+      "E_I": 8,
+      "S_N": 8,
+      "T_F": -8,
+      "J_P": -8
+    }
+  },
+  {
+    "id": "NORN_0089",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0089.png",
+    "type": "ISTJ",
+    "coords": {
+      "E_I": -8,
+      "S_N": -8,
+      "T_F": 8,
+      "J_P": 8
+    }
+  },
+  {
+    "id": "NORN_0090",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0090.png",
+    "type": "ISFJ",
+    "coords": {
+      "E_I": -8,
+      "S_N": -8,
+      "T_F": -8,
+      "J_P": 8
+    }
+  },
+  {
+    "id": "NORN_0091",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0091.png",
+    "type": "ESTJ",
+    "coords": {
+      "E_I": 8,
+      "S_N": -8,
+      "T_F": 8,
+      "J_P": 8
+    }
+  },
+  {
+    "id": "NORN_0092",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0092.png",
+    "type": "ESFJ",
+    "coords": {
+      "E_I": 8,
+      "S_N": -8,
+      "T_F": -8,
+      "J_P": 8
+    }
+  },
+  {
+    "id": "NORN_0093",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0093.png",
+    "type": "ISTP",
+    "coords": {
+      "E_I": -8,
+      "S_N": -8,
+      "T_F": 8,
+      "J_P": -8
+    }
+  },
+  {
+    "id": "NORN_0094",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0094.png",
+    "type": "ISFP",
+    "coords": {
+      "E_I": -8,
+      "S_N": -8,
+      "T_F": -8,
+      "J_P": -8
+    }
+  },
+  {
+    "id": "NORN_0095",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0095.png",
+    "type": "ESTP",
+    "coords": {
+      "E_I": 8,
+      "S_N": -8,
+      "T_F": 8,
+      "J_P": -8
+    }
+  },
+  {
+    "id": "NORN_0096",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0096.png",
+    "type": "ESFP",
+    "coords": {
+      "E_I": 8,
+      "S_N": -8,
+      "T_F": -8,
+      "J_P": -8
+    }
+  },
+  {
+    "id": "NORN_0097",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0097.png",
+    "type": "INTJ",
+    "coords": {
+      "E_I": -8,
+      "S_N": 8,
+      "T_F": 8,
+      "J_P": 8
+    }
+  },
+  {
+    "id": "NORN_0098",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0098.png",
+    "type": "INTP",
+    "coords": {
+      "E_I": -8,
+      "S_N": 8,
+      "T_F": 8,
+      "J_P": -8
+    }
+  },
+  {
+    "id": "NORN_0099",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0099.png",
+    "type": "ENTJ",
+    "coords": {
+      "E_I": 8,
+      "S_N": 8,
+      "T_F": 8,
+      "J_P": 8
+    }
+  },
+  {
+    "id": "NORN_0100",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0100.png",
+    "type": "ENTP",
+    "coords": {
+      "E_I": 8,
+      "S_N": 8,
+      "T_F": 8,
+      "J_P": -8
+    }
+  },
+  {
+    "id": "NORN_0101",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0101.png",
+    "type": "INFJ",
+    "coords": {
+      "E_I": -8,
+      "S_N": 8,
+      "T_F": -8,
+      "J_P": 8
+    }
+  },
+  {
+    "id": "NORN_0102",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0102.png",
+    "type": "INFP",
+    "coords": {
+      "E_I": -8,
+      "S_N": 8,
+      "T_F": -8,
+      "J_P": -8
+    }
+  },
+  {
+    "id": "NORN_0103",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0103.png",
+    "type": "ENFJ",
+    "coords": {
+      "E_I": 8,
+      "S_N": 8,
+      "T_F": -8,
+      "J_P": 8
+    }
+  },
+  {
+    "id": "NORN_0104",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0104.png",
+    "type": "ENFP",
+    "coords": {
+      "E_I": 8,
+      "S_N": 8,
+      "T_F": -8,
+      "J_P": -8
+    }
+  },
+  {
+    "id": "NORN_0105",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0105.png",
+    "type": "ISTJ",
+    "coords": {
+      "E_I": -8,
+      "S_N": -8,
+      "T_F": 8,
+      "J_P": 8
+    }
+  },
+  {
+    "id": "NORN_0106",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0106.png",
+    "type": "ISFJ",
+    "coords": {
+      "E_I": -8,
+      "S_N": -8,
+      "T_F": -8,
+      "J_P": 8
+    }
+  },
+  {
+    "id": "NORN_0107",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0107.png",
+    "type": "ESTJ",
+    "coords": {
+      "E_I": 8,
+      "S_N": -8,
+      "T_F": 8,
+      "J_P": 8
+    }
+  },
+  {
+    "id": "NORN_0108",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0108.png",
+    "type": "ESFJ",
+    "coords": {
+      "E_I": 8,
+      "S_N": -8,
+      "T_F": -8,
+      "J_P": 8
+    }
+  },
+  {
+    "id": "NORN_0109",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0109.png",
+    "type": "ISTP",
+    "coords": {
+      "E_I": -8,
+      "S_N": -8,
+      "T_F": 8,
+      "J_P": -8
+    }
+  },
+  {
+    "id": "NORN_0110",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0110.png",
+    "type": "ISFP",
+    "coords": {
+      "E_I": -8,
+      "S_N": -8,
+      "T_F": -8,
+      "J_P": -8
+    }
+  },
+  {
+    "id": "NORN_0111",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0111.png",
+    "type": "ESTP",
+    "coords": {
+      "E_I": 8,
+      "S_N": -8,
+      "T_F": 8,
+      "J_P": -8
+    }
+  },
+  {
+    "id": "NORN_0112",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0112.png",
+    "type": "ESFP",
+    "coords": {
+      "E_I": 8,
+      "S_N": -8,
+      "T_F": -8,
+      "J_P": -8
+    }
+  },
+  {
+    "id": "NORN_0113",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0113.png",
+    "type": "INTJ",
+    "coords": {
+      "E_I": -8,
+      "S_N": 8,
+      "T_F": 8,
+      "J_P": 8
+    }
+  },
+  {
+    "id": "NORN_0114",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0114.png",
+    "type": "INTP",
+    "coords": {
+      "E_I": -8,
+      "S_N": 8,
+      "T_F": 8,
+      "J_P": -8
+    }
+  },
+  {
+    "id": "NORN_0115",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0115.png",
+    "type": "ENTJ",
+    "coords": {
+      "E_I": 8,
+      "S_N": 8,
+      "T_F": 8,
+      "J_P": 8
+    }
+  },
+  {
+    "id": "NORN_0116",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0116.png",
+    "type": "ENTP",
+    "coords": {
+      "E_I": 8,
+      "S_N": 8,
+      "T_F": 8,
+      "J_P": -8
+    }
+  },
+  {
+    "id": "NORN_0117",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0117.png",
+    "type": "INFJ",
+    "coords": {
+      "E_I": -8,
+      "S_N": 8,
+      "T_F": -8,
+      "J_P": 8
+    }
+  },
+  {
+    "id": "NORN_0118",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0118.png",
+    "type": "INFP",
+    "coords": {
+      "E_I": -8,
+      "S_N": 8,
+      "T_F": -8,
+      "J_P": -8
+    }
+  },
+  {
+    "id": "NORN_0119",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0119.png",
+    "type": "ENFJ",
+    "coords": {
+      "E_I": 8,
+      "S_N": 8,
+      "T_F": -8,
+      "J_P": 8
+    }
+  },
+  {
+    "id": "NORN_0120",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0120.png",
+    "type": "ENFP",
+    "coords": {
+      "E_I": 8,
+      "S_N": 8,
+      "T_F": -8,
+      "J_P": -8
+    }
+  },
+  {
+    "id": "NORN_0121",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0121.png",
+    "type": "ISTJ",
+    "coords": {
+      "E_I": -8,
+      "S_N": -8,
+      "T_F": 8,
+      "J_P": 8
+    }
+  },
+  {
+    "id": "NORN_0122",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0122.png",
+    "type": "ISFJ",
+    "coords": {
+      "E_I": -8,
+      "S_N": -8,
+      "T_F": -8,
+      "J_P": 8
+    }
+  },
+  {
+    "id": "NORN_0123",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0123.png",
+    "type": "ESTJ",
+    "coords": {
+      "E_I": 8,
+      "S_N": -8,
+      "T_F": 8,
+      "J_P": 8
+    }
+  },
+  {
+    "id": "NORN_0124",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0124.png",
+    "type": "ESFJ",
+    "coords": {
+      "E_I": 8,
+      "S_N": -8,
+      "T_F": -8,
+      "J_P": 8
+    }
+  },
+  {
+    "id": "NORN_0125",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0125.png",
+    "type": "ISTP",
+    "coords": {
+      "E_I": -8,
+      "S_N": -8,
+      "T_F": 8,
+      "J_P": -8
+    }
+  },
+  {
+    "id": "NORN_0126",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0126.png",
+    "type": "ISFP",
+    "coords": {
+      "E_I": -8,
+      "S_N": -8,
+      "T_F": -8,
+      "J_P": -8
+    }
+  },
+  {
+    "id": "NORN_0127",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0127.png",
+    "type": "ESTP",
+    "coords": {
+      "E_I": 8,
+      "S_N": -8,
+      "T_F": 8,
+      "J_P": -8
+    }
+  },
+  {
+    "id": "NORN_0128",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0128.png",
+    "type": "ESFP",
+    "coords": {
+      "E_I": 8,
+      "S_N": -8,
+      "T_F": -8,
+      "J_P": -8
+    }
+  },
+  {
+    "id": "NORN_0129",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0129.png",
+    "type": "INTJ",
+    "coords": {
+      "E_I": -8,
+      "S_N": 8,
+      "T_F": 8,
+      "J_P": 8
+    }
+  },
+  {
+    "id": "NORN_0130",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0130.png",
+    "type": "INTP",
+    "coords": {
+      "E_I": -8,
+      "S_N": 8,
+      "T_F": 8,
+      "J_P": -8
+    }
+  },
+  {
+    "id": "NORN_0131",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0131.png",
+    "type": "ENTJ",
+    "coords": {
+      "E_I": 8,
+      "S_N": 8,
+      "T_F": 8,
+      "J_P": 8
+    }
+  },
+  {
+    "id": "NORN_0132",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0132.png",
+    "type": "ENTP",
+    "coords": {
+      "E_I": 8,
+      "S_N": 8,
+      "T_F": 8,
+      "J_P": -8
+    }
+  },
+  {
+    "id": "NORN_0133",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0133.png",
+    "type": "INFJ",
+    "coords": {
+      "E_I": -8,
+      "S_N": 8,
+      "T_F": -8,
+      "J_P": 8
+    }
+  },
+  {
+    "id": "NORN_0134",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0134.png",
+    "type": "INFP",
+    "coords": {
+      "E_I": -8,
+      "S_N": 8,
+      "T_F": -8,
+      "J_P": -8
+    }
+  },
+  {
+    "id": "NORN_0135",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0135.png",
+    "type": "ENFJ",
+    "coords": {
+      "E_I": 8,
+      "S_N": 8,
+      "T_F": -8,
+      "J_P": 8
+    }
+  },
+  {
+    "id": "NORN_0136",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0136.png",
+    "type": "ENFP",
+    "coords": {
+      "E_I": 8,
+      "S_N": 8,
+      "T_F": -8,
+      "J_P": -8
+    }
+  },
+  {
+    "id": "NORN_0137",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0137.png",
+    "type": "ISTJ",
+    "coords": {
+      "E_I": -8,
+      "S_N": -8,
+      "T_F": 8,
+      "J_P": 8
+    }
+  },
+  {
+    "id": "NORN_0138",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0138.png",
+    "type": "ISFJ",
+    "coords": {
+      "E_I": -8,
+      "S_N": -8,
+      "T_F": -8,
+      "J_P": 8
+    }
+  },
+  {
+    "id": "NORN_0139",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0139.png",
+    "type": "ESTJ",
+    "coords": {
+      "E_I": 8,
+      "S_N": -8,
+      "T_F": 8,
+      "J_P": 8
+    }
+  },
+  {
+    "id": "NORN_0140",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0140.png",
+    "type": "ESFJ",
+    "coords": {
+      "E_I": 8,
+      "S_N": -8,
+      "T_F": -8,
+      "J_P": 8
+    }
+  },
+  {
+    "id": "NORN_0141",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0141.png",
+    "type": "ISTP",
+    "coords": {
+      "E_I": -8,
+      "S_N": -8,
+      "T_F": 8,
+      "J_P": -8
+    }
+  },
+  {
+    "id": "NORN_0142",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0142.png",
+    "type": "ISFP",
+    "coords": {
+      "E_I": -8,
+      "S_N": -8,
+      "T_F": -8,
+      "J_P": -8
+    }
+  },
+  {
+    "id": "NORN_0143",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0143.png",
+    "type": "ESTP",
+    "coords": {
+      "E_I": 8,
+      "S_N": -8,
+      "T_F": 8,
+      "J_P": -8
+    }
+  },
+  {
+    "id": "NORN_0144",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0144.png",
+    "type": "ESFP",
+    "coords": {
+      "E_I": 8,
+      "S_N": -8,
+      "T_F": -8,
+      "J_P": -8
+    }
+  },
+  {
+    "id": "NORN_0145",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0145.png",
+    "type": "INTJ",
+    "coords": {
+      "E_I": -8,
+      "S_N": 8,
+      "T_F": 8,
+      "J_P": 8
+    }
+  },
+  {
+    "id": "NORN_0146",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0146.png",
+    "type": "INTP",
+    "coords": {
+      "E_I": -8,
+      "S_N": 8,
+      "T_F": 8,
+      "J_P": -8
+    }
+  },
+  {
+    "id": "NORN_0147",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0147.png",
+    "type": "ENTJ",
+    "coords": {
+      "E_I": 8,
+      "S_N": 8,
+      "T_F": 8,
+      "J_P": 8
+    }
+  },
+  {
+    "id": "NORN_0148",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0148.png",
+    "type": "ENTP",
+    "coords": {
+      "E_I": 8,
+      "S_N": 8,
+      "T_F": 8,
+      "J_P": -8
+    }
+  },
+  {
+    "id": "NORN_0149",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0149.png",
+    "type": "INFJ",
+    "coords": {
+      "E_I": -8,
+      "S_N": 8,
+      "T_F": -8,
+      "J_P": 8
+    }
+  },
+  {
+    "id": "NORN_0150",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0150.png",
+    "type": "INFP",
+    "coords": {
+      "E_I": -8,
+      "S_N": 8,
+      "T_F": -8,
+      "J_P": -8
+    }
+  },
+  {
+    "id": "NORN_0151",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0151.png",
+    "type": "ENFJ",
+    "coords": {
+      "E_I": 8,
+      "S_N": 8,
+      "T_F": -8,
+      "J_P": 8
+    }
+  },
+  {
+    "id": "NORN_0152",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0152.png",
+    "type": "ENFP",
+    "coords": {
+      "E_I": 8,
+      "S_N": 8,
+      "T_F": -8,
+      "J_P": -8
+    }
+  },
+  {
+    "id": "NORN_0153",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0153.png",
+    "type": "ISTJ",
+    "coords": {
+      "E_I": -8,
+      "S_N": -8,
+      "T_F": 8,
+      "J_P": 8
+    }
+  },
+  {
+    "id": "NORN_0154",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0154.png",
+    "type": "ISFJ",
+    "coords": {
+      "E_I": -8,
+      "S_N": -8,
+      "T_F": -8,
+      "J_P": 8
+    }
+  },
+  {
+    "id": "NORN_0155",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0155.png",
+    "type": "ESTJ",
+    "coords": {
+      "E_I": 8,
+      "S_N": -8,
+      "T_F": 8,
+      "J_P": 8
+    }
+  },
+  {
+    "id": "NORN_0156",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0156.png",
+    "type": "ESFJ",
+    "coords": {
+      "E_I": 8,
+      "S_N": -8,
+      "T_F": -8,
+      "J_P": 8
+    }
+  },
+  {
+    "id": "NORN_0157",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0157.png",
+    "type": "ISTP",
+    "coords": {
+      "E_I": -8,
+      "S_N": -8,
+      "T_F": 8,
+      "J_P": -8
+    }
+  },
+  {
+    "id": "NORN_0158",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0158.png",
+    "type": "ISFP",
+    "coords": {
+      "E_I": -8,
+      "S_N": -8,
+      "T_F": -8,
+      "J_P": -8
+    }
+  },
+  {
+    "id": "NORN_0159",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0159.png",
+    "type": "ESTP",
+    "coords": {
+      "E_I": 8,
+      "S_N": -8,
+      "T_F": 8,
+      "J_P": -8
+    }
+  },
+  {
+    "id": "NORN_0160",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0160.png",
+    "type": "ESFP",
+    "coords": {
+      "E_I": 8,
+      "S_N": -8,
+      "T_F": -8,
+      "J_P": -8
+    }
+  },
+  {
+    "id": "NORN_0161",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0161.png",
+    "type": "INTJ",
+    "coords": {
+      "E_I": -8,
+      "S_N": 8,
+      "T_F": 8,
+      "J_P": 8
+    }
+  },
+  {
+    "id": "NORN_0162",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0162.png",
+    "type": "INTP",
+    "coords": {
+      "E_I": -8,
+      "S_N": 8,
+      "T_F": 8,
+      "J_P": -8
+    }
+  },
+  {
+    "id": "NORN_0163",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0163.png",
+    "type": "ENTJ",
+    "coords": {
+      "E_I": 8,
+      "S_N": 8,
+      "T_F": 8,
+      "J_P": 8
+    }
+  },
+  {
+    "id": "NORN_0164",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0164.png",
+    "type": "ENTP",
+    "coords": {
+      "E_I": 8,
+      "S_N": 8,
+      "T_F": 8,
+      "J_P": -8
+    }
+  },
+  {
+    "id": "NORN_0165",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0165.png",
+    "type": "INFJ",
+    "coords": {
+      "E_I": -8,
+      "S_N": 8,
+      "T_F": -8,
+      "J_P": 8
+    }
+  },
+  {
+    "id": "NORN_0166",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0166.png",
+    "type": "INFP",
+    "coords": {
+      "E_I": -8,
+      "S_N": 8,
+      "T_F": -8,
+      "J_P": -8
+    }
+  },
+  {
+    "id": "NORN_0167",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0167.png",
+    "type": "ENFJ",
+    "coords": {
+      "E_I": 8,
+      "S_N": 8,
+      "T_F": -8,
+      "J_P": 8
+    }
+  },
+  {
+    "id": "NORN_0168",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0168.png",
+    "type": "ENFP",
+    "coords": {
+      "E_I": 8,
+      "S_N": 8,
+      "T_F": -8,
+      "J_P": -8
+    }
+  },
+  {
+    "id": "NORN_0169",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0169.png",
+    "type": "ISTJ",
+    "coords": {
+      "E_I": -8,
+      "S_N": -8,
+      "T_F": 8,
+      "J_P": 8
+    }
+  },
+  {
+    "id": "NORN_0170",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0170.png",
+    "type": "ISFJ",
+    "coords": {
+      "E_I": -8,
+      "S_N": -8,
+      "T_F": -8,
+      "J_P": 8
+    }
+  },
+  {
+    "id": "NORN_0171",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0171.png",
+    "type": "ESTJ",
+    "coords": {
+      "E_I": 8,
+      "S_N": -8,
+      "T_F": 8,
+      "J_P": 8
+    }
+  },
+  {
+    "id": "NORN_0172",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0172.png",
+    "type": "ESFJ",
+    "coords": {
+      "E_I": 8,
+      "S_N": -8,
+      "T_F": -8,
+      "J_P": 8
+    }
+  },
+  {
+    "id": "NORN_0173",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0173.png",
+    "type": "ISTP",
+    "coords": {
+      "E_I": -8,
+      "S_N": -8,
+      "T_F": 8,
+      "J_P": -8
+    }
+  },
+  {
+    "id": "NORN_0174",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0174.png",
+    "type": "ISFP",
+    "coords": {
+      "E_I": -8,
+      "S_N": -8,
+      "T_F": -8,
+      "J_P": -8
+    }
+  },
+  {
+    "id": "NORN_0175",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0175.png",
+    "type": "ESTP",
+    "coords": {
+      "E_I": 8,
+      "S_N": -8,
+      "T_F": 8,
+      "J_P": -8
+    }
+  },
+  {
+    "id": "NORN_0176",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0176.png",
+    "type": "ESFP",
+    "coords": {
+      "E_I": 8,
+      "S_N": -8,
+      "T_F": -8,
+      "J_P": -8
+    }
+  },
+  {
+    "id": "NORN_0177",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0177.png",
+    "type": "INTJ",
+    "coords": {
+      "E_I": -8,
+      "S_N": 8,
+      "T_F": 8,
+      "J_P": 8
+    }
+  },
+  {
+    "id": "NORN_0178",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0178.png",
+    "type": "INTP",
+    "coords": {
+      "E_I": -8,
+      "S_N": 8,
+      "T_F": 8,
+      "J_P": -8
+    }
+  },
+  {
+    "id": "NORN_0179",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0179.png",
+    "type": "ENTJ",
+    "coords": {
+      "E_I": 8,
+      "S_N": 8,
+      "T_F": 8,
+      "J_P": 8
+    }
+  },
+  {
+    "id": "NORN_0180",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0180.png",
+    "type": "ENTP",
+    "coords": {
+      "E_I": 8,
+      "S_N": 8,
+      "T_F": 8,
+      "J_P": -8
+    }
+  },
+  {
+    "id": "NORN_0181",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0181.png",
+    "type": "INFJ",
+    "coords": {
+      "E_I": -8,
+      "S_N": 8,
+      "T_F": -8,
+      "J_P": 8
+    }
+  },
+  {
+    "id": "NORN_0182",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0182.png",
+    "type": "INFP",
+    "coords": {
+      "E_I": -8,
+      "S_N": 8,
+      "T_F": -8,
+      "J_P": -8
+    }
+  },
+  {
+    "id": "NORN_0183",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0183.png",
+    "type": "ENFJ",
+    "coords": {
+      "E_I": 8,
+      "S_N": 8,
+      "T_F": -8,
+      "J_P": 8
+    }
+  },
+  {
+    "id": "NORN_0184",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0184.png",
+    "type": "ENFP",
+    "coords": {
+      "E_I": 8,
+      "S_N": 8,
+      "T_F": -8,
+      "J_P": -8
+    }
+  },
+  {
+    "id": "NORN_0185",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0185.png",
+    "type": "ISTJ",
+    "coords": {
+      "E_I": -8,
+      "S_N": -8,
+      "T_F": 8,
+      "J_P": 8
+    }
+  },
+  {
+    "id": "NORN_0186",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0186.png",
+    "type": "ISFJ",
+    "coords": {
+      "E_I": -8,
+      "S_N": -8,
+      "T_F": -8,
+      "J_P": 8
+    }
+  },
+  {
+    "id": "NORN_0187",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0187.png",
+    "type": "ESTJ",
+    "coords": {
+      "E_I": 8,
+      "S_N": -8,
+      "T_F": 8,
+      "J_P": 8
+    }
+  },
+  {
+    "id": "NORN_0188",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0188.png",
+    "type": "ESFJ",
+    "coords": {
+      "E_I": 8,
+      "S_N": -8,
+      "T_F": -8,
+      "J_P": 8
+    }
+  },
+  {
+    "id": "NORN_0189",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0189.png",
+    "type": "ISTP",
+    "coords": {
+      "E_I": -8,
+      "S_N": -8,
+      "T_F": 8,
+      "J_P": -8
+    }
+  },
+  {
+    "id": "NORN_0190",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0190.png",
+    "type": "ISFP",
+    "coords": {
+      "E_I": -8,
+      "S_N": -8,
+      "T_F": -8,
+      "J_P": -8
+    }
+  },
+  {
+    "id": "NORN_0191",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0191.png",
+    "type": "ESTP",
+    "coords": {
+      "E_I": 8,
+      "S_N": -8,
+      "T_F": 8,
+      "J_P": -8
+    }
+  },
+  {
+    "id": "NORN_0192",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0192.png",
+    "type": "ESFP",
+    "coords": {
+      "E_I": 8,
+      "S_N": -8,
+      "T_F": -8,
+      "J_P": -8
+    }
+  },
+  {
+    "id": "NORN_0193",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0193.png",
+    "type": "INTJ",
+    "coords": {
+      "E_I": -8,
+      "S_N": 8,
+      "T_F": 8,
+      "J_P": 8
+    }
+  },
+  {
+    "id": "NORN_0194",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0194.png",
+    "type": "INTP",
+    "coords": {
+      "E_I": -8,
+      "S_N": 8,
+      "T_F": 8,
+      "J_P": -8
+    }
+  },
+  {
+    "id": "NORN_0195",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0195.png",
+    "type": "ENTJ",
+    "coords": {
+      "E_I": 8,
+      "S_N": 8,
+      "T_F": 8,
+      "J_P": 8
+    }
+  },
+  {
+    "id": "NORN_0196",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0196.png",
+    "type": "ENTP",
+    "coords": {
+      "E_I": 8,
+      "S_N": 8,
+      "T_F": 8,
+      "J_P": -8
+    }
+  },
+  {
+    "id": "NORN_0197",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0197.png",
+    "type": "INFJ",
+    "coords": {
+      "E_I": -8,
+      "S_N": 8,
+      "T_F": -8,
+      "J_P": 8
+    }
+  },
+  {
+    "id": "NORN_0198",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0198.png",
+    "type": "INFP",
+    "coords": {
+      "E_I": -8,
+      "S_N": 8,
+      "T_F": -8,
+      "J_P": -8
+    }
+  },
+  {
+    "id": "NORN_0199",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0199.png",
+    "type": "ENFJ",
+    "coords": {
+      "E_I": 8,
+      "S_N": 8,
+      "T_F": -8,
+      "J_P": 8
+    }
+  },
+  {
+    "id": "NORN_0200",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0200.png",
+    "type": "ENFP",
+    "coords": {
+      "E_I": 8,
+      "S_N": 8,
+      "T_F": -8,
+      "J_P": -8
+    }
+  },
+  {
+    "id": "NORN_0201",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0201.png",
+    "type": "ISTJ",
+    "coords": {
+      "E_I": -8,
+      "S_N": -8,
+      "T_F": 8,
+      "J_P": 8
+    }
+  },
+  {
+    "id": "NORN_0202",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0202.png",
+    "type": "ISFJ",
+    "coords": {
+      "E_I": -8,
+      "S_N": -8,
+      "T_F": -8,
+      "J_P": 8
+    }
+  },
+  {
+    "id": "NORN_0203",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0203.png",
+    "type": "ESTJ",
+    "coords": {
+      "E_I": 8,
+      "S_N": -8,
+      "T_F": 8,
+      "J_P": 8
+    }
+  },
+  {
+    "id": "NORN_0204",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0204.png",
+    "type": "ESFJ",
+    "coords": {
+      "E_I": 8,
+      "S_N": -8,
+      "T_F": -8,
+      "J_P": 8
+    }
+  },
+  {
+    "id": "NORN_0205",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0205.png",
+    "type": "ISTP",
+    "coords": {
+      "E_I": -8,
+      "S_N": -8,
+      "T_F": 8,
+      "J_P": -8
+    }
+  },
+  {
+    "id": "NORN_0206",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0206.png",
+    "type": "ISFP",
+    "coords": {
+      "E_I": -8,
+      "S_N": -8,
+      "T_F": -8,
+      "J_P": -8
+    }
+  },
+  {
+    "id": "NORN_0207",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0207.png",
+    "type": "ESTP",
+    "coords": {
+      "E_I": 8,
+      "S_N": -8,
+      "T_F": 8,
+      "J_P": -8
+    }
+  },
+  {
+    "id": "NORN_0208",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0208.png",
+    "type": "ESFP",
+    "coords": {
+      "E_I": 8,
+      "S_N": -8,
+      "T_F": -8,
+      "J_P": -8
+    }
+  },
+  {
+    "id": "NORN_0209",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0209.png",
+    "type": "INTJ",
+    "coords": {
+      "E_I": -8,
+      "S_N": 8,
+      "T_F": 8,
+      "J_P": 8
+    }
+  },
+  {
+    "id": "NORN_0210",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0210.png",
+    "type": "INTP",
+    "coords": {
+      "E_I": -8,
+      "S_N": 8,
+      "T_F": 8,
+      "J_P": -8
+    }
+  },
+  {
+    "id": "NORN_0211",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0211.png",
+    "type": "ENTJ",
+    "coords": {
+      "E_I": 8,
+      "S_N": 8,
+      "T_F": 8,
+      "J_P": 8
+    }
+  },
+  {
+    "id": "NORN_0212",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0212.png",
+    "type": "ENTP",
+    "coords": {
+      "E_I": 8,
+      "S_N": 8,
+      "T_F": 8,
+      "J_P": -8
+    }
+  },
+  {
+    "id": "NORN_0213",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0213.png",
+    "type": "INFJ",
+    "coords": {
+      "E_I": -8,
+      "S_N": 8,
+      "T_F": -8,
+      "J_P": 8
+    }
+  },
+  {
+    "id": "NORN_0214",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0214.png",
+    "type": "INFP",
+    "coords": {
+      "E_I": -8,
+      "S_N": 8,
+      "T_F": -8,
+      "J_P": -8
+    }
+  },
+  {
+    "id": "NORN_0215",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0215.png",
+    "type": "ENFJ",
+    "coords": {
+      "E_I": 8,
+      "S_N": 8,
+      "T_F": -8,
+      "J_P": 8
+    }
+  },
+  {
+    "id": "NORN_0216",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0216.png",
+    "type": "ENFP",
+    "coords": {
+      "E_I": 8,
+      "S_N": 8,
+      "T_F": -8,
+      "J_P": -8
+    }
+  },
+  {
+    "id": "NORN_0217",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0217.png",
+    "type": "ISTJ",
+    "coords": {
+      "E_I": -8,
+      "S_N": -8,
+      "T_F": 8,
+      "J_P": 8
+    }
+  },
+  {
+    "id": "NORN_0218",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0218.png",
+    "type": "ISFJ",
+    "coords": {
+      "E_I": -8,
+      "S_N": -8,
+      "T_F": -8,
+      "J_P": 8
+    }
+  },
+  {
+    "id": "NORN_0219",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0219.png",
+    "type": "ESTJ",
+    "coords": {
+      "E_I": 8,
+      "S_N": -8,
+      "T_F": 8,
+      "J_P": 8
+    }
+  },
+  {
+    "id": "NORN_0220",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0220.png",
+    "type": "ESFJ",
+    "coords": {
+      "E_I": 8,
+      "S_N": -8,
+      "T_F": -8,
+      "J_P": 8
+    }
+  },
+  {
+    "id": "NORN_0221",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0221.png",
+    "type": "ISTP",
+    "coords": {
+      "E_I": -8,
+      "S_N": -8,
+      "T_F": 8,
+      "J_P": -8
+    }
+  },
+  {
+    "id": "NORN_0222",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0222.png",
+    "type": "ISFP",
+    "coords": {
+      "E_I": -8,
+      "S_N": -8,
+      "T_F": -8,
+      "J_P": -8
+    }
+  },
+  {
+    "id": "NORN_0223",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0223.png",
+    "type": "ESTP",
+    "coords": {
+      "E_I": 8,
+      "S_N": -8,
+      "T_F": 8,
+      "J_P": -8
+    }
+  },
+  {
+    "id": "NORN_0224",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0224.png",
+    "type": "ESFP",
+    "coords": {
+      "E_I": 8,
+      "S_N": -8,
+      "T_F": -8,
+      "J_P": -8
+    }
+  },
+  {
+    "id": "NORN_0225",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0225.png",
+    "type": "INTJ",
+    "coords": {
+      "E_I": -8,
+      "S_N": 8,
+      "T_F": 8,
+      "J_P": 8
+    }
+  },
+  {
+    "id": "NORN_0226",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0226.png",
+    "type": "INTP",
+    "coords": {
+      "E_I": -8,
+      "S_N": 8,
+      "T_F": 8,
+      "J_P": -8
+    }
+  },
+  {
+    "id": "NORN_0227",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0227.png",
+    "type": "ENTJ",
+    "coords": {
+      "E_I": 8,
+      "S_N": 8,
+      "T_F": 8,
+      "J_P": 8
+    }
+  },
+  {
+    "id": "NORN_0228",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0228.png",
+    "type": "ENTP",
+    "coords": {
+      "E_I": 8,
+      "S_N": 8,
+      "T_F": 8,
+      "J_P": -8
+    }
+  },
+  {
+    "id": "NORN_0229",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0229.png",
+    "type": "INFJ",
+    "coords": {
+      "E_I": -8,
+      "S_N": 8,
+      "T_F": -8,
+      "J_P": 8
+    }
+  },
+  {
+    "id": "NORN_0230",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0230.png",
+    "type": "INFP",
+    "coords": {
+      "E_I": -8,
+      "S_N": 8,
+      "T_F": -8,
+      "J_P": -8
+    }
+  },
+  {
+    "id": "NORN_0231",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0231.png",
+    "type": "ENFJ",
+    "coords": {
+      "E_I": 8,
+      "S_N": 8,
+      "T_F": -8,
+      "J_P": 8
+    }
+  },
+  {
+    "id": "NORN_0232",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0232.png",
+    "type": "ENFP",
+    "coords": {
+      "E_I": 8,
+      "S_N": 8,
+      "T_F": -8,
+      "J_P": -8
+    }
+  },
+  {
+    "id": "NORN_0233",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0233.png",
+    "type": "ISTJ",
+    "coords": {
+      "E_I": -8,
+      "S_N": -8,
+      "T_F": 8,
+      "J_P": 8
+    }
+  },
+  {
+    "id": "NORN_0234",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0234.png",
+    "type": "ISFJ",
+    "coords": {
+      "E_I": -8,
+      "S_N": -8,
+      "T_F": -8,
+      "J_P": 8
+    }
+  },
+  {
+    "id": "NORN_0235",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0235.png",
+    "type": "ESTJ",
+    "coords": {
+      "E_I": 8,
+      "S_N": -8,
+      "T_F": 8,
+      "J_P": 8
+    }
+  },
+  {
+    "id": "NORN_0236",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0236.png",
+    "type": "ESFJ",
+    "coords": {
+      "E_I": 8,
+      "S_N": -8,
+      "T_F": -8,
+      "J_P": 8
+    }
+  },
+  {
+    "id": "NORN_0237",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0237.png",
+    "type": "ISTP",
+    "coords": {
+      "E_I": -8,
+      "S_N": -8,
+      "T_F": 8,
+      "J_P": -8
+    }
+  },
+  {
+    "id": "NORN_0238",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0238.png",
+    "type": "ISFP",
+    "coords": {
+      "E_I": -8,
+      "S_N": -8,
+      "T_F": -8,
+      "J_P": -8
+    }
+  },
+  {
+    "id": "NORN_0239",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0239.png",
+    "type": "ESTP",
+    "coords": {
+      "E_I": 8,
+      "S_N": -8,
+      "T_F": 8,
+      "J_P": -8
+    }
+  },
+  {
+    "id": "NORN_0240",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0240.png",
+    "type": "ESFP",
+    "coords": {
+      "E_I": 8,
+      "S_N": -8,
+      "T_F": -8,
+      "J_P": -8
+    }
+  },
+  {
+    "id": "NORN_0241",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0241.png",
+    "type": "INTJ",
+    "coords": {
+      "E_I": -8,
+      "S_N": 8,
+      "T_F": 8,
+      "J_P": 8
+    }
+  },
+  {
+    "id": "NORN_0242",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0242.png",
+    "type": "INTP",
+    "coords": {
+      "E_I": -8,
+      "S_N": 8,
+      "T_F": 8,
+      "J_P": -8
+    }
+  },
+  {
+    "id": "NORN_0243",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0243.png",
+    "type": "ENTJ",
+    "coords": {
+      "E_I": 8,
+      "S_N": 8,
+      "T_F": 8,
+      "J_P": 8
+    }
+  },
+  {
+    "id": "NORN_0244",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0244.png",
+    "type": "ENTP",
+    "coords": {
+      "E_I": 8,
+      "S_N": 8,
+      "T_F": 8,
+      "J_P": -8
+    }
+  },
+  {
+    "id": "NORN_0245",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0245.png",
+    "type": "INFJ",
+    "coords": {
+      "E_I": -8,
+      "S_N": 8,
+      "T_F": -8,
+      "J_P": 8
+    }
+  },
+  {
+    "id": "NORN_0246",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0246.png",
+    "type": "INFP",
+    "coords": {
+      "E_I": -8,
+      "S_N": 8,
+      "T_F": -8,
+      "J_P": -8
+    }
+  },
+  {
+    "id": "NORN_0247",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0247.png",
+    "type": "ENFJ",
+    "coords": {
+      "E_I": 8,
+      "S_N": 8,
+      "T_F": -8,
+      "J_P": 8
+    }
+  },
+  {
+    "id": "NORN_0248",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0248.png",
+    "type": "ENFP",
+    "coords": {
+      "E_I": 8,
+      "S_N": 8,
+      "T_F": -8,
+      "J_P": -8
+    }
+  },
+  {
+    "id": "NORN_0249",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0249.png",
+    "type": "ISTJ",
+    "coords": {
+      "E_I": -8,
+      "S_N": -8,
+      "T_F": 8,
+      "J_P": 8
+    }
+  },
+  {
+    "id": "NORN_0250",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0250.png",
+    "type": "ISFJ",
+    "coords": {
+      "E_I": -8,
+      "S_N": -8,
+      "T_F": -8,
+      "J_P": 8
+    }
+  },
+  {
+    "id": "NORN_0251",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0251.png",
+    "type": "ESTJ",
+    "coords": {
+      "E_I": 8,
+      "S_N": -8,
+      "T_F": 8,
+      "J_P": 8
+    }
+  },
+  {
+    "id": "NORN_0252",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0252.png",
+    "type": "ESFJ",
+    "coords": {
+      "E_I": 8,
+      "S_N": -8,
+      "T_F": -8,
+      "J_P": 8
+    }
+  },
+  {
+    "id": "NORN_0253",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0253.png",
+    "type": "ISTP",
+    "coords": {
+      "E_I": -8,
+      "S_N": -8,
+      "T_F": 8,
+      "J_P": -8
+    }
+  },
+  {
+    "id": "NORN_0254",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0254.png",
+    "type": "ISFP",
+    "coords": {
+      "E_I": -8,
+      "S_N": -8,
+      "T_F": -8,
+      "J_P": -8
+    }
+  },
+  {
+    "id": "NORN_0255",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0255.png",
+    "type": "ESTP",
+    "coords": {
+      "E_I": 8,
+      "S_N": -8,
+      "T_F": 8,
+      "J_P": -8
+    }
+  },
+  {
+    "id": "NORN_0256",
+    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/NORN_0256.png",
+    "type": "ESFP",
+    "coords": {
+      "E_I": 8,
+      "S_N": -8,
+      "T_F": -8,
+      "J_P": -8
+    }
+  }
+]

@@ -1,0 +1,71 @@
+请为下面每个 image_id 分别生成一张独立图片。
+这是一组用于 The Norn Machine Demo 的人格视觉素材，不要把它们都画成同一个男性角色。
+
+硬性要求：
+1. 每个 image_id 是不同任务，必须严格遵守各自的 Subject rule。
+2. 可以没有人物；可以是女性、男性、中性人物、双人或多人；不要自动默认为男性。
+3. 画面里不要出现可读文字、编号、Logo、水印、对话框。
+4. 每张图可以有不同画风，但要保持成品感和视觉叙事质量。
+5. 回复里请用 image_id 标注每张图，方便我下载后重命名。
+
+图片任务：
+
+[1] image_id: NORN_0165
+MBTI: INFJ / role_group: Diplomat
+layer1_coords: {"E_I": -8, "S_N": 8, "T_F": -8, "J_P": 8}
+visual_rationale: 安静连接、象征门槛、灯塔、咨询室与温柔但坚定的方向感；双人或空场景都成立。
+scene: 空剧院 / empty old theater with one warm spotlight on two chairs
+subject_rule: human_presence=single; subject_mode=single_female_figure; gender_mode=female; people_count=1
+style_family: soft_editorial_illustration; palette: mist_green; composition: off_center_negative_space
+motifs: 旧剧院, 聚光灯, 两把椅, 红幕, 尘埃
+layer3_direction:
+- 空剧院不是单纯背景，而是 INFJ 的人格张力被转译成可见空间后的结果。
+- 镜头应优先呈现旧剧院、聚光灯、两把椅等意象；可以出现一个人物，但人物应服务于场景气质，而不是占满画面。
+- 整体气质应贴近Diplomat组的洞察、共情、愿景，使用 soft_editorial_illustration 与 off_center_negative_space 表达，而不是依赖固定男主角叙事。
+English image prompt: soft_editorial_illustration, mist_green, off_center_negative_space. Scene: empty old theater with one warm spotlight on two chairs. Subject rule: single human presence, single_female_figure, gender mode female, people count 1. Visual motifs: 旧剧院, 聚光灯, 两把椅, 红幕, 尘埃. Personality metaphor for INFJ (Diplomat): 洞察, 共情, 愿景, 边界, 静水深流; 安静连接、象征门槛、灯塔、咨询室与温柔但坚定的方向感；双人或空场景都成立。 Create one coherent finished illustration, strong visual storytelling, no readable text, no logo, no watermark.
+Negative prompt: readable text, logo, watermark, signature, UI, speech bubble, low quality, blurry, distorted hands, extra limbs, duplicate face
+
+[2] image_id: NORN_0166
+MBTI: INFP / role_group: Diplomat
+layer1_coords: {"E_I": -8, "S_N": 8, "T_F": -8, "J_P": -8}
+visual_rationale: 私密世界、手作物、自然意象与梦境场景；经常可以没有人物，因为核心是内在价值的外化。
+scene: 被面地图 / quilt spread like a map of imaginary countries
+subject_rule: human_presence=single; subject_mode=single_ambiguous_figure; gender_mode=ambiguous; people_count=1
+style_family: soft_surreal_collage; palette: soft_green_peach; composition: floating_center
+motifs: 被子, 地图纹, 针脚, 枕头, 暖光
+layer3_direction:
+- 被面地图不是单纯背景，而是 INFP 的人格张力被转译成可见空间后的结果。
+- 镜头应优先呈现被子、地图纹、针脚等意象；可以出现一个人物，但人物应服务于场景气质，而不是占满画面。
+- 整体气质应贴近Diplomat组的理想、内省、想象，使用 soft_surreal_collage 与 floating_center 表达，而不是依赖固定男主角叙事。
+English image prompt: soft_surreal_collage, soft_green_peach, floating_center. Scene: quilt spread like a map of imaginary countries. Subject rule: single human presence, single_ambiguous_figure, gender mode ambiguous, people count 1. Visual motifs: 被子, 地图纹, 针脚, 枕头, 暖光. Personality metaphor for INFP (Diplomat): 理想, 内省, 想象, 柔软, 个人神话; 私密世界、手作物、自然意象与梦境场景；经常可以没有人物，因为核心是内在价值的外化。 Create one coherent finished illustration, strong visual storytelling, no readable text, no logo, no watermark.
+Negative prompt: readable text, logo, watermark, signature, UI, speech bubble, low quality, blurry, distorted hands, extra limbs, duplicate face
+
+[3] image_id: NORN_0167
+MBTI: ENFJ / role_group: Diplomat
+layer1_coords: {"E_I": 8, "S_N": 8, "T_F": -8, "J_P": 8}
+visual_rationale: 人际连接、公共表达、引导与照亮他人的场景；适合双人和多人。
+scene: 开放图书馆活动 / library event table with people exchanging books and ideas
+subject_rule: human_presence=single; subject_mode=single_female_figure; gender_mode=female; people_count=1
+style_family: poster_like_humanist; palette: rose_gold_teal; composition: open_stage
+motifs: 图书馆, 交换书, 桌子, 人群, 柔光
+layer3_direction:
+- 开放图书馆活动不是单纯背景，而是 ENFJ 的人格张力被转译成可见空间后的结果。
+- 镜头应优先呈现图书馆、交换书、桌子等意象；可以出现一个人物，但人物应服务于场景气质，而不是占满画面。
+- 整体气质应贴近Diplomat组的引导、连接、感染力，使用 poster_like_humanist 与 open_stage 表达，而不是依赖固定男主角叙事。
+English image prompt: poster_like_humanist, rose_gold_teal, open_stage. Scene: library event table with people exchanging books and ideas. Subject rule: single human presence, single_female_figure, gender mode female, people count 1. Visual motifs: 图书馆, 交换书, 桌子, 人群, 柔光. Personality metaphor for ENFJ (Diplomat): 引导, 连接, 感染力, 责任感, 理想组织; 人际连接、公共表达、引导与照亮他人的场景；适合双人和多人。 Create one coherent finished illustration, strong visual storytelling, no readable text, no logo, no watermark.
+Negative prompt: readable text, logo, watermark, signature, UI, speech bubble, low quality, blurry, distorted hands, extra limbs, duplicate face
+
+[4] image_id: NORN_0168
+MBTI: ENFP / role_group: Diplomat
+layer1_coords: {"E_I": 8, "S_N": 8, "T_F": -8, "J_P": -8}
+visual_rationale: 多彩、开放、流动的可能性场域；热闹、群像、拼贴都合适。
+scene: 海边火圈 / beach fire circle with friends instruments and open horizon
+subject_rule: human_presence=single; subject_mode=single_ambiguous_figure; gender_mode=ambiguous; people_count=1
+style_family: graffiti_zine; palette: warm_confetti; composition: radiating_center
+motifs: 篝火, 海边, 乐器, 朋友, 地平线
+layer3_direction:
+- 海边火圈不是单纯背景，而是 ENFP 的人格张力被转译成可见空间后的结果。
+- 镜头应优先呈现篝火、海边、乐器等意象；可以出现一个人物，但人物应服务于场景气质，而不是占满画面。
+- 整体气质应贴近Diplomat组的灵感、自由、联结，使用 graffiti_zine 与 radiating_center 表达，而不是依赖固定男主角叙事。
+English image prompt: graffiti_zine, warm_confetti, radiating_center. Scene: beach fire circle with friends instruments and open horizon. Subject rule: single human presence, single_ambiguous_figure, gender mode ambiguous, people count 1. Visual motifs: 篝火, 海边, 乐器, 朋友, 地平线. Personality metaphor for ENFP (Diplomat): 灵感, 自由, 联结, 可能性, 热烈; 多彩、开放、流动的可能性场域；热闹、群像、拼贴都合适。 Create one coherent finished illustration, strong visual storytelling, no readable text, no logo, no watermark.
+Negative prompt: readable text, logo, watermark, signature, UI, speech bubble, low quality, blurry, distorted hands, extra limbs, duplicate face

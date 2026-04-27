@@ -1,0 +1,71 @@
+请为下面每个 image_id 分别生成一张独立图片。
+这是一组用于 The Norn Machine Demo 的人格视觉素材，不要把它们都画成同一个男性角色。
+
+硬性要求：
+1. 每个 image_id 是不同任务，必须严格遵守各自的 Subject rule。
+2. 可以没有人物；可以是女性、男性、中性人物、双人或多人；不要自动默认为男性。
+3. 画面里不要出现可读文字、编号、Logo、水印、对话框。
+4. 每张图可以有不同画风，但要保持成品感和视觉叙事质量。
+5. 回复里请用 image_id 标注每张图，方便我下载后重命名。
+
+图片任务：
+
+[1] image_id: NORN_0085
+MBTI: INFJ / role_group: Diplomat
+layer1_coords: {"E_I": -8, "S_N": 8, "T_F": -8, "J_P": 8}
+visual_rationale: 安静连接、象征门槛、灯塔、咨询室与温柔但坚定的方向感；双人或空场景都成立。
+scene: 花园长椅 / garden bench with two cups left after a private conversation
+subject_rule: human_presence=none; subject_mode=environment_or_object_only; gender_mode=not_applicable; people_count=0
+style_family: ink_lighthouse_storybook; palette: soft_indigo_gold; composition: gentle_center
+motifs: 长椅, 两只杯, 落叶, 花, 余温
+layer3_direction:
+- 花园长椅不是单纯背景，而是 INFJ 的人格张力被转译成可见空间后的结果。
+- 镜头应优先呈现长椅、两只杯、落叶等意象；画面不需要出现人物，重点应落在空间、物件与痕迹本身。
+- 整体气质应贴近Diplomat组的洞察、共情、愿景，使用 ink_lighthouse_storybook 与 gentle_center 表达，而不是依赖固定男主角叙事。
+English image prompt: ink_lighthouse_storybook, soft_indigo_gold, gentle_center. Scene: garden bench with two cups left after a private conversation. Subject rule: none human presence, environment_or_object_only, gender mode not_applicable, people count 0. Visual motifs: 长椅, 两只杯, 落叶, 花, 余温. Personality metaphor for INFJ (Diplomat): 洞察, 共情, 愿景, 边界, 静水深流; 安静连接、象征门槛、灯塔、咨询室与温柔但坚定的方向感；双人或空场景都成立。 Create one coherent finished illustration, strong visual storytelling, no readable text, no logo, no watermark.
+Negative prompt: readable text, logo, watermark, signature, UI, speech bubble, low quality, blurry, distorted hands, extra limbs, duplicate face
+
+[2] image_id: NORN_0086
+MBTI: INFP / role_group: Diplomat
+layer1_coords: {"E_I": -8, "S_N": 8, "T_F": -8, "J_P": -8}
+visual_rationale: 私密世界、手作物、自然意象与梦境场景；经常可以没有人物，因为核心是内在价值的外化。
+scene: 苔藓钢琴 / old piano covered with moss in a sunlit conservatory
+subject_rule: human_presence=single; subject_mode=single_female_figure; gender_mode=female; people_count=1
+style_family: colored_pencil_storybook; palette: lavender_cream; composition: intimate_corner
+motifs: 旧钢琴, 苔藓, 玻璃房, 阳光, 藤蔓
+layer3_direction:
+- 苔藓钢琴不是单纯背景，而是 INFP 的人格张力被转译成可见空间后的结果。
+- 镜头应优先呈现旧钢琴、苔藓、玻璃房等意象；可以出现一个人物，但人物应服务于场景气质，而不是占满画面。
+- 整体气质应贴近Diplomat组的理想、内省、想象，使用 colored_pencil_storybook 与 intimate_corner 表达，而不是依赖固定男主角叙事。
+English image prompt: colored_pencil_storybook, lavender_cream, intimate_corner. Scene: old piano covered with moss in a sunlit conservatory. Subject rule: single human presence, single_female_figure, gender mode female, people count 1. Visual motifs: 旧钢琴, 苔藓, 玻璃房, 阳光, 藤蔓. Personality metaphor for INFP (Diplomat): 理想, 内省, 想象, 柔软, 个人神话; 私密世界、手作物、自然意象与梦境场景；经常可以没有人物，因为核心是内在价值的外化。 Create one coherent finished illustration, strong visual storytelling, no readable text, no logo, no watermark.
+Negative prompt: readable text, logo, watermark, signature, UI, speech bubble, low quality, blurry, distorted hands, extra limbs, duplicate face
+
+[3] image_id: NORN_0087
+MBTI: ENFJ / role_group: Diplomat
+layer1_coords: {"E_I": 8, "S_N": 8, "T_F": -8, "J_P": 8}
+visual_rationale: 人际连接、公共表达、引导与照亮他人的场景；适合双人和多人。
+scene: 厨房协作 / busy kitchen coordinated with warmth instead of chaos
+subject_rule: human_presence=pair; subject_mode=two_people_relational_scene; gender_mode=mixed_or_unspecified; people_count=2
+style_family: cinematic_community_scene; palette: sunlit_amber; composition: circle_grouping
+motifs: 厨房, 锅, 围裙, 传递, 暖光
+layer3_direction:
+- 厨房协作不是单纯背景，而是 ENFJ 的人格张力被转译成可见空间后的结果。
+- 镜头应优先呈现厨房、锅、围裙等意象；双人关系可以出现，但重点是互动张力与位置关系。
+- 整体气质应贴近Diplomat组的引导、连接、感染力，使用 cinematic_community_scene 与 circle_grouping 表达，而不是依赖固定男主角叙事。
+English image prompt: cinematic_community_scene, sunlit_amber, circle_grouping. Scene: busy kitchen coordinated with warmth instead of chaos. Subject rule: pair human presence, two_people_relational_scene, gender mode mixed_or_unspecified, people count 2. Visual motifs: 厨房, 锅, 围裙, 传递, 暖光. Personality metaphor for ENFJ (Diplomat): 引导, 连接, 感染力, 责任感, 理想组织; 人际连接、公共表达、引导与照亮他人的场景；适合双人和多人。 Create one coherent finished illustration, strong visual storytelling, no readable text, no logo, no watermark.
+Negative prompt: readable text, logo, watermark, signature, UI, speech bubble, low quality, blurry, distorted hands, extra limbs, duplicate face
+
+[4] image_id: NORN_0088
+MBTI: ENFP / role_group: Diplomat
+layer1_coords: {"E_I": 8, "S_N": 8, "T_F": -8, "J_P": -8}
+visual_rationale: 多彩、开放、流动的可能性场域；热闹、群像、拼贴都合适。
+scene: 彩绘面包车 / painted van parked by a road with doors open to lights
+subject_rule: human_presence=pair; subject_mode=two_people_relational_scene; gender_mode=mixed_or_unspecified; people_count=2
+style_family: festival_poster; palette: sunset_neon; composition: open_chaos
+motifs: 面包车, 彩绘, 灯, 公路, 乐器
+layer3_direction:
+- 彩绘面包车不是单纯背景，而是 ENFP 的人格张力被转译成可见空间后的结果。
+- 镜头应优先呈现面包车、彩绘、灯等意象；双人关系可以出现，但重点是互动张力与位置关系。
+- 整体气质应贴近Diplomat组的灵感、自由、联结，使用 festival_poster 与 open_chaos 表达，而不是依赖固定男主角叙事。
+English image prompt: festival_poster, sunset_neon, open_chaos. Scene: painted van parked by a road with doors open to lights. Subject rule: pair human presence, two_people_relational_scene, gender mode mixed_or_unspecified, people count 2. Visual motifs: 面包车, 彩绘, 灯, 公路, 乐器. Personality metaphor for ENFP (Diplomat): 灵感, 自由, 联结, 可能性, 热烈; 多彩、开放、流动的可能性场域；热闹、群像、拼贴都合适。 Create one coherent finished illustration, strong visual storytelling, no readable text, no logo, no watermark.
+Negative prompt: readable text, logo, watermark, signature, UI, speech bubble, low quality, blurry, distorted hands, extra limbs, duplicate face

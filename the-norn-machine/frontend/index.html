@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Norn Machine — 命运织机</title>
+  <meta name="description" content="一场关于选择与直觉的 AI 性格测试。所有画面均由 AI 演化生成，无追踪，无存储。">
+  <meta property="og:title" content="The Norn Machine">
+  <meta property="og:description" content="跟随直觉，选择吸引你的画面。命运正在编织。">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=20260427-mvp-polish">
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════════════════
+       WELCOME OVERLAY
+       ═══════════════════════════════════════════════════════ -->
+  <div id="welcome-overlay">
+    <div class="welcome-card">
+      <h1>The Norn Machine</h1>
+        <p class="subtitle">命运织机</p>
+
+      <div class="welcome-divider">✦ ✦ ✦</div>
+
+      <div class="welcome-body">
+        <p>这是一场关于选择与直觉的性格测试。</p>
+        <p>所有呈现的画面均由 AI 演化生成。<br>
+          我们不存储、不追踪你的任何选择数据，<br>
+          一切计算在你离开时即刻消散。</p>
+      </div>
+
+      <div class="welcome-rules">
+        <h3>✦ 规则</h3>
+        <p>跟随直觉，在每一轮中选择你受吸引的画面。</p>
+        <p class="rule-choice">你可以 <strong>单选</strong>、<strong>多选</strong>，甚至 <strong>不选</strong>。</p>
+        <p>这里没有固定的轮数，当你的直觉告诉你足够时，随时可以停下。</p>
+      </div>
+
+      <button id="start-btn" class="btn-start">进 入 命 运</button>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════
+       MAIN TEST AREA
+       ═══════════════════════════════════════════════════════ -->
+  <div id="test-area">
+    <header class="test-header">
+      <div class="round-badge">Round <span id="round-num">1</span></div>
+      <div class="selection-badge">已选 <span id="total-selected">0</span> 张</div>
+    </header>
+
+    <div id="card-grid">
+      <!-- Cards rendered by JS -->
+    </div>
+
+    <div class="bottom-bar">
+      <button id="next-btn" class="btn btn-next">下一轮 →</button>
+      <button id="reveal-btn" class="btn btn-reveal">✦ 揭示命运</button>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════
+       REVEAL OVERLAY
+       ═══════════════════════════════════════════════════════ -->
+  <div id="reveal-overlay">
+    <canvas id="particle-canvas"></canvas>
+    <div class="reveal-text">
+      <h2>命运正在编织……</h2>
+      <p>The threads of fate are converging</p>
+      <div id="reading-text" class="reading-text"></div>
+      <section id="dialogue-panel" class="dialogue-panel" aria-label="最后对话" aria-hidden="true">
+        <div class="dialogue-head">
+          <h3>最后对话</h3>
+          <span id="dialogue-turns" class="dialogue-turns">0/2</span>
+        </div>
+        <div id="dialogue-log" class="dialogue-log" aria-live="polite"></div>
+        <form id="dialogue-form" class="dialogue-form">
+          <textarea
+            id="dialogue-input"
+            class="dialogue-input"
+            maxlength="100"
+            placeholder="向织机追问一句"
+            disabled
+          ></textarea>
+          <div class="dialogue-actions">
+            <div class="dialogue-meta">
+              <span id="dialogue-count">0/100</span>
+            </div>
+            <button id="dialogue-send" class="btn btn-dialogue" type="submit" disabled>追问</button>
+          </div>
+        </form>
+        <p id="dialogue-status" class="dialogue-status"></p>
+      </section>
+      <div class="reveal-summary">
+        <p class="stat">共经历 <span id="summary-rounds">0</span> 轮命运</p>
+        <p class="stat">选择了 <span id="summary-cards">0</span> 张画面</p>
+      </div>
+    </div>
+  </div>
+
+  <audio id="ambient-audio" src="Drifting_Near_the_Core.mp3" preload="auto" loop></audio>
+  <script src="app.js?v=20260427-mvp-polish"></script>
+</body>
+</html>
