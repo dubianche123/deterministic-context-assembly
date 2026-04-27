@@ -5,9 +5,9 @@
   </sub>
 </div>
 
-# The Norn Machine
+# The Norn Machine: Deterministic Context Assembly
 
-## A stateless prompt engine for deterministic context assembly
+## A serverless, stateless prompt engine for deterministic context assembly
 
 **Version**: 2.0 MVP  
 **Author**: Leo Wang  

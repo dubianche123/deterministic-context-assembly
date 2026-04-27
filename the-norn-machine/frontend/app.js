@@ -38,6 +38,7 @@
     dialogueRevealTimer: null,
     audioStarted: false,
     particleController: null,
+    ambientController: null,
   };
 
   // ─── DOM ─────────────────────────────────────────────────
@@ -53,10 +54,14 @@
     dom.totalSelected  = document.getElementById('total-selected');
     dom.nextBtn        = document.getElementById('next-btn');
     dom.revealBtn      = document.getElementById('reveal-btn');
+    dom.ambientCanvas  = document.getElementById('ambient-canvas');
     dom.revealOverlay  = document.getElementById('reveal-overlay');
     dom.particleCanvas = document.getElementById('particle-canvas');
     dom.summaryRounds  = document.getElementById('summary-rounds');
     dom.summaryCards   = document.getElementById('summary-cards');
+    dom.restartBtn     = document.getElementById('restart-btn');
+    dom.revealHeading  = document.getElementById('reveal-heading');
+    dom.revealSubtitle = document.getElementById('reveal-subtitle');
     dom.readingText    = document.getElementById('reading-text');
     dom.dialoguePanel  = document.getElementById('dialogue-panel');
     dom.dialogueLog    = document.getElementById('dialogue-log');
@@ -67,6 +72,8 @@
     dom.dialogueTurns  = document.getElementById('dialogue-turns');
     dom.dialogueStatus = document.getElementById('dialogue-status');
     dom.ambientAudio   = document.getElementById('ambient-audio');
+
+    state.ambientController = initAmbientBackground();
 
     try {
       const resp = await fetch('./data/cards.json');
@@ -80,6 +87,9 @@
     dom.startBtn.addEventListener('click', startTest);
     dom.nextBtn.addEventListener('click', nextRound);
     dom.revealBtn.addEventListener('click', revealDestiny);
+    if (dom.restartBtn) {
+      dom.restartBtn.addEventListener('click', restartTest);
+    }
     dom.dialogueForm.addEventListener('submit', handleDialogueSubmit);
     dom.dialogueInput.addEventListener('input', syncDialogueCounter);
     dom.dialogueInput.addEventListener('keydown', handleDialogueKeydown);
@@ -287,6 +297,7 @@
 
   function renderReading(reading) {
     if (!dom.readingText || !reading) return;
+    setRevealTitle('命运已经织成', 'The threads have taken shape');
     dom.readingText.innerHTML = reading
       .split('\n\n')
       .map(p => `<p>${p}</p>`)
@@ -298,8 +309,14 @@
 
   function resetReading() {
     if (!dom.readingText) return;
+    setRevealTitle('命运正在编织……', 'The threads of fate are converging');
     dom.readingText.classList.remove('visible');
     dom.readingText.innerHTML = '';
+  }
+
+  function setRevealTitle(heading, subtitle) {
+    if (dom.revealHeading) dom.revealHeading.textContent = heading;
+    if (dom.revealSubtitle) dom.revealSubtitle.textContent = subtitle;
   }
 
   function resetDialoguePanel() {
@@ -512,6 +529,121 @@
     }
   }
 
+  function restartTest() {
+    window.location.reload();
+  }
+
+  // ─── Ambient Starfield ──────────────────────────────────
+  function initAmbientBackground() {
+    const canvas = dom.ambientCanvas;
+    if (!canvas) return null;
+
+    const ctx = canvas.getContext('2d');
+    const GOLD = '201, 168, 76';
+    let frameId = null;
+    let width = 0;
+    let height = 0;
+    let dpr = 1;
+    let stars = [];
+    let constellations = [];
+    let stopped = false;
+
+    function resize() {
+      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      width = window.innerWidth;
+      height = window.innerHeight;
+      canvas.width = Math.floor(width * dpr);
+      canvas.height = Math.floor(height * dpr);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      seedStars();
+    }
+
+    function seedStars() {
+      const count = Math.max(120, Math.min(220, Math.round((width * height) / 3900)));
+      stars = Array.from({ length: count }, () => {
+        const edgeDistance = Math.random() < 0.45 ? Math.random() ** 1.8 : Math.random();
+        const side = Math.floor(Math.random() * 4);
+        const x = side === 0 ? width * edgeDistance
+          : side === 1 ? width * (1 - edgeDistance)
+          : Math.random() * width;
+        const y = side === 2 ? height * edgeDistance
+          : side === 3 ? height * (1 - edgeDistance)
+          : Math.random() * height;
+        return {
+          x,
+          y,
+          size: 0.55 + Math.random() * 1.45,
+          baseAlpha: 0.1 + Math.random() * 0.18,
+          phase: Math.random() * Math.PI * 2,
+          speed: 0.0012 + Math.random() * 0.0022,
+          amplitude: 0.34 + Math.random() * 0.32,
+        };
+      });
+
+      const borderStars = stars
+        .slice()
+        .sort((a, b) => {
+          const edgeA = Math.min(a.x, width - a.x, a.y, height - a.y);
+          const edgeB = Math.min(b.x, width - b.x, b.y, height - b.y);
+          return edgeA - edgeB;
+        })
+        .slice(0, 30);
+
+      constellations = borderStars.slice(0, 9).map((star, index) => {
+        const neighborA = borderStars[(index * 4 + 5) % borderStars.length];
+        const neighborB = borderStars[(index * 7 + 13) % borderStars.length];
+        return [star, neighborA, neighborB].filter(Boolean);
+      });
+    }
+
+    function drawStar(star, time, alphaScale = 1) {
+      const twinkle = 1 - star.amplitude + (Math.sin(time * star.speed + star.phase) + 1) * 0.5 * star.amplitude;
+      const alpha = star.baseAlpha * twinkle * alphaScale;
+      if (alpha <= 0.004) return;
+
+      ctx.beginPath();
+      ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(${GOLD}, ${alpha})`;
+      ctx.fill();
+      ctx.beginPath();
+      ctx.arc(star.x, star.y, star.size * 4.2, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(${GOLD}, ${alpha * 0.08})`;
+      ctx.fill();
+    }
+
+    function animate(time) {
+      if (stopped) return;
+      ctx.clearRect(0, 0, width, height);
+      stars.forEach(star => drawStar(star, time, 1.05));
+      constellations.forEach(chain => {
+        if (chain.length < 3) return;
+        ctx.beginPath();
+        chain.forEach((star, index) => {
+          if (index === 0) ctx.moveTo(star.x, star.y);
+          else ctx.lineTo(star.x, star.y);
+        });
+        const shimmer = 0.58 + Math.sin(time / 1400 + chain[0].phase) * 0.28;
+        ctx.strokeStyle = `rgba(${GOLD}, ${0.085 * shimmer})`;
+        ctx.lineWidth = 0.8;
+        ctx.stroke();
+      });
+      frameId = requestAnimationFrame(animate);
+    }
+
+    resize();
+    window.addEventListener('resize', resize);
+    frameId = requestAnimationFrame(animate);
+
+    return {
+      stop() {
+        stopped = true;
+        window.removeEventListener('resize', resize);
+        if (frameId) cancelAnimationFrame(frameId);
+        ctx.clearRect(0, 0, width, height);
+      },
+    };
+  }
+
   // ─── Particle System ─────────────────────────────────────
   function initParticles() {
     const canvas = dom.particleCanvas;
@@ -528,7 +660,7 @@
     const maxDim = Math.max(width, height);
     const CONVERGE_MS = 1650;
     const MIN_HOLD_MS = 320;
-    const DISSIPATE_MS = 1900;
+    const DISSIPATE_MS = 2900;
     const AUTO_RELEASE_MS = 9000;
     const PARTICLE_COUNT = 120;
     const AMBIENT_STAR_COUNT = 144;
@@ -542,18 +674,23 @@
       const startDist = maxDim * (0.55 + Math.random() * 0.35);
       const clusterAngle = Math.random() * Math.PI * 2;
       const clusterDist = Math.random() * 38;
-      const endAngle = angle + (Math.random() - 0.5) * 1.2;
-      const endDist = maxDim * (0.45 + Math.random() * 0.45);
+      const marginX = Math.min(72, width * 0.1);
+      const marginY = Math.min(72, height * 0.1);
+      const settleX = marginX + Math.random() * Math.max(1, width - marginX * 2);
+      const settleY = marginY + Math.random() * Math.max(1, height - marginY * 2);
       return {
         startX: cx + Math.cos(angle) * startDist,
         startY: cy + Math.sin(angle) * startDist,
         clusterX: cx + Math.cos(clusterAngle) * clusterDist,
         clusterY: cy + Math.sin(clusterAngle) * clusterDist,
-        endX: cx + Math.cos(endAngle) * endDist,
-        endY: cy + Math.sin(endAngle) * endDist,
+        endX: settleX,
+        endY: settleY,
         size: 0.9 + Math.random() * 2.4,
         alpha: 0.6 + Math.random() * 0.4,
+        settleAlpha: 0.12 + Math.random() * 0.18,
+        settleSize: 0.45 + Math.random() * 1.15,
         drift: Math.random() * Math.PI * 2,
+        twinkleSpeed: 0.002 + Math.random() * 0.0025,
       };
     });
 
@@ -566,6 +703,8 @@
         size: 0.35 + Math.random() * 1.35,
         alpha: 0.05 + Math.random() * 0.1,
         twinkle: Math.random() * Math.PI * 2,
+        twinkleSpeed: 0.001 + Math.random() * 0.002,
+        twinkleAmp: 0.28 + Math.random() * 0.24,
       };
     });
 
@@ -611,7 +750,7 @@
     function drawAmbientField(alphaScale, time) {
       const frameAlpha = Math.max(0, alphaScale);
       ambientStars.forEach(star => {
-        const flicker = 0.85 + Math.sin(time / 720 + star.twinkle) * 0.15;
+        const flicker = 1 - star.twinkleAmp + (Math.sin(time * star.twinkleSpeed + star.twinkle) + 1) * 0.5 * star.twinkleAmp;
         const edgeDistance = Math.min(star.x, width - star.x, star.y, height - star.y);
         const rimBoost = Math.max(0, 1 - edgeDistance / (maxDim * 0.22));
         const alpha = star.alpha * frameAlpha * flicker * (1 + rimBoost * 0.5);
@@ -635,7 +774,7 @@
             ctx.lineTo(star.x, star.y);
           }
         });
-        ctx.strokeStyle = `rgba(201, 168, 76, ${frameAlpha * 0.06})`;
+        ctx.strokeStyle = `rgba(201, 168, 76, ${frameAlpha * (0.045 + Math.sin(time / 1500 + chain[0].twinkle) * 0.018)})`;
         ctx.lineWidth = 0.8;
         ctx.stroke();
       });
@@ -658,23 +797,32 @@
 
     function drawDissipation(elapsed) {
       const t = clamp01(elapsed / DISSIPATE_MS);
-      const eased = easeOutCubic(t);
-      const fade = Math.pow(1 - t, 1.25);
+      const eased = easeOutQuint(t);
+      const trailFade = Math.pow(1 - t, 1.6);
 
       particles.forEach(p => {
-        const wave = Math.sin(t * Math.PI * 3 + p.drift) * 10 * (1 - t);
+        const wave = Math.sin(t * Math.PI * 3 + p.drift) * 14 * Math.pow(1 - t, 1.4);
         const x = lerp(p.clusterX, p.endX, eased) + wave;
         const y = lerp(p.clusterY, p.endY, eased) - wave * 0.4;
         ctx.beginPath();
         ctx.moveTo(p.clusterX, p.clusterY);
         ctx.lineTo(x, y);
-        ctx.strokeStyle = `rgba(201, 168, 76, ${p.alpha * fade * 0.1})`;
+        ctx.strokeStyle = `rgba(201, 168, 76, ${p.alpha * trailFade * 0.1})`;
         ctx.lineWidth = 0.6 + p.size * 0.12;
         ctx.stroke();
-        drawParticle(x, y, p.size * (1 + t * 1.25), p.alpha * fade);
+        const alpha = lerp(p.alpha, p.settleAlpha, easeOutCubic(t));
+        const size = lerp(p.size, p.settleSize, easeOutCubic(t));
+        drawParticle(x, y, size, alpha);
       });
       drawAmbientField(0.22 + t * 0.35, elapsed);
-      drawCore(44 + 120 * eased, fade * 0.45);
+      drawCore(44 + 120 * eased, trailFade * 0.45);
+    }
+
+    function drawSettledParticles(time) {
+      particles.forEach(p => {
+        const twinkle = 0.62 + (Math.sin(time * p.twinkleSpeed + p.drift) + 1) * 0.19;
+        drawParticle(p.endX, p.endY, p.settleSize, p.settleAlpha * twinkle);
+      });
     }
 
     function animate(timestamp) {
@@ -691,11 +839,12 @@
         drawConvergence(elapsed);
       } else {
         const releaseElapsed = timestamp - releaseAt;
-        drawDissipation(releaseElapsed);
         if (releaseElapsed >= DISSIPATE_MS) {
           drawAmbientField(0.92, timestamp);
+          drawSettledParticles(timestamp);
           drawCore(Math.min(maxDim * 0.7, 220), 0.22);
-          return;
+        } else {
+          drawDissipation(releaseElapsed);
         }
       }
 
@@ -807,6 +956,10 @@
 
   function easeOutCubic(t) {
     return 1 - Math.pow(1 - t, 3);
+  }
+
+  function easeOutQuint(t) {
+    return 1 - Math.pow(1 - t, 5);
   }
 
   // ─── Boot ────────────────────────────────────────────────

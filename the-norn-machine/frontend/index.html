@@ -11,9 +11,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=20260427-starfield">
+  <link rel="stylesheet" href="style.css?v=20260427-readable-stars">
 </head>
 <body>
+  <canvas id="ambient-canvas" aria-hidden="true"></canvas>
 
   <!-- ═══════════════════════════════════════════════════════
        WELCOME OVERLAY
@@ -68,8 +69,8 @@
   <div id="reveal-overlay">
     <canvas id="particle-canvas"></canvas>
     <div class="reveal-text">
-      <h2>命运正在编织……</h2>
-      <p>The threads of fate are converging</p>
+      <h2 id="reveal-heading">命运正在编织……</h2>
+      <p id="reveal-subtitle">The threads of fate are converging</p>
       <div id="reading-text" class="reading-text"></div>
       <section id="dialogue-panel" class="dialogue-panel" aria-label="最后对话" aria-hidden="true">
         <div class="dialogue-head">
@@ -97,11 +98,15 @@
       <div class="reveal-summary">
         <p class="stat">共经历 <span id="summary-rounds">0</span> 轮命运</p>
         <p class="stat">选择了 <span id="summary-cards">0</span> 张画面</p>
+        <div class="restart-block">
+          <button id="restart-btn" class="btn btn-restart" type="button">重新编织</button>
+          <p class="restart-note">（丢失现在的数据）</p>
+        </div>
       </div>
     </div>
   </div>
 
   <audio id="ambient-audio" src="Drifting_Near_the_Core.mp3" preload="auto" loop></audio>
-  <script src="app.js?v=20260427-starfield"></script>
+  <script src="app.js?v=20260427-readable-stars"></script>
 </body>
 </html>

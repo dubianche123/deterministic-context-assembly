@@ -5,9 +5,9 @@
   </sub>
 </div>
 
-# The Norn Machine
+# The Norn Machine：确定性上下文组装
 
-## 一个无状态的确定性上下文组装与提示词渲染引擎
+## 一个 Serverless、Stateless 的 Prompt Engine
 
 **版本**：2.0 MVP  
 **作者**：Leo Wang  
