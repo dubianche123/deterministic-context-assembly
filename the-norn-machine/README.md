@@ -75,7 +75,9 @@ This architecture attempts to respond to several common engineering misuses in c
 
 **Common Misuse**: Traditional testing products often rely on pre-written, fixed copy for condition matching, which requires immense manual writing and maintenance efforts, and the outputs can feel repetitive across different users.
 
-**Architectural Approach**: Replacing static copy libraries with **Dynamic Rendering**. The backend Finite State Machine (FSM) passes an exact but dry "behavioral profile skeleton" (e.g., decision preferences, blind spots, stress responses) to the model. The LLM combines this with dynamically routed Few-Shot examples (like intuitive or analytical styles) to supplement details at runtime. Even if the final personality type is identical, variations in hesitation time or cancellation count will slightly adjust the skeleton's weights, causing the LLM to render different thematic focuses.
+**Architectural Approach**: Replacing static copy libraries with **Dynamic Rendering**. The backend Finite State Machine (FSM) passes an exact but dry "behavioral profile skeleton" (e.g., decision preferences, blind spots, stress responses) to the model. The LLM combines this with dynamically routed Few-Shot examples (like intuitive or analytical styles) to supplement details at runtime.
+
+Crucially, **the amount of input information directly dictates the output resolution and dialogue depth**. If the user provides minimal information (few selection rounds), the system loads a shorter, fuzzier, more intuition-based template, and strictly limits the number of permitted follow-up questions. Conversely, rich input information unlocks detailed, precise templates and deeper conversational turns. Even if the final personality type is identical, variations in hesitation time or information density will shift the skeleton's weights, causing the LLM to render different thematic focuses.
 
 ---
 
@@ -125,7 +127,7 @@ For public-facing AI applications, preventing Prompt Injection and the output of
 
 ### 4.1 Boundary Control for the Dialogue Loop
 In the subsequent dialogue interactions, the architecture imposes strict constraints:
-- **Turn Limits**: Does not offer unlimited open chatting, strictly controlling the session lifecycle.
+- **Dynamic Turn Limits Based on Information Density**: The depth of follow-up questions is strictly bound to the amount of information gathered (selection rounds). It does not offer unlimited open chatting, strictly controlling the session lifecycle.
 - **Character Count Blocks**: Restricts the number of characters a user can input on both the frontend and backend, reducing the risk of long-text jailbreak attacks.
 
 ### 4.2 Guardrails Strategy
@@ -148,11 +150,11 @@ This architecture offers an alternative approach:
 - **Deterministic Inventory Whitelist**: The code layer cross-references with the actual inventory database, ensuring only in-stock product IDs are passed.
 - **Dynamic Sales Pitch Rendering**: The LLM receives the "consumer skeleton" and "deterministic in-stock products." It is no longer responsible for retrieving products; instead, it is **specifically responsible for using the rhetoric that best fits the user's preferences (such as emotional narrative or hard-core data analysis) to introduce the determined product**, thereby potentially increasing conversion rates and avoiding product hallucinations.
 
-### 5.2 Dynamic Game NPC Interaction
+### 5.2 Intelligent Customer Service & Assistant Systems
 
-- **State Management**: The game engine maintains plot progression, NPC affinity, etc.
-- **Behavior Compression**: Player actions (e.g., sword-drawing speed, dialogue choice tendencies) are extracted as parameters.
-- **Dialogue Rendering**: The LLM generates lines consistent with the NPC's persona based on the "current plot skeleton," enriching dialogue diversity while avoiding the Out-Of-Character (OOC) risks brought by unrestricted Agent designs.
+- **State Management**: The backend logic maintains Standard Operating Procedures (SOPs), the user's current business node, and compliance boundaries.
+- **Behavior Compression**: The user's time spent reading documentation, hesitation on certain options, or repeated questioning are extracted as state parameters.
+- **Dialogue Rendering**: The LLM generates answers solely based on the "current business skeleton" and limited facts. It flexibly handles edge cases with an anthropomorphic tone while maximally avoiding the hallucinations and babbling risks brought by unrestricted Agent designs.
 
 ### 5.3 Personal AI Business Card
 
