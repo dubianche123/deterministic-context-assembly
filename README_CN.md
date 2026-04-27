@@ -7,7 +7,7 @@
 
 # The Norn Machine：确定性上下文组装
 
-## 一个 Serverless、Stateless 的 Cloud-Native Prompt Engine
+## 一个无服务器，无状态的云原生提示词引擎
 
 **版本**：2.0 MVP  
 **作者**：Leo  
