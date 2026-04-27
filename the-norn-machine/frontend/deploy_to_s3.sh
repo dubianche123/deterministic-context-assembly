@@ -116,7 +116,7 @@ echo "   → CORS configured."
 echo "♻ [5/6] Refreshing CloudFront cache..."
 aws cloudfront create-invalidation \
   --distribution-id "${FRONTEND_DISTRIBUTION_ID}" \
-  --paths "/index.html" "/app.js" "/style.css" "/data/*" > /dev/null
+  --paths "/index.html" "/app.js" "/style.css" "/data/*" "/Drifting_Near_the_Core.mp3" > /dev/null
 echo "   → Invalidation submitted."
 
 # ─── Done ────────────────────────────────────────────────

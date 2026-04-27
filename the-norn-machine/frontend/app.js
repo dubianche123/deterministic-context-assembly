@@ -9,6 +9,11 @@
   // ─── Config ──────────────────────────────────────────────
   const API_ENDPOINT = 'https://kqdr3gfbs2.execute-api.ap-northeast-1.amazonaws.com/prod'; // Will be set after backend deployment
   const DIALOGUE_REVEAL_DELAY_MS = 1600;
+  const EMPTY_SELECTION_READING = [
+    '你没有选择任何一张画面，这本身也是一次选择。',
+    '织机把这看作一种停在门槛上的姿势：你没有急着把自己交给某个符号，也没有让一瞬间的吸引替你决定方向。也许此刻最像你的，不是某个答案，而是对答案保持距离的那一下迟疑。',
+    '这不是空白。它更像一枚没有落下的骰子：命运已经被拿在手里，只是你暂时不愿让它发出声音。',
+  ].join('\n\n');
 
   // ─── State ───────────────────────────────────────────────
   const state = {
@@ -220,6 +225,11 @@
     resetReading();
     resetDialoguePanel();
 
+    if (state.selectedCards.length === 0) {
+      renderEmptySelectionReading(payload);
+      return;
+    }
+
     // Call API (if endpoint configured)
     if (API_ENDPOINT) {
       callAnalyzeAPI(payload);
@@ -249,18 +259,38 @@
       }
 
       // Render the reading into the reveal overlay
-      if (dom.readingText && data.reading) {
-        dom.readingText.innerHTML = data.reading
-          .split('\n\n')
-          .map(p => `<p>${p}</p>`)
-          .join('');
-        dom.readingText.classList.add('visible');
-        scheduleDialoguePanel();
-      }
+      renderReading(data.reading);
     } catch (err) {
       console.error('[Norn] API error:', err);
       // Graceful degradation: particle animation still plays
     }
+  }
+
+  function renderEmptySelectionReading(payload) {
+    state.analysisResult = {
+      mbti_type: 'XXXX',
+      confidence: {},
+      reading: EMPTY_SELECTION_READING,
+      mode: 'empty',
+      total_rounds: payload.total_rounds,
+      total_selections: 0,
+      empty_selection: true,
+      max_dialogue_turns: getDialogueLimit(payload.total_rounds),
+    };
+    state.dialogueLimit = getDialogueLimit(payload.total_rounds);
+    updateDialogueMeta();
+    setDialogueStatus(getDialogueReadyText());
+    renderReading(EMPTY_SELECTION_READING);
+  }
+
+  function renderReading(reading) {
+    if (!dom.readingText || !reading) return;
+    dom.readingText.innerHTML = reading
+      .split('\n\n')
+      .map(p => `<p>${p}</p>`)
+      .join('');
+    dom.readingText.classList.add('visible');
+    scheduleDialoguePanel();
   }
 
   function resetReading() {
@@ -454,7 +484,12 @@
   }
 
   function getDialogueReadyText() {
-    return `你可以向织机追问${formatTurnLabel(state.dialogueLimit)}。`;
+    const variants = {
+      1: '与织机进行对话，窥探命运之绳。',
+      2: '与织机低声交谈，听命运回响两次。',
+      3: '与织机继续对话，直到命运开始松动。',
+    };
+    return variants[state.dialogueLimit] || '与织机进行对话，窥探命运之绳。';
   }
 
   function startAmbientAudio() {
