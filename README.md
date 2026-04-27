@@ -20,18 +20,18 @@ The project is built around a simple engineering principle:
 
 **Deterministic code should make the judgment. The language model should render the judgment.**
 
-Underneath the visual interface, the frontend records only lightweight behavioral signals, the backend compresses them into a stable behavioral profile, and the model turns that bounded profile into readable language. The system does not store user sessions or raw choices in a database.
+Underneath the visual interface, the frontend records only lightweight behavioral signals, the backend compresses them into stable behavioral context, and the model turns that bounded context into readable language. The system does not store user sessions or raw choices in a database.
 
-## Architecture Visualization
+## Runtime Dataflow
 
-![C4-style dataflow architecture](the-norn-machine/docs/c4-dataflow.svg)
+![Runtime dataflow architecture](the-norn-machine/docs/c4-dataflow.svg)
 
-This C4-style view separates the two kinds of computation that the project deliberately keeps apart:
+This diagram separates the two kinds of computation that the project deliberately keeps apart:
 
 - **Solid black path**: deterministic, typed data flow from the browser to API Gateway and Lambda.
 - **Dashed red path**: probabilistic language rendering from Lambda to Amazon Bedrock.
 
-The key compression point sits inside Lambda. Raw interaction history can grow past 15,000 input tokens in an overflow session, but Fast Thinker folds that history into a fixed behavioral skeleton of roughly 2,000 prompt tokens before the model sees it. That is the core claim of the system: the LLM should not be asked to carry unbounded history when code can assemble the relevant state first.
+The key compression point sits inside Lambda. Raw interaction history reached 15,107 input tokens in the overflow benchmark, but Fast Thinker folded that history into 2,383 bounded prompt tokens before the model saw it. That is the core claim of the system: the LLM should not be asked to carry unbounded history when code can assemble the relevant state first.
 
 ## Benchmark Evidence
 
@@ -96,7 +96,9 @@ The Norn Machine is not a full compiled-AI system because it still calls Bedrock
 
 ## Architecture
 
-This architecture shows how the MVP is built. CloudFront is the public HTTPS entry, S3 serves the static frontend, API Gateway protects the backend with an API key and usage plan, Lambda runs deterministic context assembly, and Amazon Bedrock renders the final language output.
+![The Norn Machine AWS topology](the-norn-machine/Norn-machine.drawio.svg)
+
+This architecture diagram shows how the current MVP implementation is assembled. CloudFront is the public HTTPS entry, S3 serves the static frontend, API Gateway protects the backend with an API key and usage plan, Lambda runs deterministic context assembly, and Amazon Bedrock renders the final language output.
 
 API Gateway exposes two request-scoped capabilities: result analysis and final dialogue. Both follow the same contract: the browser sends the current payload, Lambda compresses it into structured context, and the model receives only that bounded context rather than raw session history.
 
@@ -278,10 +280,11 @@ The benchmark suite is kept in the repository so the numbers above can be inspec
 - [`benchmark_prompts.json`](the-norn-machine/backend/benchmark/benchmark_prompts.json): stores the optimized and naive prompt pairs used for the benchmark.
 - [`benchmark_results.json`](the-norn-machine/backend/benchmark/benchmark_results.json): stores raw API measurements and the aggregate summary.
 - [`benchmark_summary.svg`](the-norn-machine/backend/benchmark/benchmark_summary.svg): visualizes the context-growth curve used in this README.
-- [`c4-dataflow.svg`](the-norn-machine/docs/c4-dataflow.svg): visualizes deterministic and probabilistic data boundaries in the runtime architecture.
+- [`c4-dataflow.svg`](the-norn-machine/docs/c4-dataflow.svg): visualizes deterministic and probabilistic data boundaries in the runtime dataflow.
+- [`Norn-machine.drawio.svg`](the-norn-machine/Norn-machine.drawio.svg): visualizes the deployed AWS topology used by the MVP.
 
 ## Conclusion
 
 The Norn Machine is a small demo, but it tests a larger architectural stance: when the judgment matters, the system should make the judgment traceable before asking the model to speak. Code compresses and constrains the world; the model makes that compressed world readable.
 
-<p align="center"><sub>The Norn Machine: A serverless, stateless prompt engine</sub></p>
+<p align="center"><sub>The Norn Machine: A serverless, stateless cloud-native prompt engine</sub></p>

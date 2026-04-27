@@ -1,126 +1,120 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="1320" height="820" viewBox="0 0 1320 820" role="img" aria-labelledby="title desc">
-  <title id="title">The Norn Machine C4-style dataflow architecture</title>
-  <desc id="desc">A C4-style cloud architecture diagram showing deterministic typed data flow from browser through API Gateway and Lambda, and probabilistic rendering flow from Lambda to Amazon Bedrock.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="860" viewBox="0 0 1400 860" role="img" aria-labelledby="title desc">
+  <title id="title">The Norn Machine runtime dataflow</title>
+  <desc id="desc">A runtime dataflow diagram showing deterministic browser and Lambda assembly before bounded probabilistic rendering through Amazon Bedrock.</desc>
   <defs>
-    <marker id="arrowBlack" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
-      <path d="M2,2 L10,6 L2,10 Z" fill="#111111"/>
+    <marker id="arrow-black" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#111827"/>
     </marker>
-    <marker id="arrowRed" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
-      <path d="M2,2 L10,6 L2,10 Z" fill="#c83b35"/>
+    <marker id="arrow-red" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#dc2626"/>
     </marker>
-    <filter id="softShadow" x="-10%" y="-10%" width="120%" height="125%">
-      <feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#0d1220" flood-opacity="0.18"/>
-    </filter>
     <style>
-      .bg{fill:#f8f5ed}
-      .frame{fill:none;stroke:#d6cab6;stroke-width:1.5}
-      .title{font:700 28px Georgia,serif;fill:#17120d}
-      .subtitle{font:400 14px -apple-system,BlinkMacSystemFont,Segoe UI,sans-serif;fill:#5f5a50}
-      .clusterLabel{font:700 13px -apple-system,BlinkMacSystemFont,Segoe UI,sans-serif;fill:#5b5044;text-transform:uppercase;letter-spacing:1.4px}
-      .node{fill:#fffdf8;stroke:#cdbf9f;stroke-width:1.5;filter:url(#softShadow)}
-      .nodeDark{fill:#17120f;stroke:#c9a84c;stroke-width:1.5;filter:url(#softShadow)}
-      .nodeRed{fill:#fff5f4;stroke:#c83b35;stroke-width:1.5;filter:url(#softShadow)}
-      .nodeTitle{font:700 17px -apple-system,BlinkMacSystemFont,Segoe UI,sans-serif;fill:#181510}
-      .nodeTitleDark{font:700 17px -apple-system,BlinkMacSystemFont,Segoe UI,sans-serif;fill:#f5ead2}
-      .nodeMeta{font:500 12px -apple-system,BlinkMacSystemFont,Segoe UI,sans-serif;fill:#665f54}
-      .nodeMetaDark{font:500 12px -apple-system,BlinkMacSystemFont,Segoe UI,sans-serif;fill:#d8cab0}
-      .tiny{font:500 11px -apple-system,BlinkMacSystemFont,Segoe UI,sans-serif;fill:#766e61}
-      .detLine{fill:none;stroke:#111111;stroke-width:3;marker-end:url(#arrowBlack)}
-      .probLine{fill:none;stroke:#c83b35;stroke-width:3;stroke-dasharray:10 8;marker-end:url(#arrowRed)}
-      .labelBox{fill:#ffffff;stroke:#d7ccb8;stroke-width:1}
-      .labelText{font:700 11px -apple-system,BlinkMacSystemFont,Segoe UI,sans-serif;fill:#17120d;text-anchor:middle}
-      .redText{fill:#c83b35}
-      .goldText{fill:#a47814}
-      .math{font:600 15px Georgia,serif;fill:#17120d}
-      .legendTitle{font:700 13px -apple-system,BlinkMacSystemFont,Segoe UI,sans-serif;fill:#1f1a14}
-      .legend{font:500 12px -apple-system,BlinkMacSystemFont,Segoe UI,sans-serif;fill:#524c43}
+      .bg { fill: #fbfaf7; }
+      .cluster { fill: #ffffff; stroke: #d4d4d8; stroke-width: 2; }
+      .cluster-title { fill: #52525b; font: 700 20px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; letter-spacing: 0; }
+      .cluster-sub { fill: #71717a; font: 400 15px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; letter-spacing: 0; }
+      .node { fill: #ffffff; stroke: #18181b; stroke-width: 2.2; }
+      .node-soft { fill: #fff7ed; stroke: #b45309; stroke-width: 2; }
+      .node-guard { fill: #f0fdf4; stroke: #15803d; stroke-width: 2; }
+      .node-model { fill: #fff1f2; stroke: #dc2626; stroke-width: 2.2; }
+      .title-text { fill: #111827; font: 800 34px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; letter-spacing: 0; }
+      .title-detail { fill: #111827; font: 700 24px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; letter-spacing: 0; }
+      .subtitle { fill: #52525b; font: 400 17px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; letter-spacing: 0; }
+      .node-title { fill: #111827; font: 800 19px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; letter-spacing: 0; text-anchor: middle; }
+      .node-body { fill: #3f3f46; font: 400 15px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; letter-spacing: 0; text-anchor: middle; }
+      .node-small { fill: #52525b; font: 400 13px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; letter-spacing: 0; text-anchor: middle; }
+      .badge-title { fill: #78350f; font: 800 18px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; letter-spacing: 0; text-anchor: middle; }
+      .badge-body { fill: #92400e; font: 700 15px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; letter-spacing: 0; text-anchor: middle; }
+      .line-black { fill: none; stroke: #111827; stroke-width: 3; marker-end: url(#arrow-black); }
+      .line-red { fill: none; stroke: #dc2626; stroke-width: 3; stroke-dasharray: 10 8; marker-end: url(#arrow-red); }
+      .label-bg { fill: #fbfaf7; stroke: #e4e4e7; stroke-width: 1; }
+      .line-label { fill: #18181b; font: 700 14px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; letter-spacing: 0; text-anchor: middle; }
+      .red-label { fill: #b91c1c; font: 700 14px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; letter-spacing: 0; text-anchor: middle; }
+      .legend { fill: #3f3f46; font: 400 16px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; letter-spacing: 0; }
+      .legend-strong { fill: #18181b; font: 800 16px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; letter-spacing: 0; }
     </style>
   </defs>
 
-  <rect class="bg" width="1320" height="820" rx="30"/>
-  <rect class="frame" x="20" y="20" width="1280" height="780" rx="22"/>
+  <rect class="bg" width="1400" height="860"/>
 
-  <text x="54" y="60" class="title">C4 Dataflow View: deterministic assembly before probabilistic rendering</text>
-  <text x="54" y="86" class="subtitle">Solid black lines carry typed request data. Dashed red lines carry model-facing probabilistic language context.</text>
+  <text class="title-text" x="70" y="62">Runtime Dataflow</text>
+  <text class="title-detail" x="70" y="96">deterministic assembly before probabilistic rendering</text>
+  <text class="subtitle" x="70" y="128">Black lines carry typed deterministic data. Red dashed lines carry bounded model-rendering context.</text>
 
-  <rect x="46" y="122" width="318" height="472" rx="18" fill="#fffaf0" stroke="#ded2bb"/>
-  <text x="70" y="153" class="clusterLabel">Client And Static Web</text>
+  <rect class="cluster" x="60" y="145" width="330" height="500" rx="18"/>
+  <text class="cluster-title" x="88" y="184">Client and Static Delivery</text>
+  <text class="cluster-sub" x="88" y="211">browser-visible interaction layer</text>
 
-  <rect class="node" x="82" y="188" width="246" height="94" rx="14"/>
-  <text x="110" y="222" class="nodeTitle">Player Browser</text>
-  <text x="110" y="246" class="nodeMeta">rounds, selected card IDs</text>
-  <text x="110" y="266" class="nodeMeta">durations, deselections</text>
+  <rect class="cluster" x="430" y="145" width="470" height="500" rx="18"/>
+  <text class="cluster-title" x="458" y="184">Deterministic Backend Boundary</text>
+  <text class="cluster-sub" x="458" y="211">request-scoped code, routing, limits, fallback</text>
 
-  <rect class="node" x="82" y="342" width="246" height="94" rx="14"/>
-  <text x="110" y="376" class="nodeTitle">CloudFront + S3</text>
-  <text x="110" y="400" class="nodeMeta">static frontend over HTTPS</text>
-  <text x="110" y="420" class="nodeMeta">no session database</text>
+  <rect class="cluster" x="940" y="145" width="400" height="500" rx="18"/>
+  <text class="cluster-title" x="968" y="184">Model Rendering Boundary</text>
+  <text class="cluster-sub" x="968" y="211">language generation with bounded context</text>
 
-  <rect x="406" y="122" width="404" height="472" rx="18" fill="#fffaf0" stroke="#ded2bb"/>
-  <text x="430" y="153" class="clusterLabel">Deterministic Backend Boundary</text>
+  <rect class="node" x="105" y="245" width="240" height="95" rx="14"/>
+  <text class="node-title" x="225" y="282">CloudFront + S3</text>
+  <text class="node-body" x="225" y="309">static frontend</text>
+  <text class="node-small" x="225" y="330">HTTPS entry</text>
 
-  <rect class="node" x="454" y="188" width="270" height="88" rx="14"/>
-  <text x="484" y="222" class="nodeTitle">API Gateway</text>
-  <text x="484" y="246" class="nodeMeta">API key + usage plan</text>
-  <text x="484" y="264" class="nodeMeta">request-scoped payload</text>
+  <rect class="node" x="105" y="450" width="240" height="95" rx="14"/>
+  <text class="node-title" x="225" y="487">Player Browser</text>
+  <text class="node-body" x="225" y="514">current choices only</text>
+  <text class="node-small" x="225" y="535">no session database</text>
 
-  <rect class="nodeDark" x="454" y="334" width="270" height="142" rx="16"/>
-  <text x="484" y="370" class="nodeTitleDark">Lambda Fast Thinker</text>
-  <text x="484" y="396" class="nodeMetaDark">feature engineering + template routing</text>
-  <text x="484" y="420" class="nodeMetaDark">typed behavioral profile</text>
-  <text x="484" y="450" class="nodeMetaDark">~15,000 raw tokens folded to</text>
-  <text x="484" y="472" class="nodeMetaDark">~2,000 bounded prompt tokens</text>
+  <rect class="node" x="535" y="245" width="260" height="95" rx="14"/>
+  <text class="node-title" x="665" y="282">API Gateway</text>
+  <text class="node-body" x="665" y="309">API key + usage plan</text>
+  <text class="node-small" x="665" y="330">request boundary</text>
 
-  <rect x="850" y="122" width="344" height="472" rx="18" fill="#fff8f7" stroke="#e2b5ae"/>
-  <text x="874" y="153" class="clusterLabel">Probabilistic Rendering Boundary</text>
+  <rect class="node-soft" x="500" y="382" width="330" height="165" rx="16"/>
+  <text class="node-title" x="665" y="418">Lambda: Fast Thinker + Router</text>
+  <text class="node-body" x="665" y="447">feature engineering</text>
+  <text class="node-body" x="665" y="470">behavioral skeleton</text>
+  <rect x="535" y="487" width="260" height="48" rx="10" fill="#fef3c7" stroke="#d97706" stroke-width="1.4"/>
+  <text class="badge-title" x="665" y="507">15,107 raw tokens</text>
+  <text class="badge-body" x="665" y="527">to 2,383 bounded tokens</text>
 
-  <rect class="nodeRed" x="900" y="230" width="244" height="112" rx="14"/>
-  <text x="930" y="266" class="nodeTitle">Amazon Bedrock</text>
-  <text x="930" y="292" class="nodeMeta">Claude Haiku 4.5</text>
-  <text x="930" y="314" class="nodeMeta">renders language only</text>
+  <rect class="node-guard" x="500" y="565" width="330" height="72" rx="14"/>
+  <text class="node-title" x="665" y="592">Output Guardrails</text>
+  <text class="node-small" x="665" y="614">fallbacks and static Lambda-side checks</text>
+  <text class="node-small" x="665" y="631">not regenerated per request</text>
 
-  <rect class="node" x="900" y="410" width="244" height="98" rx="14"/>
-  <text x="930" y="446" class="nodeTitle">Guarded Response</text>
-  <text x="930" y="470" class="nodeMeta">output guardrails</text>
-  <text x="930" y="490" class="nodeMeta">fallback text if blocked</text>
+  <rect class="node-model" x="1010" y="354" width="260" height="126" rx="16"/>
+  <text class="node-title" x="1140" y="394">Amazon Bedrock</text>
+  <text class="node-body" x="1140" y="425">Claude Haiku 4.5</text>
+  <text class="node-small" x="1140" y="449">language rendering only</text>
 
-  <path class="detLine" d="M205 342 L205 302"/>
-  <path class="detLine" d="M328 235 C376 235 398 232 454 232"/>
-  <path class="detLine" d="M589 276 L589 334"/>
-  <path class="detLine" d="M724 405 C780 405 820 405 872 405"/>
+  <path class="line-black" d="M 225 340 L 225 450"/>
+  <rect class="label-bg" x="169" y="384" width="112" height="27" rx="7"/>
+  <text class="line-label" x="225" y="403">static assets</text>
 
-  <path class="probLine" d="M724 372 C790 330 826 286 900 286"/>
-  <path class="probLine" d="M1022 342 L1022 410"/>
-  <path class="probLine" d="M900 460 C812 522 660 540 470 516 C336 498 252 452 205 436"/>
+  <path class="line-black" d="M 345 498 C 420 498 430 293 535 293"/>
+  <rect class="label-bg" x="341" y="366" width="150" height="27" rx="7"/>
+  <text class="line-label" x="416" y="385">typed payload</text>
 
-  <rect class="labelBox" x="344" y="196" width="132" height="30" rx="8"/>
-  <text x="410" y="215" class="labelText">typed payload</text>
+  <path class="line-black" d="M 665 340 L 665 382"/>
+  <rect class="label-bg" x="594" y="348" width="142" height="27" rx="7"/>
+  <text class="line-label" x="665" y="367">invoke Lambda</text>
 
-  <rect class="labelBox" x="760" y="304" width="128" height="30" rx="8"/>
-  <text x="824" y="323" class="labelText redText">render prompt</text>
+  <path class="line-red" d="M 830 465 C 910 465 930 417 1010 417"/>
+  <rect class="label-bg" x="848" y="419" width="164" height="27" rx="7"/>
+  <text class="red-label" x="930" y="438">render prompt</text>
 
-  <rect class="labelBox" x="738" y="424" width="142" height="30" rx="8"/>
-  <text x="809" y="443" class="labelText">bounded profile</text>
+  <path class="line-red" d="M 1010 462 C 930 585 890 601 830 601"/>
+  <rect class="label-bg" x="870" y="546" width="146" height="27" rx="7"/>
+  <text class="red-label" x="943" y="565">model text</text>
 
-  <rect x="412" y="618" width="470" height="124" rx="16" fill="#fffdf8" stroke="#cdbf9f" filter="url(#softShadow)"/>
-  <text x="442" y="652" class="legendTitle">Compression point</text>
-  <text x="442" y="678" class="math">raw history O(n)</text>
-  <text x="442" y="702" class="math">to fixed behavioral skeleton O(1)</text>
-  <text x="442" y="726" class="tiny">The model receives compressed state, not the full card-history dump.</text>
+  <path class="line-black" d="M 500 601 C 385 601 365 498 345 498"/>
+  <rect class="label-bg" x="348" y="574" width="150" height="27" rx="7"/>
+  <text class="line-label" x="423" y="593">guarded response</text>
 
-  <g transform="translate(70 636)">
-    <text x="0" y="0" class="legendTitle">Legend</text>
-    <line x1="0" y1="28" x2="58" y2="28" class="detLine"/>
-    <text x="76" y="32" class="legend">deterministic typed data flow</text>
-    <line x1="0" y1="62" x2="58" y2="62" class="probLine"/>
-    <text x="76" y="66" class="legend">probabilistic inference/rendering flow</text>
-  </g>
-
-  <g transform="translate(920 636)">
-    <text x="0" y="0" class="legendTitle">Failure behavior</text>
-    <text x="0" y="28" class="tiny">Bedrock unavailable -> deterministic fallback text</text>
-    <text x="0" y="50" class="tiny">empty selection -> fixed mystical reading</text>
-    <text x="0" y="72" class="tiny">dialogue overflow -> server-side lockout</text>
-  </g>
+  <rect x="60" y="690" width="1280" height="120" rx="18" fill="#ffffff" stroke="#d4d4d8" stroke-width="2"/>
+  <line x1="96" y1="730" x2="176" y2="730" class="line-black"/>
+  <text class="legend-strong" x="198" y="736">Deterministic path</text>
+  <text class="legend" x="365" y="736">typed payloads, feature extraction, routing, limits, and fallback behavior owned by code.</text>
+  <line x1="96" y1="766" x2="176" y2="766" class="line-red"/>
+  <text class="legend-strong" x="198" y="772">Probabilistic path</text>
+  <text class="legend" x="365" y="772">bounded prompt plus generated model text; raw session history stays outside the model.</text>
 </svg>

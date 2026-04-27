@@ -22,16 +22,16 @@ The Norn Machine 是一个以“直觉选图”解读性格为外壳的确定性
 
 系统内部并不会把原始行为长期存起来，而是把当前请求中的轻量行为信号压缩成稳定的行为画像，再交给模型生成可读的结果。
 
-## 架构可视化
+## 运行时数据流
 
-![C4 风格数据流架构图](the-norn-machine/docs/c4-dataflow.svg)
+![运行时数据流架构图](the-norn-machine/docs/c4-dataflow.svg)
 
-这张 C4 风格架构图把项目中两类计算明确分开：
+这张架构图把项目中两类计算明确分开：
 
 - **黑色实线**：从浏览器到 API Gateway，再到 Lambda 的确定性强类型数据流。
 - **红色虚线**：从 Lambda 到 Amazon Bedrock 的概率性语言渲染流。
 
-关键压缩点发生在 Lambda 内部。overflow 场景下，原始交互历史可以膨胀到 15,000 token 以上，但 Fast Thinker 会先把这段历史折叠成约 2,000 token 的固定行为画像骨架，再交给模型。这里才是系统的核心主张：不要让 LLM 承担无边界历史记录，代码应该先把真正相关的状态组装出来。
+关键压缩点发生在 Lambda 内部。在 overflow 基准测试中，原始交互历史达到 15,107 input tokens，但 Fast Thinker 会先把这段历史折叠成 2,383 bounded prompt tokens，再交给模型。这里才是系统的核心主张：不要让 LLM 承担无边界历史记录，代码应该先把真正相关的状态组装出来。
 
 ## 基准测试证据
 
@@ -95,6 +95,8 @@ The Norn Machine 把模型的职责收窄。模型收到的不是一堆原始选
 The Norn Machine 不是完整的 Compiled AI 系统，因为它仍然会调用 Bedrock 渲染最终语言。它更接近一个混合型变体：确定性代码负责状态压缩、路由、护栏和兜底，模型只保留为有界语言渲染器。也就是说，它还没有达到 zero-token execution，但方向是一致的：把可重复的控制逻辑从运行时模型调用中移出来。
 
 ## 系统架构
+
+![The Norn Machine AWS 拓扑图](the-norn-machine/Norn-machine.drawio.svg)
 
 这张架构图展现了如何达到目前的 MVP 实现。CloudFront 是公网 HTTPS 入口，S3 提供静态前端，API Gateway 用 API Key 和 Usage Plan 保护后端入口，Lambda 运行确定性上下文组装，Amazon Bedrock 负责最终语言渲染。
 
@@ -278,10 +280,11 @@ Slow Thinker 调用 Bedrock 生成最终文本。模型接收的是压缩后的�
 - [`benchmark_prompts.json`](the-norn-machine/backend/benchmark/benchmark_prompts.json)：保存优化版和朴素版的 prompt 对照数据。
 - [`benchmark_results.json`](the-norn-machine/backend/benchmark/benchmark_results.json)：保存原始 API 测量结果和汇总数据。
 - [`benchmark_summary.svg`](the-norn-machine/backend/benchmark/benchmark_summary.svg)：README 中使用的上下文增长曲线图。
-- [`c4-dataflow.svg`](the-norn-machine/docs/c4-dataflow.svg)：展示运行时架构中的确定性边界与概率性边界。
+- [`c4-dataflow.svg`](the-norn-machine/docs/c4-dataflow.svg)：展示运行时数据流中的确定性边界与概率性边界。
+- [`Norn-machine.drawio.svg`](the-norn-machine/Norn-machine.drawio.svg)：展示 MVP 使用的 AWS 拓扑结构。
 
 ## 结论
 
 The Norn Machine 是一个很小的 demo，但它测试的是一个更大的架构判断：越重要的判断，越应该先被系统压缩成可追踪的上下文，再交给模型表达。代码负责压缩和约束世界，模型负责让这个被压缩后的世界变得可读。
 
-<p align="center"><sub>The Norn Machine: A serverless, stateless prompt engine</sub></p>
+<p align="center"><sub>The Norn Machine: A serverless, stateless cloud-native prompt engine</sub></p>
