@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="1240" height="760" viewBox="0 0 1240 760" role="img" aria-labelledby="title desc">
+<svg xmlns="http://www.w3.org/2000/svg" width="1320" height="820" viewBox="0 0 1320 820" role="img" aria-labelledby="title desc">
   <title id="title">The Norn Machine C4-style dataflow architecture</title>
   <desc id="desc">A C4-style cloud architecture diagram showing deterministic typed data flow from browser through API Gateway and Lambda, and probabilistic rendering flow from Lambda to Amazon Bedrock.</desc>
   <defs>
@@ -29,7 +29,7 @@
       .detLine{fill:none;stroke:#111111;stroke-width:3;marker-end:url(#arrowBlack)}
       .probLine{fill:none;stroke:#c83b35;stroke-width:3;stroke-dasharray:10 8;marker-end:url(#arrowRed)}
       .labelBox{fill:#ffffff;stroke:#d7ccb8;stroke-width:1}
-      .labelText{font:700 12px -apple-system,BlinkMacSystemFont,Segoe UI,sans-serif;fill:#17120d}
+      .labelText{font:700 11px -apple-system,BlinkMacSystemFont,Segoe UI,sans-serif;fill:#17120d;text-anchor:middle}
       .redText{fill:#c83b35}
       .goldText{fill:#a47814}
       .math{font:600 15px Georgia,serif;fill:#17120d}
@@ -38,13 +38,13 @@
     </style>
   </defs>
 
-  <rect class="bg" width="1240" height="760" rx="30"/>
-  <rect class="frame" x="20" y="20" width="1200" height="720" rx="22"/>
+  <rect class="bg" width="1320" height="820" rx="30"/>
+  <rect class="frame" x="20" y="20" width="1280" height="780" rx="22"/>
 
   <text x="54" y="60" class="title">C4 Dataflow View: deterministic assembly before probabilistic rendering</text>
   <text x="54" y="86" class="subtitle">Solid black lines carry typed request data. Dashed red lines carry model-facing probabilistic language context.</text>
 
-  <rect x="46" y="122" width="318" height="450" rx="18" fill="#fffaf0" stroke="#ded2bb"/>
+  <rect x="46" y="122" width="318" height="472" rx="18" fill="#fffaf0" stroke="#ded2bb"/>
   <text x="70" y="153" class="clusterLabel">Client And Static Web</text>
 
   <rect class="node" x="82" y="188" width="246" height="94" rx="14"/>
@@ -57,7 +57,7 @@
   <text x="110" y="400" class="nodeMeta">static frontend over HTTPS</text>
   <text x="110" y="420" class="nodeMeta">no session database</text>
 
-  <rect x="406" y="122" width="404" height="450" rx="18" fill="#fffaf0" stroke="#ded2bb"/>
+  <rect x="406" y="122" width="404" height="472" rx="18" fill="#fffaf0" stroke="#ded2bb"/>
   <text x="430" y="153" class="clusterLabel">Deterministic Backend Boundary</text>
 
   <rect class="node" x="454" y="188" width="270" height="88" rx="14"/>
@@ -72,7 +72,7 @@
   <text x="484" y="450" class="nodeMetaDark">~15,000 raw tokens folded to</text>
   <text x="484" y="472" class="nodeMetaDark">~2,000 bounded prompt tokens</text>
 
-  <rect x="850" y="122" width="344" height="450" rx="18" fill="#fff8f7" stroke="#e2b5ae"/>
+  <rect x="850" y="122" width="344" height="472" rx="18" fill="#fff8f7" stroke="#e2b5ae"/>
   <text x="874" y="153" class="clusterLabel">Probabilistic Rendering Boundary</text>
 
   <rect class="nodeRed" x="900" y="230" width="244" height="112" rx="14"/>
@@ -94,21 +94,22 @@
   <path class="probLine" d="M1022 342 L1022 410"/>
   <path class="probLine" d="M900 460 C812 522 660 540 470 516 C336 498 252 452 205 436"/>
 
-  <rect class="labelBox" x="350" y="202" width="154" height="28" rx="8"/>
-  <text x="368" y="221" class="labelText">typed payload</text>
+  <rect class="labelBox" x="344" y="196" width="132" height="30" rx="8"/>
+  <text x="410" y="215" class="labelText">typed payload</text>
 
-  <rect class="labelBox" x="748" y="332" width="138" height="30" rx="8"/>
-  <text x="764" y="352" class="labelText redText">render prompt</text>
+  <rect class="labelBox" x="760" y="304" width="128" height="30" rx="8"/>
+  <text x="824" y="323" class="labelText redText">render prompt</text>
 
-  <rect class="labelBox" x="742" y="389" width="150" height="30" rx="8"/>
-  <text x="756" y="409" class="labelText">bounded profile</text>
+  <rect class="labelBox" x="738" y="424" width="142" height="30" rx="8"/>
+  <text x="809" y="443" class="labelText">bounded profile</text>
 
-  <rect x="444" y="590" width="350" height="104" rx="16" fill="#fffdf8" stroke="#cdbf9f" filter="url(#softShadow)"/>
-  <text x="472" y="625" class="legendTitle">Compression point</text>
-  <text x="472" y="652" class="math">raw history O(n) -> fixed behavioral skeleton O(1)</text>
-  <text x="472" y="676" class="tiny">The model receives the compressed state, not the full card-history dump.</text>
+  <rect x="412" y="618" width="470" height="124" rx="16" fill="#fffdf8" stroke="#cdbf9f" filter="url(#softShadow)"/>
+  <text x="442" y="652" class="legendTitle">Compression point</text>
+  <text x="442" y="678" class="math">raw history O(n)</text>
+  <text x="442" y="702" class="math">to fixed behavioral skeleton O(1)</text>
+  <text x="442" y="726" class="tiny">The model receives compressed state, not the full card-history dump.</text>
 
-  <g transform="translate(70 612)">
+  <g transform="translate(70 636)">
     <text x="0" y="0" class="legendTitle">Legend</text>
     <line x1="0" y1="28" x2="58" y2="28" class="detLine"/>
     <text x="76" y="32" class="legend">deterministic typed data flow</text>
@@ -116,7 +117,7 @@
     <text x="76" y="66" class="legend">probabilistic inference/rendering flow</text>
   </g>
 
-  <g transform="translate(852 606)">
+  <g transform="translate(920 636)">
     <text x="0" y="0" class="legendTitle">Failure behavior</text>
     <text x="0" y="28" class="tiny">Bedrock unavailable -> deterministic fallback text</text>
     <text x="0" y="50" class="tiny">empty selection -> fixed mystical reading</text>

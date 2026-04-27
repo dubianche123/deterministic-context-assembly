@@ -86,6 +86,14 @@ The model is still valuable, but its responsibility is language rendering rather
 | Rule adherence | Rules compete with long raw context inside the same model prompt. | Hard limits, fallback paths, and output guardrails are enforced outside the model where possible. |
 | Failure mode | The user may see brittle model behavior or infrastructure-shaped errors. | Deterministic fallback text keeps the user experience coherent when the model path is blocked. |
 
+## Related Work: Compiled AI
+
+The same architectural pressure appears in recent systems research. The April 2026 arXiv paper [*Compiled AI: Deterministic Code Generation for LLM-Based Workflow Automation*](https://arxiv.org/abs/2604.05150) studies workflows where an LLM is used during a generation or compilation phase, and the deployed workflow then runs as deterministic code without further model invocation.
+
+The paper reports that, on BFCL function-calling tasks, compiled AI reaches 96% task completion with zero execution tokens, breaks even against runtime inference at roughly 17 transactions, and reduces token usage by 57x at 1,000 transactions. Its reported latency comparison is even sharper: 4.5ms P50 for compiled execution versus 2,004ms for direct runtime LLM inference.
+
+The Norn Machine is not a full compiled-AI system because it still calls Bedrock to render the final language. It sits in the adjacent hybrid space: deterministic code owns state compression, routing, guardrails, and fallbacks, while the model is kept as a bounded renderer. In other words, it does not reach zero-token execution, but it follows the same direction of travel: move repeatable control logic out of the runtime model call.
+
 ## Architecture
 
 This architecture shows how the MVP is built. CloudFront is the public HTTPS entry, S3 serves the static frontend, API Gateway protects the backend with an API key and usage plan, Lambda runs deterministic context assembly, and Amazon Bedrock renders the final language output.
@@ -124,7 +132,7 @@ $$
 $$
 
 $$
-\hat{d}_r = \frac{\operatorname{clip}(d_r, 0, 45000) - d_{min}}{\max(d_{max} - d_{min}, 1)}
+\hat{d}_r = \frac{\mathrm{clip}(d_r, 0, 45000) - d_{min}}{\max(d_{max} - d_{min}, 1)}
 $$
 
 Later rounds therefore count more, because later choices usually reflect a sharper preference after the player has seen more of the card space. Hesitation is deliberately small: round duration is normalized inside the current session and can only move a card from `1.0x` to `1.12x`, because image loading and rendering can pollute timing data.
@@ -229,6 +237,21 @@ This can transfer to:
 - **Customer support**: keep workflow state in code, then let the model render bounded replies.
 - **Game NPCs**: let game state and rule logic decide what is true, then let the model express it in character.
 - **Personal AI profiles**: adapt presentation emphasis based on visitor behavior while keeping factual content fixed.
+
+## Technical Outlook
+
+The current Fast Thinker is intentionally a rule-based expert system. Its parameters are readable and inspectable: hesitation can only add a `1.12x` multiplier, deselection can only nudge the J/P axis by a capped amount, and motif selection is based on weighted frequency plus cosine alignment. That makes the system easy to audit, but it also means the feature weights come from domain judgment rather than learned evidence.
+
+A natural next step would be a separate data-driven behavioral intent engine. With explicit consent and anonymized event streams, the same interaction layer could learn nonlinear patterns from click cadence, hover time, deselection frequency, scroll depth, comparison behavior, and downstream outcomes. The target would not be "personality reading" anymore; it would be early intent prediction before a decisive action happens.
+
+| Current MVP | Data-Driven Successor |
+|:--|:--|
+| Hand-authored feature weights | Learned embeddings and calibrated feature weights |
+| Stateless request payload | Consented, anonymized event dataset |
+| Descriptive reading after submission | Intent prediction before the final action |
+| Deterministic prompt assembly | Model-assisted intervention policy with deterministic guardrails |
+
+This would turn the project from interpretable context assembly into a multimodal behavioral intent prediction and intervention engine. The design lesson remains the same: keep the model away from uncontrolled authority, and let code own the boundaries.
 
 ## Appendix: Asset Pipeline Concepts
 
