@@ -38,11 +38,11 @@ The model is still valuable, but it is treated as a renderer rather than an orac
 
 ![The Norn Machine architecture](the-norn-machine/Norn-Machine.drawio.svg)
 
-This architecture matches the deployed MVP. CloudFront is the public HTTPS entry, S3 serves the static frontend, API Gateway protects the backend with an API key and usage plan, Lambda runs deterministic context assembly, and Amazon Bedrock renders the final language output.
+This architecture shows how the MVP is built. CloudFront is the public HTTPS entry, S3 serves the static frontend, API Gateway protects the backend with an API key and usage plan, Lambda runs deterministic context assembly, and Amazon Bedrock renders the final language output.
 
 API Gateway exposes two request-scoped capabilities: result analysis and final dialogue. Both follow the same contract: the browser sends the current payload, Lambda compresses it into structured context, and the model receives only that bounded context rather than raw session history.
 
-The system is stateless by design. There is no database, no cross-user memory, and no stored session profile. Prompt rules and backend output guardrails keep the rendered answer inside the product contract.
+The system is stateless by design. There is no database storing player sessions and no cross-user memory. Prompt rules and backend output guardrails help prevent user data leakage risk.
 
 ## Runtime Pipeline
 
@@ -121,7 +121,7 @@ The frontend is a static app. The reveal scene uses a canvas particle sequence:
 2. the result text appears;
 3. the particle cluster dissipates after the result is visible.
 
-This timing matters because the animation should belong to the reading, not finish silently while the API is still loading.
+This timing matters because the animation's appearance should belong to the reading, not finish silently while the API is still loading.
 
 Music is user-gesture bound: it starts when the player begins the test, which keeps browser autoplay behavior predictable.
 

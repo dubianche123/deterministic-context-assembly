@@ -38,11 +38,11 @@ The Norn Machine 把模型的职责收窄。模型收到的不是一堆原始选
 
 ![The Norn Machine 架构图](the-norn-machine/Norn-Machine.drawio.svg)
 
-这张架构图与当前 MVP 实现一致。CloudFront 是公网 HTTPS 入口，S3 提供静态前端，API Gateway 用 API Key 和 Usage Plan 保护后端入口，Lambda 运行确定性上下文组装，Amazon Bedrock 负责最终语言渲染。
+这张架构图展现了如何达到目前的 MVP 实现。CloudFront 是公网 HTTPS 入口，S3 提供静态前端，API Gateway 用 API Key 和 Usage Plan 保护后端入口，Lambda 运行确定性上下文组装，Amazon Bedrock 负责最终语言渲染。
 
 API Gateway 承载两个请求型能力：结果分析和最后对话。二者遵守同一个契约：浏览器提交当前 payload，Lambda 将其压缩成结构化上下文，模型只接收这份受约束的上下文，而不是原始会话历史。
 
-这也是 stateless 的核心：没有数据库保存玩家会话，没有跨用户记忆，也没有长期画像。Prompt 规则和后端输出护栏共同保证最终回答不越出产品约束。
+这也是 stateless 的核心：没有数据库保存玩家会话，没有跨用户记忆。Prompt 规则和后端输出护栏共同杜绝用户数据泄露风险。
 
 ## 运行流水线
 
@@ -121,7 +121,7 @@ Slow Thinker 调用 Bedrock 生成最终文本。模型接收的是压缩后的�
 2. 结果文字出现；
 3. 结果可见后，中心粒子再向外消散。
 
-这个时机很重要。消散动画应该属于“结果出现之后”的体验，而不是在 API 等待过程中悄悄播完。
+动画出现的时机很重要。消散动画应该属于“结果出现之后”的体验，而不是在 API 等待过程中悄悄播完。
 
 音乐绑定在“开始测试”的点击事件上触发，符合浏览器自动播放限制，也让声音进入得更自然。
 
