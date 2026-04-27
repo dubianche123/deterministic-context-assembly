@@ -7,11 +7,10 @@
   'use strict';
 
   // ─── Config ──────────────────────────────────────────────
-  const runtimeConfig = (window.__NORN_CONFIG__ && typeof window.__NORN_CONFIG__ === 'object')
-    ? window.__NORN_CONFIG__
-    : {};
-  const API_ENDPOINT = normalizeApiEndpoint(runtimeConfig.apiEndpoint);
-  const API_KEY = normalizeConfigValue(runtimeConfig.apiKey);
+  const REMOTE_RUNTIME_CONFIG_URL = 'https://d3gncg0hircdt9.cloudfront.net/runtime-config.js';
+  let API_ENDPOINT = '';
+  let API_KEY = '';
+  let runtimeConfigLoadPromise = null;
   const DIALOGUE_REVEAL_DELAY_MS = 1600;
   const EMPTY_SELECTION_READING = [
     '你没有选择任何一张画面，这本身也是一次选择。',
@@ -32,9 +31,47 @@
     return normalizeConfigValue(value).replace(/\/+$/, '');
   }
 
+  function readRuntimeConfig() {
+    const runtimeConfig = (window.__NORN_CONFIG__ && typeof window.__NORN_CONFIG__ === 'object')
+      ? window.__NORN_CONFIG__
+      : {};
+    API_ENDPOINT = normalizeApiEndpoint(runtimeConfig.apiEndpoint);
+    API_KEY = normalizeConfigValue(runtimeConfig.apiKey);
+  }
+
   function hasBackendConfig() {
     return Boolean(API_ENDPOINT && API_KEY);
   }
+
+  function shouldLoadRemoteRuntimeConfig() {
+    return !hasBackendConfig() && window.location.protocol === 'file:';
+  }
+
+  function ensureBackendConfig() {
+    readRuntimeConfig();
+    if (hasBackendConfig()) {
+      return Promise.resolve(true);
+    }
+    if (!shouldLoadRemoteRuntimeConfig()) {
+      return Promise.resolve(false);
+    }
+    if (!runtimeConfigLoadPromise) {
+      runtimeConfigLoadPromise = new Promise(resolve => {
+        const script = document.createElement('script');
+        script.src = `${REMOTE_RUNTIME_CONFIG_URL}?local=${Date.now()}`;
+        script.async = true;
+        script.onload = () => {
+          readRuntimeConfig();
+          resolve(hasBackendConfig());
+        };
+        script.onerror = () => resolve(false);
+        document.head.appendChild(script);
+      });
+    }
+    return runtimeConfigLoadPromise;
+  }
+
+  readRuntimeConfig();
 
   // ─── State ───────────────────────────────────────────────
   const state = {
@@ -225,7 +262,7 @@
   }
 
   // ─── Reveal Destiny ──────────────────────────────────────
-  function revealDestiny() {
+  async function revealDestiny() {
     // Record final round duration
     if (state.roundStartTime > 0) {
       state.roundDurations.push({
@@ -264,7 +301,8 @@
       return;
     }
 
-    if (!hasBackendConfig()) {
+    const configured = await ensureBackendConfig();
+    if (!configured) {
       renderMissingBackendReading(payload);
       return;
     }
@@ -420,7 +458,8 @@
   async function handleDialogueSubmit(event) {
     event.preventDefault();
     if (state.dialogueLocked) return;
-    if (!hasBackendConfig()) {
+    const configured = await ensureBackendConfig();
+    if (!configured) {
       setDialogueStatus('后端入口尚未配置。');
       return;
     }
