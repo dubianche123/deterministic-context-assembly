@@ -80,6 +80,7 @@
     dom.particleCanvas = document.getElementById('particle-canvas');
     dom.summaryRounds  = document.getElementById('summary-rounds');
     dom.summaryCards   = document.getElementById('summary-cards');
+    dom.restartBlock   = document.getElementById('restart-block');
     dom.restartBtn     = document.getElementById('restart-btn');
     dom.revealHeading  = document.getElementById('reveal-heading');
     dom.revealSubtitle = document.getElementById('reveal-subtitle');
@@ -349,6 +350,7 @@
       .map(p => `<p>${p}</p>`)
       .join('');
     dom.readingText.classList.add('visible');
+    showRestartBlock();
     releaseParticles(350);
     scheduleDialoguePanel();
   }
@@ -358,11 +360,22 @@
     setRevealTitle('命运正在编织……', 'The threads of fate are converging');
     dom.readingText.classList.remove('visible');
     dom.readingText.innerHTML = '';
+    hideRestartBlock();
   }
 
   function setRevealTitle(heading, subtitle) {
     if (dom.revealHeading) dom.revealHeading.textContent = heading;
     if (dom.revealSubtitle) dom.revealSubtitle.textContent = subtitle;
+  }
+
+  function showRestartBlock() {
+    if (!dom.restartBlock) return;
+    dom.restartBlock.classList.add('visible');
+  }
+
+  function hideRestartBlock() {
+    if (!dom.restartBlock) return;
+    dom.restartBlock.classList.remove('visible');
   }
 
   function resetDialoguePanel() {
