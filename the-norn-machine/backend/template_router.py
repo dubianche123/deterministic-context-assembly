@@ -242,21 +242,19 @@ def _build_emotional_texture(analysis: dict) -> str:
 
 
 def _build_concrete_anchors(analysis: dict) -> str:
-    """Provide a few concrete visual hints without turning the reading into a card inventory."""
+    """Provide abstracted emotional and sensory traits to induce the 'how did they know' effect."""
+    traits = [str(item) for item in analysis.get("top_traits", []) if item]
     motifs = [str(item) for item in analysis.get("top_motifs", []) if item]
-    scenes = []
-    for scene in analysis.get("scenes", []):
-        scene = str(scene).strip()
-        if scene and scene not in scenes:
-            scenes.append(scene)
+    scenes = [str(item) for item in analysis.get("scenes", []) if item]
 
-    anchors = []
-    if motifs:
-        anchors.append("反复出现的物感: " + "、".join(motifs[:3]))
-    if scenes:
-        anchors.append("空间气质: " + "、".join(scenes[:2]))
+    combined = []
+    for item in traits + motifs + scenes:
+        if item and item not in combined:
+            combined.append(item)
 
-    return "；".join(anchors) if anchors else "没有明显的单一画面锚点，主要依靠行为骨架判断。"
+    if combined:
+        return "高频画面与情绪特质: " + "、".join(combined[:5])
+    return "没有明显的特定画面情绪特质，主要依靠行为骨架判断。"
 
 
 def _build_commonality_summary(analysis: dict) -> str:
