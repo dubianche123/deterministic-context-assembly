@@ -22,6 +22,23 @@ The Norn Machine 是一个以“直觉选图”解读性格为外壳的确定性
 
 系统内部并不会把原始行为长期存起来，而是把当前请求中的轻量行为信号压缩成稳定的行为画像，再交给模型生成可读的结果。
 
+## 基准测试证据
+
+基准测试把这个项目最核心的架构主张变成了可观察的数据：我们用同一个模型，对比了生产架构中的确定性上下文组装，以及一个把所有已选卡牌 metadata 直接拼进 prompt 的朴素版本。
+
+![上下文压缩基准测试](the-norn-machine/backend/benchmark/benchmark_summary.svg)
+
+| 指标 | 优化版管线 | 朴素版 prompt | 结果 |
+|:--|:--:|:--:|:--|
+| 平均输入 token | 2,039 | 5,179 | 输入上下文减少 2.5x |
+| 平均总延迟 | 5,714ms | 6,822ms | 端到端延迟降低 16.2% |
+| 20 次调用估算费用 | $0.0873 | $0.1649 | 成本降低 47.0% |
+| overflow 模式输入 token | 2,387 | 11,286 | 长会话上下文减少 4.7x |
+
+优化版在 sparse 场景并不总是更短。只有 1-5 次选择时，朴素版 prompt 可能更小，因为需要发送的原始 metadata 本来就很少。优化版会主动把一部分固定上下文预算投入到系统规则、few-shot 示例和行为画像骨架里。真正的差异会在交互深度变高后出现：优化版 prompt 保持有界，朴素版 prompt 会随着每一次选择继续增长。
+
+这次 TTFT 基本持平，优化版为 914ms，朴素版为 867ms。这不是需要遮掩的问题，反而说明这套架构并不声称自己能神奇地缩短首 token 时间。它真正验证的是：当输入变得非平凡时，确定性压缩可以控制上下文增长，降低总延迟，并降低调用成本。
+
 ## 为什么这样设计
 
 很多 LLM 应用会让模型同时负责推理、记忆、事实选择、安全边界和语言表达。这很灵活，但也容易带来输出不稳定、上下文变长、延迟升高和幻觉风险。
@@ -165,6 +182,16 @@ Slow Thinker 调用 Bedrock 生成最终文本。模型接收的是压缩后的�
 - 风格、色板和构图字段
 
 图片管理器的作用是保持卡牌集合的一致性：生成策展 metadata、检查重复 prompt、追踪图片状态，并导出前后端需要的数据。管理脚本已经在仓库中，README 不再展开脚本代码。这里真正重要的是数据契约：每张图既是视觉资产，也是结构化语义信号。
+
+## 附录：基准测试产物
+
+基准测试相关文件保留在仓库里，方便读者检查这些数字，而不是只把它们当成文档里的结论：
+
+- [`generate_scenarios.py`](the-norn-machine/backend/benchmark/generate_scenarios.py)：生成 20 组覆盖 sparse、dense、overflow 交互模式的模拟会话。
+- [`run_bedrock_benchmark.py`](the-norn-machine/backend/benchmark/run_bedrock_benchmark.py)：通过 Amazon Bedrock Streaming API 调用 Claude Haiku 4.5，并记录 token、TTFT、总延迟和估算费用。
+- [`benchmark_prompts.json`](the-norn-machine/backend/benchmark/benchmark_prompts.json)：保存优化版和朴素版的 prompt 对照数据。
+- [`benchmark_results.json`](the-norn-machine/backend/benchmark/benchmark_results.json)：保存原始 API 测量结果和汇总数据。
+- [`benchmark_summary.svg`](the-norn-machine/backend/benchmark/benchmark_summary.svg)：README 中使用的上下文增长曲线图。
 
 ## 结论
 
