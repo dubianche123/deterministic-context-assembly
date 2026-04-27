@@ -27,7 +27,7 @@
       .badge-body { fill: #92400e; font: 700 15px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; letter-spacing: 0; text-anchor: middle; }
       .line-black { fill: none; stroke: #111827; stroke-width: 3; marker-end: url(#arrow-black); }
       .line-red { fill: none; stroke: #dc2626; stroke-width: 3; stroke-dasharray: 10 8; marker-end: url(#arrow-red); }
-      .label-bg { fill: #fbfaf7; stroke: #e4e4e7; stroke-width: 1; }
+      .label-bg { fill: none; stroke: #e4e4e7; stroke-width: 1; }
       .line-label { fill: #18181b; font: 700 14px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; letter-spacing: 0; text-anchor: middle; }
       .red-label { fill: #b91c1c; font: 700 14px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; letter-spacing: 0; text-anchor: middle; }
       .legend { fill: #3f3f46; font: 400 16px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; letter-spacing: 0; }
