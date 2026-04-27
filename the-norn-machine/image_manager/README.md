@@ -1,67 +1,33 @@
-# Norn Plus Image Manager v2 - Curated Metadata Seeder
+# Norn Image Manager
 
-这一版修复旧版最大的问题：旧版 `seed` 会把风格、主体和后端描述都推向“赛博朋克男性单人图像”。v2 改成**策展式 metadata 生成**。
+The image manager maintains the curated visual dataset behind The Norn Machine.
 
-## 核心原则
+Its purpose is not to invent personality logic at runtime. The personality-to-image mapping should live in structured metadata and rules, while the manager only helps seed, audit, ingest, and export that data consistently.
 
-- 不随机生成人格描述；
-- 不默认男性；
-- 不默认赛博朋克；
-- 不默认必须有人；
-- 16 种 MBTI 各有自己的视觉逻辑；
-- 默认 256 张 = 16 型 × 16 个不同场景；
-- 每条记录有唯一 `scene_id`，并有 `audit` 检查重复 prompt。
+## Core Principles
 
-## 快速开始
+- Do not randomly generate personality descriptions.
+- Do not default to male subjects.
+- Do not default to cyberpunk imagery.
+- Do not require every card to contain a person.
+- Give each of the 16 MBTI-like archetypes its own visual logic.
+- Keep every card tied to a unique scene identity.
+- Treat images as semantic signals, not decorative assets.
 
-```bash
-python norn_plus_manager_v2.py init
-python norn_plus_manager_v2.py seed-curated --count 256 --replace
-python norn_plus_manager_v2.py audit
-python norn_plus_manager_v2.py next --batch-size 4 --copy
-```
+## Metadata Contract
 
-然后去 ChatGPT Plus 网页端粘贴生成。下载图片后重命名为：
+Each card record describes both what the player sees and how the backend should interpret the choice.
 
-```text
-NORN_0001.png
-NORN_0002.png
-NORN_0003.png
-NORN_0004.png
-```
-
-丢进：
-
-```text
-output/images_inbox/
-```
-
-再执行：
-
-```bash
-python norn_plus_manager_v2.py ingest
-python norn_plus_manager_v2.py export --format json --only-generated
-```
-
-## 只生成某一种人格的 metadata
-
-例如只看 INTJ 的 16 张：
-
-```bash
-python norn_plus_manager_v2.py seed-curated --type INTJ --count 16 --replace
-python norn_plus_manager_v2.py export --format json
-```
-
-## 新增字段
-
-每条 metadata 会包含：
+Important fields include:
 
 - `mbti_type`
 - `role_group`
+- `layer1_coords`
+- `trait_keywords`
 - `visual_rationale`
 - `scene_id`
-- `scene_cn`
 - `scene_en`
+- `motifs`
 - `human_presence`
 - `subject_mode`
 - `gender_mode`
@@ -69,18 +35,36 @@ python norn_plus_manager_v2.py export --format json
 - `style_family`
 - `palette`
 - `composition`
-- `motifs`
-- `layer3_poetic`
 - `gen_prompt_raw`
 
-## 为什么这版不会再全是男人
+The backend eventually consumes a leaner card dataset, but the manager keeps the richer source metadata available for auditing and future regeneration.
 
-`layer3_poetic` 已经改成场景叙事句，不再使用“他/她”作为默认主语。人物是否出现、出现几人、性别模式，都由 `visual_policy` 明确控制。
+## Visual Policy
 
-## 规则库在哪里
+The v2 dataset was created to avoid a previous failure mode: many cards drifting toward the same cyberpunk, male, single-character composition.
 
-```text
-config/curated_seed_rules_v2.json
-```
+The current policy separates several concerns:
 
-这是你后续真正应该维护的文件。脚本只是执行器，审美和人格映射应该沉淀在这个 JSON 规则库里。
+- personality coordinates define analytical meaning;
+- motifs define concrete visual hooks;
+- scene rationale explains why the image belongs to that archetype;
+- human-presence policy decides whether the image should be empty, single-person, pair-based, or group-based;
+- style, palette, and composition fields keep the visual system diverse.
+
+## Data Flow
+
+Conceptually, the asset flow is:
+
+1. curated rules define archetype-to-visual logic;
+2. metadata records are seeded from those rules;
+3. generated images are matched back to metadata records;
+4. audit checks catch duplication and drift;
+5. exported datasets feed the frontend cards and backend analysis.
+
+The management scripts live in this directory and are intentionally not reproduced here. The important contract is the metadata shape and the separation between visual generation, dataset auditing, and runtime personality analysis.
+
+## What To Maintain
+
+The most important file is the curated rule set under `config/`. That is where aesthetic direction and personality mapping should evolve.
+
+The scripts are executors. The rule set is the product logic.

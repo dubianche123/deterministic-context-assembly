@@ -10,6 +10,7 @@ Algorithm:
   3. Sign → letter, magnitude → confidence
   4. Aggregate traits & motifs by frequency, weighted by same scheme
   5. Add choice-revision signals from cards the user selected and then cancelled
+  6. Extract one optional word-level signature signal from weighted motifs
 """
 import json
 import math
@@ -18,6 +19,7 @@ from collections import Counter
 
 # Load card metadata once at cold start
 _CARDS = None
+DIMS = ("E_I", "S_N", "T_F", "J_P")
 
 # Hesitation timing includes image/network/render wait on the frontend, so it must
 # never dominate the actual choice signal.
@@ -83,10 +85,12 @@ def fast_think(
     # ── Compute per-selection weights ──
     # round_decay: exponential growth so later rounds dominate
     # w(r) = e^(r / total_rounds) normalized
-    weighted_coords = {"E_I": 0.0, "S_N": 0.0, "T_F": 0.0, "J_P": 0.0}
+    weighted_coords = {dim: 0.0 for dim in DIMS}
     total_weight = 0.0
     trait_counter = Counter()
     motif_counter = Counter()
+    motif_coord_sums = {}
+    weighted_selections = []
     scene_list = []
 
     for sel in selections:
@@ -98,10 +102,8 @@ def fast_think(
 
         card = cards[card_id]
 
-        # Weight = round_decay × hesitation_bonus
-        round_decay = math.exp(rnd / max(total_rounds, 1))
-        h_bonus = hesitation_bonus.get(rnd, 1.0)
-        w = round_decay * h_bonus
+        w = _selection_weight(rnd, total_rounds, hesitation_bonus)
+        weighted_selections.append((w, card_id))
 
         # Accumulate weighted coordinates
         for dim in weighted_coords:
@@ -114,6 +116,13 @@ def fast_think(
             trait_counter[trait] += w
         for motif in card["motifs"]:
             motif_counter[motif] += w
+            motif_sums = motif_coord_sums.setdefault(
+                motif,
+                {"weight": 0.0, "coords": {dim: 0.0 for dim in DIMS}},
+            )
+            motif_sums["weight"] += w
+            for dim in DIMS:
+                motif_sums["coords"][dim] += card["coords"][dim] * w
 
         scene_list.append(card["scene"])
 
@@ -165,26 +174,17 @@ def fast_think(
 
     # ── Collect rationale snippets from most-weighted cards ──
     # Sort selections by their computed weight, pick top N rationales
-    sel_with_weight = []
-    for sel in selections:
-        cid = sel["id"]
-        rnd = sel["round"]
-        if cid in cards:
-            w = math.exp(rnd / max(total_rounds, 1)) * hesitation_bonus.get(rnd, 1.0)
-            sel_with_weight.append((w, cid))
-    sel_with_weight.sort(reverse=True)
+    weighted_selections.sort(key=lambda item: item[0], reverse=True)
     rationale_snippets = []
     seen = set()
-    for _, cid in sel_with_weight[:6]:
+    for _, cid in weighted_selections[:6]:
         r = cards[cid]["rationale"]
         if r not in seen:
             rationale_snippets.append(r)
             seen.add(r)
 
     # ── Signature Signal: the single most specific, concrete item ──
-    signature_signal = _pick_signature_signal(
-        selections, cards, coords_avg, motif_counter, hesitation_bonus, total_rounds
-    )
+    signature_signal = _pick_signature_signal(motif_counter, motif_coord_sums, coords_avg)
 
     return {
         "mbti_type": mbti_type,
@@ -238,9 +238,21 @@ def _build_choice_revision(deselection_events, total_rounds):
     }
 
 
-def _pick_signature_signal(
-    selections, cards, coords_avg, motif_counter, hesitation_bonus, total_rounds
-):
+def _selection_weight(round_number, total_rounds, hesitation_bonus):
+    round_decay = math.exp(round_number / max(total_rounds, 1))
+    return round_decay * hesitation_bonus.get(round_number, 1.0)
+
+
+def _cosine_similarity(a, b):
+    mag_a = math.sqrt(sum(a.get(dim, 0) ** 2 for dim in DIMS))
+    mag_b = math.sqrt(sum(b.get(dim, 0) ** 2 for dim in DIMS))
+    if mag_a == 0 or mag_b == 0:
+        return 0.0
+    dot = sum(a.get(dim, 0) * b.get(dim, 0) for dim in DIMS)
+    return dot / (mag_a * mag_b)
+
+
+def _pick_signature_signal(motif_counter, motif_coord_sums, coords_avg):
     """Select the single most iconic concrete motif that best represents this player.
 
     Algorithm:
@@ -252,42 +264,23 @@ def _pick_signature_signal(
       4. Return the top motif as the "signature signal" — the specific, concrete
          item that the LLM is encouraged to mention by name.
     """
-    if not selections or not motif_counter:
+    if not motif_counter or not motif_coord_sums:
         return None
 
-    # Build motif → list of card coords that contributed it
-    motif_cards = {}  # motif → [(card_coords, weight)]
-    for sel in selections:
-        cid = sel["id"]
-        rnd = sel["round"]
-        if cid not in cards:
-            continue
-        card = cards[cid]
-        w = math.exp(rnd / max(total_rounds, 1)) * hesitation_bonus.get(rnd, 1.0)
-        for motif in card["motifs"]:
-            motif_cards.setdefault(motif, []).append((card["coords"], w))
-
-    # Compute alignment score for each motif
-    dims = ["E_I", "S_N", "T_F", "J_P"]
     best_motif = None
     best_score = -1
 
-    for motif, card_entries in motif_cards.items():
+    for motif, sums in motif_coord_sums.items():
         freq_weight = motif_counter.get(motif, 0)
-
-        # Weighted average coords of cards carrying this motif
-        total_w = sum(w for _, w in card_entries)
+        total_w = sums["weight"]
         if total_w == 0:
             continue
-        motif_avg = {}
-        for dim in dims:
-            motif_avg[dim] = sum(c[dim] * w for c, w in card_entries) / total_w
 
-        # Cosine similarity between motif_avg and player coords_avg
-        dot = sum(motif_avg[d] * coords_avg[d] for d in dims)
-        mag_a = math.sqrt(sum(motif_avg[d] ** 2 for d in dims)) or 1
-        mag_b = math.sqrt(sum(coords_avg[d] ** 2 for d in dims)) or 1
-        alignment = dot / (mag_a * mag_b)
+        motif_avg = {
+            dim: sums["coords"][dim] / total_w
+            for dim in DIMS
+        }
+        alignment = _cosine_similarity(motif_avg, coords_avg)
 
         # Final score: frequency × (1 + alignment) to favor both popular and aligned
         score = freq_weight * (1 + max(alignment, 0))

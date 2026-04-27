@@ -3,7 +3,7 @@ import sys
 import os
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
 
-from fast_thinker import fast_think
+from fast_thinker import _cosine_similarity, fast_think
 
 def test_basic_intj():
     """Selecting only INTJ cards should yield INTJ."""
@@ -96,6 +96,29 @@ def test_empty_selection():
     assert result["mbti_type"] == "XXXX"
     print(f"✅ test_empty_selection: {result['mbti_type']}")
 
+
+def test_signature_signal_and_cosine_similarity():
+    """Signature signal should be grounded in selected motifs and cosine math should be stable."""
+    selections = [
+        {"id": "NORN_0001", "round": 1},
+        {"id": "NORN_0017", "round": 2},
+    ]
+    result = fast_think(selections, total_rounds=2)
+    assert result["signature_signal"] in result["top_motifs"]
+    assert _cosine_similarity(
+        {"E_I": 1, "S_N": 1, "T_F": 1, "J_P": 1},
+        {"E_I": 2, "S_N": 2, "T_F": 2, "J_P": 2},
+    ) == 1.0
+    assert _cosine_similarity(
+        {"E_I": 1, "S_N": 0, "T_F": 0, "J_P": 0},
+        {"E_I": -1, "S_N": 0, "T_F": 0, "J_P": 0},
+    ) < 0
+    assert _cosine_similarity(
+        {"E_I": 0, "S_N": 0, "T_F": 0, "J_P": 0},
+        {"E_I": 1, "S_N": 1, "T_F": 1, "J_P": 1},
+    ) == 0.0
+    print(f"✅ test_signature_signal: {result['signature_signal']}")
+
 if __name__ == "__main__":
     test_basic_intj()
     test_hesitation_weighting()
@@ -103,4 +126,5 @@ if __name__ == "__main__":
     test_deselection_signal_nudges_revision_profile()
     test_density_modes()
     test_empty_selection()
+    test_signature_signal_and_cosine_similarity()
     print("\n🎉 All tests passed!")

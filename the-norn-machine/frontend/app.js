@@ -37,6 +37,7 @@
     dialogueLocked: false,
     dialogueRevealTimer: null,
     audioStarted: false,
+    particleController: null,
   };
 
   // ─── DOM ─────────────────────────────────────────────────
@@ -221,7 +222,8 @@
 
     // Show reveal overlay + particles
     dom.revealOverlay.classList.add('active');
-    initParticles();
+    stopParticles();
+    state.particleController = initParticles();
     resetReading();
     resetDialoguePanel();
 
@@ -262,7 +264,7 @@
       renderReading(data.reading);
     } catch (err) {
       console.error('[Norn] API error:', err);
-      // Graceful degradation: particle animation still plays
+      releaseParticles(0);
     }
   }
 
@@ -290,6 +292,7 @@
       .map(p => `<p>${p}</p>`)
       .join('');
     dom.readingText.classList.add('visible');
+    releaseParticles(350);
     scheduleDialoguePanel();
   }
 
@@ -513,135 +516,218 @@
   function initParticles() {
     const canvas = dom.particleCanvas;
     const ctx = canvas.getContext('2d');
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+    canvas.width = Math.floor(width * dpr);
+    canvas.height = Math.floor(height * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
-    const cx = canvas.width / 2;
-    const cy = canvas.height / 2;
-    const maxDim = Math.max(canvas.width, canvas.height);
+    const cx = width / 2;
+    const cy = height / 2;
+    const maxDim = Math.max(width, height);
+    const CONVERGE_MS = 1650;
+    const MIN_HOLD_MS = 320;
+    const DISSIPATE_MS = 1900;
+    const AUTO_RELEASE_MS = 9000;
+    const PARTICLE_COUNT = 120;
+    const AMBIENT_STAR_COUNT = 144;
+    let frameId = null;
+    let startTime = null;
+    let releaseAt = null;
+    let stopped = false;
 
-    // Phase 1: convergence particles (move inward)
-    const convergeParticles = [];
-    const CONVERGE_COUNT = 80;
-    for (let i = 0; i < CONVERGE_COUNT; i++) {
+    const particles = Array.from({ length: PARTICLE_COUNT }, () => {
       const angle = Math.random() * Math.PI * 2;
-      const dist = maxDim * 0.6 + Math.random() * 200;
-      convergeParticles.push({
-        x: cx + Math.cos(angle) * dist,
-        y: cy + Math.sin(angle) * dist,
-        targetX: cx + (Math.random() - 0.5) * 60,
-        targetY: cy + (Math.random() - 0.5) * 60,
-        size: 1 + Math.random() * 2.5,
-        alpha: 0,
-        speed: 0.003 + Math.random() * 0.008,
-        progress: 0,
-        startX: 0,
-        startY: 0,
-      });
-      convergeParticles[i].startX = convergeParticles[i].x;
-      convergeParticles[i].startY = convergeParticles[i].y;
+      const startDist = maxDim * (0.55 + Math.random() * 0.35);
+      const clusterAngle = Math.random() * Math.PI * 2;
+      const clusterDist = Math.random() * 38;
+      const endAngle = angle + (Math.random() - 0.5) * 1.2;
+      const endDist = maxDim * (0.45 + Math.random() * 0.45);
+      return {
+        startX: cx + Math.cos(angle) * startDist,
+        startY: cy + Math.sin(angle) * startDist,
+        clusterX: cx + Math.cos(clusterAngle) * clusterDist,
+        clusterY: cy + Math.sin(clusterAngle) * clusterDist,
+        endX: cx + Math.cos(endAngle) * endDist,
+        endY: cy + Math.sin(endAngle) * endDist,
+        size: 0.9 + Math.random() * 2.4,
+        alpha: 0.6 + Math.random() * 0.4,
+        drift: Math.random() * Math.PI * 2,
+      };
+    });
+
+    const ambientStars = Array.from({ length: AMBIENT_STAR_COUNT }, () => {
+      const x = Math.random() * width;
+      const y = Math.random() * height;
+      return {
+        x,
+        y,
+        size: 0.35 + Math.random() * 1.35,
+        alpha: 0.05 + Math.random() * 0.1,
+        twinkle: Math.random() * Math.PI * 2,
+      };
+    });
+
+    const borderStars = ambientStars
+      .slice()
+      .sort((a, b) => {
+        const edgeA = Math.min(a.x, width - a.x, a.y, height - a.y);
+        const edgeB = Math.min(b.x, width - b.x, b.y, height - b.y);
+        return edgeA - edgeB;
+      })
+      .slice(0, 24);
+
+    const constellations = borderStars.length >= 3
+      ? borderStars.slice(0, 8).map((star, index) => {
+          const neighborA = borderStars[(index * 3 + 5) % borderStars.length];
+          const neighborB = borderStars[(index * 5 + 11) % borderStars.length];
+          return [star, neighborA, neighborB];
+        })
+      : [];
+
+    function drawParticle(x, y, size, alpha) {
+      ctx.beginPath();
+      ctx.arc(x, y, size, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(201, 168, 76, ${alpha * 0.95})`;
+      ctx.fill();
+      ctx.beginPath();
+      ctx.arc(x, y, size * 5.2, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(201, 168, 76, ${alpha * 0.14})`;
+      ctx.fill();
     }
 
-    // Phase 2: dissipation particles (scatter outward after convergence)
-    const dissipateParticles = [];
-    const DISSIPATE_COUNT = 50;
-    let phase2Started = false;
+    function drawCore(radius, alpha) {
+      const gradient = ctx.createRadialGradient(cx, cy, 0, cx, cy, radius);
+      gradient.addColorStop(0, `rgba(201, 168, 76, ${alpha * 0.42})`);
+      gradient.addColorStop(0.38, `rgba(201, 168, 76, ${alpha * 0.16})`);
+      gradient.addColorStop(1, 'rgba(201, 168, 76, 0)');
+      ctx.beginPath();
+      ctx.arc(cx, cy, radius, 0, Math.PI * 2);
+      ctx.fillStyle = gradient;
+      ctx.fill();
+    }
 
-    function spawnDissipation() {
-      for (let i = 0; i < DISSIPATE_COUNT; i++) {
-        const angle = Math.random() * Math.PI * 2;
-        const endDist = maxDim * 0.5 + Math.random() * 300;
-        dissipateParticles.push({
-          x: cx + (Math.random() - 0.5) * 40,
-          y: cy + (Math.random() - 0.5) * 40,
-          targetX: cx + Math.cos(angle) * endDist,
-          targetY: cy + Math.sin(angle) * endDist,
-          size: 0.6 + Math.random() * 1.8,
-          alpha: 0.6 + Math.random() * 0.4,
-          speed: 0.001 + Math.random() * 0.004,
-          progress: 0,
-          startX: cx + (Math.random() - 0.5) * 40,
-          startY: cy + (Math.random() - 0.5) * 40,
-          delay: Math.random() * 120, // stagger start in frames
-          frame: 0,
+    function drawAmbientField(alphaScale, time) {
+      const frameAlpha = Math.max(0, alphaScale);
+      ambientStars.forEach(star => {
+        const flicker = 0.85 + Math.sin(time / 720 + star.twinkle) * 0.15;
+        const edgeDistance = Math.min(star.x, width - star.x, star.y, height - star.y);
+        const rimBoost = Math.max(0, 1 - edgeDistance / (maxDim * 0.22));
+        const alpha = star.alpha * frameAlpha * flicker * (1 + rimBoost * 0.5);
+        if (alpha <= 0.004) return;
+        ctx.beginPath();
+        ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(201, 168, 76, ${alpha * 0.95})`;
+        ctx.fill();
+        ctx.beginPath();
+        ctx.arc(star.x, star.y, star.size * 4.5, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(201, 168, 76, ${alpha * 0.08})`;
+        ctx.fill();
+      });
+
+      constellations.forEach(chain => {
+        ctx.beginPath();
+        chain.forEach((star, index) => {
+          if (index === 0) {
+            ctx.moveTo(star.x, star.y);
+          } else {
+            ctx.lineTo(star.x, star.y);
+          }
         });
-      }
+        ctx.strokeStyle = `rgba(201, 168, 76, ${frameAlpha * 0.06})`;
+        ctx.lineWidth = 0.8;
+        ctx.stroke();
+      });
     }
 
-    function animate() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      let anyActive = false;
+    function drawConvergence(elapsed) {
+      const t = clamp01(elapsed / CONVERGE_MS);
+      const eased = easeOutCubic(t);
+      const fadeIn = clamp01(elapsed / 520);
+      const pulse = t >= 1 ? 1 + Math.sin(elapsed / 180) * 0.18 : 1;
 
-      // Draw converging particles
-      let allConverged = true;
-      convergeParticles.forEach(p => {
-        p.progress = Math.min(1, p.progress + p.speed);
-        const ease = easeInOutCubic(p.progress);
-        p.x = lerp(p.startX, p.targetX, ease);
-        p.y = lerp(p.startY, p.targetY, ease);
-        p.alpha = p.progress < 0.3 ? p.progress / 0.3 : 1;
-        if (p.progress < 1) { allConverged = false; anyActive = true; }
-
-        // After convergence, fade out converge particles slowly
-        let drawAlpha = p.alpha;
-        if (phase2Started) {
-          p.alpha = Math.max(0, p.alpha - 0.008);
-          drawAlpha = p.alpha;
-        }
-        if (drawAlpha > 0.01) {
-          anyActive = true;
-          ctx.beginPath();
-          ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-          ctx.fillStyle = `rgba(201, 168, 76, ${drawAlpha * 0.7})`;
-          ctx.fill();
-          ctx.beginPath();
-          ctx.arc(p.x, p.y, p.size * 3, 0, Math.PI * 2);
-          ctx.fillStyle = `rgba(201, 168, 76, ${drawAlpha * 0.08})`;
-          ctx.fill();
-        }
+      particles.forEach(p => {
+        const x = lerp(p.startX, p.clusterX, eased);
+        const y = lerp(p.startY, p.clusterY, eased);
+        drawParticle(x, y, p.size * pulse, p.alpha * fadeIn);
       });
+      drawAmbientField(0.12 + eased * 0.06, elapsed);
+      drawCore(22 + 34 * eased * pulse, fadeIn * (0.35 + eased * 0.45));
+    }
 
-      // Start phase 2 once most converge particles arrive
-      if (allConverged && !phase2Started) {
-        phase2Started = true;
-        spawnDissipation();
+    function drawDissipation(elapsed) {
+      const t = clamp01(elapsed / DISSIPATE_MS);
+      const eased = easeOutCubic(t);
+      const fade = Math.pow(1 - t, 1.25);
+
+      particles.forEach(p => {
+        const wave = Math.sin(t * Math.PI * 3 + p.drift) * 10 * (1 - t);
+        const x = lerp(p.clusterX, p.endX, eased) + wave;
+        const y = lerp(p.clusterY, p.endY, eased) - wave * 0.4;
+        ctx.beginPath();
+        ctx.moveTo(p.clusterX, p.clusterY);
+        ctx.lineTo(x, y);
+        ctx.strokeStyle = `rgba(201, 168, 76, ${p.alpha * fade * 0.1})`;
+        ctx.lineWidth = 0.6 + p.size * 0.12;
+        ctx.stroke();
+        drawParticle(x, y, p.size * (1 + t * 1.25), p.alpha * fade);
+      });
+      drawAmbientField(0.22 + t * 0.35, elapsed);
+      drawCore(44 + 120 * eased, fade * 0.45);
+    }
+
+    function animate(timestamp) {
+      if (stopped) return;
+      if (startTime === null) startTime = timestamp;
+      const elapsed = timestamp - startTime;
+
+      if (releaseAt === null && elapsed > AUTO_RELEASE_MS) {
+        releaseAt = timestamp;
       }
 
-      // Draw dissipating particles (scatter outward)
-      dissipateParticles.forEach(p => {
-        p.frame++;
-        if (p.frame < p.delay) { anyActive = true; return; }
-
-        p.progress = Math.min(1, p.progress + p.speed);
-        const ease = easeInOutCubic(p.progress);
-        p.x = lerp(p.startX, p.targetX, ease);
-        p.y = lerp(p.startY, p.targetY, ease);
-
-        // Fade in then fade out
-        let drawAlpha;
-        if (p.progress < 0.15) {
-          drawAlpha = (p.progress / 0.15) * p.alpha;
-        } else {
-          drawAlpha = p.alpha * (1 - (p.progress - 0.15) / 0.85);
+      ctx.clearRect(0, 0, width, height);
+      if (releaseAt === null || timestamp < releaseAt) {
+        drawConvergence(elapsed);
+      } else {
+        const releaseElapsed = timestamp - releaseAt;
+        drawDissipation(releaseElapsed);
+        if (releaseElapsed >= DISSIPATE_MS) {
+          drawAmbientField(0.92, timestamp);
+          drawCore(Math.min(maxDim * 0.7, 220), 0.22);
+          return;
         }
-        drawAlpha = Math.max(0, drawAlpha);
+      }
 
-        if (p.progress < 1 && drawAlpha > 0.01) {
-          anyActive = true;
-          ctx.beginPath();
-          ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-          ctx.fillStyle = `rgba(201, 168, 76, ${drawAlpha * 0.5})`;
-          ctx.fill();
-          ctx.beginPath();
-          ctx.arc(p.x, p.y, p.size * 4, 0, Math.PI * 2);
-          ctx.fillStyle = `rgba(201, 168, 76, ${drawAlpha * 0.04})`;
-          ctx.fill();
-        }
-      });
-
-      if (anyActive) requestAnimationFrame(animate);
+      frameId = requestAnimationFrame(animate);
     }
-    animate();
+
+    frameId = requestAnimationFrame(animate);
+    return {
+      release(delayMs = 0) {
+        const now = performance.now();
+        const earliest = (startTime || now) + CONVERGE_MS + MIN_HOLD_MS;
+        releaseAt = releaseAt || Math.max(now + delayMs, earliest);
+      },
+      stop() {
+        stopped = true;
+        if (frameId) cancelAnimationFrame(frameId);
+        ctx.clearRect(0, 0, width, height);
+      },
+    };
+  }
+
+  function releaseParticles(delayMs = 0) {
+    if (state.particleController && typeof state.particleController.release === 'function') {
+      state.particleController.release(delayMs);
+    }
+  }
+
+  function stopParticles() {
+    if (state.particleController && typeof state.particleController.stop === 'function') {
+      state.particleController.stop();
+      state.particleController = null;
+    }
   }
 
   // ─── Utilities ───────────────────────────────────────────
@@ -713,10 +799,14 @@
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
 
+  function clamp01(value) {
+    return Math.max(0, Math.min(1, value));
+  }
+
   function lerp(a, b, t) { return a + (b - a) * t; }
 
-  function easeInOutCubic(t) {
-    return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+  function easeOutCubic(t) {
+    return 1 - Math.pow(1 - t, 3);
   }
 
   // ─── Boot ────────────────────────────────────────────────
