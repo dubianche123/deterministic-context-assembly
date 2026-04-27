@@ -7,7 +7,7 @@
 
 # The Norn Machine：确定性上下文组装
 
-## 一个 Serverless、Stateless 的 Prompt Engine
+## 一个 Serverless、Stateless 的 Cloud-Native Prompt Engine
 
 **版本**：2.0 MVP  
 **作者**：Leo Wang  
@@ -36,30 +36,13 @@ The Norn Machine 把模型的职责收窄。模型收到的不是一堆原始选
 
 ## 系统架构
 
-```text
-[浏览器]
-   |
-   | HTTPS
-   v
-[CloudFront]
-   |
-   v
-[S3 静态前端]
+![The Norn Machine 架构图](the-norn-machine/Norn-Machine.drawio.svg)
 
-[浏览器]
-   |
-   | POST /analyze, /dialogue
-   v
-[API Gateway]
-   |
-   v
-[Lambda: Fast Thinker + Template Router]
-   |
-   v
-[Amazon Bedrock: Slow Thinker + Guardrails]
-```
+这张架构图与当前 MVP 实现一致。CloudFront 是公网 HTTPS 入口，S3 提供静态前端，API Gateway 用 API Key 和 Usage Plan 保护后端入口，Lambda 运行确定性上下文组装，Amazon Bedrock 负责最终语言渲染。
 
-CloudFront 负责 HTTPS 静态分发。API Gateway 使用 API Key 和 Usage Plan 保护后端入口。Lambda 负责确定性计算和 Prompt 组装。Bedrock 负责最终语言渲染和护栏检查。
+API Gateway 承载两个请求型能力：结果分析和最后对话。二者遵守同一个契约：浏览器提交当前 payload，Lambda 将其压缩成结构化上下文，模型只接收这份受约束的上下文，而不是原始会话历史。
+
+这也是 stateless 的核心：没有数据库保存玩家会话，没有跨用户记忆，也没有长期画像。Prompt 规则和后端输出护栏共同保证最终回答不越出产品约束。
 
 ## 运行流水线
 
@@ -76,9 +59,33 @@ CloudFront 负责 HTTPS 静态分发。API Gateway 使用 API Key 和 Usage Plan
 
 ### 2. Fast Thinker
 
-Fast Thinker 是纯确定性 Python 计算层。它把行为信号转成四维坐标和摘要特征。
+Fast Thinker 是纯确定性 Python 计算层，也是整个项目的精髓：模型不负责判断玩家是谁，模型只接收代码已经压缩好的画像。
 
-当前信号包括：
+每张卡牌都带有四轴坐标，以及策展好的特质、意象、场景和 rationale。玩家每选择一张卡，Fast Thinker 会先计算这次选择的权重：
+
+```text
+selection_weight = exp(round_number / total_rounds) * hesitation_bonus
+```
+
+越靠后的轮次权重越高，因为玩家看过更多卡牌后，后期选择通常更接近真实偏好。犹豫时间只作为很小的修正：系统会在当前测试内部归一化每轮停留时长，并把它限制在 `1.0x` 到 `1.12x` 之间，避免图片加载和渲染时间污染判断。
+
+最终坐标是加权平均：
+
+```text
+final_axis_value = sum(card_axis_value * selection_weight) / sum(selection_weight)
+```
+
+取消已选卡牌单独处理，因为“选了又撤回”比单纯停留更能表达复核、摇摆或不愿过早定型。系统会统计取消事件，估算 revision strength，对开放/收束轴做轻微修正，并把“选择复核”“反复校准”等特质并入同一轮聚合。
+
+同一套权重也会用于聚合特质、意象、场景和 rationale。最后，标志性信号会从意象中选出一个词级钩子，计算方式是加权频率乘以它和最终坐标向量的余弦贴合度：
+
+```text
+signature_score = weighted_frequency * (1 + max(cosine_similarity, 0))
+```
+
+这样结果里可以出现一个具体物件，让玩家感到系统确实读到了选择，但不会让模型把回答写成“你选了哪些图”的清单。
+
+当前信号来源包括：
 
 - **轮次衰减**：越靠后的选择权重越高，因为后期选择通常更接近真实偏好。
 - **犹豫加权**：停留时长只作为很小的修正，因为图片加载和渲染时间会污染原始时长。
@@ -124,7 +131,7 @@ Slow Thinker 调用 Bedrock 生成最终文本。模型接收的是压缩后的�
 - 后端只处理当前请求中的 payload。
 - 对话有轮数限制和 100 字输入限制。
 - API Gateway 提供 API Key 校验和调用频率限制。
-- Bedrock Guardrails 提供额外的输出安全检查。
+- Prompt 规则和后端输出护栏提供额外的安全检查。
 - 公网入口应走 CloudFront HTTPS，而不是直接暴露 S3 网站端点。
 
 ## 可迁移的模式
@@ -159,3 +166,5 @@ Slow Thinker 调用 Bedrock 生成最终文本。模型接收的是压缩后的�
 ## 结论
 
 The Norn Machine 是一个很小的产品，但它测试的是一个更大的架构判断：越重要的判断，越不应该随意交给模型自由发挥。代码负责压缩和约束世界，模型负责让这个被压缩后的世界变得有生命。
+
+<p align="center"><sub>The Norn Machine: A serverless, stateless prompt engine</sub></p>

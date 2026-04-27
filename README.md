@@ -7,7 +7,7 @@
 
 # The Norn Machine: Deterministic Context Assembly
 
-## A serverless, stateless prompt engine for deterministic context assembly
+## A serverless, stateless cloud-native prompt engine
 
 **Version**: 2.0 MVP  
 **Author**: Leo Wang  
@@ -36,30 +36,13 @@ The model is still valuable, but it is treated as a renderer rather than an orac
 
 ## Architecture
 
-```text
-[Browser]
-   |
-   | HTTPS
-   v
-[CloudFront]
-   |
-   v
-[S3 static frontend]
+![The Norn Machine architecture](the-norn-machine/Norn-Machine.drawio.svg)
 
-[Browser]
-   |
-   | POST /analyze, /dialogue
-   v
-[API Gateway]
-   |
-   v
-[Lambda: Fast Thinker + Template Router]
-   |
-   v
-[Amazon Bedrock: Slow Thinker + Guardrails]
-```
+This architecture matches the deployed MVP. CloudFront is the public HTTPS entry, S3 serves the static frontend, API Gateway protects the backend with an API key and usage plan, Lambda runs deterministic context assembly, and Amazon Bedrock renders the final language output.
 
-CloudFront serves the frontend over HTTPS. API Gateway protects the Lambda endpoint with an API key and usage plan. Lambda performs deterministic feature extraction and prompt assembly. Bedrock handles language rendering and guardrail checks.
+API Gateway exposes two request-scoped capabilities: result analysis and final dialogue. Both follow the same contract: the browser sends the current payload, Lambda compresses it into structured context, and the model receives only that bounded context rather than raw session history.
+
+The system is stateless by design. There is no database, no cross-user memory, and no stored session profile. Prompt rules and backend output guardrails keep the rendered answer inside the product contract.
 
 ## Runtime Pipeline
 
@@ -76,9 +59,33 @@ The app also supports a zero-selection result. If a player reveals fate without 
 
 ### 2. Fast Thinker
 
-The Fast Thinker is pure deterministic Python. It turns behavior into four-dimensional coordinates and summary signals.
+The Fast Thinker is pure deterministic Python. It is the core of the project: the LLM does not decide the user's profile; it receives a compressed profile already shaped by code.
 
-Current signals:
+Each card carries a four-axis coordinate vector plus curated traits, motifs, scenes, and rationales. For every selected card, Fast Thinker calculates a selection weight:
+
+```text
+selection_weight = exp(round_number / total_rounds) * hesitation_bonus
+```
+
+Later rounds therefore count more, because later choices usually reflect a sharper preference after the player has seen more of the card space. Hesitation is deliberately small: round duration is normalized inside the current session and can only move a card from `1.0x` to `1.12x`, because image loading and rendering can pollute timing data.
+
+The final coordinate is a weighted average:
+
+```text
+final_axis_value = sum(card_axis_value * selection_weight) / sum(selection_weight)
+```
+
+Deselection is handled separately because canceling an already selected card is a stronger signal than merely taking time. The system counts deselection events, estimates a revision strength, nudges the openness/closure axis toward more revision, and adds traits such as choice review or repeated calibration into the same aggregation pass.
+
+The same weights also aggregate traits, motifs, scenes, and rationales. Finally, the signature signal is chosen from motifs by combining frequency with cosine alignment against the final coordinate vector:
+
+```text
+signature_score = weighted_frequency * (1 + max(cosine_similarity, 0))
+```
+
+That gives the result one concrete word-level hook without letting the model turn the answer into a list of selected objects.
+
+Current signal sources:
 
 - **Round decay**: later rounds carry more weight because later choices tend to reflect a sharper preference.
 - **Hesitation bonus**: duration is a small nudge only, because image loading and rendering can pollute timing data.
@@ -124,7 +131,7 @@ Music is user-gesture bound: it starts when the player begins the test, which ke
 - The backend receives only the current request payload.
 - Dialogue is capped by turn count and character length.
 - API Gateway provides API-key validation and request limiting.
-- Bedrock Guardrails provide an additional output safety layer.
+- Prompt rules and backend output guardrails provide an additional safety layer.
 - The public frontend entry is CloudFront HTTPS; direct S3 website hosting is not the intended public route.
 
 ## Transferable Pattern
@@ -159,3 +166,5 @@ The image manager exists to keep those concepts consistent across the card set: 
 ## Conclusion
 
 The Norn Machine is a small product, but it tests a larger architectural stance: the more important the judgment is, the less casually it should be delegated to the model. Code should compress and constrain the world; the model should make that compressed world feel alive.
+
+<p align="center"><sub>The Norn Machine: A serverless, stateless prompt engine</sub></p>
