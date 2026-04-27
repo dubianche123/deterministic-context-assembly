@@ -383,14 +383,57 @@
   function renderReading(reading) {
     if (!dom.readingText || !reading) return;
     setRevealTitle('命运已经织成', 'The threads have taken shape');
-    dom.readingText.innerHTML = reading
-      .split('\n\n')
-      .map(p => `<p>${p}</p>`)
-      .join('');
+
+    // Build paragraph structure but start empty
+    const paragraphs = reading.split('\n\n').filter(p => p.trim());
+    dom.readingText.innerHTML = paragraphs.map(() => '<p></p>').join('');
+    const paraEls = dom.readingText.querySelectorAll('p');
     dom.readingText.classList.add('visible');
-    showRestartBlock();
+
+    // Flatten all characters with paragraph index
+    const chars = [];
+    paragraphs.forEach((para, pIdx) => {
+      [...para].forEach(ch => chars.push({ pIdx, ch }));
+      if (pIdx < paragraphs.length - 1) chars.push({ pIdx, ch: null }); // paragraph end
+    });
+
+    // Adaptive speed: target ~3s for short texts, ~7s for long texts
+    const totalChars = reading.replace(/\n+/g, '').length;
+    const durationMs = Math.min(7000, Math.max(3000, totalChars * 12));
+    const msPerChar = durationMs / Math.max(chars.length, 1);
+
+    let charIdx = 0;
+    let lastTime = null;
+    let accumulated = 0;
+    let done = false;
+
+    function tick(now) {
+      if (done) return;
+      if (lastTime === null) lastTime = now;
+      accumulated += now - lastTime;
+      lastTime = now;
+
+      while (accumulated >= msPerChar && charIdx < chars.length) {
+        accumulated -= msPerChar;
+        const { pIdx, ch } = chars[charIdx];
+        if (ch !== null && paraEls[pIdx]) {
+          paraEls[pIdx].textContent += ch;
+        }
+        charIdx++;
+      }
+
+      if (charIdx < chars.length) {
+        requestAnimationFrame(tick);
+      } else {
+        done = true;
+        showRestartBlock();
+        scheduleDialoguePanel();
+      }
+    }
+
+    // Particles dissipate as text begins appearing
     releaseParticles(350);
-    scheduleDialoguePanel();
+    requestAnimationFrame(tick);
   }
 
   function resetReading() {
@@ -500,7 +543,7 @@
       }
 
       const reply = data.reply || data.text || '命运暂时没有更多话要说。';
-      appendDialogueBubble('assistant', reply);
+      appendDialogueBubble('assistant', reply, true);
       state.dialogueHistory.push({ role: 'user', content: message });
       state.dialogueHistory.push({ role: 'assistant', content: reply });
       state.dialogueTurns = turnCount;
@@ -547,13 +590,44 @@
     dom.dialogueSend.disabled = isBusy || state.dialogueLocked;
   }
 
-  function appendDialogueBubble(role, text) {
+  function appendDialogueBubble(role, text, typewrite = false) {
     if (!dom.dialogueLog) return;
     const bubble = document.createElement('div');
     bubble.className = `dialogue-bubble ${role}`;
-    bubble.textContent = text;
-    dom.dialogueLog.appendChild(bubble);
-    dom.dialogueLog.scrollTop = dom.dialogueLog.scrollHeight;
+
+    if (role === 'assistant' && typewrite && text) {
+      // Typewriter effect for assistant replies
+      bubble.textContent = '';
+      dom.dialogueLog.appendChild(bubble);
+      dom.dialogueLog.scrollTop = dom.dialogueLog.scrollHeight;
+
+      const chars = [...text];
+      const msPerChar = Math.min(40, Math.max(16, 3000 / chars.length));
+      let idx = 0;
+      let last = null;
+      let acc = 0;
+
+      function tick(now) {
+        if (last === null) last = now;
+        acc += now - last;
+        last = now;
+        while (acc >= msPerChar && idx < chars.length) {
+          acc -= msPerChar;
+          bubble.textContent += chars[idx];
+          idx++;
+        }
+        if (idx < chars.length) {
+          requestAnimationFrame(tick);
+        } else {
+          dom.dialogueLog.scrollTop = dom.dialogueLog.scrollHeight;
+        }
+      }
+      requestAnimationFrame(tick);
+    } else {
+      bubble.textContent = text;
+      dom.dialogueLog.appendChild(bubble);
+      dom.dialogueLog.scrollTop = dom.dialogueLog.scrollHeight;
+    }
   }
 
   function syncDialogueCounter() {
