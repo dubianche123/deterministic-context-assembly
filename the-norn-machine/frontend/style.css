@@ -828,3 +828,52 @@ body::after {
 
 /* ─── Utility ─── */
 .hidden { display: none !important; }
+
+/* ═══════════════════════════════════════════════════════════
+   AUDIO CONTROLS
+   ═══════════════════════════════════════════════════════════ */
+.audio-controls {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  opacity: 0.5;
+  transition: opacity 0.3s ease;
+}
+.audio-controls:hover {
+  opacity: 1;
+}
+.volume-icon {
+  color: var(--gold);
+  font-size: 14px;
+  pointer-events: none;
+}
+.volume-slider {
+  width: 64px;
+  height: 2px;
+  -webkit-appearance: none;
+  background: rgba(201,168,76,0.3);
+  outline: none;
+  cursor: pointer;
+}
+.volume-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--gold);
+  cursor: pointer;
+  box-shadow: 0 0 8px var(--gold-glow-md);
+}
+.volume-slider::-moz-range-thumb {
+  width: 10px;
+  height: 10px;
+  border: none;
+  border-radius: 50%;
+  background: var(--gold);
+  cursor: pointer;
+  box-shadow: 0 0 8px var(--gold-glow-md);
+}

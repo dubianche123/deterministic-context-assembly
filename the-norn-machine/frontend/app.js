@@ -131,6 +131,7 @@
     dom.dialogueTurns  = document.getElementById('dialogue-turns');
     dom.dialogueStatus = document.getElementById('dialogue-status');
     dom.ambientAudio   = document.getElementById('ambient-audio');
+    dom.volumeSlider   = document.getElementById('volume-slider');
 
     state.ambientController = initAmbientBackground();
 
@@ -152,6 +153,37 @@
     dom.dialogueForm.addEventListener('submit', handleDialogueSubmit);
     dom.dialogueInput.addEventListener('input', syncDialogueCounter);
     dom.dialogueInput.addEventListener('keydown', handleDialogueKeydown);
+    if (dom.volumeSlider && dom.ambientAudio) {
+      dom.ambientAudio.volume = parseFloat(dom.volumeSlider.value);
+      dom.volumeSlider.addEventListener('input', (e) => {
+        dom.ambientAudio.volume = parseFloat(e.target.value);
+      });
+    }
+  }
+
+  // ─── Audio FX ────────────────────────────────────────────
+  const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  
+  function playRippleSound(isSelect) {
+    if (audioCtx.state === 'suspended') audioCtx.resume();
+    const osc = audioCtx.createOscillator();
+    const gainNode = audioCtx.createGain();
+    
+    osc.type = 'sine';
+    const baseFreq = isSelect ? 800 : 400;
+    osc.frequency.setValueAtTime(baseFreq, audioCtx.currentTime);
+    osc.frequency.exponentialRampToValueAtTime(baseFreq * 0.4, audioCtx.currentTime + 0.1);
+    
+    gainNode.gain.setValueAtTime(0, audioCtx.currentTime);
+    const masterVol = dom.volumeSlider ? parseFloat(dom.volumeSlider.value) : 0.32;
+    gainNode.gain.linearRampToValueAtTime(0.2 * masterVol, audioCtx.currentTime + 0.02);
+    gainNode.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.3);
+    
+    osc.connect(gainNode);
+    gainNode.connect(audioCtx.destination);
+    
+    osc.start();
+    osc.stop(audioCtx.currentTime + 0.3);
   }
 
   // ─── Welcome → Test ──────────────────────────────────────
@@ -248,10 +280,12 @@
       // Store with round number for backend weighting
       state.selectedCards.push({ id: card.id, round: state.roundNumber });
       el.classList.add('selected');
+      playRippleSound(true);
     } else {
       state.deselectionEvents.push({ id: card.id, round: state.roundNumber });
       state.selectedCards.splice(idx, 1);
       el.classList.remove('selected');
+      playRippleSound(false);
     }
     dom.totalSelected.textContent = state.selectedCards.length;
   }
@@ -380,12 +414,18 @@
     renderReading(CONFIG_MISSING_READING);
   }
 
+  function cleanMarkdown(text) {
+    if (!text) return '';
+    return text.replace(/\*\*(.*?)\*\*/g, '$1').replace(/\*(.*?)\*/g, '$1').replace(/#/g, '');
+  }
+
   function renderReading(reading) {
     if (!dom.readingText || !reading) return;
     setRevealTitle('命运已经织成', 'The threads have taken shape');
 
+    const cleanText = cleanMarkdown(reading);
     // Build paragraph structure but start empty
-    const paragraphs = reading.split('\n\n').filter(p => p.trim());
+    const paragraphs = cleanText.split('\n\n').filter(p => p.trim());
     dom.readingText.innerHTML = paragraphs.map(() => '<p></p>').join('');
     const paraEls = dom.readingText.querySelectorAll('p');
     dom.readingText.classList.add('visible');
@@ -594,6 +634,8 @@
     if (!dom.dialogueLog) return;
     const bubble = document.createElement('div');
     bubble.className = `dialogue-bubble ${role}`;
+    
+    text = cleanMarkdown(text);
 
     if (role === 'assistant' && typewrite && text) {
       // Typewriter effect for assistant replies
@@ -694,7 +736,9 @@
 
   function startAmbientAudio() {
     if (state.audioStarted || !dom.ambientAudio) return;
-    dom.ambientAudio.volume = 0.32;
+    if (!dom.volumeSlider) {
+        dom.ambientAudio.volume = 0.32;
+    }
     const playPromise = dom.ambientAudio.play();
     if (playPromise && typeof playPromise.catch === 'function') {
       playPromise
