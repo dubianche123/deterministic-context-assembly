@@ -42,6 +42,7 @@ def route_template(analysis: dict) -> dict:
         behavior_profile=_build_behavior_profile(analysis),
         emotional_texture=_build_emotional_texture(analysis),
         concrete_anchors=_build_concrete_anchors(analysis),
+        signature_signal=_build_signature_line(analysis),
         total_rounds=analysis["total_rounds"],
         total_selections=analysis["total_selections"],
         stats_block=stats_block,
@@ -255,6 +256,14 @@ def _build_concrete_anchors(analysis: dict) -> str:
     if combined:
         return "高频画面与情绪特质: " + "、".join(combined[:5])
     return "没有明显的特定画面情绪特质，主要依靠行为骨架判断。"
+
+
+def _build_signature_line(analysis: dict) -> str:
+    """Format the signature signal as a single concrete anchor the LLM must mention."""
+    sig = analysis.get("signature_signal")
+    if sig:
+        return f"你在选择中反复触碰的一个具体信号是：「{sig}」"
+    return "没有足够数据提取单一标志性信号。"
 
 
 def _build_commonality_summary(analysis: dict) -> str:

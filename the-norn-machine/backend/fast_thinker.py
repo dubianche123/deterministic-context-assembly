@@ -181,6 +181,11 @@ def fast_think(
             rationale_snippets.append(r)
             seen.add(r)
 
+    # ── Signature Signal: the single most specific, concrete item ──
+    signature_signal = _pick_signature_signal(
+        selections, cards, coords_avg, motif_counter, hesitation_bonus, total_rounds
+    )
+
     return {
         "mbti_type": mbti_type,
         "confidence": confidence,
@@ -189,6 +194,7 @@ def fast_think(
         "top_motifs": top_motifs,
         "scenes": scene_list,
         "rationale_snippets": rationale_snippets,
+        "signature_signal": signature_signal,
         "data_density": density,
         "total_selections": len(selections),
         "total_rounds": total_rounds,
@@ -232,6 +238,67 @@ def _build_choice_revision(deselection_events, total_rounds):
     }
 
 
+def _pick_signature_signal(
+    selections, cards, coords_avg, motif_counter, hesitation_bonus, total_rounds
+):
+    """Select the single most iconic concrete motif that best represents this player.
+
+    Algorithm:
+      1. For each motif that appeared, compute a relevance score:
+         relevance = frequency_weight × alignment_score
+      2. frequency_weight: how often this motif appeared (weighted same as coords)
+      3. alignment_score: how well the card(s) carrying this motif align with the
+         player's final coords_avg (cosine similarity in 4D MBTI space)
+      4. Return the top motif as the "signature signal" — the specific, concrete
+         item that the LLM is encouraged to mention by name.
+    """
+    if not selections or not motif_counter:
+        return None
+
+    # Build motif → list of card coords that contributed it
+    motif_cards = {}  # motif → [(card_coords, weight)]
+    for sel in selections:
+        cid = sel["id"]
+        rnd = sel["round"]
+        if cid not in cards:
+            continue
+        card = cards[cid]
+        w = math.exp(rnd / max(total_rounds, 1)) * hesitation_bonus.get(rnd, 1.0)
+        for motif in card["motifs"]:
+            motif_cards.setdefault(motif, []).append((card["coords"], w))
+
+    # Compute alignment score for each motif
+    dims = ["E_I", "S_N", "T_F", "J_P"]
+    best_motif = None
+    best_score = -1
+
+    for motif, card_entries in motif_cards.items():
+        freq_weight = motif_counter.get(motif, 0)
+
+        # Weighted average coords of cards carrying this motif
+        total_w = sum(w for _, w in card_entries)
+        if total_w == 0:
+            continue
+        motif_avg = {}
+        for dim in dims:
+            motif_avg[dim] = sum(c[dim] * w for c, w in card_entries) / total_w
+
+        # Cosine similarity between motif_avg and player coords_avg
+        dot = sum(motif_avg[d] * coords_avg[d] for d in dims)
+        mag_a = math.sqrt(sum(motif_avg[d] ** 2 for d in dims)) or 1
+        mag_b = math.sqrt(sum(coords_avg[d] ** 2 for d in dims)) or 1
+        alignment = dot / (mag_a * mag_b)
+
+        # Final score: frequency × (1 + alignment) to favor both popular and aligned
+        score = freq_weight * (1 + max(alignment, 0))
+
+        if score > best_score:
+            best_score = score
+            best_motif = motif
+
+    return best_motif
+
+
 def _empty_result(total_rounds, revision=None):
     return {
         "mbti_type": "XXXX",
@@ -241,6 +308,7 @@ def _empty_result(total_rounds, revision=None):
         "top_motifs": [],
         "scenes": [],
         "rationale_snippets": [],
+        "signature_signal": None,
         "data_density": "sparse_mode",
         "total_selections": 0,
         "total_rounds": total_rounds,

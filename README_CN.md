@@ -110,11 +110,14 @@ The Norn Machine 提出了一条不同的路径：**让确定性规则处理决�
 
 后端的 Lambda 承担核心调度，分为三步：
 
-**Step 1：快思考引擎 (Fast Thinker)**
-处理前端传入的 `[卡牌ID, 轮次, 犹豫时长, 取消次数]`。通过时间衰减和加权计算，快速得出受访者的特征座标。
+**Step 1: Fast Thinker Engine**
+Processes `[Card ID, Round, Hesitation Duration, Cancellation Count]` passed from the frontend. Using time decay and weighting calculations, it quickly derives the user's feature coordinates.
 
-**Step 2：模板路由与动态重排 (Template Router)**
-系统根据算出的特征强度进行**动态重排（Reordering）**。将权重最高的隐性特质优先放置在 Prompt 顶部，利用 LLM 对前置信息的注意力优势，提升重点特征的表达优先级。
+**Step 1.5: Signature Signal Algorithm (NEW)**
+After computing the 4D personality coordinates, the system runs a **Signature Signal** extraction: it cross-references each concrete visual motif's frequency (weighted by the same round-decay and hesitation scheme) with its **cosine similarity** to the player's final personality vector. The single motif that scores highest on both frequency and alignment is extracted as the player's "signature signal" — a specific, concrete item (e.g., "lighthouse," "rain window," "light strip") that the LLM is instructed to mention by name during rendering. This creates a moment of precise recognition ("How did it know?") that elevates the reading from generic to personal, and serves as an early prototype for product-specific recommendation in conversational commerce scenarios.
+
+**Step 2: Template Router & Dynamic Reordering**
+The system performs **Dynamic Reordering** based on the calculated feature strengths. The implicit traits with the highest weight are prioritized at the top of the Prompt, utilizing the LLM's attention advantage on preceding information to enhance the expression priority of key traits.
 
 **Step 3：慢思考渲染 (Slow Thinker via Bedrock)**
 向 Bedrock 注入重排后的 Prompt。LLM 将结构化的推演结果转化为连贯的反馈文本。
