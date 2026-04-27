@@ -11,14 +11,14 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=20260427-readable-stars">
+  <link rel="stylesheet" href="style.css?v=20260428-audio-order">
 </head>
 <body>
   <canvas id="ambient-canvas" aria-hidden="true"></canvas>
 
   <div class="audio-controls">
-    <span class="volume-icon">♪</span>
     <input type="range" id="volume-slider" class="volume-slider" min="0" max="1" step="0.01" value="0.32" aria-label="调整音量">
+    <span class="volume-icon" aria-hidden="true">♪</span>
   </div>
 
   <!-- ═══════════════════════════════════════════════════════
@@ -112,7 +112,7 @@
   </div>
 
   <audio id="ambient-audio" src="Drifting_Near_the_Core.mp3" preload="auto" loop></audio>
-  <script src="runtime-config.js?v=20260427-readable-stars"></script>
-  <script src="app.js?v=20260427-readable-stars"></script>
+  <script src="runtime-config.js?v=20260428-audio-order"></script>
+  <script src="app.js?v=20260428-audio-order"></script>
 </body>
 </html>

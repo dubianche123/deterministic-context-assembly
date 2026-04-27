@@ -776,7 +776,7 @@ body::after {
   opacity: 1;
   pointer-events: auto;
   transform: translateY(0);
-  transition-delay: 0.7s;
+  transition-delay: 0s;
 }
 .btn-restart {
   background: rgba(201,168,76,0.08);
@@ -835,12 +835,12 @@ body::after {
 .audio-controls {
   position: fixed;
   top: 24px;
-  right: 24px;
+  left: 24px;
   z-index: 9999;
   display: flex;
   align-items: center;
-  gap: 8px;
-  opacity: 0.5;
+  gap: 10px;
+  opacity: 0.78;
   transition: opacity 0.3s ease;
 }
 .audio-controls:hover {
@@ -849,10 +849,12 @@ body::after {
 .volume-icon {
   color: var(--gold);
   font-size: 14px;
+  line-height: 1;
+  text-shadow: 0 0 10px var(--gold-glow-md);
   pointer-events: none;
 }
 .volume-slider {
-  width: 64px;
+  width: 86px;
   height: 2px;
   -webkit-appearance: none;
   background: rgba(201,168,76,0.3);

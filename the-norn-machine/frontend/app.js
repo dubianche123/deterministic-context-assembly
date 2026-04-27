@@ -12,6 +12,8 @@
   let API_KEY = '';
   let runtimeConfigLoadPromise = null;
   const DIALOGUE_REVEAL_DELAY_MS = 1600;
+  const RESTART_REVEAL_DELAY_MS = DIALOGUE_REVEAL_DELAY_MS + 1200;
+  const FALLBACK_RESTART_REVEAL_DELAY_MS = 900;
   const EMPTY_SELECTION_READING = [
     '你没有选择任何一张画面，这本身也是一次选择。',
     '织机把这看作一种停在门槛上的姿势：你没有急着把自己交给某个符号，也没有让一瞬间的吸引替你决定方向。也许此刻最像你的，不是某个答案，而是对答案保持距离的那一下迟疑。',
@@ -94,7 +96,9 @@
     dialogueHistory: [],
     dialogueLocked: false,
     dialogueRevealTimer: null,
+    restartRevealTimer: null,
     audioStarted: false,
+    masterVolume: 0.32,
     particleController: null,
     ambientController: null,
   };
@@ -153,43 +157,101 @@
     dom.dialogueForm.addEventListener('submit', handleDialogueSubmit);
     dom.dialogueInput.addEventListener('input', syncDialogueCounter);
     dom.dialogueInput.addEventListener('keydown', handleDialogueKeydown);
-    if (dom.volumeSlider && dom.ambientAudio) {
-      dom.ambientAudio.volume = parseFloat(dom.volumeSlider.value);
-      dom.volumeSlider.addEventListener('input', (e) => {
-        dom.ambientAudio.volume = parseFloat(e.target.value);
-      });
-    }
+    initializeAudioControls();
   }
 
   // ─── Audio FX ────────────────────────────────────────────
-  const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  let audioCtx = null;
+
+  function getAudioContext() {
+    if (audioCtx) return audioCtx;
+    const AudioCtor = window.AudioContext || window.webkitAudioContext;
+    if (!AudioCtor) return null;
+    audioCtx = new AudioCtor();
+    return audioCtx;
+  }
+
+  function clampVolume(value) {
+    const parsed = Number.parseFloat(value);
+    if (!Number.isFinite(parsed)) return 0.32;
+    return Math.min(1, Math.max(0, parsed));
+  }
+
+  function readVolumeSlider() {
+    return clampVolume(dom.volumeSlider ? dom.volumeSlider.value : state.masterVolume);
+  }
+
+  function applyMasterVolume(value = readVolumeSlider()) {
+    state.masterVolume = clampVolume(value);
+    if (dom.ambientAudio) {
+      dom.ambientAudio.volume = state.masterVolume;
+    }
+    if (dom.volumeSlider && Number.parseFloat(dom.volumeSlider.value) !== state.masterVolume) {
+      dom.volumeSlider.value = String(state.masterVolume);
+    }
+  }
+
+  function initializeAudioControls() {
+    applyMasterVolume();
+    if (!dom.volumeSlider) return;
+    dom.volumeSlider.addEventListener('input', (event) => {
+      applyMasterVolume(event.target.value);
+    });
+    dom.volumeSlider.addEventListener('change', (event) => {
+      applyMasterVolume(event.target.value);
+    });
+  }
+
+  function unlockAudioContext() {
+    const ctx = getAudioContext();
+    if (!ctx) return Promise.resolve(null);
+    if (ctx.state !== 'suspended') return Promise.resolve(ctx);
+    return ctx.resume()
+      .then(() => ctx)
+      .catch(err => {
+        console.warn('[Norn] Audio context could not resume:', err);
+        return null;
+      });
+  }
   
   function playRippleSound(isSelect) {
-    if (audioCtx.state === 'suspended') audioCtx.resume();
-    const osc = audioCtx.createOscillator();
-    const gainNode = audioCtx.createGain();
-    
-    osc.type = 'sine';
-    const baseFreq = isSelect ? 800 : 400;
-    osc.frequency.setValueAtTime(baseFreq, audioCtx.currentTime);
-    osc.frequency.exponentialRampToValueAtTime(baseFreq * 0.4, audioCtx.currentTime + 0.1);
-    
-    gainNode.gain.setValueAtTime(0, audioCtx.currentTime);
-    const masterVol = dom.volumeSlider ? parseFloat(dom.volumeSlider.value) : 0.32;
-    gainNode.gain.linearRampToValueAtTime(0.2 * masterVol, audioCtx.currentTime + 0.02);
-    gainNode.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.3);
-    
-    osc.connect(gainNode);
-    gainNode.connect(audioCtx.destination);
-    
-    osc.start();
-    osc.stop(audioCtx.currentTime + 0.3);
+    unlockAudioContext().then(ctx => {
+      if (!ctx || state.masterVolume <= 0.001) return;
+
+      const now = ctx.currentTime;
+      const gainNode = ctx.createGain();
+      const primary = ctx.createOscillator();
+      const shimmer = ctx.createOscillator();
+      const baseFreq = isSelect ? 720 : 420;
+      const peak = (isSelect ? 0.18 : 0.12) * state.masterVolume;
+
+      primary.type = 'sine';
+      shimmer.type = 'triangle';
+      primary.frequency.setValueAtTime(baseFreq, now);
+      primary.frequency.exponentialRampToValueAtTime(baseFreq * 0.42, now + 0.24);
+      shimmer.frequency.setValueAtTime(baseFreq * 1.5, now);
+      shimmer.frequency.exponentialRampToValueAtTime(baseFreq * 0.72, now + 0.34);
+
+      gainNode.gain.setValueAtTime(0.0001, now);
+      gainNode.gain.exponentialRampToValueAtTime(peak, now + 0.018);
+      gainNode.gain.exponentialRampToValueAtTime(0.0001, now + 0.42);
+
+      primary.connect(gainNode);
+      shimmer.connect(gainNode);
+      gainNode.connect(ctx.destination);
+
+      primary.start(now);
+      shimmer.start(now + 0.018);
+      primary.stop(now + 0.45);
+      shimmer.stop(now + 0.42);
+    });
   }
 
   // ─── Welcome → Test ──────────────────────────────────────
   function startTest() {
     dom.welcomeOverlay.classList.add('dismissed');
     dom.testArea.classList.add('active');
+    unlockAudioContext();
     startAmbientAudio();
     drawRound();
   }
@@ -466,8 +528,8 @@
         requestAnimationFrame(tick);
       } else {
         done = true;
-        showRestartBlock();
         scheduleDialoguePanel();
+        scheduleRestartBlock();
       }
     }
 
@@ -481,6 +543,7 @@
     setRevealTitle('命运正在编织……', 'The threads of fate are converging');
     dom.readingText.classList.remove('visible');
     dom.readingText.innerHTML = '';
+    clearRestartTimer();
     hideRestartBlock();
   }
 
@@ -497,6 +560,23 @@
   function hideRestartBlock() {
     if (!dom.restartBlock) return;
     dom.restartBlock.classList.remove('visible');
+  }
+
+  function clearRestartTimer() {
+    if (!state.restartRevealTimer) return;
+    clearTimeout(state.restartRevealTimer);
+    state.restartRevealTimer = null;
+  }
+
+  function scheduleRestartBlock() {
+    if (!dom.restartBlock || state.restartRevealTimer) return;
+    clearRestartTimer();
+    const hasDialogue = !(state.analysisResult && state.analysisResult.config_missing);
+    const delay = hasDialogue ? RESTART_REVEAL_DELAY_MS : FALLBACK_RESTART_REVEAL_DELAY_MS;
+    state.restartRevealTimer = setTimeout(() => {
+      state.restartRevealTimer = null;
+      showRestartBlock();
+    }, delay);
   }
 
   function resetDialoguePanel() {
@@ -736,9 +816,7 @@
 
   function startAmbientAudio() {
     if (state.audioStarted || !dom.ambientAudio) return;
-    if (!dom.volumeSlider) {
-        dom.ambientAudio.volume = 0.32;
-    }
+    applyMasterVolume();
     const playPromise = dom.ambientAudio.play();
     if (playPromise && typeof playPromise.catch === 'function') {
       playPromise
