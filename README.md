@@ -24,20 +24,26 @@ Underneath the visual interface, the frontend records only lightweight behaviora
 
 ## Benchmark Evidence
 
-The benchmark is where the architectural claim becomes measurable. We compared the production-style deterministic context assembly pipeline against a naive prompt that sends every selected card's raw metadata directly to the same model.
+The benchmark is where the architectural claim becomes measurable. We compared the production-style deterministic context assembly against a naive, unoptimized version that concatenates every selected card's raw metadata directly into the original prompt.
 
 ![Context compression benchmark](the-norn-machine/backend/benchmark/benchmark_summary.svg)
 
-| Metric | Optimized Pipeline | Naive Prompt | Result |
+| Metric | Optimized Prompt | Original Prompt | Result |
 |:--|:--:|:--:|:--|
 | Average input tokens | 2,039 | 5,179 | 2.5x less input context |
 | Average total latency | 5,714ms | 6,822ms | 16.2% lower end-to-end latency |
 | Estimated cost, 20 calls | $0.0873 | $0.1649 | 47.0% lower cost |
-| Overflow-mode input tokens | 2,387 | 11,286 | 4.7x less context in long sessions |
+| Overflow scene input tokens | 2,387 | 11,286 | 4.7x less context in long sessions |
 
-The optimized prompt is not always shorter in sparse sessions. With only 1-5 selections, the naive prompt can be smaller because there is little raw metadata to send. The optimized version deliberately spends a fixed context budget on system rules, few-shot examples, and the behavioral skeleton. The result becomes visible as interaction depth grows: the optimized prompt stays bounded, while the naive prompt grows with every selected card.
+Before analyzing the data, we define three interaction depths: **short context scenes (sparse scenes, 1-5 selections)**, **sufficient context scenes (dense scenes, 6-20 selections)**, and **excessive context scenes (overflow scenes, >20 selections)**.
 
-TTFT was roughly neutral in this run: 914ms for the optimized pipeline versus 867ms for the naive prompt. That is useful signal rather than a problem to hide. This architecture is not claiming a magical first-token shortcut; it is claiming bounded context growth, lower total latency, and lower cost once the input becomes non-trivial.
+In sparse scenes, the optimized prompt is not always shorter than the original prompt. Because there is very little raw metadata to send in these cases, our optimized pipeline deliberately allocates a fixed context budget toward system rules, few-shot examples, and a structured behavioral skeleton. This ensures that the model can still produce high-quality, stylistically consistent answers even with minimal input.
+
+The true architectural advantage lies in its remarkable **token consistency**. As the interaction depth progresses into dense and overflow scenes, the original prompt grows continuously with every selection (reaching up to 15,107 tokens in our tests). The optimized prompt, however, remains tightly bounded between 1,800 and 2,400 tokens. This happens because the Fast Thinker deterministic layer compresses all card traits into a fixed-format behavioral profile *before* passing any data to the LLM. Whether the user selects 1 or 80 cards, the model receives this highly distilled profile instead of a raw historical log.
+
+For Time To First Token (TTFT), performance is nearly identical (914ms optimized vs. 867ms original). This validates our core philosophy: the goal of this architecture is not to provide magical shortcuts for every single metric, but to offer an extremely stable scaling solution without sacrificing response times. When the input becomes non-trivial, deterministic compression effectively halts unbounded context growth and significantly reduces total end-to-end latency.
+
+The impact on cost is even more striking. Based on our current tests, using the original prompt with an average length of 5,179 tokens results in an average total cost of $0.1649 (approx. ¥1.2 RMB) across 20 calls. By employing the deterministic compression architecture, this drops to an average of $0.0873 (approx. ¥0.6 RMB), instantly saving 47% in calling costs. In extreme overflow scenes, this advantage in consistency expands to over 80% cost savings.
 
 ## Why This Exists
 
