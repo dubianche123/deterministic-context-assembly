@@ -10,7 +10,7 @@
 
 **English** · [中文](README_CN.md)
 
-[Start here](#start-here) · [Benchmarks](#benchmark-evidence) · [Architecture](#architecture)
+[Try the core](#start-here) · [Input → profile](#trace-one-local-profile) · [Benchmarks](#benchmark-evidence) · [Code guide](#explore-the-code)
 
 </div>
 
@@ -26,6 +26,19 @@ The project is built around a simple engineering principle:
 **Deterministic code should make the judgment. The language model should render the judgment.**
 
 Underneath the visual interface, the frontend records only lightweight behavioral signals, the backend compresses them into stable behavioral context, and the model turns that bounded context into readable language. The system does not store user sessions or raw choices in a database.
+
+## What is implemented
+
+| Layer | Concrete behavior |
+| --- | --- |
+| Image-card interaction | Collect card IDs, round numbers, round durations and canceled selections. |
+| Deterministic profile | Compute weighted coordinates, confidence, curated traits and choice-revision signals in Python. |
+| Context assembly | Select sparse/dense/overflow templates and construct a profile rather than concatenating the raw card history. |
+| Language rendering | Use Bedrock for player-facing interpretation and final dialogue. |
+| Failure handling | Handle empty selections and malformed/failed model responses through explicit fallback paths. |
+| Measurement | Compare the original and optimized prompt paths with checked-in benchmark artifacts. |
+
+The personality-reading interface is an interaction demo. The reusable engineering idea is the **boundary between deterministic state construction and probabilistic language generation**.
 
 ## Start here
 
@@ -47,6 +60,39 @@ python3 -B the-norn-machine/backend/tests/test_fast_thinker.py
 This command runs local rule tests without calling Bedrock. The complete UI and online language-generation path also need the frontend assets and AWS configuration described below.
 
 ![How it works](docs/readme/flow.svg)
+
+## Trace one local profile
+
+Run this after the sparse checkout above. The two public card IDs are the same INTJ examples used in the unit tests:
+
+```bash
+python3 -B - <<'PYTHON'
+import json, sys
+sys.path.insert(0, "the-norn-machine/backend")
+from fast_thinker import fast_think
+
+profile = fast_think(
+    [{"id": "NORN_0001", "round": 1}, {"id": "NORN_0017", "round": 2}],
+    total_rounds=2,
+)
+print(json.dumps({k: profile[k] for k in
+    ("mbti_type", "coords_avg", "data_density")}, indent=2))
+PYTHON
+```
+
+Expected deterministic projection:
+
+```json
+{
+  "mbti_type": "INTJ",
+  "coords_avg": {"E_I": -8.0, "S_N": 8.0, "T_F": 8.0, "J_P": 8.0},
+  "data_density": "sparse_mode"
+}
+```
+
+`fast_think()` computes the profile. `route_template()` turns it into a Bedrock request containing `system`, `messages`, `max_tokens` and `temperature`. At that boundary, coordinates become readable behavioral statements; curated traits and anchors provide specificity without handing the raw interaction log to the model.
+
+**Routing uses total rounds:** `≤5` sparse, `6–20` dense, `>20` overflow. Selection count is reported separately. These are template routes in the code, not the plotted token counts or an assessment of psychological certainty.
 
 ## Runtime Dataflow
 
@@ -79,7 +125,7 @@ The benchmark is where the architectural claim becomes measurable. We compared t
 | 30 rounds / 80 selections | 15,107 input tokens | 2,383 input tokens | Raw card history becomes a bounded behavioral profile |
 | Same scenario latency | 9,373ms | 6,179ms | End-to-end latency drops after context growth is contained |
 
-Before analyzing the data, we define three interaction depths: **short context scenes (sparse scenes, 1-5 selections)**, **sufficient context scenes (dense scenes, 6-20 selections)**, and **excessive context scenes (overflow scenes, >20 selections)**.
+Before analyzing the data, we define three interaction depths: **short sessions (sparse, 1–5 total rounds)**, **medium sessions (dense, 6–20 total rounds)**, and **long sessions (overflow, >20 total rounds)**. The code routes on total rounds; selected-card count is a separate benchmark dimension.
 
 In sparse scenes, the optimized prompt is not always shorter than the original prompt. Because there is very little raw metadata to send in these cases, our optimized pipeline deliberately allocates a fixed context budget toward system rules, few-shot examples, and a structured behavioral skeleton. This ensures that the model can still produce high-quality, stylistically consistent answers even with minimal input.
 
@@ -314,3 +360,17 @@ The benchmark suite is kept in the repository so the numbers above can be inspec
 The Norn Machine is a small demo, but it tests a larger architectural stance: when the judgment matters, the system should make the judgment traceable before asking the model to speak. Code compresses and constrains the world; the model makes that compressed world readable.
 
 <p align="center"><sub>The Norn Machine: A serverless, stateless cloud-native prompt engine</sub></p>
+
+## Explore the code
+
+| Start with | What to inspect |
+| --- | --- |
+| [frontend/app.js](the-norn-machine/frontend/app.js) | Card interaction, request payloads and result rendering |
+| [fast_thinker.py](the-norn-machine/backend/fast_thinker.py) | Weights, four-axis aggregation, confidence, revision and density |
+| [template_router.py](the-norn-machine/backend/template_router.py) | Behavioral-language assembly and mode-specific prompt selection |
+| [config/prompts/](the-norn-machine/backend/config/prompts/) | The actual sparse/dense/overflow templates |
+| [lambda_function.py](the-norn-machine/backend/lambda_function.py) | Request handling, output checks and fallbacks |
+| [backend/tests/](the-norn-machine/backend/tests/) | Deterministic examples and failure cases |
+| [backend/benchmark/](the-norn-machine/backend/benchmark/) | Scenario generation, live benchmark runner and recorded results |
+
+The local profile example and rule tests need no model key. Repeating the Bedrock benchmark is a separate live experiment with AWS setup and provider charges; the checked-in measurements describe the recorded scenarios, not a universal latency or cost guarantee.

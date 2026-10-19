@@ -1,25 +1,37 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="300" viewBox="0 0 1200 300" role="img" aria-labelledby="t d"><title id="t">The Norn Machine · How it works</title><desc id="d">Logical request path; CloudFront/S3 and API Gateway are shown in the detailed architecture below.</desc>
-<rect x="1" y="1" width="1198" height="298" rx="18" fill="#FAFCFF" stroke="#DCE5F0"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="650" viewBox="0 0 1200 650" role="img" aria-labelledby="title desc">
+<title id="title">The Norn Machine · What code decides, what the model writes</title><desc id="desc">The Norn Machine · What code decides, what the model writes. Repository-specific technical illustration.</desc>
 <g font-family="Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif">
-<text x="36" y="42" font-size="24" fill="#253B55" font-weight="650" text-anchor="start">The Norn Machine · How it works</text>
-<rect x="36" y="97" width="206.4" height="100" rx="12" fill="#ECF3FE" stroke="#95B3DD"/>
-<text x="52.0" y="132" font-size="19" fill="#253B55" font-weight="650" text-anchor="start">Browser payload</text>
-<text x="52.0" y="163" font-size="13" fill="#60748C" font-weight="400" text-anchor="start">Selections + timing</text>
-<path d="M242.4 147H266.4m-6-4 6 4-6 4" stroke="#7186A3" stroke-width="1.6" fill="none" stroke-linejoin="round"/>
-<rect x="266.4" y="97" width="206.4" height="100" rx="12" fill="#E9F5F0" stroke="#88B7A3"/>
-<text x="282.4" y="132" font-size="19" fill="#253B55" font-weight="650" text-anchor="start">Fast Thinker</text>
-<text x="282.4" y="163" font-size="13" fill="#60748C" font-weight="400" text-anchor="start">Deterministic profile</text>
-<path d="M472.8 147H496.8m-6-4 6 4-6 4" stroke="#7186A3" stroke-width="1.6" fill="none" stroke-linejoin="round"/>
-<rect x="496.8" y="97" width="206.4" height="100" rx="12" fill="#ECF3FE" stroke="#95B3DD"/>
-<text x="512.8" y="132" font-size="19" fill="#253B55" font-weight="650" text-anchor="start">Template router</text>
-<text x="512.8" y="163" font-size="13" fill="#60748C" font-weight="400" text-anchor="start">Bounded prompt</text>
-<path d="M703.2 147H727.2m-6-4 6 4-6 4" stroke="#7186A3" stroke-width="1.6" fill="none" stroke-linejoin="round"/>
-<rect x="727.2" y="97" width="206.4" height="100" rx="12" fill="#E9F5F0" stroke="#88B7A3"/>
-<text x="743.2" y="132" font-size="19" fill="#253B55" font-weight="650" text-anchor="start">Bedrock</text>
-<text x="743.2" y="163" font-size="13" fill="#60748C" font-weight="400" text-anchor="start">Language rendering</text>
-<path d="M933.6 147H957.6m-6-4 6 4-6 4" stroke="#7186A3" stroke-width="1.6" fill="none" stroke-linejoin="round"/>
-<rect x="957.6" y="97" width="206.4" height="100" rx="12" fill="#ECF3FE" stroke="#95B3DD"/>
-<text x="973.6" y="132" font-size="19" fill="#253B55" font-weight="650" text-anchor="start">Output guards</text>
-<text x="973.6" y="163" font-size="13" fill="#60748C" font-weight="400" text-anchor="start">Response + fallback</text>
-<text x="36" y="258" font-size="13" fill="#60748C" font-weight="400" text-anchor="start">Logical request path; CloudFront/S3 and API Gateway are shown in the detailed architecture below.</text>
+<rect x="1" y="1" width="1198" height="648" rx="20" fill="#F8FAFD" stroke="#DBE3ED" />
+<text x="36" y="44" font-size="25" fill="#23324A" font-weight="700" text-anchor="start">A compact behavioral profile crosses the model boundary.</text>
+<rect x="24" y="89" width="1152" height="258" rx="14" fill="#EFF3FC" stroke="#BECCE4" />
+<text x="43" y="121" font-size="14" fill="#596F94" font-weight="700" text-anchor="start">DETERMINISTIC · PYTHON</text>
+<rect x="44" y="158" width="262" height="140" rx="14" fill="#EAF1FE" stroke="#9CB4DF" />
+<text x="62" y="190" font-size="20" fill="#23324A" font-weight="700" text-anchor="start">Interaction payload</text>
+<text x="62" y="220" font-size="16" fill="#536782" font-weight="400" text-anchor="start">Card IDs + rounds</text>
+<text x="62" y="244" font-size="16" fill="#536782" font-weight="400" text-anchor="start">Duration + deselections</text>
+<rect x="444" y="158" width="302" height="140" rx="14" fill="#E7F5EF" stroke="#93C8B0" />
+<text x="462" y="190" font-size="20" fill="#23324A" font-weight="700" text-anchor="start">Fast Thinker</text>
+<text x="462" y="220" font-size="16" fill="#536782" font-weight="400" text-anchor="start">Weighted four-axis profile</text>
+<text x="462" y="244" font-size="16" fill="#536782" font-weight="400" text-anchor="start">Traits + revision + density</text>
+<rect x="884" y="158" width="270" height="140" rx="14" fill="#EAF1FE" stroke="#9CB4DF" />
+<text x="902" y="190" font-size="20" fill="#23324A" font-weight="700" text-anchor="start">Template router</text>
+<text x="902" y="220" font-size="16" fill="#536782" font-weight="400" text-anchor="start">Mode-specific few-shot</text>
+<text x="902" y="244" font-size="16" fill="#536782" font-weight="400" text-anchor="start">Structured context + budget</text>
+<path d="M306 227H444m-7 -5 7 5 -7 5" fill="none" stroke="#6E809A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M746 227H884m-7 -5 7 5 -7 5" fill="none" stroke="#6E809A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="24" y="390" width="1152" height="180" rx="14" fill="#F5F0FC" stroke="#CEBDE7" />
+<text x="43" y="421" font-size="14" fill="#84659C" font-weight="700" text-anchor="start">PROBABILISTIC · LANGUAGE</text>
+<rect x="884" y="443" width="270" height="94" rx="14" fill="#F0EAFC" stroke="#B7A2D7" />
+<text x="902" y="475" font-size="20" fill="#23324A" font-weight="700" text-anchor="start">Amazon Bedrock</text>
+<text x="902" y="505" font-size="16" fill="#536782" font-weight="400" text-anchor="start">Render the prepared profile</text>
+<rect x="444" y="443" width="302" height="94" rx="14" fill="#FFF3DD" stroke="#D9BD83" />
+<text x="462" y="475" font-size="20" fill="#23324A" font-weight="700" text-anchor="start">Output guards + fallback</text>
+<text x="462" y="505" font-size="16" fill="#536782" font-weight="400" text-anchor="start">Validate response shape / text</text>
+<rect x="44" y="443" width="262" height="94" rx="14" fill="#E7F5EF" stroke="#93C8B0" />
+<text x="62" y="475" font-size="20" fill="#23324A" font-weight="700" text-anchor="start">Result / final dialogue</text>
+<text x="62" y="505" font-size="16" fill="#536782" font-weight="400" text-anchor="start">Player-facing narrative</text>
+<path d="M1019 298V443m-5 -7 5 7 5 -7" fill="none" stroke="#6E809A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M884 490H746m7 -5 -7 5 7 5" fill="none" stroke="#6E809A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M444 490H306m7 -5 -7 5 7 5" fill="none" stroke="#6E809A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="36" y="613" font-size="16" fill="#60728A" font-weight="400" text-anchor="start">No cross-user session database. Empty selections and model failures have explicit fallback paths.</text>
 </g></svg>

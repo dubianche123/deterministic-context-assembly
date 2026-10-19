@@ -1,22 +1,33 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="430" viewBox="0 0 1280 430" role="img" aria-labelledby="t d">
-<title id="t">The Norn Machine</title><desc id="d">Assemble the context. Let the model tell the story.</desc>
-<rect width="1280" height="430" rx="22" fill="#241C3D"/>
-<path d="M1030 0 1280 250M1155 0l125 125" stroke="#FFFFFF" stroke-opacity=".035" stroke-width="65"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="520" viewBox="0 0 1280 520" role="img" aria-labelledby="title desc">
+<title id="title">The Norn Machine</title><desc id="desc">The Norn Machine. Repository-specific technical illustration.</desc>
+<defs><linearGradient id="project-bg" x2="1" y2="1"><stop stop-color="#1B1931"/><stop offset="1" stop-color="#282641"/></linearGradient><pattern id="texture" width="28" height="28" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="1" fill="#FFFFFF" fill-opacity=".035"/></pattern></defs>
 <g font-family="Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif">
-<text x="48" y="48" font-size="13" fill="#BAA5F4" font-weight="650" text-anchor="start">DETERMINISTIC CONTEXT ASSEMBLY</text>
-<text x="48" y="122" font-size="48" fill="#F5F8FF" font-weight="700" text-anchor="start">The Norn Machine</text>
-<text x="50" y="164" font-size="21" fill="#C1CFDF" font-weight="400" text-anchor="start">Assemble the context. Let the model tell the story.</text>
-<rect x="48" y="210" width="352" height="122" rx="14" fill="#FFFFFF" fill-opacity=".055" stroke="#FFFFFF" stroke-opacity=".14"/>
-<text x="68" y="244" font-size="13" fill="#BAA5F4" font-weight="650" text-anchor="start">01 / CAPTURE</text>
-<text x="68" y="291" font-size="17" fill="#EDF3FA" font-weight="500" text-anchor="start">Lightweight interaction signals</text>
-<path d="M413 271h25m-7-5 7 5-7 5" fill="none" stroke="#9DAFC4" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
-<rect x="456" y="210" width="352" height="122" rx="14" fill="#FFFFFF" fill-opacity=".055" stroke="#FFFFFF" stroke-opacity=".14"/>
-<text x="476" y="244" font-size="13" fill="#BAA5F4" font-weight="650" text-anchor="start">02 / ASSEMBLE</text>
-<text x="476" y="291" font-size="17" fill="#EDF3FA" font-weight="500" text-anchor="start">Fast Thinker + template routing</text>
-<path d="M821 271h25m-7-5 7 5-7 5" fill="none" stroke="#9DAFC4" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
-<rect x="864" y="210" width="352" height="122" rx="14" fill="#FFFFFF" fill-opacity=".055" stroke="#FFFFFF" stroke-opacity=".14"/>
-<text x="884" y="244" font-size="13" fill="#BAA5F4" font-weight="650" text-anchor="start">03 / RENDER</text>
-<text x="884" y="291" font-size="17" fill="#EDF3FA" font-weight="500" text-anchor="start">Bounded language generation</text>
-<path d="M48 369h1184" stroke="#FFFFFF" stroke-opacity=".14"/>
-<text x="50" y="400" font-size="14" fill="#AFC0D4" font-weight="400" text-anchor="start">Stateless AWS MVP · Inspectable context assembly</text>
+<rect x="1" y="1" width="1278" height="518" rx="20" fill="url(#project-bg)" stroke="#283951" />
+<rect x="1" y="1" width="1278" height="518" rx="20" fill="url(#texture)"/>
+<path d="M54 50l11-20 11 20-22-10h22M65 30v20" fill="none" stroke="#C9B0FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M0 430H1280M640 0V520" fill="none" stroke="#25354F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="88" y="49" font-size="13" fill="#C9B0FF" font-weight="700" text-anchor="start">DETERMINISTIC CONTEXT ASSEMBLY</text>
+<text x="50" y="132" font-size="45" fill="#F7FAFF" font-weight="700" text-anchor="start">The Norn Machine</text>
+<text x="52" y="190" font-size="22" fill="#C2CFE1" font-weight="400" text-anchor="start">Make the profile inspectable.</text>
+<text x="52" y="223" font-size="22" fill="#C2CFE1" font-weight="400" text-anchor="start">Keep generation focused on language.</text>
+<text x="52" y="350" font-size="17" fill="#8EA4BF" font-weight="400" text-anchor="start">— Card selections become structured signals.</text>
+<text x="52" y="379" font-size="17" fill="#8EA4BF" font-weight="400" text-anchor="start">— Python owns weights, routing and fallback.</text>
+<text x="52" y="408" font-size="17" fill="#8EA4BF" font-weight="400" text-anchor="start">— Bedrock receives a bounded profile.</text>
+<text x="52" y="486" font-size="12" fill="#6F86A4" font-weight="700" text-anchor="start">PROJECT OVERVIEW  /  SCHEMATIC</text>
+<rect x="704" y="76" width="108" height="142" rx="12" fill="#252C48" stroke="#72688E" />
+<rect x="722" y="87" width="108" height="142" rx="12" fill="#343254" stroke="#72688E" />
+<rect x="740" y="98" width="108" height="142" rx="12" fill="#48416B" stroke="#72688E" />
+<text x="758" y="137" font-size="13" fill="#E9DCF9" font-weight="700" text-anchor="start">CHOICE</text>
+<text x="758" y="167" font-size="12" fill="#C8BCD9" font-weight="400" text-anchor="start">round + time</text>
+<rect x="896" y="84" width="328" height="145" rx="14" fill="#17263D" stroke="#364A66" />
+<text x="914" y="115" font-size="17" fill="#C9B0FF" font-weight="700" text-anchor="start">CODE COMPUTES THE PROFILE</text>
+<text x="914" y="145" font-size="16" fill="#DFE8F5" font-weight="400" text-anchor="start">coords_avg · confidence</text>
+<text x="914" y="169" font-size="16" fill="#DFE8F5" font-weight="400" text-anchor="start">traits · revision · density</text>
+<path d="M854 160H886m-7 -5 7 5 -7 5" fill="none" stroke="#C9B0FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M1060 229V273m-5 -7 5 7 5 -7" fill="none" stroke="#C9B0FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="705" y="284" width="519" height="128" rx="14" fill="#17263D" stroke="#364A66" />
+<text x="723" y="315" font-size="17" fill="#C9B0FF" font-weight="700" text-anchor="start">BOUNDED CONTEXT → BEDROCK</text>
+<text x="723" y="345" font-size="16" fill="#DFE8F5" font-weight="400" text-anchor="start">Template + behavior profile → language</text>
+<text x="723" y="369" font-size="16" fill="#DFE8F5" font-weight="400" text-anchor="start">The raw selection log stays outside the prompt.</text>
+<text x="705" y="482" font-size="12" fill="#8FA4C0" font-weight="400" text-anchor="start">STATELESS REQUESTS   ·   LOCAL RULE TESTS   ·   AWS MVP</text>
 </g></svg>

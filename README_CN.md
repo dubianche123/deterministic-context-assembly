@@ -10,7 +10,7 @@
 
 [English](README.md) · **中文**
 
-[快速入口](#从这里开始) · [基准证据](#基准测试证据) · [系统架构](#系统架构)
+[运行核心](#从这里开始) · [输入到画像](#追踪一次本地画像计算) · [基准证据](#基准测试证据) · [代码导航](#代码导航)
 
 </div>
 
@@ -26,6 +26,19 @@ The Norn Machine 是一个以“直觉选图”解读性格为外壳的确定性
 **确定性代码负责判断，大语言模型负责表达。**
 
 系统内部并不会把原始行为长期存起来，而是把当前请求中的轻量行为信号压缩成稳定的行为画像，再交给模型生成可读的结果。
+
+## 当前实现了什么
+
+| 层次 | 具体行为 |
+| --- | --- |
+| 图片卡片交互 | 采集卡片 ID、轮次、每轮时长与取消选择。 |
+| 确定性画像 | Python 计算加权坐标、置信信号、策划特征与选择修正信号。 |
+| 上下文组装 | 选择 sparse/dense/overflow 模板，组装画像，替代原始卡片历史拼接。 |
+| 语言呈现 | Bedrock 生成面向使用者的结果叙述与最终对话。 |
+| 失败处理 | 零选择、模型失败和异常响应都有明确回退路径。 |
+| 实验验证 | 用已提交的基准产物比较原始提示词与优化提示词路径。 |
+
+性格解读界面是一种交互演示。可复用的工程思路是**确定性状态构建与概率语言生成之间的边界**。
 
 ## 从这里开始
 
@@ -47,6 +60,39 @@ python3 -B the-norn-machine/backend/tests/test_fast_thinker.py
 此命令只运行本地规则测试，不调用 Bedrock。完整网页与在线语言生成还需要相应的前端资源和 AWS 配置；它们的职责见后文。
 
 ![工作原理概览](docs/readme/flow-cn.svg)
+
+## 追踪一次本地画像计算
+
+完成上面的稀疏检出后即可运行。两个公开卡片 ID 来自单元测试中的 INTJ 示例：
+
+```bash
+python3 -B - <<'PYTHON'
+import json, sys
+sys.path.insert(0, "the-norn-machine/backend")
+from fast_thinker import fast_think
+
+profile = fast_think(
+    [{"id": "NORN_0001", "round": 1}, {"id": "NORN_0017", "round": 2}],
+    total_rounds=2,
+)
+print(json.dumps({k: profile[k] for k in
+    ("mbti_type", "coords_avg", "data_density")}, indent=2))
+PYTHON
+```
+
+确定性的预期输出投影：
+
+```json
+{
+  "mbti_type": "INTJ",
+  "coords_avg": {"E_I": -8.0, "S_N": 8.0, "T_F": 8.0, "J_P": 8.0},
+  "data_density": "sparse_mode"
+}
+```
+
+`fast_think()` 计算画像，`route_template()` 将其组装为包含 `system`、`messages`、`max_tokens` 与 `temperature` 的 Bedrock 请求。在这条边界上，坐标被转成行为描述；策划特征与具象锚点提供细节，而不是将原始交互日志交给模型。
+
+**路由依据是总轮数：**`≤5` 为 sparse，`6–20` 为 dense，`>20` 为 overflow。选择数量单独记录。这是代码中的模板路由，不等于图表中的 Token 数，也不代表心理结论的确定程度。
 
 ## 运行时数据流
 
@@ -79,7 +125,7 @@ python3 -B the-norn-machine/backend/tests/test_fast_thinker.py
 | 30 轮 / 80 次选择 | 15,107 input tokens | 2,383 input tokens | 原始卡牌历史被压缩成有界行为画像 |
 | 同一场景总延迟 | 9,373ms | 6,179ms | 上下文增长被控制后，端到端延迟下降 |
 
-在深入分析数据前，我们需要定义三种交互深度：**短上下文场景（sparse 场景，1-5 次选择）**、**足量上下文场景（dense 场景，6-20 次选择）**以及**过量上下文场景（overflow 场景，>20 次选择）**。
+在深入分析数据前，我们需要定义三种交互深度：**短上下文场景（sparse 场景，1–5 个总轮次）**、**足量上下文场景（dense 场景，6–20 个总轮次）**以及**过量上下文场景（overflow 场景，>20 个总轮次）**。
 
 在 sparse 场景中，优化后提示词并不总是比原版提示词更短。因为在只需要发送极少量原始 metadata 的时候，我们的优化管线会主动将一部分固定上下文预算投入到系统规则、few-shot 示例和行为画像骨架的构建中。这是为了确保模型在少量信息下依然能输出高质量且风格统一的回答。
 
@@ -314,3 +360,17 @@ Slow Thinker 调用 Bedrock 生成最终文本。模型接收的是压缩后的�
 The Norn Machine 是一个很小的 demo，但它测试的是一个更大的架构判断：越重要的判断，越应该先被系统压缩成可追踪的上下文，再交给模型表达。代码负责压缩和约束世界，模型负责让这个被压缩后的世界变得可读。
 
 <p align="center"><sub>The Norn Machine: A serverless, stateless cloud-native prompt engine</sub></p>
+
+## 代码导航
+
+| 入口 | 检查什么 |
+| --- | --- |
+| [frontend/app.js](the-norn-machine/frontend/app.js) | 卡片交互、请求载荷与结果展示 |
+| [fast_thinker.py](the-norn-machine/backend/fast_thinker.py) | 权重、四轴聚合、置信信号、修正与密度 |
+| [template_router.py](the-norn-machine/backend/template_router.py) | 行为描述组装与分档模板选择 |
+| [config/prompts/](the-norn-machine/backend/config/prompts/) | 实际使用的 sparse/dense/overflow 模板 |
+| [lambda_function.py](the-norn-machine/backend/lambda_function.py) | 请求处理、输出检查与回退 |
+| [backend/tests/](the-norn-machine/backend/tests/) | 确定性示例与失败场景 |
+| [backend/benchmark/](the-norn-machine/backend/benchmark/) | 场景生成、在线基准运行器与已记录结果 |
+
+本地画像示例和规则测试不需要模型密钥。重新执行 Bedrock 基准属于另一次在线实验，需要 AWS 配置并产生调用费用；仓库中的测量描述的是已记录场景，不是普遍的延迟或成本保证。
