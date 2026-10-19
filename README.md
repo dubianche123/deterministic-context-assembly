@@ -2,7 +2,7 @@
 
 <img src="docs/readme/cover.svg" alt="The Norn Machine project overview" width="100%" />
 
-# The Norn Machine
+# The Norn Machine · Deterministic Context Assembly
 
 **Deterministic context assembly, with the model focused on language rendering.**
 
@@ -13,6 +13,8 @@
 [Try the core](#start-here) · [Input → profile](#trace-one-local-profile) · [Benchmarks](#benchmark-evidence) · [Code guide](#explore-the-code)
 
 </div>
+
+**中文简介：一个确定性上下文组装研究 MVP，以选图交互展示如何用 Python 构建有界画像，再让 Amazon Bedrock 生成语言解读。** [中文说明](README_CN.md) · [无需 AWS 的本地入口](#start-here)
 
 **Version**: 2.0 MVP  
 **Author**: Leo  
@@ -26,6 +28,8 @@ The project is built around a simple engineering principle:
 **Deterministic code should make the judgment. The language model should render the judgment.**
 
 Underneath the visual interface, the frontend records only lightweight behavioral signals, the backend compresses them into stable behavioral context, and the model turns that bounded context into readable language. The system does not store user sessions or raw choices in a database.
+
+For developers studying context engineering, prompt growth, or serverless LLM applications. The [local core path](#start-here) uses public fixtures and skips the large image assets; AWS is needed for the online language-generation path.
 
 ## What is implemented
 
