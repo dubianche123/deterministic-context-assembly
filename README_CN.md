@@ -8,7 +8,7 @@
 
 [![License](https://img.shields.io/badge/License-MIT-3A9F82)](LICENSE)
 
-[English](README.md) · **中文**
+[English](README.md) · **简体中文**
 
 [运行核心](#从这里开始) · [输入到画像](#追踪一次本地画像计算) · [基准证据](#基准测试证据) · [代码导航](#代码导航)
 
@@ -53,8 +53,8 @@ The Norn Machine 是一个以“直觉选图”解读性格为外壳的确定性
 只查看与验证确定性核心，可以使用稀疏检出，跳过大型图片素材：
 
 ```bash
-git clone --filter=blob:none --sparse https://github.com/dubianche123/deterministic-context-assembly.git
-cd deterministic-context-assembly
+git clone --filter=blob:none --sparse https://github.com/dubianche123/norn-context-engineering.git
+cd norn-context-engineering
 git sparse-checkout set the-norn-machine/backend
 python3 -B the-norn-machine/backend/tests/test_fast_thinker.py
 ```

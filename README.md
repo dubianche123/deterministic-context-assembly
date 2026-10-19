@@ -8,13 +8,11 @@
 
 [![License](https://img.shields.io/badge/License-MIT-3A9F82)](LICENSE)
 
-**English** · [中文](README_CN.md)
+**English** · [简体中文](README_CN.md)
 
 [Try the core](#start-here) · [Input → profile](#trace-one-local-profile) · [Benchmarks](#benchmark-evidence) · [Code guide](#explore-the-code)
 
 </div>
-
-**中文简介：一个确定性上下文组装研究 MVP，以选图交互展示如何用 Python 构建有界画像，再让 Amazon Bedrock 生成语言解读。** [中文说明](README_CN.md) · [无需 AWS 的本地入口](#start-here)
 
 **Version**: 2.0 MVP  
 **Author**: Leo  
@@ -55,8 +53,8 @@ The personality-reading interface is an interaction demo. The reusable engineeri
 Use a sparse checkout to inspect and test the deterministic core without downloading the large image collection:
 
 ```bash
-git clone --filter=blob:none --sparse https://github.com/dubianche123/deterministic-context-assembly.git
-cd deterministic-context-assembly
+git clone --filter=blob:none --sparse https://github.com/dubianche123/norn-context-engineering.git
+cd norn-context-engineering
 git sparse-checkout set the-norn-machine/backend
 python3 -B the-norn-machine/backend/tests/test_fast_thinker.py
 ```
