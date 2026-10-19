@@ -1,13 +1,18 @@
-<div align="right">
-  <sub>
-    <a href="README.md">English</a> |
-    <strong>中文</strong>
-  </sub>
+<div align="center">
+
+<img src="docs/readme/cover.svg" alt="The Norn Machine project overview" width="100%" />
+
+# The Norn Machine
+
+**确定性代码组装上下文，模型负责语言呈现。**
+
+[![License](https://img.shields.io/badge/License-MIT-3A9F82)](LICENSE)
+
+[English](README.md) · **中文**
+
+[快速入口](#从这里开始) · [基准证据](#基准测试证据) · [系统架构](#系统架构)
+
 </div>
-
-# The Norn Machine：确定性上下文组装
-
-## 一个无服务器，无状态的云原生提示词引擎
 
 **版本**：2.0 MVP  
 **作者**：Leo  
@@ -21,6 +26,27 @@ The Norn Machine 是一个以“直觉选图”解读性格为外壳的确定性
 **确定性代码负责判断，大语言模型负责表达。**
 
 系统内部并不会把原始行为长期存起来，而是把当前请求中的轻量行为信号压缩成稳定的行为画像，再交给模型生成可读的结果。
+
+## 从这里开始
+
+| 你想看什么 | 入口 |
+| --- | --- |
+| 理解代码如何组装上下文 | [Fast Thinker](the-norn-machine/backend/fast_thinker.py) 与 [模板路由](the-norn-machine/backend/template_router.py) |
+| 查看实际测量口径 | [基准测试证据](#基准测试证据)及仓库内的原始测量 JSON |
+| 理解云端部署 | [系统架构](#系统架构)与请求内逻辑示意图 |
+
+只查看与验证确定性核心，可以使用稀疏检出，跳过大型图片素材：
+
+```bash
+git clone --filter=blob:none --sparse https://github.com/dubianche123/deterministic-context-assembly.git
+cd deterministic-context-assembly
+git sparse-checkout set the-norn-machine/backend
+python3 -B the-norn-machine/backend/tests/test_fast_thinker.py
+```
+
+此命令只运行本地规则测试，不调用 Bedrock。完整网页与在线语言生成还需要相应的前端资源和 AWS 配置；它们的职责见后文。
+
+![工作原理概览](docs/readme/flow-cn.svg)
 
 ## 运行时数据流
 

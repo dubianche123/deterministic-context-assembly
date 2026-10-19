@@ -1,13 +1,18 @@
-<div align="right">
-  <sub>
-    <strong>English</strong> |
-    <a href="README_CN.md">中文</a>
-  </sub>
+<div align="center">
+
+<img src="docs/readme/cover.svg" alt="The Norn Machine project overview" width="100%" />
+
+# The Norn Machine
+
+**Deterministic context assembly, with the model focused on language rendering.**
+
+[![License](https://img.shields.io/badge/License-MIT-3A9F82)](LICENSE)
+
+**English** · [中文](README_CN.md)
+
+[Start here](#start-here) · [Benchmarks](#benchmark-evidence) · [Architecture](#architecture)
+
 </div>
-
-# The Norn Machine: Deterministic Context Assembly
-
-## A serverless, stateless cloud-native prompt engine
 
 **Version**: 2.0 MVP  
 **Author**: Leo  
@@ -21,6 +26,27 @@ The project is built around a simple engineering principle:
 **Deterministic code should make the judgment. The language model should render the judgment.**
 
 Underneath the visual interface, the frontend records only lightweight behavioral signals, the backend compresses them into stable behavioral context, and the model turns that bounded context into readable language. The system does not store user sessions or raw choices in a database.
+
+## Start here
+
+| What you want to inspect | Entry point |
+| --- | --- |
+| Deterministic context assembly | [Fast Thinker](the-norn-machine/backend/fast_thinker.py) and [template routing](the-norn-machine/backend/template_router.py) |
+| Measured behavior | [Benchmark evidence](#benchmark-evidence) and the checked-in measurement JSON |
+| Cloud deployment | [Architecture](#architecture) and the request-level overview below |
+
+Use a sparse checkout to inspect and test the deterministic core without downloading the large image collection:
+
+```bash
+git clone --filter=blob:none --sparse https://github.com/dubianche123/deterministic-context-assembly.git
+cd deterministic-context-assembly
+git sparse-checkout set the-norn-machine/backend
+python3 -B the-norn-machine/backend/tests/test_fast_thinker.py
+```
+
+This command runs local rule tests without calling Bedrock. The complete UI and online language-generation path also need the frontend assets and AWS configuration described below.
+
+![How it works](docs/readme/flow.svg)
 
 ## Runtime Dataflow
 
