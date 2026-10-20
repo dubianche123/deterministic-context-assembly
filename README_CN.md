@@ -10,7 +10,7 @@
 
 [English](README.md) · **简体中文**
 
-[运行核心](#从这里开始) · [输入到画像](#追踪一次本地画像计算) · [基准证据](#基准测试证据) · [代码导航](#代码导航)
+[运行核心](#从这里开始只检出本地核心免下载大图与-aws-配置) · [输入到画像](#追踪一次本地画像计算) · [基准证据](#基准测试证据) · [代码导航](#代码导航)
 
 </div>
 
@@ -19,38 +19,15 @@
 **日期**：2026 年 4 月  
 **在线体验**：[https://d3gncg0hircdt9.cloudfront.net/](https://d3gncg0hircdt9.cloudfront.net/)
 
-The Norn Machine 是一个以“直觉选图”解读性格为外壳的确定性上下文组装引擎。玩家看到的是一场带有仪式感的选图测试，但这篇文档真正讨论的是一套方法：如何捕捉轻量行为信号，如何把它们组装成受约束的上下文，如何优化 prompt，并把整条链路跑在云端。
+表面上看，**The Norn Machine** 是一个带有仪式感的“直觉选图”性格测试；但在底下，它其实是为了验证一个具体的上下文工程命题而写的：
 
-它背后的工程原则很简单：
+**确定性代码负责判断，大语言模型只负责把判断写成好读的文字。**
 
-**确定性代码负责判断，大语言模型负责表达。**
+很多交互式 LLM 应用习惯把用户的原始点击记录原封不动地拼进 Prompt，让模型在一轮调用里同时搞定“推断状态、执行规则、生成回答”。一旦交互轮数变长，Token 就会失控膨胀，规则遵从度也会跟着掉。在这里，前端只采集轻量行为信号（选了哪张卡、第几轮选的、停留了多久、有没有“选了又撤回”），纯 Python（`fast_thinker.py`）先把整段历史折叠成固定维度的四轴行为画像；不管玩家玩了 2 轮还是 30 轮，发给 Amazon Bedrock 的始终是一份被严格锁定在约 2,000 token 的结构化上下文。
 
-系统内部并不会把原始行为长期存起来，而是把当前请求中的轻量行为信号压缩成稳定的行为画像，再交给模型生成可读的结果。
+## 从这里开始（只检出本地核心，免下载大图与 AWS 配置）
 
-适合研究上下文工程、提示词增长控制与无服务器 LLM 应用的开发者。[本地核心入口](#从这里开始)使用公开样例并跳过大型图片资源，无需 AWS；在线语言生成路径需要 AWS 配置。
-
-## 当前实现了什么
-
-| 层次 | 具体行为 |
-| --- | --- |
-| 图片卡片交互 | 采集卡片 ID、轮次、每轮时长与取消选择。 |
-| 确定性画像 | Python 计算加权坐标、置信信号、策划特征与选择修正信号。 |
-| 上下文组装 | 选择 sparse/dense/overflow 模板，组装画像，替代原始卡片历史拼接。 |
-| 语言呈现 | Bedrock 生成面向使用者的结果叙述与最终对话。 |
-| 失败处理 | 零选择、模型失败和异常响应都有明确回退路径。 |
-| 实验验证 | 用已提交的基准产物比较原始提示词与优化提示词路径。 |
-
-性格解读界面是一种交互演示。可复用的工程思路是**确定性状态构建与概率语言生成之间的边界**。
-
-## 从这里开始
-
-| 你想看什么 | 入口 |
-| --- | --- |
-| 理解代码如何组装上下文 | [Fast Thinker](the-norn-machine/backend/fast_thinker.py) 与 [模板路由](the-norn-machine/backend/template_router.py) |
-| 查看实际测量口径 | [基准测试证据](#基准测试证据)及仓库内的原始测量 JSON |
-| 理解云端部署 | [系统架构](#系统架构)与请求内逻辑示意图 |
-
-只查看与验证确定性核心，可以使用稀疏检出，跳过大型图片素材：
+由于仓库里包含完整的前端卡牌图集，如果只想在本地看代码、跑确定性画像测试，直接用稀疏检出即可：
 
 ```bash
 git clone --filter=blob:none --sparse https://github.com/dubianche123/norn-context-engineering.git
@@ -59,13 +36,11 @@ git sparse-checkout set the-norn-machine/backend
 python3 -B the-norn-machine/backend/tests/test_fast_thinker.py
 ```
 
-此命令只运行本地规则测试，不调用 Bedrock。完整网页与在线语言生成还需要相应的前端资源和 AWS 配置；它们的职责见后文。
-
 ![工作原理概览](docs/readme/flow-cn.svg)
 
 ## 追踪一次本地画像计算
 
-完成上面的稀疏检出后即可运行。两个公开卡片 ID 来自单元测试中的 INTJ 示例：
+完成上面的稀疏检出后，直接运行下面这段命令，看看两次选图是怎样在不碰任何大模型的情况下变成结构化行为画像的：
 
 ```bash
 python3 -B - <<'PYTHON'
@@ -82,7 +57,7 @@ print(json.dumps({k: profile[k] for k in
 PYTHON
 ```
 
-确定性的预期输出投影：
+输出：
 
 ```json
 {
@@ -92,9 +67,7 @@ PYTHON
 }
 ```
 
-`fast_think()` 计算画像，`route_template()` 将其组装为包含 `system`、`messages`、`max_tokens` 与 `temperature` 的 Bedrock 请求。在这条边界上，坐标被转成行为描述；策划特征与具象锚点提供细节，而不是将原始交互日志交给模型。
-
-**路由依据是总轮数：**`≤5` 为 sparse，`6–20` 为 dense，`>20` 为 overflow。选择数量单独记录。这是代码中的模板路由，不等于图表中的 Token 数，也不代表心理结论的确定程度。
+`fast_think()` 算出四轴坐标、置信度与“撤回重选”信号；随后 `route_template()` 按总轮数（`≤5` 为 `sparse`，`6–20` 为 `dense`，`>20` 为 `overflow`）组装 Bedrock 请求（`system`、`messages`、`max_tokens`、`temperature`），把数学坐标和视觉意象提前翻译成行为骨架后再交给模型。
 
 ## 运行时数据流
 
@@ -357,22 +330,20 @@ Slow Thinker 调用 Bedrock 生成最终文本。模型接收的是压缩后的�
 - [`c4-dataflow.svg`](the-norn-machine/docs/c4-dataflow.svg)：展示运行时数据流中的确定性边界与概率性边界。
 - [`Norn-machine.drawio.svg`](the-norn-machine/Norn-machine.drawio.svg)：展示 MVP 使用的 AWS 拓扑结构。
 
+## 代码导航
+
+| 入口 | 检查什么 |
+| --- | --- |
+| [fast_thinker.py](the-norn-machine/backend/fast_thinker.py) | 轮次衰减、犹豫上限（`1.12x`）、四轴聚合、撤回重选修正与余弦意象钩子 |
+| [template_router.py](the-norn-machine/backend/template_router.py) | 行为描述组装与 `sparse` / `dense` / `overflow` 分档模板路由 |
+| [config/prompts/](the-norn-machine/backend/config/prompts/) | 实际使用的 `sparse`、`dense`、`overflow` 提示词模板 |
+| [lambda_function.py](the-norn-machine/backend/lambda_function.py) | 无状态请求入口、输出护栏扫描与确定性兜底回复 |
+| [frontend/app.js](the-norn-machine/frontend/app.js) | 卡牌交互、撤回事件记录、粒子消散时序与请求载荷组装 |
+| [backend/tests/](the-norn-machine/backend/tests/) | 离线确定性画像计算与护栏单元测试 |
+| [backend/benchmark/](the-norn-machine/backend/benchmark/) | 20 组模拟会话生成器、Bedrock 流式基准运行器与原始测量 JSON/SVG |
+
 ## 结论
 
 The Norn Machine 是一个很小的 demo，但它测试的是一个更大的架构判断：越重要的判断，越应该先被系统压缩成可追踪的上下文，再交给模型表达。代码负责压缩和约束世界，模型负责让这个被压缩后的世界变得可读。
 
 <p align="center"><sub>The Norn Machine: A serverless, stateless cloud-native prompt engine</sub></p>
-
-## 代码导航
-
-| 入口 | 检查什么 |
-| --- | --- |
-| [frontend/app.js](the-norn-machine/frontend/app.js) | 卡片交互、请求载荷与结果展示 |
-| [fast_thinker.py](the-norn-machine/backend/fast_thinker.py) | 权重、四轴聚合、置信信号、修正与密度 |
-| [template_router.py](the-norn-machine/backend/template_router.py) | 行为描述组装与分档模板选择 |
-| [config/prompts/](the-norn-machine/backend/config/prompts/) | 实际使用的 sparse/dense/overflow 模板 |
-| [lambda_function.py](the-norn-machine/backend/lambda_function.py) | 请求处理、输出检查与回退 |
-| [backend/tests/](the-norn-machine/backend/tests/) | 确定性示例与失败场景 |
-| [backend/benchmark/](the-norn-machine/backend/benchmark/) | 场景生成、在线基准运行器与已记录结果 |
-
-本地画像示例和规则测试不需要模型密钥。重新执行 Bedrock 基准属于另一次在线实验，需要 AWS 配置并产生调用费用；仓库中的测量描述的是已记录场景，不是普遍的延迟或成本保证。

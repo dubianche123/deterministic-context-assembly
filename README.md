@@ -10,7 +10,7 @@
 
 **English** · [简体中文](README_CN.md)
 
-[Try the core](#start-here) · [Input → profile](#trace-one-local-profile) · [Benchmarks](#benchmark-evidence) · [Code guide](#explore-the-code)
+[Try the core](#start-here-local-core-no-aws-or-large-image-download) · [Input → profile](#trace-one-local-profile) · [Benchmarks](#benchmark-evidence) · [Code guide](#explore-the-code)
 
 </div>
 
@@ -19,38 +19,15 @@
 **Date**: April 2026  
 **Live MVP**: [https://d3gncg0hircdt9.cloudfront.net/](https://d3gncg0hircdt9.cloudfront.net/)
 
-The Norn Machine is a deterministic context-assembly engine wrapped in an intuitive image-selection personality-reading interface. The visible product is a ritual-like demo, but the core subject is a method: how to capture lightweight behavior, assemble bounded context, optimize prompts, and run the whole loop as a cloud-native LLM application.
+On the surface, **The Norn Machine** looks like a ritualistic image-selection personality test. Under the hood, it was built to test a specific context-engineering thesis:
 
-The project is built around a simple engineering principle:
+**Deterministic code should make the judgment. The language model should only render the prose.**
 
-**Deterministic code should make the judgment. The language model should render the judgment.**
+Most interactive LLM apps stuff the user's raw click history into the prompt and ask the model to infer state, apply rules, and write the response in one pass. As the session grows, input tokens balloon and rule adherence degrades. Here, the frontend captures lightweight behavioral signals (card selections, round numbers, dwell time, and deselections—"cards you picked and then changed your mind about"), pure Python (`fast_thinker.py`) folds that entire history into a fixed-size 4D behavioral profile, and Amazon Bedrock receives only a bounded ~2,000-token prompt regardless of whether you played 2 rounds or 30.
 
-Underneath the visual interface, the frontend records only lightweight behavioral signals, the backend compresses them into stable behavioral context, and the model turns that bounded context into readable language. The system does not store user sessions or raw choices in a database.
+## Start here (local core, no AWS or large image download)
 
-For developers studying context engineering, prompt growth, or serverless LLM applications. The [local core path](#start-here) uses public fixtures and skips the large image assets; AWS is needed for the online language-generation path.
-
-## What is implemented
-
-| Layer | Concrete behavior |
-| --- | --- |
-| Image-card interaction | Collect card IDs, round numbers, round durations and canceled selections. |
-| Deterministic profile | Compute weighted coordinates, confidence, curated traits and choice-revision signals in Python. |
-| Context assembly | Select sparse/dense/overflow templates and construct a profile rather than concatenating the raw card history. |
-| Language rendering | Use Bedrock for player-facing interpretation and final dialogue. |
-| Failure handling | Handle empty selections and malformed/failed model responses through explicit fallback paths. |
-| Measurement | Compare the original and optimized prompt paths with checked-in benchmark artifacts. |
-
-The personality-reading interface is an interaction demo. The reusable engineering idea is the **boundary between deterministic state construction and probabilistic language generation**.
-
-## Start here
-
-| What you want to inspect | Entry point |
-| --- | --- |
-| Deterministic context assembly | [Fast Thinker](the-norn-machine/backend/fast_thinker.py) and [template routing](the-norn-machine/backend/template_router.py) |
-| Measured behavior | [Benchmark evidence](#benchmark-evidence) and the checked-in measurement JSON |
-| Cloud deployment | [Architecture](#architecture) and the request-level overview below |
-
-Use a sparse checkout to inspect and test the deterministic core without downloading the large image collection:
+Because the repository includes the full card image collection for the web frontend, use a sparse checkout if you just want to inspect and run the deterministic Python core locally:
 
 ```bash
 git clone --filter=blob:none --sparse https://github.com/dubianche123/norn-context-engineering.git
@@ -59,13 +36,11 @@ git sparse-checkout set the-norn-machine/backend
 python3 -B the-norn-machine/backend/tests/test_fast_thinker.py
 ```
 
-This command runs local rule tests without calling Bedrock. The complete UI and online language-generation path also need the frontend assets and AWS configuration described below.
-
 ![How it works](docs/readme/flow.svg)
 
 ## Trace one local profile
 
-Run this after the sparse checkout above. The two public card IDs are the same INTJ examples used in the unit tests:
+Run this right after the sparse checkout above to see how two card picks turn into a deterministic profile before any LLM is called:
 
 ```bash
 python3 -B - <<'PYTHON'
@@ -82,7 +57,7 @@ print(json.dumps({k: profile[k] for k in
 PYTHON
 ```
 
-Expected deterministic projection:
+Output:
 
 ```json
 {
@@ -92,9 +67,7 @@ Expected deterministic projection:
 }
 ```
 
-`fast_think()` computes the profile. `route_template()` turns it into a Bedrock request containing `system`, `messages`, `max_tokens` and `temperature`. At that boundary, coordinates become readable behavioral statements; curated traits and anchors provide specificity without handing the raw interaction log to the model.
-
-**Routing uses total rounds:** `≤5` sparse, `6–20` dense, `>20` overflow. Selection count is reported separately. These are template routes in the code, not the plotted token counts or an assessment of psychological certainty.
+`fast_think()` computes the 4D coordinate vector, confidence, and choice-revision signals; `route_template()` then maps total rounds (`≤5` sparse, `6–20` dense, `>20` overflow) into a bounded Bedrock payload (`system`, `messages`, `max_tokens`, `temperature`) where coordinates and visual motifs are already translated into structured behavioral cues.
 
 ## Runtime Dataflow
 
@@ -357,22 +330,20 @@ The benchmark suite is kept in the repository so the numbers above can be inspec
 - [`c4-dataflow.svg`](the-norn-machine/docs/c4-dataflow.svg): visualizes deterministic and probabilistic data boundaries in the runtime dataflow.
 - [`Norn-machine.drawio.svg`](the-norn-machine/Norn-machine.drawio.svg): visualizes the deployed AWS topology used by the MVP.
 
-## Conclusion
-
-The Norn Machine is a small demo, but it tests a larger architectural stance: when the judgment matters, the system should make the judgment traceable before asking the model to speak. Code compresses and constrains the world; the model makes that compressed world readable.
-
-<p align="center"><sub>The Norn Machine: A serverless, stateless cloud-native prompt engine</sub></p>
-
 ## Explore the code
 
 | Start with | What to inspect |
 | --- | --- |
-| [frontend/app.js](the-norn-machine/frontend/app.js) | Card interaction, request payloads and result rendering |
-| [fast_thinker.py](the-norn-machine/backend/fast_thinker.py) | Weights, four-axis aggregation, confidence, revision and density |
-| [template_router.py](the-norn-machine/backend/template_router.py) | Behavioral-language assembly and mode-specific prompt selection |
-| [config/prompts/](the-norn-machine/backend/config/prompts/) | The actual sparse/dense/overflow templates |
-| [lambda_function.py](the-norn-machine/backend/lambda_function.py) | Request handling, output checks and fallbacks |
-| [backend/tests/](the-norn-machine/backend/tests/) | Deterministic examples and failure cases |
-| [backend/benchmark/](the-norn-machine/backend/benchmark/) | Scenario generation, live benchmark runner and recorded results |
+| [fast_thinker.py](the-norn-machine/backend/fast_thinker.py) | Round decay, capped hesitation bonus (`1.12x`), four-axis aggregation, choice-revision nudge & cosine motif selection |
+| [template_router.py](the-norn-machine/backend/template_router.py) | Behavioral-language assembly and `sparse` / `dense` / `overflow` prompt routing |
+| [config/prompts/](the-norn-machine/backend/config/prompts/) | The actual `sparse`, `dense`, and `overflow` prompt templates |
+| [lambda_function.py](the-norn-machine/backend/lambda_function.py) | Stateless request handling, output guardrails, and deterministic fallbacks |
+| [frontend/app.js](the-norn-machine/frontend/app.js) | Card interaction, deselection tracking, particle reveal sequence, and request payloads |
+| [backend/tests/](the-norn-machine/backend/tests/) | Offline deterministic profile & guardrail unit tests |
+| [backend/benchmark/](the-norn-machine/backend/benchmark/) | 20-session scenario generator, Bedrock streaming benchmark runner, and recorded JSON/SVG results |
 
-The local profile example and rule tests need no model key. Repeating the Bedrock benchmark is a separate live experiment with AWS setup and provider charges; the checked-in measurements describe the recorded scenarios, not a universal latency or cost guarantee.
+## Conclusion
+
+The Norn Machine is a small demo, but it tests a larger architectural stance: when the judgment matters, make the judgment traceable in code before asking the model to speak. Code compresses and constrains the world; the model makes that compressed world readable.
+
+<p align="center"><sub>The Norn Machine: A serverless, stateless cloud-native prompt engine</sub></p>
