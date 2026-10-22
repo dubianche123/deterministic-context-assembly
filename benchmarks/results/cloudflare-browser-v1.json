@@ -1,0 +1,60 @@
+{
+  "schema_version": "norn.browser-acceptance.v1",
+  "verified_at": "2026-10-20T09:09:23.973751+00:00",
+  "target_origin": "https://norn-machine.dubianche123.workers.dev",
+  "browser": "Microsoft Edge, CUA native and DOM controls",
+  "provider": "mock",
+  "model_calls": 0,
+  "rounds": 24,
+  "selections": 24,
+  "dialogue_turns": 3,
+  "profile_version": "norn.profile.v3",
+  "profile_hash_prefix": "810e38b8fe92",
+  "checks": {
+    "homepage_ready_without_key": true,
+    "visible_mock_label": true,
+    "selection_and_round_transitions": true,
+    "reading_and_three_followups": true,
+    "third_followup_after_redeployment": true,
+    "turn_limit_disabled_input": true,
+    "current_six_webp_images_decoded": true,
+    "xray_defaults_to_charts_and_collapsed_raw_data": true,
+    "dragged_event_timeline_73_to_34": true,
+    "selection_projection_changed_24_to_11": true,
+    "map_circle_radii_and_fills_changed": true,
+    "exact_prefix_full_disclosure_loaded": true,
+    "returned_to_complete_prefix": true,
+    "whatif_rank_delta_chart_rendered": true,
+    "whatif_kept_original_reading_and_profile": true,
+    "export_button_reported_success": true
+  },
+  "decoded_image_dimensions": [
+    [
+      384,
+      480
+    ],
+    [
+      480,
+      360
+    ],
+    [
+      384,
+      480
+    ],
+    [
+      384,
+      480
+    ],
+    [
+      384,
+      480
+    ],
+    [
+      480,
+      360
+    ]
+  ],
+  "full_disclosure_characters": 137346,
+  "snapshot": "../../docs/images/norn-cloudflare.png",
+  "scope": "Real public browser actions. The page does not persist its UI across a full reload; server actor recovery is independently verified by cloudflare-public-resume-v1.json. All 262 asset bytes were independently checked in cloudflare-public-assets-v1.json."
+}

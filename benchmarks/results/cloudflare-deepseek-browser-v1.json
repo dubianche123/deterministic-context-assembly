@@ -1,0 +1,30 @@
+{
+  "schema_version": "norn.browser-acceptance.v1",
+  "verified_at": "2026-10-20",
+  "target_origin": "https://norn-machine.dubianche123.workers.dev",
+  "browser": "Microsoft Edge, CUA native and DOM controls",
+  "provider": "openai-compatible",
+  "model": "deepseek-flash",
+  "rounds": 6,
+  "selections": 6,
+  "successful_session_model_calls": 3,
+  "dialogue_turns": 2,
+  "observed_cache_read_input_tokens": 4096,
+  "profile_version": "norn.profile.v3",
+  "checks": {
+    "visible_live_model_label": true,
+    "retained_selection_retry_produced_real_reading": true,
+    "reading_and_two_real_followups": true,
+    "second_followup_after_redeployment": true,
+    "turn_limit_disabled_input": true,
+    "xray_actual_provider_usage": true,
+    "all_25_disclosures_initially_collapsed": true,
+    "event_timeline_19_to_10": true,
+    "selection_projection_changed_6_to_3": true,
+    "returned_to_complete_prefix": true
+  },
+  "map_points": 256,
+  "changed_map_circle_radii": 253,
+  "snapshot": "../../docs/images/norn-cloudflare-deepseek.png",
+  "scope": "Real public UI actions with synthetic selections. The successful session made three model calls; this does not count earlier diagnostic attempts made while fixing the transport. Closed disclosures were checked through the DOM. The page does not restore its UI after a full reload. Backend recovery and exact native replay are separately verified by the API/resume reports."
+}

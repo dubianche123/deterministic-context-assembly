@@ -1,0 +1,57 @@
+{
+  "schema_version": "norn.xray-browser.v1",
+  "version_id": "1d17277b-db82-4345-91d6-df12ec08df04",
+  "origin": "https://norn-machine.dubianche123.workers.dev",
+  "input_scope": "Synthetic 12-round integration fixture, not human observations or research evidence",
+  "checks": {
+    "local_consent_locked_until_sealed": true,
+    "local_private_completed_round_comparison": true,
+    "local_offline_report_import": true,
+    "local_whole_frozen_prefix_replaces_rolling": true,
+    "local_return_to_rolling": true,
+    "hosted_journal_import": true,
+    "hosted_slider_updates_round_candidates_probabilities_and_curve": true,
+    "hosted_zh_en_switch": true,
+    "hosted_320px_six_cards_three_by_two": true,
+    "hosted_320px_no_horizontal_overflow": true,
+    "hosted_320px_scope_font_12px_probability_font_11px": true,
+    "raw_json_and_whole_deck_default_collapsed": true,
+    "jev_not_run": true,
+    "viewport_override_reset": true
+  },
+  "mobile_measurements": {
+    "viewport_width": 320,
+    "document_scroll_width": 320,
+    "card_x": [
+      19,
+      116,
+      213,
+      19,
+      116,
+      213
+    ],
+    "card_y": [
+      458,
+      458,
+      458,
+      637,
+      637,
+      637
+    ],
+    "card_widths": [
+      89,
+      89,
+      89,
+      89,
+      89,
+      89
+    ]
+  },
+  "screenshots": [
+    "docs/images/norn-xray-comparison-20261022.jpg",
+    "docs/images/norn-xray-comparison-mobile-20261022.jpg"
+  ],
+  "new_model_calls": 0,
+  "collection_scope": "One local synthetic consented mock visit in an isolated /tmp test database; hosted browser used private mode and no analyze/dialogue/record endpoint.",
+  "temporary_local_test_database_removed": true
+}

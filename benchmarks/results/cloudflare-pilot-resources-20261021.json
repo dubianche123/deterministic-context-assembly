@@ -1,0 +1,80 @@
+{
+  "schema_version": "norn.release-resources.v1",
+  "date": "2026-10-21",
+  "target_origin": "https://norn-machine.dubianche123.workers.dev",
+  "worker_version": "49bcc208-083b-4acf-81ca-6565d1d0619b",
+  "runs": [
+    {
+      "report": "cloudflare-pilot-client-diagnostic-20261021.json",
+      "result": "failed",
+      "http_requests": 1,
+      "fresh_model_attempts": 0,
+      "reported_usage": {
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "uncached_input_tokens": 0
+      },
+      "interpretation": "Default Python-urllib user agent rejected by Cloudflare edge (403/1010); no model call. Explicit release user agent passed; no security rule changed.",
+      "own_synthetic_record_withdrawn": null
+    },
+    {
+      "report": "cloudflare-pilot-receipt-diagnostic-20261021.json",
+      "result": "failed",
+      "http_requests": 4,
+      "fresh_model_attempts": 1,
+      "reported_usage": {
+        "input_tokens": 1350,
+        "output_tokens": 118,
+        "cache_read_input_tokens": 0,
+        "uncached_input_tokens": 1350
+      },
+      "interpretation": "Harness incorrectly compared HTTP JSON bytes. Receipt storage sorts keys; equal JSON is the idempotency contract. Source audit confirmed this; export byte identity is tested separately.",
+      "own_synthetic_record_withdrawn": true
+    },
+    {
+      "report": "cloudflare-pilot-annotation-diagnostic-20261021.json",
+      "result": "failed",
+      "http_requests": 12,
+      "fresh_model_attempts": 2,
+      "reported_usage": {
+        "input_tokens": 2906,
+        "output_tokens": 190,
+        "cache_read_input_tokens": 2560,
+        "uncached_input_tokens": 346
+      },
+      "interpretation": "Harness incorrectly looked for top-level engagement; archive annotations live at annotations.engagement. Zero-model actor/receipt/archive probe verified the correct contract.",
+      "own_synthetic_record_withdrawn": true
+    },
+    {
+      "report": "cloudflare-pilot-live-20261021.json",
+      "result": "passed",
+      "http_requests": 12,
+      "fresh_model_attempts": 2,
+      "reported_usage": {
+        "input_tokens": 2912,
+        "output_tokens": 192,
+        "cache_read_input_tokens": 2560,
+        "uncached_input_tokens": 352
+      },
+      "interpretation": "Corrected end-to-end acceptance; all 20 checks passed, including targeted archive export and own-row withdrawal.",
+      "own_synthetic_record_withdrawn": true
+    }
+  ],
+  "totals": {
+    "fresh_model_attempts": 5,
+    "judge_calls": 0,
+    "automatic_provider_retries": 0,
+    "http_requests": 29,
+    "reported_usage": {
+      "input_tokens": 7168,
+      "output_tokens": 500,
+      "cache_read_input_tokens": 5120,
+      "uncached_input_tokens": 2048
+    },
+    "monetary_cost": null,
+    "synthetic_records_created": 3,
+    "synthetic_records_withdrawn": 3
+  },
+  "scope": "This ledger includes diagnostic runs; counts are not limited to the final successful run. Idempotent request repeats are not fresh model calls. No human pilot data collected."
+}

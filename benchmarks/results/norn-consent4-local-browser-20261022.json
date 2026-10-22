@@ -1,0 +1,24 @@
+{
+  "before_reveal": [
+    {
+      "visit": 1,
+      "schema": "norn.partial.v1",
+      "consent": "norn.consent.v4",
+      "dealt": 3,
+      "completed": 2
+    }
+  ],
+  "after_reveal": {
+    "visit": 1,
+    "schema": "norn.record.v2",
+    "same_record_id": true,
+    "completed": 3
+  },
+  "after_withdraw": {
+    "records": 0,
+    "withdrawal_barriers": 1
+  },
+  "new_model_calls": 0,
+  "temporary_test_database_removed": true,
+  "test_service_stopped": true
+}

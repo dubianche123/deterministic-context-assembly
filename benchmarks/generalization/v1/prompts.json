@@ -1,0 +1,168 @@
+{
+  "schema_version": "norn.generalization.prompts.v1",
+  "design": "8 neutral scene families crossed with 2 styles; 4 balanced generation batches",
+  "generation_tool": "built-in image_gen",
+  "no_reference_images": true,
+  "rows": [
+    {
+      "id": "HOLDOUT_0001",
+      "scene_id": "courtyard",
+      "scene_en": "A small courtyard after rain, with a stone basin, a wooden bench and climbing plants. No people.",
+      "scene_zh": "雨后小庭院，石盆、木椅和攀援植物，无人物。",
+      "style": "illustration",
+      "batch": "batch_1",
+      "asset": "assets/HOLDOUT_0001.png",
+      "prompt": "Use case: illustration-story\nAsset type: one independent image for an offline visual-choice holdout collection.\nScene: A small courtyard after rain, with a stone basin, a wooden bench and climbing plants. No people.\nStyle: Editorial illustration with matte painted textures, simplified shapes and a restrained natural palette. Clearly an illustration, not a photograph.\nComposition: a single coherent portrait-oriented scene, approximately 3:4 aspect ratio, eye-level or gently elevated view, no collage or borders. Give all listed objects natural visual weight.\nLighting: soft daylight. Present the scene without imposing an emotional narrative.\nConstraints: no text, labels, symbols, logos or watermark. No people, faces or readable signs. Create a new image, independently of any earlier image; do not reference or continue another illustration."
+    },
+    {
+      "id": "HOLDOUT_0002",
+      "scene_id": "courtyard",
+      "scene_en": "A small courtyard after rain, with a stone basin, a wooden bench and climbing plants. No people.",
+      "scene_zh": "雨后小庭院，石盆、木椅和攀援植物，无人物。",
+      "style": "photograph",
+      "batch": "batch_1",
+      "asset": "assets/HOLDOUT_0002.png",
+      "prompt": "Use case: photorealistic-natural\nAsset type: one independent image for an offline visual-choice holdout collection.\nScene: A small courtyard after rain, with a stone basin, a wooden bench and climbing plants. No people.\nStyle: Naturalistic editorial photograph with realistic materials, gentle daylight and ordinary colours. Clearly photographic, not painted or rendered.\nComposition: a single coherent portrait-oriented scene, approximately 3:4 aspect ratio, eye-level or gently elevated view, no collage or borders. Give all listed objects natural visual weight.\nLighting: soft daylight. Present the scene without imposing an emotional narrative.\nConstraints: no text, labels, symbols, logos or watermark. No people, faces or readable signs. Create a new image, independently of any earlier image; do not reference or continue another illustration."
+    },
+    {
+      "id": "HOLDOUT_0003",
+      "scene_id": "market",
+      "scene_en": "A neighborhood market stall with neatly arranged seasonal fruit, woven baskets and a striped awning. No people.",
+      "scene_zh": "社区水果摊，时令水果、编织篮与条纹遮篷，无人物。",
+      "style": "illustration",
+      "batch": "batch_1",
+      "asset": "assets/HOLDOUT_0003.png",
+      "prompt": "Use case: illustration-story\nAsset type: one independent image for an offline visual-choice holdout collection.\nScene: A neighborhood market stall with neatly arranged seasonal fruit, woven baskets and a striped awning. No people.\nStyle: Editorial illustration with matte painted textures, simplified shapes and a restrained natural palette. Clearly an illustration, not a photograph.\nComposition: a single coherent portrait-oriented scene, approximately 3:4 aspect ratio, eye-level or gently elevated view, no collage or borders. Give all listed objects natural visual weight.\nLighting: soft daylight. Present the scene without imposing an emotional narrative.\nConstraints: no text, labels, symbols, logos or watermark. No people, faces or readable signs. Create a new image, independently of any earlier image; do not reference or continue another illustration."
+    },
+    {
+      "id": "HOLDOUT_0004",
+      "scene_id": "market",
+      "scene_en": "A neighborhood market stall with neatly arranged seasonal fruit, woven baskets and a striped awning. No people.",
+      "scene_zh": "社区水果摊，时令水果、编织篮与条纹遮篷，无人物。",
+      "style": "photograph",
+      "batch": "batch_1",
+      "asset": "assets/HOLDOUT_0004.png",
+      "prompt": "Use case: photorealistic-natural\nAsset type: one independent image for an offline visual-choice holdout collection.\nScene: A neighborhood market stall with neatly arranged seasonal fruit, woven baskets and a striped awning. No people.\nStyle: Naturalistic editorial photograph with realistic materials, gentle daylight and ordinary colours. Clearly photographic, not painted or rendered.\nComposition: a single coherent portrait-oriented scene, approximately 3:4 aspect ratio, eye-level or gently elevated view, no collage or borders. Give all listed objects natural visual weight.\nLighting: soft daylight. Present the scene without imposing an emotional narrative.\nConstraints: no text, labels, symbols, logos or watermark. No people, faces or readable signs. Create a new image, independently of any earlier image; do not reference or continue another illustration."
+    },
+    {
+      "id": "HOLDOUT_0005",
+      "scene_id": "workshop",
+      "scene_en": "A small craft workshop, with a wooden workbench, hand tools, pieces of timber and a window. No people.",
+      "scene_zh": "小型手工作坊，木工作台、手工具、木料与窗户，无人物。",
+      "style": "illustration",
+      "batch": "batch_2",
+      "asset": "assets/HOLDOUT_0005.png",
+      "prompt": "Use case: illustration-story\nAsset type: one independent image for an offline visual-choice holdout collection.\nScene: A small craft workshop, with a wooden workbench, hand tools, pieces of timber and a window. No people.\nStyle: Editorial illustration with matte painted textures, simplified shapes and a restrained natural palette. Clearly an illustration, not a photograph.\nComposition: a single coherent portrait-oriented scene, approximately 3:4 aspect ratio, eye-level or gently elevated view, no collage or borders. Give all listed objects natural visual weight.\nLighting: soft daylight. Present the scene without imposing an emotional narrative.\nConstraints: no text, labels, symbols, logos or watermark. No people, faces or readable signs. Create a new image, independently of any earlier image; do not reference or continue another illustration."
+    },
+    {
+      "id": "HOLDOUT_0006",
+      "scene_id": "workshop",
+      "scene_en": "A small craft workshop, with a wooden workbench, hand tools, pieces of timber and a window. No people.",
+      "scene_zh": "小型手工作坊，木工作台、手工具、木料与窗户，无人物。",
+      "style": "photograph",
+      "batch": "batch_2",
+      "asset": "assets/HOLDOUT_0006.png",
+      "prompt": "Use case: photorealistic-natural\nAsset type: one independent image for an offline visual-choice holdout collection.\nScene: A small craft workshop, with a wooden workbench, hand tools, pieces of timber and a window. No people.\nStyle: Naturalistic editorial photograph with realistic materials, gentle daylight and ordinary colours. Clearly photographic, not painted or rendered.\nComposition: a single coherent portrait-oriented scene, approximately 3:4 aspect ratio, eye-level or gently elevated view, no collage or borders. Give all listed objects natural visual weight.\nLighting: soft daylight. Present the scene without imposing an emotional narrative.\nConstraints: no text, labels, symbols, logos or watermark. No people, faces or readable signs. Create a new image, independently of any earlier image; do not reference or continue another illustration."
+    },
+    {
+      "id": "HOLDOUT_0007",
+      "scene_id": "reading",
+      "scene_en": "A reading corner beside a window, with an armchair, a closed book, a cup and a floor lamp. No people.",
+      "scene_zh": "窗边阅读角，扶手椅、合起的书、杯子和落地灯，无人物。",
+      "style": "illustration",
+      "batch": "batch_2",
+      "asset": "assets/HOLDOUT_0007.png",
+      "prompt": "Use case: illustration-story\nAsset type: one independent image for an offline visual-choice holdout collection.\nScene: A reading corner beside a window, with an armchair, a closed book, a cup and a floor lamp. No people.\nStyle: Editorial illustration with matte painted textures, simplified shapes and a restrained natural palette. Clearly an illustration, not a photograph.\nComposition: a single coherent portrait-oriented scene, approximately 3:4 aspect ratio, eye-level or gently elevated view, no collage or borders. Give all listed objects natural visual weight.\nLighting: soft daylight. Present the scene without imposing an emotional narrative.\nConstraints: no text, labels, symbols, logos or watermark. No people, faces or readable signs. Create a new image, independently of any earlier image; do not reference or continue another illustration."
+    },
+    {
+      "id": "HOLDOUT_0008",
+      "scene_id": "reading",
+      "scene_en": "A reading corner beside a window, with an armchair, a closed book, a cup and a floor lamp. No people.",
+      "scene_zh": "窗边阅读角，扶手椅、合起的书、杯子和落地灯，无人物。",
+      "style": "photograph",
+      "batch": "batch_2",
+      "asset": "assets/HOLDOUT_0008.png",
+      "prompt": "Use case: photorealistic-natural\nAsset type: one independent image for an offline visual-choice holdout collection.\nScene: A reading corner beside a window, with an armchair, a closed book, a cup and a floor lamp. No people.\nStyle: Naturalistic editorial photograph with realistic materials, gentle daylight and ordinary colours. Clearly photographic, not painted or rendered.\nComposition: a single coherent portrait-oriented scene, approximately 3:4 aspect ratio, eye-level or gently elevated view, no collage or borders. Give all listed objects natural visual weight.\nLighting: soft daylight. Present the scene without imposing an emotional narrative.\nConstraints: no text, labels, symbols, logos or watermark. No people, faces or readable signs. Create a new image, independently of any earlier image; do not reference or continue another illustration."
+    },
+    {
+      "id": "HOLDOUT_0009",
+      "scene_id": "coast",
+      "scene_en": "A coastal walking path with a low stone wall, grass, a distant headland and open sea. No people.",
+      "scene_zh": "海岸步道，矮石墙、草地、远处海岬与海面，无人物。",
+      "style": "illustration",
+      "batch": "batch_3",
+      "asset": "assets/HOLDOUT_0009.png",
+      "prompt": "Use case: illustration-story\nAsset type: one independent image for an offline visual-choice holdout collection.\nScene: A coastal walking path with a low stone wall, grass, a distant headland and open sea. No people.\nStyle: Editorial illustration with matte painted textures, simplified shapes and a restrained natural palette. Clearly an illustration, not a photograph.\nComposition: a single coherent portrait-oriented scene, approximately 3:4 aspect ratio, eye-level or gently elevated view, no collage or borders. Give all listed objects natural visual weight.\nLighting: soft daylight. Present the scene without imposing an emotional narrative.\nConstraints: no text, labels, symbols, logos or watermark. No people, faces or readable signs. Create a new image, independently of any earlier image; do not reference or continue another illustration."
+    },
+    {
+      "id": "HOLDOUT_0010",
+      "scene_id": "coast",
+      "scene_en": "A coastal walking path with a low stone wall, grass, a distant headland and open sea. No people.",
+      "scene_zh": "海岸步道，矮石墙、草地、远处海岬与海面，无人物。",
+      "style": "photograph",
+      "batch": "batch_3",
+      "asset": "assets/HOLDOUT_0010.png",
+      "prompt": "Use case: photorealistic-natural\nAsset type: one independent image for an offline visual-choice holdout collection.\nScene: A coastal walking path with a low stone wall, grass, a distant headland and open sea. No people.\nStyle: Naturalistic editorial photograph with realistic materials, gentle daylight and ordinary colours. Clearly photographic, not painted or rendered.\nComposition: a single coherent portrait-oriented scene, approximately 3:4 aspect ratio, eye-level or gently elevated view, no collage or borders. Give all listed objects natural visual weight.\nLighting: soft daylight. Present the scene without imposing an emotional narrative.\nConstraints: no text, labels, symbols, logos or watermark. No people, faces or readable signs. Create a new image, independently of any earlier image; do not reference or continue another illustration."
+    },
+    {
+      "id": "HOLDOUT_0011",
+      "scene_id": "transit",
+      "scene_en": "A quiet transit waiting area, with three chairs, a small potted plant, a platform edge and a distant train. No people.",
+      "scene_zh": "交通候车区，三把椅子、盆栽、站台边缘与远处列车，无人物。",
+      "style": "illustration",
+      "batch": "batch_3",
+      "asset": "assets/HOLDOUT_0011.png",
+      "prompt": "Use case: illustration-story\nAsset type: one independent image for an offline visual-choice holdout collection.\nScene: A quiet transit waiting area, with three chairs, a small potted plant, a platform edge and a distant train. No people.\nStyle: Editorial illustration with matte painted textures, simplified shapes and a restrained natural palette. Clearly an illustration, not a photograph.\nComposition: a single coherent portrait-oriented scene, approximately 3:4 aspect ratio, eye-level or gently elevated view, no collage or borders. Give all listed objects natural visual weight.\nLighting: soft daylight. Present the scene without imposing an emotional narrative.\nConstraints: no text, labels, symbols, logos or watermark. No people, faces or readable signs. Create a new image, independently of any earlier image; do not reference or continue another illustration."
+    },
+    {
+      "id": "HOLDOUT_0012",
+      "scene_id": "transit",
+      "scene_en": "A quiet transit waiting area, with three chairs, a small potted plant, a platform edge and a distant train. No people.",
+      "scene_zh": "交通候车区，三把椅子、盆栽、站台边缘与远处列车，无人物。",
+      "style": "photograph",
+      "batch": "batch_3",
+      "asset": "assets/HOLDOUT_0012.png",
+      "prompt": "Use case: photorealistic-natural\nAsset type: one independent image for an offline visual-choice holdout collection.\nScene: A quiet transit waiting area, with three chairs, a small potted plant, a platform edge and a distant train. No people.\nStyle: Naturalistic editorial photograph with realistic materials, gentle daylight and ordinary colours. Clearly photographic, not painted or rendered.\nComposition: a single coherent portrait-oriented scene, approximately 3:4 aspect ratio, eye-level or gently elevated view, no collage or borders. Give all listed objects natural visual weight.\nLighting: soft daylight. Present the scene without imposing an emotional narrative.\nConstraints: no text, labels, symbols, logos or watermark. No people, faces or readable signs. Create a new image, independently of any earlier image; do not reference or continue another illustration."
+    },
+    {
+      "id": "HOLDOUT_0013",
+      "scene_id": "meal",
+      "scene_en": "A dining table set for a shared meal, with four bowls, vegetables, bread, a water jug and simple chairs. No people.",
+      "scene_zh": "共餐餐桌，四只碗、蔬菜、面包、水壶与普通椅子，无人物。",
+      "style": "illustration",
+      "batch": "batch_4",
+      "asset": "assets/HOLDOUT_0013.png",
+      "prompt": "Use case: illustration-story\nAsset type: one independent image for an offline visual-choice holdout collection.\nScene: A dining table set for a shared meal, with four bowls, vegetables, bread, a water jug and simple chairs. No people.\nStyle: Editorial illustration with matte painted textures, simplified shapes and a restrained natural palette. Clearly an illustration, not a photograph.\nComposition: a single coherent portrait-oriented scene, approximately 3:4 aspect ratio, eye-level or gently elevated view, no collage or borders. Give all listed objects natural visual weight.\nLighting: soft daylight. Present the scene without imposing an emotional narrative.\nConstraints: no text, labels, symbols, logos or watermark. No people, faces or readable signs. Create a new image, independently of any earlier image; do not reference or continue another illustration."
+    },
+    {
+      "id": "HOLDOUT_0014",
+      "scene_id": "meal",
+      "scene_en": "A dining table set for a shared meal, with four bowls, vegetables, bread, a water jug and simple chairs. No people.",
+      "scene_zh": "共餐餐桌，四只碗、蔬菜、面包、水壶与普通椅子，无人物。",
+      "style": "photograph",
+      "batch": "batch_4",
+      "asset": "assets/HOLDOUT_0014.png",
+      "prompt": "Use case: photorealistic-natural\nAsset type: one independent image for an offline visual-choice holdout collection.\nScene: A dining table set for a shared meal, with four bowls, vegetables, bread, a water jug and simple chairs. No people.\nStyle: Naturalistic editorial photograph with realistic materials, gentle daylight and ordinary colours. Clearly photographic, not painted or rendered.\nComposition: a single coherent portrait-oriented scene, approximately 3:4 aspect ratio, eye-level or gently elevated view, no collage or borders. Give all listed objects natural visual weight.\nLighting: soft daylight. Present the scene without imposing an emotional narrative.\nConstraints: no text, labels, symbols, logos or watermark. No people, faces or readable signs. Create a new image, independently of any earlier image; do not reference or continue another illustration."
+    },
+    {
+      "id": "HOLDOUT_0015",
+      "scene_id": "garden",
+      "scene_en": "A small garden with raised planting beds, a watering can, stepping stones and a low fence. No people.",
+      "scene_zh": "小花园，抬高种植床、洒水壶、踏步石与矮篱笆，无人物。",
+      "style": "illustration",
+      "batch": "batch_4",
+      "asset": "assets/HOLDOUT_0015.png",
+      "prompt": "Use case: illustration-story\nAsset type: one independent image for an offline visual-choice holdout collection.\nScene: A small garden with raised planting beds, a watering can, stepping stones and a low fence. No people.\nStyle: Editorial illustration with matte painted textures, simplified shapes and a restrained natural palette. Clearly an illustration, not a photograph.\nComposition: a single coherent portrait-oriented scene, approximately 3:4 aspect ratio, eye-level or gently elevated view, no collage or borders. Give all listed objects natural visual weight.\nLighting: soft daylight. Present the scene without imposing an emotional narrative.\nConstraints: no text, labels, symbols, logos or watermark. No people, faces or readable signs. Create a new image, independently of any earlier image; do not reference or continue another illustration."
+    },
+    {
+      "id": "HOLDOUT_0016",
+      "scene_id": "garden",
+      "scene_en": "A small garden with raised planting beds, a watering can, stepping stones and a low fence. No people.",
+      "scene_zh": "小花园，抬高种植床、洒水壶、踏步石与矮篱笆，无人物。",
+      "style": "photograph",
+      "batch": "batch_4",
+      "asset": "assets/HOLDOUT_0016.png",
+      "prompt": "Use case: photorealistic-natural\nAsset type: one independent image for an offline visual-choice holdout collection.\nScene: A small garden with raised planting beds, a watering can, stepping stones and a low fence. No people.\nStyle: Naturalistic editorial photograph with realistic materials, gentle daylight and ordinary colours. Clearly photographic, not painted or rendered.\nComposition: a single coherent portrait-oriented scene, approximately 3:4 aspect ratio, eye-level or gently elevated view, no collage or borders. Give all listed objects natural visual weight.\nLighting: soft daylight. Present the scene without imposing an emotional narrative.\nConstraints: no text, labels, symbols, logos or watermark. No people, faces or readable signs. Create a new image, independently of any earlier image; do not reference or continue another illustration."
+    }
+  ]
+}

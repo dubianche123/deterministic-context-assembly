@@ -4,22 +4,111 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Norn Machine — 命运织机</title>
-  <meta name="description" content="一场关于选择与直觉的 AI 性格测试。所有画面均由 AI 演化生成，无追踪，无存储。">
+  <meta name="description" content="一场关于选择与直觉的互动体验。本地演示无需 AWS、API Key 或联网。">
   <meta property="og:title" content="The Norn Machine">
   <meta property="og:description" content="跟随直觉，选择吸引你的画面。命运正在编织。">
   <meta property="og:type" content="website">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=20260428-audio-order">
+  <link rel="stylesheet" href="style.css?v=20261022-play2">
 </head>
 <body>
   <canvas id="ambient-canvas" aria-hidden="true"></canvas>
+  <p id="runtime-notice" class="runtime-notice" role="status">本地演示 · 模拟文案 · 无模型调用</p>
+  <button id="language-toggle" class="language-toggle" type="button" aria-label="切换到英文">English</button>
 
   <div class="audio-controls">
     <input type="range" id="volume-slider" class="volume-slider" min="0" max="1" step="0.01" value="0.32" aria-label="调整音量">
     <span class="volume-icon" aria-hidden="true">♪</span>
   </div>
+
+  <button id="xray-toggle" class="xray-toggle" type="button" aria-expanded="false" aria-controls="xray-panel">工程透视 <span lang="en">X-Ray</span></button>
+  <aside id="xray-panel" class="xray-panel" aria-labelledby="xray-title" hidden>
+    <header class="xray-head">
+      <div><p class="xray-eyebrow">THE WEAVE / INSPECTOR</p><h2 id="xray-title" tabindex="-1">工程透视 <span lang="en">X-Ray</span></h2></div>
+      <div class="xray-head-tools"><button id="xray-refresh" class="xray-button" type="button">刷新</button><button id="xray-close" class="xray-button" type="button" aria-label="关闭工程透视">关闭 ×</button></div>
+    </header>
+    <div class="jev-choice">
+      <label><input id="round-feedback-opt-in" type="checkbox"> <span>每轮揭晓猜牌反馈</span></label>
+      <p id="round-feedback-status" class="xray-mini" role="status">默认关闭 · 开启后每轮揭晓；若选择匿名织入，会记录开关与展示轮次。</p>
+    </div>
+    <div class="jev-choice">
+      <label><input id="jev-opt-in" type="checkbox" disabled> <span>开局加入 Jev 对手</span></label>
+      <p id="jev-status" class="xray-mini" role="status">正在检查 Jev……</p>
+    </div>
+    <div class="xray-source-row">
+      <span id="xray-source" class="xray-source">本次体验</span>
+      <button id="xray-live" class="xray-button" type="button" hidden>返回本次体验</button>
+    </div>
+    <p id="xray-status" class="xray-status" role="status" aria-live="polite">展开后读取本次计算。</p>
+    <div class="xray-scrub">
+      <button id="xray-play" class="xray-play" type="button" aria-label="从第 0 轮播放">▶</button>
+      <div class="xray-track">
+        <input id="xray-round" type="range" min="0" max="0" step="1" value="0" aria-label="回放到第几轮">
+        <div id="xray-ticks" class="xray-ticks" aria-hidden="true"></div>
+      </div>
+      <output id="xray-round-label" class="xray-round-label" for="xray-round">0 / 0 轮</output>
+    </div>
+    <div id="xray-content" class="xray-content" aria-busy="false">
+      <section id="xray-comparison" class="xray-comparison" aria-labelledby="xray-comparison-heading" hidden>
+        <div class="xray-comparison-head">
+          <h3 id="xray-comparison-heading">它猜中了什么？</h3>
+          <span id="xray-comparison-mode" class="xray-comparison-mode"></span>
+        </div>
+        <p id="xray-comparison-scope" class="xray-mini"></p>
+        <div id="xray-comparison-legend" class="xray-comparison-legend"></div>
+        <p id="xray-comparison-context" class="xray-comparison-context"></p>
+        <div id="xray-comparison-cards" class="xray-prediction-grid"></div>
+        <p id="xray-comparison-result" class="xray-comparison-result" aria-live="polite"></p>
+        <div class="xray-loss-head"><h4 id="xray-loss-heading">随着轮次，谁更接近你的选择？</h4><span id="xray-loss-value" class="xray-loss-value"></span></div>
+        <div id="xray-comparison-loss" class="xray-comparison-loss"></div>
+        <p id="xray-comparison-note" class="xray-mini"></p>
+        <button id="xray-comparison-online" class="xray-button" type="button" hidden>返回逐轮对照</button>
+      </section>
+      <details id="xray-model-view" class="xray-model-view">
+        <summary id="xray-model-summary">模型现在怎么看？</summary>
+        <div id="xray-model-content">
+      <section aria-labelledby="xray-weave-heading">
+        <h3 id="xray-weave-heading">命运织锦</h3>
+        <div class="xray-weave-wrap">
+          <span id="xray-axis-top" class="xray-axis-label top">思考 T</span><span id="xray-axis-bottom" class="xray-axis-label bottom">情感 F</span>
+          <span id="xray-axis-left" class="xray-axis-label left">实感 S</span><span id="xray-axis-right" class="xray-axis-label right">直觉 N</span>
+          <div id="xray-weave" class="xray-weave" role="img" aria-label="256 张画面的偏好织锦，正在读取"></div>
+        </div>
+        <p id="xray-legend" class="xray-legend">256 张画面 · 越亮越可能吸引你 · 白框为本轮展示，金框为本轮选中，金点为此前选过。圆点与光圈是 S/N × T/F 两轴的当前估计与不确定范围。</p>
+      </section>
+      <section aria-labelledby="xray-bars-heading">
+        <h3 id="xray-bars-heading">偏好重心</h3>
+        <div id="xray-bars" class="xray-bars"></div>
+        <p id="xray-bars-note" class="xray-mini">圆点是当前估计，金色带是 ±1 个标准差；证据越多，带越窄。只描述本次选择偏向哪类画面原型，不是人格测评。</p>
+      </section>
+      <section aria-labelledby="xray-round-heading">
+        <h3 id="xray-round-heading">这一轮</h3>
+        <div id="xray-strip" class="xray-strip"></div>
+        <p id="xray-round-note" class="xray-note"></p>
+      </section>
+      <section aria-labelledby="xray-guess-heading">
+        <h3 id="xray-guess-heading">织机此刻的猜测</h3>
+        <div id="xray-types" class="xray-types"></div>
+        <p id="xray-guess-note" class="xray-mini">它猜你会被这些画面吸引：</p>
+        <div id="xray-guesses" class="xray-strip"></div>
+      </section>
+        </div>
+      </details>
+      <details id="xray-engineering" class="xray-engineering">
+        <summary>工程细节</summary>
+        <div id="xray-details" class="xray-data"></div>
+        <div class="xray-import-control">
+          <label for="xray-import">导入已保存的记录</label>
+          <input id="xray-import" class="xray-file" type="file" accept=".json,application/json" aria-label="导入记录 JSON 并验证回放">
+        </div>
+        <div id="xray-comparison-import-control" class="xray-import-control" hidden>
+          <label for="xray-comparison-import">导入离线三路对照</label>
+          <input id="xray-comparison-import" class="xray-file" type="file" accept=".json,application/json" aria-label="导入离线基线、学习模型与 Jev 对照">
+          <p class="xray-mini">Jev 默认不运行。这里读取事后算好的结果，不会调用模型。</p>
+        </div>
+      </details>
+    </div>
+    <div id="xray-tip" class="xray-tip" hidden></div>
+  </aside>
 
   <!-- ═══════════════════════════════════════════════════════
        WELCOME OVERLAY
@@ -32,20 +121,34 @@
       <div class="welcome-divider">✦ ✦ ✦</div>
 
       <div class="welcome-body">
-        <p>这是一场关于选择与直觉的性格测试。</p>
-        <p>所有呈现的画面均由 AI 演化生成。<br>
-          我们不存储、不追踪你的任何选择数据，<br>
-          一切计算在你离开时即刻消散。</p>
+        <p>哪些画面会让你停下来？<br>选几轮，看看织机能否猜中你，再带走一份视觉小传。</p>
+        <p class="welcome-scope">画面由 AI 生成；这是一场视觉探索，不是人格测评。</p>
       </div>
 
       <div class="welcome-rules">
         <h3>✦ 规则</h3>
         <p>跟随直觉，在每一轮中选择你受吸引的画面。</p>
-        <p class="rule-choice">你可以 <strong>单选</strong>、<strong>多选</strong>，甚至 <strong>不选</strong>。</p>
-        <p>这里没有固定的轮数，当你的直觉告诉你足够时，随时可以停下。</p>
+        <p class="rule-choice" data-i18n-html="choice-rule">你可以 <strong>单选</strong>、<strong>多选</strong>，甚至 <strong>不选</strong>。</p>
+        <p>没有固定的轮数，觉得足够时，随时可以停下。</p>
       </div>
 
-      <button id="start-btn" class="btn-start">进 入 命 运</button>
+      <div class="welcome-entry">
+        <p id="entry-lead" class="entry-lead">你的选择，可以成为织机的一根线：<br>匿名留下，让它慢慢学会读人。</p>
+        <button id="start-btn" class="btn-start" disabled>织 入 命 运</button>
+        <button id="start-private" class="btn-quiet" type="button" disabled>私密体验 · 不留学习记录</button>
+        <p class="entry-play-note">结尾揭晓织机猜中了几轮。织入可匿名帮助研究，私密体验不留记录；逐轮反馈可在 X-Ray 开局前另选。</p>
+        <details id="entry-detail" class="entry-detail">
+          <summary>留下的是什么？</summary>
+          <p>织入后，会匿名保存每轮看到和选中的画面、它们在屏幕上的位置、点选与鼠标停留的时间、判词，以及你愿意给的评分；没揭示就离开，也会保存已经走过的轮次。这些用来改进织机，也用来研究它怎样从少量选择中学习。为了比较两种出牌方式，每次会随机采用其中一种。研究结果只以汇总形式公开，不含任何能认出你的信息。</p>
+          <p>不登录，不存 IP、设备信息或追问内容。这台浏览器会记住一个随机编号，把你几次的线连在一起，让织机看见同一个人的变化；它认不出你是谁。揭示后可以撤回这一次，也可以在这里全部撤回。撤回的记录不会被迟到的请求重新保存；全部撤回后，原匿名编号也会停用。</p>
+          <p id="entry-forget" class="entry-forget" hidden><span id="entry-forget-text"></span><button id="forget-visitor" class="btn-link" type="button" hidden>全部撤回</button></p>
+        </details>
+        <p id="deck-credit" class="deck-credit" hidden></p>
+      </div>
+
+      <p id="asset-status" class="asset-status" role="status">正在准备画面……</p>
+      <button id="retry-assets" class="btn btn-retry" type="button" hidden>重试加载画面</button>
+      <noscript><p class="asset-status">请启用 JavaScript，并通过本地服务打开页面。</p></noscript>
     </div>
   </div>
 
@@ -54,7 +157,7 @@
        ═══════════════════════════════════════════════════════ -->
   <div id="test-area">
     <header class="test-header">
-      <div class="round-badge">Round <span id="round-num">1</span></div>
+      <div class="round-badge"><span id="round-label">Round</span> <span id="round-num">1</span></div>
       <div class="selection-badge">已选 <span id="total-selected">0</span> 张</div>
     </header>
 
@@ -62,7 +165,9 @@
       <!-- Cards rendered by JS -->
     </div>
 
+    <div id="play-feedback" class="play-feedback" role="status" aria-live="polite" hidden></div>
     <div class="bottom-bar">
+      <p id="round-status" class="round-status" role="status"></p>
       <button id="next-btn" class="btn btn-next">下一轮 →</button>
       <button id="reveal-btn" class="btn btn-reveal">✦ 揭示命运</button>
     </div>
@@ -76,7 +181,14 @@
     <div class="reveal-text">
       <h2 id="reveal-heading">命运正在编织……</h2>
       <p id="reveal-subtitle">The threads of fate are converging</p>
+      <p id="result-mode" class="result-mode">本地演示 · 模拟文案 · 无模型调用</p>
+      <p id="language-hint" class="language-hint" role="status" hidden></p>
+      <section id="portrait" class="portrait" aria-label="本次视觉小传" hidden></section>
       <div id="reading-text" class="reading-text"></div>
+      <div id="analysis-error" class="analysis-error" role="alert" hidden>
+        <p id="analysis-error-text"></p>
+        <button id="retry-analysis" class="btn btn-retry" type="button">保留选择，重试解读</button>
+      </div>
       <section id="dialogue-panel" class="dialogue-panel" aria-label="最后对话" aria-hidden="true">
         <div class="dialogue-head">
           <h3>最后对话</h3>
@@ -103,6 +215,26 @@
       <div class="reveal-summary">
         <p class="stat">共经历 <span id="summary-rounds">0</span> 轮命运</p>
         <p class="stat">选择了 <span id="summary-cards">0</span> 张画面</p>
+        <section id="feedback-panel" class="feedback-panel" aria-labelledby="feedback-question" hidden>
+          <p id="feedback-question" class="feedback-question">这段判词像你吗？<span class="feedback-optional">可跳过</span></p>
+          <div id="feedback-rating" class="feedback-rating" role="radiogroup" aria-labelledby="feedback-question"></div>
+          <p class="feedback-scale" aria-hidden="true"><span>1 · 完全不像</span><span>5 · 非常像</span></p>
+          <div id="feedback-closest-block" class="feedback-closest" hidden>
+            <p id="feedback-closest-question" class="feedback-question">哪一张最像你？<span class="feedback-optional">可不选</span></p>
+            <div id="feedback-closest" class="feedback-cards" role="radiogroup" aria-labelledby="feedback-closest-question"></div>
+          </div>
+          <div class="feedback-actions">
+            <button id="feedback-save" class="btn btn-feedback" type="button" disabled>记下</button>
+            <button id="feedback-skip" class="feedback-skip" type="button">跳过</button>
+          </div>
+          <p id="feedback-status" class="feedback-status" role="status"></p>
+        </section>
+        <div id="record-export" class="record-export" hidden>
+          <p id="profile-version" class="profile-version"></p>
+          <p id="record-note" class="record-note" hidden><span id="record-note-text"></span><button id="withdraw-record" class="btn-link" type="button" hidden>撤回</button></p>
+          <button id="export-record" class="btn btn-export" type="button" disabled>导出本次记录</button>
+          <p id="export-status" class="export-status" role="status"></p>
+        </div>
         <div id="restart-block" class="restart-block">
           <button id="restart-btn" class="btn btn-restart" type="button">重新编织</button>
           <p class="restart-note">（丢失现在的数据）</p>
@@ -112,7 +244,9 @@
   </div>
 
   <audio id="ambient-audio" src="Drifting_Near_the_Core.mp3" preload="auto" loop></audio>
-  <script src="runtime-config.js?v=20260428-audio-order"></script>
-  <script src="app.js?v=20260428-audio-order"></script>
+  <script src="runtime-config.js?v=20261020-offline"></script>
+  <script src="i18n.js?v=20261022-play2"></script>
+  <script src="play-comparison.js?v=20261022-play2"></script>
+  <script src="app.js?v=20261022-play2"></script>
 </body>
 </html>

@@ -1,0 +1,13 @@
+{
+  "schema_version": "norn.runtime-boundary.v1",
+  "verified_at": "2026-10-20",
+  "runtime": "Pyodide 314.0.6 / Python 3.14",
+  "checks": {
+    "pyodide_jsnull_is_not_none": true,
+    "sql_null_normalized": true,
+    "alarm_null_normalized": true,
+    "zero_preserved": true,
+    "missing_header_normalized": true
+  },
+  "scope": "Actual Node-hosted Pyodide runtime, using the generated Python bundle and a JavaScript object containing null. Cloudflare production independently verified settlement and alarms through the live API workflow."
+}

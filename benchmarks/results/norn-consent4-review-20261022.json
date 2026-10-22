@@ -1,0 +1,40 @@
+{
+  "schema_version": "norn.consent4-release-review.v1",
+  "version_id": "6ba425e2-a5cd-4da4-a492-537079da6496",
+  "research_head_reviewed": "5966f99",
+  "research_locks_passed": 11,
+  "superseded_locks_skipped": 3,
+  "live_v3_enforced_hashes_matched_after_fixes": 10,
+  "recorded_implementation_files_changed": [
+    "norn/collection.py",
+    "norn/service.py",
+    "cloudflare/src/entry.py",
+    "the-norn-machine/frontend/app.js",
+    "the-norn-machine/frontend/index.html",
+    "the-norn-machine/frontend/i18n.js"
+  ],
+  "source_sha256": {
+    "norn/collection.py": "c5576fafde592e07d06e8afff98a6dab31b971e3d028ac65a1555849e774b9f2",
+    "norn/service.py": "b4618a5d0f36d1976a9703520b7b73d8e5822c04a95f31724eece399adb47a46",
+    "cloudflare/src/entry.py": "53b9331b99046e05b5076f459b5183d0256f95da36dfb063b8a9550eaeaf6aaa",
+    "the-norn-machine/frontend/app.js": "ceed1844ca3798af6d42d7bdf3172d79d9fc88af7dff089c12da9c645e4692fe",
+    "the-norn-machine/frontend/index.html": "f7af46cac966692b57dd238774ee8238af4c7e3f53bef2bf7c6b86b4857f2018",
+    "the-norn-machine/frontend/i18n.js": "7264d12a7a8f106009f7b59c3aa26420eda03ef82a282a7ea8e5d7309db90b52"
+  },
+  "full_suite": {
+    "passed": 712,
+    "subtests": 1265,
+    "skipped": 19
+  },
+  "later_verifier_i18n_xray_suite": {
+    "passed": 9,
+    "subtests": 26
+  },
+  "model_calls": 0,
+  "judge_calls": 0,
+  "position_layer_enabled": false,
+  "archive_acceptance": "norn-partial-visit-live-20261022.json",
+  "xray_acceptance": "norn-xray-consent4-live-20261022.json",
+  "asset_acceptance": "norn-consent4-assets-20261022.json",
+  "scope": "Synthetic engineering acceptance only; no human preference, learning or recommendation claims. Tests overlap and are not additive."
+}

@@ -1,0 +1,35 @@
+{
+  "schema": "norn.jev.keychain-readiness.v1",
+  "date": "2026-10-21",
+  "status": "saved_api_validity_untested",
+  "metadata_result": "ENTRY_PRESENT_METADATA_ONLY",
+  "metadata_scope": "current OS account, default user Keychain, exact named service only",
+  "service": "Norn.typesafe-api-key",
+  "secret_reads": 0,
+  "api_calls": 0,
+  "model": "jev-1.13.0",
+  "launcher": "scripts/jev_keychain.py",
+  "explicit_compare_limits": {
+    "provider": "typesafe",
+    "batches": 1,
+    "max_questions": 16,
+    "automatic_retries": 0,
+    "input": "numeric"
+  },
+  "tests": {
+    "passed": 86,
+    "subtests_passed": 104,
+    "failed": 0,
+    "scope": [
+      "tests/test_jev_keychain.py",
+      "tests/test_jev.py",
+      "tests/test_fast_compare.py"
+    ],
+    "external_calls": "all mocked"
+  },
+  "sha256": {
+    "scripts/jev_keychain.py": "4e3d1432ccf5f4a075ab543f7f15b810065063e3ff6c5d12b7bb77791b50608b",
+    "tests/test_jev_keychain.py": "9f3b8625f55d178373d61086381b9f2830c20169a27332935e93f7802661ad67",
+    "benchmarks/results/jev-keychain-tests-20261021.xml": "0a20ab1a74c972a2a2346cfe73eabea5114a5434191d0d6ac4c80ab7455fc719"
+  }
+}

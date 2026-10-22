@@ -1,0 +1,7 @@
+{
+  "schema_version": "norn.v6-wheel-check.v1",
+  "ok": true,
+  "bundled_pamela_images": 256,
+  "attribution_included": true,
+  "network_disabled_for_installed_doctor": true
+}

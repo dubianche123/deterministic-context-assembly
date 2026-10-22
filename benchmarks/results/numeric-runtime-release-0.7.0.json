@@ -1,0 +1,73 @@
+{
+  "schema_version": "norn.numeric-runtime-verification.v1",
+  "release": "0.7.0",
+  "numerical_contract": "norn.numeric.decimal34.v1",
+  "runtimes": {
+    "native": {
+      "python": "3.14.8 (main, Sep 30 2026, 17:55:09) [Clang 21.0.0 (clang-2100.3.34.2)]",
+      "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O"
+    },
+    "pyodide": {
+      "npm_version": "314.0.6",
+      "python": "3.14.2 (main, Aug 25 2026, 05:50:55) [Clang 23.0.0git (https:/github.com/llvm/llvm-project e5927fecf8a6ce89e1a4eac5b8",
+      "platform": "Emscripten-5.0.3-wasm32-32bit"
+    }
+  },
+  "all_derived_fields_exactly_equal": true,
+  "checks": {
+    "small_events": {
+      "exactly_equal": true,
+      "content_hash": "sha256:fe32a35e628f904705035da20821953baf2df67f13b2e6bd4d6669c6a49989d9",
+      "native_ms": 96.815,
+      "pyodide_ms": 205.739
+    },
+    "legacy_profile1": {
+      "exactly_equal": true,
+      "content_hash": "sha256:0a51b48ece03cda0544314a1644a12ccb11027faaa748d0525c566cc0116e797",
+      "native_ms": 7.042,
+      "pyodide_ms": 13.04
+    },
+    "24_round_profile3": {
+      "exactly_equal": true,
+      "content_hash": "sha256:0a5cba35901954d9f419c9e33a132a15223c31edd021e76c263a38d9526e8709",
+      "native_ms": 73.382,
+      "pyodide_ms": 168.583
+    },
+    "59_round_profile3": {
+      "exactly_equal": true,
+      "content_hash": "sha256:aee55b89926b922d5d889ab57dcde6dda4516915ab978a9248bdd193f4b033a4",
+      "native_ms": 14.053,
+      "pyodide_ms": 30.14
+    },
+    "75_round_profile3": {
+      "exactly_equal": true,
+      "content_hash": "sha256:2389b5b50a7fa3da175ff757038e9156953d3488d84a5d2f78237547f66bffa5",
+      "native_ms": 14.458,
+      "pyodide_ms": 31.048
+    },
+    "mock_reading_and_three_followups": {
+      "exactly_equal": true,
+      "content_hash": "sha256:b156e20ceb9aa5b82f373337ae7d7595680a3d9fd21ac9a6c398bfaf39fd6e3b",
+      "native_ms": 140.717,
+      "pyodide_ms": 421.424
+    },
+    "256_round_4096_pair_pressure": {
+      "exactly_equal": true,
+      "content_hash": "sha256:0fcbb35b5e5574248979a3818cdac7105dfaf3bf89aa86b94f5286c1a3b1d63f",
+      "native_ms": 1036.035,
+      "pyodide_ms": 2107.355
+    }
+  },
+  "real_model_calls": 0,
+  "wasm_heap_bytes_after_probe": 45350912,
+  "limits": {
+    "measurement": "Local runtimes, not deployed Worker CPU or total memory.",
+    "historical_profiles": "Native-libm historical versions remain strict; universal cross-runtime portability is not claimed."
+  },
+  "reproduction": {
+    "native": "python3 scripts/probe_numeric_runtime.py --output /tmp/norn-native.json",
+    "install_runtime": "npm install --prefix /tmp/norn-pyodide pyodide@314.0.6 --no-audit --no-fund",
+    "wasm": "node scripts/probe_numeric_runtime.mjs --pyodide-module /tmp/norn-pyodide/node_modules/pyodide/pyodide.mjs --output /tmp/norn-wasm.json",
+    "compare": "Compare the complete checks objects from both JSON documents exactly."
+  }
+}

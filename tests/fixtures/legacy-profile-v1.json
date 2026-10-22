@@ -1,0 +1,2081 @@
+{
+  "schema_version": "norn.replay.v1",
+  "journal": {
+    "schema_version": "norn.events.v1",
+    "events": [
+      {
+        "event_id": "bench-001",
+        "sequence": 1,
+        "type": "round_started",
+        "round": 1,
+        "card_ids": [
+          "NORN_0001",
+          "NORN_0025",
+          "NORN_0049"
+        ]
+      },
+      {
+        "event_id": "bench-002",
+        "sequence": 2,
+        "type": "card_selected",
+        "round": 1,
+        "card_id": "NORN_0001"
+      },
+      {
+        "event_id": "bench-003",
+        "sequence": 3,
+        "type": "round_completed",
+        "round": 1,
+        "duration_ms": 3800
+      },
+      {
+        "event_id": "bench-004",
+        "sequence": 4,
+        "type": "round_started",
+        "round": 2,
+        "card_ids": [
+          "NORN_0002",
+          "NORN_0026",
+          "NORN_0050"
+        ]
+      },
+      {
+        "event_id": "bench-005",
+        "sequence": 5,
+        "type": "card_selected",
+        "round": 2,
+        "card_id": "NORN_0002"
+      },
+      {
+        "event_id": "bench-006",
+        "sequence": 6,
+        "type": "round_completed",
+        "round": 2,
+        "duration_ms": 5100
+      },
+      {
+        "event_id": "bench-007",
+        "sequence": 7,
+        "type": "round_started",
+        "round": 3,
+        "card_ids": [
+          "NORN_0003",
+          "NORN_0027",
+          "NORN_0051"
+        ]
+      },
+      {
+        "event_id": "bench-008",
+        "sequence": 8,
+        "type": "card_selected",
+        "round": 3,
+        "card_id": "NORN_0003"
+      },
+      {
+        "event_id": "bench-009",
+        "sequence": 9,
+        "type": "round_completed",
+        "round": 3,
+        "duration_ms": 6400
+      },
+      {
+        "event_id": "bench-010",
+        "sequence": 10,
+        "type": "round_started",
+        "round": 4,
+        "card_ids": [
+          "NORN_0004",
+          "NORN_0028",
+          "NORN_0052"
+        ]
+      },
+      {
+        "event_id": "bench-011",
+        "sequence": 11,
+        "type": "card_selected",
+        "round": 4,
+        "card_id": "NORN_0004"
+      },
+      {
+        "event_id": "bench-012",
+        "sequence": 12,
+        "type": "card_deselected",
+        "round": 4,
+        "card_id": "NORN_0004"
+      },
+      {
+        "event_id": "bench-013",
+        "sequence": 13,
+        "type": "card_selected",
+        "round": 4,
+        "card_id": "NORN_0004"
+      },
+      {
+        "event_id": "bench-014",
+        "sequence": 14,
+        "type": "round_completed",
+        "round": 4,
+        "duration_ms": 7700
+      },
+      {
+        "event_id": "bench-015",
+        "sequence": 15,
+        "type": "round_started",
+        "round": 5,
+        "card_ids": [
+          "NORN_0005",
+          "NORN_0029",
+          "NORN_0053"
+        ]
+      },
+      {
+        "event_id": "bench-016",
+        "sequence": 16,
+        "type": "card_selected",
+        "round": 5,
+        "card_id": "NORN_0005"
+      },
+      {
+        "event_id": "bench-017",
+        "sequence": 17,
+        "type": "round_completed",
+        "round": 5,
+        "duration_ms": 9000
+      },
+      {
+        "event_id": "bench-018",
+        "sequence": 18,
+        "type": "round_started",
+        "round": 6,
+        "card_ids": [
+          "NORN_0006",
+          "NORN_0030",
+          "NORN_0054"
+        ]
+      },
+      {
+        "event_id": "bench-019",
+        "sequence": 19,
+        "type": "card_selected",
+        "round": 6,
+        "card_id": "NORN_0006"
+      },
+      {
+        "event_id": "bench-020",
+        "sequence": 20,
+        "type": "round_completed",
+        "round": 6,
+        "duration_ms": 10300
+      },
+      {
+        "event_id": "bench-021",
+        "sequence": 21,
+        "type": "round_started",
+        "round": 7,
+        "card_ids": [
+          "NORN_0007",
+          "NORN_0031",
+          "NORN_0055"
+        ]
+      },
+      {
+        "event_id": "bench-022",
+        "sequence": 22,
+        "type": "card_selected",
+        "round": 7,
+        "card_id": "NORN_0007"
+      },
+      {
+        "event_id": "bench-023",
+        "sequence": 23,
+        "type": "round_completed",
+        "round": 7,
+        "duration_ms": 11600
+      },
+      {
+        "event_id": "bench-024",
+        "sequence": 24,
+        "type": "round_started",
+        "round": 8,
+        "card_ids": [
+          "NORN_0008",
+          "NORN_0032",
+          "NORN_0056"
+        ]
+      },
+      {
+        "event_id": "bench-025",
+        "sequence": 25,
+        "type": "card_selected",
+        "round": 8,
+        "card_id": "NORN_0008"
+      },
+      {
+        "event_id": "bench-026",
+        "sequence": 26,
+        "type": "card_deselected",
+        "round": 8,
+        "card_id": "NORN_0008"
+      },
+      {
+        "event_id": "bench-027",
+        "sequence": 27,
+        "type": "card_selected",
+        "round": 8,
+        "card_id": "NORN_0008"
+      },
+      {
+        "event_id": "bench-028",
+        "sequence": 28,
+        "type": "round_completed",
+        "round": 8,
+        "duration_ms": 12900
+      },
+      {
+        "event_id": "bench-029",
+        "sequence": 29,
+        "type": "round_started",
+        "round": 9,
+        "card_ids": [
+          "NORN_0009",
+          "NORN_0033",
+          "NORN_0057"
+        ]
+      },
+      {
+        "event_id": "bench-030",
+        "sequence": 30,
+        "type": "card_selected",
+        "round": 9,
+        "card_id": "NORN_0009"
+      },
+      {
+        "event_id": "bench-031",
+        "sequence": 31,
+        "type": "round_completed",
+        "round": 9,
+        "duration_ms": 14200
+      },
+      {
+        "event_id": "bench-032",
+        "sequence": 32,
+        "type": "round_started",
+        "round": 10,
+        "card_ids": [
+          "NORN_0010",
+          "NORN_0034",
+          "NORN_0058"
+        ]
+      },
+      {
+        "event_id": "bench-033",
+        "sequence": 33,
+        "type": "card_selected",
+        "round": 10,
+        "card_id": "NORN_0010"
+      },
+      {
+        "event_id": "bench-034",
+        "sequence": 34,
+        "type": "round_completed",
+        "round": 10,
+        "duration_ms": 15500
+      },
+      {
+        "event_id": "bench-035",
+        "sequence": 35,
+        "type": "round_started",
+        "round": 11,
+        "card_ids": [
+          "NORN_0011",
+          "NORN_0035",
+          "NORN_0059"
+        ]
+      },
+      {
+        "event_id": "bench-036",
+        "sequence": 36,
+        "type": "card_selected",
+        "round": 11,
+        "card_id": "NORN_0011"
+      },
+      {
+        "event_id": "bench-037",
+        "sequence": 37,
+        "type": "round_completed",
+        "round": 11,
+        "duration_ms": 16800
+      },
+      {
+        "event_id": "bench-038",
+        "sequence": 38,
+        "type": "round_started",
+        "round": 12,
+        "card_ids": [
+          "NORN_0012",
+          "NORN_0036",
+          "NORN_0060"
+        ]
+      },
+      {
+        "event_id": "bench-039",
+        "sequence": 39,
+        "type": "card_selected",
+        "round": 12,
+        "card_id": "NORN_0012"
+      },
+      {
+        "event_id": "bench-040",
+        "sequence": 40,
+        "type": "card_deselected",
+        "round": 12,
+        "card_id": "NORN_0012"
+      },
+      {
+        "event_id": "bench-041",
+        "sequence": 41,
+        "type": "card_selected",
+        "round": 12,
+        "card_id": "NORN_0012"
+      },
+      {
+        "event_id": "bench-042",
+        "sequence": 42,
+        "type": "round_completed",
+        "round": 12,
+        "duration_ms": 18100
+      },
+      {
+        "event_id": "bench-043",
+        "sequence": 43,
+        "type": "round_started",
+        "round": 13,
+        "card_ids": [
+          "NORN_0013",
+          "NORN_0037",
+          "NORN_0061"
+        ]
+      },
+      {
+        "event_id": "bench-044",
+        "sequence": 44,
+        "type": "card_selected",
+        "round": 13,
+        "card_id": "NORN_0013"
+      },
+      {
+        "event_id": "bench-045",
+        "sequence": 45,
+        "type": "round_completed",
+        "round": 13,
+        "duration_ms": 19400
+      },
+      {
+        "event_id": "bench-046",
+        "sequence": 46,
+        "type": "round_started",
+        "round": 14,
+        "card_ids": [
+          "NORN_0014",
+          "NORN_0038",
+          "NORN_0062"
+        ]
+      },
+      {
+        "event_id": "bench-047",
+        "sequence": 47,
+        "type": "card_selected",
+        "round": 14,
+        "card_id": "NORN_0014"
+      },
+      {
+        "event_id": "bench-048",
+        "sequence": 48,
+        "type": "round_completed",
+        "round": 14,
+        "duration_ms": 20700
+      },
+      {
+        "event_id": "bench-049",
+        "sequence": 49,
+        "type": "round_started",
+        "round": 15,
+        "card_ids": [
+          "NORN_0015",
+          "NORN_0039",
+          "NORN_0063"
+        ]
+      },
+      {
+        "event_id": "bench-050",
+        "sequence": 50,
+        "type": "card_selected",
+        "round": 15,
+        "card_id": "NORN_0015"
+      },
+      {
+        "event_id": "bench-051",
+        "sequence": 51,
+        "type": "round_completed",
+        "round": 15,
+        "duration_ms": 22000
+      },
+      {
+        "event_id": "bench-052",
+        "sequence": 52,
+        "type": "round_started",
+        "round": 16,
+        "card_ids": [
+          "NORN_0016",
+          "NORN_0040",
+          "NORN_0064"
+        ]
+      },
+      {
+        "event_id": "bench-053",
+        "sequence": 53,
+        "type": "card_selected",
+        "round": 16,
+        "card_id": "NORN_0016"
+      },
+      {
+        "event_id": "bench-054",
+        "sequence": 54,
+        "type": "card_deselected",
+        "round": 16,
+        "card_id": "NORN_0016"
+      },
+      {
+        "event_id": "bench-055",
+        "sequence": 55,
+        "type": "card_selected",
+        "round": 16,
+        "card_id": "NORN_0016"
+      },
+      {
+        "event_id": "bench-056",
+        "sequence": 56,
+        "type": "round_completed",
+        "round": 16,
+        "duration_ms": 23300
+      },
+      {
+        "event_id": "bench-057",
+        "sequence": 57,
+        "type": "round_started",
+        "round": 17,
+        "card_ids": [
+          "NORN_0017",
+          "NORN_0041",
+          "NORN_0065"
+        ]
+      },
+      {
+        "event_id": "bench-058",
+        "sequence": 58,
+        "type": "card_selected",
+        "round": 17,
+        "card_id": "NORN_0017"
+      },
+      {
+        "event_id": "bench-059",
+        "sequence": 59,
+        "type": "round_completed",
+        "round": 17,
+        "duration_ms": 24600
+      },
+      {
+        "event_id": "bench-060",
+        "sequence": 60,
+        "type": "round_started",
+        "round": 18,
+        "card_ids": [
+          "NORN_0018",
+          "NORN_0042",
+          "NORN_0066"
+        ]
+      },
+      {
+        "event_id": "bench-061",
+        "sequence": 61,
+        "type": "card_selected",
+        "round": 18,
+        "card_id": "NORN_0018"
+      },
+      {
+        "event_id": "bench-062",
+        "sequence": 62,
+        "type": "round_completed",
+        "round": 18,
+        "duration_ms": 25900
+      },
+      {
+        "event_id": "bench-063",
+        "sequence": 63,
+        "type": "round_started",
+        "round": 19,
+        "card_ids": [
+          "NORN_0019",
+          "NORN_0043",
+          "NORN_0067"
+        ]
+      },
+      {
+        "event_id": "bench-064",
+        "sequence": 64,
+        "type": "card_selected",
+        "round": 19,
+        "card_id": "NORN_0019"
+      },
+      {
+        "event_id": "bench-065",
+        "sequence": 65,
+        "type": "round_completed",
+        "round": 19,
+        "duration_ms": 27200
+      },
+      {
+        "event_id": "bench-066",
+        "sequence": 66,
+        "type": "round_started",
+        "round": 20,
+        "card_ids": [
+          "NORN_0020",
+          "NORN_0044",
+          "NORN_0068"
+        ]
+      },
+      {
+        "event_id": "bench-067",
+        "sequence": 67,
+        "type": "card_selected",
+        "round": 20,
+        "card_id": "NORN_0020"
+      },
+      {
+        "event_id": "bench-068",
+        "sequence": 68,
+        "type": "card_deselected",
+        "round": 20,
+        "card_id": "NORN_0020"
+      },
+      {
+        "event_id": "bench-069",
+        "sequence": 69,
+        "type": "card_selected",
+        "round": 20,
+        "card_id": "NORN_0020"
+      },
+      {
+        "event_id": "bench-070",
+        "sequence": 70,
+        "type": "round_completed",
+        "round": 20,
+        "duration_ms": 28500
+      },
+      {
+        "event_id": "bench-071",
+        "sequence": 71,
+        "type": "round_started",
+        "round": 21,
+        "card_ids": [
+          "NORN_0021",
+          "NORN_0045",
+          "NORN_0069"
+        ]
+      },
+      {
+        "event_id": "bench-072",
+        "sequence": 72,
+        "type": "card_selected",
+        "round": 21,
+        "card_id": "NORN_0021"
+      },
+      {
+        "event_id": "bench-073",
+        "sequence": 73,
+        "type": "round_completed",
+        "round": 21,
+        "duration_ms": 29800
+      },
+      {
+        "event_id": "bench-074",
+        "sequence": 74,
+        "type": "round_started",
+        "round": 22,
+        "card_ids": [
+          "NORN_0022",
+          "NORN_0046",
+          "NORN_0070"
+        ]
+      },
+      {
+        "event_id": "bench-075",
+        "sequence": 75,
+        "type": "card_selected",
+        "round": 22,
+        "card_id": "NORN_0022"
+      },
+      {
+        "event_id": "bench-076",
+        "sequence": 76,
+        "type": "round_completed",
+        "round": 22,
+        "duration_ms": 31100
+      },
+      {
+        "event_id": "bench-077",
+        "sequence": 77,
+        "type": "round_started",
+        "round": 23,
+        "card_ids": [
+          "NORN_0023",
+          "NORN_0047",
+          "NORN_0071"
+        ]
+      },
+      {
+        "event_id": "bench-078",
+        "sequence": 78,
+        "type": "card_selected",
+        "round": 23,
+        "card_id": "NORN_0023"
+      },
+      {
+        "event_id": "bench-079",
+        "sequence": 79,
+        "type": "round_completed",
+        "round": 23,
+        "duration_ms": 32400
+      },
+      {
+        "event_id": "bench-080",
+        "sequence": 80,
+        "type": "round_started",
+        "round": 24,
+        "card_ids": [
+          "NORN_0024",
+          "NORN_0048",
+          "NORN_0072"
+        ]
+      },
+      {
+        "event_id": "bench-081",
+        "sequence": 81,
+        "type": "card_selected",
+        "round": 24,
+        "card_id": "NORN_0024"
+      },
+      {
+        "event_id": "bench-082",
+        "sequence": 82,
+        "type": "card_deselected",
+        "round": 24,
+        "card_id": "NORN_0024"
+      },
+      {
+        "event_id": "bench-083",
+        "sequence": 83,
+        "type": "card_selected",
+        "round": 24,
+        "card_id": "NORN_0024"
+      },
+      {
+        "event_id": "bench-084",
+        "sequence": 84,
+        "type": "round_completed",
+        "round": 24,
+        "duration_ms": 33700
+      },
+      {
+        "event_id": "bench-085",
+        "sequence": 85,
+        "type": "session_completed"
+      }
+    ]
+  },
+  "profile": {
+    "schema_version": "norn.profile.v1",
+    "algorithm_version": "norn.scoring.v1",
+    "metadata_version": "sha256:36d7d94d7b89cadcdd4b02975dfa9cd4d7f4dfa7c0780efce5f9f7ff8d3cf42a",
+    "source": "event_journal",
+    "events_hash": "sha256:affbe5b204bc97d57fe43f084fff6b9defec289f90c7006ce85f88b34b26b895",
+    "analysis": {
+      "mbti_type": "ENFP",
+      "confidence": {
+        "E_I": 0.037207247465011195,
+        "S_N": 0.29025996597051074,
+        "T_F": 0.05651499055826591,
+        "J_P": 0.07715716055185343
+      },
+      "coords_avg": {
+        "E_I": 0.37,
+        "S_N": 2.9,
+        "T_F": -0.57,
+        "J_P": -0.77
+      },
+      "top_traits": [
+        "反复校准",
+        "选择复核",
+        "感染力",
+        "效率",
+        "独立",
+        "灵感",
+        "自由",
+        "联结"
+      ],
+      "top_motifs": [
+        "窗光",
+        "地毯",
+        "手势",
+        "灯",
+        "长桌",
+        "椅子",
+        "手",
+        "野餐布"
+      ],
+      "scenes": [
+        "无人战略室",
+        "无限笔记本",
+        "运营指挥大厅",
+        "辩论咖啡馆",
+        "安静咨询室",
+        "雨后书店角",
+        "社区工作坊",
+        "夜市十字路",
+        "档案桌",
+        "清晨厨房",
+        "物流调度场",
+        "共享晚餐桌",
+        "机车工作台",
+        "陶艺工作室",
+        "街头篮球场",
+        "后台灯镜",
+        "深夜观测台",
+        "废弃实验角",
+        "峰会长桌",
+        "车库发明夜",
+        "雾中灯塔",
+        "瓶中海房间",
+        "圆形议事厅",
+        "点子野餐"
+      ],
+      "rationale_snippets": [
+        "多彩、开放、流动的可能性场域；热闹、群像、拼贴都合适。",
+        "人际连接、公共表达、引导与照亮他人的场景；适合双人和多人。",
+        "私密世界、手作物、自然意象与梦境场景；经常可以没有人物，因为核心是内在价值的外化。",
+        "安静连接、象征门槛、灯塔、咨询室与温柔但坚定的方向感；双人或空场景都成立。",
+        "多点碰撞、即兴辩论、发明现场与挑衅性图像语言；可以热闹、破碎、跳跃。",
+        "高能量战略调度、团队协同、明确目标；人群应体现组织性而非混乱。"
+      ],
+      "signature_signal": "手势",
+      "data_density": "overflow_mode",
+      "total_selections": 24,
+      "total_rounds": 24,
+      "choice_revision": {
+        "total": 6,
+        "rounds_touched": 6,
+        "rate": 0.25,
+        "strength": 0.17,
+        "signal": "light"
+      },
+      "attribution": {
+        "schema_version": "norn.attribution.v1",
+        "algorithm_version": "norn.scoring.v1",
+        "total_rounds": 24,
+        "total_weight": 45.061532823831534,
+        "total_base_weight": 42.103870880967825,
+        "weight_summation_delta": -7.105427357601002e-15,
+        "base_weight_summation_delta": 0.0,
+        "rounds": [
+          {
+            "round": 1,
+            "raw_duration_ms": 3800,
+            "clamped_duration_ms": 3800,
+            "duration_was_clamped": false,
+            "normalization": "session_min_max",
+            "normalized_duration": 0.0,
+            "hesitation_multiplier": 1.0
+          },
+          {
+            "round": 2,
+            "raw_duration_ms": 5100,
+            "clamped_duration_ms": 5100,
+            "duration_was_clamped": false,
+            "normalization": "session_min_max",
+            "normalized_duration": 0.043478260869565216,
+            "hesitation_multiplier": 1.0052173913043478
+          },
+          {
+            "round": 3,
+            "raw_duration_ms": 6400,
+            "clamped_duration_ms": 6400,
+            "duration_was_clamped": false,
+            "normalization": "session_min_max",
+            "normalized_duration": 0.08695652173913043,
+            "hesitation_multiplier": 1.0104347826086957
+          },
+          {
+            "round": 4,
+            "raw_duration_ms": 7700,
+            "clamped_duration_ms": 7700,
+            "duration_was_clamped": false,
+            "normalization": "session_min_max",
+            "normalized_duration": 0.13043478260869565,
+            "hesitation_multiplier": 1.0156521739130435
+          },
+          {
+            "round": 5,
+            "raw_duration_ms": 9000,
+            "clamped_duration_ms": 9000,
+            "duration_was_clamped": false,
+            "normalization": "session_min_max",
+            "normalized_duration": 0.17391304347826086,
+            "hesitation_multiplier": 1.0208695652173914
+          },
+          {
+            "round": 6,
+            "raw_duration_ms": 10300,
+            "clamped_duration_ms": 10300,
+            "duration_was_clamped": false,
+            "normalization": "session_min_max",
+            "normalized_duration": 0.21739130434782608,
+            "hesitation_multiplier": 1.0260869565217392
+          },
+          {
+            "round": 7,
+            "raw_duration_ms": 11600,
+            "clamped_duration_ms": 11600,
+            "duration_was_clamped": false,
+            "normalization": "session_min_max",
+            "normalized_duration": 0.2608695652173913,
+            "hesitation_multiplier": 1.031304347826087
+          },
+          {
+            "round": 8,
+            "raw_duration_ms": 12900,
+            "clamped_duration_ms": 12900,
+            "duration_was_clamped": false,
+            "normalization": "session_min_max",
+            "normalized_duration": 0.30434782608695654,
+            "hesitation_multiplier": 1.0365217391304349
+          },
+          {
+            "round": 9,
+            "raw_duration_ms": 14200,
+            "clamped_duration_ms": 14200,
+            "duration_was_clamped": false,
+            "normalization": "session_min_max",
+            "normalized_duration": 0.34782608695652173,
+            "hesitation_multiplier": 1.0417391304347827
+          },
+          {
+            "round": 10,
+            "raw_duration_ms": 15500,
+            "clamped_duration_ms": 15500,
+            "duration_was_clamped": false,
+            "normalization": "session_min_max",
+            "normalized_duration": 0.391304347826087,
+            "hesitation_multiplier": 1.0469565217391306
+          },
+          {
+            "round": 11,
+            "raw_duration_ms": 16800,
+            "clamped_duration_ms": 16800,
+            "duration_was_clamped": false,
+            "normalization": "session_min_max",
+            "normalized_duration": 0.43478260869565216,
+            "hesitation_multiplier": 1.0521739130434784
+          },
+          {
+            "round": 12,
+            "raw_duration_ms": 18100,
+            "clamped_duration_ms": 18100,
+            "duration_was_clamped": false,
+            "normalization": "session_min_max",
+            "normalized_duration": 0.4782608695652174,
+            "hesitation_multiplier": 1.0573913043478262
+          },
+          {
+            "round": 13,
+            "raw_duration_ms": 19400,
+            "clamped_duration_ms": 19400,
+            "duration_was_clamped": false,
+            "normalization": "session_min_max",
+            "normalized_duration": 0.5217391304347826,
+            "hesitation_multiplier": 1.062608695652174
+          },
+          {
+            "round": 14,
+            "raw_duration_ms": 20700,
+            "clamped_duration_ms": 20700,
+            "duration_was_clamped": false,
+            "normalization": "session_min_max",
+            "normalized_duration": 0.5652173913043478,
+            "hesitation_multiplier": 1.0678260869565217
+          },
+          {
+            "round": 15,
+            "raw_duration_ms": 22000,
+            "clamped_duration_ms": 22000,
+            "duration_was_clamped": false,
+            "normalization": "session_min_max",
+            "normalized_duration": 0.6086956521739131,
+            "hesitation_multiplier": 1.0730434782608695
+          },
+          {
+            "round": 16,
+            "raw_duration_ms": 23300,
+            "clamped_duration_ms": 23300,
+            "duration_was_clamped": false,
+            "normalization": "session_min_max",
+            "normalized_duration": 0.6521739130434783,
+            "hesitation_multiplier": 1.0782608695652174
+          },
+          {
+            "round": 17,
+            "raw_duration_ms": 24600,
+            "clamped_duration_ms": 24600,
+            "duration_was_clamped": false,
+            "normalization": "session_min_max",
+            "normalized_duration": 0.6956521739130435,
+            "hesitation_multiplier": 1.0834782608695652
+          },
+          {
+            "round": 18,
+            "raw_duration_ms": 25900,
+            "clamped_duration_ms": 25900,
+            "duration_was_clamped": false,
+            "normalization": "session_min_max",
+            "normalized_duration": 0.7391304347826086,
+            "hesitation_multiplier": 1.088695652173913
+          },
+          {
+            "round": 19,
+            "raw_duration_ms": 27200,
+            "clamped_duration_ms": 27200,
+            "duration_was_clamped": false,
+            "normalization": "session_min_max",
+            "normalized_duration": 0.782608695652174,
+            "hesitation_multiplier": 1.093913043478261
+          },
+          {
+            "round": 20,
+            "raw_duration_ms": 28500,
+            "clamped_duration_ms": 28500,
+            "duration_was_clamped": false,
+            "normalization": "session_min_max",
+            "normalized_duration": 0.8260869565217391,
+            "hesitation_multiplier": 1.0991304347826087
+          },
+          {
+            "round": 21,
+            "raw_duration_ms": 29800,
+            "clamped_duration_ms": 29800,
+            "duration_was_clamped": false,
+            "normalization": "session_min_max",
+            "normalized_duration": 0.8695652173913043,
+            "hesitation_multiplier": 1.1043478260869566
+          },
+          {
+            "round": 22,
+            "raw_duration_ms": 31100,
+            "clamped_duration_ms": 31100,
+            "duration_was_clamped": false,
+            "normalization": "session_min_max",
+            "normalized_duration": 0.9130434782608695,
+            "hesitation_multiplier": 1.1095652173913044
+          },
+          {
+            "round": 23,
+            "raw_duration_ms": 32400,
+            "clamped_duration_ms": 32400,
+            "duration_was_clamped": false,
+            "normalization": "session_min_max",
+            "normalized_duration": 0.9565217391304348,
+            "hesitation_multiplier": 1.1147826086956523
+          },
+          {
+            "round": 24,
+            "raw_duration_ms": 33700,
+            "clamped_duration_ms": 33700,
+            "duration_was_clamped": false,
+            "normalization": "session_min_max",
+            "normalized_duration": 1.0,
+            "hesitation_multiplier": 1.12
+          }
+        ],
+        "duration_normalization": {
+          "count": 24,
+          "min_ms": 3800,
+          "max_ms": 33700,
+          "range_ms": 29900,
+          "clamp_min_ms": 0,
+          "clamp_max_ms": 45000,
+          "maximum_multiplier": 1.12
+        },
+        "selections": [
+          {
+            "event_id": "bench-002",
+            "card_id": "NORN_0001",
+            "round": 1,
+            "coords": {
+              "E_I": -8,
+              "S_N": 8,
+              "T_F": 8,
+              "J_P": 8
+            },
+            "base_weight": 1.0425469051899914,
+            "hesitation_multiplier": 1.0,
+            "weight": 1.0425469051899914,
+            "weighted_coords": {
+              "E_I": -8.340375241519931,
+              "S_N": 8.340375241519931,
+              "T_F": 8.340375241519931,
+              "J_P": 8.340375241519931
+            },
+            "normalized_weight": 0.02313607282881028,
+            "contribution": {
+              "E_I": -0.18508858263048225,
+              "S_N": 0.18508858263048225,
+              "T_F": 0.18508858263048225,
+              "J_P": 0.18508858263048225
+            },
+            "base_contribution": {
+              "E_I": -0.19809046215962114,
+              "S_N": 0.19809046215962114,
+              "T_F": 0.19809046215962114,
+              "J_P": 0.19809046215962114
+            },
+            "hesitation_effect": {
+              "E_I": 0.013001879529138893,
+              "S_N": -0.013001879529138893,
+              "T_F": -0.013001879529138893,
+              "J_P": -0.013001879529138893
+            }
+          },
+          {
+            "event_id": "bench-005",
+            "card_id": "NORN_0002",
+            "round": 2,
+            "coords": {
+              "E_I": -8,
+              "S_N": 8,
+              "T_F": 8,
+              "J_P": -8
+            },
+            "base_weight": 1.086904049521229,
+            "hesitation_multiplier": 1.0052173913043478,
+            "weight": 1.0925748532578614,
+            "weighted_coords": {
+              "E_I": -8.740598826062891,
+              "S_N": 8.740598826062891,
+              "T_F": 8.740598826062891,
+              "J_P": -8.740598826062891
+            },
+            "normalized_weight": 0.02424628690571385,
+            "contribution": {
+              "E_I": -0.1939702952457108,
+              "S_N": 0.1939702952457108,
+              "T_F": 0.1939702952457108,
+              "J_P": -0.1939702952457108
+            },
+            "base_contribution": {
+              "E_I": -0.20651859827216812,
+              "S_N": 0.20651859827216812,
+              "T_F": 0.20651859827216812,
+              "J_P": -0.20651859827216812
+            },
+            "hesitation_effect": {
+              "E_I": 0.01254830302645732,
+              "S_N": -0.01254830302645732,
+              "T_F": -0.01254830302645732,
+              "J_P": 0.01254830302645732
+            }
+          },
+          {
+            "event_id": "bench-008",
+            "card_id": "NORN_0003",
+            "round": 3,
+            "coords": {
+              "E_I": 8,
+              "S_N": 8,
+              "T_F": 8,
+              "J_P": 8
+            },
+            "base_weight": 1.1331484530668263,
+            "hesitation_multiplier": 1.0104347826086957,
+            "weight": 1.1449726108379585,
+            "weighted_coords": {
+              "E_I": 9.159780886703668,
+              "S_N": 9.159780886703668,
+              "T_F": 9.159780886703668,
+              "J_P": 9.159780886703668
+            },
+            "normalized_weight": 0.02540909150414921,
+            "contribution": {
+              "E_I": 0.20327273203319368,
+              "S_N": 0.20327273203319368,
+              "T_F": 0.20327273203319368,
+              "J_P": 0.20327273203319368
+            },
+            "base_contribution": {
+              "E_I": 0.21530532549282397,
+              "S_N": 0.21530532549282397,
+              "T_F": 0.21530532549282397,
+              "J_P": 0.21530532549282397
+            },
+            "hesitation_effect": {
+              "E_I": -0.012032593459630286,
+              "S_N": -0.012032593459630286,
+              "T_F": -0.012032593459630286,
+              "J_P": -0.012032593459630286
+            }
+          },
+          {
+            "event_id": "bench-013",
+            "card_id": "NORN_0004",
+            "round": 4,
+            "coords": {
+              "E_I": 8,
+              "S_N": 8,
+              "T_F": 8,
+              "J_P": -8
+            },
+            "base_weight": 1.1813604128656459,
+            "hesitation_multiplier": 1.0156521739130435,
+            "weight": 1.199851271501804,
+            "weighted_coords": {
+              "E_I": 9.598810172014431,
+              "S_N": 9.598810172014431,
+              "T_F": 9.598810172014431,
+              "J_P": -9.598810172014431
+            },
+            "normalized_weight": 0.026626951999006186,
+            "contribution": {
+              "E_I": 0.2130156159920495,
+              "S_N": 0.2130156159920495,
+              "T_F": 0.2130156159920495,
+              "J_P": -0.2130156159920495
+            },
+            "base_contribution": {
+              "E_I": 0.22446590076346737,
+              "S_N": 0.22446590076346737,
+              "T_F": 0.22446590076346737,
+              "J_P": -0.22446590076346737
+            },
+            "hesitation_effect": {
+              "E_I": -0.011450284771417879,
+              "S_N": -0.011450284771417879,
+              "T_F": -0.011450284771417879,
+              "J_P": 0.011450284771417879
+            }
+          },
+          {
+            "event_id": "bench-016",
+            "card_id": "NORN_0005",
+            "round": 5,
+            "coords": {
+              "E_I": -8,
+              "S_N": 8,
+              "T_F": -8,
+              "J_P": 8
+            },
+            "base_weight": 1.2316236423470497,
+            "hesitation_multiplier": 1.0208695652173914,
+            "weight": 1.2573270922742925,
+            "weighted_coords": {
+              "E_I": -10.05861673819434,
+              "S_N": 10.05861673819434,
+              "T_F": -10.05861673819434,
+              "J_P": 10.05861673819434
+            },
+            "normalized_weight": 0.027902448351897483,
+            "contribution": {
+              "E_I": -0.22321958681517987,
+              "S_N": 0.22321958681517987,
+              "T_F": -0.22321958681517987,
+              "J_P": 0.22321958681517987
+            },
+            "base_contribution": {
+              "E_I": -0.23401623016163664,
+              "S_N": 0.23401623016163664,
+              "T_F": -0.23401623016163664,
+              "J_P": 0.23401623016163664
+            },
+            "hesitation_effect": {
+              "E_I": 0.010796643346456775,
+              "S_N": -0.010796643346456775,
+              "T_F": 0.010796643346456775,
+              "J_P": -0.010796643346456775
+            }
+          },
+          {
+            "event_id": "bench-019",
+            "card_id": "NORN_0006",
+            "round": 6,
+            "coords": {
+              "E_I": -8,
+              "S_N": 8,
+              "T_F": -8,
+              "J_P": -8
+            },
+            "base_weight": 1.2840254166877414,
+            "hesitation_multiplier": 1.0260869565217392,
+            "weight": 1.3175217319056827,
+            "weighted_coords": {
+              "E_I": -10.540173855245461,
+              "S_N": 10.540173855245461,
+              "T_F": -10.540173855245461,
+              "J_P": -10.540173855245461
+            },
+            "normalized_weight": 0.02923828039886139,
+            "contribution": {
+              "E_I": -0.23390624319089112,
+              "S_N": 0.23390624319089112,
+              "T_F": -0.23390624319089112,
+              "J_P": -0.23390624319089112
+            },
+            "base_contribution": {
+              "E_I": -0.24397289651924298,
+              "S_N": 0.24397289651924298,
+              "T_F": -0.24397289651924298,
+              "J_P": -0.24397289651924298
+            },
+            "hesitation_effect": {
+              "E_I": 0.010066653328351854,
+              "S_N": -0.010066653328351854,
+              "T_F": 0.010066653328351854,
+              "J_P": 0.010066653328351854
+            }
+          },
+          {
+            "event_id": "bench-022",
+            "card_id": "NORN_0007",
+            "round": 7,
+            "coords": {
+              "E_I": 8,
+              "S_N": 8,
+              "T_F": -8,
+              "J_P": 8
+            },
+            "base_weight": 1.338656724353094,
+            "hesitation_multiplier": 1.031304347826087,
+            "weight": 1.3805625000719737,
+            "weighted_coords": {
+              "E_I": 11.04450000057579,
+              "S_N": 11.04450000057579,
+              "T_F": -11.04450000057579,
+              "J_P": 11.04450000057579
+            },
+            "normalized_weight": 0.030637273380585944,
+            "contribution": {
+              "E_I": 0.24509818704468755,
+              "S_N": 0.24509818704468755,
+              "T_F": -0.24509818704468755,
+              "J_P": 0.24509818704468755
+            },
+            "base_contribution": {
+              "E_I": 0.2543531882163748,
+              "S_N": 0.2543531882163748,
+              "T_F": -0.2543531882163748,
+              "J_P": 0.2543531882163748
+            },
+            "hesitation_effect": {
+              "E_I": -0.00925500117168726,
+              "S_N": -0.00925500117168726,
+              "T_F": 0.00925500117168726,
+              "J_P": -0.00925500117168726
+            }
+          },
+          {
+            "event_id": "bench-027",
+            "card_id": "NORN_0008",
+            "round": 8,
+            "coords": {
+              "E_I": 8,
+              "S_N": 8,
+              "T_F": -8,
+              "J_P": -8
+            },
+            "base_weight": 1.3956124250860895,
+            "hesitation_multiplier": 1.0365217391304349,
+            "weight": 1.4465826180022772,
+            "weighted_coords": {
+              "E_I": 11.572660944018217,
+              "S_N": 11.572660944018217,
+              "T_F": -11.572660944018217,
+              "J_P": -11.572660944018217
+            },
+            "normalized_weight": 0.03210238372621954,
+            "contribution": {
+              "E_I": 0.25681906980975633,
+              "S_N": 0.25681906980975633,
+              "T_F": -0.25681906980975633,
+              "J_P": -0.25681906980975633
+            },
+            "base_contribution": {
+              "E_I": 0.26517512920018893,
+              "S_N": 0.26517512920018893,
+              "T_F": -0.26517512920018893,
+              "J_P": -0.26517512920018893
+            },
+            "hesitation_effect": {
+              "E_I": -0.008356059390432602,
+              "S_N": -0.008356059390432602,
+              "T_F": 0.008356059390432602,
+              "J_P": 0.008356059390432602
+            }
+          },
+          {
+            "event_id": "bench-030",
+            "card_id": "NORN_0009",
+            "round": 9,
+            "coords": {
+              "E_I": -8,
+              "S_N": -8,
+              "T_F": 8,
+              "J_P": 8
+            },
+            "base_weight": 1.4549914146182013,
+            "hesitation_multiplier": 1.0417391304347827,
+            "weight": 1.5157214910544394,
+            "weighted_coords": {
+              "E_I": -12.125771928435515,
+              "S_N": -12.125771928435515,
+              "T_F": 12.125771928435515,
+              "J_P": 12.125771928435515
+            },
+            "normalized_weight": 0.03363670510233565,
+            "contribution": {
+              "E_I": -0.2690936408186852,
+              "S_N": -0.2690936408186852,
+              "T_F": 0.2690936408186852,
+              "J_P": 0.2690936408186852
+            },
+            "base_contribution": {
+              "E_I": -0.27645751028101306,
+              "S_N": -0.27645751028101306,
+              "T_F": 0.27645751028101306,
+              "J_P": 0.27645751028101306
+            },
+            "hesitation_effect": {
+              "E_I": 0.0073638694623278655,
+              "S_N": 0.0073638694623278655,
+              "T_F": -0.0073638694623278655,
+              "J_P": -0.0073638694623278655
+            }
+          },
+          {
+            "event_id": "bench-033",
+            "card_id": "NORN_0010",
+            "round": 10,
+            "coords": {
+              "E_I": -8,
+              "S_N": -8,
+              "T_F": -8,
+              "J_P": 8
+            },
+            "base_weight": 1.5168967963882134,
+            "hesitation_multiplier": 1.0469565217391306,
+            "weight": 1.588124993783834,
+            "weighted_coords": {
+              "E_I": -12.704999950270672,
+              "S_N": -12.704999950270672,
+              "T_F": -12.704999950270672,
+              "J_P": 12.704999950270672
+            },
+            "normalized_weight": 0.03524347473914442,
+            "contribution": {
+              "E_I": -0.2819477979131554,
+              "S_N": -0.2819477979131554,
+              "T_F": -0.2819477979131554,
+              "J_P": 0.2819477979131554
+            },
+            "base_contribution": {
+              "E_I": -0.28821992176000044,
+              "S_N": -0.28821992176000044,
+              "T_F": -0.28821992176000044,
+              "J_P": 0.28821992176000044
+            },
+            "hesitation_effect": {
+              "E_I": 0.006272123846845057,
+              "S_N": 0.006272123846845057,
+              "T_F": 0.006272123846845057,
+              "J_P": -0.006272123846845057
+            }
+          },
+          {
+            "event_id": "bench-036",
+            "card_id": "NORN_0011",
+            "round": 11,
+            "coords": {
+              "E_I": 8,
+              "S_N": -8,
+              "T_F": 8,
+              "J_P": 8
+            },
+            "base_weight": 1.5814360605671443,
+            "hesitation_multiplier": 1.0521739130434784,
+            "weight": 1.6639457680749954,
+            "weighted_coords": {
+              "E_I": 13.311566144599963,
+              "S_N": -13.311566144599963,
+              "T_F": 13.311566144599963,
+              "J_P": 13.311566144599963
+            },
+            "normalized_weight": 0.03692608004659332,
+            "contribution": {
+              "E_I": 0.29540864037274656,
+              "S_N": -0.29540864037274656,
+              "T_F": 0.29540864037274656,
+              "J_P": 0.29540864037274656
+            },
+            "base_contribution": {
+              "E_I": 0.3004827874449899,
+              "S_N": -0.3004827874449899,
+              "T_F": 0.3004827874449899,
+              "J_P": 0.3004827874449899
+            },
+            "hesitation_effect": {
+              "E_I": -0.005074147072243351,
+              "S_N": 0.005074147072243351,
+              "T_F": -0.005074147072243351,
+              "J_P": -0.005074147072243351
+            }
+          },
+          {
+            "event_id": "bench-041",
+            "card_id": "NORN_0012",
+            "round": 12,
+            "coords": {
+              "E_I": 8,
+              "S_N": -8,
+              "T_F": -8,
+              "J_P": 8
+            },
+            "base_weight": 1.6487212707001282,
+            "hesitation_multiplier": 1.0573913043478262,
+            "weight": 1.743343534931614,
+            "weighted_coords": {
+              "E_I": 13.946748279452912,
+              "S_N": -13.946748279452912,
+              "T_F": -13.946748279452912,
+              "J_P": 13.946748279452912
+            },
+            "normalized_weight": 0.038688065533572305,
+            "contribution": {
+              "E_I": 0.30950452426857844,
+              "S_N": -0.30950452426857844,
+              "T_F": -0.30950452426857844,
+              "J_P": 0.30950452426857844
+            },
+            "base_contribution": {
+              "E_I": 0.31326740011363624,
+              "S_N": -0.31326740011363624,
+              "T_F": -0.31326740011363624,
+              "J_P": 0.31326740011363624
+            },
+            "hesitation_effect": {
+              "E_I": -0.0037628758450578004,
+              "S_N": 0.0037628758450578004,
+              "T_F": 0.0037628758450578004,
+              "J_P": -0.0037628758450578004
+            }
+          },
+          {
+            "event_id": "bench-044",
+            "card_id": "NORN_0013",
+            "round": 13,
+            "coords": {
+              "E_I": -8,
+              "S_N": -8,
+              "T_F": 8,
+              "J_P": -8
+            },
+            "base_weight": 1.7188692582893286,
+            "hesitation_multiplier": 1.062608695652174,
+            "weight": 1.8264854205474435,
+            "weighted_coords": {
+              "E_I": -14.611883364379548,
+              "S_N": -14.611883364379548,
+              "T_F": 14.611883364379548,
+              "J_P": -14.611883364379548
+            },
+            "normalized_weight": 0.040533140044039434,
+            "contribution": {
+              "E_I": -0.3242651203523155,
+              "S_N": -0.3242651203523155,
+              "T_F": 0.3242651203523155,
+              "J_P": -0.3242651203523155
+            },
+            "base_contribution": {
+              "E_I": -0.3265959584853862,
+              "S_N": -0.3265959584853862,
+              "T_F": 0.3265959584853862,
+              "J_P": -0.3265959584853862
+            },
+            "hesitation_effect": {
+              "E_I": 0.002330838133070723,
+              "S_N": 0.002330838133070723,
+              "T_F": -0.002330838133070723,
+              "J_P": 0.002330838133070723
+            }
+          },
+          {
+            "event_id": "bench-047",
+            "card_id": "NORN_0014",
+            "round": 14,
+            "coords": {
+              "E_I": -8,
+              "S_N": -8,
+              "T_F": -8,
+              "J_P": -8
+            },
+            "base_weight": 1.7920018256557555,
+            "hesitation_multiplier": 1.0678260869565217,
+            "weight": 1.9135462973089283,
+            "weighted_coords": {
+              "E_I": -15.308370378471427,
+              "S_N": -15.308370378471427,
+              "T_F": -15.308370378471427,
+              "J_P": -15.308370378471427
+            },
+            "normalized_weight": 0.042465184324509214,
+            "contribution": {
+              "E_I": -0.3397214745960737,
+              "S_N": -0.3397214745960737,
+              "T_F": -0.3397214745960737,
+              "J_P": -0.3397214745960737
+            },
+            "base_contribution": {
+              "E_I": -0.3404916057664983,
+              "S_N": -0.3404916057664983,
+              "T_F": -0.3404916057664983,
+              "J_P": -0.3404916057664983
+            },
+            "hesitation_effect": {
+              "E_I": 0.0007701311704245706,
+              "S_N": 0.0007701311704245706,
+              "T_F": 0.0007701311704245706,
+              "J_P": 0.0007701311704245706
+            }
+          },
+          {
+            "event_id": "bench-050",
+            "card_id": "NORN_0015",
+            "round": 15,
+            "coords": {
+              "E_I": 8,
+              "S_N": -8,
+              "T_F": 8,
+              "J_P": -8
+            },
+            "base_weight": 1.8682459574322223,
+            "hesitation_multiplier": 1.0730434782608695,
+            "weight": 2.0047091404098802,
+            "weighted_coords": {
+              "E_I": 16.037673123279042,
+              "S_N": -16.037673123279042,
+              "T_F": 16.037673123279042,
+              "J_P": -16.037673123279042
+            },
+            "normalized_weight": 0.0444882589380017,
+            "contribution": {
+              "E_I": 0.3559060715040136,
+              "S_N": -0.3559060715040136,
+              "T_F": 0.3559060715040136,
+              "J_P": -0.3559060715040136
+            },
+            "base_contribution": {
+              "E_I": 0.3549784698350334,
+              "S_N": -0.3549784698350334,
+              "T_F": 0.3549784698350334,
+              "J_P": -0.3549784698350334
+            },
+            "hesitation_effect": {
+              "E_I": 0.0009276016689802047,
+              "S_N": -0.0009276016689802047,
+              "T_F": 0.0009276016689802047,
+              "J_P": -0.0009276016689802047
+            }
+          },
+          {
+            "event_id": "bench-055",
+            "card_id": "NORN_0016",
+            "round": 16,
+            "coords": {
+              "E_I": 8,
+              "S_N": -8,
+              "T_F": -8,
+              "J_P": -8
+            },
+            "base_weight": 1.9477340410546757,
+            "hesitation_multiplier": 1.0782608695652174,
+            "weight": 2.1001654007893893,
+            "weighted_coords": {
+              "E_I": 16.801323206315114,
+              "S_N": -16.801323206315114,
+              "T_F": -16.801323206315114,
+              "J_P": -16.801323206315114
+            },
+            "normalized_weight": 0.04660661254023481,
+            "contribution": {
+              "E_I": 0.37285290032187846,
+              "S_N": -0.37285290032187846,
+              "T_F": -0.37285290032187846,
+              "J_P": -0.37285290032187846
+            },
+            "base_contribution": {
+              "E_I": 0.3700817051355928,
+              "S_N": -0.3700817051355928,
+              "T_F": -0.3700817051355928,
+              "J_P": -0.3700817051355928
+            },
+            "hesitation_effect": {
+              "E_I": 0.0027711951862856576,
+              "S_N": -0.0027711951862856576,
+              "T_F": -0.0027711951862856576,
+              "J_P": -0.0027711951862856576
+            }
+          },
+          {
+            "event_id": "bench-058",
+            "card_id": "NORN_0017",
+            "round": 17,
+            "coords": {
+              "E_I": -8,
+              "S_N": 8,
+              "T_F": 8,
+              "J_P": 8
+            },
+            "base_weight": 2.030604096634748,
+            "hesitation_multiplier": 1.0834782608695652,
+            "weight": 2.2001153951364314,
+            "weighted_coords": {
+              "E_I": -17.60092316109145,
+              "S_N": 17.60092316109145,
+              "T_F": 17.60092316109145,
+              "J_P": 17.60092316109145
+            },
+            "normalized_weight": 0.04882469053455865,
+            "contribution": {
+              "E_I": -0.3905975242764692,
+              "S_N": 0.3905975242764692,
+              "T_F": 0.3905975242764692,
+              "J_P": 0.3905975242764692
+            },
+            "base_contribution": {
+              "E_I": -0.38582753635654726,
+              "S_N": 0.38582753635654726,
+              "T_F": 0.38582753635654726,
+              "J_P": 0.38582753635654726
+            },
+            "hesitation_effect": {
+              "E_I": -0.0047699879199219475,
+              "S_N": 0.0047699879199219475,
+              "T_F": 0.0047699879199219475,
+              "J_P": 0.0047699879199219475
+            }
+          },
+          {
+            "event_id": "bench-061",
+            "card_id": "NORN_0018",
+            "round": 18,
+            "coords": {
+              "E_I": -8,
+              "S_N": 8,
+              "T_F": 8,
+              "J_P": -8
+            },
+            "base_weight": 2.117000016612675,
+            "hesitation_multiplier": 1.088695652173913,
+            "weight": 2.3047687137383206,
+            "weighted_coords": {
+              "E_I": -18.438149709906565,
+              "S_N": 18.438149709906565,
+              "T_F": 18.438149709906565,
+              "J_P": -18.438149709906565
+            },
+            "normalized_weight": 0.051147144122878255,
+            "contribution": {
+              "E_I": -0.40917715298302604,
+              "S_N": 0.40917715298302604,
+              "T_F": 0.40917715298302604,
+              "J_P": -0.40917715298302604
+            },
+            "base_contribution": {
+              "E_I": -0.4022433039655972,
+              "S_N": 0.4022433039655972,
+              "T_F": 0.4022433039655972,
+              "J_P": -0.4022433039655972
+            },
+            "hesitation_effect": {
+              "E_I": -0.006933849017428828,
+              "S_N": 0.006933849017428828,
+              "T_F": 0.006933849017428828,
+              "J_P": -0.006933849017428828
+            }
+          },
+          {
+            "event_id": "bench-064",
+            "card_id": "NORN_0019",
+            "round": 19,
+            "coords": {
+              "E_I": 8,
+              "S_N": 8,
+              "T_F": 8,
+              "J_P": 8
+            },
+            "base_weight": 2.2070718156067044,
+            "hesitation_multiplier": 1.093913043478261,
+            "weight": 2.414344646985421,
+            "weighted_coords": {
+              "E_I": 19.31475717588337,
+              "S_N": 19.31475717588337,
+              "T_F": 19.31475717588337,
+              "J_P": 19.31475717588337
+            },
+            "normalized_weight": 0.05357883977059376,
+            "contribution": {
+              "E_I": 0.42863071816475007,
+              "S_N": 0.42863071816475007,
+              "T_F": 0.42863071816475007,
+              "J_P": 0.42863071816475007
+            },
+            "base_contribution": {
+              "E_I": 0.41935751168273033,
+              "S_N": 0.41935751168273033,
+              "T_F": 0.41935751168273033,
+              "J_P": 0.41935751168273033
+            },
+            "hesitation_effect": {
+              "E_I": 0.009273206482019736,
+              "S_N": 0.009273206482019736,
+              "T_F": 0.009273206482019736,
+              "J_P": 0.009273206482019736
+            }
+          },
+          {
+            "event_id": "bench-069",
+            "card_id": "NORN_0020",
+            "round": 20,
+            "coords": {
+              "E_I": 8,
+              "S_N": 8,
+              "T_F": 8,
+              "J_P": -8
+            },
+            "base_weight": 2.300975890892825,
+            "hesitation_multiplier": 1.0991304347826087,
+            "weight": 2.5290726313813314,
+            "weighted_coords": {
+              "E_I": 20.23258105105065,
+              "S_N": 20.23258105105065,
+              "T_F": 20.23258105105065,
+              "J_P": -20.23258105105065
+            },
+            "normalized_weight": 0.056124869104403605,
+            "contribution": {
+              "E_I": 0.44899895283522884,
+              "S_N": 0.44899895283522884,
+              "T_F": 0.44899895283522884,
+              "J_P": -0.44899895283522884
+            },
+            "base_contribution": {
+              "E_I": 0.4371998759730062,
+              "S_N": 0.4371998759730062,
+              "T_F": 0.4371998759730062,
+              "J_P": -0.4371998759730062
+            },
+            "hesitation_effect": {
+              "E_I": 0.011799076862222646,
+              "S_N": 0.011799076862222646,
+              "T_F": 0.011799076862222646,
+              "J_P": -0.011799076862222646
+            }
+          },
+          {
+            "event_id": "bench-072",
+            "card_id": "NORN_0021",
+            "round": 21,
+            "coords": {
+              "E_I": -8,
+              "S_N": 8,
+              "T_F": -8,
+              "J_P": 8
+            },
+            "base_weight": 2.398875293967098,
+            "hesitation_multiplier": 1.1043478260869566,
+            "weight": 2.6491927159462736,
+            "weighted_coords": {
+              "E_I": -21.19354172757019,
+              "S_N": 21.19354172757019,
+              "T_F": -21.19354172757019,
+              "J_P": 21.19354172757019
+            },
+            "normalized_weight": 0.05879055926267125,
+            "contribution": {
+              "E_I": -0.47032447410137,
+              "S_N": 0.47032447410137,
+              "T_F": -0.47032447410137,
+              "J_P": 0.47032447410137
+            },
+            "base_contribution": {
+              "E_I": -0.4558013776451057,
+              "S_N": 0.4558013776451057,
+              "T_F": -0.4558013776451057,
+              "J_P": 0.4558013776451057
+            },
+            "hesitation_effect": {
+              "E_I": -0.014523096456264317,
+              "S_N": 0.014523096456264317,
+              "T_F": -0.014523096456264317,
+              "J_P": 0.014523096456264317
+            }
+          },
+          {
+            "event_id": "bench-075",
+            "card_id": "NORN_0022",
+            "round": 22,
+            "coords": {
+              "E_I": -8,
+              "S_N": 8,
+              "T_F": -8,
+              "J_P": -8
+            },
+            "base_weight": 2.5009400136621287,
+            "hesitation_multiplier": 1.1095652173913044,
+            "weight": 2.7749560499416317,
+            "weighted_coords": {
+              "E_I": -22.199648399533054,
+              "S_N": 22.199648399533054,
+              "T_F": -22.199648399533054,
+              "J_P": -22.199648399533054
+            },
+            "normalized_weight": 0.061581483718948206,
+            "contribution": {
+              "E_I": -0.49265186975158565,
+              "S_N": 0.49265186975158565,
+              "T_F": -0.49265186975158565,
+              "J_P": -0.49265186975158565
+            },
+            "base_contribution": {
+              "E_I": -0.4751943156452394,
+              "S_N": 0.4751943156452394,
+              "T_F": -0.4751943156452394,
+              "J_P": -0.4751943156452394
+            },
+            "hesitation_effect": {
+              "E_I": -0.01745755410634625,
+              "S_N": 0.01745755410634625,
+              "T_F": -0.01745755410634625,
+              "J_P": -0.01745755410634625
+            }
+          },
+          {
+            "event_id": "bench-078",
+            "card_id": "NORN_0023",
+            "round": 23,
+            "coords": {
+              "E_I": 8,
+              "S_N": 8,
+              "T_F": -8,
+              "J_P": 8
+            },
+            "base_weight": 2.6073472713092674,
+            "hesitation_multiplier": 1.1147826086956523,
+            "weight": 2.9066253928856356,
+            "weighted_coords": {
+              "E_I": 23.253003143085085,
+              "S_N": 23.253003143085085,
+              "T_F": -23.253003143085085,
+              "J_P": 23.253003143085085
+            },
+            "normalized_weight": 0.06450347360017941,
+            "contribution": {
+              "E_I": 0.5160277888014353,
+              "S_N": 0.5160277888014353,
+              "T_F": -0.5160277888014353,
+              "J_P": 0.5160277888014353
+            },
+            "base_contribution": {
+              "E_I": 0.49541236313982034,
+              "S_N": 0.49541236313982034,
+              "T_F": -0.49541236313982034,
+              "J_P": 0.49541236313982034
+            },
+            "hesitation_effect": {
+              "E_I": 0.02061542566161495,
+              "S_N": 0.02061542566161495,
+              "T_F": -0.02061542566161495,
+              "J_P": 0.02061542566161495
+            }
+          },
+          {
+            "event_id": "bench-083",
+            "card_id": "NORN_0024",
+            "round": 24,
+            "coords": {
+              "E_I": 8,
+              "S_N": 8,
+              "T_F": -8,
+              "J_P": -8
+            },
+            "base_weight": 2.718281828459045,
+            "hesitation_multiplier": 1.12,
+            "weight": 3.0444756478741306,
+            "weighted_coords": {
+              "E_I": 24.355805182993045,
+              "S_N": 24.355805182993045,
+              "T_F": -24.355805182993045,
+              "J_P": -24.355805182993045
+            },
+            "normalized_weight": 0.06756262952209227,
+            "contribution": {
+              "E_I": 0.5405010361767382,
+              "S_N": 0.5405010361767382,
+              "T_F": -0.5405010361767382,
+              "J_P": -0.5405010361767382
+            },
+            "base_contribution": {
+              "E_I": 0.5164906259842797,
+              "S_N": 0.5164906259842797,
+              "T_F": -0.5164906259842797,
+              "J_P": -0.5164906259842797
+            },
+            "hesitation_effect": {
+              "E_I": 0.02401041019245842,
+              "S_N": 0.02401041019245842,
+              "T_F": -0.02401041019245842,
+              "J_P": -0.02401041019245842
+            }
+          }
+        ],
+        "revision": {
+          "total": 6,
+          "strength": 0.17,
+          "max_jp_nudge": 2.4,
+          "total_jp_delta": -0.40800000000000003,
+          "applied": true,
+          "ignored_reason": null,
+          "allocation": "equal_share_of_session_nudge",
+          "allocation_note": "Algorithmic accounting, not psychological causality; the last event carries any floating-point remainder.",
+          "events": [
+            {
+              "event_id": "bench-012",
+              "card_id": "NORN_0004",
+              "round": 4,
+              "delta": {
+                "E_I": 0.0,
+                "S_N": 0.0,
+                "T_F": 0.0,
+                "J_P": -0.068
+              }
+            },
+            {
+              "event_id": "bench-026",
+              "card_id": "NORN_0008",
+              "round": 8,
+              "delta": {
+                "E_I": 0.0,
+                "S_N": 0.0,
+                "T_F": 0.0,
+                "J_P": -0.068
+              }
+            },
+            {
+              "event_id": "bench-040",
+              "card_id": "NORN_0012",
+              "round": 12,
+              "delta": {
+                "E_I": 0.0,
+                "S_N": 0.0,
+                "T_F": 0.0,
+                "J_P": -0.068
+              }
+            },
+            {
+              "event_id": "bench-054",
+              "card_id": "NORN_0016",
+              "round": 16,
+              "delta": {
+                "E_I": 0.0,
+                "S_N": 0.0,
+                "T_F": 0.0,
+                "J_P": -0.068
+              }
+            },
+            {
+              "event_id": "bench-068",
+              "card_id": "NORN_0020",
+              "round": 20,
+              "delta": {
+                "E_I": 0.0,
+                "S_N": 0.0,
+                "T_F": 0.0,
+                "J_P": -0.068
+              }
+            },
+            {
+              "event_id": "bench-082",
+              "card_id": "NORN_0024",
+              "round": 24,
+              "delta": {
+                "E_I": 0.0,
+                "S_N": 0.0,
+                "T_F": 0.0,
+                "J_P": -0.068
+              }
+            }
+          ]
+        },
+        "dimensions": {
+          "E_I": {
+            "selection_sum": 0.37207247465011173,
+            "pre_revision": 0.37207247465011195,
+            "revision_delta": 0.0,
+            "summation_delta": 2.220446049250313e-16,
+            "unrounded_final": 0.37207247465011195,
+            "rounding_delta": -0.002072474650111955,
+            "final": 0.37
+          },
+          "S_N": {
+            "selection_sum": 2.9025996597051074,
+            "pre_revision": 2.9025996597051074,
+            "revision_delta": 0.0,
+            "summation_delta": 0.0,
+            "unrounded_final": 2.9025996597051074,
+            "rounding_delta": -0.002599659705107449,
+            "final": 2.9
+          },
+          "T_F": {
+            "selection_sum": -0.5651499055826588,
+            "pre_revision": -0.5651499055826591,
+            "revision_delta": 0.0,
+            "summation_delta": -3.3306690738754696e-16,
+            "unrounded_final": -0.5651499055826591,
+            "rounding_delta": -0.0048500944173408556,
+            "final": -0.57
+          },
+          "J_P": {
+            "selection_sum": -0.3635716055185342,
+            "pre_revision": -0.3635716055185343,
+            "revision_delta": -0.40800000000000003,
+            "summation_delta": -1.1102230246251565e-16,
+            "unrounded_final": -0.7715716055185343,
+            "rounding_delta": 0.0015716055185343025,
+            "final": -0.77
+          }
+        },
+        "reconstruction": {
+          "formula": "fsum(selection contributions, revision deltas, summation_delta, rounding_delta)",
+          "absolute_tolerance": 1e-12,
+          "summation_delta_note": "Reconciles the original sequential floating-point accumulator.",
+          "rounding_delta_note": "Only the final coordinate is rounded to two decimal places."
+        }
+      }
+    },
+    "profile_hash": "sha256:dc4094686b38b06e2e3057261ca1f6de9f98e4d4f20c32def88f43fc412f17ec"
+  }
+}

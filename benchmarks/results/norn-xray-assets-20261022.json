@@ -1,0 +1,38 @@
+{
+  "schema_version": "norn.xray-assets.v1",
+  "version_id": "1d17277b-db82-4345-91d6-df12ec08df04",
+  "origin": "https://norn-machine.dubianche123.workers.dev",
+  "checked_at_utc": "2026-10-22T03:25:00Z",
+  "checks": [
+    {
+      "path": "/",
+      "status": 200,
+      "bytes": 15184,
+      "sha256": "06065643d42afee37db7d15de147e45f04b9bd01c8a93e57b6fb76e34a3ec2c0",
+      "matches_source": true
+    },
+    {
+      "path": "/app.js",
+      "status": 200,
+      "bytes": 159659,
+      "sha256": "732169afb3ece1e043f4c115fcc863e706a2d99e099980f2b72151a686e96da9",
+      "matches_source": true
+    },
+    {
+      "path": "/i18n.js",
+      "status": 200,
+      "bytes": 35667,
+      "sha256": "2d6bc5e16a536d2949a45f9b548ba0cc040a19898fb479fe0c213ae9ff213f99",
+      "matches_source": true
+    },
+    {
+      "path": "/style.css",
+      "status": 200,
+      "bytes": 54364,
+      "sha256": "dc01e99bf81e98456cf5aa066116b916117b23f11fd33ab65a958f769fc18e4b",
+      "matches_source": true
+    }
+  ],
+  "model_calls": 0,
+  "scope": "Changed public assets only; all 256 image assets unchanged from prior release verification."
+}

@@ -1,0 +1,94 @@
+{
+  "schema_version": "norn.xray-comparison-acceptance.v1",
+  "target_origin": "https://norn-machine.dubianche123.workers.dev",
+  "checks": {
+    "health_ready": true,
+    "v6_trajectory_contract": true,
+    "one_state_per_completed_round": true,
+    "prequential_card_conditional_contract": true,
+    "one_comparison_per_completed_round": true,
+    "zero_model_dispatch_in_trajectory": true,
+    "jev_not_run_by_default": true,
+    "same_recorded_candidate_set_for_both_lanes": true,
+    "each_round_uses_r_minus_one_prefix": true,
+    "actual_first_finally_kept_target_and_all_picks": true,
+    "count_and_layout_snapshots_match_events": true,
+    "utilities_probabilities_and_ranks_match_prefix_weights": true,
+    "unscored_rounds_excluded_from_loss_denominator": true,
+    "recommendations_exclude_previously_displayed_cards": true,
+    "summary_uses_only_scorable_rounds": true,
+    "whole_frozen_report_preserved": true,
+    "report_binding_verified_without_provider_authentication": true,
+    "offline_import_keeps_prequential_view_separate": true,
+    "zero_model_dispatch_on_saved_import": true,
+    "tampered_report_hash_rejected": true,
+    "self_rehashed_wrong_prefix_rejected": true,
+    "unknown_request_fields_rejected": true,
+    "only_pure_endpoints_used": true
+  },
+  "events_hash": "sha256:e7dd991c6d566d1a1589857d0270f098579fea52022e82bff8e0e25e3fbfafa6",
+  "deck": "pamela-v1@sha256:26134e1a8066b9064f4db22be7a0a97d79870947a4798092b9eff28503213b8c",
+  "comparison_report_hash": "sha256:7649caf7c2a2edcbc8086e1be24b3ffccaa2fc55cda662566b05675030c58f7b",
+  "counts": {
+    "completed_rounds": 12,
+    "scored_rounds": 12,
+    "reference_fallback_prefixes": 7,
+    "personalized_prefixes": 5,
+    "offline_training_rounds": 6
+  },
+  "model_calls": 0,
+  "jev_calls": 0,
+  "collection_writes": 0,
+  "http_calls": [
+    {
+      "method": "GET",
+      "route": "/api/health",
+      "status": 200,
+      "elapsed_ms": 1301.067,
+      "response_bytes": 158,
+      "network_attempts": 1
+    },
+    {
+      "method": "POST",
+      "route": "/api/trajectory",
+      "status": 200,
+      "elapsed_ms": 3812.839,
+      "response_bytes": 217678,
+      "network_attempts": 1
+    },
+    {
+      "method": "POST",
+      "route": "/api/trajectory",
+      "status": 200,
+      "elapsed_ms": 3076.078,
+      "response_bytes": 1806535,
+      "network_attempts": 1
+    },
+    {
+      "method": "POST",
+      "route": "/api/trajectory",
+      "status": 400,
+      "elapsed_ms": 3338.596,
+      "response_bytes": 69,
+      "network_attempts": 1
+    },
+    {
+      "method": "POST",
+      "route": "/api/trajectory",
+      "status": 400,
+      "elapsed_ms": 3958.923,
+      "response_bytes": 98,
+      "network_attempts": 1
+    },
+    {
+      "method": "POST",
+      "route": "/api/trajectory",
+      "status": 400,
+      "elapsed_ms": 1549.934,
+      "response_bytes": 102,
+      "network_attempts": 1
+    }
+  ],
+  "display_number_comparison_tolerance": 1e-09,
+  "scope": "Engineering replay only. Whole-round cumulative visibility may define the options; not prospective click accuracy or a causal recommendation result. Display-number tolerance does not replace strict profile hash verification. Imported report hashes do not authenticate Jev calls."
+}

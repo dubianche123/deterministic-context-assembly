@@ -1,0 +1,23 @@
+{
+  "schema_version": "norn.v6-browser-check.v1",
+  "origin": "https://norn-machine.dubianche123.workers.dev/",
+  "version": "5f8cd99b-33e6-4e45-bc61-2ccebd827048",
+  "viewport_screenshot_px": [
+    349,
+    712
+  ],
+  "checks": {
+    "private_entry": true,
+    "pamela_images_loaded": true,
+    "six_cards_two_columns_local": true,
+    "english_v6_copy": true,
+    "chinese_v6_copy": true,
+    "no_classic_axes_while_loading": true,
+    "slider_round_zero_and_one": true,
+    "technical_details_collapsed_by_default": true
+  },
+  "model_calls": 0,
+  "collection_consent": false,
+  "screenshot": "docs/images/norn-v6-xray-live-20261022.jpg",
+  "scope": "Manual in-app-browser narrow-screen acceptance; desktop responsive rules covered by frontend fixtures, not a new manual desktop run."
+}

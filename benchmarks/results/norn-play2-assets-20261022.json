@@ -1,0 +1,14 @@
+{
+  "schema_version": "norn.hosted-assets-check.v1",
+  "deployed_version": "dbce9b2d-f3be-40cf-81fc-4357b2386909",
+  "checks": {
+    "index.html": true,
+    "app.js": true,
+    "style.css": true,
+    "i18n.js": true,
+    "play-comparison.js": true
+  },
+  "passed": true,
+  "model_calls": 0,
+  "canonical_html_path": "/"
+}

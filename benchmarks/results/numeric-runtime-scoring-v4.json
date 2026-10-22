@@ -1,0 +1,289 @@
+{
+  "schema_version": "norn.numeric-runtime-verification.v1",
+  "release": "0.8.0",
+  "source_state": "Uncommitted working tree on main (base 5a2783a), 2026-10-21, after the stop-only baseline and contribution block.",
+  "scoring_version": "norn.scoring.v4",
+  "numerical_contract": "norn.numeric.decimal34.v1",
+  "runtimes": {
+    "native": {
+      "python": "3.14.8 (main, Sep 30 2026, 17:55:09) [Clang 21.0.0 (clang-2100.3.34.2)]",
+      "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+      "cpu": "Apple M3"
+    },
+    "pyodide": {
+      "npm_version": "314.0.6",
+      "python": "3.14.2 (main, Aug 25 2026, 05:50:55) [Clang 23.0.0git (https:/github.com/llvm/llvm-project e5927fecf8a6ce89e1a4eac5b8",
+      "platform": "Emscripten-5.0.3-wasm32-32bit",
+      "host": "Node.js v22.23.1 on the same Apple M3 (not workerd)"
+    }
+  },
+  "runs_per_runtime": 3,
+  "all_derived_fields_exactly_equal": true,
+  "profile4_golden": {
+    "source": "tests/test_choice_model.py GOLDEN_V4_DEFAULT_JOURNAL (native CPython)",
+    "expected": "sha256:429ce269da37b7f484d92aa042c6450ef5e644775bac93b7510033324bb78c3f",
+    "native": "sha256:429ce269da37b7f484d92aa042c6450ef5e644775bac93b7510033324bb78c3f",
+    "pyodide": "sha256:429ce269da37b7f484d92aa042c6450ef5e644775bac93b7510033324bb78c3f",
+    "equal": true,
+    "profile": [
+      "norn.profile.v4",
+      "norn.scoring.v4",
+      "norn.numeric.decimal34.v1"
+    ]
+  },
+  "profile4_hashes": {
+    "20_round_profile4": "sha256:6c43cfe169e1f59389323ded78f7ec9a4aa8a62c2400f39f67b4d6fd731c1b6d",
+    "80_round_profile4": "sha256:3db1c81a46fc44c3bbfe9a227983e3373ff3b81ab769651668ba57c242387d5b",
+    "256_round_profile4": "sha256:33db26374523eb2209e0e5fbe1535fe98c80340d4f7f9aca97677a1aeaef5e15"
+  },
+  "checks": {
+    "small_events": {
+      "exactly_equal": true,
+      "content_hash": "sha256:ed4dccc2badfd543c4fa4073a9b24dc28b1d719931942b11619158b72c5bbc42",
+      "same_as_0_7_0": false,
+      "native_ms": 28.655,
+      "pyodide_ms": 75.795
+    },
+    "legacy_profile1": {
+      "exactly_equal": true,
+      "content_hash": "sha256:0a51b48ece03cda0544314a1644a12ccb11027faaa748d0525c566cc0116e797",
+      "same_as_0_7_0": true,
+      "native_ms": 7.606,
+      "pyodide_ms": 12.808
+    },
+    "24_round_profile3": {
+      "exactly_equal": true,
+      "content_hash": "sha256:0a5cba35901954d9f419c9e33a132a15223c31edd021e76c263a38d9526e8709",
+      "same_as_0_7_0": true,
+      "native_ms": 176.566,
+      "pyodide_ms": 330.562
+    },
+    "59_round_profile3": {
+      "exactly_equal": true,
+      "content_hash": "sha256:aee55b89926b922d5d889ab57dcde6dda4516915ab978a9248bdd193f4b033a4",
+      "same_as_0_7_0": true,
+      "native_ms": 14.857,
+      "pyodide_ms": 30.998
+    },
+    "75_round_profile3": {
+      "exactly_equal": true,
+      "content_hash": "sha256:2389b5b50a7fa3da175ff757038e9156953d3488d84a5d2f78237547f66bffa5",
+      "same_as_0_7_0": true,
+      "native_ms": 15.624,
+      "pyodide_ms": 30.891
+    },
+    "24_round_profile4_default": {
+      "exactly_equal": true,
+      "content_hash": "sha256:ff1de8c57bf325cd57a168e42c693878146f6794b268c66ee22d9124031d4aaa",
+      "same_as_0_7_0": null,
+      "native_ms": 17.314,
+      "pyodide_ms": 36.378
+    },
+    "20_round_profile4": {
+      "exactly_equal": true,
+      "content_hash": "sha256:193280c52a6d8983788a7514c01820f00b407aaa4b4bf2744087981f2100c104",
+      "same_as_0_7_0": null,
+      "native_ms": 21.022,
+      "pyodide_ms": 44.927
+    },
+    "80_round_profile4": {
+      "exactly_equal": true,
+      "content_hash": "sha256:df92ffc84d26cc45de51301bf5eaa9ff79addb184aa5fc1a5400905465e8bcb1",
+      "same_as_0_7_0": null,
+      "native_ms": 72.404,
+      "pyodide_ms": 146.67
+    },
+    "256_round_profile4": {
+      "exactly_equal": true,
+      "content_hash": "sha256:196f4162af25f890e7a16f1059a79d96302a647e1aca873df24e44ce6b7070a1",
+      "same_as_0_7_0": null,
+      "native_ms": 196.455,
+      "pyodide_ms": 394.525
+    },
+    "mock_reading_and_three_followups": {
+      "exactly_equal": true,
+      "content_hash": "sha256:ad607864a6fc847ca9c5fff441e226bc8d7200eadc101aea05d7d7ca1b04b3c4",
+      "same_as_0_7_0": false,
+      "native_ms": 77.965,
+      "pyodide_ms": 264.888
+    },
+    "256_round_4096_pair_pressure": {
+      "exactly_equal": true,
+      "content_hash": "sha256:0fcbb35b5e5574248979a3818cdac7105dfaf3bf89aa86b94f5286c1a3b1d63f",
+      "same_as_0_7_0": true,
+      "native_ms": 1036.204,
+      "pyodide_ms": 2182.4
+    }
+  },
+  "changed_since_0_7_0": {
+    "small_events": "tests/fixtures/replay-session.json is a bare journal, so replay now builds it with the v4 default; journal part identical.",
+    "mock_reading_and_three_followups": "Readings now freeze a v4 profile (default scoring).",
+    "24/59/75_round_profile3": "Pinned to norn.scoring.v3 in the probe; hashes equal the 0.7.0 record."
+  },
+  "choice_model_demo": {
+    "fixture": "tests/fixtures/choice-model-demo.json (NumPy prototype, 21 states)",
+    "compared": "theta, covariance diagonal, 4x4 axis covariance per state; final 256-card scores; top cards",
+    "tolerance": 1e-06,
+    "passed": true,
+    "native": {
+      "norn.numeric.native-libm.v1": {
+        "states": 21,
+        "expected_states": 21,
+        "max_abs_deviation": 1.3322676295501878e-15,
+        "top_equal": true
+      },
+      "norn.numeric.decimal34.v1": {
+        "states": 21,
+        "expected_states": 21,
+        "max_abs_deviation": 1.1102230246251565e-15,
+        "top_equal": true
+      }
+    },
+    "pyodide": {
+      "norn.numeric.native-libm.v1": {
+        "states": 21,
+        "expected_states": 21,
+        "max_abs_deviation": 1.7763568394002505e-15,
+        "top_equal": true
+      },
+      "norn.numeric.decimal34.v1": {
+        "states": 21,
+        "expected_states": 21,
+        "max_abs_deviation": 1.1102230246251565e-15,
+        "top_equal": true
+      }
+    },
+    "note": "Portable-contract deviations are identical in both runtimes; native-libm ones differ at ULP level, as expected."
+  },
+  "trajectory_timing": {
+    "measures": "NornService.trajectory({'journal': ...}) plus JSON serialisation: the handler behind POST /api/trajectory, without HTTP.",
+    "journal": "scripts/probe_numeric_runtime.py timing_journal: 4-6 cards per round cycling through the deck, deterministic picks.",
+    "native_reference_in_docs": {
+      "20_rounds": 70,
+      "80_rounds": 400,
+      "256_rounds": 2700
+    },
+    "20_rounds": {
+      "event_count": 74,
+      "reply_bytes": 101566,
+      "reply_hash_equal": true,
+      "native_ms": 72.438,
+      "pyodide_ms": 180.513,
+      "pyodide_over_native": 2.49,
+      "native_runs_ms": [
+        76.755,
+        72.438,
+        71.955
+      ],
+      "pyodide_runs_ms": [
+        186.657,
+        180.513,
+        171.87
+      ]
+    },
+    "80_rounds": {
+      "event_count": 294,
+      "reply_bytes": 348759,
+      "reply_hash_equal": true,
+      "native_ms": 424.279,
+      "pyodide_ms": 1113.488,
+      "pyodide_over_native": 2.62,
+      "native_runs_ms": [
+        485.109,
+        424.279,
+        422.036
+      ],
+      "pyodide_runs_ms": [
+        1091.76,
+        1113.488,
+        1138.538
+      ]
+    },
+    "256_rounds": {
+      "event_count": 769,
+      "reply_bytes": 1042255,
+      "reply_hash_equal": true,
+      "native_ms": 2543.226,
+      "pyodide_ms": 6880.681,
+      "pyodide_over_native": 2.71,
+      "native_runs_ms": [
+        2722.205,
+        2543.226,
+        2490.266
+      ],
+      "pyodide_runs_ms": [
+        6880.681,
+        7261.632,
+        6683.988
+      ]
+    }
+  },
+  "installed_wheel": {
+    "built_with": "build 1.6.1 (sdist then wheel) from a snapshot of the working tree, isolated setuptools backend",
+    "wheel_filename": "norn_machine-0.8.0-py3-none-any.whl",
+    "wheel_bytes": 15617473,
+    "wheel_sha256": "3060619e0d4ee42334f19fad7474abf845140a5d623d1f3025f0c0a290913164",
+    "verifier": "scripts/verify_installed_release.py --expected-version 0.8.0, fresh venv and cwd outside the checkout, python -I",
+    "results": {
+      "3.12.13": {
+        "schema_version": "norn.installed-release-verification.v1",
+        "version": "0.8.0",
+        "installed_outside_checkout": true,
+        "doctor_ok": true,
+        "http_offline_images_verified": 256,
+        "installed_frontend_matches_source": true,
+        "partial_and_complete_preview": true,
+        "analysis_and_dialogue_retry_idempotent": true,
+        "successful_followups": 3,
+        "native_history_and_frozen_profile_verified": true,
+        "compact_inspection": true,
+        "profile4_export_and_exact_replay": true,
+        "legacy_profile1_exact_replay": true,
+        "model2_source_replayed_cli_rank": true,
+        "session_trajectory": true,
+        "feature_count": 12,
+        "fixed_projection_points": 256,
+        "profile_hash": "sha256:429ce269da37b7f484d92aa042c6450ef5e644775bac93b7510033324bb78c3f",
+        "numerical_contract": "norn.numeric.decimal34.v1",
+        "real_model_calls": 0
+      },
+      "3.14.8": {
+        "schema_version": "norn.installed-release-verification.v1",
+        "version": "0.8.0",
+        "installed_outside_checkout": true,
+        "doctor_ok": true,
+        "http_offline_images_verified": 256,
+        "installed_frontend_matches_source": true,
+        "partial_and_complete_preview": true,
+        "analysis_and_dialogue_retry_idempotent": true,
+        "successful_followups": 3,
+        "native_history_and_frozen_profile_verified": true,
+        "compact_inspection": true,
+        "profile4_export_and_exact_replay": true,
+        "legacy_profile1_exact_replay": true,
+        "model2_source_replayed_cli_rank": true,
+        "session_trajectory": true,
+        "feature_count": 12,
+        "fixed_projection_points": 256,
+        "profile_hash": "sha256:429ce269da37b7f484d92aa042c6450ef5e644775bac93b7510033324bb78c3f",
+        "numerical_contract": "norn.numeric.decimal34.v1",
+        "real_model_calls": 0
+      }
+    }
+  },
+  "real_model_calls": 0,
+  "wasm_heap_bytes_after_probe": 54460416,
+  "limits": {
+    "measurement": "Local runtimes on one Apple M3; not deployed Worker CPU, workerd, or total memory.",
+    "trajectory": "The trajectory is a native-libm display projection and is not hashed; equal reply hashes here are observed, not guaranteed.",
+    "historical_profiles": "Native-libm historical versions remain strict; universal cross-runtime portability is not claimed."
+  },
+  "reproduction": {
+    "native": "python3 scripts/probe_numeric_runtime.py --output /tmp/norn-native.json",
+    "install_runtime": "npm install --prefix /tmp/norn-pyodide pyodide@314.0.6 --no-audit --no-fund",
+    "wasm": "node scripts/probe_numeric_runtime.mjs --pyodide-module /tmp/norn-pyodide/node_modules/pyodide/pyodide.mjs --output /tmp/norn-wasm.json",
+    "compare": "checks objects exactly; tolerance_checks below 1e-6; trajectory_timing and elapsed_ms are diagnostic.",
+    "wheel": "python3 -m build --outdir /tmp/norn-dist . && python3 -m venv /tmp/norn-venv && /tmp/norn-venv/bin/pip install --no-deps /tmp/norn-dist/norn_machine-0.8.0-py3-none-any.whl",
+    "installed": "cd /tmp && /tmp/norn-venv/bin/python -I CHECKOUT/scripts/verify_installed_release.py --source-root CHECKOUT --expected-version 0.8.0 --wheel /tmp/norn-dist/norn_machine-0.8.0-py3-none-any.whl --output /tmp/norn-installed.json"
+  }
+}

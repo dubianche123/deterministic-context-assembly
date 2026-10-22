@@ -1,0 +1,134 @@
+{
+  "schema_version": "norn.generalization.generation.v1",
+  "tool": "built-in image_gen",
+  "rows": [
+    {
+      "id": "HOLDOUT_0001",
+      "asset": "assets/HOLDOUT_0001.png",
+      "prompt_sha256": "sha256:7d84e547c9d72d51acd4c53a4a410b88c0c26ee72d6d53b924bbce64700477ad",
+      "sha256": "sha256:b40da5ee63e308a58a4967de67cac39c72b630330cb2a07514a44fd3437eb39d",
+      "generated_at": "2026-10-21T02:48:05+00:00",
+      "source": "builtin_image_gen"
+    },
+    {
+      "id": "HOLDOUT_0002",
+      "asset": "assets/HOLDOUT_0002.png",
+      "prompt_sha256": "sha256:85678d558fabd2e517383b0a654daa10a54f5d291da76d6e2a550301e1c81878",
+      "sha256": "sha256:b577fe6dbaa05366301ef684e80e5fc792560417619a4c4a4281b3d258a8f841",
+      "generated_at": "2026-10-21T02:48:05+00:00",
+      "source": "builtin_image_gen"
+    },
+    {
+      "id": "HOLDOUT_0003",
+      "asset": "assets/HOLDOUT_0003.png",
+      "prompt_sha256": "sha256:32c772c6cb7512cc3e4371749dd37023e67d61f738442494cc3a35cba967c778",
+      "sha256": "sha256:7e280f795fcf9c8adf3012b3dadbad7c3bc655eae905a606012ec8e3e3f6af2f",
+      "generated_at": "2026-10-21T02:48:05+00:00",
+      "source": "builtin_image_gen"
+    },
+    {
+      "id": "HOLDOUT_0004",
+      "asset": "assets/HOLDOUT_0004.png",
+      "prompt_sha256": "sha256:b2ba612ad46f0ae0d57ae55f0d7695c3e357e840e7fe2f5006ea6f679b2ebfb1",
+      "sha256": "sha256:64a48113d051b3e1c943e142fb7cd30306b57872a75c1b834d5d996b738a9935",
+      "generated_at": "2026-10-21T02:48:05+00:00",
+      "source": "builtin_image_gen"
+    },
+    {
+      "id": "HOLDOUT_0005",
+      "asset": "assets/HOLDOUT_0005.png",
+      "prompt_sha256": "sha256:33100033a3eb4093d21cbf97fe67b33b9d93f8a3d5f9f88b969bfd2124f73b38",
+      "sha256": "sha256:8d80417cc833845c97659fec2506ed70d53fc601d2ea37a051dc4bd86febca7c",
+      "generated_at": "2026-10-21T02:59:15+00:00",
+      "source": "builtin_image_gen"
+    },
+    {
+      "id": "HOLDOUT_0006",
+      "asset": "assets/HOLDOUT_0006.png",
+      "prompt_sha256": "sha256:3952cb81a4b7290849c1a389464b3394207531e6e23ee3640f1b70ff08455a76",
+      "sha256": "sha256:77ee76e1d1315e838b859da51b629974f1709cf33eb43b47d5741154e8443a33",
+      "generated_at": "2026-10-21T02:50:30+00:00",
+      "source": "builtin_image_gen"
+    },
+    {
+      "id": "HOLDOUT_0007",
+      "asset": "assets/HOLDOUT_0007.png",
+      "prompt_sha256": "sha256:494539fcb31c2c2afac705ce03a739773a447678e34f54fbe95d1f6d7d88ae17",
+      "sha256": "sha256:1259f9905d8355ada62602e5c363f21d091e1a299655231e8abc4e218b595c52",
+      "generated_at": "2026-10-21T02:52:50+00:00",
+      "source": "builtin_image_gen"
+    },
+    {
+      "id": "HOLDOUT_0008",
+      "asset": "assets/HOLDOUT_0008.png",
+      "prompt_sha256": "sha256:406131b58affc656d4bf507599d689343affd7114aa379835d93d80439767b45",
+      "sha256": "sha256:93e50a7ddc9d4436bb34719589f81a1f03a39968730bf1cce60dc9ae04451a32",
+      "generated_at": "2026-10-21T02:51:18+00:00",
+      "source": "builtin_image_gen"
+    },
+    {
+      "id": "HOLDOUT_0009",
+      "asset": "assets/HOLDOUT_0009.png",
+      "prompt_sha256": "sha256:7c4eae958781038a7caf20e7c30b41696a4552025e279d95079d63d887417c2e",
+      "sha256": "sha256:1db56b9210ffa1a5131f4b82e8b87f411a955c72e3a2fb34683f15b0bdf00023",
+      "generated_at": "2026-10-21T02:53:24+00:00",
+      "source": "builtin_image_gen"
+    },
+    {
+      "id": "HOLDOUT_0010",
+      "asset": "assets/HOLDOUT_0010.png",
+      "prompt_sha256": "sha256:875e9b9533fa5361faf0b5a3f155ee1f1b941057b812502e9533a1b3fde8172f",
+      "sha256": "sha256:b82b6208cf561e23d61c2defe2ea129b9c8d5d5b719f38cc8afa7e44581c22f9",
+      "generated_at": "2026-10-21T02:54:57+00:00",
+      "source": "builtin_image_gen"
+    },
+    {
+      "id": "HOLDOUT_0011",
+      "asset": "assets/HOLDOUT_0011.png",
+      "prompt_sha256": "sha256:2a2c1ddd263541c48e8669c8fa317007c195923011ec8defb5b18c50ffe3d7da",
+      "sha256": "sha256:1d28b027bb4a935ff91c47792a97ef8fd21c6908609016affb76143f8a54d066",
+      "generated_at": "2026-10-21T02:53:59+00:00",
+      "source": "builtin_image_gen"
+    },
+    {
+      "id": "HOLDOUT_0012",
+      "asset": "assets/HOLDOUT_0012.png",
+      "prompt_sha256": "sha256:5645efdfe2340ec233f8fef043c5c641dd677d27774ae6bed405702b5264ee17",
+      "sha256": "sha256:1d6ae680ae45f4c185c2df32682eac6a5f83440b7802e085c55f1f85b5aaee76",
+      "generated_at": "2026-10-21T02:55:35+00:00",
+      "source": "builtin_image_gen"
+    },
+    {
+      "id": "HOLDOUT_0013",
+      "asset": "assets/HOLDOUT_0013.png",
+      "prompt_sha256": "sha256:d965f77a744fffbca7a1ef566dc68e7b465c130ae5b5c1173c28662ca965c08c",
+      "sha256": "sha256:ce10391669aa00cb6926e279b4b68798e6ed6ca374300fd0f812942ad0d245dd",
+      "generated_at": "2026-10-21T02:56:45+00:00",
+      "source": "builtin_image_gen"
+    },
+    {
+      "id": "HOLDOUT_0014",
+      "asset": "assets/HOLDOUT_0014.png",
+      "prompt_sha256": "sha256:e80e56fc17096df1ff72940aa4e7ba3bce984e1a43a3882144ef4b5b99ebe405",
+      "sha256": "sha256:764050fa3a5c6ef2afc578e7762b919971c1bc4d51ae66d49deedaaa9998ca19",
+      "generated_at": "2026-10-21T02:58:15+00:00",
+      "source": "builtin_image_gen"
+    },
+    {
+      "id": "HOLDOUT_0015",
+      "asset": "assets/HOLDOUT_0015.png",
+      "prompt_sha256": "sha256:cee6067f03ec620cebe703accdb8c4e033d21c67b1616434403310f337d190aa",
+      "sha256": "sha256:ceb4a0adc6570e2ab901fdaa4be843a61855d54d5be029d36d8092269e472b89",
+      "generated_at": "2026-10-21T02:57:28+00:00",
+      "source": "builtin_image_gen"
+    },
+    {
+      "id": "HOLDOUT_0016",
+      "asset": "assets/HOLDOUT_0016.png",
+      "prompt_sha256": "sha256:cbbccc31c5616a95b67f27e8592baa44fbf82b28ab8edb6b037c4ac70edaa10f",
+      "sha256": "sha256:443a4c1ebf34f16ed39c094a28ed024d4c27448fea29554a7c4b1d1d71c2fafd",
+      "generated_at": "2026-10-21T03:01:22+00:00",
+      "source": "builtin_image_gen"
+    }
+  ]
+}

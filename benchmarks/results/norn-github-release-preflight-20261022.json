@@ -1,0 +1,54 @@
+{
+  "schema_version": "norn.github-release-preflight.v1",
+  "date": "2026-10-22",
+  "repository": "https://github.com/dubianche123/norn-context-engineering",
+  "target_branch": "main",
+  "base_commit": "5a2783a",
+  "deployed_worker": "dbce9b2d-f3be-40cf-81fc-4357b2386909",
+  "regression": {
+    "command": "python3 -m pytest -q",
+    "passed": 762,
+    "skipped": 19,
+    "subtests": 1339,
+    "failed": 0
+  },
+  "wheel": {
+    "filename": "norn_machine-0.8.0-py3-none-any.whl",
+    "sha256": "03c6b69d0ec87b40ac7fbf7bca7883ecb03e6d67be1c3cc46996c45e0c77a909",
+    "builder": "uv build --wheel (isolated)",
+    "outside_checkout_install": true,
+    "doctor": true,
+    "replay": true,
+    "new_modules": true,
+    "play_comparison_asset": true
+  },
+  "audit": {
+    "actual_credentials_found": false,
+    "real_visitor_raw_records_found": false,
+    "benchmark_evidence": "synthetic model inputs and automated acceptance fixtures",
+    "excluded": [
+      ".DS_Store",
+      "*.code-workspace",
+      ".claude/",
+      "*.samples.jsonl.lock",
+      "ignored dependencies, build caches, environment secrets and runtime SQLite records"
+    ],
+    "historical_blind_key": "v1 engineering fixture required by tests; public and unsuitable for a new blinded study"
+  },
+  "hosted_acceptance": {
+    "report": "benchmarks/results/norn-partial-visit-live-v4-20261022.json",
+    "checks": 37,
+    "passed": true,
+    "model_calls": 0,
+    "synthetic_records_withdrawn": true
+  },
+  "external_model_calls_this_preflight": 0,
+  "whitespace_check": {
+    "source_and_docs": "passed",
+    "preserved_raw_artifacts": [
+      "benchmarks/results/choice-policy-tests-full-20261021.xml",
+      "benchmarks/results/workbuddy-deepseek-proxy-fix-20261021.patch"
+    ],
+    "reason": "Traceback trailing spaces and unified-diff context indentation are kept byte-for-byte as historical evidence."
+  }
+}

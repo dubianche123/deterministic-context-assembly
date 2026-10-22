@@ -1,0 +1,26 @@
+{
+  "scope": "Focused tests on actual combined proxy source; all HTTP fixtures are local mocks",
+  "command": [
+    "go",
+    "test",
+    "./internal/upstream",
+    "./internal/server",
+    "-run",
+    "^(TestClassify.*|TestChatModelParamInvalid.*|TestApplyErrorPolicyModelParamInvalid.*|TestChatUnrelatedBadRequest.*|TestAxiomSmoke.*|TestApplyErrorPolicyErrClient.*|TestPrepareBodyColdEffortFallback|TestPrepareBodyEffort.*|TestEffortListing.*|TestGlobalEffort.*|TestInjectThinking.*|TestPrepareBodyOptWithEfforts|TestMaxCompletionTokens.*|TestPrepareBodyConvertsMaxCompletionTokens|TestPrepareBodyPrefersMaxTokens|TestUpstreamRewriteStableSerialization|TestDeepSeekEffortDefaultsDeterministic|TestGatewayHint.*)$",
+    "-count=1"
+  ],
+  "top_level_tests_passed": 48,
+  "subtests_passed": 101,
+  "packages": [
+    {
+      "package": "workbuddy2api/internal/upstream",
+      "elapsed_seconds": 0.486
+    },
+    {
+      "package": "workbuddy2api/internal/server",
+      "elapsed_seconds": 0.888
+    }
+  ],
+  "failed_tests": [],
+  "exit_code": 0
+}

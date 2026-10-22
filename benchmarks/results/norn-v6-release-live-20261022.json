@@ -1,0 +1,137 @@
+{
+  "schema_version": "norn.v6-release-check.v1",
+  "target_origin": "https://norn-machine.dubianche123.workers.dev",
+  "fixture_scope": "Synthetic integration only; no human preference or accuracy claim",
+  "model": "deepseek-flash",
+  "model_calls": 2,
+  "collection_consent": false,
+  "checks": {
+    "expected_renderer": true,
+    "official_deepseek_model": true,
+    "main_deck_pamela": true,
+    "open_prefix_preview_is_pure": true,
+    "nine_replay_states": true,
+    "reading_created": true,
+    "not_collected": true,
+    "reading_retry_idempotent": true,
+    "all_scores_reconstructed": true,
+    "export_content_hashes_valid": true,
+    "hosted_import_verified": true,
+    "followup_retry_idempotent": true,
+    "export_frozen_after_followup": true,
+    "bounded_model_calls": true,
+    "saved_and_live_trajectory_equal": true,
+    "frozen_profile_identity": true
+  },
+  "usage": {
+    "input_tokens": 3362,
+    "output_tokens": 288,
+    "cache_read_input_tokens": 3072
+  },
+  "exact_local_replay": false,
+  "numerical_contract": "norn.numeric.native-libm.v1",
+  "limitations": [
+    "Strict CPython replay rejected this native-libm export. Hosted replay is still fully refitted and verified; no tolerance was substituted."
+  ],
+  "profile_hash": "sha256:35340113b6607a16bca9d7752a6a1e0c91ce2411446362bfcca5615c94c403c4",
+  "ledger_hash": "sha256:9a19fff457fb362732c6a5ec9b6b0c8c60f4a02850db3c728b58a87f8ba6685f",
+  "export_sha256": "e9305cfbe85f86c9af8b7a82e4508c24ec7b7a1cbb24979ea3f6a4c35fc7611b",
+  "http_calls": [
+    {
+      "method": "GET",
+      "route": "/api/health",
+      "status": 200,
+      "elapsed_ms": 779.609,
+      "response_bytes": 158,
+      "network_attempts": 1
+    },
+    {
+      "method": "POST",
+      "route": "/api/preview",
+      "status": 200,
+      "elapsed_ms": 1420.081,
+      "response_bytes": 4692,
+      "network_attempts": 1
+    },
+    {
+      "method": "POST",
+      "route": "/api/trajectory",
+      "status": 200,
+      "elapsed_ms": 1730.745,
+      "response_bytes": 130716,
+      "network_attempts": 1
+    },
+    {
+      "method": "POST",
+      "route": "/api/analyze",
+      "status": 200,
+      "elapsed_ms": 5597.975,
+      "response_bytes": 3561,
+      "network_attempts": 1
+    },
+    {
+      "method": "POST",
+      "route": "/api/analyze",
+      "status": 200,
+      "elapsed_ms": 348.252,
+      "response_bytes": 3561,
+      "network_attempts": 1
+    },
+    {
+      "method": "GET",
+      "route": "/api/sessions/<session>/export",
+      "status": 200,
+      "elapsed_ms": 2393.295,
+      "response_bytes": 170562,
+      "network_attempts": 1
+    },
+    {
+      "method": "POST",
+      "route": "/api/replay",
+      "status": 200,
+      "elapsed_ms": 418.189,
+      "response_bytes": 104780,
+      "network_attempts": 1
+    },
+    {
+      "method": "POST",
+      "route": "/api/dialogue",
+      "status": 200,
+      "elapsed_ms": 3200.992,
+      "response_bytes": 2127,
+      "network_attempts": 1
+    },
+    {
+      "method": "POST",
+      "route": "/api/dialogue",
+      "status": 200,
+      "elapsed_ms": 1289.562,
+      "response_bytes": 2127,
+      "network_attempts": 1
+    },
+    {
+      "method": "GET",
+      "route": "/api/sessions/<session>/inspect",
+      "status": 200,
+      "elapsed_ms": 2657.478,
+      "response_bytes": 124017,
+      "network_attempts": 1
+    },
+    {
+      "method": "GET",
+      "route": "/api/sessions/<session>/export",
+      "status": 200,
+      "elapsed_ms": 2595.575,
+      "response_bytes": 170562,
+      "network_attempts": 1
+    },
+    {
+      "method": "GET",
+      "route": "/api/sessions/<session>/trajectory",
+      "status": 200,
+      "elapsed_ms": 1587.526,
+      "response_bytes": 132640,
+      "network_attempts": 1
+    }
+  ]
+}

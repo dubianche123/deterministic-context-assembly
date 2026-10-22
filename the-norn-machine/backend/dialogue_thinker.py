@@ -5,7 +5,12 @@ Builds the final one-to-three-turn user dialogue and enforces the hard guardrail
 import json
 from pathlib import Path
 
-from slow_thinker import _invoke_bedrock
+if __package__:
+    from .slow_thinker import _invoke_bedrock
+    from .session_context import build_session_context, build_analysis_prompt, build_dialogue_prompt
+else:
+    from slow_thinker import _invoke_bedrock
+    from session_context import build_session_context, build_analysis_prompt, build_dialogue_prompt
 
 MAX_USER_CHARS = 100
 DEFAULT_DIALOGUE_TURNS = 2
@@ -16,7 +21,11 @@ FALLBACK_TEXT = (
     "再往前追问，答案也只会像雾一样散开。"
 )
 
-_TEMPLATE = None
+
+def _load_template():
+    """Read-only compatibility hook used by the local installation doctor."""
+    with (Path(__file__).parent / "config" / "prompts" / "final_dialogue.json").open(encoding="utf-8") as stream:
+        return json.load(stream)
 
 
 def dialogue_limit_for_rounds(total_rounds: int = None, mode: str = None) -> int:
@@ -46,15 +55,6 @@ def lockout_text(max_turns: int) -> str:
         f"{turn_label}已满，织机不再继续回声。\n\n"
         "剩下的事，只能交给时间和你自己的直觉。"
     )
-
-
-def _load_template():
-    global _TEMPLATE
-    if _TEMPLATE is None:
-        p = Path(__file__).parent / "config" / "prompts" / "final_dialogue.json"
-        with open(p, "r", encoding="utf-8") as f:
-            _TEMPLATE = json.load(f)
-    return _TEMPLATE
 
 
 def validate_dialogue_request(body: dict) -> dict:
@@ -110,63 +110,22 @@ def should_lock_dialogue(turn_count: int, max_turns: int = DEFAULT_DIALOGUE_TURN
     return turn_count >= max_turns
 
 
-def build_analysis_summary(analysis: dict) -> str:
-    if not analysis:
-        return "暂无额外画像数据，只保留当前这句追问。"
-
-    parts = []
-    if analysis.get("mbti_type"):
-        parts.append(f"结果: {analysis['mbti_type']}")
-    if analysis.get("mode"):
-        parts.append(f"模式: {analysis['mode']}")
-    if analysis.get("reading"):
-        reading = str(analysis["reading"]).strip().replace("\n", " ")
-        parts.append(f"上一段结论: {reading[:180]}")
-    return "；".join(parts) if parts else "暂无额外画像数据，只保留当前这句追问。"
-
-
-def format_history(history: list) -> str:
-    if not history:
-        return "（空）"
-
-    lines = []
-    for item in history[-4:]:
-        role = item.get("role", "user")
-        content = str(item.get("content", "")).strip()
-        if not content:
-            continue
-        prefix = "玩家" if role == "user" else "织机"
-        lines.append(f"{prefix}: {content}")
-    return "\n".join(lines) if lines else "（空）"
-
-
 def build_prompt_payload(validated: dict) -> dict:
-    template = _load_template()
-    analysis_summary = build_analysis_summary(validated["analysis"])
-    history_text = format_history(validated["history"])
+    """Historical Lambda adapter; local sessions use the frozen builder directly.
 
-    user_content = template["user_template"].format(
-        analysis_summary=analysis_summary,
-        history_text=history_text,
-        user_message=validated["user_message"],
-        turn_count=validated["turn_count"],
-        max_turns=validated["max_turns"],
-        lockout_text=lockout_text(validated["max_turns"]),
-    )
-
-    messages = []
-    for example in template.get("few_shot", []):
-        messages.append({"role": "user", "content": example["user"]})
-        messages.append({"role": "assistant", "content": example["assistant"]})
-
-    messages.append({"role": "user", "content": user_content})
-
-    return {
-        "system": template["system_prompt"],
-        "messages": messages,
-        "max_tokens": template.get("max_tokens", 220),
-        "temperature": template.get("temperature", 0.75),
-    }
+    Legacy clients have only a summary and history, so their source is labeled
+    legacy rather than claiming to recover the original event profile. Native
+    roles and the entire reading are retained; no transcript is interpolated.
+    """
+    analysis = validated.get("analysis", {})
+    context = validated.get("context") or build_session_context(analysis)
+    history = validated.get("history", [])
+    initial = build_analysis_prompt(context)["messages"]
+    if history[:len(initial)] != initial:
+        history = initial + [{"role": "assistant", "content": analysis.get("reading") or
+                              "这次选择仍然留有余地，暂时没有额外的判词证据。"}] + history
+    return build_dialogue_prompt(context, history, validated["user_message"],
+                                 validated["turn_count"], validated["max_turns"])
 
 
 def _looks_like_non_reply(text: str) -> bool:

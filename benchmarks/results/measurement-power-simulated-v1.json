@@ -1,0 +1,164 @@
+{
+  "schema_version": "norn.measurement-power.v1",
+  "data": "simulated only",
+  "created_at": "2026-10-20T18:52:59+00:00",
+  "repeats": 10,
+  "bootstrap_draws": 200,
+  "cross_visit_link": [
+    {
+      "preference_scale": 0.5,
+      "stability": 0.5,
+      "returning_visitors": 10,
+      "detected_prediction": 0.1,
+      "detected_sign_agreement": 0.2
+    },
+    {
+      "preference_scale": 0.5,
+      "stability": 0.5,
+      "returning_visitors": 20,
+      "detected_prediction": 0.2,
+      "detected_sign_agreement": 0.5
+    },
+    {
+      "preference_scale": 0.5,
+      "stability": 0.5,
+      "returning_visitors": 40,
+      "detected_prediction": 0.3,
+      "detected_sign_agreement": 0.6
+    },
+    {
+      "preference_scale": 0.5,
+      "stability": 0.5,
+      "returning_visitors": 80,
+      "detected_prediction": 0.8,
+      "detected_sign_agreement": 1.0
+    },
+    {
+      "preference_scale": 0.5,
+      "stability": 0.8,
+      "returning_visitors": 10,
+      "detected_prediction": 0.8,
+      "detected_sign_agreement": 0.4
+    },
+    {
+      "preference_scale": 0.5,
+      "stability": 0.8,
+      "returning_visitors": 20,
+      "detected_prediction": 0.9,
+      "detected_sign_agreement": 0.6
+    },
+    {
+      "preference_scale": 0.5,
+      "stability": 0.8,
+      "returning_visitors": 40,
+      "detected_prediction": 1.0,
+      "detected_sign_agreement": 0.9
+    },
+    {
+      "preference_scale": 0.5,
+      "stability": 0.8,
+      "returning_visitors": 80,
+      "detected_prediction": 1.0,
+      "detected_sign_agreement": 1.0
+    },
+    {
+      "preference_scale": 1.0,
+      "stability": 0.5,
+      "returning_visitors": 10,
+      "detected_prediction": 0.4,
+      "detected_sign_agreement": 0.6
+    },
+    {
+      "preference_scale": 1.0,
+      "stability": 0.5,
+      "returning_visitors": 20,
+      "detected_prediction": 0.7,
+      "detected_sign_agreement": 0.6
+    },
+    {
+      "preference_scale": 1.0,
+      "stability": 0.5,
+      "returning_visitors": 40,
+      "detected_prediction": 0.8,
+      "detected_sign_agreement": 0.7
+    },
+    {
+      "preference_scale": 1.0,
+      "stability": 0.5,
+      "returning_visitors": 80,
+      "detected_prediction": 1.0,
+      "detected_sign_agreement": 1.0
+    },
+    {
+      "preference_scale": 1.0,
+      "stability": 0.8,
+      "returning_visitors": 10,
+      "detected_prediction": 0.8,
+      "detected_sign_agreement": 0.7
+    },
+    {
+      "preference_scale": 1.0,
+      "stability": 0.8,
+      "returning_visitors": 20,
+      "detected_prediction": 0.9,
+      "detected_sign_agreement": 1.0
+    },
+    {
+      "preference_scale": 1.0,
+      "stability": 0.8,
+      "returning_visitors": 40,
+      "detected_prediction": 1.0,
+      "detected_sign_agreement": 1.0
+    },
+    {
+      "preference_scale": 1.0,
+      "stability": 0.8,
+      "returning_visitors": 80,
+      "detected_prediction": 1.0,
+      "detected_sign_agreement": 1.0
+    }
+  ],
+  "ab_rating_lift": [
+    {
+      "rating_effect": 0.3,
+      "rated_visitors_total": 60,
+      "detected": 0.2
+    },
+    {
+      "rating_effect": 0.3,
+      "rated_visitors_total": 120,
+      "detected": 0.4
+    },
+    {
+      "rating_effect": 0.3,
+      "rated_visitors_total": 240,
+      "detected": 0.7
+    },
+    {
+      "rating_effect": 0.3,
+      "rated_visitors_total": 480,
+      "detected": 0.9
+    },
+    {
+      "rating_effect": 0.5,
+      "rated_visitors_total": 60,
+      "detected": 0.6
+    },
+    {
+      "rating_effect": 0.5,
+      "rated_visitors_total": 120,
+      "detected": 0.8
+    },
+    {
+      "rating_effect": 0.5,
+      "rated_visitors_total": 240,
+      "detected": 1.0
+    },
+    {
+      "rating_effect": 0.5,
+      "rated_visitors_total": 480,
+      "detected": 1.0
+    }
+  ],
+  "reading": "detected = share of repeats whose 95% interval excludes no difference; preference_scale is the sd of simulated feature weights, rating sd 0.9."
+}

@@ -1,0 +1,36 @@
+{
+  "models": {
+    "cn:mimo-v2.6-pro": {
+      "requested": 12,
+      "response_models": [
+        "mimo-v2.6-pro"
+      ],
+      "prompt_tokens": 20724,
+      "completion_tokens": 1094,
+      "reasoning_tokens": 0,
+      "finish_reasons": {
+        "stop": 12
+      },
+      "strict_json": 11
+    },
+    "cn:hy4-preview": {
+      "requested": 12,
+      "response_models": [
+        "hy4-preview"
+      ],
+      "prompt_tokens": 20082,
+      "completion_tokens": 71033,
+      "reasoning_tokens": 70819,
+      "finish_reasons": {
+        "length": 10,
+        "stop": 2
+      },
+      "strict_json": 2
+    }
+  },
+  "cost_usd": null,
+  "generation_calls": 0,
+  "judging_calls": 24,
+  "proxy_internal_attempts": "not independently measured in this round",
+  "notes": "Reported usage and model labels are from Workbuddy. Review/runtime/development costs unmeasured."
+}

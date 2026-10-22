@@ -19,52 +19,16 @@ def _load_templates():
 
 
 def route_template(analysis: dict) -> dict:
+    """Compatibility route through the single frozen context projection.
+
+    Local sessions pass their full versioned profile to build_session_context
+    directly. The historical Lambda caller supplies raw deterministic analysis.
     """
-    Takes fast_thinker output, returns a fully assembled Bedrock Messages API payload.
-    """
-    templates = _load_templates()
-    mode = analysis["data_density"]
-    template = templates[mode]
-
-    # ── Build the user message with structured data ──
-    # For overflow_mode, prepend a code-generated statistical summary
-    stats_block = ""
-    if mode == "overflow_mode":
-        stats_block = _build_stats_summary(analysis)
-
-    user_content = template["user_template"].format(
-        mbti_type=analysis["mbti_type"],
-        confidence_ei=f'{analysis["confidence"]["E_I"]:.0%}',
-        confidence_sn=f'{analysis["confidence"]["S_N"]:.0%}',
-        confidence_tf=f'{analysis["confidence"]["T_F"]:.0%}',
-        confidence_jp=f'{analysis["confidence"]["J_P"]:.0%}',
-        coords=json.dumps(analysis["coords_avg"], ensure_ascii=False),
-        behavior_profile=_build_behavior_profile(analysis),
-        emotional_texture=_build_emotional_texture(analysis),
-        concrete_anchors=_build_concrete_anchors(analysis),
-        signature_signal=_build_signature_line(analysis),
-        total_rounds=analysis["total_rounds"],
-        total_selections=analysis["total_selections"],
-        stats_block=stats_block,
-    )
-
-    # ── Assemble messages array ──
-    messages = []
-
-    # Few-shot examples
-    for example in template.get("few_shot", []):
-        messages.append({"role": "user", "content": example["user"]})
-        messages.append({"role": "assistant", "content": example["assistant"]})
-
-    # Actual user message
-    messages.append({"role": "user", "content": user_content})
-
-    return {
-        "system": template["system_prompt"],
-        "messages": messages,
-        "max_tokens": template.get("max_tokens", 500),
-        "temperature": template.get("temperature", 0.8),
-    }
+    if __package__:
+        from .session_context import build_session_context, build_analysis_prompt
+    else:
+        from session_context import build_session_context, build_analysis_prompt
+    return build_analysis_prompt(build_session_context(analysis))
 
 
 def _build_behavior_profile(analysis: dict) -> str:

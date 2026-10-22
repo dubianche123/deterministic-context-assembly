@@ -1,349 +1,141 @@
 <div align="center">
 
-<img src="docs/readme/cover.svg" alt="The Norn Machine project overview" width="100%" />
+# The Norn Machine · 命运织机
 
-# The Norn Machine · Deterministic Context Assembly
-
-**Deterministic context assembly, with the model focused on language rendering.**
-
-[![License](https://img.shields.io/badge/License-MIT-3A9F82)](LICENSE)
+<img src="docs/readme/cover.svg" alt="The Norn Machine: choose art, let the loom guess, reveal a visual keepsake" width="100%" />
 
 **English** · [简体中文](README_CN.md)
 
-[Try the core](#start-here-local-core-no-aws-or-large-image-download) · [Input → profile](#trace-one-local-profile) · [Benchmarks](#benchmark-evidence) · [Code guide](#explore-the-code)
+[Play Norn](https://norn-machine.dubianche123.workers.dev/) · [Run locally](#run-locally) · [Architecture](#architecture) · [Model and deck](docs/research-deck.md) · [MIT License](LICENSE)
 
 </div>
 
-**Version**: 2.0 MVP  
-**Author**: Leo  
-**Date**: April 2026  
-**Live MVP**: [https://d3gncg0hircdt9.cloudfront.net/](https://d3gncg0hircdt9.cloudfront.net/)
+The Norn Machine is an interactive guessing game about visual preference: **can a model learn what will catch your eye next from just a few rounds of choices?** In each round, keep one, several, or none of the pictures. When you stop, Norn assembles a visual keepsake from the images you actually kept, shows how many pre-committed guesses landed along the way, and opens a short follow-up dialogue.
 
-On the surface, **The Norn Machine** looks like a ritualistic image-selection personality test. Under the hood, it was built to test a specific context-engineering thesis:
+Under the hood, Norn is built around a strict division of labor: **deterministic Python owns the event log, sequential preference fitting, and statistical evidence gates; the language model only renders the reading from a frozen context.** Everything needed to play, fit preferences, and inspect round-by-round predictions works offline out of the box.
 
-**Deterministic code should make the judgment. The language model should only render the prose.**
+<p align="center">
+  <img src="docs/images/norn-play1-product-zh.jpg" alt="Actual interface: a visual keepsake of retained pictures beside the interactive X-Ray prediction replay" width="900" />
+  <br /><sub>Retained pictures become a visual keepsake; scrub X-Ray to replay the model's pre-round predictions.</sub>
+</p>
 
-Most interactive LLM apps stuff the user's raw click history into the prompt and ask the model to infer state, apply rules, and write the response in one pass. As the session grows, input tokens balloon and rule adherence degrades. Here, the frontend captures lightweight behavioral signals (card selections, round numbers, dwell time, and deselections—"cards you picked and then changed your mind about"), pure Python (`fast_thinker.py`) folds that entire history into a fixed-size 4D behavioral profile, and Amazon Bedrock receives only a bounded ~2,000-token prompt regardless of whether you played 2 rounds or 30.
+<details>
+<summary>See the English mobile experience</summary>
+<p align="center">
+  <img src="docs/images/norn-play1-mobile-en.jpg" alt="The English picture-selection board on a phone" width="320" />
+</p>
+</details>
 
-## Start here (local core, no AWS or large image download)
+**Research question.** When feedback is sparse and visitors can stop at any round, when does a system have enough evidence to personalize, when should it hold back, and what should it show next to balance immediate appeal with learning efficiency? Norn serves as both the public interactive experience and the consented observation instrument; offline datasets, simulations, and paper analyses live in a separate research workspace.
 
-Because the repository includes the full card image collection for the web frontend, use a sparse checkout if you just want to inspect and run the deterministic Python core locally:
+## Run locally
 
-```bash
-git clone --filter=blob:none --sparse https://github.com/dubianche123/norn-context-engineering.git
-cd norn-context-engineering
-git sparse-checkout set the-norn-machine/backend
-python3 -B the-norn-machine/backend/tests/test_fast_thinker.py
-```
-
-![How it works](docs/readme/flow.svg)
-
-## Trace one local profile
-
-Run this right after the sparse checkout above to see how two card picks turn into a deterministic profile before any LLM is called:
+Requires **Python 3.10+**. From the repository root:
 
 ```bash
-python3 -B - <<'PYTHON'
-import json, sys
-sys.path.insert(0, "the-norn-machine/backend")
-from fast_thinker import fast_think
-
-profile = fast_think(
-    [{"id": "NORN_0001", "round": 1}, {"id": "NORN_0017", "round": 2}],
-    total_rounds=2,
-)
-print(json.dumps({k: profile[k] for k in
-    ("mbti_type", "coords_avg", "data_density")}, indent=2))
-PYTHON
+python3 -m norn doctor
+python3 -m norn serve --mock
 ```
 
-Output:
+Open [localhost:8765](http://127.0.0.1:8765) (or pass `--port 8766`). All 256 WebP images from the PAM∃LA deck (`--deck pamela-v1`), visual feature vectors, and frontend assets are bundled—no network access, cloud account, or third-party Python packages required.
 
-```json
-{
-  "mbti_type": "INTJ",
-  "coords_avg": {"E_I": -8.0, "S_N": 8.0, "T_F": 8.0, "J_P": 8.0},
-  "data_density": "sparse_mode"
-}
+**`--mock` only replaces LLM prose generation.** Event validation, sequential model fitting, evidence gates, additive score breakdowns, and the X-Ray inspector all run the real engine. You can also install the package (`python3 -m pip install .`) to run `norn doctor` and `norn serve --mock` directly, or pass `--deck classic` to explore the earlier authored deck.
+
+## What you can explore
+
+- **Pre-committed guesses & visual keepsake.** Choose, undo, and revise freely. Before you interact with a round, the engine commits its top prediction from earlier rounds alone. When you finish, you get a visual portrait of the images you kept, a round-by-round hit recap, and up to three follow-up turns.
+- **Two entry paths, full control over data.** *“Weave your thread”* contributes an anonymous session to the research archive (with one-click withdrawal at any time); the private path leaves no archive record. Both deliver the exact same game, keepsake, and X-Ray replay.
+- **Interactive X-Ray timeline.** Scrub across rounds to compare reference baseline probabilities, the learning model's predictions, your actual picks, and cumulative prediction loss. By default, predictions stay sealed until you finish choosing so they don't steer your picks.
+- **Pre-entry X-Ray switches (Round Feedback & Jev).** Before starting a session, you can open X-Ray to opt into live round-by-round feedback or enable a side-by-side comparison with **Jev** (`jev-1.13.0` via Typesafe). Both switches default to off and lock once the first round deals. See the [X-Ray contract](docs/xray.md).
+- **Bilingual & responsive.** Automatically matches browser language (`zh` / `en`) with a persistent toggle, and arranges 4–6 cards into balanced multi-row grids across mobile, tablet, and desktop viewports.
+- **Verifiable session exports.** Export your session's event journal, frozen profile, and additive contribution ledger as JSON, then re-import it into X-Ray or verify it from the CLI:
+
+```bash
+python3 -m norn replay /path/to/norn-recording.json --json
 ```
 
-`fast_think()` computes the 4D coordinate vector, confidence, and choice-revision signals; `route_template()` then maps total rounds (`≤5` sparse, `6–20` dense, `>20` overflow) into a bounded Bedrock payload (`system`, `messages`, `max_tokens`, `temperature`) where coordinates and visual motifs are already translated into structured behavioral cues.
-
-## Runtime Dataflow
-
-![Runtime dataflow architecture](the-norn-machine/docs/c4-dataflow.svg)
-
-This diagram separates the two kinds of computation that the project deliberately keeps apart:
-
-- **Solid black path**: deterministic, typed data flow from the browser to API Gateway and Lambda.
-- **Dashed red path**: probabilistic language rendering from Lambda to Amazon Bedrock.
-
-The key compression point sits inside Lambda. Raw interaction history reached 15,107 input tokens in the overflow benchmark, but Fast Thinker folded that history into 2,383 bounded prompt tokens before the model saw it. That is the core claim of the system: the LLM should not be asked to carry unbounded history when code can assemble the relevant state first.
-
-## Benchmark Evidence
-
-The benchmark is where the architectural claim becomes measurable. We compared the production-style deterministic context assembly against a naive, unoptimized version that concatenates every selected card's raw metadata directly into the original prompt.
-
-![Context compression benchmark](the-norn-machine/backend/benchmark/benchmark_summary.svg)
-
-| Metric | Optimized Prompt | Original Prompt | Result |
-|:--|:--:|:--:|:--|
-| Average input tokens | 2,039 | 5,179 | 2.5x less input context |
-| Average total latency | 5,714ms | 6,822ms | 16.2% lower end-to-end latency |
-| Estimated cost, 20 calls | $0.0873 | $0.1649 | 47.0% lower cost |
-| Overflow scene input tokens | 2,387 | 11,286 | 4.7x less context in long sessions |
-
-**Overflow case study**
-
-| Scenario | Original Prompt | Optimized Prompt | What Changed |
-|:--|:--:|:--:|:--|
-| 30 rounds / 80 selections | 15,107 input tokens | 2,383 input tokens | Raw card history becomes a bounded behavioral profile |
-| Same scenario latency | 9,373ms | 6,179ms | End-to-end latency drops after context growth is contained |
-
-Before analyzing the data, we define three interaction depths: **short sessions (sparse, 1–5 total rounds)**, **medium sessions (dense, 6–20 total rounds)**, and **long sessions (overflow, >20 total rounds)**. The code routes on total rounds; selected-card count is a separate benchmark dimension.
-
-In sparse scenes, the optimized prompt is not always shorter than the original prompt. Because there is very little raw metadata to send in these cases, our optimized pipeline deliberately allocates a fixed context budget toward system rules, few-shot examples, and a structured behavioral skeleton. This ensures that the model can still produce high-quality, stylistically consistent answers even with minimal input.
-
-The true architectural advantage lies in its remarkable **token consistency**. As the interaction depth progresses into dense and overflow scenes, the original prompt grows continuously with every selection (reaching up to 15,107 tokens in our tests). The optimized prompt, however, remains tightly bounded between 1,800 and 2,400 tokens. This happens because the Fast Thinker deterministic layer compresses all card traits into a fixed-format behavioral profile *before* passing any data to the LLM. Whether the user selects 1 or 80 cards, the model receives this highly distilled profile instead of a raw historical log.
-
-For Time To First Token (TTFT), the test data is intentionally reported rather than hidden: the optimized pipeline is slightly slower on first token (914ms optimized vs. 867ms original). TTFT is sensitive to provider scheduling, prompt structure, and single-run variance, so this project does not claim a first-token speedup. The measured win is elsewhere: bounded context growth, lower generated-output burden, lower total latency, and lower cost once the interaction becomes non-trivial.
-
-The impact on cost is even more striking. Based on our current tests, using the original prompt with an average length of 5,179 tokens results in an average total cost of $0.1649 (approx. ¥1.2 RMB) across 20 calls. By employing the deterministic compression architecture, this drops to an average of $0.0873 (approx. ¥0.6 RMB), instantly saving 47% in calling costs. In extreme overflow scenes, this advantage in consistency expands to over 80% cost savings.
-
-## Why This Exists
-
-Many LLM applications let the model do everything at once: infer intent, remember context, choose facts, enforce safety, and write the answer. That is flexible, but it also creates inconsistent outputs, long prompts, higher latency, and more room for hallucination.
-
-The Norn Machine uses a narrower model role. The LLM is not asked to infer everything from raw interaction history. It receives a compact, structured profile:
-
-- decision style
-- relationship pattern
-- stress response
-- blind spot
-- suggestion
-- optional emotional and visual anchors
-
-The model is still valuable, but its responsibility is language rendering rather than decision authority.
-
-| Overflow Interaction Problem | Traditional Agentic Pattern | The Norn Machine Pattern |
-|:--|:--|:--|
-| Who owns global logic? | The LLM must infer state, enforce rules, remember context, and write the answer in one pass. | Python owns feature extraction, routing, limits, and fallback behavior; the LLM renders bounded language. |
-| What happens as history grows? | Prompt size grows with the raw log and can drift toward context overflow. | Raw selections are compressed into a fixed-format behavioral profile before model invocation. |
-| Latency profile | More history usually means more input to scan and less predictable total latency. | Benchmark shows 16.2% lower average end-to-end latency across 20 Bedrock calls. |
-| Rule adherence | Rules compete with long raw context inside the same model prompt. | Hard limits, fallback paths, and output guardrails are enforced outside the model where possible. |
-| Failure mode | The user may see brittle model behavior or infrastructure-shaped errors. | Deterministic fallback text keeps the user experience coherent when the model path is blocked. |
-
-## Related Work: Compiled AI
-
-The same architectural pressure appears in recent systems research. The April 2026 arXiv paper [*Compiled AI: Deterministic Code Generation for LLM-Based Workflow Automation*](https://arxiv.org/abs/2604.05150) studies workflows where an LLM is used during a generation or compilation phase, and the deployed workflow then runs as deterministic code without further model invocation.
-
-The paper reports that, on BFCL function-calling tasks, compiled AI reaches 96% task completion with zero execution tokens, breaks even against runtime inference at roughly 17 transactions, and reduces token usage by 57x at 1,000 transactions. Its reported latency comparison is even sharper: 4.5ms P50 for compiled execution versus 2,004ms for direct runtime LLM inference.
-
-The Norn Machine is not a full compiled-AI system because it still calls Bedrock to render the final language. It sits in the adjacent hybrid space: deterministic code owns state compression, routing, guardrails, and fallbacks, while the model is kept as a bounded renderer. In other words, it does not reach zero-token execution, but it follows the same direction of travel: move repeatable control logic out of the runtime model call.
+> **Note on numerical replay:** The v6 engine uses `native-libm` floating-point math. Because CPython and Cloudflare Workers (Pyodide/WASM) can differ in the last bits of `libm` transcendental functions, recordings exported from the hosted Worker should be re-imported into the hosted X-Ray for exact hash verification.
 
 ## Architecture
 
-![The Norn Machine AWS topology](the-norn-machine/Norn-machine.drawio.svg)
+```mermaid
+flowchart TD
+    UI[Browser · 256 bundled PAMELA images] --> E[Validated event journal]
+    D[Versioned deck · reference utility & content features] --> P[Shared Python v6 engine]
+    E --> P
+    P --> V[Profile · evidence gates · additive contributions]
+    V --> X[X-Ray · round-by-round replay]
+    V --> C[Frozen reading context]
+    C --> M[Mock or configured LLM provider]
+    M --> R[Reading & native follow-up history]
+    E -. explicit consent .-> A[Learning archive]
+    R -. reading & optional feedback .-> A
+    A --> Q[Versioned research analysis]
+```
 
-This architecture diagram shows how the current MVP implementation is assembled. CloudFront is the public HTTPS entry, S3 serves the static frontend, API Gateway protects the backend with an API key and usage plan, Lambda runs deterministic context assembly, and Amazon Bedrock renders the final language output.
+The local server and the Cloudflare Python Worker run the exact same Python model and event validation code.
 
-API Gateway exposes two request-scoped capabilities: result analysis and final dialogue. Both follow the same contract: the browser sends the current payload, Lambda compresses it into structured context, and the model receives only that bounded context rather than raw session history.
+### 1. Three-layer sequential preference learning (`v6`)
 
-The system is stateless by design. There is no database storing player sessions and no cross-user memory. Prompt rules and backend output guardrails help prevent user data leakage risk.
+Each card in the deck carries a human reference utility `u` (from dataset ratings) and an 8-dimensional content vector `x8`. Rather than jumping straight to a high-dimensional personal model on tiny samples, the v6 engine evaluates three nested layers:
 
-## Runtime Pipeline
+| Layer | Card utility | What it captures |
+| --- | --- | --- |
+| **Reference (`L0`)** | `u` | Baseline popularity among the dataset's human raters. |
+| **Sensitivity (`L1`)** | `a × u` | How strongly—or inversely—this visit aligns with the reference direction. |
+| **Personal deviation (`L2`)** | `a × u + x8 · δ` | Specific content preferences beyond general popularity. |
 
-### 1. Frontend Interaction
+At each round, a sequential Plackett–Luce choice model jointly scores picking among the remaining visible cards and choosing to stop, regularized by small-sample shrinkage priors. Before each round is played, each layer scores the upcoming choices out-of-sample; an **evidence gate** promotes the active explanation to `L1` or `L2` only when cumulative predictive evidence passes a strict threshold. When a visit is too short to separate personal deviation from noise, the reading stays grounded in the lower layer while the visual keepsake still highlights the exact images the visitor kept. See [deck, model, and display contract](docs/research-deck.md).
 
-Players move through image-card rounds. Each round allows single selection, multiple selection, or no selection. The frontend tracks:
+### 2. Mixed dealing for feedback and learning
 
-- selected card IDs and round numbers
-- total rounds
-- round durations
-- deselection events
+Purely recommending top-scoring cards boosts selection rates but starves the model of contrast; purely random dealing learns well but feels unresponsive. Norn assigns each session to either random dealing or **mixed dealing**—combining personal candidate picks with high- and low-reference contrast cards in a shuffled screen layout. Every card's dealing policy, deck version, and role are logged in the event journal for reproducibility.
 
-The app also supports a zero-selection result. If a player reveals fate without selecting any card, the frontend and backend both return a fixed mystical fallback instead of hanging on model inference.
+### 3. Frozen reading context & privacy-preserving archive
 
-### 2. Fast Thinker
+Once selection ends, Python compiles the kept images and the gated model layer into a versioned, SHA-hashed context block shared across the initial reading and follow-up turns. The LLM never mutates model weights or invents unshown choices.
 
-The Fast Thinker is pure deterministic Python. It is the core of the project: the LLM does not decide the user's profile; it receives a compressed profile already shaped by code.
+When a visitor opts into the research archive, Norn records the validated event journal (including lightweight non-blocking checkpoints for in-progress rounds so early exits can be studied without fabricating completion events), experiment cohort metadata, and an anonymous browser-scoped identifier that supports one-click withdrawal. It never stores IP addresses, user agents, or follow-up chat text.
 
-Each card carries a four-axis coordinate vector plus curated traits, motifs, scenes, and rationales. For every selected card, Fast Thinker calculates a selection weight:
+## Providers and Cloudflare deployment
 
-$$
-W_i = \exp\left(\frac{r_i}{R}\right) \times \beta_{h,i}
-$$
+Local runs default to `--mock`. To connect a local or remote OpenAI-compatible model for live prose generation:
 
-Where \(r_i\) is the round in which card \(i\) was selected, \(R\) is total rounds, and \(\beta_{h,i}\) is the capped hesitation multiplier:
+```bash
+export NORN_BASE_URL='http://127.0.0.1:8000/v1'
+export NORN_MODEL='your-model-name'
+python3 -m norn serve --provider openai-compatible
+```
 
-$$
-\beta_{h,i} = 1 + \hat{d}_{r_i} \times (1.12 - 1.00)
-$$
+Set `NORN_API_KEY` if required by your endpoint. Native routes for Anthropic, Gemini, Amazon Bedrock, and Docker are documented in [deployment](docs/deployment.md).
 
-$$
-\hat{d}_r = \frac{\mathrm{clip}(d_r, 0, 45000) - d_{min}}{\max(d_{max} - d_{min}, 1)}
-$$
+The live demo runs on Cloudflare Workers (`norn-machine`):
 
-Later rounds therefore count more, because later choices usually reflect a sharper preference after the player has seen more of the card space. Hesitation is deliberately small: round duration is normalized inside the current session and can only move a card from `1.0x` to `1.12x`, because image loading and rendering can pollute timing data.
-
-The final coordinate is a weighted average:
-
-$$
-\bar{x}_{dim} = \frac{\sum_i W_i \cdot x_{i,dim}}{\sum_i W_i}
-$$
-
-Deselection is handled separately because canceling an already selected card is a stronger signal than merely taking time. The system counts deselection events, estimates a revision strength, nudges the openness/closure axis toward more revision, and adds traits such as choice review or repeated calibration into the same aggregation pass.
-
-$$
-S_{revision} = \min\left(\frac{D / R}{1.5}, 1\right)
-$$
-
-$$
-\bar{x}_{J/P}' = \bar{x}_{J/P} - S_{revision} \times 2.4
-$$
-
-The same weights also aggregate traits, motifs, scenes, and rationales. Finally, the signature signal is chosen from motifs by combining frequency with cosine alignment against the final coordinate vector:
-
-$$
-score(m) = F_m \times \left(1 + \max(\cos(\bar{x}_m, \bar{x}), 0)\right)
-$$
-
-That gives the result one concrete word-level hook without letting the model turn the answer into a list of selected objects.
-
-Current signal sources:
-
-- **Round decay**: later rounds carry more weight because later choices tend to reflect a sharper preference.
-- **Hesitation bonus**: duration is a small nudge only, because image loading and rendering can pollute timing data.
-- **Deselection signal**: canceling a selected card is treated as a stronger uncertainty signal than raw hesitation time.
-- **Motif aggregation**: repeated traits, motifs, scenes, and rationales are weighted alongside the coordinate calculation.
-- **Signature signal**: one optional word-level motif is selected from weighted motif frequency and cosine similarity against the final coordinate vector.
-
-The signature signal is not a separate inference layer. It is integrated into the existing aggregation pass so the architecture stays small.
-
-### 3. Template Router
-
-The Template Router chooses a prompt mode based on information density:
-
-- 1-5 rounds: short, intuitive reading; one follow-up dialogue turn.
-- 6-20 rounds: sharper behavioral reading; two follow-up dialogue turns.
-- More than 20 rounds: reflective long-form reading; three follow-up dialogue turns.
-
-Every prompt receives the same behavioral skeleton. The style may change, but the analytical backbone stays stable.
-
-### 4. Slow Thinker
-
-The Slow Thinker calls Bedrock to render the final text. The model receives compressed facts and a small number of few-shot examples. It is instructed to translate concrete image anchors into broader emotional and behavioral patterns, rather than listing the objects the player selected.
-
-### 5. Final Dialogue
-
-After the result appears, the dialogue panel fades in. Input is capped at 100 characters, and the number of turns is bound to the number of rounds. When the limit is reached, the system closes the loop with an in-world response instead of continuing open-ended chat.
-
-## Frontend Experience
-
-The frontend is a static app. The reveal scene uses a canvas particle sequence:
-
-1. particles gather while the result is being prepared;
-2. the result text appears;
-3. the particle cluster dissipates after the result is visible.
-
-This timing matters because the animation's appearance should belong to the reading, not finish silently while the API is still loading.
-
-Music is user-gesture bound: it starts when the player begins the test, which keeps browser autoplay behavior predictable.
-
-## Edge Cases And Guardrails
-
-The system is designed to degrade through deterministic code paths before exposing model or infrastructure failure to the user.
-
-| Edge Case | Deterministic Control Point | User-Facing Behavior |
-|:--|:--|:--|
-| Player selects no cards | Frontend and Lambda both recognize empty `selections` | A fixed mystical reading is returned without calling Bedrock. |
-| Bedrock call fails or is blocked | `slow_thinker` catches the exception or guardrail intervention | A safe fallback reading replaces the model output. |
-| Model mentions internal fields or cross-user comparison | Backend output guardrail scans banned fragments such as coordinates, confidence, and "previous player" phrasing | The output is replaced with a neutral guarded response. |
-| Dialogue exceeds allowed turns | Server recalculates the turn limit from total rounds | The conversation closes with deterministic lockout text. |
-| Dialogue input exceeds 100 characters | Frontend and backend both validate length | The request is rejected before model invocation. |
-| Runtime API config is missing in local preview | Frontend config loader detects missing endpoint/key | The page shows an in-world unavailable-backend reading instead of hanging. |
-
-This is the practical value of keeping the model outside the control plane. The model can fail, be blocked, or produce an unsafe phrase, but the surrounding code still owns the final boundary of the experience.
-
-## Security And Privacy
-
-- No database stores player sessions.
-- The backend receives only the current request payload.
-- Dialogue is capped by turn count and character length.
-- API Gateway provides API-key validation and request limiting.
-- Prompt rules and backend output guardrails provide an additional safety layer.
-- The public frontend entry is CloudFront HTTPS; direct S3 website hosting is not the intended public route.
-
-## Transferable Pattern
-
-The useful pattern is not the personality-reading theme itself. It is:
-
-**implicit behavior capture + deterministic state compression + model-rendered language**
-
-This can transfer to:
-
-- **Conversational commerce**: infer preference style from browsing behavior, then let the model explain deterministic product candidates.
-- **Customer support**: keep workflow state in code, then let the model render bounded replies.
-- **Game NPCs**: let game state and rule logic decide what is true, then let the model express it in character.
-- **Personal AI profiles**: adapt presentation emphasis based on visitor behavior while keeping factual content fixed.
-
-## Technical Outlook
-
-The current Fast Thinker is intentionally a rule-based expert system. Its parameters are readable and inspectable: hesitation can only add a `1.12x` multiplier, deselection can only nudge the J/P axis by a capped amount, and motif selection is based on weighted frequency plus cosine alignment. That makes the system easy to audit, but it also means the feature weights come from domain judgment rather than learned evidence.
-
-A natural next step would be a separate data-driven behavioral intent engine. With explicit consent and anonymized event streams, the same interaction layer could learn nonlinear patterns from click cadence, hover time, deselection frequency, scroll depth, comparison behavior, and downstream outcomes. The target would not be "personality reading" anymore; it would be early intent prediction before a decisive action happens.
-
-| Current MVP | Data-Driven Successor |
-|:--|:--|
-| Hand-authored feature weights | Learned embeddings and calibrated feature weights |
-| Stateless request payload | Consented, anonymized event dataset |
-| Descriptive reading after submission | Intent prediction before the final action |
-| Deterministic prompt assembly | Model-assisted intervention policy with deterministic guardrails |
-
-This would turn the project from interpretable context assembly into a multimodal behavioral intent prediction and intervention engine. The design lesson remains the same: keep the model away from uncontrolled authority, and let code own the boundaries.
-
-## Appendix: Asset Pipeline Concepts
-
-The image pipeline is based on curated metadata rather than random prompt generation.
-
-Each card has:
-
-- a personality coordinate vector
-- a role group
-- trait keywords
-- visual motifs
-- a scene rationale
-- human-presence policy
-- style, palette, and composition fields
-
-The image manager exists to keep those concepts consistent across the card set: it seeds curated metadata, audits duplicate prompts, tracks generated assets, and exports frontend/backend card data. The management scripts are part of the repository, but the important idea is the data contract: every image is both a visual asset and a structured semantic signal.
-
-## Appendix: Benchmark Artifacts
-
-The benchmark suite is kept in the repository so the numbers above can be inspected rather than accepted as a claim:
-
-- [`generate_scenarios.py`](the-norn-machine/backend/benchmark/generate_scenarios.py): builds 20 simulated sessions across sparse, dense, and overflow interaction patterns.
-- [`run_bedrock_benchmark.py`](the-norn-machine/backend/benchmark/run_bedrock_benchmark.py): calls Claude Haiku 4.5 through the Amazon Bedrock Streaming API and records token count, TTFT, total latency, and estimated cost.
-- [`benchmark_prompts.json`](the-norn-machine/backend/benchmark/benchmark_prompts.json): stores the optimized and naive prompt pairs used for the benchmark.
-- [`benchmark_results.json`](the-norn-machine/backend/benchmark/benchmark_results.json): stores raw API measurements and the aggregate summary.
-- [`benchmark_summary.svg`](the-norn-machine/backend/benchmark/benchmark_summary.svg): visualizes the context-growth curve used in this README.
-- [`c4-dataflow.svg`](the-norn-machine/docs/c4-dataflow.svg): visualizes deterministic and probabilistic data boundaries in the runtime dataflow.
-- [`Norn-machine.drawio.svg`](the-norn-machine/Norn-machine.drawio.svg): visualizes the deployed AWS topology used by the MVP.
-
-## Explore the code
-
-| Start with | What to inspect |
+| Component | Responsibility |
 | --- | --- |
-| [fast_thinker.py](the-norn-machine/backend/fast_thinker.py) | Round decay, capped hesitation bonus (`1.12x`), four-axis aggregation, choice-revision nudge & cosine motif selection |
-| [template_router.py](the-norn-machine/backend/template_router.py) | Behavioral-language assembly and `sparse` / `dense` / `overflow` prompt routing |
-| [config/prompts/](the-norn-machine/backend/config/prompts/) | The actual `sparse`, `dense`, and `overflow` prompt templates |
-| [lambda_function.py](the-norn-machine/backend/lambda_function.py) | Stateless request handling, output guardrails, and deterministic fallbacks |
-| [frontend/app.js](the-norn-machine/frontend/app.js) | Card interaction, deselection tracking, particle reveal sequence, and request payloads |
-| [backend/tests/](the-norn-machine/backend/tests/) | Offline deterministic profile & guardrail unit tests |
-| [backend/benchmark/](the-norn-machine/backend/benchmark/) | 20-session scenario generator, Bedrock streaming benchmark runner, and recorded JSON/SVG results |
+| **Static Assets + Python Worker** | Frontend bundle, 256 WebP deck images, and same-origin API routing. |
+| **`NornSession` (SQLite Durable Object)** | Per-browser session state, frozen reading context, and idempotent request receipts. |
+| **`NornBudget` (SQLite Durable Object)** | Cross-session rate and concurrency admission for LLM and optional Jev calls. |
+| **`NornArchive` (SQLite Durable Object)** | Consented research records, partial-round checkpoints, and user-initiated withdrawal. |
+| **DeepSeek API (`deepseek-flash`)** | Fast bilingual prose rendering with server-held credentials. |
 
-## Conclusion
+## Verification and code guide
 
-The Norn Machine is a small demo, but it tests a larger architectural stance: when the judgment matters, make the judgment traceable in code before asking the model to speak. Code compresses and constrains the world; the model makes that compressed world readable.
+```bash
+python3 -m pip install '.[dev]'
+python3 -m pytest
+git diff --check
+```
 
-<p align="center"><sub>The Norn Machine: A serverless, stateless cloud-native prompt engine</sub></p>
+The test suite (~760 tests and 1,300+ subtests) covers event validation, the PAM∃LA deck contract, v6 sequential fitting, evidence gates, additive score reconstruction, frozen reading contexts, idempotent request recovery, archive cohort isolation, and frontend layout invariants.
+
+| Where to look | What it covers |
+| --- | --- |
+| [docs/research-deck.md](docs/research-deck.md) | PAM∃LA reference ratings, content features, evidence gates, and mixed dealing rules. |
+| [norn/events.py](norn/events.py) · [norn/service.py](norn/service.py) | Validated event journal and the reading / follow-up lifecycle. |
+| [research_model.py](the-norn-machine/backend/research_model.py) · [research_deck.py](the-norn-machine/backend/research_deck.py) | Portable v6 sequential choice engine, evidence gates, and frozen context assembly. |
+| [the-norn-machine/frontend/](the-norn-machine/frontend/) | Card board, bilingual reading view, and interactive X-Ray timeline. |
+| [norn/collection.py](norn/collection.py) · [cloudflare/](cloudflare/) | Consented archive storage, partial-visit checkpoints, and Durable Object adapters. |
+| [docs/learning.md](docs/learning.md) · [docs/measurement.md](docs/measurement.md) · [docs/fast-thinker-comparison.md](docs/fast-thinker-comparison.md) | Earlier model generations (`v1`–`v5`) and offline evaluation tools. |
+
+PAM∃LA images are distributed under **CC BY 4.0** ([attribution details](the-norn-machine/frontend/assets/decks/pamela-v1/ATTRIBUTION.md)); project code is released under the [MIT License](LICENSE).

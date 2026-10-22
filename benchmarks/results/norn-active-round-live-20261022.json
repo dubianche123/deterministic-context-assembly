@@ -1,0 +1,246 @@
+{
+  "schema_version": "norn.partial-visit-check.v3",
+  "base": "https://norn-machine.dubianche123.workers.dev",
+  "consent_version": "norn.consent.v4",
+  "deck": "pamela-v1@sha256:26134e1a8066b9064f4db22be7a0a97d79870947a4798092b9eff28503213b8c",
+  "model_calls": 0,
+  "checks": {
+    "health_ready": true,
+    "runtime_config": true,
+    "hosted_deck_version": true,
+    "archive_access": true,
+    "consent_required": true,
+    "first_snapshot_stored": true,
+    "newer_snapshot_stored": true,
+    "older_snapshot_rejected": true,
+    "same_snapshot_idempotent": true,
+    "one_latest_partial_row": true,
+    "second_tab_stored": true,
+    "two_visits_numbered": true,
+    "open_round_choices_stored": true,
+    "open_round_selection_and_undo_preserved": true,
+    "same_prefix_attention_advances": true,
+    "stale_attention_rejected": true,
+    "stale_prefix_cannot_erase_active_choices": true,
+    "latest_open_round_attention_retained": true,
+    "empty_reading_makes_no_model_call": true,
+    "full_receipt_uses_same_session_key": true,
+    "full_upgrade_keeps_visit_number": true,
+    "late_partial_cannot_recreate_completed_visit": true,
+    "single_withdrawal_confirmed": true,
+    "single_withdrawal_blocks_late_write": true,
+    "all_withdrawal_confirmed": true,
+    "all_withdrawal_blocks_old_visit": true,
+    "all_withdrawal_blocks_new_visit_on_old_key": true,
+    "cleanup_confirmed_no_test_rows": true
+  },
+  "scope": "Synthetic open-round checkpoint and empty-reading integration; no model-quality claim.",
+  "test_visitor_id": "bb891310306accb7959d74e822f0b9e9",
+  "http_calls": [
+    {
+      "method": "GET",
+      "route": "/api/health",
+      "status": 200,
+      "response_bytes": 158
+    },
+    {
+      "method": "GET",
+      "route": "/runtime-config.js",
+      "status": 200,
+      "response_bytes": 254
+    },
+    {
+      "method": "GET",
+      "route": "/data/decks/pamela-v1.json",
+      "status": 200,
+      "response_bytes": 54174
+    },
+    {
+      "method": "GET",
+      "route": "/api/archive/export",
+      "status": 200,
+      "response_bytes": 12699
+    },
+    {
+      "method": "POST",
+      "route": "/api/record/partial",
+      "status": 400,
+      "response_bytes": 120
+    },
+    {
+      "method": "POST",
+      "route": "/api/record/partial",
+      "status": 200,
+      "response_bytes": 15
+    },
+    {
+      "method": "POST",
+      "route": "/api/record/partial",
+      "status": 200,
+      "response_bytes": 15
+    },
+    {
+      "method": "POST",
+      "route": "/api/record/partial",
+      "status": 200,
+      "response_bytes": 16
+    },
+    {
+      "method": "POST",
+      "route": "/api/record/partial",
+      "status": 200,
+      "response_bytes": 15
+    },
+    {
+      "method": "GET",
+      "route": "/api/archive/export",
+      "status": 200,
+      "response_bytes": 14101
+    },
+    {
+      "method": "GET",
+      "route": "/api/archive/export",
+      "status": 200,
+      "response_bytes": 0
+    },
+    {
+      "method": "POST",
+      "route": "/api/record/partial",
+      "status": 200,
+      "response_bytes": 15
+    },
+    {
+      "method": "GET",
+      "route": "/api/archive/export",
+      "status": 200,
+      "response_bytes": 14843
+    },
+    {
+      "method": "GET",
+      "route": "/api/archive/export",
+      "status": 200,
+      "response_bytes": 0
+    },
+    {
+      "method": "POST",
+      "route": "/api/record/partial",
+      "status": 200,
+      "response_bytes": 15
+    },
+    {
+      "method": "GET",
+      "route": "/api/archive/export",
+      "status": 200,
+      "response_bytes": 15691
+    },
+    {
+      "method": "GET",
+      "route": "/api/archive/export",
+      "status": 200,
+      "response_bytes": 0
+    },
+    {
+      "method": "POST",
+      "route": "/api/record/partial",
+      "status": 200,
+      "response_bytes": 15
+    },
+    {
+      "method": "POST",
+      "route": "/api/record/partial",
+      "status": 200,
+      "response_bytes": 16
+    },
+    {
+      "method": "POST",
+      "route": "/api/record/partial",
+      "status": 200,
+      "response_bytes": 16
+    },
+    {
+      "method": "GET",
+      "route": "/api/archive/export",
+      "status": 200,
+      "response_bytes": 15705
+    },
+    {
+      "method": "GET",
+      "route": "/api/archive/export",
+      "status": 200,
+      "response_bytes": 0
+    },
+    {
+      "method": "POST",
+      "route": "/api/analyze",
+      "status": 200,
+      "response_bytes": 2769
+    },
+    {
+      "method": "GET",
+      "route": "/api/archive/export",
+      "status": 200,
+      "response_bytes": 17021
+    },
+    {
+      "method": "GET",
+      "route": "/api/archive/export",
+      "status": 200,
+      "response_bytes": 0
+    },
+    {
+      "method": "POST",
+      "route": "/api/record/partial",
+      "status": 200,
+      "response_bytes": 16
+    },
+    {
+      "method": "POST",
+      "route": "/api/record/withdraw",
+      "status": 200,
+      "response_bytes": 18
+    },
+    {
+      "method": "POST",
+      "route": "/api/record/partial",
+      "status": 200,
+      "response_bytes": 16
+    },
+    {
+      "method": "POST",
+      "route": "/api/record/withdraw",
+      "status": 200,
+      "response_bytes": 18
+    },
+    {
+      "method": "POST",
+      "route": "/api/record/partial",
+      "status": 200,
+      "response_bytes": 16
+    },
+    {
+      "method": "POST",
+      "route": "/api/record/partial",
+      "status": 200,
+      "response_bytes": 16
+    },
+    {
+      "method": "POST",
+      "route": "/api/record/withdraw",
+      "status": 200,
+      "response_bytes": 18
+    },
+    {
+      "method": "GET",
+      "route": "/api/archive/export",
+      "status": 200,
+      "response_bytes": 12699
+    },
+    {
+      "method": "GET",
+      "route": "/api/archive/export",
+      "status": 200,
+      "response_bytes": 0
+    }
+  ],
+  "passed": true
+}

@@ -4,7 +4,11 @@ Calls Amazon Bedrock to generate the final personality reading.
 """
 import json
 import os
-import boto3
+
+if __package__:
+    from .output_guardrails import output_reason_codes, validate_output
+else:
+    from output_guardrails import output_reason_codes, validate_output
 
 BEDROCK_MODEL_ID = os.environ.get(
     "BEDROCK_MODEL_ID",
@@ -28,41 +32,23 @@ OUTPUT_GUARDRAIL_TEXT = (
     "再慢慢检查它能不能承受现实。"
 )
 
-_BANNED_OUTPUT_FRAGMENTS = (
-    "上一位",
-    "上一个玩家",
-    "上一位玩家",
-    "上一位测试者",
-    "其他玩家",
-    "其他测试者",
-    "别的玩家",
-    "上一条数据",
-    "前一个人",
-    "比别人",
-    "比其他人",
-    "E/I",
-    "S/N",
-    "T/F",
-    "J/P",
-    "MBTI",
-    "置信度",
-    "坐标",
-    "差值",
-    "均值",
-)
-
 _client = None
 
-def _get_client():
+def _get_client(region=None):
     global _client
+    if region is not None and region != BEDROCK_REGION:
+        import boto3
+        return boto3.client("bedrock-runtime", region_name=region)
     if _client is None:
+        # Only the explicitly selected Bedrock adapter needs the AWS SDK.
+        import boto3
         _client = boto3.client("bedrock-runtime", region_name=BEDROCK_REGION)
     return _client
 
 
 def _invoke_bedrock(prompt_payload: dict, fallback_text: str, guardrail_id: str = None) -> dict:
-    client = _get_client()
-
+    settings = prompt_payload.get("_bedrock_config", {})
+    usage = {}
     request_body = {
         "anthropic_version": "bedrock-2023-05-31",
         "system": prompt_payload["system"],
@@ -72,7 +58,7 @@ def _invoke_bedrock(prompt_payload: dict, fallback_text: str, guardrail_id: str 
     }
 
     invoke_kwargs = {
-        "modelId": BEDROCK_MODEL_ID,
+        "modelId": settings.get("model", BEDROCK_MODEL_ID),
         "contentType": "application/json",
         "accept": "application/json",
         "body": json.dumps(request_body),
@@ -83,23 +69,37 @@ def _invoke_bedrock(prompt_payload: dict, fallback_text: str, guardrail_id: str 
         invoke_kwargs["guardrailVersion"] = "DRAFT"
 
     try:
+        region = settings.get("region", BEDROCK_REGION)
+        client = _get_client() if region == BEDROCK_REGION else _get_client(region)
         response = client.invoke_model(**invoke_kwargs)
         result = json.loads(response["body"].read())
+        if not isinstance(result, dict):
+            raise ValueError("Invalid Bedrock response object")
+        usage = result.get("usage", {})
+        metadata = {"model": invoke_kwargs["modelId"],
+                    "request_id": response.get("ResponseMetadata", {}).get("RequestId")}
 
         if result.get("stop_reason") == "guardrail_intervened":
-            return {"text": fallback_text, "usage": {}, "blocked": True}
+            return {"text": fallback_text, "usage": usage, **metadata,
+                    "blocked": True, "status": "policy_blocked",
+                    "reason_codes": ["provider_policy"]}
+        if result.get("stop_reason") == "max_tokens":
+            return {**validate_output(None), "usage": usage, **metadata,
+                    "status": "invalid_output", "reason_codes": ["output_truncated"]}
 
-        text = result["content"][0]["text"]
-        usage = result.get("usage", {})
+        text = "".join(block.get("text", "") for block in result.get("content", [])
+                       if isinstance(block, dict) and isinstance(block.get("text"), str))
 
-        if _violates_output_guardrail(text):
-            return {"text": OUTPUT_GUARDRAIL_TEXT, "usage": usage, "blocked": True}
+        return {**validate_output(text), "usage": usage, **metadata}
 
-        return {"text": text, "usage": usage, "blocked": False}
-
+    except (ValueError, KeyError, IndexError, TypeError):
+        return {**validate_output(None), "usage": usage,
+                "status": "invalid_output", "reason_codes": ["invalid_response"]}
     except Exception as e:
-        print(f"[Norn] Bedrock error: {e}")
-        return {"text": fallback_text, "usage": {}, "blocked": True}
+        # Exception strings can include remote response bodies or credentials.
+        print(f"[Norn] Bedrock error: {type(e).__name__}")
+        return {"text": fallback_text, "usage": {}, "blocked": True,
+                "status": "provider_unavailable", "reason_codes": ["provider_error"]}
 
 
 def slow_think(prompt_payload: dict, guardrail_id: str = None) -> dict:
@@ -116,6 +116,5 @@ def slow_think(prompt_payload: dict, guardrail_id: str = None) -> dict:
 
 
 def _violates_output_guardrail(text: str) -> bool:
-    if not text:
-        return False
-    return any(fragment in text for fragment in _BANNED_OUTPUT_FRAGMENTS)
+    """Compatibility predicate; providers should retain validate_output details."""
+    return bool(output_reason_codes(text)) if text else False

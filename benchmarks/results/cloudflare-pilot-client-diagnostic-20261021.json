@@ -1,0 +1,44 @@
+{
+  "schema_version": "norn.pilot-release-live.v1",
+  "date": "2026-10-21",
+  "origin": "https://norn-machine.dubianche123.workers.dev",
+  "worker_version": "49bcc208-083b-4acf-81ca-6565d1d0619b",
+  "fixture": "Automated local real-browser choices, not a human participant",
+  "fresh_generation_attempt_limit": 2,
+  "fresh_generation_attempts": 0,
+  "automatic_network_retries": 0,
+  "judge_calls": 0,
+  "calls": [
+    {
+      "route": "/api/health",
+      "method": "GET",
+      "status": 403,
+      "elapsed_ms": 1753.334,
+      "response_bytes": 727,
+      "network_attempts": 1
+    }
+  ],
+  "checks": {
+    "original_journal_has_no_holdout_ids": true
+  },
+  "fixture_summary": {
+    "main_schema": "norn.events.v4",
+    "probe_schema": "norn.probe.v1",
+    "main_rounds": 5,
+    "probe_rounds": 4,
+    "main_event_count": 21,
+    "probe_event_count": 17,
+    "catalog_version": "sha256:9f713521004f9dcc253508b282aaf3d6a81f0e4fd14cfbf9852b0c802d014dc2"
+  },
+  "result": "failed",
+  "failure": {
+    "type": "AssertionError",
+    "detail": "/api/health: expected 200, got 403"
+  },
+  "completed_utc": "2026-10-21T04:23:35Z",
+  "limits": [
+    "Engineering acceptance only; automated choices are not human pilot evidence.",
+    "No human prediction, personality accuracy or model ranking claim.",
+    "No secrets, visitor key, actor cookies, record ID or session ID retained."
+  ]
+}

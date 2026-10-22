@@ -1,0 +1,15 @@
+{
+  "name": "norn-cloudflare",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "prepare": "python3 ../scripts/prepare_cloudflare_bundle.py",
+    "build": "python3 ../scripts/prepare_cloudflare_bundle.py && cf build",
+    "dev": "python3 ../scripts/prepare_cloudflare_bundle.py && cf dev",
+    "deploy": "python3 ../scripts/prepare_cloudflare_bundle.py && cf deploy"
+  },
+  "devDependencies": {
+    "cf": "1.0.0-beta.18",
+    "wrangler": "4.151.2"
+  }
+}

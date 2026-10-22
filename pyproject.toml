@@ -1,0 +1,38 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "norn-machine"
+version = "0.8.0"
+description = "An offline-first image-selection experience with deterministic context assembly"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+dependencies = []
+
+[project.optional-dependencies]
+bedrock = ["boto3>=1.34,<2"]
+assets = ["Pillow>=10,<13"]
+eval = ["numpy>=1.24,<3"]
+dev = ["pytest>=7,<10", "build>=1,<2"]
+
+[project.scripts]
+norn = "norn.cli:main"
+
+[tool.setuptools]
+packages = ["norn", "norn.engine", "norn.web"]
+include-package-data = false
+
+[tool.setuptools.package-dir]
+"norn.engine" = "the-norn-machine/backend"
+"norn.web" = "the-norn-machine/frontend"
+
+[tool.setuptools.package-data]
+"norn.engine" = ["config/*.json", "config/prompts/*.json", "config/decks/*.json"]
+"norn.web" = ["*.html", "*.css", "*.js", "*.mp3", "data/*.json", "data/decks/*.json", "assets/cards/*.webp",
+              "assets/probe/*.webp", "assets/decks/*/*.webp", "assets/decks/*/ATTRIBUTION.md"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests", "the-norn-machine/backend/tests"]
+pythonpath = ["."]

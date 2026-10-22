@@ -1,0 +1,42 @@
+{
+  "schema_version": "norn.partial-visit-check.v3",
+  "base": "http://127.0.0.1:18880",
+  "consent_version": "norn.consent.v4",
+  "deck": "pamela-v1@sha256:26134e1a8066b9064f4db22be7a0a97d79870947a4798092b9eff28503213b8c",
+  "model_calls": 0,
+  "checks": {
+    "health_ready": true,
+    "runtime_config": true,
+    "hosted_deck_version": true,
+    "archive_access": false
+  },
+  "scope": "Synthetic open-round checkpoint and empty-reading integration; no model-quality claim.",
+  "failure_type": "VerificationError",
+  "http_calls": [
+    {
+      "method": "GET",
+      "route": "/api/health",
+      "status": 200,
+      "response_bytes": 237
+    },
+    {
+      "method": "GET",
+      "route": "/runtime-config.js",
+      "status": 200,
+      "response_bytes": 162
+    },
+    {
+      "method": "GET",
+      "route": "/data/decks/pamela-v1.json",
+      "status": 200,
+      "response_bytes": 54174
+    },
+    {
+      "method": "GET",
+      "route": "/api/archive/export",
+      "status": 404,
+      "response_bytes": 28
+    }
+  ],
+  "passed": false
+}

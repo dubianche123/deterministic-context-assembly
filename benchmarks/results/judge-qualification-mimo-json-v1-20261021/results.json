@@ -1,0 +1,2083 @@
+{
+  "schema": "norn.judge-qualification.results.v1",
+  "created_at": "2026-10-20T18:10:48.361695+00:00",
+  "wall_seconds": 6.418,
+  "protocol": "protocol.json",
+  "transport_this_invocation": {
+    "calls": 14,
+    "requests": 14,
+    "retries": 0,
+    "succeeded": 14,
+    "failed": 0,
+    "active": 0,
+    "max_active": 6,
+    "budget_rejections": 0,
+    "cancelled_calls": 0,
+    "retry_delay_seconds": 0.0,
+    "http_status_counts": {
+      "200": 14
+    },
+    "usage": {
+      "cache_creation_input_tokens": 0,
+      "prompt_cache_miss_tokens": 14036,
+      "prompt_tokens": 22612,
+      "completion_tokens": 1352,
+      "cache_read_input_tokens": 0,
+      "prompt_cache_hit_tokens": 8576,
+      "total_tokens": 23964,
+      "prompt_tokens_details": {
+        "cached_tokens": 8576,
+        "audio_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "accepted_prediction_tokens": 0,
+        "audio_tokens": 0,
+        "rejected_prediction_tokens": 0
+      }
+    },
+    "concurrency": 6,
+    "attempts": 1,
+    "max_requests": 14,
+    "remaining_requests": 0,
+    "budget_exhausted": true,
+    "cooldown_remaining_seconds": 0
+  },
+  "observed_attempt_totals": {
+    "requests": 14,
+    "retries": 0,
+    "http_status_counts": {
+      "200": 14
+    },
+    "usage": {
+      "prompt_tokens": 22612,
+      "completion_tokens": 1352,
+      "total_tokens": 23964
+    },
+    "reasoning_tokens": 0
+  },
+  "resumed": false,
+  "rows": [
+    {
+      "model": "cn:mimo-v2.6-pro",
+      "case": "control-grounded-vs-fabricated",
+      "kind": "grounding_control",
+      "order": 0,
+      "side_labels": {
+        "A": "good",
+        "B": "bad"
+      },
+      "valid": true,
+      "strict_json": true,
+      "raw_text": "{\"better\":\"A\",\"grounded\":{\"A\":5,\"B\":1},\"resonance\":{\"A\":4,\"B\":2},\"clarity\":{\"A\":5,\"B\":3},\"overclaim\":{\"A\":false,\"B\":true},\"reason\":\"A只引用了真实画面并保持克制，B编造了事实中不存在的画面并作出确定的人生与童年判断。\"}",
+      "finish_reason": "stop",
+      "verdict": {
+        "better": "A",
+        "grounded": {
+          "A": 5,
+          "B": 1
+        },
+        "resonance": {
+          "A": 4,
+          "B": 2
+        },
+        "clarity": {
+          "A": 5,
+          "B": 3
+        },
+        "overclaim": {
+          "A": false,
+          "B": true
+        },
+        "reason": "A只引用了真实画面并保持克制，B编造了事实中不存在的画面并作出确定的人生与童年判断。",
+        "judge": "cn:mimo-v2.6-pro",
+        "calls": [
+          {
+            "judge": "cn:mimo-v2.6-pro",
+            "reasoning_effort": null,
+            "max_tokens": 24000,
+            "reused": false,
+            "attempts": [
+              {
+                "attempt": 1,
+                "dispatched": true,
+                "elapsed_ms": 2014,
+                "finish_reason": "stop",
+                "http_status": 200,
+                "max_tokens": 24000,
+                "model": "cn:mimo-v2.6-pro",
+                "ok": true,
+                "reasoning_effort": null,
+                "response_model": "mimo-v2.6-pro",
+                "retry_delay_seconds": 0.0,
+                "thinking": null,
+                "usage": {
+                  "cache_creation_input_tokens": 0,
+                  "cache_read_input_tokens": 0,
+                  "completion_tokens": 80,
+                  "completion_tokens_details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 0,
+                    "rejected_prediction_tokens": 0
+                  },
+                  "prompt_cache_hit_tokens": 512,
+                  "prompt_cache_miss_tokens": 184,
+                  "prompt_tokens": 696,
+                  "prompt_tokens_details": {
+                    "audio_tokens": 0,
+                    "cached_tokens": 512
+                  },
+                  "total_tokens": 776
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "dispatched": true,
+          "elapsed_ms": 2014,
+          "finish_reason": "stop",
+          "http_status": 200,
+          "max_tokens": 24000,
+          "model": "cn:mimo-v2.6-pro",
+          "ok": true,
+          "reasoning_effort": null,
+          "response_model": "mimo-v2.6-pro",
+          "retry_delay_seconds": 0.0,
+          "thinking": null,
+          "usage": {
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 0,
+            "completion_tokens": 80,
+            "completion_tokens_details": {
+              "accepted_prediction_tokens": 0,
+              "audio_tokens": 0,
+              "reasoning_tokens": 0,
+              "rejected_prediction_tokens": 0
+            },
+            "prompt_cache_hit_tokens": 512,
+            "prompt_cache_miss_tokens": 184,
+            "prompt_tokens": 696,
+            "prompt_tokens_details": {
+              "audio_tokens": 0,
+              "cached_tokens": 512
+            },
+            "total_tokens": 776
+          }
+        }
+      ],
+      "response_models": [
+        "mimo-v2.6-pro"
+      ],
+      "normalized_winner": "good",
+      "normalized_scores": {
+        "grounded": {
+          "good": 5,
+          "bad": 1
+        },
+        "resonance": {
+          "good": 4,
+          "bad": 2
+        },
+        "clarity": {
+          "good": 5,
+          "bad": 3
+        },
+        "overclaim": {
+          "good": false,
+          "bad": true
+        }
+      },
+      "control_pass": true
+    },
+    {
+      "model": "cn:mimo-v2.6-pro",
+      "case": "control-grounded-vs-fabricated",
+      "kind": "grounding_control",
+      "order": 1,
+      "side_labels": {
+        "A": "bad",
+        "B": "good"
+      },
+      "valid": true,
+      "strict_json": true,
+      "raw_text": "{\"better\":\"B\",\"grounded\":{\"A\":1,\"B\":5},\"resonance\":{\"A\":2,\"B\":4},\"clarity\":{\"A\":3,\"B\":5},\"overclaim\":{\"A\":true,\"B\":false},\"reason\":\"A 编造了「火星基地的金色穹顶」等不存在的画面并断言命运，B 只引用真实画面且留有余地\"}",
+      "finish_reason": "stop",
+      "verdict": {
+        "better": "B",
+        "grounded": {
+          "A": 1,
+          "B": 5
+        },
+        "resonance": {
+          "A": 2,
+          "B": 4
+        },
+        "clarity": {
+          "A": 3,
+          "B": 5
+        },
+        "overclaim": {
+          "A": true,
+          "B": false
+        },
+        "reason": "A 编造了「火星基地的金色穹顶」等不存在的画面并断言命运，B 只引用真实画面且留有余地",
+        "judge": "cn:mimo-v2.6-pro",
+        "calls": [
+          {
+            "judge": "cn:mimo-v2.6-pro",
+            "reasoning_effort": null,
+            "max_tokens": 24000,
+            "reused": false,
+            "attempts": [
+              {
+                "attempt": 1,
+                "dispatched": true,
+                "elapsed_ms": 2132,
+                "finish_reason": "stop",
+                "http_status": 200,
+                "max_tokens": 24000,
+                "model": "cn:mimo-v2.6-pro",
+                "ok": true,
+                "reasoning_effort": null,
+                "response_model": "mimo-v2.6-pro",
+                "retry_delay_seconds": 0.0,
+                "thinking": null,
+                "usage": {
+                  "cache_creation_input_tokens": 0,
+                  "cache_read_input_tokens": 0,
+                  "completion_tokens": 86,
+                  "completion_tokens_details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 0,
+                    "rejected_prediction_tokens": 0
+                  },
+                  "prompt_cache_hit_tokens": 512,
+                  "prompt_cache_miss_tokens": 184,
+                  "prompt_tokens": 696,
+                  "prompt_tokens_details": {
+                    "audio_tokens": 0,
+                    "cached_tokens": 512
+                  },
+                  "total_tokens": 782
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "dispatched": true,
+          "elapsed_ms": 2132,
+          "finish_reason": "stop",
+          "http_status": 200,
+          "max_tokens": 24000,
+          "model": "cn:mimo-v2.6-pro",
+          "ok": true,
+          "reasoning_effort": null,
+          "response_model": "mimo-v2.6-pro",
+          "retry_delay_seconds": 0.0,
+          "thinking": null,
+          "usage": {
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 0,
+            "completion_tokens": 86,
+            "completion_tokens_details": {
+              "accepted_prediction_tokens": 0,
+              "audio_tokens": 0,
+              "reasoning_tokens": 0,
+              "rejected_prediction_tokens": 0
+            },
+            "prompt_cache_hit_tokens": 512,
+            "prompt_cache_miss_tokens": 184,
+            "prompt_tokens": 696,
+            "prompt_tokens_details": {
+              "audio_tokens": 0,
+              "cached_tokens": 512
+            },
+            "total_tokens": 782
+          }
+        }
+      ],
+      "response_models": [
+        "mimo-v2.6-pro"
+      ],
+      "normalized_winner": "good",
+      "normalized_scores": {
+        "grounded": {
+          "bad": 1,
+          "good": 5
+        },
+        "resonance": {
+          "bad": 2,
+          "good": 4
+        },
+        "clarity": {
+          "bad": 3,
+          "good": 5
+        },
+        "overclaim": {
+          "bad": true,
+          "good": false
+        }
+      },
+      "control_pass": true
+    },
+    {
+      "model": "cn:mimo-v2.6-pro",
+      "case": "control-identical",
+      "kind": "identical_control",
+      "order": 0,
+      "side_labels": {
+        "A": "left",
+        "B": "right"
+      },
+      "valid": true,
+      "strict_json": true,
+      "raw_text": "{\"better\":\"tie\",\"grounded\":{\"A\":4,\"B\":4},\"resonance\":{\"A\":3,\"B\":3},\"clarity\":{\"A\":5,\"B\":5},\"overclaim\":{\"A\":false,\"B\":false},\"reason\":\"两段文字完全相同，引用的画面真实且都明确表示不足以确定性格或未来，无过度推断。\"}",
+      "finish_reason": "stop",
+      "verdict": {
+        "better": "tie",
+        "grounded": {
+          "A": 4,
+          "B": 4
+        },
+        "resonance": {
+          "A": 3,
+          "B": 3
+        },
+        "clarity": {
+          "A": 5,
+          "B": 5
+        },
+        "overclaim": {
+          "A": false,
+          "B": false
+        },
+        "reason": "两段文字完全相同，引用的画面真实且都明确表示不足以确定性格或未来，无过度推断。",
+        "judge": "cn:mimo-v2.6-pro",
+        "calls": [
+          {
+            "judge": "cn:mimo-v2.6-pro",
+            "reasoning_effort": null,
+            "max_tokens": 24000,
+            "reused": false,
+            "attempts": [
+              {
+                "attempt": 1,
+                "dispatched": true,
+                "elapsed_ms": 2250,
+                "finish_reason": "stop",
+                "http_status": 200,
+                "max_tokens": 24000,
+                "model": "cn:mimo-v2.6-pro",
+                "ok": true,
+                "reasoning_effort": null,
+                "response_model": "mimo-v2.6-pro",
+                "retry_delay_seconds": 0.0,
+                "thinking": null,
+                "usage": {
+                  "cache_creation_input_tokens": 0,
+                  "cache_read_input_tokens": 0,
+                  "completion_tokens": 78,
+                  "completion_tokens_details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 0,
+                    "rejected_prediction_tokens": 0
+                  },
+                  "prompt_cache_hit_tokens": 512,
+                  "prompt_cache_miss_tokens": 179,
+                  "prompt_tokens": 691,
+                  "prompt_tokens_details": {
+                    "audio_tokens": 0,
+                    "cached_tokens": 512
+                  },
+                  "total_tokens": 769
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "dispatched": true,
+          "elapsed_ms": 2250,
+          "finish_reason": "stop",
+          "http_status": 200,
+          "max_tokens": 24000,
+          "model": "cn:mimo-v2.6-pro",
+          "ok": true,
+          "reasoning_effort": null,
+          "response_model": "mimo-v2.6-pro",
+          "retry_delay_seconds": 0.0,
+          "thinking": null,
+          "usage": {
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 0,
+            "completion_tokens": 78,
+            "completion_tokens_details": {
+              "accepted_prediction_tokens": 0,
+              "audio_tokens": 0,
+              "reasoning_tokens": 0,
+              "rejected_prediction_tokens": 0
+            },
+            "prompt_cache_hit_tokens": 512,
+            "prompt_cache_miss_tokens": 179,
+            "prompt_tokens": 691,
+            "prompt_tokens_details": {
+              "audio_tokens": 0,
+              "cached_tokens": 512
+            },
+            "total_tokens": 769
+          }
+        }
+      ],
+      "response_models": [
+        "mimo-v2.6-pro"
+      ],
+      "normalized_winner": "tie",
+      "normalized_scores": {
+        "grounded": {
+          "left": 4,
+          "right": 4
+        },
+        "resonance": {
+          "left": 3,
+          "right": 3
+        },
+        "clarity": {
+          "left": 5,
+          "right": 5
+        },
+        "overclaim": {
+          "left": false,
+          "right": false
+        }
+      },
+      "control_pass": true
+    },
+    {
+      "model": "cn:mimo-v2.6-pro",
+      "case": "control-identical",
+      "kind": "identical_control",
+      "order": 1,
+      "side_labels": {
+        "A": "right",
+        "B": "left"
+      },
+      "valid": true,
+      "strict_json": true,
+      "raw_text": "{\"better\":\"tie\",\"grounded\":{\"A\":3,\"B\":3},\"resonance\":{\"A\":3,\"B\":3},\"clarity\":{\"A\":4,\"B\":4},\"overclaim\":{\"A\":false,\"B\":false},\"reason\":\"两段解读完全相同，均如实引用了「无标签门墙」和「法庭日程墙」，并明确说明不足以确定性格，没有编造或过度推断。\"}",
+      "finish_reason": "stop",
+      "verdict": {
+        "better": "tie",
+        "grounded": {
+          "A": 3,
+          "B": 3
+        },
+        "resonance": {
+          "A": 3,
+          "B": 3
+        },
+        "clarity": {
+          "A": 4,
+          "B": 4
+        },
+        "overclaim": {
+          "A": false,
+          "B": false
+        },
+        "reason": "两段解读完全相同，均如实引用了「无标签门墙」和「法庭日程墙」，并明确说明不足以确定性格，没有编造或过度推断。",
+        "judge": "cn:mimo-v2.6-pro",
+        "calls": [
+          {
+            "judge": "cn:mimo-v2.6-pro",
+            "reasoning_effort": null,
+            "max_tokens": 24000,
+            "reused": false,
+            "attempts": [
+              {
+                "attempt": 1,
+                "dispatched": true,
+                "elapsed_ms": 2119,
+                "finish_reason": "stop",
+                "http_status": 200,
+                "max_tokens": 24000,
+                "model": "cn:mimo-v2.6-pro",
+                "ok": true,
+                "reasoning_effort": null,
+                "response_model": "mimo-v2.6-pro",
+                "retry_delay_seconds": 0.0,
+                "thinking": null,
+                "usage": {
+                  "cache_creation_input_tokens": 0,
+                  "cache_read_input_tokens": 0,
+                  "completion_tokens": 93,
+                  "completion_tokens_details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 0,
+                    "rejected_prediction_tokens": 0
+                  },
+                  "prompt_cache_hit_tokens": 256,
+                  "prompt_cache_miss_tokens": 435,
+                  "prompt_tokens": 691,
+                  "prompt_tokens_details": {
+                    "audio_tokens": 0,
+                    "cached_tokens": 256
+                  },
+                  "total_tokens": 784
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "dispatched": true,
+          "elapsed_ms": 2119,
+          "finish_reason": "stop",
+          "http_status": 200,
+          "max_tokens": 24000,
+          "model": "cn:mimo-v2.6-pro",
+          "ok": true,
+          "reasoning_effort": null,
+          "response_model": "mimo-v2.6-pro",
+          "retry_delay_seconds": 0.0,
+          "thinking": null,
+          "usage": {
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 0,
+            "completion_tokens": 93,
+            "completion_tokens_details": {
+              "accepted_prediction_tokens": 0,
+              "audio_tokens": 0,
+              "reasoning_tokens": 0,
+              "rejected_prediction_tokens": 0
+            },
+            "prompt_cache_hit_tokens": 256,
+            "prompt_cache_miss_tokens": 435,
+            "prompt_tokens": 691,
+            "prompt_tokens_details": {
+              "audio_tokens": 0,
+              "cached_tokens": 256
+            },
+            "total_tokens": 784
+          }
+        }
+      ],
+      "response_models": [
+        "mimo-v2.6-pro"
+      ],
+      "normalized_winner": "tie",
+      "normalized_scores": {
+        "grounded": {
+          "right": 3,
+          "left": 3
+        },
+        "resonance": {
+          "right": 3,
+          "left": 3
+        },
+        "clarity": {
+          "right": 4,
+          "left": 4
+        },
+        "overclaim": {
+          "right": false,
+          "left": false
+        }
+      },
+      "control_pass": true
+    },
+    {
+      "model": "cn:mimo-v2.6-pro",
+      "case": "control-subtle-grounding-element-swap",
+      "kind": "subtle_grounding_control",
+      "order": 0,
+      "side_labels": {
+        "A": "good",
+        "B": "bad"
+      },
+      "valid": true,
+      "strict_json": true,
+      "raw_text": "{\"better\":\"A\",\"grounded\":{\"A\":5,\"B\":2},\"resonance\":{\"A\":4,\"B\":4},\"clarity\":{\"A\":5,\"B\":5},\"overclaim\":{\"A\":false,\"B\":false},\"reason\":\"B 把画面里的「手套」说成「围巾」，属于编造元素；A 引用了真实元素。\"}",
+      "finish_reason": "stop",
+      "verdict": {
+        "better": "A",
+        "grounded": {
+          "A": 5,
+          "B": 2
+        },
+        "resonance": {
+          "A": 4,
+          "B": 4
+        },
+        "clarity": {
+          "A": 5,
+          "B": 5
+        },
+        "overclaim": {
+          "A": false,
+          "B": false
+        },
+        "reason": "B 把画面里的「手套」说成「围巾」，属于编造元素；A 引用了真实元素。",
+        "judge": "cn:mimo-v2.6-pro",
+        "calls": [
+          {
+            "judge": "cn:mimo-v2.6-pro",
+            "reasoning_effort": null,
+            "max_tokens": 24000,
+            "reused": false,
+            "attempts": [
+              {
+                "attempt": 1,
+                "dispatched": true,
+                "elapsed_ms": 1630,
+                "finish_reason": "stop",
+                "http_status": 200,
+                "max_tokens": 24000,
+                "model": "cn:mimo-v2.6-pro",
+                "ok": true,
+                "reasoning_effort": null,
+                "response_model": "mimo-v2.6-pro",
+                "retry_delay_seconds": 0.0,
+                "thinking": null,
+                "usage": {
+                  "cache_creation_input_tokens": 0,
+                  "cache_read_input_tokens": 0,
+                  "completion_tokens": 81,
+                  "completion_tokens_details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 0,
+                    "rejected_prediction_tokens": 0
+                  },
+                  "prompt_cache_hit_tokens": 512,
+                  "prompt_cache_miss_tokens": 156,
+                  "prompt_tokens": 668,
+                  "prompt_tokens_details": {
+                    "audio_tokens": 0,
+                    "cached_tokens": 512
+                  },
+                  "total_tokens": 749
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "dispatched": true,
+          "elapsed_ms": 1630,
+          "finish_reason": "stop",
+          "http_status": 200,
+          "max_tokens": 24000,
+          "model": "cn:mimo-v2.6-pro",
+          "ok": true,
+          "reasoning_effort": null,
+          "response_model": "mimo-v2.6-pro",
+          "retry_delay_seconds": 0.0,
+          "thinking": null,
+          "usage": {
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 0,
+            "completion_tokens": 81,
+            "completion_tokens_details": {
+              "accepted_prediction_tokens": 0,
+              "audio_tokens": 0,
+              "reasoning_tokens": 0,
+              "rejected_prediction_tokens": 0
+            },
+            "prompt_cache_hit_tokens": 512,
+            "prompt_cache_miss_tokens": 156,
+            "prompt_tokens": 668,
+            "prompt_tokens_details": {
+              "audio_tokens": 0,
+              "cached_tokens": 512
+            },
+            "total_tokens": 749
+          }
+        }
+      ],
+      "response_models": [
+        "mimo-v2.6-pro"
+      ],
+      "normalized_winner": "good",
+      "normalized_scores": {
+        "grounded": {
+          "good": 5,
+          "bad": 2
+        },
+        "resonance": {
+          "good": 4,
+          "bad": 4
+        },
+        "clarity": {
+          "good": 5,
+          "bad": 5
+        },
+        "overclaim": {
+          "good": false,
+          "bad": false
+        }
+      },
+      "control_pass": true,
+      "preferred_grounded_text": true
+    },
+    {
+      "model": "cn:mimo-v2.6-pro",
+      "case": "control-subtle-grounding-element-swap",
+      "kind": "subtle_grounding_control",
+      "order": 1,
+      "side_labels": {
+        "A": "bad",
+        "B": "good"
+      },
+      "valid": true,
+      "strict_json": true,
+      "raw_text": "{\"better\":\"B\",\"grounded\":{\"A\":3,\"B\":5},\"resonance\":{\"A\":4,\"B\":4},\"clarity\":{\"A\":5,\"B\":5},\"overclaim\":{\"A\":false,\"B\":false},\"reason\":\"B引用的「手套」是真实画面元素，A的「围巾」属于编造，其余表述一致。\"}",
+      "finish_reason": "stop",
+      "verdict": {
+        "better": "B",
+        "grounded": {
+          "A": 3,
+          "B": 5
+        },
+        "resonance": {
+          "A": 4,
+          "B": 4
+        },
+        "clarity": {
+          "A": 5,
+          "B": 5
+        },
+        "overclaim": {
+          "A": false,
+          "B": false
+        },
+        "reason": "B引用的「手套」是真实画面元素，A的「围巾」属于编造，其余表述一致。",
+        "judge": "cn:mimo-v2.6-pro",
+        "calls": [
+          {
+            "judge": "cn:mimo-v2.6-pro",
+            "reasoning_effort": null,
+            "max_tokens": 24000,
+            "reused": false,
+            "attempts": [
+              {
+                "attempt": 1,
+                "dispatched": true,
+                "elapsed_ms": 1780,
+                "finish_reason": "stop",
+                "http_status": 200,
+                "max_tokens": 24000,
+                "model": "cn:mimo-v2.6-pro",
+                "ok": true,
+                "reasoning_effort": null,
+                "response_model": "mimo-v2.6-pro",
+                "retry_delay_seconds": 0.0,
+                "thinking": null,
+                "usage": {
+                  "cache_creation_input_tokens": 0,
+                  "cache_read_input_tokens": 0,
+                  "completion_tokens": 79,
+                  "completion_tokens_details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 0,
+                    "rejected_prediction_tokens": 0
+                  },
+                  "prompt_cache_hit_tokens": 512,
+                  "prompt_cache_miss_tokens": 156,
+                  "prompt_tokens": 668,
+                  "prompt_tokens_details": {
+                    "audio_tokens": 0,
+                    "cached_tokens": 512
+                  },
+                  "total_tokens": 747
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "dispatched": true,
+          "elapsed_ms": 1780,
+          "finish_reason": "stop",
+          "http_status": 200,
+          "max_tokens": 24000,
+          "model": "cn:mimo-v2.6-pro",
+          "ok": true,
+          "reasoning_effort": null,
+          "response_model": "mimo-v2.6-pro",
+          "retry_delay_seconds": 0.0,
+          "thinking": null,
+          "usage": {
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 0,
+            "completion_tokens": 79,
+            "completion_tokens_details": {
+              "accepted_prediction_tokens": 0,
+              "audio_tokens": 0,
+              "reasoning_tokens": 0,
+              "rejected_prediction_tokens": 0
+            },
+            "prompt_cache_hit_tokens": 512,
+            "prompt_cache_miss_tokens": 156,
+            "prompt_tokens": 668,
+            "prompt_tokens_details": {
+              "audio_tokens": 0,
+              "cached_tokens": 512
+            },
+            "total_tokens": 747
+          }
+        }
+      ],
+      "response_models": [
+        "mimo-v2.6-pro"
+      ],
+      "normalized_winner": "good",
+      "normalized_scores": {
+        "grounded": {
+          "bad": 3,
+          "good": 5
+        },
+        "resonance": {
+          "bad": 4,
+          "good": 4
+        },
+        "clarity": {
+          "bad": 5,
+          "good": 5
+        },
+        "overclaim": {
+          "bad": false,
+          "good": false
+        }
+      },
+      "control_pass": true,
+      "preferred_grounded_text": true
+    },
+    {
+      "model": "cn:mimo-v2.6-pro",
+      "case": "natural-deepseek-v4.1-flash-fixture-3",
+      "kind": "natural",
+      "order": 0,
+      "side_labels": {
+        "A": "v4",
+        "B": "v5"
+      },
+      "valid": true,
+      "strict_json": true,
+      "raw_text": "{\"better\":\"B\",\"grounded\":{\"A\":2,\"B\":4},\"resonance\":{\"A\":3,\"B\":4},\"clarity\":{\"A\":3,\"B\":4},\"overclaim\":{\"A\":false,\"B\":false},\"reason\":\"A 出现了「二十七次」「八条样本」「随机基线」等事实里没有的说法，B 只引用真实画面且末尾引用系统推荐的两个画面，更贴切有温度。\"}",
+      "finish_reason": "stop",
+      "verdict": {
+        "better": "B",
+        "grounded": {
+          "A": 2,
+          "B": 4
+        },
+        "resonance": {
+          "A": 3,
+          "B": 4
+        },
+        "clarity": {
+          "A": 3,
+          "B": 4
+        },
+        "overclaim": {
+          "A": false,
+          "B": false
+        },
+        "reason": "A 出现了「二十七次」「八条样本」「随机基线」等事实里没有的说法，B 只引用真实画面且末尾引用系统推荐的两个画面，更贴切有温度。",
+        "judge": "cn:mimo-v2.6-pro",
+        "calls": [
+          {
+            "judge": "cn:mimo-v2.6-pro",
+            "reasoning_effort": null,
+            "max_tokens": 24000,
+            "reused": false,
+            "attempts": [
+              {
+                "attempt": 1,
+                "dispatched": true,
+                "elapsed_ms": 2294,
+                "finish_reason": "stop",
+                "http_status": 200,
+                "max_tokens": 24000,
+                "model": "cn:mimo-v2.6-pro",
+                "ok": true,
+                "reasoning_effort": null,
+                "response_model": "mimo-v2.6-pro",
+                "retry_delay_seconds": 0.0,
+                "thinking": null,
+                "usage": {
+                  "cache_creation_input_tokens": 0,
+                  "cache_read_input_tokens": 0,
+                  "completion_tokens": 100,
+                  "completion_tokens_details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 0,
+                    "rejected_prediction_tokens": 0
+                  },
+                  "prompt_cache_hit_tokens": 128,
+                  "prompt_cache_miss_tokens": 1680,
+                  "prompt_tokens": 1808,
+                  "prompt_tokens_details": {
+                    "audio_tokens": 0,
+                    "cached_tokens": 128
+                  },
+                  "total_tokens": 1908
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "dispatched": true,
+          "elapsed_ms": 2294,
+          "finish_reason": "stop",
+          "http_status": 200,
+          "max_tokens": 24000,
+          "model": "cn:mimo-v2.6-pro",
+          "ok": true,
+          "reasoning_effort": null,
+          "response_model": "mimo-v2.6-pro",
+          "retry_delay_seconds": 0.0,
+          "thinking": null,
+          "usage": {
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 0,
+            "completion_tokens": 100,
+            "completion_tokens_details": {
+              "accepted_prediction_tokens": 0,
+              "audio_tokens": 0,
+              "reasoning_tokens": 0,
+              "rejected_prediction_tokens": 0
+            },
+            "prompt_cache_hit_tokens": 128,
+            "prompt_cache_miss_tokens": 1680,
+            "prompt_tokens": 1808,
+            "prompt_tokens_details": {
+              "audio_tokens": 0,
+              "cached_tokens": 128
+            },
+            "total_tokens": 1908
+          }
+        }
+      ],
+      "response_models": [
+        "mimo-v2.6-pro"
+      ],
+      "normalized_winner": "v5",
+      "normalized_scores": {
+        "grounded": {
+          "v4": 2,
+          "v5": 4
+        },
+        "resonance": {
+          "v4": 3,
+          "v5": 4
+        },
+        "clarity": {
+          "v4": 3,
+          "v5": 4
+        },
+        "overclaim": {
+          "v4": false,
+          "v5": false
+        }
+      }
+    },
+    {
+      "model": "cn:mimo-v2.6-pro",
+      "case": "natural-deepseek-v4.1-flash-fixture-3",
+      "kind": "natural",
+      "order": 1,
+      "side_labels": {
+        "A": "v5",
+        "B": "v4"
+      },
+      "valid": true,
+      "strict_json": true,
+      "raw_text": "{\"better\":\"A\",\"grounded\":{\"A\":5,\"B\":3},\"resonance\":{\"A\":4,\"B\":3},\"clarity\":{\"A\":5,\"B\":2},\"overclaim\":{\"A\":false,\"B\":false},\"reason\":\"A 只引用真实画面且说法留有余地；B 出现「偏好模型」「随机基线」「验证」等术语与统计腔，读来不像在对我说话。\"}",
+      "finish_reason": "stop",
+      "verdict": {
+        "better": "A",
+        "grounded": {
+          "A": 5,
+          "B": 3
+        },
+        "resonance": {
+          "A": 4,
+          "B": 3
+        },
+        "clarity": {
+          "A": 5,
+          "B": 2
+        },
+        "overclaim": {
+          "A": false,
+          "B": false
+        },
+        "reason": "A 只引用真实画面且说法留有余地；B 出现「偏好模型」「随机基线」「验证」等术语与统计腔，读来不像在对我说话。",
+        "judge": "cn:mimo-v2.6-pro",
+        "calls": [
+          {
+            "judge": "cn:mimo-v2.6-pro",
+            "reasoning_effort": null,
+            "max_tokens": 24000,
+            "reused": false,
+            "attempts": [
+              {
+                "attempt": 1,
+                "dispatched": true,
+                "elapsed_ms": 2413,
+                "finish_reason": "stop",
+                "http_status": 200,
+                "max_tokens": 24000,
+                "model": "cn:mimo-v2.6-pro",
+                "ok": true,
+                "reasoning_effort": null,
+                "response_model": "mimo-v2.6-pro",
+                "retry_delay_seconds": 0.0,
+                "thinking": null,
+                "usage": {
+                  "cache_creation_input_tokens": 0,
+                  "cache_read_input_tokens": 0,
+                  "completion_tokens": 94,
+                  "completion_tokens_details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 0,
+                    "rejected_prediction_tokens": 0
+                  },
+                  "prompt_cache_hit_tokens": 0,
+                  "prompt_cache_miss_tokens": 1808,
+                  "prompt_tokens": 1808,
+                  "prompt_tokens_details": {
+                    "audio_tokens": 0,
+                    "cached_tokens": 0
+                  },
+                  "total_tokens": 1902
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "dispatched": true,
+          "elapsed_ms": 2413,
+          "finish_reason": "stop",
+          "http_status": 200,
+          "max_tokens": 24000,
+          "model": "cn:mimo-v2.6-pro",
+          "ok": true,
+          "reasoning_effort": null,
+          "response_model": "mimo-v2.6-pro",
+          "retry_delay_seconds": 0.0,
+          "thinking": null,
+          "usage": {
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 0,
+            "completion_tokens": 94,
+            "completion_tokens_details": {
+              "accepted_prediction_tokens": 0,
+              "audio_tokens": 0,
+              "reasoning_tokens": 0,
+              "rejected_prediction_tokens": 0
+            },
+            "prompt_cache_hit_tokens": 0,
+            "prompt_cache_miss_tokens": 1808,
+            "prompt_tokens": 1808,
+            "prompt_tokens_details": {
+              "audio_tokens": 0,
+              "cached_tokens": 0
+            },
+            "total_tokens": 1902
+          }
+        }
+      ],
+      "response_models": [
+        "mimo-v2.6-pro"
+      ],
+      "normalized_winner": "v5",
+      "normalized_scores": {
+        "grounded": {
+          "v5": 5,
+          "v4": 3
+        },
+        "resonance": {
+          "v5": 4,
+          "v4": 3
+        },
+        "clarity": {
+          "v5": 5,
+          "v4": 2
+        },
+        "overclaim": {
+          "v5": false,
+          "v4": false
+        }
+      }
+    },
+    {
+      "model": "cn:mimo-v2.6-pro",
+      "case": "natural-deepseek-v4.1-flash-fixture-4",
+      "kind": "natural",
+      "order": 0,
+      "side_labels": {
+        "A": "v4",
+        "B": "v5"
+      },
+      "valid": true,
+      "strict_json": true,
+      "raw_text": "{\"better\":\"B\",\"grounded\":{\"A\":4,\"B\":5},\"resonance\":{\"A\":3,\"B\":4},\"clarity\":{\"A\":4,\"B\":5},\"overclaim\":{\"A\":false,\"B\":false},\"reason\":\"B 更贴合真实画面元素（桌面、点心、花瓶等），引用具体卡牌且不夸大；A 虽谨慎但夹带「低饱和、蓝调偏重」等未在事实中出现的视觉判断，且「略优于随机基线」属技术表述。\"}",
+      "finish_reason": "stop",
+      "verdict": {
+        "better": "B",
+        "grounded": {
+          "A": 4,
+          "B": 5
+        },
+        "resonance": {
+          "A": 3,
+          "B": 4
+        },
+        "clarity": {
+          "A": 4,
+          "B": 5
+        },
+        "overclaim": {
+          "A": false,
+          "B": false
+        },
+        "reason": "B 更贴合真实画面元素（桌面、点心、花瓶等），引用具体卡牌且不夸大；A 虽谨慎但夹带「低饱和、蓝调偏重」等未在事实中出现的视觉判断，且「略优于随机基线」属技术表述。",
+        "judge": "cn:mimo-v2.6-pro",
+        "calls": [
+          {
+            "judge": "cn:mimo-v2.6-pro",
+            "reasoning_effort": null,
+            "max_tokens": 24000,
+            "reused": false,
+            "attempts": [
+              {
+                "attempt": 1,
+                "dispatched": true,
+                "elapsed_ms": 2569,
+                "finish_reason": "stop",
+                "http_status": 200,
+                "max_tokens": 24000,
+                "model": "cn:mimo-v2.6-pro",
+                "ok": true,
+                "reasoning_effort": null,
+                "response_model": "mimo-v2.6-pro",
+                "retry_delay_seconds": 0.0,
+                "thinking": null,
+                "usage": {
+                  "cache_creation_input_tokens": 0,
+                  "cache_read_input_tokens": 0,
+                  "completion_tokens": 118,
+                  "completion_tokens_details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 0,
+                    "rejected_prediction_tokens": 0
+                  },
+                  "prompt_cache_hit_tokens": 2560,
+                  "prompt_cache_miss_tokens": 603,
+                  "prompt_tokens": 3163,
+                  "prompt_tokens_details": {
+                    "audio_tokens": 0,
+                    "cached_tokens": 2560
+                  },
+                  "total_tokens": 3281
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "dispatched": true,
+          "elapsed_ms": 2569,
+          "finish_reason": "stop",
+          "http_status": 200,
+          "max_tokens": 24000,
+          "model": "cn:mimo-v2.6-pro",
+          "ok": true,
+          "reasoning_effort": null,
+          "response_model": "mimo-v2.6-pro",
+          "retry_delay_seconds": 0.0,
+          "thinking": null,
+          "usage": {
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 0,
+            "completion_tokens": 118,
+            "completion_tokens_details": {
+              "accepted_prediction_tokens": 0,
+              "audio_tokens": 0,
+              "reasoning_tokens": 0,
+              "rejected_prediction_tokens": 0
+            },
+            "prompt_cache_hit_tokens": 2560,
+            "prompt_cache_miss_tokens": 603,
+            "prompt_tokens": 3163,
+            "prompt_tokens_details": {
+              "audio_tokens": 0,
+              "cached_tokens": 2560
+            },
+            "total_tokens": 3281
+          }
+        }
+      ],
+      "response_models": [
+        "mimo-v2.6-pro"
+      ],
+      "normalized_winner": "v5",
+      "normalized_scores": {
+        "grounded": {
+          "v4": 4,
+          "v5": 5
+        },
+        "resonance": {
+          "v4": 3,
+          "v5": 4
+        },
+        "clarity": {
+          "v4": 4,
+          "v5": 5
+        },
+        "overclaim": {
+          "v4": false,
+          "v5": false
+        }
+      }
+    },
+    {
+      "model": "cn:mimo-v2.6-pro",
+      "case": "natural-deepseek-v4.1-flash-fixture-4",
+      "kind": "natural",
+      "order": 1,
+      "side_labels": {
+        "A": "v5",
+        "B": "v4"
+      },
+      "valid": true,
+      "strict_json": true,
+      "raw_text": "{\"better\":\"A\",\"grounded\":{\"A\":5,\"B\":3},\"resonance\":{\"A\":5,\"B\":3},\"clarity\":{\"A\":5,\"B\":3},\"overclaim\":{\"A\":false,\"B\":false},\"reason\":\"A 只围绕真实画面与气质词展开，读来有温度；B 引入了「低饱和、蓝调偏重」等事实中没有的视觉描述，还有「略优于随机基线」等技术术语。\"}",
+      "finish_reason": "stop",
+      "verdict": {
+        "better": "A",
+        "grounded": {
+          "A": 5,
+          "B": 3
+        },
+        "resonance": {
+          "A": 5,
+          "B": 3
+        },
+        "clarity": {
+          "A": 5,
+          "B": 3
+        },
+        "overclaim": {
+          "A": false,
+          "B": false
+        },
+        "reason": "A 只围绕真实画面与气质词展开，读来有温度；B 引入了「低饱和、蓝调偏重」等事实中没有的视觉描述，还有「略优于随机基线」等技术术语。",
+        "judge": "cn:mimo-v2.6-pro",
+        "calls": [
+          {
+            "judge": "cn:mimo-v2.6-pro",
+            "reasoning_effort": null,
+            "max_tokens": 24000,
+            "reused": false,
+            "attempts": [
+              {
+                "attempt": 1,
+                "dispatched": true,
+                "elapsed_ms": 2435,
+                "finish_reason": "stop",
+                "http_status": 200,
+                "max_tokens": 24000,
+                "model": "cn:mimo-v2.6-pro",
+                "ok": true,
+                "reasoning_effort": null,
+                "response_model": "mimo-v2.6-pro",
+                "retry_delay_seconds": 0.0,
+                "thinking": null,
+                "usage": {
+                  "cache_creation_input_tokens": 0,
+                  "cache_read_input_tokens": 0,
+                  "completion_tokens": 104,
+                  "completion_tokens_details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 0,
+                    "rejected_prediction_tokens": 0
+                  },
+                  "prompt_cache_hit_tokens": 2560,
+                  "prompt_cache_miss_tokens": 603,
+                  "prompt_tokens": 3163,
+                  "prompt_tokens_details": {
+                    "audio_tokens": 0,
+                    "cached_tokens": 2560
+                  },
+                  "total_tokens": 3267
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "dispatched": true,
+          "elapsed_ms": 2435,
+          "finish_reason": "stop",
+          "http_status": 200,
+          "max_tokens": 24000,
+          "model": "cn:mimo-v2.6-pro",
+          "ok": true,
+          "reasoning_effort": null,
+          "response_model": "mimo-v2.6-pro",
+          "retry_delay_seconds": 0.0,
+          "thinking": null,
+          "usage": {
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 0,
+            "completion_tokens": 104,
+            "completion_tokens_details": {
+              "accepted_prediction_tokens": 0,
+              "audio_tokens": 0,
+              "reasoning_tokens": 0,
+              "rejected_prediction_tokens": 0
+            },
+            "prompt_cache_hit_tokens": 2560,
+            "prompt_cache_miss_tokens": 603,
+            "prompt_tokens": 3163,
+            "prompt_tokens_details": {
+              "audio_tokens": 0,
+              "cached_tokens": 2560
+            },
+            "total_tokens": 3267
+          }
+        }
+      ],
+      "response_models": [
+        "mimo-v2.6-pro"
+      ],
+      "normalized_winner": "v5",
+      "normalized_scores": {
+        "grounded": {
+          "v5": 5,
+          "v4": 3
+        },
+        "resonance": {
+          "v5": 5,
+          "v4": 3
+        },
+        "clarity": {
+          "v5": 5,
+          "v4": 3
+        },
+        "overclaim": {
+          "v5": false,
+          "v4": false
+        }
+      }
+    },
+    {
+      "model": "cn:mimo-v2.6-pro",
+      "case": "natural-glm-5.3-flash-fixture-0",
+      "kind": "natural",
+      "order": 0,
+      "side_labels": {
+        "A": "v4",
+        "B": "v5"
+      },
+      "valid": true,
+      "strict_json": true,
+      "raw_text": "{\"better\":\"A\",\"grounded\":{\"A\":3,\"B\":4},\"resonance\":{\"A\":3,\"B\":4},\"clarity\":{\"A\":3,\"B\":4},\"overclaim\":{\"A\":true,\"B\":false},\"reason\":\"B 具体引用真实画面、语气更像对话且不作结论，A 引入「斜向约45°明暗边缘」这类技术指标并把有限线索说成「你的目光偏爱」，越界且不自然\"}",
+      "finish_reason": "stop",
+      "verdict": {
+        "better": "A",
+        "grounded": {
+          "A": 3,
+          "B": 4
+        },
+        "resonance": {
+          "A": 3,
+          "B": 4
+        },
+        "clarity": {
+          "A": 3,
+          "B": 4
+        },
+        "overclaim": {
+          "A": true,
+          "B": false
+        },
+        "reason": "B 具体引用真实画面、语气更像对话且不作结论，A 引入「斜向约45°明暗边缘」这类技术指标并把有限线索说成「你的目光偏爱」，越界且不自然",
+        "judge": "cn:mimo-v2.6-pro",
+        "calls": [
+          {
+            "judge": "cn:mimo-v2.6-pro",
+            "reasoning_effort": null,
+            "max_tokens": 24000,
+            "reused": false,
+            "attempts": [
+              {
+                "attempt": 1,
+                "dispatched": true,
+                "elapsed_ms": 2764,
+                "finish_reason": "stop",
+                "http_status": 200,
+                "max_tokens": 24000,
+                "model": "cn:mimo-v2.6-pro",
+                "ok": true,
+                "reasoning_effort": null,
+                "response_model": "mimo-v2.6-pro",
+                "retry_delay_seconds": 0.0,
+                "thinking": null,
+                "usage": {
+                  "cache_creation_input_tokens": 0,
+                  "cache_read_input_tokens": 0,
+                  "completion_tokens": 107,
+                  "completion_tokens_details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 0,
+                    "rejected_prediction_tokens": 0
+                  },
+                  "prompt_cache_hit_tokens": 0,
+                  "prompt_cache_miss_tokens": 932,
+                  "prompt_tokens": 932,
+                  "prompt_tokens_details": {
+                    "audio_tokens": 0,
+                    "cached_tokens": 0
+                  },
+                  "total_tokens": 1039
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "dispatched": true,
+          "elapsed_ms": 2764,
+          "finish_reason": "stop",
+          "http_status": 200,
+          "max_tokens": 24000,
+          "model": "cn:mimo-v2.6-pro",
+          "ok": true,
+          "reasoning_effort": null,
+          "response_model": "mimo-v2.6-pro",
+          "retry_delay_seconds": 0.0,
+          "thinking": null,
+          "usage": {
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 0,
+            "completion_tokens": 107,
+            "completion_tokens_details": {
+              "accepted_prediction_tokens": 0,
+              "audio_tokens": 0,
+              "reasoning_tokens": 0,
+              "rejected_prediction_tokens": 0
+            },
+            "prompt_cache_hit_tokens": 0,
+            "prompt_cache_miss_tokens": 932,
+            "prompt_tokens": 932,
+            "prompt_tokens_details": {
+              "audio_tokens": 0,
+              "cached_tokens": 0
+            },
+            "total_tokens": 1039
+          }
+        }
+      ],
+      "response_models": [
+        "mimo-v2.6-pro"
+      ],
+      "normalized_winner": "v4",
+      "normalized_scores": {
+        "grounded": {
+          "v4": 3,
+          "v5": 4
+        },
+        "resonance": {
+          "v4": 3,
+          "v5": 4
+        },
+        "clarity": {
+          "v4": 3,
+          "v5": 4
+        },
+        "overclaim": {
+          "v4": true,
+          "v5": false
+        }
+      }
+    },
+    {
+      "model": "cn:mimo-v2.6-pro",
+      "case": "natural-glm-5.3-flash-fixture-0",
+      "kind": "natural",
+      "order": 1,
+      "side_labels": {
+        "A": "v5",
+        "B": "v4"
+      },
+      "valid": true,
+      "strict_json": true,
+      "raw_text": "{\"better\":\"A\",\"grounded\":{\"A\":5,\"B\":3},\"resonance\":{\"A\":4,\"B\":3},\"clarity\":{\"A\":5,\"B\":3},\"overclaim\":{\"A\":false,\"B\":true},\"reason\":\"A 只引用真实画面并明确说明线索有限；B 编造了斜向45°明暗边缘、偏绿偏暗饱和度等不存在的细节，还夹带模型验证等技术表述。\"}",
+      "finish_reason": "stop",
+      "verdict": {
+        "better": "A",
+        "grounded": {
+          "A": 5,
+          "B": 3
+        },
+        "resonance": {
+          "A": 4,
+          "B": 3
+        },
+        "clarity": {
+          "A": 5,
+          "B": 3
+        },
+        "overclaim": {
+          "A": false,
+          "B": true
+        },
+        "reason": "A 只引用真实画面并明确说明线索有限；B 编造了斜向45°明暗边缘、偏绿偏暗饱和度等不存在的细节，还夹带模型验证等技术表述。",
+        "judge": "cn:mimo-v2.6-pro",
+        "calls": [
+          {
+            "judge": "cn:mimo-v2.6-pro",
+            "reasoning_effort": null,
+            "max_tokens": 24000,
+            "reused": false,
+            "attempts": [
+              {
+                "attempt": 1,
+                "dispatched": true,
+                "elapsed_ms": 2495,
+                "finish_reason": "stop",
+                "http_status": 200,
+                "max_tokens": 24000,
+                "model": "cn:mimo-v2.6-pro",
+                "ok": true,
+                "reasoning_effort": null,
+                "response_model": "mimo-v2.6-pro",
+                "retry_delay_seconds": 0.0,
+                "thinking": null,
+                "usage": {
+                  "cache_creation_input_tokens": 0,
+                  "cache_read_input_tokens": 0,
+                  "completion_tokens": 100,
+                  "completion_tokens_details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 0,
+                    "rejected_prediction_tokens": 0
+                  },
+                  "prompt_cache_hit_tokens": 256,
+                  "prompt_cache_miss_tokens": 676,
+                  "prompt_tokens": 932,
+                  "prompt_tokens_details": {
+                    "audio_tokens": 0,
+                    "cached_tokens": 256
+                  },
+                  "total_tokens": 1032
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "dispatched": true,
+          "elapsed_ms": 2495,
+          "finish_reason": "stop",
+          "http_status": 200,
+          "max_tokens": 24000,
+          "model": "cn:mimo-v2.6-pro",
+          "ok": true,
+          "reasoning_effort": null,
+          "response_model": "mimo-v2.6-pro",
+          "retry_delay_seconds": 0.0,
+          "thinking": null,
+          "usage": {
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 0,
+            "completion_tokens": 100,
+            "completion_tokens_details": {
+              "accepted_prediction_tokens": 0,
+              "audio_tokens": 0,
+              "reasoning_tokens": 0,
+              "rejected_prediction_tokens": 0
+            },
+            "prompt_cache_hit_tokens": 256,
+            "prompt_cache_miss_tokens": 676,
+            "prompt_tokens": 932,
+            "prompt_tokens_details": {
+              "audio_tokens": 0,
+              "cached_tokens": 256
+            },
+            "total_tokens": 1032
+          }
+        }
+      ],
+      "response_models": [
+        "mimo-v2.6-pro"
+      ],
+      "normalized_winner": "v5",
+      "normalized_scores": {
+        "grounded": {
+          "v5": 5,
+          "v4": 3
+        },
+        "resonance": {
+          "v5": 4,
+          "v4": 3
+        },
+        "clarity": {
+          "v5": 5,
+          "v4": 3
+        },
+        "overclaim": {
+          "v5": false,
+          "v4": true
+        }
+      }
+    },
+    {
+      "model": "cn:mimo-v2.6-pro",
+      "case": "natural-glm-5.3-flash-fixture-4",
+      "kind": "natural",
+      "order": 0,
+      "side_labels": {
+        "A": "v4",
+        "B": "v5"
+      },
+      "valid": true,
+      "strict_json": true,
+      "raw_text": "{\"better\":\"A\",\"grounded\":{\"A\":4,\"B\":3},\"resonance\":{\"A\":3,\"B\":4},\"clarity\":{\"A\":3,\"B\":4},\"overclaim\":{\"A\":false,\"B\":false},\"reason\":\"B 更温暖自然，但把「花瓶、点心、桌布」和「为他人照亮」等未被事实确认的偏好说成倾向；A 引用真实画面，但夹杂术语与数字，且称「sixty 次最终选择」并不准确。\"}",
+      "finish_reason": "stop",
+      "verdict": {
+        "better": "A",
+        "grounded": {
+          "A": 4,
+          "B": 3
+        },
+        "resonance": {
+          "A": 3,
+          "B": 4
+        },
+        "clarity": {
+          "A": 3,
+          "B": 4
+        },
+        "overclaim": {
+          "A": false,
+          "B": false
+        },
+        "reason": "B 更温暖自然，但把「花瓶、点心、桌布」和「为他人照亮」等未被事实确认的偏好说成倾向；A 引用真实画面，但夹杂术语与数字，且称「sixty 次最终选择」并不准确。",
+        "judge": "cn:mimo-v2.6-pro",
+        "calls": [
+          {
+            "judge": "cn:mimo-v2.6-pro",
+            "reasoning_effort": null,
+            "max_tokens": 24000,
+            "reused": false,
+            "attempts": [
+              {
+                "attempt": 1,
+                "dispatched": true,
+                "elapsed_ms": 2645,
+                "finish_reason": "stop",
+                "http_status": 200,
+                "max_tokens": 24000,
+                "model": "cn:mimo-v2.6-pro",
+                "ok": true,
+                "reasoning_effort": null,
+                "response_model": "mimo-v2.6-pro",
+                "retry_delay_seconds": 0.0,
+                "thinking": null,
+                "usage": {
+                  "cache_creation_input_tokens": 0,
+                  "cache_read_input_tokens": 0,
+                  "completion_tokens": 116,
+                  "completion_tokens_details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 0,
+                    "rejected_prediction_tokens": 0
+                  },
+                  "prompt_cache_hit_tokens": 128,
+                  "prompt_cache_miss_tokens": 3220,
+                  "prompt_tokens": 3348,
+                  "prompt_tokens_details": {
+                    "audio_tokens": 0,
+                    "cached_tokens": 128
+                  },
+                  "total_tokens": 3464
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "dispatched": true,
+          "elapsed_ms": 2645,
+          "finish_reason": "stop",
+          "http_status": 200,
+          "max_tokens": 24000,
+          "model": "cn:mimo-v2.6-pro",
+          "ok": true,
+          "reasoning_effort": null,
+          "response_model": "mimo-v2.6-pro",
+          "retry_delay_seconds": 0.0,
+          "thinking": null,
+          "usage": {
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 0,
+            "completion_tokens": 116,
+            "completion_tokens_details": {
+              "accepted_prediction_tokens": 0,
+              "audio_tokens": 0,
+              "reasoning_tokens": 0,
+              "rejected_prediction_tokens": 0
+            },
+            "prompt_cache_hit_tokens": 128,
+            "prompt_cache_miss_tokens": 3220,
+            "prompt_tokens": 3348,
+            "prompt_tokens_details": {
+              "audio_tokens": 0,
+              "cached_tokens": 128
+            },
+            "total_tokens": 3464
+          }
+        }
+      ],
+      "response_models": [
+        "mimo-v2.6-pro"
+      ],
+      "normalized_winner": "v4",
+      "normalized_scores": {
+        "grounded": {
+          "v4": 4,
+          "v5": 3
+        },
+        "resonance": {
+          "v4": 3,
+          "v5": 4
+        },
+        "clarity": {
+          "v4": 3,
+          "v5": 4
+        },
+        "overclaim": {
+          "v4": false,
+          "v5": false
+        }
+      }
+    },
+    {
+      "model": "cn:mimo-v2.6-pro",
+      "case": "natural-glm-5.3-flash-fixture-4",
+      "kind": "natural",
+      "order": 1,
+      "side_labels": {
+        "A": "v5",
+        "B": "v4"
+      },
+      "valid": true,
+      "strict_json": true,
+      "raw_text": "{\"better\":\"A\",\"grounded\":{\"A\":5,\"B\":3},\"resonance\":{\"A\":5,\"B\":3},\"clarity\":{\"A\":5,\"B\":2},\"overclaim\":{\"A\":false,\"B\":true},\"reason\":\"A 只引用真实画面且贴近「有人悄悄为他人准备好一切」的温度；B 出现「sixty 次」「二十三次观察训练」「log loss」等数字与技术术语，还编造了饱和度、蓝色调等事实里没有的视觉判断。\"}",
+      "finish_reason": "stop",
+      "verdict": {
+        "better": "A",
+        "grounded": {
+          "A": 5,
+          "B": 3
+        },
+        "resonance": {
+          "A": 5,
+          "B": 3
+        },
+        "clarity": {
+          "A": 5,
+          "B": 2
+        },
+        "overclaim": {
+          "A": false,
+          "B": true
+        },
+        "reason": "A 只引用真实画面且贴近「有人悄悄为他人准备好一切」的温度；B 出现「sixty 次」「二十三次观察训练」「log loss」等数字与技术术语，还编造了饱和度、蓝色调等事实里没有的视觉判断。",
+        "judge": "cn:mimo-v2.6-pro",
+        "calls": [
+          {
+            "judge": "cn:mimo-v2.6-pro",
+            "reasoning_effort": null,
+            "max_tokens": 24000,
+            "reused": false,
+            "attempts": [
+              {
+                "attempt": 1,
+                "dispatched": true,
+                "elapsed_ms": 2497,
+                "finish_reason": "stop",
+                "http_status": 200,
+                "max_tokens": 24000,
+                "model": "cn:mimo-v2.6-pro",
+                "ok": true,
+                "reasoning_effort": null,
+                "response_model": "mimo-v2.6-pro",
+                "retry_delay_seconds": 0.0,
+                "thinking": null,
+                "usage": {
+                  "cache_creation_input_tokens": 0,
+                  "cache_read_input_tokens": 0,
+                  "completion_tokens": 116,
+                  "completion_tokens_details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 0,
+                    "rejected_prediction_tokens": 0
+                  },
+                  "prompt_cache_hit_tokens": 128,
+                  "prompt_cache_miss_tokens": 3220,
+                  "prompt_tokens": 3348,
+                  "prompt_tokens_details": {
+                    "audio_tokens": 0,
+                    "cached_tokens": 128
+                  },
+                  "total_tokens": 3464
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "dispatched": true,
+          "elapsed_ms": 2497,
+          "finish_reason": "stop",
+          "http_status": 200,
+          "max_tokens": 24000,
+          "model": "cn:mimo-v2.6-pro",
+          "ok": true,
+          "reasoning_effort": null,
+          "response_model": "mimo-v2.6-pro",
+          "retry_delay_seconds": 0.0,
+          "thinking": null,
+          "usage": {
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 0,
+            "completion_tokens": 116,
+            "completion_tokens_details": {
+              "accepted_prediction_tokens": 0,
+              "audio_tokens": 0,
+              "reasoning_tokens": 0,
+              "rejected_prediction_tokens": 0
+            },
+            "prompt_cache_hit_tokens": 128,
+            "prompt_cache_miss_tokens": 3220,
+            "prompt_tokens": 3348,
+            "prompt_tokens_details": {
+              "audio_tokens": 0,
+              "cached_tokens": 128
+            },
+            "total_tokens": 3464
+          }
+        }
+      ],
+      "response_models": [
+        "mimo-v2.6-pro"
+      ],
+      "normalized_winner": "v5",
+      "normalized_scores": {
+        "grounded": {
+          "v5": 5,
+          "v4": 3
+        },
+        "resonance": {
+          "v5": 5,
+          "v4": 3
+        },
+        "clarity": {
+          "v5": 5,
+          "v4": 2
+        },
+        "overclaim": {
+          "v5": false,
+          "v4": true
+        }
+      }
+    }
+  ],
+  "unexecuted_jobs": [],
+  "summary": {
+    "cn:mimo-v2.6-pro": {
+      "requests": 14,
+      "valid_stopped": 14,
+      "strict_json": 14,
+      "controls": {
+        "grounding_control": 2,
+        "identical_control": 2,
+        "subtle_grounding_control": 2
+      },
+      "natural_consistent": 2,
+      "natural_hard_reversals": 2,
+      "natural_pairs": [
+        {
+          "case": "natural-glm-5.3-flash-fixture-0",
+          "complete": true,
+          "winners": [
+            "v4",
+            "v5"
+          ],
+          "winner_consistent": false,
+          "hard_reversal": true,
+          "score_absolute_drift": {
+            "grounded": {
+              "v4": 0,
+              "v5": 1
+            },
+            "resonance": {
+              "v4": 0,
+              "v5": 0
+            },
+            "clarity": {
+              "v4": 0,
+              "v5": 1
+            }
+          },
+          "overclaim_drift": []
+        },
+        {
+          "case": "natural-glm-5.3-flash-fixture-4",
+          "complete": true,
+          "winners": [
+            "v4",
+            "v5"
+          ],
+          "winner_consistent": false,
+          "hard_reversal": true,
+          "score_absolute_drift": {
+            "grounded": {
+              "v4": 1,
+              "v5": 2
+            },
+            "resonance": {
+              "v4": 0,
+              "v5": 1
+            },
+            "clarity": {
+              "v4": 1,
+              "v5": 1
+            }
+          },
+          "overclaim_drift": [
+            "v4"
+          ]
+        },
+        {
+          "case": "natural-deepseek-v4.1-flash-fixture-3",
+          "complete": true,
+          "winners": [
+            "v5",
+            "v5"
+          ],
+          "winner_consistent": true,
+          "hard_reversal": false,
+          "score_absolute_drift": {
+            "grounded": {
+              "v4": 1,
+              "v5": 1
+            },
+            "resonance": {
+              "v4": 0,
+              "v5": 0
+            },
+            "clarity": {
+              "v4": 1,
+              "v5": 1
+            }
+          },
+          "overclaim_drift": []
+        },
+        {
+          "case": "natural-deepseek-v4.1-flash-fixture-4",
+          "complete": true,
+          "winners": [
+            "v5",
+            "v5"
+          ],
+          "winner_consistent": true,
+          "hard_reversal": false,
+          "score_absolute_drift": {
+            "grounded": {
+              "v4": 1,
+              "v5": 0
+            },
+            "resonance": {
+              "v4": 0,
+              "v5": 1
+            },
+            "clarity": {
+              "v4": 1,
+              "v5": 0
+            }
+          },
+          "overclaim_drift": []
+        }
+      ],
+      "latency_seconds_median": 2.3535,
+      "latency_seconds_max": 2.764,
+      "passes_predeclared_gate": false
+    }
+  },
+  "cost_usd": null
+}

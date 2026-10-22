@@ -1,0 +1,89 @@
+{
+ "schema_version": "norn.probe-page.v1",
+ "protocol": "new-material-v1",
+ "catalog_version": "sha256:9f713521004f9dcc253508b282aaf3d6a81f0e4fd14cfbf9852b0c802d014dc2",
+ "rounds": 4,
+ "scenes_per_round": 2,
+ "cards": [
+  {
+   "id": "HOLDOUT_0001",
+   "scene": "courtyard",
+   "url": "./assets/probe/HOLDOUT_0001.webp"
+  },
+  {
+   "id": "HOLDOUT_0002",
+   "scene": "courtyard",
+   "url": "./assets/probe/HOLDOUT_0002.webp"
+  },
+  {
+   "id": "HOLDOUT_0003",
+   "scene": "market",
+   "url": "./assets/probe/HOLDOUT_0003.webp"
+  },
+  {
+   "id": "HOLDOUT_0004",
+   "scene": "market",
+   "url": "./assets/probe/HOLDOUT_0004.webp"
+  },
+  {
+   "id": "HOLDOUT_0005",
+   "scene": "workshop",
+   "url": "./assets/probe/HOLDOUT_0005.webp"
+  },
+  {
+   "id": "HOLDOUT_0006",
+   "scene": "workshop",
+   "url": "./assets/probe/HOLDOUT_0006.webp"
+  },
+  {
+   "id": "HOLDOUT_0007",
+   "scene": "reading",
+   "url": "./assets/probe/HOLDOUT_0007.webp"
+  },
+  {
+   "id": "HOLDOUT_0008",
+   "scene": "reading",
+   "url": "./assets/probe/HOLDOUT_0008.webp"
+  },
+  {
+   "id": "HOLDOUT_0009",
+   "scene": "coast",
+   "url": "./assets/probe/HOLDOUT_0009.webp"
+  },
+  {
+   "id": "HOLDOUT_0010",
+   "scene": "coast",
+   "url": "./assets/probe/HOLDOUT_0010.webp"
+  },
+  {
+   "id": "HOLDOUT_0011",
+   "scene": "transit",
+   "url": "./assets/probe/HOLDOUT_0011.webp"
+  },
+  {
+   "id": "HOLDOUT_0012",
+   "scene": "transit",
+   "url": "./assets/probe/HOLDOUT_0012.webp"
+  },
+  {
+   "id": "HOLDOUT_0013",
+   "scene": "meal",
+   "url": "./assets/probe/HOLDOUT_0013.webp"
+  },
+  {
+   "id": "HOLDOUT_0014",
+   "scene": "meal",
+   "url": "./assets/probe/HOLDOUT_0014.webp"
+  },
+  {
+   "id": "HOLDOUT_0015",
+   "scene": "garden",
+   "url": "./assets/probe/HOLDOUT_0015.webp"
+  },
+  {
+   "id": "HOLDOUT_0016",
+   "scene": "garden",
+   "url": "./assets/probe/HOLDOUT_0016.webp"
+  }
+ ]
+}

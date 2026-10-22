@@ -1,0 +1,209 @@
+{
+  "schema_version": "norn.generalization.readiness.v1",
+  "recorded_at": "2026-10-21T03:14:56.818337+00:00",
+  "status": "engineering_ready",
+  "predictive_validation": "pending_human_choices",
+  "deployment_performed": false,
+  "pack_version": "sha256:7b84691608845c171768c65f5586b9021c23ec0103c34adabc38d02a086b7058",
+  "projection_version": "sha256:26ae31aedbe2befa4a74927ddc7d6a0043db7604bc3c541d399fd29eeff1eb30",
+  "artifacts": [
+    {
+      "path": "benchmarks/generalization/v1/protocol.json",
+      "sha256": "sha256:a0f54261398da8e43577743a3bc14be302dcb5674501f285ccb6b46059f89740",
+      "bytes": 9631
+    },
+    {
+      "path": "benchmarks/generalization/v1/prompts.json",
+      "sha256": "sha256:b72ef4baeaea1102fc1d60169adb48fd80ce19d1e4afac7a7a16b0e3f3120db5",
+      "bytes": 20644
+    },
+    {
+      "path": "benchmarks/generalization/v1/generation.json",
+      "sha256": "sha256:159418ba929d8a209a25dcef8bc1a7b49fd34035d9958e309aa3182bc1cd6f56",
+      "bytes": 5852
+    },
+    {
+      "path": "benchmarks/generalization/v1/manifest.json",
+      "sha256": "sha256:b497391d885177e2656346bdbeb579fdfdd7c22edfed7396cff9d7c0e6c74bc5",
+      "bytes": 52262
+    },
+    {
+      "path": "benchmarks/generalization/v1/frozen_projection.json",
+      "sha256": "sha256:fa9315e937018100e02f816d3f7d047f4a5c824c9ec2ac280d5d073632731fc3",
+      "bytes": 31705
+    },
+    {
+      "path": "benchmarks/generalization/v1/index.html",
+      "sha256": "sha256:5c6f721e8c394b0ff0cb187b2cd52e16dad2dd8d351d11505f0b7c4a8a4e37ca",
+      "bytes": 7879
+    },
+    {
+      "path": "norn/feature_projection.py",
+      "sha256": "sha256:72a3c6d56bd1cdfa370526e5ca05be279d8602edbceca0c5f7017cd9100e33f2",
+      "bytes": 15299
+    },
+    {
+      "path": "scripts/prepare_generalization_pack.py",
+      "sha256": "sha256:102a233a8c8aa59421970a7dea420b18aad44e2c49d35575f1963b64e71ca287",
+      "bytes": 18518
+    },
+    {
+      "path": "tests/test_feature_projection.py",
+      "sha256": "sha256:30c8e94fbfe3a7c57835eac246c03778d2db2ed46fafa96475fe3a193143c2bd",
+      "bytes": 8556
+    },
+    {
+      "path": "tests/test_generalization_pack.py",
+      "sha256": "sha256:b3e2a2691cc5fbb200b013626a4f0a4c429da0748a584fb5dc2bf7b5351e7e39",
+      "bytes": 11712
+    },
+    {
+      "path": "docs/images/generalization-preview-desktop.png",
+      "sha256": "sha256:e1c7dc91fb1eb1254f247a04ec4b9d273295694ef8e51ad57f32f39525941d45",
+      "bytes": 562465
+    },
+    {
+      "path": "docs/images/generalization-preview-mobile.png",
+      "sha256": "sha256:b5a18f2d668e367dddfac807a8aecb59c751c0d207a8bf255b7a73d67b8120b1",
+      "bytes": 50320
+    }
+  ],
+  "generation": {
+    "tool": "built-in image_gen",
+    "calls": 16,
+    "successful_assets": 16,
+    "attempts_per_asset": 1,
+    "rerolls": 0,
+    "reference_images": false,
+    "text_or_judge_calls": 0,
+    "provider_model_revision": null,
+    "seed": null,
+    "cost": null
+  },
+  "timing_audit": {
+    "exact_prompts_before_dispatch": true,
+    "final_protocol_hash_before_dispatch": false,
+    "final_protocol_sealed_while_first_batch_pending": true,
+    "consolidation_used_generated_outputs": false,
+    "notes": "benchmarks/generalization/v1/execution-notes.md"
+  },
+  "engineering": {
+    "build_passed": true,
+    "check_passed": true,
+    "check_refits": false,
+    "fit_card_count": 256,
+    "holdout_image_count": 16,
+    "unique_asset_hashes": 16,
+    "image_total_bytes": 46993520,
+    "decoded_sizes": [
+      "1086x1448"
+    ],
+    "raw_dimensions": 64,
+    "projected_dimensions": 8,
+    "all_features_finite": true,
+    "original_raw_to_normalized_max_error": 0,
+    "original_projected_max_absolute_error": 1.7763568394002505e-15,
+    "declared_tolerance": 1e-8,
+    "all_missing_annotations_null": true,
+    "candidate_support": {
+      "uniform": {
+        "status": "features_available",
+        "requires": "a separately frozen choice protocol"
+      },
+      "stop_only": {
+        "status": "features_available",
+        "requires": "a visitor's frozen training fit"
+      },
+      "pixel_only": {
+        "status": "features_available",
+        "requires": "a compatible source-trained predictor"
+      },
+      "axes_only": {
+        "status": "unsupported",
+        "reason": "independent annotations absent; never fill with zero/default labels"
+      },
+      "type16": {
+        "status": "unsupported",
+        "reason": "independent annotations absent; never fill with zero/default labels"
+      },
+      "hybrid_axes_pixels": {
+        "status": "unsupported",
+        "reason": "independent annotations absent; never fill with zero/default labels"
+      },
+      "motif91": {
+        "status": "unsupported",
+        "reason": "independent annotations absent; never fill with zero/default labels"
+      }
+    },
+    "source_files_verified_unchanged": {
+      "preference_features": "sha256:52368f6837fb85ac53e1598f6e376823ceb347d1510dc0150878c23bd12125ec",
+      "choice_features": "sha256:ceb87f9820f2870468859f38f5f625be6fa85cfa87a43f9acfa98304316f324b",
+      "card_metadata": "sha256:cb93117b681544ce8b844b6ce5627458c3f345f8551c82de016fa3a20f5c51be",
+      "live_manifest": "sha256:5989a3a8e8c7b8bd872cb8c3908592cdb5346625ab2658f039ac625be4bdc13c"
+    }
+  },
+  "tests": {
+    "focused": {
+      "command": "python3 -m unittest tests.test_feature_projection tests.test_generalization_pack -v",
+      "environment": "Python with Pillow and NumPy installed",
+      "passed": 18,
+      "skipped": 0,
+      "result": "OK"
+    },
+    "complete_core_regression": {
+      "command": "PYTHONDONTWRITEBYTECODE=1 python3 -m pytest -q -p no:cacheprovider",
+      "environment": "core Python; loopback sockets allowed; optional image/eval extras absent",
+      "passed": 473,
+      "skipped": 13,
+      "subtests_passed": 912,
+      "result": "passed",
+      "first_sandbox_run": "HTTP socket binding denied; rerun passed with loopback permission"
+    },
+    "independent_review": {
+      "source_normalization_binding_issue": "fixed and regression covered; read-only reviewer confirmed",
+      "protocol_field_naming_deviation": "documented in execution notes; manifest uses inputs.protocol.sha256"
+    }
+  },
+  "browser": {
+    "local_only": true,
+    "engines": [
+      "in-app browser",
+      "Edge"
+    ],
+    "all_16_images_loaded": true,
+    "english_chinese_switch": true,
+    "style_filters_each_count": 8,
+    "technical_details_default": "collapsed",
+    "choices_collected": 0,
+    "responsive_viewports": [
+      {
+        "width": 320,
+        "height": 800,
+        "language": "en",
+        "columns": 2,
+        "horizontal_overflow": false
+      },
+      {
+        "width": 390,
+        "height": 844,
+        "language": "zh",
+        "columns": 2,
+        "horizontal_overflow": false
+      }
+    ],
+    "desktop_css_width": 1462,
+    "desktop_columns": 4,
+    "physical_device_tested": false,
+    "preview_fixes": [
+      "auto image height preserves intrinsic aspect ratio",
+      "nonshrinking language button on narrow screens"
+    ]
+  },
+  "limits": [
+    "No human choices or predictive accuracy",
+    "No independent axis/type/motif annotations",
+    "No production HOLDOUT event or evaluator adapter yet",
+    "Generated scenes exclude people and are not real product photographs",
+    "No current Worker performance or deployment acceptance"
+  ]
+}

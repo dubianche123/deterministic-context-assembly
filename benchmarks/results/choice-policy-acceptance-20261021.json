@@ -1,0 +1,69 @@
+{
+  "schema_version": "norn.choice-policy-acceptance.v1",
+  "api_calls": 0,
+  "deployed": false,
+  "same_840_journals": true,
+  "frozen_sources_match": true,
+  "original_fixture_predictions_preserved": true,
+  "policy_version": "norn.choice.guarded-mnl.v1",
+  "test_runs": [
+    {
+      "artifact": "choice-policy-tests-full-20261021.xml",
+      "passed": 597,
+      "failed": 1,
+      "skipped": 19,
+      "subtests_passed": 1210,
+      "reason": "New snapshot test omitted required empty fields; test input repaired without changing model or original sample"
+    },
+    {
+      "artifact": "choice-policy-tests-recheck-20261021.xml",
+      "passed": 1,
+      "failed": 0,
+      "deselected": 616
+    },
+    {
+      "scope": "final affected policy/profile/comparison/frontend/diagnostic tests",
+      "passed": 61,
+      "subtests_passed": 56,
+      "failed": 0
+    }
+  ],
+  "reconciled_test_cases": {
+    "passed": 598,
+    "failed": 0,
+    "optional_skipped": 19
+  },
+  "ui": {
+    "desktop": true,
+    "mobile_viewport": [
+      320,
+      844
+    ],
+    "document_width": 320,
+    "lane_widths": [
+      288,
+      288,
+      288
+    ],
+    "original_guarded_toggle": true,
+    "language_toggle": true,
+    "slider_last_decision": 16,
+    "details_collapsed": true,
+    "temporary_viewport_reset": true
+  },
+  "artifacts_sha256": {
+    "benchmarks/results/choice-policy-validation-20261021.json.gz": "24f63c297ba98c175527490628a3a2b9984741d8ce685920cd6ed1c327da1e1d",
+    "benchmarks/results/fast-thinker-comparison-fixture-20261021/report.json": "98fc6f4cb868a16bd0180efe58b35277709a66135df429e5530b0a305083f2a3",
+    "benchmarks/results/choice-policy-comparison-fixture-20261021/report.json": "3ffdd6ab00600d2afab1b222a453fd4883c519828915c034ae616a5bcf3d140b",
+    "benchmarks/results/choice-policy-validation-20261021-summary.json": "9b39985f39f77f41911822856123b39364c193c7fc51d72b450f1a87037cd530",
+    "benchmarks/results/choice-policy-tests-full-20261021.xml": "1c84a3ae6d7bd26ef0c94344f093f7bcc4817bc4cdf48992a28c52be164dd892",
+    "benchmarks/results/choice-policy-tests-recheck-20261021.xml": "1c6075768249db2463a75fe9cfe95005f5343493bee3bdcf44b552bd2ef41eec",
+    "benchmarks/results/choice-policy-runtime-20261021.json": "39a1739bc184ccfc2ff5cd9cc781bbbf91451ea911580feefd7a4f4248c2660c"
+  },
+  "runtime": {
+    "portable_cpython_pyodide_exact": true,
+    "profile5_exact_cross_runtime": true,
+    "profile4_golden_exact_cross_runtime": true,
+    "isolated_wheel_passed": true
+  }
+}

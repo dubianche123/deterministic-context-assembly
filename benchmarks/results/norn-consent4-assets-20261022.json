@@ -1,0 +1,33 @@
+{
+  "schema_version": "norn.asset-release-check.v1",
+  "version_id": "6ba425e2-a5cd-4da4-a492-537079da6496",
+  "checked_at_utc": "2026-10-22T04:43:31Z",
+  "checks": [
+    {
+      "path": "/",
+      "status": 200,
+      "sha256": "f7af46cac966692b57dd238774ee8238af4c7e3f53bef2bf7c6b86b4857f2018",
+      "matches_bundle": true
+    },
+    {
+      "path": "/app.js",
+      "status": 200,
+      "sha256": "ceed1844ca3798af6d42d7bdf3172d79d9fc88af7dff089c12da9c645e4692fe",
+      "matches_bundle": true
+    },
+    {
+      "path": "/i18n.js",
+      "status": 200,
+      "sha256": "7264d12a7a8f106009f7b59c3aa26420eda03ef82a282a7ea8e5d7309db90b52",
+      "matches_bundle": true
+    },
+    {
+      "path": "/runtime-config.js",
+      "status": 200,
+      "sha256": "00437c12f648b535e605d3c0881f27eacb924c58bab142e964d82bcab2375a61",
+      "matches_bundle": true
+    }
+  ],
+  "model_calls": 0,
+  "scope": "Four changed public assets; 256 deck images and base version are unchanged."
+}

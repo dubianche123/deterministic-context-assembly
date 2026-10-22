@@ -1,0 +1,108 @@
+{
+  "schema_version": "norn.generalization.protocol.v1",
+  "protocol_id": "new-material-v1",
+  "frozen_date": "2026-10-21",
+  "scope": "Engineering readiness and a reserved new-image test set; human predictive generalization remains unmeasured",
+  "generation_prompts": {"path": "prompts.json", "row_count": 16, "file_sha256": "b72ef4baeaea1102fc1d60169adb48fd80ce19d1e4afac7a7a16b0e3f3120db5"},
+  "design": {
+    "image_count": 16,
+    "content_family_count": 8,
+    "styles_per_family": 2,
+    "ids": "HOLDOUT_0001 through HOLDOUT_0016, ordered by content family then style",
+    "styles": [
+      {"id": "illustration", "instruction": "Editorial illustration with matte painted textures, simplified shapes and a restrained natural palette. Clearly an illustration, not a photograph."},
+      {"id": "photograph", "instruction": "Naturalistic editorial photograph with realistic materials, gentle daylight and ordinary colours. Clearly photographic, not painted or rendered."}
+    ],
+    "content_families": [
+      {"id": "courtyard", "scene": "A small courtyard after rain, with a stone basin, a wooden bench and climbing plants. No people."},
+      {"id": "market", "scene": "A neighborhood market stall with neatly arranged seasonal fruit, woven baskets and a striped awning. No people."},
+      {"id": "workshop", "scene": "A small craft workshop, with a wooden workbench, hand tools, pieces of timber and a window. No people."},
+      {"id": "reading", "scene": "A reading corner beside a window, with an armchair, a closed book, a cup and a floor lamp. No people."},
+      {"id": "coast", "scene": "A coastal walking path with a low stone wall, grass, a distant headland and open sea. No people."},
+      {"id": "transit", "scene": "A quiet transit waiting area, with three chairs, a small potted plant, a platform edge and a distant train. No people."},
+      {"id": "meal", "scene": "A dining table set for a shared meal, with four bowls, vegetables, bread, a water jug and simple chairs. No people."},
+      {"id": "garden", "scene": "A small garden with raised planting beds, a watering can, stepping stones and a low fence. No people."}
+    ],
+    "generation_batches": [
+      {"id": "batch_1", "families": ["courtyard", "market"], "asset_ids": ["HOLDOUT_0001", "HOLDOUT_0002", "HOLDOUT_0003", "HOLDOUT_0004"]},
+      {"id": "batch_2", "families": ["workshop", "reading"], "asset_ids": ["HOLDOUT_0005", "HOLDOUT_0006", "HOLDOUT_0007", "HOLDOUT_0008"]},
+      {"id": "batch_3", "families": ["coast", "transit"], "asset_ids": ["HOLDOUT_0009", "HOLDOUT_0010", "HOLDOUT_0011", "HOLDOUT_0012"]},
+      {"id": "batch_4", "families": ["meal", "garden"], "asset_ids": ["HOLDOUT_0013", "HOLDOUT_0014", "HOLDOUT_0015", "HOLDOUT_0016"]}
+    ],
+    "matched_pair_instruction": "Render each content family once in each style. Keep the described objects, activity and material layout as similar as the generator permits. Record visible deviations rather than interpreting them as psychological attributes.",
+    "presentation": "Individual portrait assets in the test pack; style and content-family identifiers are experimental design labels, not preference targets",
+    "novelty_claim": "New generated depictions from a later batch without old images as inputs; not a claim that the content categories or source model training data are novel",
+    "human_presence": "No people in every design cell; this pack does not test preferences about human subjects",
+    "max_generation_attempts_per_asset": 2,
+    "allowed_regeneration_reasons": ["unreadable or corrupt output", "missing required panel or scene", "panel boundaries make a required image unusable", "accidental reuse of an original card"],
+    "prohibited_selection_reasons": ["model scores are weak", "predicted ranking is inconvenient", "aesthetic dislike", "human preferences disagree with a candidate"],
+    "source_sheet_policy": "One independent generation call per asset. Contact sheets, cropped old cards and augmentations are not substitutes for these new images."
+  },
+  "blinding": {
+    "forbidden_generation_inputs": ["old card image references", "MBTI labels", "four-axis coordinates", "archetype-to-scene rules", "model predictions", "human choice labels"],
+    "initial_axis_labels": null,
+    "initial_type_labels": null,
+    "initial_motif_labels": null,
+    "later_annotation_policy": "If required, freeze an independent annotation protocol before collecting test choices. Annotators must not see user choices or model rankings. Do not infer labels from the choices being evaluated."
+  },
+  "frozen_training_sources": [
+    {"path": "the-norn-machine/backend/config/cards_metadata.json", "file_sha256": "cb93117b681544ce8b844b6ce5627458c3f345f8551c82de016fa3a20f5c51be"},
+    {"path": "the-norn-machine/backend/config/preference_features.json", "file_sha256": "52368f6837fb85ac53e1598f6e376823ceb347d1510dc0150878c23bd12125ec", "feature_version": "sha256:02d3a5165703232e1c8bdbdc6aa9b6ddd4066c92060e72765c36b097df04a8ae"},
+    {"path": "the-norn-machine/backend/config/choice_features.json", "file_sha256": "ceb87f9820f2870468859f38f5f625be6fa85cfa87a43f9acfa98304316f324b", "feature_version": "sha256:c547316248ac04d2ccb4f931b20d28771cf5811988d2031d0cbd0318cb7bb848"}
+  ],
+  "feature_contract": {
+    "training_card_count": 256,
+    "training_ids": "NORN_0001 through NORN_0256 only",
+    "raw_pixel_dimensions": 64,
+    "projected_pixel_dimensions": 8,
+    "projection_artifact": "frozen_projection.json",
+    "fit_inputs": "Original catalog only; no holdout pixels, annotations, choices or scores",
+    "runtime_pixel_scale": 0.5,
+    "stored_pixel_output": "Unscaled eight principal-component coordinates; apply the candidate's declared 0.5 scale once",
+    "refit_on_holdout": false,
+    "clip_or_renormalize_from_holdout_distribution": false,
+    "require_hash_verification": true,
+    "source_coordinate_max_absolute_error": 1e-8,
+    "missing_axes_policy": "Unsupported for candidates requiring axes or type labels; never substitute zero coordinates or derive a type from pixels or choices",
+    "unknown_motifs_policy": "Use only a frozen independently annotated vocabulary and report coverage/unknowns; no fabricated tags or vocabulary expansion on the test set"
+  },
+  "engineering_acceptance": {
+    "required": [
+      "All original source hashes match the protocol before freezing a projection",
+      "Projection fit uses exactly the original 256 cards",
+      "Frozen transform reproduces the original eight pixel coordinates within 1e-8 maximum absolute error",
+      "Every available holdout asset decodes, has a unique ID and byte hash, and yields 64 finite raw descriptors and eight finite projected coordinates",
+      "Changing or adding holdout images cannot change the frozen projection or original catalog",
+      "Nonfinite values, wrong widths, altered projection hashes and unknown required labels fail explicitly",
+      "Original production manifest, catalog identities and historical replay hashes remain unchanged",
+      "The pack retains generation provenance and marks human outcomes as not collected"
+    ],
+    "does_not_establish": ["human preference accuracy", "superiority of a candidate", "personality validity", "unbiased natural-image coverage", "performance on a physical device", "production Worker acceptance"]
+  },
+  "human_evaluation_contract": {
+    "status": "pending_human_data_and_evaluator_integration",
+    "training_phase": "Fit each eligible candidate from the visitor's original-deck choices, then freeze its parameters before any holdout choice",
+    "test_phase": "Collect new-deck choices before showing a reading, predicted ranking, explanatory text or model-selected exposure",
+    "no_online_updates_during_test": true,
+    "exposure": "Use the same predeclared heldout options for all candidates; randomize or counterbalance screen positions and record actual visibility/layout",
+    "candidate_eligibility": {
+      "uniform": "Eligible without item annotations",
+      "stop_only": "Eligible when fitted on original-deck training choices",
+      "pixel_only": "Eligible with a frozen original-deck pixel feature map and declared dimensions",
+      "axes_only": "Unsupported until independently annotated axes are frozen",
+      "type16": "Unsupported until independently annotated types are frozen",
+      "hybrid_axes_pixels": "Unsupported until independently annotated axes are frozen",
+      "motif91": "Unsupported until independent annotations and frozen-vocabulary coverage are available"
+    },
+    "primary_metric": "Heldout per-choice negative log-likelihood including stop, compared with the visitor's training-only stop baseline",
+    "reporting_unit": "Visitor; all visits and test choices of a visitor stay together in interval resampling",
+    "claim_gate": "No human-generalization claim before the evaluator protocol fixes minimum usable coverage, sample size and interval/comparison rules and the eligible candidate passes them",
+    "scope_separation": ["existing-card holdout", "new generated depiction holdout", "new content-category holdout", "real product recommendation"],
+    "integration_owner": "The prediction-evaluation workstream owns metrics, candidate fitting and final statistical decision rules; this pack supplies immutable assets and feature/provenance contracts"
+  },
+  "integrity": {
+    "manifest_protocol_reference": "protocol_sha256",
+    "write_policy": "Freeze this protocol before generation. Later amendments require a new protocol version and a new result identity; preserve v1.",
+    "test_pack_must_not_enter_default_catalog": true
+  }
+}

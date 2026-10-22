@@ -1,0 +1,66 @@
+{
+  "schema": "norn.jev.live-acceptance.v1",
+  "date": "2026-10-21",
+  "status": "real_batch_passed",
+  "requested_model": "jev-1.13.0",
+  "returned_model": "jev-1.13.0",
+  "provider": "typesafe",
+  "endpoint": "https://api.typesafe.ai/v1/systemone",
+  "questions": 16,
+  "valid_questions": 16,
+  "checks": {
+    "events_identical": true,
+    "training_identical": true,
+    "target_sets_identical": true,
+    "heuristic_probabilities_identical": true,
+    "ml_probabilities_identical": true,
+    "stop_only_probabilities_identical": true,
+    "ml_policy_probabilities_identical": true
+  },
+  "max_probability_sum_error": 0.0,
+  "independently_rebuilt_nll": 1.9221237014894066,
+  "independent_reviewer": "identity, request hash, local probabilities and remote metrics rebuilt without Keychain or network",
+  "resources": {
+    "provider_attempts": 1,
+    "provider_batches": 1,
+    "automatic_retries": 0,
+    "prose_calls": 0,
+    "secret_reads": 1,
+    "secret_delivery": "trusted child environment only; not argv or stored result",
+    "usage": {
+      "input_tokens": 21856,
+      "output_tokens": 1725
+    },
+    "batch_elapsed_ms": 8607.681,
+    "monetary_cost": null,
+    "credit_balance": null,
+    "latency_scope": "whole batch, not per question"
+  },
+  "tests": {
+    "source": "benchmarks/results/jev-keychain-tests-20261021.xml",
+    "passed": 86,
+    "subtests_passed": 104,
+    "note": "prior unchanged launcher/adapter/compare source; no test rerun needed for live artifacts/docs only"
+  },
+  "limits": [
+    "Original synthetic fixture, not a human or LAPIS trial.",
+    "Eight training rounds and sixteen held-out first-kept/STOP targets are unchanged.",
+    "Jev loses to fixed rules, guarded/stop-only and uniform here; no universal winner claim.",
+    "The original no-remote and policy-only reports are preserved."
+  ],
+  "deployed": false,
+  "artifact_sha256": {
+    "report.json": "de726f43d8f90fa05694df32b14e2521eea82881b216e044b49cd305b9045678",
+    "index.html": "9d8cb2c536a6fc7ecb3e7cc13b3af844afe7d7e96729fdb32f23c606ee06c46d"
+  },
+  "source_sha256": {
+    "scripts/jev_keychain.py": "4e3d1432ccf5f4a075ab543f7f15b810065063e3ff6c5d12b7bb77791b50608b",
+    "norn/jev.py": "a0af9365ec96fbad4c6ff1497f9c1f75802e6f9d123ddf2128b8625349185e5c",
+    "norn/fast_compare.py": "24ecfb6d44c86f27c84d0822550fe6f5dbfbf1d03d368f3398384cfe55e72ca9",
+    "norn/fast_thinkers.py": "e7a999c9d0ef6c896717488fdece07d7325092294c2b264c38448c43cbea12f1",
+    "norn/fast_compare_html.py": "a35e5fc8939729e094190084950b8e27ad82f7f7f10ce4e4a633c9773bed5832",
+    "the-norn-machine/backend/choice_policy.py": "8d92a6557506511affa57ef74e444f2a7bcb7b751be0f0e4c0c139c4dde7622f"
+  },
+  "max_probability_sum_error_ordinary_sum": 0.0,
+  "probability_sum_error_method": "max_probability_sum_error uses math.fsum; ordinary float sum also recorded"
+}

@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="no-referrer">
+  <title>Norn · New-image holdout preview</title>
+  <style>
+    :root { color-scheme: dark; font: 15px/1.65 system-ui, sans-serif; background: #10121a; color: #e7e5dc; }
+    * { box-sizing: border-box; }
+    body { margin: 0; }
+    main { max-width: 1180px; padding: 32px 24px 64px; margin: auto; }
+    header { display: flex; align-items: start; justify-content: space-between; gap: 20px; }
+    h1 { margin: 0; font: 500 clamp(24px, 4vw, 36px)/1.3 Georgia, serif; }
+    p { color: #b6b8c4; max-width: 860px; }
+    .eyebrow { margin: 0 0 12px; color: #d0b36b; font-size: 11px; letter-spacing: .14em; }
+    .notice { padding: 14px 18px; border-left: 2px solid #c5a55d; background: #1b1d29; }
+    button { min-height: 44px; border: 1px solid #45414a; border-radius: 7px; padding: 8px 14px; background: #191b25; color: inherit; font: inherit; cursor: pointer; }
+    header > button { flex-shrink: 0; white-space: nowrap; }
+    button:hover, button[aria-pressed="true"] { border-color: #d0b36b; color: #e5ca84; }
+    :focus-visible { outline: 2px solid #e5ca84; outline-offset: 3px; }
+    nav { display: flex; gap: 9px; flex-wrap: wrap; margin: 24px 0; }
+    #status { min-height: 1.6em; }
+    #grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap: 22px; }
+    figure { margin: 0; min-width: 0; background: #191b25; border: 1px solid #2c2e3a; border-radius: 9px; overflow: hidden; }
+    figure img { width: 100%; height: auto; aspect-ratio: 3/4; display: block; object-fit: contain; background: #0d0e15; }
+    figcaption { padding: 13px 15px; }
+    .id { color: #d0b36b; font: 12px ui-monospace, monospace; }
+    .scene { margin: 7px 0; font-size: 13px; }
+    .condition { color: #9b9eaf; font-size: 11px; }
+    details { margin-top: 26px; color: #a8abb9; }
+    summary { cursor: pointer; width: fit-content; padding: 5px 0; }
+    pre { max-height: 280px; overflow: auto; white-space: pre-wrap; overflow-wrap: anywhere; font-size: 11px; }
+    @media (max-width: 520px) { main { padding: 24px 16px 48px; } #grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; } figcaption { padding: 9px; } .scene { font-size: 12px; } }
+  </style>
+</head>
+<body>
+<main>
+  <header><div><p class="eyebrow">NORN / HELD-OUT MATERIAL · V1</p><h1 id="heading"></h1></div><button id="language" type="button"></button></header>
+  <p id="intro"></p>
+  <p id="notice" class="notice"></p>
+  <nav aria-label="Style filter"><button id="all" data-style="all" type="button" aria-pressed="true"></button><button id="illustration" data-style="illustration" type="button" aria-pressed="false"></button><button id="photograph" data-style="photograph" type="button" aria-pressed="false"></button></nav>
+  <p id="status" role="status"></p>
+  <div id="grid"></div>
+  <details><summary id="details-label"></summary><pre id="identity"></pre></details>
+</main>
+<script>
+(() => {
+  'use strict';
+  let language = /^zh\b/i.test(navigator.language || '') ? 'zh' : 'en';
+  try { const saved = localStorage.getItem('norn.holdout.preview.language'); if (saved === 'zh' || saved === 'en') language = saved; } catch (_) {}
+  let manifest = null, selected = 'all', loadFailed = false;
+  const copy = {
+    en: { heading: 'New-image holdout preview', intro: 'Sixteen new depictions: eight content families, each in an illustration and a photographic style. These assets are separate from the live 256-card deck.', notice: 'Unblinded engineering preview. Scene and style labels are visible here. This page collects no choices and is not a human study or evidence of predictive accuracy.', all: 'All 16', illustration: 'Illustration', photograph: 'Photographic style', details: 'Pack identity and feature contract', loading: 'Loading the local pack…', missing: 'The verified manifest could not be loaded. Build the pack first, then serve this folder over local HTTP.', count: count => `${count} images · axis, type and motif annotations unavailable`, alt: id => `New holdout image ${id}` },
+    zh: { heading: '新素材留出集预览', intro: '16 张新生成画面：8 类内容，各有插画与摄影风格一张。素材与线上 256 张牌库分开保存。', notice: '这是非盲的工程预览，场景和风格标签在此可见。本页不采集选择，不是人工实验，也不证明预测准确率。', all: '全部 16 张', illustration: '插画', photograph: '摄影风格', details: '素材包身份与特征约定', loading: '正在读取本地素材包……', missing: '无法读取已验证的 manifest。请先构建素材包，再通过本地 HTTP 服务打开此目录。', count: count => `${count} 张画面 · 四轴、类型与母题标注均未提供`, alt: id => `新留出图片 ${id}` }
+  };
+  function text(id, value) { document.getElementById(id).textContent = value; }
+  function render() {
+    const t = copy[language];
+    document.documentElement.lang = language === 'zh' ? 'zh-CN' : 'en';
+    document.title = `Norn · ${t.heading}`;
+    text('heading', t.heading); text('intro', t.intro); text('notice', t.notice);
+    text('language', language === 'en' ? '中文' : 'English'); text('details-label', t.details);
+    text('all', t.all); text('illustration', t.illustration); text('photograph', t.photograph);
+    document.querySelector('nav').setAttribute('aria-label', language === 'en' ? 'Style filter' : '风格筛选');
+    document.querySelectorAll('[data-style]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.style === selected)));
+    const grid = document.getElementById('grid'); grid.replaceChildren();
+    if (!manifest) { text('status', loadFailed ? t.missing : t.loading); return; }
+    const rows = manifest.rows.filter(row => selected === 'all' || row.style === selected);
+    text('status', t.count(rows.length));
+    for (const row of rows) {
+      const figure = document.createElement('figure'), image = document.createElement('img');
+      image.src = row.asset; image.alt = t.alt(row.id); image.loading = 'lazy'; image.width = row.image.width; image.height = row.image.height;
+      const caption = document.createElement('figcaption');
+      for (const [className, value] of [['id', row.id], ['scene', row[`scene_${language}`]], ['condition', `${t[row.style]} · ${row.batch}`]]) {
+        const line = document.createElement('div'); line.className = className; line.textContent = value; caption.append(line);
+      }
+      figure.append(image, caption); grid.append(figure);
+    }
+    text('identity', JSON.stringify({pack_version: manifest.pack_version, predictive_validation: manifest.predictive_validation,
+      projection: manifest.projection, feature_contract: manifest.feature_contract, candidate_support: manifest.candidate_support}, null, 2));
+  }
+  document.getElementById('language').addEventListener('click', () => {
+    language = language === 'en' ? 'zh' : 'en'; try { localStorage.setItem('norn.holdout.preview.language', language); } catch (_) {} render();
+  });
+  document.querySelectorAll('[data-style]').forEach(button => button.addEventListener('click', () => { selected = button.dataset.style; render(); }));
+  render();
+  fetch('manifest.json').then(response => { if (!response.ok) throw new Error('manifest unavailable'); return response.json(); }).then(value => {
+    if (value.schema_version !== 'norn.generalization.pack.v1' || !Array.isArray(value.rows) || value.rows.length !== 16
+        || value.rows.some(row => !/^HOLDOUT_\d{4}$/.test(row.id) || row.asset !== `assets/${row.id}.png` || !copy.en[row.style])) throw new Error('invalid manifest');
+    manifest = value; render();
+  }).catch(() => { loadFailed = true; render(); });
+})();
+</script>
+</body>
+</html>

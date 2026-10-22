@@ -1,0 +1,189 @@
+{
+  "runtime": "Cloudflare cf dev / workerd / Python 3.14",
+  "provider": "mock",
+  "profile_version": "norn.profile.v3",
+  "algorithm_version": "norn.scoring.v3",
+  "model_version": "norn.preference.linear-bt.v2",
+  "rounds": 24,
+  "selections": 24,
+  "calls": [
+    {
+      "method": "GET",
+      "route": "/api/health",
+      "status": 200,
+      "elapsed_ms": 7.61,
+      "response_bytes": 118
+    },
+    {
+      "method": "POST",
+      "route": "/api/preview",
+      "status": 200,
+      "elapsed_ms": 214.423,
+      "response_bytes": 30904
+    },
+    {
+      "method": "POST",
+      "route": "/api/analyze",
+      "status": 200,
+      "elapsed_ms": 242.468,
+      "response_bytes": 106384
+    },
+    {
+      "method": "POST",
+      "route": "/api/analyze",
+      "status": 200,
+      "elapsed_ms": 107.718,
+      "response_bytes": 106384
+    },
+    {
+      "method": "GET",
+      "route": "/api/sessions/<session>/inspect",
+      "status": 200,
+      "elapsed_ms": 83.769,
+      "response_bytes": 366220
+    },
+    {
+      "method": "GET",
+      "route": "/api/sessions/<session>/inspect",
+      "status": 200,
+      "elapsed_ms": 71.603,
+      "response_bytes": 31878
+    },
+    {
+      "method": "GET",
+      "route": "/api/sessions/<session>/export",
+      "status": 200,
+      "elapsed_ms": 42.866,
+      "response_bytes": 290896
+    },
+    {
+      "method": "POST",
+      "route": "/api/dialogue",
+      "status": 200,
+      "elapsed_ms": 100.097,
+      "response_bytes": 1661
+    },
+    {
+      "method": "POST",
+      "route": "/api/dialogue",
+      "status": 200,
+      "elapsed_ms": 98.548,
+      "response_bytes": 1661
+    },
+    {
+      "method": "POST",
+      "route": "/api/dialogue",
+      "status": 200,
+      "elapsed_ms": 102.83,
+      "response_bytes": 1661
+    },
+    {
+      "method": "POST",
+      "route": "/api/dialogue",
+      "status": 200,
+      "elapsed_ms": 98.07,
+      "response_bytes": 1661
+    },
+    {
+      "method": "POST",
+      "route": "/api/dialogue",
+      "status": 200,
+      "elapsed_ms": 104.335,
+      "response_bytes": 1788
+    },
+    {
+      "method": "POST",
+      "route": "/api/dialogue",
+      "status": 200,
+      "elapsed_ms": 99.638,
+      "response_bytes": 1788
+    },
+    {
+      "method": "GET",
+      "route": "/api/sessions/<session>/inspect",
+      "status": 200,
+      "elapsed_ms": 82.122,
+      "response_bytes": 401790
+    },
+    {
+      "method": "GET",
+      "route": "/api/sessions/<session>/export",
+      "status": 200,
+      "elapsed_ms": 43.365,
+      "response_bytes": 290896
+    },
+    {
+      "method": "POST",
+      "route": "/api/preview",
+      "status": 200,
+      "elapsed_ms": 72.995,
+      "response_bytes": 30841
+    },
+    {
+      "method": "POST",
+      "route": "/api/replay",
+      "status": 200,
+      "elapsed_ms": 247.813,
+      "response_bytes": 356107
+    },
+    {
+      "method": "GET",
+      "route": "/api/sessions/<session>/inspect",
+      "status": 200,
+      "elapsed_ms": 81.416,
+      "response_bytes": 401790
+    },
+    {
+      "method": "GET",
+      "route": "/api/sessions/<session>/inspect",
+      "status": 404,
+      "elapsed_ms": 7.125,
+      "response_bytes": 85
+    },
+    {
+      "method": "GET",
+      "route": "/api/sessions/<session>/inspect",
+      "status": 400,
+      "elapsed_ms": 38.589,
+      "response_bytes": 68
+    },
+    {
+      "method": "GET",
+      "route": "/api/sessions/<session>/inspect",
+      "status": 400,
+      "elapsed_ms": 40.119,
+      "response_bytes": 68
+    },
+    {
+      "method": "GET",
+      "route": "/api/sessions/<session>/inspect",
+      "status": 400,
+      "elapsed_ms": 36.647,
+      "response_bytes": 68
+    }
+  ],
+  "render_calls": 4,
+  "model_calls": 0,
+  "dialogue_turns": 3,
+  "map_points": 256,
+  "checks": {
+    "rpc_request_stream": true,
+    "sqlite_transaction_sync": true,
+    "alarm_scheduled": true,
+    "same_cookie_session_restoration": true,
+    "different_cookie_isolation": true,
+    "reading_and_turn_idempotency": true,
+    "full_context_frozen": true,
+    "export_bytes_unchanged_after_dialogue": true,
+    "cpython_replay_of_wasm_export": true,
+    "pure_preview_import_preserve_conversation": true,
+    "strict_inspect_query": true,
+    "sqlite_restore_after_real_workerd_restart": null,
+    "retry_receipts_survive_real_workerd_restart": null
+  },
+  "target_origin": "http://127.0.0.1:8787",
+  "limitations": [
+    "Full process restart check was blocked by workerd startup TLS peer disconnect; per-RPC restoration and actual SQLite transactions passed.",
+    "Measured before the routing-cookie renewal and snapshot-filesystem recovery patches; the mock learning/profile contract is unchanged."
+  ]
+}

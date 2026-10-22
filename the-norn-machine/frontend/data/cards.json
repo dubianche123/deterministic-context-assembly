@@ -1,7 +1,7 @@
 [
   {
     "id": "NORN_0001",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0001.jpg",
+    "url": "./assets/cards/NORN_0001.webp",
     "type": "INTJ",
     "coords": {
       "E_I": -8,
@@ -12,7 +12,7 @@
   },
   {
     "id": "NORN_0002",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0002.jpg",
+    "url": "./assets/cards/NORN_0002.webp",
     "type": "INTP",
     "coords": {
       "E_I": -8,
@@ -23,7 +23,7 @@
   },
   {
     "id": "NORN_0003",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0003.jpg",
+    "url": "./assets/cards/NORN_0003.webp",
     "type": "ENTJ",
     "coords": {
       "E_I": 8,
@@ -34,7 +34,7 @@
   },
   {
     "id": "NORN_0004",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0004.jpg",
+    "url": "./assets/cards/NORN_0004.webp",
     "type": "ENTP",
     "coords": {
       "E_I": 8,
@@ -45,7 +45,7 @@
   },
   {
     "id": "NORN_0005",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0005.jpg",
+    "url": "./assets/cards/NORN_0005.webp",
     "type": "INFJ",
     "coords": {
       "E_I": -8,
@@ -56,7 +56,7 @@
   },
   {
     "id": "NORN_0006",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0006.jpg",
+    "url": "./assets/cards/NORN_0006.webp",
     "type": "INFP",
     "coords": {
       "E_I": -8,
@@ -67,7 +67,7 @@
   },
   {
     "id": "NORN_0007",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0007.jpg",
+    "url": "./assets/cards/NORN_0007.webp",
     "type": "ENFJ",
     "coords": {
       "E_I": 8,
@@ -78,7 +78,7 @@
   },
   {
     "id": "NORN_0008",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0008.jpg",
+    "url": "./assets/cards/NORN_0008.webp",
     "type": "ENFP",
     "coords": {
       "E_I": 8,
@@ -89,7 +89,7 @@
   },
   {
     "id": "NORN_0009",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0009.jpg",
+    "url": "./assets/cards/NORN_0009.webp",
     "type": "ISTJ",
     "coords": {
       "E_I": -8,
@@ -100,7 +100,7 @@
   },
   {
     "id": "NORN_0010",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0010.jpg",
+    "url": "./assets/cards/NORN_0010.webp",
     "type": "ISFJ",
     "coords": {
       "E_I": -8,
@@ -111,7 +111,7 @@
   },
   {
     "id": "NORN_0011",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0011.jpg",
+    "url": "./assets/cards/NORN_0011.webp",
     "type": "ESTJ",
     "coords": {
       "E_I": 8,
@@ -122,7 +122,7 @@
   },
   {
     "id": "NORN_0012",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0012.jpg",
+    "url": "./assets/cards/NORN_0012.webp",
     "type": "ESFJ",
     "coords": {
       "E_I": 8,
@@ -133,7 +133,7 @@
   },
   {
     "id": "NORN_0013",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0013.jpg",
+    "url": "./assets/cards/NORN_0013.webp",
     "type": "ISTP",
     "coords": {
       "E_I": -8,
@@ -144,7 +144,7 @@
   },
   {
     "id": "NORN_0014",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0014.jpg",
+    "url": "./assets/cards/NORN_0014.webp",
     "type": "ISFP",
     "coords": {
       "E_I": -8,
@@ -155,7 +155,7 @@
   },
   {
     "id": "NORN_0015",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0015.jpg",
+    "url": "./assets/cards/NORN_0015.webp",
     "type": "ESTP",
     "coords": {
       "E_I": 8,
@@ -166,7 +166,7 @@
   },
   {
     "id": "NORN_0016",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0016.jpg",
+    "url": "./assets/cards/NORN_0016.webp",
     "type": "ESFP",
     "coords": {
       "E_I": 8,
@@ -177,7 +177,7 @@
   },
   {
     "id": "NORN_0017",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0017.jpg",
+    "url": "./assets/cards/NORN_0017.webp",
     "type": "INTJ",
     "coords": {
       "E_I": -8,
@@ -188,7 +188,7 @@
   },
   {
     "id": "NORN_0018",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0018.jpg",
+    "url": "./assets/cards/NORN_0018.webp",
     "type": "INTP",
     "coords": {
       "E_I": -8,
@@ -199,7 +199,7 @@
   },
   {
     "id": "NORN_0019",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0019.jpg",
+    "url": "./assets/cards/NORN_0019.webp",
     "type": "ENTJ",
     "coords": {
       "E_I": 8,
@@ -210,7 +210,7 @@
   },
   {
     "id": "NORN_0020",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0020.jpg",
+    "url": "./assets/cards/NORN_0020.webp",
     "type": "ENTP",
     "coords": {
       "E_I": 8,
@@ -221,7 +221,7 @@
   },
   {
     "id": "NORN_0021",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0021.jpg",
+    "url": "./assets/cards/NORN_0021.webp",
     "type": "INFJ",
     "coords": {
       "E_I": -8,
@@ -232,7 +232,7 @@
   },
   {
     "id": "NORN_0022",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0022.jpg",
+    "url": "./assets/cards/NORN_0022.webp",
     "type": "INFP",
     "coords": {
       "E_I": -8,
@@ -243,7 +243,7 @@
   },
   {
     "id": "NORN_0023",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0023.jpg",
+    "url": "./assets/cards/NORN_0023.webp",
     "type": "ENFJ",
     "coords": {
       "E_I": 8,
@@ -254,7 +254,7 @@
   },
   {
     "id": "NORN_0024",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0024.jpg",
+    "url": "./assets/cards/NORN_0024.webp",
     "type": "ENFP",
     "coords": {
       "E_I": 8,
@@ -265,7 +265,7 @@
   },
   {
     "id": "NORN_0025",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0025.jpg",
+    "url": "./assets/cards/NORN_0025.webp",
     "type": "ISTJ",
     "coords": {
       "E_I": -8,
@@ -276,7 +276,7 @@
   },
   {
     "id": "NORN_0026",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0026.jpg",
+    "url": "./assets/cards/NORN_0026.webp",
     "type": "ISFJ",
     "coords": {
       "E_I": -8,
@@ -287,7 +287,7 @@
   },
   {
     "id": "NORN_0027",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0027.jpg",
+    "url": "./assets/cards/NORN_0027.webp",
     "type": "ESTJ",
     "coords": {
       "E_I": 8,
@@ -298,7 +298,7 @@
   },
   {
     "id": "NORN_0028",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0028.jpg",
+    "url": "./assets/cards/NORN_0028.webp",
     "type": "ESFJ",
     "coords": {
       "E_I": 8,
@@ -309,7 +309,7 @@
   },
   {
     "id": "NORN_0029",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0029.jpg",
+    "url": "./assets/cards/NORN_0029.webp",
     "type": "ISTP",
     "coords": {
       "E_I": -8,
@@ -320,7 +320,7 @@
   },
   {
     "id": "NORN_0030",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0030.jpg",
+    "url": "./assets/cards/NORN_0030.webp",
     "type": "ISFP",
     "coords": {
       "E_I": -8,
@@ -331,7 +331,7 @@
   },
   {
     "id": "NORN_0031",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0031.jpg",
+    "url": "./assets/cards/NORN_0031.webp",
     "type": "ESTP",
     "coords": {
       "E_I": 8,
@@ -342,7 +342,7 @@
   },
   {
     "id": "NORN_0032",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0032.jpg",
+    "url": "./assets/cards/NORN_0032.webp",
     "type": "ESFP",
     "coords": {
       "E_I": 8,
@@ -353,7 +353,7 @@
   },
   {
     "id": "NORN_0033",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0033.jpg",
+    "url": "./assets/cards/NORN_0033.webp",
     "type": "INTJ",
     "coords": {
       "E_I": -8,
@@ -364,7 +364,7 @@
   },
   {
     "id": "NORN_0034",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0034.jpg",
+    "url": "./assets/cards/NORN_0034.webp",
     "type": "INTP",
     "coords": {
       "E_I": -8,
@@ -375,7 +375,7 @@
   },
   {
     "id": "NORN_0035",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0035.jpg",
+    "url": "./assets/cards/NORN_0035.webp",
     "type": "ENTJ",
     "coords": {
       "E_I": 8,
@@ -386,7 +386,7 @@
   },
   {
     "id": "NORN_0036",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0036.jpg",
+    "url": "./assets/cards/NORN_0036.webp",
     "type": "ENTP",
     "coords": {
       "E_I": 8,
@@ -397,7 +397,7 @@
   },
   {
     "id": "NORN_0037",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0037.jpg",
+    "url": "./assets/cards/NORN_0037.webp",
     "type": "INFJ",
     "coords": {
       "E_I": -8,
@@ -408,7 +408,7 @@
   },
   {
     "id": "NORN_0038",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0038.jpg",
+    "url": "./assets/cards/NORN_0038.webp",
     "type": "INFP",
     "coords": {
       "E_I": -8,
@@ -419,7 +419,7 @@
   },
   {
     "id": "NORN_0039",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0039.jpg",
+    "url": "./assets/cards/NORN_0039.webp",
     "type": "ENFJ",
     "coords": {
       "E_I": 8,
@@ -430,7 +430,7 @@
   },
   {
     "id": "NORN_0040",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0040.jpg",
+    "url": "./assets/cards/NORN_0040.webp",
     "type": "ENFP",
     "coords": {
       "E_I": 8,
@@ -441,7 +441,7 @@
   },
   {
     "id": "NORN_0041",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0041.jpg",
+    "url": "./assets/cards/NORN_0041.webp",
     "type": "ISTJ",
     "coords": {
       "E_I": -8,
@@ -452,7 +452,7 @@
   },
   {
     "id": "NORN_0042",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0042.jpg",
+    "url": "./assets/cards/NORN_0042.webp",
     "type": "ISFJ",
     "coords": {
       "E_I": -8,
@@ -463,7 +463,7 @@
   },
   {
     "id": "NORN_0043",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0043.jpg",
+    "url": "./assets/cards/NORN_0043.webp",
     "type": "ESTJ",
     "coords": {
       "E_I": 8,
@@ -474,7 +474,7 @@
   },
   {
     "id": "NORN_0044",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0044.jpg",
+    "url": "./assets/cards/NORN_0044.webp",
     "type": "ESFJ",
     "coords": {
       "E_I": 8,
@@ -485,7 +485,7 @@
   },
   {
     "id": "NORN_0045",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0045.jpg",
+    "url": "./assets/cards/NORN_0045.webp",
     "type": "ISTP",
     "coords": {
       "E_I": -8,
@@ -496,7 +496,7 @@
   },
   {
     "id": "NORN_0046",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0046.jpg",
+    "url": "./assets/cards/NORN_0046.webp",
     "type": "ISFP",
     "coords": {
       "E_I": -8,
@@ -507,7 +507,7 @@
   },
   {
     "id": "NORN_0047",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0047.jpg",
+    "url": "./assets/cards/NORN_0047.webp",
     "type": "ESTP",
     "coords": {
       "E_I": 8,
@@ -518,7 +518,7 @@
   },
   {
     "id": "NORN_0048",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0048.jpg",
+    "url": "./assets/cards/NORN_0048.webp",
     "type": "ESFP",
     "coords": {
       "E_I": 8,
@@ -529,7 +529,7 @@
   },
   {
     "id": "NORN_0049",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0049.jpg",
+    "url": "./assets/cards/NORN_0049.webp",
     "type": "INTJ",
     "coords": {
       "E_I": -8,
@@ -540,7 +540,7 @@
   },
   {
     "id": "NORN_0050",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0050.jpg",
+    "url": "./assets/cards/NORN_0050.webp",
     "type": "INTP",
     "coords": {
       "E_I": -8,
@@ -551,7 +551,7 @@
   },
   {
     "id": "NORN_0051",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0051.jpg",
+    "url": "./assets/cards/NORN_0051.webp",
     "type": "ENTJ",
     "coords": {
       "E_I": 8,
@@ -562,7 +562,7 @@
   },
   {
     "id": "NORN_0052",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0052.jpg",
+    "url": "./assets/cards/NORN_0052.webp",
     "type": "ENTP",
     "coords": {
       "E_I": 8,
@@ -573,7 +573,7 @@
   },
   {
     "id": "NORN_0053",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0053.jpg",
+    "url": "./assets/cards/NORN_0053.webp",
     "type": "INFJ",
     "coords": {
       "E_I": -8,
@@ -584,7 +584,7 @@
   },
   {
     "id": "NORN_0054",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0054.jpg",
+    "url": "./assets/cards/NORN_0054.webp",
     "type": "INFP",
     "coords": {
       "E_I": -8,
@@ -595,7 +595,7 @@
   },
   {
     "id": "NORN_0055",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0055.jpg",
+    "url": "./assets/cards/NORN_0055.webp",
     "type": "ENFJ",
     "coords": {
       "E_I": 8,
@@ -606,7 +606,7 @@
   },
   {
     "id": "NORN_0056",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0056.jpg",
+    "url": "./assets/cards/NORN_0056.webp",
     "type": "ENFP",
     "coords": {
       "E_I": 8,
@@ -617,7 +617,7 @@
   },
   {
     "id": "NORN_0057",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0057.jpg",
+    "url": "./assets/cards/NORN_0057.webp",
     "type": "ISTJ",
     "coords": {
       "E_I": -8,
@@ -628,7 +628,7 @@
   },
   {
     "id": "NORN_0058",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0058.jpg",
+    "url": "./assets/cards/NORN_0058.webp",
     "type": "ISFJ",
     "coords": {
       "E_I": -8,
@@ -639,7 +639,7 @@
   },
   {
     "id": "NORN_0059",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0059.jpg",
+    "url": "./assets/cards/NORN_0059.webp",
     "type": "ESTJ",
     "coords": {
       "E_I": 8,
@@ -650,7 +650,7 @@
   },
   {
     "id": "NORN_0060",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0060.jpg",
+    "url": "./assets/cards/NORN_0060.webp",
     "type": "ESFJ",
     "coords": {
       "E_I": 8,
@@ -661,7 +661,7 @@
   },
   {
     "id": "NORN_0061",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0061.jpg",
+    "url": "./assets/cards/NORN_0061.webp",
     "type": "ISTP",
     "coords": {
       "E_I": -8,
@@ -672,7 +672,7 @@
   },
   {
     "id": "NORN_0062",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0062.jpg",
+    "url": "./assets/cards/NORN_0062.webp",
     "type": "ISFP",
     "coords": {
       "E_I": -8,
@@ -683,7 +683,7 @@
   },
   {
     "id": "NORN_0063",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0063.jpg",
+    "url": "./assets/cards/NORN_0063.webp",
     "type": "ESTP",
     "coords": {
       "E_I": 8,
@@ -694,7 +694,7 @@
   },
   {
     "id": "NORN_0064",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0064.jpg",
+    "url": "./assets/cards/NORN_0064.webp",
     "type": "ESFP",
     "coords": {
       "E_I": 8,
@@ -705,7 +705,7 @@
   },
   {
     "id": "NORN_0065",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0065.jpg",
+    "url": "./assets/cards/NORN_0065.webp",
     "type": "INTJ",
     "coords": {
       "E_I": -8,
@@ -716,7 +716,7 @@
   },
   {
     "id": "NORN_0066",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0066.jpg",
+    "url": "./assets/cards/NORN_0066.webp",
     "type": "INTP",
     "coords": {
       "E_I": -8,
@@ -727,7 +727,7 @@
   },
   {
     "id": "NORN_0067",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0067.jpg",
+    "url": "./assets/cards/NORN_0067.webp",
     "type": "ENTJ",
     "coords": {
       "E_I": 8,
@@ -738,7 +738,7 @@
   },
   {
     "id": "NORN_0068",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0068.jpg",
+    "url": "./assets/cards/NORN_0068.webp",
     "type": "ENTP",
     "coords": {
       "E_I": 8,
@@ -749,7 +749,7 @@
   },
   {
     "id": "NORN_0069",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0069.jpg",
+    "url": "./assets/cards/NORN_0069.webp",
     "type": "INFJ",
     "coords": {
       "E_I": -8,
@@ -760,7 +760,7 @@
   },
   {
     "id": "NORN_0070",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0070.jpg",
+    "url": "./assets/cards/NORN_0070.webp",
     "type": "INFP",
     "coords": {
       "E_I": -8,
@@ -771,7 +771,7 @@
   },
   {
     "id": "NORN_0071",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0071.jpg",
+    "url": "./assets/cards/NORN_0071.webp",
     "type": "ENFJ",
     "coords": {
       "E_I": 8,
@@ -782,7 +782,7 @@
   },
   {
     "id": "NORN_0072",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0072.jpg",
+    "url": "./assets/cards/NORN_0072.webp",
     "type": "ENFP",
     "coords": {
       "E_I": 8,
@@ -793,7 +793,7 @@
   },
   {
     "id": "NORN_0073",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0073.jpg",
+    "url": "./assets/cards/NORN_0073.webp",
     "type": "ISTJ",
     "coords": {
       "E_I": -8,
@@ -804,7 +804,7 @@
   },
   {
     "id": "NORN_0074",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0074.jpg",
+    "url": "./assets/cards/NORN_0074.webp",
     "type": "ISFJ",
     "coords": {
       "E_I": -8,
@@ -815,7 +815,7 @@
   },
   {
     "id": "NORN_0075",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0075.jpg",
+    "url": "./assets/cards/NORN_0075.webp",
     "type": "ESTJ",
     "coords": {
       "E_I": 8,
@@ -826,7 +826,7 @@
   },
   {
     "id": "NORN_0076",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0076.jpg",
+    "url": "./assets/cards/NORN_0076.webp",
     "type": "ESFJ",
     "coords": {
       "E_I": 8,
@@ -837,7 +837,7 @@
   },
   {
     "id": "NORN_0077",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0077.jpg",
+    "url": "./assets/cards/NORN_0077.webp",
     "type": "ISTP",
     "coords": {
       "E_I": -8,
@@ -848,7 +848,7 @@
   },
   {
     "id": "NORN_0078",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0078.jpg",
+    "url": "./assets/cards/NORN_0078.webp",
     "type": "ISFP",
     "coords": {
       "E_I": -8,
@@ -859,7 +859,7 @@
   },
   {
     "id": "NORN_0079",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0079.jpg",
+    "url": "./assets/cards/NORN_0079.webp",
     "type": "ESTP",
     "coords": {
       "E_I": 8,
@@ -870,7 +870,7 @@
   },
   {
     "id": "NORN_0080",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0080.jpg",
+    "url": "./assets/cards/NORN_0080.webp",
     "type": "ESFP",
     "coords": {
       "E_I": 8,
@@ -881,7 +881,7 @@
   },
   {
     "id": "NORN_0081",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0081.jpg",
+    "url": "./assets/cards/NORN_0081.webp",
     "type": "INTJ",
     "coords": {
       "E_I": -8,
@@ -892,7 +892,7 @@
   },
   {
     "id": "NORN_0082",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0082.jpg",
+    "url": "./assets/cards/NORN_0082.webp",
     "type": "INTP",
     "coords": {
       "E_I": -8,
@@ -903,7 +903,7 @@
   },
   {
     "id": "NORN_0083",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0083.jpg",
+    "url": "./assets/cards/NORN_0083.webp",
     "type": "ENTJ",
     "coords": {
       "E_I": 8,
@@ -914,7 +914,7 @@
   },
   {
     "id": "NORN_0084",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0084.jpg",
+    "url": "./assets/cards/NORN_0084.webp",
     "type": "ENTP",
     "coords": {
       "E_I": 8,
@@ -925,7 +925,7 @@
   },
   {
     "id": "NORN_0085",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0085.jpg",
+    "url": "./assets/cards/NORN_0085.webp",
     "type": "INFJ",
     "coords": {
       "E_I": -8,
@@ -936,7 +936,7 @@
   },
   {
     "id": "NORN_0086",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0086.jpg",
+    "url": "./assets/cards/NORN_0086.webp",
     "type": "INFP",
     "coords": {
       "E_I": -8,
@@ -947,7 +947,7 @@
   },
   {
     "id": "NORN_0087",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0087.jpg",
+    "url": "./assets/cards/NORN_0087.webp",
     "type": "ENFJ",
     "coords": {
       "E_I": 8,
@@ -958,7 +958,7 @@
   },
   {
     "id": "NORN_0088",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0088.jpg",
+    "url": "./assets/cards/NORN_0088.webp",
     "type": "ENFP",
     "coords": {
       "E_I": 8,
@@ -969,7 +969,7 @@
   },
   {
     "id": "NORN_0089",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0089.jpg",
+    "url": "./assets/cards/NORN_0089.webp",
     "type": "ISTJ",
     "coords": {
       "E_I": -8,
@@ -980,7 +980,7 @@
   },
   {
     "id": "NORN_0090",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0090.jpg",
+    "url": "./assets/cards/NORN_0090.webp",
     "type": "ISFJ",
     "coords": {
       "E_I": -8,
@@ -991,7 +991,7 @@
   },
   {
     "id": "NORN_0091",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0091.jpg",
+    "url": "./assets/cards/NORN_0091.webp",
     "type": "ESTJ",
     "coords": {
       "E_I": 8,
@@ -1002,7 +1002,7 @@
   },
   {
     "id": "NORN_0092",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0092.jpg",
+    "url": "./assets/cards/NORN_0092.webp",
     "type": "ESFJ",
     "coords": {
       "E_I": 8,
@@ -1013,7 +1013,7 @@
   },
   {
     "id": "NORN_0093",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0093.jpg",
+    "url": "./assets/cards/NORN_0093.webp",
     "type": "ISTP",
     "coords": {
       "E_I": -8,
@@ -1024,7 +1024,7 @@
   },
   {
     "id": "NORN_0094",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0094.jpg",
+    "url": "./assets/cards/NORN_0094.webp",
     "type": "ISFP",
     "coords": {
       "E_I": -8,
@@ -1035,7 +1035,7 @@
   },
   {
     "id": "NORN_0095",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0095.jpg",
+    "url": "./assets/cards/NORN_0095.webp",
     "type": "ESTP",
     "coords": {
       "E_I": 8,
@@ -1046,7 +1046,7 @@
   },
   {
     "id": "NORN_0096",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0096.jpg",
+    "url": "./assets/cards/NORN_0096.webp",
     "type": "ESFP",
     "coords": {
       "E_I": 8,
@@ -1057,7 +1057,7 @@
   },
   {
     "id": "NORN_0097",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0097.jpg",
+    "url": "./assets/cards/NORN_0097.webp",
     "type": "INTJ",
     "coords": {
       "E_I": -8,
@@ -1068,7 +1068,7 @@
   },
   {
     "id": "NORN_0098",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0098.jpg",
+    "url": "./assets/cards/NORN_0098.webp",
     "type": "INTP",
     "coords": {
       "E_I": -8,
@@ -1079,7 +1079,7 @@
   },
   {
     "id": "NORN_0099",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0099.jpg",
+    "url": "./assets/cards/NORN_0099.webp",
     "type": "ENTJ",
     "coords": {
       "E_I": 8,
@@ -1090,7 +1090,7 @@
   },
   {
     "id": "NORN_0100",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0100.jpg",
+    "url": "./assets/cards/NORN_0100.webp",
     "type": "ENTP",
     "coords": {
       "E_I": 8,
@@ -1101,7 +1101,7 @@
   },
   {
     "id": "NORN_0101",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0101.jpg",
+    "url": "./assets/cards/NORN_0101.webp",
     "type": "INFJ",
     "coords": {
       "E_I": -8,
@@ -1112,7 +1112,7 @@
   },
   {
     "id": "NORN_0102",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0102.jpg",
+    "url": "./assets/cards/NORN_0102.webp",
     "type": "INFP",
     "coords": {
       "E_I": -8,
@@ -1123,7 +1123,7 @@
   },
   {
     "id": "NORN_0103",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0103.jpg",
+    "url": "./assets/cards/NORN_0103.webp",
     "type": "ENFJ",
     "coords": {
       "E_I": 8,
@@ -1134,7 +1134,7 @@
   },
   {
     "id": "NORN_0104",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0104.jpg",
+    "url": "./assets/cards/NORN_0104.webp",
     "type": "ENFP",
     "coords": {
       "E_I": 8,
@@ -1145,7 +1145,7 @@
   },
   {
     "id": "NORN_0105",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0105.jpg",
+    "url": "./assets/cards/NORN_0105.webp",
     "type": "ISTJ",
     "coords": {
       "E_I": -8,
@@ -1156,7 +1156,7 @@
   },
   {
     "id": "NORN_0106",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0106.jpg",
+    "url": "./assets/cards/NORN_0106.webp",
     "type": "ISFJ",
     "coords": {
       "E_I": -8,
@@ -1167,7 +1167,7 @@
   },
   {
     "id": "NORN_0107",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0107.jpg",
+    "url": "./assets/cards/NORN_0107.webp",
     "type": "ESTJ",
     "coords": {
       "E_I": 8,
@@ -1178,7 +1178,7 @@
   },
   {
     "id": "NORN_0108",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0108.jpg",
+    "url": "./assets/cards/NORN_0108.webp",
     "type": "ESFJ",
     "coords": {
       "E_I": 8,
@@ -1189,7 +1189,7 @@
   },
   {
     "id": "NORN_0109",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0109.jpg",
+    "url": "./assets/cards/NORN_0109.webp",
     "type": "ISTP",
     "coords": {
       "E_I": -8,
@@ -1200,7 +1200,7 @@
   },
   {
     "id": "NORN_0110",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0110.jpg",
+    "url": "./assets/cards/NORN_0110.webp",
     "type": "ISFP",
     "coords": {
       "E_I": -8,
@@ -1211,7 +1211,7 @@
   },
   {
     "id": "NORN_0111",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0111.jpg",
+    "url": "./assets/cards/NORN_0111.webp",
     "type": "ESTP",
     "coords": {
       "E_I": 8,
@@ -1222,7 +1222,7 @@
   },
   {
     "id": "NORN_0112",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0112.jpg",
+    "url": "./assets/cards/NORN_0112.webp",
     "type": "ESFP",
     "coords": {
       "E_I": 8,
@@ -1233,7 +1233,7 @@
   },
   {
     "id": "NORN_0113",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0113.jpg",
+    "url": "./assets/cards/NORN_0113.webp",
     "type": "INTJ",
     "coords": {
       "E_I": -8,
@@ -1244,7 +1244,7 @@
   },
   {
     "id": "NORN_0114",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0114.jpg",
+    "url": "./assets/cards/NORN_0114.webp",
     "type": "INTP",
     "coords": {
       "E_I": -8,
@@ -1255,7 +1255,7 @@
   },
   {
     "id": "NORN_0115",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0115.jpg",
+    "url": "./assets/cards/NORN_0115.webp",
     "type": "ENTJ",
     "coords": {
       "E_I": 8,
@@ -1266,7 +1266,7 @@
   },
   {
     "id": "NORN_0116",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0116.jpg",
+    "url": "./assets/cards/NORN_0116.webp",
     "type": "ENTP",
     "coords": {
       "E_I": 8,
@@ -1277,7 +1277,7 @@
   },
   {
     "id": "NORN_0117",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0117.jpg",
+    "url": "./assets/cards/NORN_0117.webp",
     "type": "INFJ",
     "coords": {
       "E_I": -8,
@@ -1288,7 +1288,7 @@
   },
   {
     "id": "NORN_0118",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0118.jpg",
+    "url": "./assets/cards/NORN_0118.webp",
     "type": "INFP",
     "coords": {
       "E_I": -8,
@@ -1299,7 +1299,7 @@
   },
   {
     "id": "NORN_0119",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0119.jpg",
+    "url": "./assets/cards/NORN_0119.webp",
     "type": "ENFJ",
     "coords": {
       "E_I": 8,
@@ -1310,7 +1310,7 @@
   },
   {
     "id": "NORN_0120",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0120.jpg",
+    "url": "./assets/cards/NORN_0120.webp",
     "type": "ENFP",
     "coords": {
       "E_I": 8,
@@ -1321,7 +1321,7 @@
   },
   {
     "id": "NORN_0121",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0121.jpg",
+    "url": "./assets/cards/NORN_0121.webp",
     "type": "ISTJ",
     "coords": {
       "E_I": -8,
@@ -1332,7 +1332,7 @@
   },
   {
     "id": "NORN_0122",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0122.jpg",
+    "url": "./assets/cards/NORN_0122.webp",
     "type": "ISFJ",
     "coords": {
       "E_I": -8,
@@ -1343,7 +1343,7 @@
   },
   {
     "id": "NORN_0123",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0123.jpg",
+    "url": "./assets/cards/NORN_0123.webp",
     "type": "ESTJ",
     "coords": {
       "E_I": 8,
@@ -1354,7 +1354,7 @@
   },
   {
     "id": "NORN_0124",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0124.jpg",
+    "url": "./assets/cards/NORN_0124.webp",
     "type": "ESFJ",
     "coords": {
       "E_I": 8,
@@ -1365,7 +1365,7 @@
   },
   {
     "id": "NORN_0125",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0125.jpg",
+    "url": "./assets/cards/NORN_0125.webp",
     "type": "ISTP",
     "coords": {
       "E_I": -8,
@@ -1376,7 +1376,7 @@
   },
   {
     "id": "NORN_0126",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0126.jpg",
+    "url": "./assets/cards/NORN_0126.webp",
     "type": "ISFP",
     "coords": {
       "E_I": -8,
@@ -1387,7 +1387,7 @@
   },
   {
     "id": "NORN_0127",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0127.jpg",
+    "url": "./assets/cards/NORN_0127.webp",
     "type": "ESTP",
     "coords": {
       "E_I": 8,
@@ -1398,7 +1398,7 @@
   },
   {
     "id": "NORN_0128",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0128.jpg",
+    "url": "./assets/cards/NORN_0128.webp",
     "type": "ESFP",
     "coords": {
       "E_I": 8,
@@ -1409,7 +1409,7 @@
   },
   {
     "id": "NORN_0129",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0129.jpg",
+    "url": "./assets/cards/NORN_0129.webp",
     "type": "INTJ",
     "coords": {
       "E_I": -8,
@@ -1420,7 +1420,7 @@
   },
   {
     "id": "NORN_0130",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0130.jpg",
+    "url": "./assets/cards/NORN_0130.webp",
     "type": "INTP",
     "coords": {
       "E_I": -8,
@@ -1431,7 +1431,7 @@
   },
   {
     "id": "NORN_0131",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0131.jpg",
+    "url": "./assets/cards/NORN_0131.webp",
     "type": "ENTJ",
     "coords": {
       "E_I": 8,
@@ -1442,7 +1442,7 @@
   },
   {
     "id": "NORN_0132",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0132.jpg",
+    "url": "./assets/cards/NORN_0132.webp",
     "type": "ENTP",
     "coords": {
       "E_I": 8,
@@ -1453,7 +1453,7 @@
   },
   {
     "id": "NORN_0133",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0133.jpg",
+    "url": "./assets/cards/NORN_0133.webp",
     "type": "INFJ",
     "coords": {
       "E_I": -8,
@@ -1464,7 +1464,7 @@
   },
   {
     "id": "NORN_0134",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0134.jpg",
+    "url": "./assets/cards/NORN_0134.webp",
     "type": "INFP",
     "coords": {
       "E_I": -8,
@@ -1475,7 +1475,7 @@
   },
   {
     "id": "NORN_0135",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0135.jpg",
+    "url": "./assets/cards/NORN_0135.webp",
     "type": "ENFJ",
     "coords": {
       "E_I": 8,
@@ -1486,7 +1486,7 @@
   },
   {
     "id": "NORN_0136",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0136.jpg",
+    "url": "./assets/cards/NORN_0136.webp",
     "type": "ENFP",
     "coords": {
       "E_I": 8,
@@ -1497,7 +1497,7 @@
   },
   {
     "id": "NORN_0137",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0137.jpg",
+    "url": "./assets/cards/NORN_0137.webp",
     "type": "ISTJ",
     "coords": {
       "E_I": -8,
@@ -1508,7 +1508,7 @@
   },
   {
     "id": "NORN_0138",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0138.jpg",
+    "url": "./assets/cards/NORN_0138.webp",
     "type": "ISFJ",
     "coords": {
       "E_I": -8,
@@ -1519,7 +1519,7 @@
   },
   {
     "id": "NORN_0139",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0139.jpg",
+    "url": "./assets/cards/NORN_0139.webp",
     "type": "ESTJ",
     "coords": {
       "E_I": 8,
@@ -1530,7 +1530,7 @@
   },
   {
     "id": "NORN_0140",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0140.jpg",
+    "url": "./assets/cards/NORN_0140.webp",
     "type": "ESFJ",
     "coords": {
       "E_I": 8,
@@ -1541,7 +1541,7 @@
   },
   {
     "id": "NORN_0141",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0141.jpg",
+    "url": "./assets/cards/NORN_0141.webp",
     "type": "ISTP",
     "coords": {
       "E_I": -8,
@@ -1552,7 +1552,7 @@
   },
   {
     "id": "NORN_0142",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0142.jpg",
+    "url": "./assets/cards/NORN_0142.webp",
     "type": "ISFP",
     "coords": {
       "E_I": -8,
@@ -1563,7 +1563,7 @@
   },
   {
     "id": "NORN_0143",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0143.jpg",
+    "url": "./assets/cards/NORN_0143.webp",
     "type": "ESTP",
     "coords": {
       "E_I": 8,
@@ -1574,7 +1574,7 @@
   },
   {
     "id": "NORN_0144",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0144.jpg",
+    "url": "./assets/cards/NORN_0144.webp",
     "type": "ESFP",
     "coords": {
       "E_I": 8,
@@ -1585,7 +1585,7 @@
   },
   {
     "id": "NORN_0145",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0145.jpg",
+    "url": "./assets/cards/NORN_0145.webp",
     "type": "INTJ",
     "coords": {
       "E_I": -8,
@@ -1596,7 +1596,7 @@
   },
   {
     "id": "NORN_0146",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0146.jpg",
+    "url": "./assets/cards/NORN_0146.webp",
     "type": "INTP",
     "coords": {
       "E_I": -8,
@@ -1607,7 +1607,7 @@
   },
   {
     "id": "NORN_0147",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0147.jpg",
+    "url": "./assets/cards/NORN_0147.webp",
     "type": "ENTJ",
     "coords": {
       "E_I": 8,
@@ -1618,7 +1618,7 @@
   },
   {
     "id": "NORN_0148",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0148.jpg",
+    "url": "./assets/cards/NORN_0148.webp",
     "type": "ENTP",
     "coords": {
       "E_I": 8,
@@ -1629,7 +1629,7 @@
   },
   {
     "id": "NORN_0149",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0149.jpg",
+    "url": "./assets/cards/NORN_0149.webp",
     "type": "INFJ",
     "coords": {
       "E_I": -8,
@@ -1640,7 +1640,7 @@
   },
   {
     "id": "NORN_0150",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0150.jpg",
+    "url": "./assets/cards/NORN_0150.webp",
     "type": "INFP",
     "coords": {
       "E_I": -8,
@@ -1651,7 +1651,7 @@
   },
   {
     "id": "NORN_0151",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0151.jpg",
+    "url": "./assets/cards/NORN_0151.webp",
     "type": "ENFJ",
     "coords": {
       "E_I": 8,
@@ -1662,7 +1662,7 @@
   },
   {
     "id": "NORN_0152",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0152.jpg",
+    "url": "./assets/cards/NORN_0152.webp",
     "type": "ENFP",
     "coords": {
       "E_I": 8,
@@ -1673,7 +1673,7 @@
   },
   {
     "id": "NORN_0153",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0153.jpg",
+    "url": "./assets/cards/NORN_0153.webp",
     "type": "ISTJ",
     "coords": {
       "E_I": -8,
@@ -1684,7 +1684,7 @@
   },
   {
     "id": "NORN_0154",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0154.jpg",
+    "url": "./assets/cards/NORN_0154.webp",
     "type": "ISFJ",
     "coords": {
       "E_I": -8,
@@ -1695,7 +1695,7 @@
   },
   {
     "id": "NORN_0155",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0155.jpg",
+    "url": "./assets/cards/NORN_0155.webp",
     "type": "ESTJ",
     "coords": {
       "E_I": 8,
@@ -1706,7 +1706,7 @@
   },
   {
     "id": "NORN_0156",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0156.jpg",
+    "url": "./assets/cards/NORN_0156.webp",
     "type": "ESFJ",
     "coords": {
       "E_I": 8,
@@ -1717,7 +1717,7 @@
   },
   {
     "id": "NORN_0157",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0157.jpg",
+    "url": "./assets/cards/NORN_0157.webp",
     "type": "ISTP",
     "coords": {
       "E_I": -8,
@@ -1728,7 +1728,7 @@
   },
   {
     "id": "NORN_0158",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0158.jpg",
+    "url": "./assets/cards/NORN_0158.webp",
     "type": "ISFP",
     "coords": {
       "E_I": -8,
@@ -1739,7 +1739,7 @@
   },
   {
     "id": "NORN_0159",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0159.jpg",
+    "url": "./assets/cards/NORN_0159.webp",
     "type": "ESTP",
     "coords": {
       "E_I": 8,
@@ -1750,7 +1750,7 @@
   },
   {
     "id": "NORN_0160",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0160.jpg",
+    "url": "./assets/cards/NORN_0160.webp",
     "type": "ESFP",
     "coords": {
       "E_I": 8,
@@ -1761,7 +1761,7 @@
   },
   {
     "id": "NORN_0161",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0161.jpg",
+    "url": "./assets/cards/NORN_0161.webp",
     "type": "INTJ",
     "coords": {
       "E_I": -8,
@@ -1772,7 +1772,7 @@
   },
   {
     "id": "NORN_0162",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0162.jpg",
+    "url": "./assets/cards/NORN_0162.webp",
     "type": "INTP",
     "coords": {
       "E_I": -8,
@@ -1783,7 +1783,7 @@
   },
   {
     "id": "NORN_0163",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0163.jpg",
+    "url": "./assets/cards/NORN_0163.webp",
     "type": "ENTJ",
     "coords": {
       "E_I": 8,
@@ -1794,7 +1794,7 @@
   },
   {
     "id": "NORN_0164",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0164.jpg",
+    "url": "./assets/cards/NORN_0164.webp",
     "type": "ENTP",
     "coords": {
       "E_I": 8,
@@ -1805,7 +1805,7 @@
   },
   {
     "id": "NORN_0165",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0165.jpg",
+    "url": "./assets/cards/NORN_0165.webp",
     "type": "INFJ",
     "coords": {
       "E_I": -8,
@@ -1816,7 +1816,7 @@
   },
   {
     "id": "NORN_0166",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0166.jpg",
+    "url": "./assets/cards/NORN_0166.webp",
     "type": "INFP",
     "coords": {
       "E_I": -8,
@@ -1827,7 +1827,7 @@
   },
   {
     "id": "NORN_0167",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0167.jpg",
+    "url": "./assets/cards/NORN_0167.webp",
     "type": "ENFJ",
     "coords": {
       "E_I": 8,
@@ -1838,7 +1838,7 @@
   },
   {
     "id": "NORN_0168",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0168.jpg",
+    "url": "./assets/cards/NORN_0168.webp",
     "type": "ENFP",
     "coords": {
       "E_I": 8,
@@ -1849,7 +1849,7 @@
   },
   {
     "id": "NORN_0169",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0169.jpg",
+    "url": "./assets/cards/NORN_0169.webp",
     "type": "ISTJ",
     "coords": {
       "E_I": -8,
@@ -1860,7 +1860,7 @@
   },
   {
     "id": "NORN_0170",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0170.jpg",
+    "url": "./assets/cards/NORN_0170.webp",
     "type": "ISFJ",
     "coords": {
       "E_I": -8,
@@ -1871,7 +1871,7 @@
   },
   {
     "id": "NORN_0171",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0171.jpg",
+    "url": "./assets/cards/NORN_0171.webp",
     "type": "ESTJ",
     "coords": {
       "E_I": 8,
@@ -1882,7 +1882,7 @@
   },
   {
     "id": "NORN_0172",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0172.jpg",
+    "url": "./assets/cards/NORN_0172.webp",
     "type": "ESFJ",
     "coords": {
       "E_I": 8,
@@ -1893,7 +1893,7 @@
   },
   {
     "id": "NORN_0173",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0173.jpg",
+    "url": "./assets/cards/NORN_0173.webp",
     "type": "ISTP",
     "coords": {
       "E_I": -8,
@@ -1904,7 +1904,7 @@
   },
   {
     "id": "NORN_0174",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0174.jpg",
+    "url": "./assets/cards/NORN_0174.webp",
     "type": "ISFP",
     "coords": {
       "E_I": -8,
@@ -1915,7 +1915,7 @@
   },
   {
     "id": "NORN_0175",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0175.jpg",
+    "url": "./assets/cards/NORN_0175.webp",
     "type": "ESTP",
     "coords": {
       "E_I": 8,
@@ -1926,7 +1926,7 @@
   },
   {
     "id": "NORN_0176",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0176.jpg",
+    "url": "./assets/cards/NORN_0176.webp",
     "type": "ESFP",
     "coords": {
       "E_I": 8,
@@ -1937,7 +1937,7 @@
   },
   {
     "id": "NORN_0177",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0177.jpg",
+    "url": "./assets/cards/NORN_0177.webp",
     "type": "INTJ",
     "coords": {
       "E_I": -8,
@@ -1948,7 +1948,7 @@
   },
   {
     "id": "NORN_0178",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0178.jpg",
+    "url": "./assets/cards/NORN_0178.webp",
     "type": "INTP",
     "coords": {
       "E_I": -8,
@@ -1959,7 +1959,7 @@
   },
   {
     "id": "NORN_0179",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0179.jpg",
+    "url": "./assets/cards/NORN_0179.webp",
     "type": "ENTJ",
     "coords": {
       "E_I": 8,
@@ -1970,7 +1970,7 @@
   },
   {
     "id": "NORN_0180",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0180.jpg",
+    "url": "./assets/cards/NORN_0180.webp",
     "type": "ENTP",
     "coords": {
       "E_I": 8,
@@ -1981,7 +1981,7 @@
   },
   {
     "id": "NORN_0181",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0181.jpg",
+    "url": "./assets/cards/NORN_0181.webp",
     "type": "INFJ",
     "coords": {
       "E_I": -8,
@@ -1992,7 +1992,7 @@
   },
   {
     "id": "NORN_0182",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0182.jpg",
+    "url": "./assets/cards/NORN_0182.webp",
     "type": "INFP",
     "coords": {
       "E_I": -8,
@@ -2003,7 +2003,7 @@
   },
   {
     "id": "NORN_0183",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0183.jpg",
+    "url": "./assets/cards/NORN_0183.webp",
     "type": "ENFJ",
     "coords": {
       "E_I": 8,
@@ -2014,7 +2014,7 @@
   },
   {
     "id": "NORN_0184",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0184.jpg",
+    "url": "./assets/cards/NORN_0184.webp",
     "type": "ENFP",
     "coords": {
       "E_I": 8,
@@ -2025,7 +2025,7 @@
   },
   {
     "id": "NORN_0185",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0185.jpg",
+    "url": "./assets/cards/NORN_0185.webp",
     "type": "ISTJ",
     "coords": {
       "E_I": -8,
@@ -2036,7 +2036,7 @@
   },
   {
     "id": "NORN_0186",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0186.jpg",
+    "url": "./assets/cards/NORN_0186.webp",
     "type": "ISFJ",
     "coords": {
       "E_I": -8,
@@ -2047,7 +2047,7 @@
   },
   {
     "id": "NORN_0187",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0187.jpg",
+    "url": "./assets/cards/NORN_0187.webp",
     "type": "ESTJ",
     "coords": {
       "E_I": 8,
@@ -2058,7 +2058,7 @@
   },
   {
     "id": "NORN_0188",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0188.jpg",
+    "url": "./assets/cards/NORN_0188.webp",
     "type": "ESFJ",
     "coords": {
       "E_I": 8,
@@ -2069,7 +2069,7 @@
   },
   {
     "id": "NORN_0189",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0189.jpg",
+    "url": "./assets/cards/NORN_0189.webp",
     "type": "ISTP",
     "coords": {
       "E_I": -8,
@@ -2080,7 +2080,7 @@
   },
   {
     "id": "NORN_0190",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0190.jpg",
+    "url": "./assets/cards/NORN_0190.webp",
     "type": "ISFP",
     "coords": {
       "E_I": -8,
@@ -2091,7 +2091,7 @@
   },
   {
     "id": "NORN_0191",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0191.jpg",
+    "url": "./assets/cards/NORN_0191.webp",
     "type": "ESTP",
     "coords": {
       "E_I": 8,
@@ -2102,7 +2102,7 @@
   },
   {
     "id": "NORN_0192",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0192.jpg",
+    "url": "./assets/cards/NORN_0192.webp",
     "type": "ESFP",
     "coords": {
       "E_I": 8,
@@ -2113,7 +2113,7 @@
   },
   {
     "id": "NORN_0193",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0193.jpg",
+    "url": "./assets/cards/NORN_0193.webp",
     "type": "INTJ",
     "coords": {
       "E_I": -8,
@@ -2124,7 +2124,7 @@
   },
   {
     "id": "NORN_0194",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0194.jpg",
+    "url": "./assets/cards/NORN_0194.webp",
     "type": "INTP",
     "coords": {
       "E_I": -8,
@@ -2135,7 +2135,7 @@
   },
   {
     "id": "NORN_0195",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0195.jpg",
+    "url": "./assets/cards/NORN_0195.webp",
     "type": "ENTJ",
     "coords": {
       "E_I": 8,
@@ -2146,7 +2146,7 @@
   },
   {
     "id": "NORN_0196",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0196.jpg",
+    "url": "./assets/cards/NORN_0196.webp",
     "type": "ENTP",
     "coords": {
       "E_I": 8,
@@ -2157,7 +2157,7 @@
   },
   {
     "id": "NORN_0197",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0197.jpg",
+    "url": "./assets/cards/NORN_0197.webp",
     "type": "INFJ",
     "coords": {
       "E_I": -8,
@@ -2168,7 +2168,7 @@
   },
   {
     "id": "NORN_0198",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0198.jpg",
+    "url": "./assets/cards/NORN_0198.webp",
     "type": "INFP",
     "coords": {
       "E_I": -8,
@@ -2179,7 +2179,7 @@
   },
   {
     "id": "NORN_0199",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0199.jpg",
+    "url": "./assets/cards/NORN_0199.webp",
     "type": "ENFJ",
     "coords": {
       "E_I": 8,
@@ -2190,7 +2190,7 @@
   },
   {
     "id": "NORN_0200",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0200.jpg",
+    "url": "./assets/cards/NORN_0200.webp",
     "type": "ENFP",
     "coords": {
       "E_I": 8,
@@ -2201,7 +2201,7 @@
   },
   {
     "id": "NORN_0201",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0201.jpg",
+    "url": "./assets/cards/NORN_0201.webp",
     "type": "ISTJ",
     "coords": {
       "E_I": -8,
@@ -2212,7 +2212,7 @@
   },
   {
     "id": "NORN_0202",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0202.jpg",
+    "url": "./assets/cards/NORN_0202.webp",
     "type": "ISFJ",
     "coords": {
       "E_I": -8,
@@ -2223,7 +2223,7 @@
   },
   {
     "id": "NORN_0203",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0203.jpg",
+    "url": "./assets/cards/NORN_0203.webp",
     "type": "ESTJ",
     "coords": {
       "E_I": 8,
@@ -2234,7 +2234,7 @@
   },
   {
     "id": "NORN_0204",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0204.jpg",
+    "url": "./assets/cards/NORN_0204.webp",
     "type": "ESFJ",
     "coords": {
       "E_I": 8,
@@ -2245,7 +2245,7 @@
   },
   {
     "id": "NORN_0205",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0205.jpg",
+    "url": "./assets/cards/NORN_0205.webp",
     "type": "ISTP",
     "coords": {
       "E_I": -8,
@@ -2256,7 +2256,7 @@
   },
   {
     "id": "NORN_0206",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0206.jpg",
+    "url": "./assets/cards/NORN_0206.webp",
     "type": "ISFP",
     "coords": {
       "E_I": -8,
@@ -2267,7 +2267,7 @@
   },
   {
     "id": "NORN_0207",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0207.jpg",
+    "url": "./assets/cards/NORN_0207.webp",
     "type": "ESTP",
     "coords": {
       "E_I": 8,
@@ -2278,7 +2278,7 @@
   },
   {
     "id": "NORN_0208",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0208.jpg",
+    "url": "./assets/cards/NORN_0208.webp",
     "type": "ESFP",
     "coords": {
       "E_I": 8,
@@ -2289,7 +2289,7 @@
   },
   {
     "id": "NORN_0209",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0209.jpg",
+    "url": "./assets/cards/NORN_0209.webp",
     "type": "INTJ",
     "coords": {
       "E_I": -8,
@@ -2300,7 +2300,7 @@
   },
   {
     "id": "NORN_0210",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0210.jpg",
+    "url": "./assets/cards/NORN_0210.webp",
     "type": "INTP",
     "coords": {
       "E_I": -8,
@@ -2311,7 +2311,7 @@
   },
   {
     "id": "NORN_0211",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0211.jpg",
+    "url": "./assets/cards/NORN_0211.webp",
     "type": "ENTJ",
     "coords": {
       "E_I": 8,
@@ -2322,7 +2322,7 @@
   },
   {
     "id": "NORN_0212",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0212.jpg",
+    "url": "./assets/cards/NORN_0212.webp",
     "type": "ENTP",
     "coords": {
       "E_I": 8,
@@ -2333,7 +2333,7 @@
   },
   {
     "id": "NORN_0213",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0213.jpg",
+    "url": "./assets/cards/NORN_0213.webp",
     "type": "INFJ",
     "coords": {
       "E_I": -8,
@@ -2344,7 +2344,7 @@
   },
   {
     "id": "NORN_0214",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0214.jpg",
+    "url": "./assets/cards/NORN_0214.webp",
     "type": "INFP",
     "coords": {
       "E_I": -8,
@@ -2355,7 +2355,7 @@
   },
   {
     "id": "NORN_0215",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0215.jpg",
+    "url": "./assets/cards/NORN_0215.webp",
     "type": "ENFJ",
     "coords": {
       "E_I": 8,
@@ -2366,7 +2366,7 @@
   },
   {
     "id": "NORN_0216",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0216.jpg",
+    "url": "./assets/cards/NORN_0216.webp",
     "type": "ENFP",
     "coords": {
       "E_I": 8,
@@ -2377,7 +2377,7 @@
   },
   {
     "id": "NORN_0217",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0217.jpg",
+    "url": "./assets/cards/NORN_0217.webp",
     "type": "ISTJ",
     "coords": {
       "E_I": -8,
@@ -2388,7 +2388,7 @@
   },
   {
     "id": "NORN_0218",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0218.jpg",
+    "url": "./assets/cards/NORN_0218.webp",
     "type": "ISFJ",
     "coords": {
       "E_I": -8,
@@ -2399,7 +2399,7 @@
   },
   {
     "id": "NORN_0219",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0219.jpg",
+    "url": "./assets/cards/NORN_0219.webp",
     "type": "ESTJ",
     "coords": {
       "E_I": 8,
@@ -2410,7 +2410,7 @@
   },
   {
     "id": "NORN_0220",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0220.jpg",
+    "url": "./assets/cards/NORN_0220.webp",
     "type": "ESFJ",
     "coords": {
       "E_I": 8,
@@ -2421,7 +2421,7 @@
   },
   {
     "id": "NORN_0221",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0221.jpg",
+    "url": "./assets/cards/NORN_0221.webp",
     "type": "ISTP",
     "coords": {
       "E_I": -8,
@@ -2432,7 +2432,7 @@
   },
   {
     "id": "NORN_0222",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0222.jpg",
+    "url": "./assets/cards/NORN_0222.webp",
     "type": "ISFP",
     "coords": {
       "E_I": -8,
@@ -2443,7 +2443,7 @@
   },
   {
     "id": "NORN_0223",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0223.jpg",
+    "url": "./assets/cards/NORN_0223.webp",
     "type": "ESTP",
     "coords": {
       "E_I": 8,
@@ -2454,7 +2454,7 @@
   },
   {
     "id": "NORN_0224",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0224.jpg",
+    "url": "./assets/cards/NORN_0224.webp",
     "type": "ESFP",
     "coords": {
       "E_I": 8,
@@ -2465,7 +2465,7 @@
   },
   {
     "id": "NORN_0225",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0225.jpg",
+    "url": "./assets/cards/NORN_0225.webp",
     "type": "INTJ",
     "coords": {
       "E_I": -8,
@@ -2476,7 +2476,7 @@
   },
   {
     "id": "NORN_0226",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0226.jpg",
+    "url": "./assets/cards/NORN_0226.webp",
     "type": "INTP",
     "coords": {
       "E_I": -8,
@@ -2487,7 +2487,7 @@
   },
   {
     "id": "NORN_0227",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0227.jpg",
+    "url": "./assets/cards/NORN_0227.webp",
     "type": "ENTJ",
     "coords": {
       "E_I": 8,
@@ -2498,7 +2498,7 @@
   },
   {
     "id": "NORN_0228",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0228.jpg",
+    "url": "./assets/cards/NORN_0228.webp",
     "type": "ENTP",
     "coords": {
       "E_I": 8,
@@ -2509,7 +2509,7 @@
   },
   {
     "id": "NORN_0229",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0229.jpg",
+    "url": "./assets/cards/NORN_0229.webp",
     "type": "INFJ",
     "coords": {
       "E_I": -8,
@@ -2520,7 +2520,7 @@
   },
   {
     "id": "NORN_0230",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0230.jpg",
+    "url": "./assets/cards/NORN_0230.webp",
     "type": "INFP",
     "coords": {
       "E_I": -8,
@@ -2531,7 +2531,7 @@
   },
   {
     "id": "NORN_0231",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0231.jpg",
+    "url": "./assets/cards/NORN_0231.webp",
     "type": "ENFJ",
     "coords": {
       "E_I": 8,
@@ -2542,7 +2542,7 @@
   },
   {
     "id": "NORN_0232",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0232.jpg",
+    "url": "./assets/cards/NORN_0232.webp",
     "type": "ENFP",
     "coords": {
       "E_I": 8,
@@ -2553,7 +2553,7 @@
   },
   {
     "id": "NORN_0233",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0233.jpg",
+    "url": "./assets/cards/NORN_0233.webp",
     "type": "ISTJ",
     "coords": {
       "E_I": -8,
@@ -2564,7 +2564,7 @@
   },
   {
     "id": "NORN_0234",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0234.jpg",
+    "url": "./assets/cards/NORN_0234.webp",
     "type": "ISFJ",
     "coords": {
       "E_I": -8,
@@ -2575,7 +2575,7 @@
   },
   {
     "id": "NORN_0235",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0235.jpg",
+    "url": "./assets/cards/NORN_0235.webp",
     "type": "ESTJ",
     "coords": {
       "E_I": 8,
@@ -2586,7 +2586,7 @@
   },
   {
     "id": "NORN_0236",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0236.jpg",
+    "url": "./assets/cards/NORN_0236.webp",
     "type": "ESFJ",
     "coords": {
       "E_I": 8,
@@ -2597,7 +2597,7 @@
   },
   {
     "id": "NORN_0237",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0237.jpg",
+    "url": "./assets/cards/NORN_0237.webp",
     "type": "ISTP",
     "coords": {
       "E_I": -8,
@@ -2608,7 +2608,7 @@
   },
   {
     "id": "NORN_0238",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0238.jpg",
+    "url": "./assets/cards/NORN_0238.webp",
     "type": "ISFP",
     "coords": {
       "E_I": -8,
@@ -2619,7 +2619,7 @@
   },
   {
     "id": "NORN_0239",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0239.jpg",
+    "url": "./assets/cards/NORN_0239.webp",
     "type": "ESTP",
     "coords": {
       "E_I": 8,
@@ -2630,7 +2630,7 @@
   },
   {
     "id": "NORN_0240",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0240.jpg",
+    "url": "./assets/cards/NORN_0240.webp",
     "type": "ESFP",
     "coords": {
       "E_I": 8,
@@ -2641,7 +2641,7 @@
   },
   {
     "id": "NORN_0241",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0241.jpg",
+    "url": "./assets/cards/NORN_0241.webp",
     "type": "INTJ",
     "coords": {
       "E_I": -8,
@@ -2652,7 +2652,7 @@
   },
   {
     "id": "NORN_0242",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0242.jpg",
+    "url": "./assets/cards/NORN_0242.webp",
     "type": "INTP",
     "coords": {
       "E_I": -8,
@@ -2663,7 +2663,7 @@
   },
   {
     "id": "NORN_0243",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0243.jpg",
+    "url": "./assets/cards/NORN_0243.webp",
     "type": "ENTJ",
     "coords": {
       "E_I": 8,
@@ -2674,7 +2674,7 @@
   },
   {
     "id": "NORN_0244",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0244.jpg",
+    "url": "./assets/cards/NORN_0244.webp",
     "type": "ENTP",
     "coords": {
       "E_I": 8,
@@ -2685,7 +2685,7 @@
   },
   {
     "id": "NORN_0245",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0245.jpg",
+    "url": "./assets/cards/NORN_0245.webp",
     "type": "INFJ",
     "coords": {
       "E_I": -8,
@@ -2696,7 +2696,7 @@
   },
   {
     "id": "NORN_0246",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0246.jpg",
+    "url": "./assets/cards/NORN_0246.webp",
     "type": "INFP",
     "coords": {
       "E_I": -8,
@@ -2707,7 +2707,7 @@
   },
   {
     "id": "NORN_0247",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0247.jpg",
+    "url": "./assets/cards/NORN_0247.webp",
     "type": "ENFJ",
     "coords": {
       "E_I": 8,
@@ -2718,7 +2718,7 @@
   },
   {
     "id": "NORN_0248",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0248.jpg",
+    "url": "./assets/cards/NORN_0248.webp",
     "type": "ENFP",
     "coords": {
       "E_I": 8,
@@ -2729,7 +2729,7 @@
   },
   {
     "id": "NORN_0249",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0249.jpg",
+    "url": "./assets/cards/NORN_0249.webp",
     "type": "ISTJ",
     "coords": {
       "E_I": -8,
@@ -2740,7 +2740,7 @@
   },
   {
     "id": "NORN_0250",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0250.jpg",
+    "url": "./assets/cards/NORN_0250.webp",
     "type": "ISFJ",
     "coords": {
       "E_I": -8,
@@ -2751,7 +2751,7 @@
   },
   {
     "id": "NORN_0251",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0251.jpg",
+    "url": "./assets/cards/NORN_0251.webp",
     "type": "ESTJ",
     "coords": {
       "E_I": 8,
@@ -2762,7 +2762,7 @@
   },
   {
     "id": "NORN_0252",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0252.jpg",
+    "url": "./assets/cards/NORN_0252.webp",
     "type": "ESFJ",
     "coords": {
       "E_I": 8,
@@ -2773,7 +2773,7 @@
   },
   {
     "id": "NORN_0253",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0253.jpg",
+    "url": "./assets/cards/NORN_0253.webp",
     "type": "ISTP",
     "coords": {
       "E_I": -8,
@@ -2784,7 +2784,7 @@
   },
   {
     "id": "NORN_0254",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0254.jpg",
+    "url": "./assets/cards/NORN_0254.webp",
     "type": "ISFP",
     "coords": {
       "E_I": -8,
@@ -2795,7 +2795,7 @@
   },
   {
     "id": "NORN_0255",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0255.jpg",
+    "url": "./assets/cards/NORN_0255.webp",
     "type": "ESTP",
     "coords": {
       "E_I": 8,
@@ -2806,7 +2806,7 @@
   },
   {
     "id": "NORN_0256",
-    "url": "https://d21h5hm5jxmc5.cloudfront.net/images/thumb/NORN_0256.jpg",
+    "url": "./assets/cards/NORN_0256.webp",
     "type": "ESFP",
     "coords": {
       "E_I": 8,

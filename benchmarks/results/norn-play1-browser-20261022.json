@@ -1,0 +1,76 @@
+{
+  "schema_version": "norn.browser-product-check.v1",
+  "scope": "Engineering observations of synthetic, agent-operated visits; no model-quality or human-preference claim.",
+  "first_deployed_version": "3b7045f9-c186-441f-aca5-9fb87e984040",
+  "real_external_calls": {
+    "jev": 1,
+    "deepseek": 1,
+    "automatic_retries": 0
+  },
+  "real_integration": {
+    "jev_prestart_opt_in": true,
+    "jev_returned_valid_lane": true,
+    "deepseek_picture_grounded_reading": true,
+    "three_lane_same_round_nll_visible": true,
+    "private_visit_not_archived": true
+  },
+  "local_mock": {
+    "origin": "http://127.0.0.1:18880",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "scroll_width": 390,
+    "default_private_feedback_hidden": true,
+    "explicit_on_with_consent_visible": true,
+    "actual_painted_exposure_in_sqlite": true,
+    "full_upgrade_preserves_exposure": true,
+    "feedback_on_archive_deployment": "local.round-feedback.v1",
+    "source_deployment": "local",
+    "real_external_calls": 0
+  },
+  "screenshots": {
+    "desktop": "docs/images/norn-play1-product-zh.jpg",
+    "mobile": "docs/images/norn-play1-mobile-en.jpg"
+  },
+  "lock_check": {
+    "enforced_files": 10,
+    "unchanged": true
+  },
+  "regression": {
+    "before_feedback_opt_in": {
+      "passed": 747,
+      "skipped": 19,
+      "subtests": 1305
+    },
+    "final_whole_run_before_compat_fix": {
+      "passed": 760,
+      "failed": 1,
+      "skipped": 19,
+      "subtests": 1339,
+      "failure": "tests/test_generation_stages.py::GenerationStageTests::test_preparation_does_not_dispatch_create_or_mutate_session_state: absent experience added a None plan key"
+    },
+    "post_fix_targeted": {
+      "passed": 81,
+      "subtests": 66,
+      "scope": "generation stages, experience, Worker/archive routes, acceptance verifier and play frontend"
+    },
+    "additional_new_contract_checks": {
+      "passed": 22,
+      "subtests": 44,
+      "note": "overlaps targeted run; do not add counts"
+    }
+  },
+  "limitations": [
+    "Page exit delivery is best effort, not a guarantee.",
+    "Exposure logs mean browser-rendered feedback, not proof of human attention.",
+    "Historical unspecified mode is not certified feedback-off.",
+    "An initial local archive verifier attempt failed because local serve has no archive export route; hosted acceptance is recorded separately."
+  ],
+  "final_deployed_version": "dbce9b2d-f3be-40cf-81fc-4357b2386909",
+  "final_default_controls": {
+    "round_feedback": false,
+    "jev": false,
+    "both_available_prestart": true
+  }
+}

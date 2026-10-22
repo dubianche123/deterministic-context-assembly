@@ -1,0 +1,46 @@
+{
+  "schema_version": "norn.v6-release-resources.v1",
+  "target": "norn-machine",
+  "initial_version": "c70bd547-dea7-46a5-aca6-9e8bcf0c254b",
+  "attempts": [
+    {
+      "stage": "initial_static_config_check",
+      "model_attempts": 0,
+      "outcome": "urllib asset request rejected; direct HTTPS asset verified"
+    },
+    {
+      "stage": "initial_live_analysis",
+      "model_attempts": 1,
+      "outcome": "HTTP503 after generation; actor snapshot rejected additional contribution_ledger",
+      "http_elapsed_ms": 4460,
+      "collection_consent": false,
+      "record_collected": false
+    },
+    {
+      "stage": "post_fix_acceptance",
+      "model_attempts": 2,
+      "outcome": "16 checks passed; reading and follow-up, with retry receipts reused",
+      "usage": {
+        "input_tokens": 3362,
+        "output_tokens": 288,
+        "cache_read_input_tokens": 3072
+      },
+      "collection_consent": false,
+      "record_collected": false
+    },
+    {
+      "stage": "final_version_resume",
+      "model_attempts": 0,
+      "outcome": "16 checks passed on restored actor; export bytes and total call count unchanged"
+    }
+  ],
+  "fresh_model_attempts": 3,
+  "judge_calls": 0,
+  "provider_retries": 0,
+  "cost_currency": null,
+  "status": "accepted",
+  "post_fix_version": "fe899d73-a6b4-4001-bbd3-5112076319d5",
+  "usage_scope": "Accepted two-call flow only; token usage for first failed snapshot attempt unavailable",
+  "final_version": "5f8cd99b-33e6-4e45-bc61-2ccebd827048",
+  "post_deploy_new_model_attempts": 0
+}

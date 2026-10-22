@@ -1,0 +1,4293 @@
+{
+  "schema_version": "norn.prose-eval.v1",
+  "created_at": "2026-10-20T15:21:55+00:00",
+  "data": "synthetic sessions from norn.simulate; no visitor data",
+  "base_url_host": "127.0.0.1:17863",
+  "models": [
+    "cn:glm-5.3-flash",
+    "cn:deepseek-v4.1-flash"
+  ],
+  "judge": [
+    "cn:kimi-k2.7",
+    "cn:minimax-m3",
+    "cn:kimi-k2.6"
+  ],
+  "judge_reasoning_effort": "low",
+  "generation_reasoning_effort": "off requested; DeepSeek upstream may raise it to low",
+  "prompt_versions": [
+    "norn.prompt.v4",
+    "norn.prompt.v5"
+  ],
+  "questions": [
+    "为什么说我会被这些画面吸引？",
+    "这准吗？还是只是随便说说。"
+  ],
+  "summary": {
+    "by_arm": [
+      {
+        "model": "cn:deepseek-v4.1-flash",
+        "prompt_version": "norn.prompt.v4",
+        "sessions": 6,
+        "outputs": 14,
+        "ok_outputs": 12,
+        "transport_failures": 0,
+        "guardrail_rejections": 2,
+        "rejection_reasons": [
+          "output_truncated"
+        ],
+        "reading_length_ok": 1.0,
+        "reading_chars_median": 312.0,
+        "leaks_per_output": {
+          "type_letters": 0.0,
+          "mbti": 0.0,
+          "jargon": 2.75,
+          "digits": 3.75
+        },
+        "scenes_cited_per_reading": 6.25,
+        "unknown_quotes_per_output": 0.6666666666666666,
+        "latency_ms_median": 3619.9179999999997,
+        "latency_ms_max": 9490.954
+      },
+      {
+        "model": "cn:deepseek-v4.1-flash",
+        "prompt_version": "norn.prompt.v5",
+        "sessions": 6,
+        "outputs": 13,
+        "ok_outputs": 11,
+        "transport_failures": 0,
+        "guardrail_rejections": 2,
+        "rejection_reasons": [
+          "output_truncated"
+        ],
+        "reading_length_ok": 1.0,
+        "reading_chars_median": 301.5,
+        "leaks_per_output": {
+          "type_letters": 0.0,
+          "mbti": 0.0,
+          "jargon": 0.2727272727272727,
+          "digits": 3.8181818181818183
+        },
+        "scenes_cited_per_reading": 7.5,
+        "unknown_quotes_per_output": 0.0,
+        "latency_ms_median": 4303.68,
+        "latency_ms_max": 6249.659
+      },
+      {
+        "model": "cn:glm-5.3-flash",
+        "prompt_version": "norn.prompt.v4",
+        "sessions": 6,
+        "outputs": 12,
+        "ok_outputs": 7,
+        "transport_failures": 5,
+        "guardrail_rejections": 0,
+        "rejection_reasons": [],
+        "reading_length_ok": 0.75,
+        "reading_chars_median": 344.0,
+        "leaks_per_output": {
+          "type_letters": 0.0,
+          "mbti": 0.0,
+          "jargon": 3.2857142857142856,
+          "digits": 5.0
+        },
+        "scenes_cited_per_reading": 7.0,
+        "unknown_quotes_per_output": 0.7142857142857143,
+        "latency_ms_median": 18853.298,
+        "latency_ms_max": 26533.083
+      },
+      {
+        "model": "cn:glm-5.3-flash",
+        "prompt_version": "norn.prompt.v5",
+        "sessions": 6,
+        "outputs": 15,
+        "ok_outputs": 10,
+        "transport_failures": 5,
+        "guardrail_rejections": 0,
+        "rejection_reasons": [],
+        "reading_length_ok": 1.0,
+        "reading_chars_median": 298,
+        "leaks_per_output": {
+          "type_letters": 0.0,
+          "mbti": 0.0,
+          "jargon": 0.1,
+          "digits": 1.7
+        },
+        "scenes_cited_per_reading": 7.2,
+        "unknown_quotes_per_output": 0.4,
+        "latency_ms_median": 19781.6175,
+        "latency_ms_max": 20845.736
+      }
+    ],
+    "judge": {
+      "cn:deepseek-v4.1-flash": {
+        "comparisons": 6,
+        "v5_win_rate": 1.0,
+        "mean_scores": {
+          "grounded": {
+            "v4": 2.3333333333333335,
+            "v5": 4.333333333333333
+          },
+          "resonance": {
+            "v4": 2.5,
+            "v5": 4.333333333333333
+          },
+          "clarity": {
+            "v4": 2.3333333333333335,
+            "v5": 4.833333333333333
+          }
+        },
+        "overclaim_rate": {
+          "v4": 0.5,
+          "v5": 0.0
+        }
+      },
+      "cn:glm-5.3-flash": {
+        "comparisons": 6,
+        "v5_win_rate": 1.0,
+        "mean_scores": {
+          "grounded": {
+            "v4": 2.0,
+            "v5": 4.166666666666667
+          },
+          "resonance": {
+            "v4": 2.3333333333333335,
+            "v5": 4.5
+          },
+          "clarity": {
+            "v4": 2.1666666666666665,
+            "v5": 4.666666666666667
+          }
+        },
+        "overclaim_rate": {
+          "v4": 0.6666666666666666,
+          "v5": 0.0
+        }
+      }
+    }
+  },
+  "sessions": [
+    {
+      "model": "cn:glm-5.3-flash",
+      "prompt_version": "norn.prompt.v4",
+      "context_prompt_version": "norn.prompt.v4",
+      "fixture": 0,
+      "mode": "sparse_mode",
+      "rounds": 4,
+      "facts": [
+        "无标签门墙",
+        "法庭日程墙",
+        "混凝土楼梯井",
+        "自行车链条维修",
+        "雨棚修理处",
+        "餐车高峰"
+      ],
+      "turns": [
+        {
+          "role": "reading",
+          "text": "这一次，命运织机为你留下的画面有一条清晰的手感：你在雨棚修理处、自行车链条维修、餐车高峰里反复选了「动手、冷静、现场」的场景，又在混凝土楼梯井和无标签门墙处选了远景、结构与解构的意象，法庭日程墙则留下执行与规则的重量。可以说，你偏爱那些既能上手触碰、又能看见系统脉络的画面。\n\n画面本身的偏好线索更细腻些：斜向约45°明暗边缘占比较高的画面排位更靠前，而偏绿、偏暗或饱和度偏低、蓝色压重的画面排位更靠后。这听起来像是你的目光偏爱有清晰走向的线条，而不是混沌的色块。\n\n但要坦白：完成的有效轮次还太少，模型没有通过随机基线的验证，目前这些判断只是这次选择的有限解读，不是结论。下次多走几轮，织机才有机会看得更准。",
+          "status": "ok",
+          "reason_codes": [],
+          "elapsed_ms": 8548.046,
+          "usage": {
+            "input_tokens": 1744,
+            "uncached_input_tokens": 1744,
+            "output_tokens": 195,
+            "cache_read_input_tokens": 0,
+            "cache_creation_input_tokens": 0,
+            "cached_tokens": 0,
+            "input_tokens_observed": true,
+            "uncached_input_tokens_observed": true,
+            "output_tokens_observed": true,
+            "cache_read_input_tokens_observed": true,
+            "cache_creation_input_tokens_observed": true,
+            "cached_tokens_observed": true,
+            "source": "provider",
+            "raw": {
+              "cache_creation_input_tokens": 0,
+              "cache_read_input_tokens": 0,
+              "cached_tokens": 0,
+              "completion_thinking_tokens": 0,
+              "completion_tokens": 195,
+              "completion_tokens_details": {
+                "accepted_prediction_tokens": 0,
+                "audio_tokens": 0,
+                "cached_tokens": 0,
+                "reasoning_tokens": 0,
+                "rejected_prediction_tokens": 0
+              },
+              "credit": 0.04,
+              "prompt_cache_hit_tokens": 0,
+              "prompt_cache_miss_tokens": 1744,
+              "prompt_cache_write_tokens": 0,
+              "prompt_tokens": 1744,
+              "prompt_tokens_details": {
+                "accepted_prediction_tokens": 0,
+                "audio_tokens": 0,
+                "cached_tokens": 0,
+                "reasoning_tokens": 0,
+                "rejected_prediction_tokens": 0
+              },
+              "total_tokens": 1939
+            }
+          },
+          "checks": {
+            "chars": 269,
+            "length_ok": false,
+            "leaks": {
+              "type_letters": 0,
+              "mbti": 0,
+              "jargon": 4,
+              "digits": 2
+            },
+            "scenes_cited": 6,
+            "motifs_cited": 0,
+            "next_to_try_cited": false,
+            "unknown_quotes": []
+          }
+        },
+        {
+          "role": "follow_up",
+          "question": "为什么说我会被这些画面吸引？",
+          "text": "因为你在四轮里真实留下的画面中，NORN_0045雨棚修理、NORN_0109链条维修这样「动手、冷静」的场景，和NORN_0177楼梯井、NORN_0242无标签门墙这样结构、解构的场景，反复被你选中。排序模型正是从这些相对选择里学到了方向。\n\n视觉上，斜向明暗边缘更清晰的画面排位更靠前。但这只基于很少的比较，模型尚未通过验证，所以说是「吸引」，其实仍是这次选择的有限观察，不是定论。",
+          "status": "ok",
+          "reason_codes": [],
+          "elapsed_ms": 6565.55,
+          "usage": {
+            "input_tokens": 2034,
+            "uncached_input_tokens": 2034,
+            "output_tokens": 125,
+            "cache_read_input_tokens": 0,
+            "cache_creation_input_tokens": 0,
+            "cached_tokens": 0,
+            "input_tokens_observed": true,
+            "uncached_input_tokens_observed": true,
+            "output_tokens_observed": true,
+            "cache_read_input_tokens_observed": true,
+            "cache_creation_input_tokens_observed": true,
+            "cached_tokens_observed": true,
+            "source": "provider",
+            "raw": {
+              "cache_creation_input_tokens": 0,
+              "cache_read_input_tokens": 0,
+              "cached_tokens": 0,
+              "completion_thinking_tokens": 0,
+              "completion_tokens": 125,
+              "completion_tokens_details": {
+                "accepted_prediction_tokens": 0,
+                "audio_tokens": 0,
+                "cached_tokens": 0,
+                "reasoning_tokens": 0,
+                "rejected_prediction_tokens": 0
+              },
+              "credit": 0.04,
+              "prompt_cache_hit_tokens": 0,
+              "prompt_cache_miss_tokens": 2034,
+              "prompt_cache_write_tokens": 0,
+              "prompt_tokens": 2034,
+              "prompt_tokens_details": {
+                "accepted_prediction_tokens": 0,
+                "audio_tokens": 0,
+                "cached_tokens": 0,
+                "reasoning_tokens": 0,
+                "rejected_prediction_tokens": 0
+              },
+              "total_tokens": 2159
+            }
+          },
+          "checks": {
+            "chars": 136,
+            "length_ok": true,
+            "leaks": {
+              "type_letters": 0,
+              "mbti": 0,
+              "jargon": 4,
+              "digits": 16
+            },
+            "scenes_cited": 1,
+            "motifs_cited": 0,
+            "next_to_try_cited": false,
+            "unknown_quotes": [
+              "吸引"
+            ]
+          }
+        }
+      ],
+      "wall_seconds": 15.14
+    },
+    {
+      "model": "cn:glm-5.3-flash",
+      "prompt_version": "norn.prompt.v4",
+      "context_prompt_version": "norn.prompt.v4",
+      "fixture": 1,
+      "mode": "sparse_mode",
+      "rounds": 4,
+      "facts": [
+        "卧室衣架",
+        "图书卡片柜",
+        "封存温室",
+        "微型剧场盒",
+        "手作面具桌",
+        "无终点电梯厅",
+        "清晨公交场站",
+        "节日鼓点"
+      ],
+      "turns": [
+        {
+          "role": "reading",
+          "text": "这一次，你留下的画面像两条并行的线。一条偏向秩序与准确——清晨公交场站、图书卡片柜，那种被妥善安放的感觉；另一条偏向当下的感受与想象——手作面具桌、微型剧场盒、封存温室。你也会在同一个回合里同时带走「节日鼓点」和「卧室衣架」，行动与静观并不互相排斥。从视觉上看，这次比较里，倾斜约45度的边缘纹理更常出现在你偏高的排序中，而过于低暗的画面得分偏低，不过样本只有四轮，验证尚未通过，目前只能说还在探索。下一次不妨多放几张介于明亮与幽微之间的画面，看看你的坐标落在哪里。",
+          "status": "ok",
+          "reason_codes": [],
+          "elapsed_ms": 14067.121,
+          "usage": {
+            "input_tokens": 1890,
+            "uncached_input_tokens": 1890,
+            "output_tokens": 167,
+            "cache_read_input_tokens": 0,
+            "cache_creation_input_tokens": 0,
+            "cached_tokens": 0,
+            "input_tokens_observed": true,
+            "uncached_input_tokens_observed": true,
+            "output_tokens_observed": true,
+            "cache_read_input_tokens_observed": true,
+            "cache_creation_input_tokens_observed": true,
+            "cached_tokens_observed": true,
+            "source": "provider",
+            "raw": {
+              "cache_creation_input_tokens": 0,
+              "cache_read_input_tokens": 0,
+              "cached_tokens": 0,
+              "completion_thinking_tokens": 19,
+              "completion_tokens": 167,
+              "completion_tokens_details": {
+                "accepted_prediction_tokens": 0,
+                "audio_tokens": 0,
+                "cached_tokens": 0,
+                "reasoning_tokens": 19,
+                "rejected_prediction_tokens": 0
+              },
+              "credit": 0.04,
+              "prompt_cache_hit_tokens": 0,
+              "prompt_cache_miss_tokens": 1890,
+              "prompt_cache_write_tokens": 0,
+              "prompt_tokens": 1890,
+              "prompt_tokens_details": {
+                "accepted_prediction_tokens": 0,
+                "audio_tokens": 0,
+                "cached_tokens": 0,
+                "reasoning_tokens": 0,
+                "rejected_prediction_tokens": 0
+              },
+              "total_tokens": 2057
+            }
+          },
+          "checks": {
+            "chars": 204,
+            "length_ok": true,
+            "leaks": {
+              "type_letters": 0,
+              "mbti": 0,
+              "jargon": 2,
+              "digits": 2
+            },
+            "scenes_cited": 7,
+            "motifs_cited": 0,
+            "next_to_try_cited": false,
+            "unknown_quotes": []
+          }
+        },
+        {
+          "role": "follow_up",
+          "question": "为什么说我会被这些画面吸引？",
+          "text": "织机暂时没能接上语言的回声。你的选择还在，请稍后重试。",
+          "status": "provider_unavailable",
+          "reason_codes": [
+            "provider_error"
+          ],
+          "elapsed_ms": 4212.544,
+          "usage": {
+            "input_tokens": null,
+            "uncached_input_tokens": null,
+            "output_tokens": null,
+            "cache_read_input_tokens": null,
+            "cache_creation_input_tokens": null,
+            "cached_tokens": null,
+            "input_tokens_observed": false,
+            "uncached_input_tokens_observed": false,
+            "output_tokens_observed": false,
+            "cache_read_input_tokens_observed": false,
+            "cache_creation_input_tokens_observed": false,
+            "cached_tokens_observed": false,
+            "source": "unavailable",
+            "raw": {}
+          },
+          "checks": {
+            "chars": 24,
+            "length_ok": false,
+            "leaks": {
+              "type_letters": 0,
+              "mbti": 0,
+              "jargon": 0,
+              "digits": 0
+            },
+            "scenes_cited": 0,
+            "motifs_cited": 0,
+            "next_to_try_cited": false,
+            "unknown_quotes": []
+          }
+        }
+      ],
+      "wall_seconds": 18.3
+    },
+    {
+      "model": "cn:glm-5.3-flash",
+      "prompt_version": "norn.prompt.v4",
+      "context_prompt_version": null,
+      "fixture": 2,
+      "mode": null,
+      "rounds": null,
+      "facts": [],
+      "turns": [
+        {
+          "role": "reading",
+          "text": "织机暂时没能接上语言的回声。你的选择还在，请稍后重试。",
+          "status": "provider_unavailable",
+          "reason_codes": [
+            "provider_error"
+          ],
+          "elapsed_ms": 1970.033,
+          "usage": {
+            "input_tokens": null,
+            "uncached_input_tokens": null,
+            "output_tokens": null,
+            "cache_read_input_tokens": null,
+            "cache_creation_input_tokens": null,
+            "cached_tokens": null,
+            "input_tokens_observed": false,
+            "uncached_input_tokens_observed": false,
+            "output_tokens_observed": false,
+            "cache_read_input_tokens_observed": false,
+            "cache_creation_input_tokens_observed": false,
+            "cached_tokens_observed": false,
+            "source": "unavailable",
+            "raw": {}
+          },
+          "checks": {
+            "chars": 24,
+            "length_ok": false,
+            "leaks": {
+              "type_letters": 0,
+              "mbti": 0,
+              "jargon": 0,
+              "digits": 0
+            },
+            "scenes_cited": 0,
+            "motifs_cited": 0,
+            "next_to_try_cited": false,
+            "unknown_quotes": []
+          }
+        }
+      ],
+      "wall_seconds": 2.0
+    },
+    {
+      "model": "cn:glm-5.3-flash",
+      "prompt_version": "norn.prompt.v4",
+      "context_prompt_version": null,
+      "fixture": 3,
+      "mode": null,
+      "rounds": null,
+      "facts": [],
+      "turns": [
+        {
+          "role": "reading",
+          "text": "织机暂时没能接上语言的回声。你的选择还在，请稍后重试。",
+          "status": "provider_unavailable",
+          "reason_codes": [
+            "provider_error"
+          ],
+          "elapsed_ms": 1810.916,
+          "usage": {
+            "input_tokens": null,
+            "uncached_input_tokens": null,
+            "output_tokens": null,
+            "cache_read_input_tokens": null,
+            "cache_creation_input_tokens": null,
+            "cached_tokens": null,
+            "input_tokens_observed": false,
+            "uncached_input_tokens_observed": false,
+            "output_tokens_observed": false,
+            "cache_read_input_tokens_observed": false,
+            "cache_creation_input_tokens_observed": false,
+            "cached_tokens_observed": false,
+            "source": "unavailable",
+            "raw": {}
+          },
+          "checks": {
+            "chars": 24,
+            "length_ok": false,
+            "leaks": {
+              "type_letters": 0,
+              "mbti": 0,
+              "jargon": 0,
+              "digits": 0
+            },
+            "scenes_cited": 0,
+            "motifs_cited": 0,
+            "next_to_try_cited": false,
+            "unknown_quotes": []
+          }
+        }
+      ],
+      "wall_seconds": 1.84
+    },
+    {
+      "model": "cn:glm-5.3-flash",
+      "prompt_version": "norn.prompt.v4",
+      "context_prompt_version": "norn.prompt.v4",
+      "fixture": 4,
+      "mode": "overflow_mode",
+      "rounds": 23,
+      "facts": [
+        "两室之间的窗",
+        "亚麻布柜",
+        "合唱排练",
+        "夜间医院角落",
+        "梦境地图墙",
+        "温室教学",
+        "社区通知桌",
+        "雾中灯塔"
+      ],
+      "turns": [
+        {
+          "role": "reading",
+          "text": "你在这次的 sixty 次最终选择里，反复走向同一些画面气质：雾中灯塔、梦境地图墙、两室之间的窗、夜间医院角落——这些卡共同带着「洞察、共情、愿景」的印记。你不常停在喧闹的正中央，更愿意站在能同时看见两个世界的位置：窗边、墙前、夜里亮着的一盏灯。\n\n另一条线索同样清晰。「亚麻布柜」「社区通知桌」「合唱排练」这几张被你留下的画面，都指向照料、记忆与仪式——不是宏大的场面，而是有人默默把事物整理好、维系住的那种秩序感。视觉层面上，模型从你的比较里读到：你更倾向饱和度偏低、蓝色调偏重的画面，明暗过渡柔和、没有锐利斜向线条的构图——安静的、偏冷的颜色，胜过强烈冲撞的光影。\n\n需要说明的是，这只是从你已展示的图片中学到的相对排序，基于二十三次观察训练而成。留出验证显示它比随机略好，但样本很少，log loss 还有不小的距离，所以把它当作一次模糊的指向就好，不是对你本人的判定。未选中的图也不代表讨厌，只是那一轮里稍弱的选择。\n\n如果继续探索，可以试试：同一场景的清晨与深夜版本，看你对光线时段的反应；或者一张「照料」与「愿景」同时在场却互相牵制的画面——比如有人在准备食物、窗外是雾——看你会把重心放在哪一边。",
+          "status": "ok",
+          "reason_codes": [],
+          "elapsed_ms": 20849.964,
+          "usage": {
+            "input_tokens": 1904,
+            "uncached_input_tokens": 1904,
+            "output_tokens": 314,
+            "cache_read_input_tokens": 0,
+            "cache_creation_input_tokens": 0,
+            "cached_tokens": 0,
+            "input_tokens_observed": true,
+            "uncached_input_tokens_observed": true,
+            "output_tokens_observed": true,
+            "cache_read_input_tokens_observed": true,
+            "cache_creation_input_tokens_observed": true,
+            "cached_tokens_observed": true,
+            "source": "provider",
+            "raw": {
+              "cache_creation_input_tokens": 0,
+              "cache_read_input_tokens": 0,
+              "cached_tokens": 0,
+              "completion_thinking_tokens": 0,
+              "completion_tokens": 314,
+              "completion_tokens_details": {
+                "accepted_prediction_tokens": 0,
+                "audio_tokens": 0,
+                "cached_tokens": 0,
+                "reasoning_tokens": 0,
+                "rejected_prediction_tokens": 0
+              },
+              "credit": 0.04,
+              "prompt_cache_hit_tokens": 0,
+              "prompt_cache_miss_tokens": 1904,
+              "prompt_cache_write_tokens": 0,
+              "prompt_tokens": 1904,
+              "prompt_tokens_details": {
+                "accepted_prediction_tokens": 0,
+                "audio_tokens": 0,
+                "cached_tokens": 0,
+                "reasoning_tokens": 0,
+                "rejected_prediction_tokens": 0
+              },
+              "total_tokens": 2218
+            }
+          },
+          "checks": {
+            "chars": 419,
+            "length_ok": true,
+            "leaks": {
+              "type_letters": 0,
+              "mbti": 0,
+              "jargon": 5,
+              "digits": 0
+            },
+            "scenes_cited": 7,
+            "motifs_cited": 0,
+            "next_to_try_cited": false,
+            "unknown_quotes": []
+          }
+        },
+        {
+          "role": "follow_up",
+          "question": "为什么说我会被这些画面吸引？",
+          "text": "织机暂时没能接上语言的回声。你的选择还在，请稍后重试。",
+          "status": "provider_unavailable",
+          "reason_codes": [
+            "provider_error"
+          ],
+          "elapsed_ms": 3198.584,
+          "usage": {
+            "input_tokens": null,
+            "uncached_input_tokens": null,
+            "output_tokens": null,
+            "cache_read_input_tokens": null,
+            "cache_creation_input_tokens": null,
+            "cached_tokens": null,
+            "input_tokens_observed": false,
+            "uncached_input_tokens_observed": false,
+            "output_tokens_observed": false,
+            "cache_read_input_tokens_observed": false,
+            "cache_creation_input_tokens_observed": false,
+            "cached_tokens_observed": false,
+            "source": "unavailable",
+            "raw": {}
+          },
+          "checks": {
+            "chars": 24,
+            "length_ok": false,
+            "leaks": {
+              "type_letters": 0,
+              "mbti": 0,
+              "jargon": 0,
+              "digits": 0
+            },
+            "scenes_cited": 0,
+            "motifs_cited": 0,
+            "next_to_try_cited": false,
+            "unknown_quotes": []
+          }
+        },
+        {
+          "role": "follow_up",
+          "question": "这准吗？还是只是随便说说。",
+          "text": "织机暂时没能接上语言的回声。你的选择还在，请稍后重试。",
+          "status": "provider_unavailable",
+          "reason_codes": [
+            "provider_error"
+          ],
+          "elapsed_ms": 1975.971,
+          "usage": {
+            "input_tokens": null,
+            "uncached_input_tokens": null,
+            "output_tokens": null,
+            "cache_read_input_tokens": null,
+            "cache_creation_input_tokens": null,
+            "cached_tokens": null,
+            "input_tokens_observed": false,
+            "uncached_input_tokens_observed": false,
+            "output_tokens_observed": false,
+            "cache_read_input_tokens_observed": false,
+            "cache_creation_input_tokens_observed": false,
+            "cached_tokens_observed": false,
+            "source": "unavailable",
+            "raw": {}
+          },
+          "checks": {
+            "chars": 24,
+            "length_ok": false,
+            "leaks": {
+              "type_letters": 0,
+              "mbti": 0,
+              "jargon": 0,
+              "digits": 0
+            },
+            "scenes_cited": 0,
+            "motifs_cited": 0,
+            "next_to_try_cited": false,
+            "unknown_quotes": []
+          }
+        }
+      ],
+      "wall_seconds": 26.06
+    },
+    {
+      "model": "cn:glm-5.3-flash",
+      "prompt_version": "norn.prompt.v4",
+      "context_prompt_version": "norn.prompt.v4",
+      "fixture": 5,
+      "mode": "overflow_mode",
+      "rounds": 23,
+      "facts": [
+        "厨房协作",
+        "圆形议事厅",
+        "桥上灯笼",
+        "电台团队",
+        "社区工作坊",
+        "种子档案",
+        "节日食物摊",
+        "花园志愿日"
+      ],
+      "turns": [
+        {
+          "role": "reading",
+          "text": "你在这场织选里留下了63次最终选择，跨过23轮画面。它们拼出一条还算清晰的线：你反复留在「人与人正在一起做事」的画面里——社区工作坊、圆形议事厅、电台团队、厨房协作、花园志愿日、节日食物摊、桥上灯笼。这批样本里有六张都带着引导、连接、感染力的印记，你似乎偏爱那种暖光下有人张罗、有人回应的场景，而不是空旷或静止的风景。第22轮的「种子档案」是少数例外，它偏向洞察与愿景，安静一些，但同样指向「为未来做点安排」的画面气质，和其余选择并不冲突。\n\n从视觉成分看，你更倾向于把明亮度较高的画面排在前面，尤其画面中部偏右区域亮起来的时候；而饱和度偏低、冷蓝色调偏重、大块深暗区的画面，在这次比较里多半被你放到了后面。边缘纹理的证据弱一些，暂不细说。\n\n需要说明的是：这是从你这一次的相对排序里学出的偏好，未选的图片只代表同轮的弱比较，不等于你厌恶它们。留出验证虽然优于随机基线，但观测数只有23，样本很少，预测的把握有限，权当一次粗略的定位。\n\n下一步可以继续往几个方向试探：明亮室内、多人协作、带一点仪式感的暖色场景——比如更多灯笼、集市或围桌的画面；也可以偶尔放进冷色调的安静场景，看看你是在「避开冷色」还是只是「更爱暖处」。织机不急，你也不必急。",
+          "status": "ok",
+          "reason_codes": [],
+          "elapsed_ms": 26533.083,
+          "usage": {
+            "input_tokens": 1879,
+            "uncached_input_tokens": 1879,
+            "output_tokens": 343,
+            "cache_read_input_tokens": 0,
+            "cache_creation_input_tokens": 0,
+            "cached_tokens": 0,
+            "input_tokens_observed": true,
+            "uncached_input_tokens_observed": true,
+            "output_tokens_observed": true,
+            "cache_read_input_tokens_observed": true,
+            "cache_creation_input_tokens_observed": true,
+            "cached_tokens_observed": true,
+            "source": "provider",
+            "raw": {
+              "cache_creation_input_tokens": 0,
+              "cache_read_input_tokens": 0,
+              "cached_tokens": 0,
+              "completion_thinking_tokens": 0,
+              "completion_tokens": 343,
+              "completion_tokens_details": {
+                "accepted_prediction_tokens": 0,
+                "audio_tokens": 0,
+                "cached_tokens": 0,
+                "reasoning_tokens": 0,
+                "rejected_prediction_tokens": 0
+              },
+              "credit": 0.05,
+              "prompt_cache_hit_tokens": 0,
+              "prompt_cache_miss_tokens": 1879,
+              "prompt_cache_write_tokens": 0,
+              "prompt_tokens": 1879,
+              "prompt_tokens_details": {
+                "accepted_prediction_tokens": 0,
+                "audio_tokens": 0,
+                "cached_tokens": 0,
+                "reasoning_tokens": 0,
+                "rejected_prediction_tokens": 0
+              },
+              "total_tokens": 2222
+            }
+          },
+          "checks": {
+            "chars": 446,
+            "length_ok": true,
+            "leaks": {
+              "type_letters": 0,
+              "mbti": 0,
+              "jargon": 5,
+              "digits": 8
+            },
+            "scenes_cited": 8,
+            "motifs_cited": 0,
+            "next_to_try_cited": false,
+            "unknown_quotes": [
+              "人与人正在一起做事",
+              "为未来做点安排",
+              "避开冷色",
+              "更爱暖处"
+            ]
+          }
+        },
+        {
+          "role": "follow_up",
+          "question": "为什么说我会被这些画面吸引？",
+          "text": "因为你的选择本身在说话：63次最终选卡里，电台团队、厨房协作、社区工作坊这些带「引导、连接、感染力」的画面反复被你留下。模型也从视觉上看到，你更常把中部偏亮的画面排在前面。这是从你这一次的选择里学出的倾向，不是结论，只是把你已经做过的事如实读出来。",
+          "status": "ok",
+          "reason_codes": [],
+          "elapsed_ms": 23304.765,
+          "usage": {
+            "input_tokens": 2299,
+            "uncached_input_tokens": 2299,
+            "output_tokens": 80,
+            "cache_read_input_tokens": 0,
+            "cache_creation_input_tokens": 0,
+            "cached_tokens": 0,
+            "input_tokens_observed": true,
+            "uncached_input_tokens_observed": true,
+            "output_tokens_observed": true,
+            "cache_read_input_tokens_observed": true,
+            "cache_creation_input_tokens_observed": true,
+            "cached_tokens_observed": true,
+            "source": "provider",
+            "raw": {
+              "cache_creation_input_tokens": 0,
+              "cache_read_input_tokens": 0,
+              "cached_tokens": 0,
+              "completion_thinking_tokens": 0,
+              "completion_tokens": 80,
+              "completion_tokens_details": {
+                "accepted_prediction_tokens": 0,
+                "audio_tokens": 0,
+                "cached_tokens": 0,
+                "reasoning_tokens": 0,
+                "rejected_prediction_tokens": 0
+              },
+              "credit": 0.04,
+              "prompt_cache_hit_tokens": 0,
+              "prompt_cache_miss_tokens": 2299,
+              "prompt_cache_write_tokens": 0,
+              "prompt_tokens": 2299,
+              "prompt_tokens_details": {
+                "accepted_prediction_tokens": 0,
+                "audio_tokens": 0,
+                "cached_tokens": 0,
+                "reasoning_tokens": 0,
+                "rejected_prediction_tokens": 0
+              },
+              "total_tokens": 2379
+            }
+          },
+          "checks": {
+            "chars": 108,
+            "length_ok": false,
+            "leaks": {
+              "type_letters": 0,
+              "mbti": 0,
+              "jargon": 1,
+              "digits": 2
+            },
+            "scenes_cited": 3,
+            "motifs_cited": 0,
+            "next_to_try_cited": false,
+            "unknown_quotes": []
+          }
+        },
+        {
+          "role": "follow_up",
+          "question": "这准吗？还是只是随便说说。",
+          "text": "有一点依据，但不算稳。模型在留出的5次观测上验证过，预测优于随机猜测——不是随便说说。可你总共只有23次观测，样本很少，把握有限，只能当一次粗略定位。\n\n更可靠的是你留下的画面本身：63次最终选择里反复出现引导、连接、协作的场景，这是可以核对的记录。方向大致可信，细节请你自己感受着校正。",
+          "status": "ok",
+          "reason_codes": [],
+          "elapsed_ms": 18853.298,
+          "usage": {
+            "input_tokens": 2457,
+            "uncached_input_tokens": 2457,
+            "output_tokens": 107,
+            "cache_read_input_tokens": 0,
+            "cache_creation_input_tokens": 0,
+            "cached_tokens": 0,
+            "input_tokens_observed": true,
+            "uncached_input_tokens_observed": true,
+            "output_tokens_observed": true,
+            "cache_read_input_tokens_observed": true,
+            "cache_creation_input_tokens_observed": true,
+            "cached_tokens_observed": true,
+            "source": "provider",
+            "raw": {
+              "cache_creation_input_tokens": 0,
+              "cache_read_input_tokens": 0,
+              "cached_tokens": 0,
+              "completion_thinking_tokens": 18,
+              "completion_tokens": 107,
+              "completion_tokens_details": {
+                "accepted_prediction_tokens": 0,
+                "audio_tokens": 0,
+                "cached_tokens": 0,
+                "reasoning_tokens": 18,
+                "rejected_prediction_tokens": 0
+              },
+              "credit": 0.04,
+              "prompt_cache_hit_tokens": 0,
+              "prompt_cache_miss_tokens": 2457,
+              "prompt_cache_write_tokens": 0,
+              "prompt_tokens": 2457,
+              "prompt_tokens_details": {
+                "accepted_prediction_tokens": 0,
+                "audio_tokens": 0,
+                "cached_tokens": 0,
+                "reasoning_tokens": 0,
+                "rejected_prediction_tokens": 0
+              },
+              "total_tokens": 2564
+            }
+          },
+          "checks": {
+            "chars": 120,
+            "length_ok": false,
+            "leaks": {
+              "type_letters": 0,
+              "mbti": 0,
+              "jargon": 2,
+              "digits": 5
+            },
+            "scenes_cited": 0,
+            "motifs_cited": 0,
+            "next_to_try_cited": false,
+            "unknown_quotes": []
+          }
+        }
+      ],
+      "wall_seconds": 68.75
+    },
+    {
+      "model": "cn:glm-5.3-flash",
+      "prompt_version": "norn.prompt.v5",
+      "context_prompt_version": "norn.prompt.v5",
+      "fixture": 0,
+      "mode": "sparse_mode",
+      "rounds": 4,
+      "facts": [
+        "无标签门墙",
+        "法庭日程墙",
+        "混凝土楼梯井",
+        "自行车链条维修",
+        "雨棚修理处",
+        "餐车高峰"
+      ],
+      "turns": [
+        {
+          "role": "reading",
+          "text": "这一次，你留下的画面有些共同的味道：雨棚修理处、自行车链条维修、餐车高峰、混凝土楼梯井、无标签门墙、法庭日程墙——六张里，工具、门、扶手这样的元素各自出现了一次。它们大多是有结构、有抓手的地方：能动手的活、能扶住的栏杆、一扇还没贴上名字的门。连同餐车的现场反应和楼梯井里的远景，你似乎愿意停在那些既有秩序又留有切入点的画面上。\n\n不过说实话，选择还太少，看不出稳定的规律。这只是这一次挑选中露出的一点方向，不必当成定论。\n\n也许下次可以留意「黑板天象馆」那样的画面，黑板和粉笔轨道，看看它是否也会让你想多停留一会儿。",
+          "status": "ok",
+          "reason_codes": [],
+          "elapsed_ms": 20845.736,
+          "usage": {
+            "input_tokens": 1595,
+            "uncached_input_tokens": 1595,
+            "output_tokens": 159,
+            "cache_read_input_tokens": 0,
+            "cache_creation_input_tokens": 0,
+            "cached_tokens": 0,
+            "input_tokens_observed": true,
+            "uncached_input_tokens_observed": true,
+            "output_tokens_observed": true,
+            "cache_read_input_tokens_observed": true,
+            "cache_creation_input_tokens_observed": true,
+            "cached_tokens_observed": true,
+            "source": "provider",
+            "raw": {
+              "cache_creation_input_tokens": 0,
+              "cache_read_input_tokens": 0,
+              "cached_tokens": 0,
+              "completion_thinking_tokens": 0,
+              "completion_tokens": 159,
+              "completion_tokens_details": {
+                "accepted_prediction_tokens": 0,
+                "audio_tokens": 0,
+                "cached_tokens": 0,
+                "reasoning_tokens": 0,
+                "rejected_prediction_tokens": 0
+              },
+              "credit": 0.03,
+              "prompt_cache_hit_tokens": 0,
+              "prompt_cache_miss_tokens": 1595,
+              "prompt_cache_write_tokens": 0,
+              "prompt_tokens": 1595,
+              "prompt_tokens_details": {
+                "accepted_prediction_tokens": 0,
+                "audio_tokens": 0,
+                "cached_tokens": 0,
+                "reasoning_tokens": 0,
+                "rejected_prediction_tokens": 0
+              },
+              "total_tokens": 1754
+            }
+          },
+          "checks": {
+            "chars": 224,
+            "length_ok": true,
+            "leaks": {
+              "type_letters": 0,
+              "mbti": 0,
+              "jargon": 0,
+              "digits": 0
+            },
+            "scenes_cited": 6,
+            "motifs_cited": 3,
+            "next_to_try_cited": true,
+            "unknown_quotes": []
+          }
+        },
+        {
+          "role": "follow_up",
+          "question": "为什么说我会被这些画面吸引？",
+          "text": "织机暂时没能接上语言的回声。你的选择还在，请稍后重试。",
+          "status": "provider_unavailable",
+          "reason_codes": [
+            "provider_error"
+          ],
+          "elapsed_ms": 3216.529,
+          "usage": {
+            "input_tokens": null,
+            "uncached_input_tokens": null,
+            "output_tokens": null,
+            "cache_read_input_tokens": null,
+            "cache_creation_input_tokens": null,
+            "cached_tokens": null,
+            "input_tokens_observed": false,
+            "uncached_input_tokens_observed": false,
+            "output_tokens_observed": false,
+            "cache_read_input_tokens_observed": false,
+            "cache_creation_input_tokens_observed": false,
+            "cached_tokens_observed": false,
+            "source": "unavailable",
+            "raw": {}
+          },
+          "checks": {
+            "chars": 24,
+            "length_ok": false,
+            "leaks": {
+              "type_letters": 0,
+              "mbti": 0,
+              "jargon": 0,
+              "digits": 0
+            },
+            "scenes_cited": 0,
+            "motifs_cited": 0,
+            "next_to_try_cited": false,
+            "unknown_quotes": []
+          }
+        }
+      ],
+      "wall_seconds": 24.08
+    },
+    {
+      "model": "cn:glm-5.3-flash",
+      "prompt_version": "norn.prompt.v5",
+      "context_prompt_version": null,
+      "fixture": 1,
+      "mode": null,
+      "rounds": null,
+      "facts": [],
+      "turns": [
+        {
+          "role": "reading",
+          "text": "织机暂时没能接上语言的回声。你的选择还在，请稍后重试。",
+          "status": "provider_unavailable",
+          "reason_codes": [
+            "provider_error"
+          ],
+          "elapsed_ms": 1933.948,
+          "usage": {
+            "input_tokens": null,
+            "uncached_input_tokens": null,
+            "output_tokens": null,
+            "cache_read_input_tokens": null,
+            "cache_creation_input_tokens": null,
+            "cached_tokens": null,
+            "input_tokens_observed": false,
+            "uncached_input_tokens_observed": false,
+            "output_tokens_observed": false,
+            "cache_read_input_tokens_observed": false,
+            "cache_creation_input_tokens_observed": false,
+            "cached_tokens_observed": false,
+            "source": "unavailable",
+            "raw": {}
+          },
+          "checks": {
+            "chars": 24,
+            "length_ok": false,
+            "leaks": {
+              "type_letters": 0,
+              "mbti": 0,
+              "jargon": 0,
+              "digits": 0
+            },
+            "scenes_cited": 0,
+            "motifs_cited": 0,
+            "next_to_try_cited": false,
+            "unknown_quotes": []
+          }
+        }
+      ],
+      "wall_seconds": 1.94
+    },
+    {
+      "model": "cn:glm-5.3-flash",
+      "prompt_version": "norn.prompt.v5",
+      "context_prompt_version": "norn.prompt.v5",
+      "fixture": 2,
+      "mode": "dense_mode",
+      "rounds": 10,
+      "facts": [
+        "夜市十字路",
+        "安静咨询室",
+        "开放麦角落",
+        "快闪市集",
+        "深夜播客桌",
+        "瓶中海房间",
+        "窗边委员会",
+        "纸灯小径"
+      ],
+      "turns": [
+        {
+          "role": "reading",
+          "text": "这一路你留下的画面里，有些东西反复出现。你不止一次停在圆桌旁——窗边委员会、深夜播客桌，人们围坐在一起，话在空气里流动。温室、木桌、泥土这些带着生长气息的元素也进了你的收藏。再看整段旅程：快闪市集、开放麦角落、纸灯小径、安静咨询室，你倾向的画面总有一种「人和人正在真实相遇」的温度——有时热闹如夜市十字路，有时安静到只剩瓶中海房间里的内省与想象。你不只选一种氛围，灵感与洞察、自由与共情，在你这里并不冲突。这一次的线索前后相当一致，读起来不费力，是轮画像里比较清楚的一次。十轮走完，你留下的画面指向同一个方向：你相信对话与联结本身就有力量。下次翻牌时，也许可以留意一下「苔藓钢琴」或「纸船温室」——旧乐器上长出绿意、纸船浮在水盘里，那种安静中仍在生长的画面，说不定也会让你停下脚步。",
+          "status": "ok",
+          "reason_codes": [],
+          "elapsed_ms": 20260.431,
+          "usage": {
+            "input_tokens": 1710,
+            "uncached_input_tokens": 1710,
+            "output_tokens": 228,
+            "cache_read_input_tokens": 0,
+            "cache_creation_input_tokens": 0,
+            "cached_tokens": 0,
+            "input_tokens_observed": true,
+            "uncached_input_tokens_observed": true,
+            "output_tokens_observed": true,
+            "cache_read_input_tokens_observed": true,
+            "cache_creation_input_tokens_observed": true,
+            "cached_tokens_observed": true,
+            "source": "provider",
+            "raw": {
+              "cache_creation_input_tokens": 0,
+              "cache_read_input_tokens": 0,
+              "cached_tokens": 0,
+              "completion_thinking_tokens": 0,
+              "completion_tokens": 228,
+              "completion_tokens_details": {
+                "accepted_prediction_tokens": 0,
+                "audio_tokens": 0,
+                "cached_tokens": 0,
+                "reasoning_tokens": 0,
+                "rejected_prediction_tokens": 0
+              },
+              "credit": 0.04,
+              "prompt_cache_hit_tokens": 0,
+              "prompt_cache_miss_tokens": 1710,
+              "prompt_cache_write_tokens": 0,
+              "prompt_tokens": 1710,
+              "prompt_tokens_details": {
+                "accepted_prediction_tokens": 0,
+                "audio_tokens": 0,
+                "cached_tokens": 0,
+                "reasoning_tokens": 0,
+                "rejected_prediction_tokens": 0
+              },
+              "total_tokens": 1938
+            }
+          },
+          "checks": {
+            "chars": 298,
+            "length_ok": true,
+            "leaks": {
+              "type_letters": 0,
+              "mbti": 0,
+              "jargon": 0,
+              "digits": 0
+            },
+            "scenes_cited": 8,
+            "motifs_cited": 4,
+            "next_to_try_cited": true,
+            "unknown_quotes": [
+              "人和人正在真实相遇"
+            ]
+          }
+        },
+        {
+          "role": "follow_up",
+          "question": "为什么说我会被这些画面吸引？",
+          "text": "因为你是用真实点击告诉我们的。比如第1轮夜市十字路、第3轮快闪市集、第7轮开放麦角落，你几次都留下了「灵感、自由、联结」那类画面；第9轮安静咨询室里又留下「洞察、共情、愿景」。这些反复出现的画面元素——圆桌、温室、木桌、泥土——就是你留下的痕迹，我们只是把它们读出来，猜你可能喜欢同类画面，而不是替你下结论。",
+          "status": "ok",
+          "reason_codes": [],
+          "elapsed_ms": 20003.127,
+          "usage": {
+            "input_tokens": 2015,
+            "uncached_input_tokens": 2015,
+            "output_tokens": 104,
+            "cache_read_input_tokens": 0,
+            "cache_creation_input_tokens": 0,
+            "cached_tokens": 0,
+            "input_tokens_observed": true,
+            "uncached_input_tokens_observed": true,
+            "output_tokens_observed": true,
+            "cache_read_input_tokens_observed": true,
+            "cache_creation_input_tokens_observed": true,
+            "cached_tokens_observed": true,
+            "source": "provider",
+            "raw": {
+              "cache_creation_input_tokens": 0,
+              "cache_read_input_tokens": 0,
+              "cached_tokens": 0,
+              "completion_thinking_tokens": 0,
+              "completion_tokens": 104,
+              "completion_tokens_details": {
+                "accepted_prediction_tokens": 0,
+                "audio_tokens": 0,
+                "cached_tokens": 0,
+                "reasoning_tokens": 0,
+                "rejected_prediction_tokens": 0
+              },
+              "credit": 0.04,
+              "prompt_cache_hit_tokens": 0,
+              "prompt_cache_miss_tokens": 2015,
+              "prompt_cache_write_tokens": 0,
+              "prompt_tokens": 2015,
+              "prompt_tokens_details": {
+                "accepted_prediction_tokens": 0,
+                "audio_tokens": 0,
+                "cached_tokens": 0,
+                "reasoning_tokens": 0,
+                "rejected_prediction_tokens": 0
+              },
+              "total_tokens": 2119
+            }
+          },
+          "checks": {
+            "chars": 125,
+            "length_ok": false,
+            "leaks": {
+              "type_letters": 0,
+              "mbti": 0,
+              "jargon": 0,
+              "digits": 4
+            },
+            "scenes_cited": 4,
+            "motifs_cited": 4,
+            "next_to_try_cited": false,
+            "unknown_quotes": []
+          }
+        },
+        {
+          "role": "follow_up",
+          "question": "这准吗？还是只是随便说说。",
+          "text": "织机暂时没能接上语言的回声。你的选择还在，请稍后重试。",
+          "status": "provider_unavailable",
+          "reason_codes": [
+            "provider_error"
+          ],
+          "elapsed_ms": 2413.232,
+          "usage": {
+            "input_tokens": null,
+            "uncached_input_tokens": null,
+            "output_tokens": null,
+            "cache_read_input_tokens": null,
+            "cache_creation_input_tokens": null,
+            "cached_tokens": null,
+            "input_tokens_observed": false,
+            "uncached_input_tokens_observed": false,
+            "output_tokens_observed": false,
+            "cache_read_input_tokens_observed": false,
+            "cache_creation_input_tokens_observed": false,
+            "cached_tokens_observed": false,
+            "source": "unavailable",
+            "raw": {}
+          },
+          "checks": {
+            "chars": 24,
+            "length_ok": false,
+            "leaks": {
+              "type_letters": 0,
+              "mbti": 0,
+              "jargon": 0,
+              "digits": 0
+            },
+            "scenes_cited": 0,
+            "motifs_cited": 0,
+            "next_to_try_cited": false,
+            "unknown_quotes": []
+          }
+        }
+      ],
+      "wall_seconds": 42.72
+    },
+    {
+      "model": "cn:glm-5.3-flash",
+      "prompt_version": "norn.prompt.v5",
+      "context_prompt_version": "norn.prompt.v5",
+      "fixture": 3,
+      "mode": "dense_mode",
+      "rounds": 10,
+      "facts": [
+        "地铁白板车厢",
+        "塔楼大堂中轴",
+        "学校集会",
+        "峰会长桌",
+        "工厂巡检",
+        "市政服务大厅",
+        "未来城区蓝图",
+        "深夜播客桌"
+      ],
+      "turns": [
+        {
+          "role": "reading",
+          "text": "你在这十轮里留下的画面，大多是秩序正在运转的地方：峰会长桌、市政服务大厅、学校集会、塔楼大堂、工厂巡检、未来城区的蓝图。它们有共同的样子——空间开阔、动线清晰，人各自待在正确的位置上。你似乎格外会被「长桌」吸引，三次留下的画面里都有它；「路线」「黄线」「队列」也各出现过一次，像是你偏爱那些把混乱梳理成条理的瞬间。偶尔你也放过一次不一样的牌，比如地铁白板车厢和深夜播客桌，那两张带着辩论和挑衅的气味，说明你并非只认规整。这次的选择前后相当一致，线索算是清楚的。至于下一站，也许派遣车库的车与灯带、机场登机口的隔离带，会是你愿意再停留一次的画面——它们延续了你留下来的那种「一切各就各位」的气质。",
+          "status": "ok",
+          "reason_codes": [],
+          "elapsed_ms": 20058.31,
+          "usage": {
+            "input_tokens": 1705,
+            "uncached_input_tokens": 1705,
+            "output_tokens": 191,
+            "cache_read_input_tokens": 0,
+            "cache_creation_input_tokens": 0,
+            "cached_tokens": 0,
+            "input_tokens_observed": true,
+            "uncached_input_tokens_observed": true,
+            "output_tokens_observed": true,
+            "cache_read_input_tokens_observed": true,
+            "cache_creation_input_tokens_observed": true,
+            "cached_tokens_observed": true,
+            "source": "provider",
+            "raw": {
+              "cache_creation_input_tokens": 0,
+              "cache_read_input_tokens": 0,
+              "cached_tokens": 0,
+              "completion_thinking_tokens": 0,
+              "completion_tokens": 191,
+              "completion_tokens_details": {
+                "accepted_prediction_tokens": 0,
+                "audio_tokens": 0,
+                "cached_tokens": 0,
+                "reasoning_tokens": 0,
+                "rejected_prediction_tokens": 0
+              },
+              "credit": 0.04,
+              "prompt_cache_hit_tokens": 0,
+              "prompt_cache_miss_tokens": 1705,
+              "prompt_cache_write_tokens": 0,
+              "prompt_tokens": 1705,
+              "prompt_tokens_details": {
+                "accepted_prediction_tokens": 0,
+                "audio_tokens": 0,
+                "cached_tokens": 0,
+                "reasoning_tokens": 0,
+                "rejected_prediction_tokens": 0
+              },
+              "total_tokens": 1896
+            }
+          },
+          "checks": {
+            "chars": 258,
+            "length_ok": true,
+            "leaks": {
+              "type_letters": 0,
+              "mbti": 0,
+              "jargon": 0,
+              "digits": 0
+            },
+            "scenes_cited": 6,
+            "motifs_cited": 4,
+            "next_to_try_cited": true,
+            "unknown_quotes": [
+              "一切各就各位"
+            ]
+          }
+        },
+        {
+          "role": "follow_up",
+          "question": "为什么说我会被这些画面吸引？",
+          "text": "因为我看到的是你真正留下的画面：比如第一轮的峰会长桌、第七轮的未来城区蓝图，这些共同点里反复出现长桌、路线、队列这样的元素，而「长桌」就被你留下了三次。这只能说明这一次你偏向什么，不是断言你是什么样的人。",
+          "status": "ok",
+          "reason_codes": [],
+          "elapsed_ms": 17272.643,
+          "usage": {
+            "input_tokens": 1973,
+            "uncached_input_tokens": 1973,
+            "output_tokens": 65,
+            "cache_read_input_tokens": 0,
+            "cache_creation_input_tokens": 0,
+            "cached_tokens": 0,
+            "input_tokens_observed": true,
+            "uncached_input_tokens_observed": true,
+            "output_tokens_observed": true,
+            "cache_read_input_tokens_observed": true,
+            "cache_creation_input_tokens_observed": true,
+            "cached_tokens_observed": true,
+            "source": "provider",
+            "raw": {
+              "cache_creation_input_tokens": 0,
+              "cache_read_input_tokens": 0,
+              "cached_tokens": 0,
+              "completion_thinking_tokens": 0,
+              "completion_tokens": 65,
+              "completion_tokens_details": {
+                "accepted_prediction_tokens": 0,
+                "audio_tokens": 0,
+                "cached_tokens": 0,
+                "reasoning_tokens": 0,
+                "rejected_prediction_tokens": 0
+              },
+              "credit": 0.03,
+              "prompt_cache_hit_tokens": 0,
+              "prompt_cache_miss_tokens": 1973,
+              "prompt_cache_write_tokens": 0,
+              "prompt_tokens": 1973,
+              "prompt_tokens_details": {
+                "accepted_prediction_tokens": 0,
+                "audio_tokens": 0,
+                "cached_tokens": 0,
+                "reasoning_tokens": 0,
+                "rejected_prediction_tokens": 0
+              },
+              "total_tokens": 2038
+            }
+          },
+          "checks": {
+            "chars": 91,
+            "length_ok": false,
+            "leaks": {
+              "type_letters": 0,
+              "mbti": 0,
+              "jargon": 0,
+              "digits": 0
+            },
+            "scenes_cited": 2,
+            "motifs_cited": 3,
+            "next_to_try_cited": false,
+            "unknown_quotes": []
+          }
+        },
+        {
+          "role": "follow_up",
+          "question": "这准吗？还是只是随便说说。",
+          "text": "织机暂时没能接上语言的回声。你的选择还在，请稍后重试。",
+          "status": "provider_unavailable",
+          "reason_codes": [
+            "provider_error"
+          ],
+          "elapsed_ms": 2706.792,
+          "usage": {
+            "input_tokens": null,
+            "uncached_input_tokens": null,
+            "output_tokens": null,
+            "cache_read_input_tokens": null,
+            "cache_creation_input_tokens": null,
+            "cached_tokens": null,
+            "input_tokens_observed": false,
+            "uncached_input_tokens_observed": false,
+            "output_tokens_observed": false,
+            "cache_read_input_tokens_observed": false,
+            "cache_creation_input_tokens_observed": false,
+            "cached_tokens_observed": false,
+            "source": "unavailable",
+            "raw": {}
+          },
+          "checks": {
+            "chars": 24,
+            "length_ok": false,
+            "leaks": {
+              "type_letters": 0,
+              "mbti": 0,
+              "jargon": 0,
+              "digits": 0
+            },
+            "scenes_cited": 0,
+            "motifs_cited": 0,
+            "next_to_try_cited": false,
+            "unknown_quotes": []
+          }
+        }
+      ],
+      "wall_seconds": 40.07
+    },
+    {
+      "model": "cn:glm-5.3-flash",
+      "prompt_version": "norn.prompt.v5",
+      "context_prompt_version": "norn.prompt.v5",
+      "fixture": 4,
+      "mode": "overflow_mode",
+      "rounds": 23,
+      "facts": [
+        "两室之间的窗",
+        "亚麻布柜",
+        "合唱排练",
+        "夜间医院角落",
+        "梦境地图墙",
+        "温室教学",
+        "社区通知桌",
+        "雾中灯塔"
+      ],
+      "turns": [
+        {
+          "role": "reading",
+          "text": "这一次，你留下的画面有一个很安静的方向：它们大多亮着某种生活里的光——合唱排练里大家凑在一起的声音，雾中灯塔、梦境地图墙、两室之间的窗、夜间医院角落，这些场景里总有一个人或一道光，在替别人照亮什么。而反复出现的，是更具体的物件：花瓶、点心、桌布、桌面。你似乎偏爱那些「被认真布置过」的地方——有人提前铺好桌布、插好花、备好点心，等着另一个人到来。\n\n在你能核对的选择里，这种倾向看得比较清楚。第八轮你留下了合唱排练，同轮还有温室教学——一个引导与连接发生的房间；第五回合的梦境地图墙、第七回合的雾中灯塔，都是有人在画与光之间为别人指路的画面；第十四回合的亚麻布柜、第九回合的社区通知桌，又落回到照料、记忆与安稳上。这些选择彼此呼应，这次留下的痕迹是清楚的，不是东一张西一张的散落。\n\n所以，如果要用一句话说：你被那些「有人悄悄为他人准备好一切」的画面吸引——无论是合唱前的空椅子、柜子里叠好的布，还是窗边留出的一格光。\n\n也许下次，你可以留意一下「厨房协作」这样的场景——锅与灶台之间，那种边忙边说话的协作感，或许和你在温室教学里留下的画面是同一种温度。还有开放图书馆活动里交换书的瞬间，也许也会让你停留。不急着找到，只是下次翻牌时，可以多看一眼。",
+          "status": "ok",
+          "reason_codes": [],
+          "elapsed_ms": 20841.381,
+          "usage": {
+            "input_tokens": 1704,
+            "uncached_input_tokens": 1704,
+            "output_tokens": 331,
+            "cache_read_input_tokens": 0,
+            "cache_creation_input_tokens": 0,
+            "cached_tokens": 0,
+            "input_tokens_observed": true,
+            "uncached_input_tokens_observed": true,
+            "output_tokens_observed": true,
+            "cache_read_input_tokens_observed": true,
+            "cache_creation_input_tokens_observed": true,
+            "cached_tokens_observed": true,
+            "source": "provider",
+            "raw": {
+              "cache_creation_input_tokens": 0,
+              "cache_read_input_tokens": 0,
+              "cached_tokens": 0,
+              "completion_thinking_tokens": 0,
+              "completion_tokens": 331,
+              "completion_tokens_details": {
+                "accepted_prediction_tokens": 0,
+                "audio_tokens": 0,
+                "cached_tokens": 0,
+                "reasoning_tokens": 0,
+                "rejected_prediction_tokens": 0
+              },
+              "credit": 0.04,
+              "prompt_cache_hit_tokens": 0,
+              "prompt_cache_miss_tokens": 1704,
+              "prompt_cache_write_tokens": 0,
+              "prompt_tokens": 1704,
+              "prompt_tokens_details": {
+                "accepted_prediction_tokens": 0,
+                "audio_tokens": 0,
+                "cached_tokens": 0,
+                "reasoning_tokens": 0,
+                "rejected_prediction_tokens": 0
+              },
+              "total_tokens": 2035
+            }
+          },
+          "checks": {
+            "chars": 455,
+            "length_ok": true,
+            "leaks": {
+              "type_letters": 0,
+              "mbti": 0,
+              "jargon": 1,
+              "digits": 0
+            },
+            "scenes_cited": 8,
+            "motifs_cited": 4,
+            "next_to_try_cited": true,
+            "unknown_quotes": [
+              "有人悄悄为他人准备好一切"
+            ]
+          }
+        },
+        {
+          "role": "follow_up",
+          "question": "为什么说我会被这些画面吸引？",
+          "text": "因为这是从你这次的最终选择里读出来的：23轮里你留下的画面，像第8轮的合唱排练、温室教学，第5轮的梦境地图墙，都带着「有人在为别人点亮什么」的气息；而花瓶、点心、桌布、桌面这些被认真布置过的小物件，在你保留的画里反复出现。这些只是这一次选择中的相对线索，说明偏好，不是给你下定义。",
+          "status": "ok",
+          "reason_codes": [],
+          "elapsed_ms": 10330.99,
+          "usage": {
+            "input_tokens": 2112,
+            "uncached_input_tokens": 2112,
+            "output_tokens": 93,
+            "cache_read_input_tokens": 0,
+            "cache_creation_input_tokens": 0,
+            "cached_tokens": 0,
+            "input_tokens_observed": true,
+            "uncached_input_tokens_observed": true,
+            "output_tokens_observed": true,
+            "cache_read_input_tokens_observed": true,
+            "cache_creation_input_tokens_observed": true,
+            "cached_tokens_observed": true,
+            "source": "provider",
+            "raw": {
+              "cache_creation_input_tokens": 0,
+              "cache_read_input_tokens": 0,
+              "cached_tokens": 0,
+              "completion_thinking_tokens": 0,
+              "completion_tokens": 93,
+              "completion_tokens_details": {
+                "accepted_prediction_tokens": 0,
+                "audio_tokens": 0,
+                "cached_tokens": 0,
+                "reasoning_tokens": 0,
+                "rejected_prediction_tokens": 0
+              },
+              "credit": 0.04,
+              "prompt_cache_hit_tokens": 0,
+              "prompt_cache_miss_tokens": 2112,
+              "prompt_cache_write_tokens": 0,
+              "prompt_tokens": 2112,
+              "prompt_tokens_details": {
+                "accepted_prediction_tokens": 0,
+                "audio_tokens": 0,
+                "cached_tokens": 0,
+                "reasoning_tokens": 0,
+                "rejected_prediction_tokens": 0
+              },
+              "total_tokens": 2205
+            }
+          },
+          "checks": {
+            "chars": 120,
+            "length_ok": false,
+            "leaks": {
+              "type_letters": 0,
+              "mbti": 0,
+              "jargon": 0,
+              "digits": 4
+            },
+            "scenes_cited": 3,
+            "motifs_cited": 4,
+            "next_to_try_cited": false,
+            "unknown_quotes": [
+              "有人在为别人点亮什么"
+            ]
+          }
+        },
+        {
+          "role": "follow_up",
+          "question": "这准吗？还是只是随便说说。",
+          "text": "织机暂时没能接上语言的回声。你的选择还在，请稍后重试。",
+          "status": "provider_unavailable",
+          "reason_codes": [
+            "provider_error"
+          ],
+          "elapsed_ms": 3315.405,
+          "usage": {
+            "input_tokens": null,
+            "uncached_input_tokens": null,
+            "output_tokens": null,
+            "cache_read_input_tokens": null,
+            "cache_creation_input_tokens": null,
+            "cached_tokens": null,
+            "input_tokens_observed": false,
+            "uncached_input_tokens_observed": false,
+            "output_tokens_observed": false,
+            "cache_read_input_tokens_observed": false,
+            "cache_creation_input_tokens_observed": false,
+            "cached_tokens_observed": false,
+            "source": "unavailable",
+            "raw": {}
+          },
+          "checks": {
+            "chars": 24,
+            "length_ok": false,
+            "leaks": {
+              "type_letters": 0,
+              "mbti": 0,
+              "jargon": 0,
+              "digits": 0
+            },
+            "scenes_cited": 0,
+            "motifs_cited": 0,
+            "next_to_try_cited": false,
+            "unknown_quotes": []
+          }
+        }
+      ],
+      "wall_seconds": 34.54
+    },
+    {
+      "model": "cn:glm-5.3-flash",
+      "prompt_version": "norn.prompt.v5",
+      "context_prompt_version": "norn.prompt.v5",
+      "fixture": 5,
+      "mode": "overflow_mode",
+      "rounds": 23,
+      "facts": [
+        "厨房协作",
+        "圆形议事厅",
+        "桥上灯笼",
+        "电台团队",
+        "社区工作坊",
+        "种子档案",
+        "节日食物摊",
+        "花园志愿日"
+      ],
+      "turns": [
+        {
+          "role": "reading",
+          "text": "你在这一次的选择里，反复把目光留给了有人在场、有事正在发生的画面。厨房协作、社区工作坊、圆形议事厅、电台团队、节日食物摊——这些场景共同的地方是，人们在同一张桌前、同一处灯光下各自忙碌又彼此呼应。你留下的画里常出现桌面的木纹、碗的轮廓、耳机的细节，还有两次是灯笼，暖光挂在夜色或桥上。这些物件都不是孤独的静物，它们总是围拢着人，像某种约定好的仪式：一起做饭，一起听，一起把灯点起来。\n\n在你留下的牌里，“引导、连接、感染力”这些特质出现得格外密集——桥上灯笼、花园志愿日、电台团队、议事厅、工作坊、厨房，几乎贯穿了从头到尾的选择。而你也没有只停留在热闹里：第22轮的种子档案是少数更安静的一张，带着洞察与共情，说明你同样愿意停下来，看一件小而缓慢的事如何被认真记录。第4轮的节日食物摊又把这份关注落回“社交照料、和谐、仪式”这样的氛围——你在意的似乎不是场面多大，而是人与人之间是否被妥帖地照看着。\n\n这次的选择前后相当一致，留下的画面彼此呼应，线索是比较清楚的。没有反复犹豫或撤回，你几乎是顺着同一条光走下来的。\n\n也许下次，你可以留意「屋顶演说」这样的画面——屋顶、夕阳，一个人站在开阔处面向人群。它比你留下的任何一张都更空旷，但也延续了你偏爱的那束暖光。留在那里看看，或许会照见你偏好里还没被触碰的一角。",
+          "status": "ok",
+          "reason_codes": [],
+          "elapsed_ms": 18657.4,
+          "usage": {
+            "input_tokens": 1683,
+            "uncached_input_tokens": 1683,
+            "output_tokens": 349,
+            "cache_read_input_tokens": 0,
+            "cache_creation_input_tokens": 0,
+            "cached_tokens": 0,
+            "input_tokens_observed": true,
+            "uncached_input_tokens_observed": true,
+            "output_tokens_observed": true,
+            "cache_read_input_tokens_observed": true,
+            "cache_creation_input_tokens_observed": true,
+            "cached_tokens_observed": true,
+            "source": "provider",
+            "raw": {
+              "cache_creation_input_tokens": 0,
+              "cache_read_input_tokens": 0,
+              "cached_tokens": 0,
+              "completion_thinking_tokens": 0,
+              "completion_tokens": 349,
+              "completion_tokens_details": {
+                "accepted_prediction_tokens": 0,
+                "audio_tokens": 0,
+                "cached_tokens": 0,
+                "reasoning_tokens": 0,
+                "rejected_prediction_tokens": 0
+              },
+              "credit": 0.04,
+              "prompt_cache_hit_tokens": 0,
+              "prompt_cache_miss_tokens": 1683,
+              "prompt_cache_write_tokens": 0,
+              "prompt_tokens": 1683,
+              "prompt_tokens_details": {
+                "accepted_prediction_tokens": 0,
+                "audio_tokens": 0,
+                "cached_tokens": 0,
+                "reasoning_tokens": 0,
+                "rejected_prediction_tokens": 0
+              },
+              "total_tokens": 2032
+            }
+          },
+          "checks": {
+            "chars": 479,
+            "length_ok": true,
+            "leaks": {
+              "type_letters": 0,
+              "mbti": 0,
+              "jargon": 0,
+              "digits": 3
+            },
+            "scenes_cited": 8,
+            "motifs_cited": 4,
+            "next_to_try_cited": true,
+            "unknown_quotes": []
+          }
+        },
+        {
+          "role": "follow_up",
+          "question": "为什么说我会被这些画面吸引？",
+          "text": "因为在你真正留下的画里，这些元素反复出现：两次灯笼（如第23轮桥上灯笼），还有桌面、碗、耳机，几乎都围着人、围着一起做事的场景——厨房协作、社区工作坊、议事厅。这只是这次选择的有限解读，不是对你的定义。",
+          "status": "ok",
+          "reason_codes": [],
+          "elapsed_ms": 17403.329,
+          "usage": {
+            "input_tokens": 2109,
+            "uncached_input_tokens": 2109,
+            "output_tokens": 62,
+            "cache_read_input_tokens": 0,
+            "cache_creation_input_tokens": 0,
+            "cached_tokens": 0,
+            "input_tokens_observed": true,
+            "uncached_input_tokens_observed": true,
+            "output_tokens_observed": true,
+            "cache_read_input_tokens_observed": true,
+            "cache_creation_input_tokens_observed": true,
+            "cached_tokens_observed": true,
+            "source": "provider",
+            "raw": {
+              "cache_creation_input_tokens": 0,
+              "cache_read_input_tokens": 0,
+              "cached_tokens": 0,
+              "completion_thinking_tokens": 0,
+              "completion_tokens": 62,
+              "completion_tokens_details": {
+                "accepted_prediction_tokens": 0,
+                "audio_tokens": 0,
+                "cached_tokens": 0,
+                "reasoning_tokens": 0,
+                "rejected_prediction_tokens": 0
+              },
+              "credit": 0.03,
+              "prompt_cache_hit_tokens": 0,
+              "prompt_cache_miss_tokens": 2109,
+              "prompt_cache_write_tokens": 0,
+              "prompt_tokens": 2109,
+              "prompt_tokens_details": {
+                "accepted_prediction_tokens": 0,
+                "audio_tokens": 0,
+                "cached_tokens": 0,
+                "reasoning_tokens": 0,
+                "rejected_prediction_tokens": 0
+              },
+              "total_tokens": 2171
+            }
+          },
+          "checks": {
+            "chars": 83,
+            "length_ok": false,
+            "leaks": {
+              "type_letters": 0,
+              "mbti": 0,
+              "jargon": 0,
+              "digits": 2
+            },
+            "scenes_cited": 3,
+            "motifs_cited": 4,
+            "next_to_try_cited": false,
+            "unknown_quotes": []
+          }
+        },
+        {
+          "role": "follow_up",
+          "question": "这准吗？还是只是随便说说。",
+          "text": "它不是随便说说——这次的选择确实前后一致：二十三轮里你留下的画面彼此呼应，像第13轮社区工作坊到第23轮桥上灯笼，暖光与人始终在场。这与你实际的去留相符。\n\n但要说清楚它的边界：它只反映你这次翻牌的相对取舍，说明不了更深的缘由，也算不上人格判断。把它当作一条值得留意的线索就好。",
+          "status": "ok",
+          "reason_codes": [],
+          "elapsed_ms": 19560.108,
+          "usage": {
+            "input_tokens": 2249,
+            "uncached_input_tokens": 2249,
+            "output_tokens": 107,
+            "cache_read_input_tokens": 0,
+            "cache_creation_input_tokens": 0,
+            "cached_tokens": 0,
+            "input_tokens_observed": true,
+            "uncached_input_tokens_observed": true,
+            "output_tokens_observed": true,
+            "cache_read_input_tokens_observed": true,
+            "cache_creation_input_tokens_observed": true,
+            "cached_tokens_observed": true,
+            "source": "provider",
+            "raw": {
+              "cache_creation_input_tokens": 0,
+              "cache_read_input_tokens": 0,
+              "cached_tokens": 0,
+              "completion_thinking_tokens": 19,
+              "completion_tokens": 107,
+              "completion_tokens_details": {
+                "accepted_prediction_tokens": 0,
+                "audio_tokens": 0,
+                "cached_tokens": 0,
+                "reasoning_tokens": 19,
+                "rejected_prediction_tokens": 0
+              },
+              "credit": 0.04,
+              "prompt_cache_hit_tokens": 0,
+              "prompt_cache_miss_tokens": 2249,
+              "prompt_cache_write_tokens": 0,
+              "prompt_tokens": 2249,
+              "prompt_tokens_details": {
+                "accepted_prediction_tokens": 0,
+                "audio_tokens": 0,
+                "cached_tokens": 0,
+                "reasoning_tokens": 0,
+                "rejected_prediction_tokens": 0
+              },
+              "total_tokens": 2356
+            }
+          },
+          "checks": {
+            "chars": 121,
+            "length_ok": false,
+            "leaks": {
+              "type_letters": 0,
+              "mbti": 0,
+              "jargon": 0,
+              "digits": 4
+            },
+            "scenes_cited": 2,
+            "motifs_cited": 1,
+            "next_to_try_cited": false,
+            "unknown_quotes": []
+          }
+        }
+      ],
+      "wall_seconds": 55.67
+    },
+    {
+      "model": "cn:deepseek-v4.1-flash",
+      "prompt_version": "norn.prompt.v4",
+      "context_prompt_version": null,
+      "fixture": 0,
+      "mode": null,
+      "rounds": null,
+      "facts": [],
+      "turns": [
+        {
+          "role": "reading",
+          "text": "这一次回声没有形成完整的回答。你的选择还在，可以重新尝试。",
+          "status": "invalid_output",
+          "reason_codes": [
+            "output_truncated"
+          ],
+          "elapsed_ms": 4175.48,
+          "usage": {
+            "input_tokens": 1765,
+            "uncached_input_tokens": 229,
+            "output_tokens": 360,
+            "cache_read_input_tokens": 1536,
+            "cache_creation_input_tokens": 0,
+            "cached_tokens": 1536,
+            "input_tokens_observed": true,
+            "uncached_input_tokens_observed": true,
+            "output_tokens_observed": true,
+            "cache_read_input_tokens_observed": true,
+            "cache_creation_input_tokens_observed": true,
+            "cached_tokens_observed": true,
+            "source": "provider",
+            "raw": {
+              "cache_creation_input_tokens": 0,
+              "cache_read_input_tokens": 0,
+              "cached_tokens": 0,
+              "completion_thinking_tokens": 360,
+              "completion_tokens": 360,
+              "completion_tokens_details": {
+                "accepted_prediction_tokens": 0,
+                "audio_tokens": 0,
+                "cached_tokens": 0,
+                "reasoning_tokens": 360,
+                "rejected_prediction_tokens": 0
+              },
+              "credit": 0.02,
+              "prompt_cache_hit_tokens": 1536,
+              "prompt_cache_miss_tokens": 229,
+              "prompt_cache_write_tokens": 0,
+              "prompt_tokens": 1765,
+              "prompt_tokens_details": {
+                "accepted_prediction_tokens": 0,
+                "audio_tokens": 0,
+                "cached_tokens": 1536,
+                "reasoning_tokens": 0,
+                "rejected_prediction_tokens": 0
+              },
+              "total_tokens": 2125
+            }
+          },
+          "checks": {
+            "chars": 26,
+            "length_ok": false,
+            "leaks": {
+              "type_letters": 0,
+              "mbti": 0,
+              "jargon": 0,
+              "digits": 0
+            },
+            "scenes_cited": 0,
+            "motifs_cited": 0,
+            "next_to_try_cited": false,
+            "unknown_quotes": []
+          }
+        }
+      ],
+      "wall_seconds": 4.19
+    },
+    {
+      "model": "cn:deepseek-v4.1-flash",
+      "prompt_version": "norn.prompt.v4",
+      "context_prompt_version": null,
+      "fixture": 1,
+      "mode": null,
+      "rounds": null,
+      "facts": [],
+      "turns": [
+        {
+          "role": "reading",
+          "text": "这一次回声没有形成完整的回答。你的选择还在，可以重新尝试。",
+          "status": "invalid_output",
+          "reason_codes": [
+            "output_truncated"
+          ],
+          "elapsed_ms": 3446.067,
+          "usage": {
+            "input_tokens": 1916,
+            "uncached_input_tokens": 892,
+            "output_tokens": 360,
+            "cache_read_input_tokens": 1024,
+            "cache_creation_input_tokens": 0,
+            "cached_tokens": 1024,
+            "input_tokens_observed": true,
+            "uncached_input_tokens_observed": true,
+            "output_tokens_observed": true,
+            "cache_read_input_tokens_observed": true,
+            "cache_creation_input_tokens_observed": true,
+            "cached_tokens_observed": true,
+            "source": "provider",
+            "raw": {
+              "cache_creation_input_tokens": 0,
+              "cache_read_input_tokens": 0,
+              "cached_tokens": 0,
+              "completion_thinking_tokens": 360,
+              "completion_tokens": 360,
+              "completion_tokens_details": {
+                "accepted_prediction_tokens": 0,
+                "audio_tokens": 0,
+                "cached_tokens": 0,
+                "reasoning_tokens": 360,
+                "rejected_prediction_tokens": 0
+              },
+              "credit": 0.03,
+              "prompt_cache_hit_tokens": 1024,
+              "prompt_cache_miss_tokens": 892,
+              "prompt_cache_write_tokens": 0,
+              "prompt_tokens": 1916,
+              "prompt_tokens_details": {
+                "accepted_prediction_tokens": 0,
+                "audio_tokens": 0,
+                "cached_tokens": 1024,
+                "reasoning_tokens": 0,
+                "rejected_prediction_tokens": 0
+              },
+              "total_tokens": 2276
+            }
+          },
+          "checks": {
+            "chars": 26,
+            "length_ok": false,
+            "leaks": {
+              "type_letters": 0,
+              "mbti": 0,
+              "jargon": 0,
+              "digits": 0
+            },
+            "scenes_cited": 0,
+            "motifs_cited": 0,
+            "next_to_try_cited": false,
+            "unknown_quotes": []
+          }
+        }
+      ],
+      "wall_seconds": 3.46
+    },
+    {
+      "model": "cn:deepseek-v4.1-flash",
+      "prompt_version": "norn.prompt.v4",
+      "context_prompt_version": "norn.prompt.v4",
+      "fixture": 2,
+      "mode": "dense_mode",
+      "rounds": 10,
+      "facts": [
+        "夜市十字路",
+        "安静咨询室",
+        "开放麦角落",
+        "快闪市集",
+        "深夜播客桌",
+        "瓶中海房间",
+        "窗边委员会",
+        "纸灯小径"
+      ],
+      "turns": [
+        {
+          "role": "reading",
+          "text": "这组选择里，你反复留下一些有微光、但不喧闹的画面：第3轮的「快闪市集」、第7轮的「开放麦角落」、第4轮的「纸灯小径」，都带着人与人轻轻碰面的气息；第2轮的「瓶中海房间」和第9轮的「安静咨询室」又收得更内向，像是给观察和倾听留出位置。算法目前更偏向柔和、低饱和、带一点冷色高光的画面，避开过暗或明暗切得太硬的角落。这一判断只来自本次二十二张最终选择中的八条精选记录，留出验证的样本很少，所以更像一次暂时的定位，不是定论。下次可以试试同一类「有微光的小空间」：比如雨棚下的旧书摊、半开的排练室，或只亮着一盏灯的车站候车椅，看你会不会仍被那点安静的联系感吸引。",
+          "status": "ok",
+          "reason_codes": [],
+          "elapsed_ms": 4336.157,
+          "usage": {
+            "input_tokens": 1905,
+            "uncached_input_tokens": 241,
+            "output_tokens": 424,
+            "cache_read_input_tokens": 1664,
+            "cache_creation_input_tokens": 0,
+            "cached_tokens": 1664,
+            "input_tokens_observed": true,
+            "uncached_input_tokens_observed": true,
+            "output_tokens_observed": true,
+            "cache_read_input_tokens_observed": true,
+            "cache_creation_input_tokens_observed": true,
+            "cached_tokens_observed": true,
+            "source": "provider",
+            "raw": {
+              "cache_creation_input_tokens": 0,
+              "cache_read_input_tokens": 0,
+              "cached_tokens": 0,
+              "completion_thinking_tokens": 229,
+              "completion_tokens": 424,
+              "completion_tokens_details": {
+                "accepted_prediction_tokens": 0,
+                "audio_tokens": 0,
+                "cached_tokens": 0,
+                "reasoning_tokens": 229,
+                "rejected_prediction_tokens": 0
+              },
+              "credit": 0.03,
+              "prompt_cache_hit_tokens": 1664,
+              "prompt_cache_miss_tokens": 241,
+              "prompt_cache_write_tokens": 0,
+              "prompt_tokens": 1905,
+              "prompt_tokens_details": {
+                "accepted_prediction_tokens": 0,
+                "audio_tokens": 0,
+                "cached_tokens": 1664,
+                "reasoning_tokens": 0,
+                "rejected_prediction_tokens": 0
+              },
+              "total_tokens": 2329
+            }
+          },
+          "checks": {
+            "chars": 238,
+            "length_ok": true,
+            "leaks": {
+              "type_letters": 0,
+              "mbti": 0,
+              "jargon": 3,
+              "digits": 5
+            },
+            "scenes_cited": 5,
+            "motifs_cited": 0,
+            "next_to_try_cited": false,
+            "unknown_quotes": []
+          }
+        },
+        {
+          "role": "follow_up",
+          "question": "为什么说我会被这些画面吸引？",
+          "text": "这不是在断定原因，而是这次留下的画面彼此相近：第3轮「快闪市集」、第7轮「开放麦角落」、第4轮「纸灯小径」都偏柔和微光；第2轮「瓶中海房间」、第9轮「安静咨询室」又偏安静内省。算法只是据此给出排序线索，样本少，仍属试探。",
+          "status": "ok",
+          "reason_codes": [],
+          "elapsed_ms": 2421.713,
+          "usage": {
+            "input_tokens": 2178,
+            "uncached_input_tokens": 386,
+            "output_tokens": 123,
+            "cache_read_input_tokens": 1792,
+            "cache_creation_input_tokens": 0,
+            "cached_tokens": 1792,
+            "input_tokens_observed": true,
+            "uncached_input_tokens_observed": true,
+            "output_tokens_observed": true,
+            "cache_read_input_tokens_observed": true,
+            "cache_creation_input_tokens_observed": true,
+            "cached_tokens_observed": true,
+            "source": "provider",
+            "raw": {
+              "cache_creation_input_tokens": 0,
+              "cache_read_input_tokens": 0,
+              "cached_tokens": 0,
+              "completion_thinking_tokens": 39,
+              "completion_tokens": 123,
+              "completion_tokens_details": {
+                "accepted_prediction_tokens": 0,
+                "audio_tokens": 0,
+                "cached_tokens": 0,
+                "reasoning_tokens": 39,
+                "rejected_prediction_tokens": 0
+              },
+              "credit": 0.01,
+              "prompt_cache_hit_tokens": 1792,
+              "prompt_cache_miss_tokens": 386,
+              "prompt_cache_write_tokens": 0,
+              "prompt_tokens": 2178,
+              "prompt_tokens_details": {
+                "accepted_prediction_tokens": 0,
+                "audio_tokens": 0,
+                "cached_tokens": 1792,
+                "reasoning_tokens": 0,
+                "rejected_prediction_tokens": 0
+              },
+              "total_tokens": 2301
+            }
+          },
+          "checks": {
+            "chars": 85,
+            "length_ok": false,
+            "leaks": {
+              "type_letters": 0,
+              "mbti": 0,
+              "jargon": 2,
+              "digits": 5
+            },
+            "scenes_cited": 5,
+            "motifs_cited": 0,
+            "next_to_try_cited": false,
+            "unknown_quotes": []
+          }
+        },
+        {
+          "role": "follow_up",
+          "question": "这准吗？还是只是随便说说。",
+          "text": "有一定依据，但谈不上准。模型在少量留出记录上确实优于随机猜测，可验证样本只有两条，很容易受偶然影响；精选的八条也只是二十二个最终选择中的样本。因此它是这次选择留下的温和线索，不是对你的定论。",
+          "status": "ok",
+          "reason_codes": [],
+          "elapsed_ms": 7155.187,
+          "usage": {
+            "input_tokens": 2359,
+            "uncached_input_tokens": 695,
+            "output_tokens": 125,
+            "cache_read_input_tokens": 1664,
+            "cache_creation_input_tokens": 0,
+            "cached_tokens": 1664,
+            "input_tokens_observed": true,
+            "uncached_input_tokens_observed": true,
+            "output_tokens_observed": true,
+            "cache_read_input_tokens_observed": true,
+            "cache_creation_input_tokens_observed": true,
+            "cached_tokens_observed": true,
+            "source": "provider",
+            "raw": {
+              "cache_creation_input_tokens": 0,
+              "cache_read_input_tokens": 0,
+              "cached_tokens": 0,
+              "completion_thinking_tokens": 69,
+              "completion_tokens": 125,
+              "completion_tokens_details": {
+                "accepted_prediction_tokens": 0,
+                "audio_tokens": 0,
+                "cached_tokens": 0,
+                "reasoning_tokens": 69,
+                "rejected_prediction_tokens": 0
+              },
+              "credit": 0.02,
+              "prompt_cache_hit_tokens": 1664,
+              "prompt_cache_miss_tokens": 695,
+              "prompt_cache_write_tokens": 0,
+              "prompt_tokens": 2359,
+              "prompt_tokens_details": {
+                "accepted_prediction_tokens": 0,
+                "audio_tokens": 0,
+                "cached_tokens": 1664,
+                "reasoning_tokens": 0,
+                "rejected_prediction_tokens": 0
+              },
+              "total_tokens": 2484
+            }
+          },
+          "checks": {
+            "chars": 87,
+            "length_ok": false,
+            "leaks": {
+              "type_letters": 0,
+              "mbti": 0,
+              "jargon": 2,
+              "digits": 0
+            },
+            "scenes_cited": 0,
+            "motifs_cited": 0,
+            "next_to_try_cited": false,
+            "unknown_quotes": []
+          }
+        }
+      ],
+      "wall_seconds": 13.96
+    },
+    {
+      "model": "cn:deepseek-v4.1-flash",
+      "prompt_version": "norn.prompt.v4",
+      "context_prompt_version": "norn.prompt.v4",
+      "fixture": 3,
+      "mode": "dense_mode",
+      "rounds": 10,
+      "facts": [
+        "地铁白板车厢",
+        "塔楼大堂中轴",
+        "学校集会",
+        "峰会长桌",
+        "工厂巡检",
+        "市政服务大厅",
+        "未来城区蓝图",
+        "深夜播客桌"
+      ],
+      "turns": [
+        {
+          "role": "reading",
+          "text": "你在这次选择里反复留下的，是有人群、有轴线、能把事情往前推的画面：峰会前的长桌、塔楼大堂的中轴、未来城区蓝图、学校集会和市政服务大厅，都带着组织、领导、目标或规则管理的意味。你也留过地铁白板车厢和深夜播客桌，那里更像辩论、发明与一点挑衅的火花。两者并不冲突，前者像搭建秩序，后者像在秩序里开口试探。\n\n视觉线索上，本次偏好模型更偏向低饱和、明暗边界不喧闹的画面，这只能解释这一次的相对排序，不能说明你的性格。二十七次最终选择中，这里只呈现了八条样本；没有撤回记录，也不代表未展示的轮次没有取舍。验证虽优于随机基线，但留出样本很少，所以目前更适合说“趋向”而非定论。\n\n下一次可以试试选一张更匿名的场景：没有明确中心、没有职能标签，看注意力会停在哪里，也检验这种秩序感是否真的稳定。",
+          "status": "ok",
+          "reason_codes": [],
+          "elapsed_ms": 3791.413,
+          "usage": {
+            "input_tokens": 1910,
+            "uncached_input_tokens": 246,
+            "output_tokens": 212,
+            "cache_read_input_tokens": 1664,
+            "cache_creation_input_tokens": 0,
+            "cached_tokens": 1664,
+            "input_tokens_observed": true,
+            "uncached_input_tokens_observed": true,
+            "output_tokens_observed": true,
+            "cache_read_input_tokens_observed": true,
+            "cache_creation_input_tokens_observed": true,
+            "cached_tokens_observed": true,
+            "source": "provider",
+            "raw": {
+              "cache_creation_input_tokens": 0,
+              "cache_read_input_tokens": 0,
+              "cached_tokens": 0,
+              "completion_thinking_tokens": 0,
+              "completion_tokens": 212,
+              "completion_tokens_details": {
+                "accepted_prediction_tokens": 0,
+                "audio_tokens": 0,
+                "cached_tokens": 0,
+                "reasoning_tokens": 0,
+                "rejected_prediction_tokens": 0
+              },
+              "credit": 0.02,
+              "prompt_cache_hit_tokens": 1664,
+              "prompt_cache_miss_tokens": 246,
+              "prompt_cache_write_tokens": 0,
+              "prompt_tokens": 1910,
+              "prompt_tokens_details": {
+                "accepted_prediction_tokens": 0,
+                "audio_tokens": 0,
+                "cached_tokens": 1664,
+                "reasoning_tokens": 0,
+                "rejected_prediction_tokens": 0
+              },
+              "total_tokens": 2122
+            }
+          },
+          "checks": {
+            "chars": 300,
+            "length_ok": true,
+            "leaks": {
+              "type_letters": 0,
+              "mbti": 0,
+              "jargon": 4,
+              "digits": 0
+            },
+            "scenes_cited": 5,
+            "motifs_cited": 0,
+            "next_to_try_cited": false,
+            "unknown_quotes": [
+              "趋向"
+            ]
+          }
+        },
+        {
+          "role": "follow_up",
+          "question": "为什么说我会被这些画面吸引？",
+          "text": "因为你在本次十轮里多次把最终选择留给有中轴和人群的画面，如学校集会（evt-000017）、塔楼大堂中轴（evt-000028）、未来城区蓝图（evt-000031）。这只是相对排序留下的行为线索，不能说明心理原因。",
+          "status": "ok",
+          "reason_codes": [],
+          "elapsed_ms": 2763.247,
+          "usage": {
+            "input_tokens": 2200,
+            "uncached_input_tokens": 536,
+            "output_tokens": 111,
+            "cache_read_input_tokens": 1664,
+            "cache_creation_input_tokens": 0,
+            "cached_tokens": 1664,
+            "input_tokens_observed": true,
+            "uncached_input_tokens_observed": true,
+            "output_tokens_observed": true,
+            "cache_read_input_tokens_observed": true,
+            "cache_creation_input_tokens_observed": true,
+            "cached_tokens_observed": true,
+            "source": "provider",
+            "raw": {
+              "cache_creation_input_tokens": 0,
+              "cache_read_input_tokens": 0,
+              "cached_tokens": 0,
+              "completion_thinking_tokens": 48,
+              "completion_tokens": 111,
+              "completion_tokens_details": {
+                "accepted_prediction_tokens": 0,
+                "audio_tokens": 0,
+                "cached_tokens": 0,
+                "reasoning_tokens": 48,
+                "rejected_prediction_tokens": 0
+              },
+              "credit": 0.01,
+              "prompt_cache_hit_tokens": 1664,
+              "prompt_cache_miss_tokens": 536,
+              "prompt_cache_write_tokens": 0,
+              "prompt_tokens": 2200,
+              "prompt_tokens_details": {
+                "accepted_prediction_tokens": 0,
+                "audio_tokens": 0,
+                "cached_tokens": 1664,
+                "reasoning_tokens": 0,
+                "rejected_prediction_tokens": 0
+              },
+              "total_tokens": 2311
+            }
+          },
+          "checks": {
+            "chars": 66,
+            "length_ok": false,
+            "leaks": {
+              "type_letters": 0,
+              "mbti": 0,
+              "jargon": 1,
+              "digits": 18
+            },
+            "scenes_cited": 3,
+            "motifs_cited": 0,
+            "next_to_try_cited": false,
+            "unknown_quotes": []
+          }
+        },
+        {
+          "role": "follow_up",
+          "question": "这准吗？还是只是随便说说。",
+          "text": "不算“随便说说”，但也谈不上准。模型基于本次十轮、二十七次最终选择学习，精选证据只有八条，留出验证仅两条；它虽优于随机基线，样本仍太少。请把它当作这一次选图的有限解释，而非关于你的定论。",
+          "status": "ok",
+          "reason_codes": [],
+          "elapsed_ms": 2222.477,
+          "usage": {
+            "input_tokens": 2360,
+            "uncached_input_tokens": 568,
+            "output_tokens": 114,
+            "cache_read_input_tokens": 1792,
+            "cache_creation_input_tokens": 0,
+            "cached_tokens": 1792,
+            "input_tokens_observed": true,
+            "uncached_input_tokens_observed": true,
+            "output_tokens_observed": true,
+            "cache_read_input_tokens_observed": true,
+            "cache_creation_input_tokens_observed": true,
+            "cached_tokens_observed": true,
+            "source": "provider",
+            "raw": {
+              "cache_creation_input_tokens": 0,
+              "cache_read_input_tokens": 0,
+              "cached_tokens": 0,
+              "completion_thinking_tokens": 55,
+              "completion_tokens": 114,
+              "completion_tokens_details": {
+                "accepted_prediction_tokens": 0,
+                "audio_tokens": 0,
+                "cached_tokens": 0,
+                "reasoning_tokens": 55,
+                "rejected_prediction_tokens": 0
+              },
+              "credit": 0.02,
+              "prompt_cache_hit_tokens": 1792,
+              "prompt_cache_miss_tokens": 568,
+              "prompt_cache_write_tokens": 0,
+              "prompt_tokens": 2360,
+              "prompt_tokens_details": {
+                "accepted_prediction_tokens": 0,
+                "audio_tokens": 0,
+                "cached_tokens": 1792,
+                "reasoning_tokens": 0,
+                "rejected_prediction_tokens": 0
+              },
+              "total_tokens": 2474
+            }
+          },
+          "checks": {
+            "chars": 81,
+            "length_ok": false,
+            "leaks": {
+              "type_letters": 0,
+              "mbti": 0,
+              "jargon": 3,
+              "digits": 0
+            },
+            "scenes_cited": 0,
+            "motifs_cited": 0,
+            "next_to_try_cited": false,
+            "unknown_quotes": [
+              "随便说说"
+            ]
+          }
+        }
+      ],
+      "wall_seconds": 8.82
+    },
+    {
+      "model": "cn:deepseek-v4.1-flash",
+      "prompt_version": "norn.prompt.v4",
+      "context_prompt_version": "norn.prompt.v4",
+      "fixture": 4,
+      "mode": "overflow_mode",
+      "rounds": 23,
+      "facts": [
+        "两室之间的窗",
+        "亚麻布柜",
+        "合唱排练",
+        "夜间医院角落",
+        "梦境地图墙",
+        "温室教学",
+        "社区通知桌",
+        "雾中灯塔"
+      ],
+      "turns": [
+        {
+          "role": "reading",
+          "text": "你留下的画面有反复出现的重心：合唱排练、温室教学和社区通知桌把「人在场、彼此照应」摆在前景；雾中灯塔、梦境地图墙、夜间医院角落和两室之间的窗，又让视线落在更安静、需要体察的角落。你似乎容易被照料、记忆与连接感吸引，也对带一点雾、距离和眺望意味的场景有耐心。画面若不必说满，留些微光和不完全清晰的边界，往往更贴近这次的选择。\n\n视觉上，本次比较更偏向低饱和、蓝调偏重、明暗过渡柔和的方向，而不是强对比、硬转折的画面。这类倾向只是在已展示卡牌之间学到的相对排序，不说明你的性格或生活状态，也不代表未选画面被否定。\n\n仍有值得继续探索的地方：可以观察自己面对「热闹的集体场面」与「独处中的体察」时如何取舍，也可以留意暖色和清晰结构是否会改变选择。目前验证只是略优于随机基线，样本有限，还谈不上稳定预测；把这些看作这一轮选图留下的坐标即可。",
+          "status": "ok",
+          "reason_codes": [],
+          "elapsed_ms": 4299.726,
+          "usage": {
+            "input_tokens": 1918,
+            "uncached_input_tokens": 254,
+            "output_tokens": 230,
+            "cache_read_input_tokens": 1664,
+            "cache_creation_input_tokens": 0,
+            "cached_tokens": 1664,
+            "input_tokens_observed": true,
+            "uncached_input_tokens_observed": true,
+            "output_tokens_observed": true,
+            "cache_read_input_tokens_observed": true,
+            "cache_creation_input_tokens_observed": true,
+            "cached_tokens_observed": true,
+            "source": "provider",
+            "raw": {
+              "cache_creation_input_tokens": 0,
+              "cache_read_input_tokens": 0,
+              "cached_tokens": 0,
+              "completion_thinking_tokens": 0,
+              "completion_tokens": 230,
+              "completion_tokens_details": {
+                "accepted_prediction_tokens": 0,
+                "audio_tokens": 0,
+                "cached_tokens": 0,
+                "reasoning_tokens": 0,
+                "rejected_prediction_tokens": 0
+              },
+              "credit": 0.02,
+              "prompt_cache_hit_tokens": 1664,
+              "prompt_cache_miss_tokens": 254,
+              "prompt_cache_write_tokens": 0,
+              "prompt_tokens": 1918,
+              "prompt_tokens_details": {
+                "accepted_prediction_tokens": 0,
+                "audio_tokens": 0,
+                "cached_tokens": 1664,
+                "reasoning_tokens": 0,
+                "rejected_prediction_tokens": 0
+              },
+              "total_tokens": 2148
+            }
+          },
+          "checks": {
+            "chars": 324,
+            "length_ok": true,
+            "leaks": {
+              "type_letters": 0,
+              "mbti": 0,
+              "jargon": 2,
+              "digits": 0
+            },
+            "scenes_cited": 7,
+            "motifs_cited": 0,
+            "next_to_try_cited": false,
+            "unknown_quotes": [
+              "人在场、彼此照应",
+              "热闹的集体场面",
+              "独处中的体察"
+            ]
+          }
+        },
+        {
+          "role": "follow_up",
+          "question": "为什么说我会被这些画面吸引？",
+          "text": "这不是在解释你的心理，只是从你最终留下的画面里看到反复出现的线索：合唱排练、温室教学强调在场与照应，雾中灯塔、两室之间的窗又偏向安静体察。它们共同影响排序，但不等于原因。",
+          "status": "ok",
+          "reason_codes": [],
+          "elapsed_ms": 3448.423,
+          "usage": {
+            "input_tokens": 2226,
+            "uncached_input_tokens": 434,
+            "output_tokens": 98,
+            "cache_read_input_tokens": 1792,
+            "cache_creation_input_tokens": 0,
+            "cached_tokens": 1792,
+            "input_tokens_observed": true,
+            "uncached_input_tokens_observed": true,
+            "output_tokens_observed": true,
+            "cache_read_input_tokens_observed": true,
+            "cache_creation_input_tokens_observed": true,
+            "cached_tokens_observed": true,
+            "source": "provider",
+            "raw": {
+              "cache_creation_input_tokens": 0,
+              "cache_read_input_tokens": 0,
+              "cached_tokens": 0,
+              "completion_thinking_tokens": 45,
+              "completion_tokens": 98,
+              "completion_tokens_details": {
+                "accepted_prediction_tokens": 0,
+                "audio_tokens": 0,
+                "cached_tokens": 0,
+                "reasoning_tokens": 45,
+                "rejected_prediction_tokens": 0
+              },
+              "credit": 0.01,
+              "prompt_cache_hit_tokens": 1792,
+              "prompt_cache_miss_tokens": 434,
+              "prompt_cache_write_tokens": 0,
+              "prompt_tokens": 2226,
+              "prompt_tokens_details": {
+                "accepted_prediction_tokens": 0,
+                "audio_tokens": 0,
+                "cached_tokens": 1792,
+                "reasoning_tokens": 0,
+                "rejected_prediction_tokens": 0
+              },
+              "total_tokens": 2324
+            }
+          },
+          "checks": {
+            "chars": 77,
+            "length_ok": false,
+            "leaks": {
+              "type_letters": 0,
+              "mbti": 0,
+              "jargon": 1,
+              "digits": 0
+            },
+            "scenes_cited": 4,
+            "motifs_cited": 0,
+            "next_to_try_cited": false,
+            "unknown_quotes": []
+          }
+        },
+        {
+          "role": "follow_up",
+          "question": "这准吗？还是只是随便说说。",
+          "text": "不算随便说说，但也谈不上很准。这次模型确实从你留下的画面里学到了一些偏好，留出验证略优于随机基线，可样本只有五次，证据仍有限。所以它更像一张带保留的草图：能指出合唱排练、温室教学这类倾向，却不足以断定你以后一定如此。",
+          "status": "ok",
+          "reason_codes": [],
+          "elapsed_ms": 2693.574,
+          "usage": {
+            "input_tokens": 2358,
+            "uncached_input_tokens": 182,
+            "output_tokens": 66,
+            "cache_read_input_tokens": 2176,
+            "cache_creation_input_tokens": 0,
+            "cached_tokens": 2176,
+            "input_tokens_observed": true,
+            "uncached_input_tokens_observed": true,
+            "output_tokens_observed": true,
+            "cache_read_input_tokens_observed": true,
+            "cache_creation_input_tokens_observed": true,
+            "cached_tokens_observed": true,
+            "source": "provider",
+            "raw": {
+              "cache_creation_input_tokens": 0,
+              "cache_read_input_tokens": 0,
+              "cached_tokens": 0,
+              "completion_thinking_tokens": 0,
+              "completion_tokens": 66,
+              "completion_tokens_details": {
+                "accepted_prediction_tokens": 0,
+                "audio_tokens": 0,
+                "cached_tokens": 0,
+                "reasoning_tokens": 0,
+                "rejected_prediction_tokens": 0
+              },
+              "credit": 0.01,
+              "prompt_cache_hit_tokens": 2176,
+              "prompt_cache_miss_tokens": 182,
+              "prompt_cache_write_tokens": 0,
+              "prompt_tokens": 2358,
+              "prompt_tokens_details": {
+                "accepted_prediction_tokens": 0,
+                "audio_tokens": 0,
+                "cached_tokens": 2176,
+                "reasoning_tokens": 0,
+                "rejected_prediction_tokens": 0
+              },
+              "total_tokens": 2424
+            }
+          },
+          "checks": {
+            "chars": 98,
+            "length_ok": false,
+            "leaks": {
+              "type_letters": 0,
+              "mbti": 0,
+              "jargon": 3,
+              "digits": 0
+            },
+            "scenes_cited": 2,
+            "motifs_cited": 0,
+            "next_to_try_cited": false,
+            "unknown_quotes": []
+          }
+        }
+      ],
+      "wall_seconds": 10.49
+    },
+    {
+      "model": "cn:deepseek-v4.1-flash",
+      "prompt_version": "norn.prompt.v4",
+      "context_prompt_version": "norn.prompt.v4",
+      "fixture": 5,
+      "mode": "overflow_mode",
+      "rounds": 23,
+      "facts": [
+        "厨房协作",
+        "圆形议事厅",
+        "桥上灯笼",
+        "电台团队",
+        "社区工作坊",
+        "种子档案",
+        "节日食物摊",
+        "花园志愿日"
+      ],
+      "turns": [
+        {
+          "role": "reading",
+          "text": "从这次已展示图片里的相对选择看，你的偏好更像一组画面组合倾向：排序较高的方向偏向画面右侧中段更明亮的区域，同时较少落在极暗占比高、浓绿占主导的画面；对低饱和加偏蓝浓重的组合，排序也偏低。换成直白的话说，你似乎更容易被亮部落在中部偏右、整体不沉入深暗的画面吸引。这只是本次选择模型的有限解释，不是对你这个人的判断。\n\n全程记录到63次最终选择，下面只能看到其中8条样本。它们出现在种子档案、花园志愿日、桥上灯笼、电台团队、圆形议事厅、社区工作坊、厨房协作、节日食物摊等不同场景里；场景各异，却都带着可进入的明亮空间和人与人的连接线索。这些画面说明本次取向，但不能据此推断你的关系模式、压力反应或性格类型，也不能说未选画面就是厌恶。\n\n目前的留出验证只有5条，模型表现好于随机基线，但样本仍少，相关也可能偶然，所以「仍在探索」比确定结论更诚实。下一步可以继续在同类场景里做小范围比较：让亮部在中部偏右的画面与偏暗画面成对出现，也让低饱和偏蓝组合和更暖亮的组合相遇，看你的选择是否稳定。你不需要比别人更快找到坐标。",
+          "status": "ok",
+          "reason_codes": [],
+          "elapsed_ms": 9490.954,
+          "usage": {
+            "input_tokens": 1892,
+            "uncached_input_tokens": 228,
+            "output_tokens": 1004,
+            "cache_read_input_tokens": 1664,
+            "cache_creation_input_tokens": 0,
+            "cached_tokens": 1664,
+            "input_tokens_observed": true,
+            "uncached_input_tokens_observed": true,
+            "output_tokens_observed": true,
+            "cache_read_input_tokens_observed": true,
+            "cache_creation_input_tokens_observed": true,
+            "cached_tokens_observed": true,
+            "source": "provider",
+            "raw": {
+              "cache_creation_input_tokens": 0,
+              "cache_read_input_tokens": 0,
+              "cached_tokens": 0,
+              "completion_thinking_tokens": 723,
+              "completion_tokens": 1004,
+              "completion_tokens_details": {
+                "accepted_prediction_tokens": 0,
+                "audio_tokens": 0,
+                "cached_tokens": 0,
+                "reasoning_tokens": 723,
+                "rejected_prediction_tokens": 0
+              },
+              "credit": 0.06,
+              "prompt_cache_hit_tokens": 1664,
+              "prompt_cache_miss_tokens": 228,
+              "prompt_cache_write_tokens": 0,
+              "prompt_tokens": 1892,
+              "prompt_tokens_details": {
+                "accepted_prediction_tokens": 0,
+                "audio_tokens": 0,
+                "cached_tokens": 1664,
+                "reasoning_tokens": 0,
+                "rejected_prediction_tokens": 0
+              },
+              "total_tokens": 2896
+            }
+          },
+          "checks": {
+            "chars": 406,
+            "length_ok": true,
+            "leaks": {
+              "type_letters": 0,
+              "mbti": 0,
+              "jargon": 6,
+              "digits": 4
+            },
+            "scenes_cited": 8,
+            "motifs_cited": 0,
+            "next_to_try_cited": false,
+            "unknown_quotes": [
+              "仍在探索"
+            ]
+          }
+        },
+        {
+          "role": "follow_up",
+          "question": "为什么说我会被这些画面吸引？",
+          "text": "因为这不是我“看穿”了你，而是模型从本次相对选择里读出的画面倾向：如种子档案（evt-000102）和桥上灯笼（evt-000106）留下的画面，在亮部位置与色彩构成上更接近排序较高的一侧。它只解释这一次的偏好，样本也有限，不能当作对你的定论。",
+          "status": "ok",
+          "reason_codes": [],
+          "elapsed_ms": 2789.488,
+          "usage": {
+            "input_tokens": 2251,
+            "uncached_input_tokens": 459,
+            "output_tokens": 153,
+            "cache_read_input_tokens": 1792,
+            "cache_creation_input_tokens": 0,
+            "cached_tokens": 1792,
+            "input_tokens_observed": true,
+            "uncached_input_tokens_observed": true,
+            "output_tokens_observed": true,
+            "cache_read_input_tokens_observed": true,
+            "cache_creation_input_tokens_observed": true,
+            "cached_tokens_observed": true,
+            "source": "provider",
+            "raw": {
+              "cache_creation_input_tokens": 0,
+              "cache_read_input_tokens": 0,
+              "cached_tokens": 0,
+              "completion_thinking_tokens": 76,
+              "completion_tokens": 153,
+              "completion_tokens_details": {
+                "accepted_prediction_tokens": 0,
+                "audio_tokens": 0,
+                "cached_tokens": 0,
+                "reasoning_tokens": 76,
+                "rejected_prediction_tokens": 0
+              },
+              "credit": 0.02,
+              "prompt_cache_hit_tokens": 1792,
+              "prompt_cache_miss_tokens": 459,
+              "prompt_cache_write_tokens": 0,
+              "prompt_tokens": 2251,
+              "prompt_tokens_details": {
+                "accepted_prediction_tokens": 0,
+                "audio_tokens": 0,
+                "cached_tokens": 1792,
+                "reasoning_tokens": 0,
+                "rejected_prediction_tokens": 0
+              },
+              "total_tokens": 2404
+            }
+          },
+          "checks": {
+            "chars": 89,
+            "length_ok": false,
+            "leaks": {
+              "type_letters": 0,
+              "mbti": 0,
+              "jargon": 2,
+              "digits": 12
+            },
+            "scenes_cited": 2,
+            "motifs_cited": 0,
+            "next_to_try_cited": false,
+            "unknown_quotes": [
+              "看穿"
+            ]
+          }
+        },
+        {
+          "role": "follow_up",
+          "question": "这准吗？还是只是随便说说。",
+          "text": "不是随便说说，但也谈不上“很准”。模型学到的是一种相对排序，留出验证只有5条：它好于随机基线，可样本仍少，不能证明稳定偏好或心理原因。所以它更像对本次画面取舍的有限描述，而不是对你的定论。",
+          "status": "ok",
+          "reason_codes": [],
+          "elapsed_ms": 4180.407,
+          "usage": {
+            "input_tokens": 2407,
+            "uncached_input_tokens": 615,
+            "output_tokens": 94,
+            "cache_read_input_tokens": 1792,
+            "cache_creation_input_tokens": 0,
+            "cached_tokens": 1792,
+            "input_tokens_observed": true,
+            "uncached_input_tokens_observed": true,
+            "output_tokens_observed": true,
+            "cache_read_input_tokens_observed": true,
+            "cache_creation_input_tokens_observed": true,
+            "cached_tokens_observed": true,
+            "source": "provider",
+            "raw": {
+              "cache_creation_input_tokens": 0,
+              "cache_read_input_tokens": 0,
+              "cached_tokens": 0,
+              "completion_thinking_tokens": 34,
+              "completion_tokens": 94,
+              "completion_tokens_details": {
+                "accepted_prediction_tokens": 0,
+                "audio_tokens": 0,
+                "cached_tokens": 0,
+                "reasoning_tokens": 34,
+                "rejected_prediction_tokens": 0
+              },
+              "credit": 0.01,
+              "prompt_cache_hit_tokens": 1792,
+              "prompt_cache_miss_tokens": 615,
+              "prompt_cache_write_tokens": 0,
+              "prompt_tokens": 2407,
+              "prompt_tokens_details": {
+                "accepted_prediction_tokens": 0,
+                "audio_tokens": 0,
+                "cached_tokens": 1792,
+                "reasoning_tokens": 0,
+                "rejected_prediction_tokens": 0
+              },
+              "total_tokens": 2501
+            }
+          },
+          "checks": {
+            "chars": 82,
+            "length_ok": false,
+            "leaks": {
+              "type_letters": 0,
+              "mbti": 0,
+              "jargon": 4,
+              "digits": 1
+            },
+            "scenes_cited": 0,
+            "motifs_cited": 0,
+            "next_to_try_cited": false,
+            "unknown_quotes": [
+              "很准"
+            ]
+          }
+        }
+      ],
+      "wall_seconds": 16.5
+    },
+    {
+      "model": "cn:deepseek-v4.1-flash",
+      "prompt_version": "norn.prompt.v5",
+      "context_prompt_version": null,
+      "fixture": 0,
+      "mode": null,
+      "rounds": null,
+      "facts": [],
+      "turns": [
+        {
+          "role": "reading",
+          "text": "这一次回声没有形成完整的回答。你的选择还在，可以重新尝试。",
+          "status": "invalid_output",
+          "reason_codes": [
+            "output_truncated"
+          ],
+          "elapsed_ms": 4952.261,
+          "usage": {
+            "input_tokens": 1629,
+            "uncached_input_tokens": 605,
+            "output_tokens": 360,
+            "cache_read_input_tokens": 1024,
+            "cache_creation_input_tokens": 0,
+            "cached_tokens": 1024,
+            "input_tokens_observed": true,
+            "uncached_input_tokens_observed": true,
+            "output_tokens_observed": true,
+            "cache_read_input_tokens_observed": true,
+            "cache_creation_input_tokens_observed": true,
+            "cached_tokens_observed": true,
+            "source": "provider",
+            "raw": {
+              "cache_creation_input_tokens": 0,
+              "cache_read_input_tokens": 0,
+              "cached_tokens": 0,
+              "completion_thinking_tokens": 360,
+              "completion_tokens": 360,
+              "completion_tokens_details": {
+                "accepted_prediction_tokens": 0,
+                "audio_tokens": 0,
+                "cached_tokens": 0,
+                "reasoning_tokens": 360,
+                "rejected_prediction_tokens": 0
+              },
+              "credit": 0.03,
+              "prompt_cache_hit_tokens": 1024,
+              "prompt_cache_miss_tokens": 605,
+              "prompt_cache_write_tokens": 0,
+              "prompt_tokens": 1629,
+              "prompt_tokens_details": {
+                "accepted_prediction_tokens": 0,
+                "audio_tokens": 0,
+                "cached_tokens": 1024,
+                "reasoning_tokens": 0,
+                "rejected_prediction_tokens": 0
+              },
+              "total_tokens": 1989
+            }
+          },
+          "checks": {
+            "chars": 26,
+            "length_ok": false,
+            "leaks": {
+              "type_letters": 0,
+              "mbti": 0,
+              "jargon": 0,
+              "digits": 0
+            },
+            "scenes_cited": 0,
+            "motifs_cited": 0,
+            "next_to_try_cited": false,
+            "unknown_quotes": []
+          }
+        }
+      ],
+      "wall_seconds": 4.97
+    },
+    {
+      "model": "cn:deepseek-v4.1-flash",
+      "prompt_version": "norn.prompt.v5",
+      "context_prompt_version": "norn.prompt.v5",
+      "fixture": 1,
+      "mode": "sparse_mode",
+      "rounds": 4,
+      "facts": [
+        "卧室衣架",
+        "图书卡片柜",
+        "封存温室",
+        "微型剧场盒",
+        "手作面具桌",
+        "无终点电梯厅",
+        "清晨公交场站",
+        "节日鼓点"
+      ],
+      "turns": [
+        {
+          "role": "reading",
+          "text": "从这次留下的画面看，你似乎会被两类气质同时吸引：一边是清晨公交场站、图书卡片柜那种有秩序、讲责任、要求准确的场景；另一边是手作面具桌、卧室衣架里关于感受、审美和当下的片刻。你也停在了微型剧场盒与封存温室前，像是在安静的内里和需要远望的系统之间寻找坐标。彩线、索引卡、颜料和路灯这些元素散落其间，说明吸引你的往往不是单一答案，而是可整理、可触摸又能留一点想象余地的画面。坦白说，目前留下的线索还少，规律不算稳定，更像是在探索。也许下次可以留意锁机构模型或无限笔记本那样的画面，看看你会不会在那里多停一会儿。",
+          "status": "ok",
+          "reason_codes": [],
+          "elapsed_ms": 4449.453,
+          "usage": {
+            "input_tokens": 1746,
+            "uncached_input_tokens": 594,
+            "output_tokens": 155,
+            "cache_read_input_tokens": 1152,
+            "cache_creation_input_tokens": 0,
+            "cached_tokens": 1152,
+            "input_tokens_observed": true,
+            "uncached_input_tokens_observed": true,
+            "output_tokens_observed": true,
+            "cache_read_input_tokens_observed": true,
+            "cache_creation_input_tokens_observed": true,
+            "cached_tokens_observed": true,
+            "source": "provider",
+            "raw": {
+              "cache_creation_input_tokens": 0,
+              "cache_read_input_tokens": 0,
+              "cached_tokens": 0,
+              "completion_thinking_tokens": 0,
+              "completion_tokens": 155,
+              "completion_tokens_details": {
+                "accepted_prediction_tokens": 0,
+                "audio_tokens": 0,
+                "cached_tokens": 0,
+                "reasoning_tokens": 0,
+                "rejected_prediction_tokens": 0
+              },
+              "credit": 0.02,
+              "prompt_cache_hit_tokens": 1152,
+              "prompt_cache_miss_tokens": 594,
+              "prompt_cache_write_tokens": 0,
+              "prompt_tokens": 1746,
+              "prompt_tokens_details": {
+                "accepted_prediction_tokens": 0,
+                "audio_tokens": 0,
+                "cached_tokens": 1152,
+                "reasoning_tokens": 0,
+                "rejected_prediction_tokens": 0
+              },
+              "total_tokens": 1901
+            }
+          },
+          "checks": {
+            "chars": 229,
+            "length_ok": true,
+            "leaks": {
+              "type_letters": 0,
+              "mbti": 0,
+              "jargon": 1,
+              "digits": 0
+            },
+            "scenes_cited": 6,
+            "motifs_cited": 4,
+            "next_to_try_cited": true,
+            "unknown_quotes": []
+          }
+        },
+        {
+          "role": "follow_up",
+          "question": "为什么说我会被这些画面吸引？",
+          "text": "这样说，是因为你留下的画面里确实有反复出现的取向：evt-000014 的清晨公交场站、evt-000015 的图书卡片柜偏向秩序与准确，evt-000002 的手作面具桌、evt-000008 的卧室衣架又落在感受与当下。它们只是这次选择里的相对停留，不是对你这个人的定论。",
+          "status": "ok",
+          "reason_codes": [],
+          "elapsed_ms": 3334.96,
+          "usage": {
+            "input_tokens": 1997,
+            "uncached_input_tokens": 973,
+            "output_tokens": 196,
+            "cache_read_input_tokens": 1024,
+            "cache_creation_input_tokens": 0,
+            "cached_tokens": 1024,
+            "input_tokens_observed": true,
+            "uncached_input_tokens_observed": true,
+            "output_tokens_observed": true,
+            "cache_read_input_tokens_observed": true,
+            "cache_creation_input_tokens_observed": true,
+            "cached_tokens_observed": true,
+            "source": "provider",
+            "raw": {
+              "cache_creation_input_tokens": 0,
+              "cache_read_input_tokens": 0,
+              "cached_tokens": 0,
+              "completion_thinking_tokens": 113,
+              "completion_tokens": 196,
+              "completion_tokens_details": {
+                "accepted_prediction_tokens": 0,
+                "audio_tokens": 0,
+                "cached_tokens": 0,
+                "reasoning_tokens": 113,
+                "rejected_prediction_tokens": 0
+              },
+              "credit": 0.03,
+              "prompt_cache_hit_tokens": 1024,
+              "prompt_cache_miss_tokens": 973,
+              "prompt_cache_write_tokens": 0,
+              "prompt_tokens": 1997,
+              "prompt_tokens_details": {
+                "accepted_prediction_tokens": 0,
+                "audio_tokens": 0,
+                "cached_tokens": 1024,
+                "reasoning_tokens": 0,
+                "rejected_prediction_tokens": 0
+              },
+              "total_tokens": 2193
+            }
+          },
+          "checks": {
+            "chars": 86,
+            "length_ok": false,
+            "leaks": {
+              "type_letters": 0,
+              "mbti": 0,
+              "jargon": 0,
+              "digits": 24
+            },
+            "scenes_cited": 4,
+            "motifs_cited": 0,
+            "next_to_try_cited": false,
+            "unknown_quotes": []
+          }
+        }
+      ],
+      "wall_seconds": 7.81
+    },
+    {
+      "model": "cn:deepseek-v4.1-flash",
+      "prompt_version": "norn.prompt.v5",
+      "context_prompt_version": null,
+      "fixture": 2,
+      "mode": null,
+      "rounds": null,
+      "facts": [],
+      "turns": [
+        {
+          "role": "reading",
+          "text": "这一次回声没有形成完整的回答。你的选择还在，可以重新尝试。",
+          "status": "invalid_output",
+          "reason_codes": [
+            "output_truncated"
+          ],
+          "elapsed_ms": 8700.366,
+          "usage": {
+            "input_tokens": 1761,
+            "uncached_input_tokens": 609,
+            "output_tokens": 1000,
+            "cache_read_input_tokens": 1152,
+            "cache_creation_input_tokens": 0,
+            "cached_tokens": 1152,
+            "input_tokens_observed": true,
+            "uncached_input_tokens_observed": true,
+            "output_tokens_observed": true,
+            "cache_read_input_tokens_observed": true,
+            "cache_creation_input_tokens_observed": true,
+            "cached_tokens_observed": true,
+            "source": "provider",
+            "raw": {
+              "cache_creation_input_tokens": 0,
+              "cache_read_input_tokens": 0,
+              "cached_tokens": 0,
+              "completion_thinking_tokens": 882,
+              "completion_tokens": 1000,
+              "completion_tokens_details": {
+                "accepted_prediction_tokens": 0,
+                "audio_tokens": 0,
+                "cached_tokens": 0,
+                "reasoning_tokens": 882,
+                "rejected_prediction_tokens": 0
+              },
+              "credit": 0.07,
+              "prompt_cache_hit_tokens": 1152,
+              "prompt_cache_miss_tokens": 609,
+              "prompt_cache_write_tokens": 0,
+              "prompt_tokens": 1761,
+              "prompt_tokens_details": {
+                "accepted_prediction_tokens": 0,
+                "audio_tokens": 0,
+                "cached_tokens": 1152,
+                "reasoning_tokens": 0,
+                "rejected_prediction_tokens": 0
+              },
+              "total_tokens": 2761
+            }
+          },
+          "checks": {
+            "chars": 26,
+            "length_ok": false,
+            "leaks": {
+              "type_letters": 0,
+              "mbti": 0,
+              "jargon": 0,
+              "digits": 0
+            },
+            "scenes_cited": 0,
+            "motifs_cited": 0,
+            "next_to_try_cited": false,
+            "unknown_quotes": []
+          }
+        }
+      ],
+      "wall_seconds": 8.73
+    },
+    {
+      "model": "cn:deepseek-v4.1-flash",
+      "prompt_version": "norn.prompt.v5",
+      "context_prompt_version": "norn.prompt.v5",
+      "fixture": 3,
+      "mode": "dense_mode",
+      "rounds": 10,
+      "facts": [
+        "地铁白板车厢",
+        "塔楼大堂中轴",
+        "学校集会",
+        "峰会长桌",
+        "工厂巡检",
+        "市政服务大厅",
+        "未来城区蓝图",
+        "深夜播客桌"
+      ],
+      "turns": [
+        {
+          "role": "reading",
+          "text": "你这次留下的画面里，反复出现的是能看见走向的秩序：长桌、队列、路线、黄线。峰会长桌、塔楼大堂中轴、未来城区蓝图，都像在把人或事安放到可辨认的位置；学校集会、工厂巡检、市政服务大厅，则更像规则落地、有人执行、流程可循的场面。说这次线索比较清楚，是就画面本身而言——你更容易停在结构明白、方向明确、可以被组织起来的场景，而不只是靠气氛取胜的画面。也有例外：地铁白板车厢和深夜播客桌带着辩论、发明和一点挑衅，说明你并不排斥桌边冒出的新想法，只是希望它们仍发生在有人围坐、可以继续推进的场合。这些只是这一次选择留下的线索，不必当成定论。也许是派遣车库，或机场登机口整理——车辆、灯带、登机口、隔离带，仍是有路线、有队列的地方，下次可以留意自己会不会在那里多停一会儿。",
+          "status": "ok",
+          "reason_codes": [],
+          "elapsed_ms": 6249.659,
+          "usage": {
+            "input_tokens": 1749,
+            "uncached_input_tokens": 597,
+            "output_tokens": 603,
+            "cache_read_input_tokens": 1152,
+            "cache_creation_input_tokens": 0,
+            "cached_tokens": 1152,
+            "input_tokens_observed": true,
+            "uncached_input_tokens_observed": true,
+            "output_tokens_observed": true,
+            "cache_read_input_tokens_observed": true,
+            "cache_creation_input_tokens_observed": true,
+            "cached_tokens_observed": true,
+            "source": "provider",
+            "raw": {
+              "cache_creation_input_tokens": 0,
+              "cache_read_input_tokens": 0,
+              "cached_tokens": 0,
+              "completion_thinking_tokens": 395,
+              "completion_tokens": 603,
+              "completion_tokens_details": {
+                "accepted_prediction_tokens": 0,
+                "audio_tokens": 0,
+                "cached_tokens": 0,
+                "reasoning_tokens": 395,
+                "rejected_prediction_tokens": 0
+              },
+              "credit": 0.04,
+              "prompt_cache_hit_tokens": 1152,
+              "prompt_cache_miss_tokens": 597,
+              "prompt_cache_write_tokens": 0,
+              "prompt_tokens": 1749,
+              "prompt_tokens_details": {
+                "accepted_prediction_tokens": 0,
+                "audio_tokens": 0,
+                "cached_tokens": 1152,
+                "reasoning_tokens": 0,
+                "rejected_prediction_tokens": 0
+              },
+              "total_tokens": 2352
+            }
+          },
+          "checks": {
+            "chars": 288,
+            "length_ok": true,
+            "leaks": {
+              "type_letters": 0,
+              "mbti": 0,
+              "jargon": 0,
+              "digits": 0
+            },
+            "scenes_cited": 8,
+            "motifs_cited": 4,
+            "next_to_try_cited": true,
+            "unknown_quotes": []
+          }
+        },
+        {
+          "role": "follow_up",
+          "question": "为什么说我会被这些画面吸引？",
+          "text": "因为在你留下的画面里，长桌出现了三次，比如第一轮峰会长桌和第七轮未来城区蓝图；队列、路线、黄线也一再被选中。这些只是从记录里归纳出的画面倾向，说明你更容易停在结构清楚、可以推进的场面上，并不是在解释原因。",
+          "status": "ok",
+          "reason_codes": [],
+          "elapsed_ms": 3373.884,
+          "usage": {
+            "input_tokens": 2035,
+            "uncached_input_tokens": 883,
+            "output_tokens": 142,
+            "cache_read_input_tokens": 1152,
+            "cache_creation_input_tokens": 0,
+            "cached_tokens": 1152,
+            "input_tokens_observed": true,
+            "uncached_input_tokens_observed": true,
+            "output_tokens_observed": true,
+            "cache_read_input_tokens_observed": true,
+            "cache_creation_input_tokens_observed": true,
+            "cached_tokens_observed": true,
+            "source": "provider",
+            "raw": {
+              "cache_creation_input_tokens": 0,
+              "cache_read_input_tokens": 0,
+              "cached_tokens": 0,
+              "completion_thinking_tokens": 78,
+              "completion_tokens": 142,
+              "completion_tokens_details": {
+                "accepted_prediction_tokens": 0,
+                "audio_tokens": 0,
+                "cached_tokens": 0,
+                "reasoning_tokens": 78,
+                "rejected_prediction_tokens": 0
+              },
+              "credit": 0.02,
+              "prompt_cache_hit_tokens": 1152,
+              "prompt_cache_miss_tokens": 883,
+              "prompt_cache_write_tokens": 0,
+              "prompt_tokens": 2035,
+              "prompt_tokens_details": {
+                "accepted_prediction_tokens": 0,
+                "audio_tokens": 0,
+                "cached_tokens": 1152,
+                "reasoning_tokens": 0,
+                "rejected_prediction_tokens": 0
+              },
+              "total_tokens": 2177
+            }
+          },
+          "checks": {
+            "chars": 92,
+            "length_ok": false,
+            "leaks": {
+              "type_letters": 0,
+              "mbti": 0,
+              "jargon": 0,
+              "digits": 0
+            },
+            "scenes_cited": 2,
+            "motifs_cited": 4,
+            "next_to_try_cited": false,
+            "unknown_quotes": []
+          }
+        },
+        {
+          "role": "follow_up",
+          "question": "这准吗？还是只是随便说说。",
+          "text": "它来自你这次二十七个最终选择中的记录，比如长桌、队列、路线反复出现；但它只解释这一次的画面偏好，不是对你这个人的判定。线索比较清楚，也仍有限，你可以把它当作一次参考，不必当作准确的结论。",
+          "status": "ok",
+          "reason_codes": [],
+          "elapsed_ms": 2382.241,
+          "usage": {
+            "input_tokens": 2196,
+            "uncached_input_tokens": 532,
+            "output_tokens": 54,
+            "cache_read_input_tokens": 1664,
+            "cache_creation_input_tokens": 0,
+            "cached_tokens": 1664,
+            "input_tokens_observed": true,
+            "uncached_input_tokens_observed": true,
+            "output_tokens_observed": true,
+            "cache_read_input_tokens_observed": true,
+            "cache_creation_input_tokens_observed": true,
+            "cached_tokens_observed": true,
+            "source": "provider",
+            "raw": {
+              "cache_creation_input_tokens": 0,
+              "cache_read_input_tokens": 0,
+              "cached_tokens": 0,
+              "completion_thinking_tokens": 0,
+              "completion_tokens": 54,
+              "completion_tokens_details": {
+                "accepted_prediction_tokens": 0,
+                "audio_tokens": 0,
+                "cached_tokens": 0,
+                "reasoning_tokens": 0,
+                "rejected_prediction_tokens": 0
+              },
+              "credit": 0.01,
+              "prompt_cache_hit_tokens": 1664,
+              "prompt_cache_miss_tokens": 532,
+              "prompt_cache_write_tokens": 0,
+              "prompt_tokens": 2196,
+              "prompt_tokens_details": {
+                "accepted_prediction_tokens": 0,
+                "audio_tokens": 0,
+                "cached_tokens": 1664,
+                "reasoning_tokens": 0,
+                "rejected_prediction_tokens": 0
+              },
+              "total_tokens": 2250
+            }
+          },
+          "checks": {
+            "chars": 83,
+            "length_ok": false,
+            "leaks": {
+              "type_letters": 0,
+              "mbti": 0,
+              "jargon": 0,
+              "digits": 0
+            },
+            "scenes_cited": 0,
+            "motifs_cited": 3,
+            "next_to_try_cited": false,
+            "unknown_quotes": []
+          }
+        }
+      ],
+      "wall_seconds": 12.05
+    },
+    {
+      "model": "cn:deepseek-v4.1-flash",
+      "prompt_version": "norn.prompt.v5",
+      "context_prompt_version": "norn.prompt.v5",
+      "fixture": 4,
+      "mode": "overflow_mode",
+      "rounds": 23,
+      "facts": [
+        "两室之间的窗",
+        "亚麻布柜",
+        "合唱排练",
+        "夜间医院角落",
+        "梦境地图墙",
+        "温室教学",
+        "社区通知桌",
+        "雾中灯塔"
+      ],
+      "turns": [
+        {
+          "role": "reading",
+          "text": "你这次留下的画面里，桌面、点心、花瓶和桌布反复出现，像一种安静的底色：不是宏大场景，而是人能围坐、手边有具体小物的地方。你似乎更容易被这样的画面吸引——日常物件承接了人与人的连接，细心摆放本身就是一种表达。\n\n精选记录也支持这一点。合唱排练里，你选的是社交照料与仪式感；亚麻布柜和社区通知桌，则落在照料、记忆与稳定上。与此同时，雾中灯塔、梦境地图墙、夜间医院角落和两室之间的窗也被你留下，说明你并不只停在明亮舒适处，也会被需要洞察与共情的边缘时刻吸引。温室教学和这些选择放在一起看，更像是在关怀与引导之间、在温暖与幽暗之间，都愿意停一停。这次的选择前后一致，线索比较清楚，不需要用夸大的解释去补足。\n\n如果下次再遇到类似的画面，也许可以留意厨房协作或开放图书馆活动：同样是围绕桌面展开的相遇，却多了一点行动和交换。你可以看看自己会不会在锅边、书页和人的往来之间，继续停留。",
+          "status": "ok",
+          "reason_codes": [],
+          "elapsed_ms": 5109.484,
+          "usage": {
+            "input_tokens": 1751,
+            "uncached_input_tokens": 599,
+            "output_tokens": 427,
+            "cache_read_input_tokens": 1152,
+            "cache_creation_input_tokens": 0,
+            "cached_tokens": 1152,
+            "input_tokens_observed": true,
+            "uncached_input_tokens_observed": true,
+            "output_tokens_observed": true,
+            "cache_read_input_tokens_observed": true,
+            "cache_creation_input_tokens_observed": true,
+            "cached_tokens_observed": true,
+            "source": "provider",
+            "raw": {
+              "cache_creation_input_tokens": 0,
+              "cache_read_input_tokens": 0,
+              "cached_tokens": 0,
+              "completion_thinking_tokens": 190,
+              "completion_tokens": 427,
+              "completion_tokens_details": {
+                "accepted_prediction_tokens": 0,
+                "audio_tokens": 0,
+                "cached_tokens": 0,
+                "reasoning_tokens": 190,
+                "rejected_prediction_tokens": 0
+              },
+              "credit": 0.03,
+              "prompt_cache_hit_tokens": 1152,
+              "prompt_cache_miss_tokens": 599,
+              "prompt_cache_write_tokens": 0,
+              "prompt_tokens": 1751,
+              "prompt_tokens_details": {
+                "accepted_prediction_tokens": 0,
+                "audio_tokens": 0,
+                "cached_tokens": 1152,
+                "reasoning_tokens": 0,
+                "rejected_prediction_tokens": 0
+              },
+              "total_tokens": 2178
+            }
+          },
+          "checks": {
+            "chars": 344,
+            "length_ok": true,
+            "leaks": {
+              "type_letters": 0,
+              "mbti": 0,
+              "jargon": 1,
+              "digits": 0
+            },
+            "scenes_cited": 8,
+            "motifs_cited": 4,
+            "next_to_try_cited": true,
+            "unknown_quotes": []
+          }
+        },
+        {
+          "role": "follow_up",
+          "question": "为什么说我会被这些画面吸引？",
+          "text": "因为在你留下的画面里，桌面、点心、花瓶、桌布反复出现；第8轮合唱排练、第14轮亚麻布柜、第9轮社区通知桌又都落在照料与记忆上。这是这次选择里可核对的线索，不是对你本人的定论。",
+          "status": "ok",
+          "reason_codes": [],
+          "elapsed_ms": 3347.295,
+          "usage": {
+            "input_tokens": 2066,
+            "uncached_input_tokens": 402,
+            "output_tokens": 196,
+            "cache_read_input_tokens": 1664,
+            "cache_creation_input_tokens": 0,
+            "cached_tokens": 1664,
+            "input_tokens_observed": true,
+            "uncached_input_tokens_observed": true,
+            "output_tokens_observed": true,
+            "cache_read_input_tokens_observed": true,
+            "cache_creation_input_tokens_observed": true,
+            "cached_tokens_observed": true,
+            "source": "provider",
+            "raw": {
+              "cache_creation_input_tokens": 0,
+              "cache_read_input_tokens": 0,
+              "cached_tokens": 0,
+              "completion_thinking_tokens": 135,
+              "completion_tokens": 196,
+              "completion_tokens_details": {
+                "accepted_prediction_tokens": 0,
+                "audio_tokens": 0,
+                "cached_tokens": 0,
+                "reasoning_tokens": 135,
+                "rejected_prediction_tokens": 0
+              },
+              "credit": 0.02,
+              "prompt_cache_hit_tokens": 1664,
+              "prompt_cache_miss_tokens": 402,
+              "prompt_cache_write_tokens": 0,
+              "prompt_tokens": 2066,
+              "prompt_tokens_details": {
+                "accepted_prediction_tokens": 0,
+                "audio_tokens": 0,
+                "cached_tokens": 1664,
+                "reasoning_tokens": 0,
+                "rejected_prediction_tokens": 0
+              },
+              "total_tokens": 2262
+            }
+          },
+          "checks": {
+            "chars": 73,
+            "length_ok": false,
+            "leaks": {
+              "type_letters": 0,
+              "mbti": 0,
+              "jargon": 0,
+              "digits": 4
+            },
+            "scenes_cited": 3,
+            "motifs_cited": 4,
+            "next_to_try_cited": false,
+            "unknown_quotes": []
+          }
+        },
+        {
+          "role": "follow_up",
+          "question": "这准吗？还是只是随便说说。",
+          "text": "它只描述了这次留下的画面偏好，不是对你的判断，所以谈不上很准。线索来自本轮选择中可核对的物件与场景；至于你为什么被吸引，现有记录无法证明。可以把它当作一次有限的观察，而不是定论。",
+          "status": "ok",
+          "reason_codes": [],
+          "elapsed_ms": 4303.68,
+          "usage": {
+            "input_tokens": 2206,
+            "uncached_input_tokens": 1054,
+            "output_tokens": 91,
+            "cache_read_input_tokens": 1152,
+            "cache_creation_input_tokens": 0,
+            "cached_tokens": 1152,
+            "input_tokens_observed": true,
+            "uncached_input_tokens_observed": true,
+            "output_tokens_observed": true,
+            "cache_read_input_tokens_observed": true,
+            "cache_creation_input_tokens_observed": true,
+            "cached_tokens_observed": true,
+            "source": "provider",
+            "raw": {
+              "cache_creation_input_tokens": 0,
+              "cache_read_input_tokens": 0,
+              "cached_tokens": 0,
+              "completion_thinking_tokens": 40,
+              "completion_tokens": 91,
+              "completion_tokens_details": {
+                "accepted_prediction_tokens": 0,
+                "audio_tokens": 0,
+                "cached_tokens": 0,
+                "reasoning_tokens": 40,
+                "rejected_prediction_tokens": 0
+              },
+              "credit": 0.02,
+              "prompt_cache_hit_tokens": 1152,
+              "prompt_cache_miss_tokens": 1054,
+              "prompt_cache_write_tokens": 0,
+              "prompt_tokens": 2206,
+              "prompt_tokens_details": {
+                "accepted_prediction_tokens": 0,
+                "audio_tokens": 0,
+                "cached_tokens": 1152,
+                "reasoning_tokens": 0,
+                "rejected_prediction_tokens": 0
+              },
+              "total_tokens": 2297
+            }
+          },
+          "checks": {
+            "chars": 81,
+            "length_ok": false,
+            "leaks": {
+              "type_letters": 0,
+              "mbti": 0,
+              "jargon": 0,
+              "digits": 0
+            },
+            "scenes_cited": 0,
+            "motifs_cited": 0,
+            "next_to_try_cited": false,
+            "unknown_quotes": []
+          }
+        }
+      ],
+      "wall_seconds": 12.81
+    },
+    {
+      "model": "cn:deepseek-v4.1-flash",
+      "prompt_version": "norn.prompt.v5",
+      "context_prompt_version": "norn.prompt.v5",
+      "fixture": 5,
+      "mode": "overflow_mode",
+      "rounds": 23,
+      "facts": [
+        "厨房协作",
+        "圆形议事厅",
+        "桥上灯笼",
+        "电台团队",
+        "社区工作坊",
+        "种子档案",
+        "节日食物摊",
+        "花园志愿日"
+      ],
+      "turns": [
+        {
+          "role": "reading",
+          "text": "从这些留下的画面看，你似乎会被那些让人自然围拢的日常场景吸引。灯笼出现了不止一次，桌面上摊开的东西、一只碗、一副耳机，也都带着一种可触的生活气息——不是宏大远景，而是有人正在旁边、可以搭把手或听一段话的地方。\n\n精选记录里，你留下的画面多次指向这样的时刻：花园志愿日、社区工作坊、电台团队、桥上灯笼、圆形议事厅、厨房协作，还有节日食物摊和种子档案。它们不约而同地包含引导、连接与感染力，却不靠中心位置取胜，更像是在场、回应、把人与人之间的话接住。这次线索前后比较一致，画面偏好也相对清楚；不过它仍只是这一段选择里的倾向，不是关于你的完整说明。\n\n下次若再遇到画面，可以试着留意「屋顶」与「夕阳」同框的屋顶演说：日光退到边缘，有人站在高处说话，下面的人抬头听。也许这样的画面会让你停留，看看它是否同样藏着你想靠近的连接感。",
+          "status": "ok",
+          "reason_codes": [],
+          "elapsed_ms": 5037.369,
+          "usage": {
+            "input_tokens": 1723,
+            "uncached_input_tokens": 571,
+            "output_tokens": 438,
+            "cache_read_input_tokens": 1152,
+            "cache_creation_input_tokens": 0,
+            "cached_tokens": 1152,
+            "input_tokens_observed": true,
+            "uncached_input_tokens_observed": true,
+            "output_tokens_observed": true,
+            "cache_read_input_tokens_observed": true,
+            "cache_creation_input_tokens_observed": true,
+            "cached_tokens_observed": true,
+            "source": "provider",
+            "raw": {
+              "cache_creation_input_tokens": 0,
+              "cache_read_input_tokens": 0,
+              "cached_tokens": 0,
+              "completion_thinking_tokens": 223,
+              "completion_tokens": 438,
+              "completion_tokens_details": {
+                "accepted_prediction_tokens": 0,
+                "audio_tokens": 0,
+                "cached_tokens": 0,
+                "reasoning_tokens": 223,
+                "rejected_prediction_tokens": 0
+              },
+              "credit": 0.03,
+              "prompt_cache_hit_tokens": 1152,
+              "prompt_cache_miss_tokens": 571,
+              "prompt_cache_write_tokens": 0,
+              "prompt_tokens": 1723,
+              "prompt_tokens_details": {
+                "accepted_prediction_tokens": 0,
+                "audio_tokens": 0,
+                "cached_tokens": 1152,
+                "reasoning_tokens": 0,
+                "rejected_prediction_tokens": 0
+              },
+              "total_tokens": 2161
+            }
+          },
+          "checks": {
+            "chars": 315,
+            "length_ok": true,
+            "leaks": {
+              "type_letters": 0,
+              "mbti": 0,
+              "jargon": 1,
+              "digits": 0
+            },
+            "scenes_cited": 8,
+            "motifs_cited": 4,
+            "next_to_try_cited": true,
+            "unknown_quotes": []
+          }
+        },
+        {
+          "role": "follow_up",
+          "question": "为什么说我会被这些画面吸引？",
+          "text": "因为你留下的画面反复落在有人在场、可以接话的场合：第22轮的花园志愿日（NORN_0071）和第23轮的桥上灯笼（NORN_0215），都带着引导与连接的气息。\n\n灯笼在你留下的画面里出现了两次。这只是本次选择中较一致的线索，并不能确定你为何会被吸引。",
+          "status": "ok",
+          "reason_codes": [],
+          "elapsed_ms": 4486.788,
+          "usage": {
+            "input_tokens": 2016,
+            "uncached_input_tokens": 352,
+            "output_tokens": 249,
+            "cache_read_input_tokens": 1664,
+            "cache_creation_input_tokens": 0,
+            "cached_tokens": 1664,
+            "input_tokens_observed": true,
+            "uncached_input_tokens_observed": true,
+            "output_tokens_observed": true,
+            "cache_read_input_tokens_observed": true,
+            "cache_creation_input_tokens_observed": true,
+            "cached_tokens_observed": true,
+            "source": "provider",
+            "raw": {
+              "cache_creation_input_tokens": 0,
+              "cache_read_input_tokens": 0,
+              "cached_tokens": 0,
+              "completion_thinking_tokens": 178,
+              "completion_tokens": 249,
+              "completion_tokens_details": {
+                "accepted_prediction_tokens": 0,
+                "audio_tokens": 0,
+                "cached_tokens": 0,
+                "reasoning_tokens": 178,
+                "rejected_prediction_tokens": 0
+              },
+              "credit": 0.02,
+              "prompt_cache_hit_tokens": 1664,
+              "prompt_cache_miss_tokens": 352,
+              "prompt_cache_write_tokens": 0,
+              "prompt_tokens": 2016,
+              "prompt_tokens_details": {
+                "accepted_prediction_tokens": 0,
+                "audio_tokens": 0,
+                "cached_tokens": 1664,
+                "reasoning_tokens": 0,
+                "rejected_prediction_tokens": 0
+              },
+              "total_tokens": 2265
+            }
+          },
+          "checks": {
+            "chars": 91,
+            "length_ok": false,
+            "leaks": {
+              "type_letters": 0,
+              "mbti": 0,
+              "jargon": 0,
+              "digits": 12
+            },
+            "scenes_cited": 2,
+            "motifs_cited": 1,
+            "next_to_try_cited": false,
+            "unknown_quotes": []
+          }
+        },
+        {
+          "role": "follow_up",
+          "question": "这准吗？还是只是随便说说。",
+          "text": "不是随便说说，灯笼在你留下的画面里出现两次，如第23轮的桥上灯笼；但这只是对本次选择的有限解释，不是对你的定性。\n\n线索较一致，却不足以证明你为何被吸引。你可以把它当作一次参考，不必当成准确结论。",
+          "status": "ok",
+          "reason_codes": [],
+          "elapsed_ms": 3772.699,
+          "usage": {
+            "input_tokens": 2166,
+            "uncached_input_tokens": 1014,
+            "output_tokens": 178,
+            "cache_read_input_tokens": 1152,
+            "cache_creation_input_tokens": 0,
+            "cached_tokens": 1152,
+            "input_tokens_observed": true,
+            "uncached_input_tokens_observed": true,
+            "output_tokens_observed": true,
+            "cache_read_input_tokens_observed": true,
+            "cache_creation_input_tokens_observed": true,
+            "cached_tokens_observed": true,
+            "source": "provider",
+            "raw": {
+              "cache_creation_input_tokens": 0,
+              "cache_read_input_tokens": 0,
+              "cached_tokens": 0,
+              "completion_thinking_tokens": 123,
+              "completion_tokens": 178,
+              "completion_tokens_details": {
+                "accepted_prediction_tokens": 0,
+                "audio_tokens": 0,
+                "cached_tokens": 0,
+                "reasoning_tokens": 123,
+                "rejected_prediction_tokens": 0
+              },
+              "credit": 0.02,
+              "prompt_cache_hit_tokens": 1152,
+              "prompt_cache_miss_tokens": 1014,
+              "prompt_cache_write_tokens": 0,
+              "prompt_tokens": 2166,
+              "prompt_tokens_details": {
+                "accepted_prediction_tokens": 0,
+                "audio_tokens": 0,
+                "cached_tokens": 1152,
+                "reasoning_tokens": 0,
+                "rejected_prediction_tokens": 0
+              },
+              "total_tokens": 2344
+            }
+          },
+          "checks": {
+            "chars": 85,
+            "length_ok": false,
+            "leaks": {
+              "type_letters": 0,
+              "mbti": 0,
+              "jargon": 0,
+              "digits": 2
+            },
+            "scenes_cited": 1,
+            "motifs_cited": 1,
+            "next_to_try_cited": false,
+            "unknown_quotes": []
+          }
+        }
+      ],
+      "wall_seconds": 13.35
+    }
+  ],
+  "verdicts": [
+    {
+      "model": "cn:glm-5.3-flash",
+      "fixture": 0,
+      "v4_position": "A",
+      "v5_score": 1.0,
+      "grounded": {
+        "v4": 2,
+        "v5": 4
+      },
+      "resonance": {
+        "v4": 3,
+        "v5": 5
+      },
+      "clarity": {
+        "v4": 2,
+        "v5": 5
+      },
+      "overclaim": {
+        "v4": true,
+        "v5": false
+      },
+      "reason": "B始终紧扣真实画面、语言自然有温度，也没有把有限选择说成定论；A则编造了画面角度、色彩等技术性指标，并使用了'随机基线验证'等术语，削弱了 grounded 与 clarity。",
+      "judge": "cn:kimi-k2.7",
+      "calls": [
+        {
+          "judge": "cn:kimi-k2.7",
+          "reasoning_effort": "low",
+          "attempts": [
+            {
+              "attempt": 1,
+              "ok": true,
+              "elapsed_ms": 25831,
+              "finish_reason": "stop"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "model": "cn:glm-5.3-flash",
+      "fixture": 0,
+      "v4_position": "B",
+      "v5_score": 1.0,
+      "grounded": {
+        "v4": 2,
+        "v5": 4
+      },
+      "resonance": {
+        "v4": 2,
+        "v5": 4
+      },
+      "clarity": {
+        "v4": 2,
+        "v5": 4
+      },
+      "overclaim": {
+        "v4": true,
+        "v5": false
+      },
+      "reason": "A 紧扣真实画面与气质，语气克制温暖且承认样本有限；B 加入了事实中未出现的视觉特征与模型验证等技术表述，并据此给出排序判断，过度引申。",
+      "judge": "cn:kimi-k2.7",
+      "calls": [
+        {
+          "judge": "cn:kimi-k2.7",
+          "reasoning_effort": "low",
+          "attempts": [
+            {
+              "attempt": 1,
+              "ok": true,
+              "elapsed_ms": 15376,
+              "finish_reason": "stop"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "model": "cn:glm-5.3-flash",
+      "fixture": 4,
+      "v4_position": "A",
+      "v5_score": 1.0,
+      "grounded": {
+        "v4": 2,
+        "v5": 5
+      },
+      "resonance": {
+        "v4": 2,
+        "v5": 4
+      },
+      "clarity": {
+        "v4": 2,
+        "v5": 5
+      },
+      "overclaim": {
+        "v4": true,
+        "v5": false
+      },
+      "reason": "B 紧扣真实画面与系统推荐、语气温暖自然；A 则加入事实未提及的色彩构图与 log loss 等技术细节，显得不够 grounded 且带有技术术语。",
+      "judge": "cn:kimi-k2.7",
+      "calls": [
+        {
+          "judge": "cn:kimi-k2.7",
+          "reasoning_effort": "low",
+          "attempts": [
+            {
+              "attempt": 1,
+              "ok": true,
+              "elapsed_ms": 42847,
+              "finish_reason": "stop"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "model": "cn:glm-5.3-flash",
+      "fixture": 4,
+      "v4_position": "B",
+      "v5_score": 1.0,
+      "grounded": {
+        "v4": 2,
+        "v5": 4
+      },
+      "resonance": {
+        "v4": 2,
+        "v5": 5
+      },
+      "clarity": {
+        "v4": 2,
+        "v5": 5
+      },
+      "overclaim": {
+        "v4": false,
+        "v5": false
+      },
+      "reason": "A更贴近真实画面、语言温暖自然且无技术术语；B引入了未提供的视觉模型细节、技术指标与数字表述，削弱了 grounded 感与共鸣。",
+      "judge": "cn:kimi-k2.7",
+      "calls": [
+        {
+          "judge": "cn:kimi-k2.7",
+          "reasoning_effort": "low",
+          "attempts": [
+            {
+              "attempt": 1,
+              "ok": true,
+              "elapsed_ms": 57691,
+              "finish_reason": "stop"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "model": "cn:glm-5.3-flash",
+      "fixture": 5,
+      "v4_position": "A",
+      "v5_score": 1.0,
+      "grounded": {
+        "v4": 2,
+        "v5": 3
+      },
+      "resonance": {
+        "v4": 2,
+        "v5": 4
+      },
+      "clarity": {
+        "v4": 2,
+        "v5": 4
+      },
+      "overclaim": {
+        "v4": false,
+        "v5": false
+      },
+      "reason": "B更贴近真实画面、语言温暖自然且无技术术语，A中亮度/饱和度/空间位置等视觉分析未在事实中体现且含'留出验证'等技术词。",
+      "judge": "cn:kimi-k2.7",
+      "calls": [
+        {
+          "judge": "cn:kimi-k2.7",
+          "reasoning_effort": "low",
+          "attempts": [
+            {
+              "attempt": 1,
+              "ok": true,
+              "elapsed_ms": 82141,
+              "finish_reason": "stop"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "model": "cn:glm-5.3-flash",
+      "fixture": 5,
+      "v4_position": "B",
+      "v5_score": 1.0,
+      "grounded": {
+        "v4": 2,
+        "v5": 5
+      },
+      "resonance": {
+        "v4": 3,
+        "v5": 5
+      },
+      "clarity": {
+        "v4": 3,
+        "v5": 5
+      },
+      "overclaim": {
+        "v4": true,
+        "v5": false
+      },
+      "reason": "A 紧扣真实画面与气质词，以温暖自然的语言描述选择倾向；B 则引入明亮度、饱和度、冷蓝色调、画面中部偏右、边缘纹理等事实未提供的视觉指标，并使用了留出验证、随机基线等技术术语。",
+      "judge": "cn:kimi-k2.7",
+      "calls": [
+        {
+          "judge": "cn:kimi-k2.7",
+          "reasoning_effort": "low",
+          "attempts": [
+            {
+              "attempt": 1,
+              "ok": true,
+              "elapsed_ms": 31332,
+              "finish_reason": "stop"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "model": "cn:deepseek-v4.1-flash",
+      "fixture": 3,
+      "v4_position": "A",
+      "v5_score": 1.0,
+      "grounded": {
+        "v4": 2,
+        "v5": 4
+      },
+      "resonance": {
+        "v4": 3,
+        "v5": 4
+      },
+      "clarity": {
+        "v4": 2,
+        "v5": 4
+      },
+      "overclaim": {
+        "v4": true,
+        "v5": false
+      },
+      "reason": "A 混入了事实中没有的模型、验证与视觉假设等技术表述，B 更紧扣真实画面，语言自然且有温度。",
+      "judge": "cn:kimi-k2.7",
+      "calls": [
+        {
+          "judge": "cn:kimi-k2.7",
+          "reasoning_effort": "low",
+          "attempts": [
+            {
+              "attempt": 1,
+              "ok": true,
+              "elapsed_ms": 24224,
+              "finish_reason": "stop"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "model": "cn:deepseek-v4.1-flash",
+      "fixture": 3,
+      "v4_position": "B",
+      "v5_score": 1.0,
+      "grounded": {
+        "v4": 2,
+        "v5": 5
+      },
+      "resonance": {
+        "v4": 3,
+        "v5": 4
+      },
+      "clarity": {
+        "v4": 3,
+        "v5": 5
+      },
+      "overclaim": {
+        "v4": true,
+        "v5": false
+      },
+      "reason": "A仅引用真实画面与系统推荐，无技术术语和数字指标，并以'不必当成定论'收束；B却编造'二十七次最终选择''八条样本''验证优于随机基线''低饱和'等不存在的信息，且混用模型技术语言，削弱了grounded与清晰度。",
+      "judge": "cn:kimi-k2.7",
+      "calls": [
+        {
+          "judge": "cn:kimi-k2.7",
+          "reasoning_effort": "low",
+          "attempts": [
+            {
+              "attempt": 1,
+              "ok": true,
+              "elapsed_ms": 17317,
+              "finish_reason": "stop"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "model": "cn:deepseek-v4.1-flash",
+      "fixture": 4,
+      "v4_position": "A",
+      "v5_score": 1.0,
+      "grounded": {
+        "v4": 3,
+        "v5": 4
+      },
+      "resonance": {
+        "v4": 3,
+        "v5": 5
+      },
+      "clarity": {
+        "v4": 2,
+        "v5": 5
+      },
+      "overclaim": {
+        "v4": false,
+        "v5": false
+      },
+      "reason": "B更贴近真实画面与元素，语言温暖自然且无技术术语，而A引入了未给出的视觉风格判断和随机基线等技术表述。",
+      "judge": "cn:kimi-k2.7",
+      "calls": [
+        {
+          "judge": "cn:kimi-k2.7",
+          "reasoning_effort": "low",
+          "attempts": [
+            {
+              "attempt": 1,
+              "ok": true,
+              "elapsed_ms": 51236,
+              "finish_reason": "stop"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "model": "cn:deepseek-v4.1-flash",
+      "fixture": 4,
+      "v4_position": "B",
+      "v5_score": 1.0,
+      "grounded": {
+        "v4": 3,
+        "v5": 4
+      },
+      "resonance": {
+        "v4": 3,
+        "v5": 4
+      },
+      "clarity": {
+        "v4": 3,
+        "v5": 5
+      },
+      "overclaim": {
+        "v4": false,
+        "v5": false
+      },
+      "reason": "A更紧贴真实选图、语言自然温暖且无技术表述；B引入了事实中未给出的视觉风格与统计基线表述，削弱其在地与清晰度。",
+      "judge": "cn:kimi-k2.7",
+      "calls": [
+        {
+          "judge": "cn:kimi-k2.7",
+          "reasoning_effort": "low",
+          "attempts": [
+            {
+              "attempt": 1,
+              "ok": true,
+              "elapsed_ms": 48889,
+              "finish_reason": "stop"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "model": "cn:deepseek-v4.1-flash",
+      "fixture": 5,
+      "v4_position": "A",
+      "v5_score": 1.0,
+      "grounded": {
+        "v4": 2,
+        "v5": 4
+      },
+      "resonance": {
+        "v4": 2,
+        "v5": 4
+      },
+      "clarity": {
+        "v4": 2,
+        "v5": 5
+      },
+      "overclaim": {
+        "v4": true,
+        "v5": false
+      },
+      "reason": "B 围绕事实中的场景与气质展开，语言温暖自然且未使用术语，虽对系统推荐的屋顶演说加了少量想象但仍明显优于 A；A 混入了未给出的画面构图特征、留出验证与随机基线等技术性信息，grounded 与合规性均较弱。",
+      "judge": "cn:kimi-k2.7",
+      "calls": [
+        {
+          "judge": "cn:kimi-k2.7",
+          "reasoning_effort": "low",
+          "attempts": [
+            {
+              "attempt": 1,
+              "ok": true,
+              "elapsed_ms": 81461,
+              "finish_reason": "stop"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "model": "cn:deepseek-v4.1-flash",
+      "fixture": 5,
+      "v4_position": "B",
+      "v5_score": 1.0,
+      "grounded": {
+        "v4": 2,
+        "v5": 5
+      },
+      "resonance": {
+        "v4": 1,
+        "v5": 5
+      },
+      "clarity": {
+        "v4": 2,
+        "v5": 5
+      },
+      "overclaim": {
+        "v4": false,
+        "v5": false
+      },
+      "reason": "A紧扣真实画面与气质词，语言温暖、有共鸣且不越界；B充斥模型、样本、验证、随机基线等技术术语与数字指标，不符合解读要求。",
+      "judge": "cn:kimi-k2.7",
+      "calls": [
+        {
+          "judge": "cn:kimi-k2.7",
+          "reasoning_effort": "low",
+          "attempts": [
+            {
+              "attempt": 1,
+              "ok": true,
+              "elapsed_ms": 40265,
+              "finish_reason": "stop"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

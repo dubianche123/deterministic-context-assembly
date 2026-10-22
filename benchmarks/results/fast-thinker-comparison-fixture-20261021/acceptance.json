@@ -1,0 +1,58 @@
+{
+  "schema_version": "norn.fast-comparison.acceptance.v1",
+  "date": "2026-10-21",
+  "real_external_model_calls": 0,
+  "prose_generation_calls": 0,
+  "new_cloudflare_deployments": 0,
+  "remote_status": "unavailable: user cannot log in to TypeSafe and has no OpenAI API key",
+  "fixture": {
+    "training_rounds": 8,
+    "test_rounds": 16,
+    "kind": "synthetic catalog-progression fixture; no human result or winner"
+  },
+  "tests": {
+    "final_complete": {
+      "passed": 563,
+      "skipped": 19,
+      "subtests": 1185
+    },
+    "focused": {
+      "passed": 66,
+      "subtests": 231
+    },
+    "note": "Suites overlap and are not additive. All external decision transports are mocked in tests."
+  },
+  "browser": {
+    "engine": "Edge via CUA",
+    "desktop_width": 1440,
+    "mobile_width": 320,
+    "mobile_language": "en",
+    "mobile_document_width": 320,
+    "mobile_lane_widths": [
+      288,
+      288,
+      288
+    ],
+    "slider_before": 0,
+    "slider_after": 15,
+    "probability_bars_changed": true,
+    "svg_chart_changed": true,
+    "thumbnails_decoded": true,
+    "technical_disclosures_closed": true,
+    "remote_has_no_probabilities": true
+  },
+  "review_fixes": [
+    "File destinations validated/reserved before any paid dispatch",
+    "Only current run attempt delta recorded for a reused client",
+    "One first-kept-or-stop question per test round avoids target-dependent shrinking options in shared batches",
+    "Shared probability-sum tolerance 1e-6; saved values revalidated without refit"
+  ],
+  "source_sha256": {
+    "norn/fast_compare.py": "89e87db9637c2f9b906dbd990bb859002037e11336241073239b7b05299dae9b",
+    "norn/fast_thinkers.py": "34d10233bcd36e57fdb8da60160696e26721100a49a148fa4b19117c8693ea1b",
+    "norn/jev.py": "a0af9365ec96fbad4c6ff1497f9c1f75802e6f9d123ddf2128b8625349185e5c",
+    "norn/openai_decisions.py": "9623d2e60e205bce2b803b7d19335003919597119d54136fe3a11379078a9d0d",
+    "norn/fast_compare_html.py": "8fb1d3963c3860af25d2135b23e32448d240048e1742dbcf3406cd4031f5a0e6",
+    "norn/cli.py": "280ea61dd332921dfba127a3c5bb4209f637e0c82f432819a37846c87df9e35e"
+  }
+}

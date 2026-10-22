@@ -1,0 +1,402 @@
+*** Begin Patch
+*** Update File: internal/upstream/client.go
+@@
+ 
+ 	// effortsMu/efforts 缓存各模型 supportedEfforts（FetchModels 刷新），供请求体 effort 降级。
+ 	// 键按 realm 分层（map[realm]map[model][]efforts）：CN 探测结果不得被 global 同模型名
+-	// 请求复用（同名不同档位会错误降级，C-2）。global 侧暂无 efforts 探测 → 桶缺失即透传。
++	// 请求复用（同名不同档位会错误降级，C-2）。桶缺失时由 prepareBody 按 realm 静态兜底。
+ 	effortsMu sync.RWMutex
+ 	efforts   map[string]map[string][]string
+ 
+@@
+ // body 里自带 conversation_id 时以 body 为准）。uid8 来自账号 UID，是跨账号硬隔离段。
+ func (c *Client) prepareBody(body []byte, realm, uid, conversationID string) []byte {
+ 	efforts, defs := c.effortsSnapshot(realm), c.defaultEffortsSnapshot(realm)
+-	if realmKey(realm) == "global" {
+-		// global 域降级源 = 远端探测桶（权威）∪ 产品静态兜底表（全局 21 名内档位如
+-		// deepseek-v4.1-flash ['high']）。当前探测桶为空时也按静态表降级，不全程透传
+-		// （issue #84：往 WorkBuddy 上游发 low/max 非法，须降级到 high）。
+-		efforts, defs = globalEffortMap(efforts, defs)
+-	}
++	// 两域均以远端探测桶为权威，缺失时按各自产品静态表降级；首次 chat 不依赖
++	// /v1/models 预热（deepseek-v4.1-flash 的 off 在 CN 取 low，global 取 high）。
++	efforts, defs = realmEffortMap(realm, efforts, defs)
+ 	body = PrepareBodyOptWithEffortsAndDefault(body, c.SanitizeFingerprints, efforts, defs)
+ 	// prompt_cache_key 注入（P0 费用优化，费用降 ~17×）：按账号隔离的稳定缓存键，
+ 	// 让同一客户端对同一账号的连续请求命中上游前缀缓存。
+@@
+ 	return body
+ }
+ 
+-// effortsSnapshot 返回指定 realm 的 effort 能力缓存副本；该域无探测 → nil（透传不降级）。
++// effortsSnapshot 返回指定 realm 的 effort 能力缓存副本；该域无探测 → nil（调用方静态兜底）。
+ func (c *Client) effortsSnapshot(realm string) map[string][]string {
+ 	c.effortsMu.RLock()
+ 	defer c.effortsMu.RUnlock()
+*** Update File: internal/upstream/effort_catalog.go
+@@
+ 	return false
+ }
+ 
+-// globalEffortMap global 域降级用的 effort 能力表：静态兜底表为基，远端桶覆盖（权威优先）。
++// realmEffortMap 按 realm 合并请求降级用的 effort 能力表：静态兜底表为基，
++// 远端桶覆盖（权威优先）。首次 chat 无探测缓存时也按本产品支持的档位归一化，
++// 不依赖 /v1/models 预热；未知模型仍无档位声明，交给既有管线透传。
+ //
+-// prepareBody 对 global 请求调此函数（而非直接用远端桶），因为 global 上游可能不下发
+-// supportedEfforts——此时也必须按产品静态表降级（issue #84：deepseek-v4.1-flash 国际版
+-// 只认 high，客户端传 low/max 必降级到 high，否则上游 400 毁掉请求）。
+ // 语义对齐参考仓库 effortsFor（remoteMeta → productFallback → 静态表），只取前两级：
+ // 远端桶（探测已解析）→ 本产品静态表（本文件），缺档位即无（不再到通用静态表）。
+-func globalEffortMap(remoteEfforts map[string][]string, remoteDefaults map[string]string) (map[string][]string, map[string]string) {
+-	efforts := make(map[string][]string, len(globalEffortFallback)+len(remoteEfforts))
+-	defs := make(map[string]string, len(globalEffortFallback)+len(remoteDefaults))
++func realmEffortMap(realm string, remoteEfforts map[string][]string, remoteDefaults map[string]string) (map[string][]string, map[string]string) {
++	table := cnEffortFallback
++	if realmKey(realm) == "global" {
++		table = globalEffortFallback
++	}
++	efforts := make(map[string][]string, len(table)+len(remoteEfforts))
++	defs := make(map[string]string, len(table)+len(remoteDefaults))
+ 	// 静态兜底为基。
+-	for id, cap := range globalEffortFallback {
++	for id, cap := range table {
+ 		efforts[id] = append([]string(nil), cap.efforts...)
+ 		if cap.defaultEffort != "" {
+ 			defs[id] = cap.defaultEffort
+@@
+ 	}
+ 	return efforts, defs
+ }
++
++// globalEffortMap 保留 global 域合并入口；同模型不能混用 CN 静态档位（issue #84）。
++func globalEffortMap(remoteEfforts map[string][]string, remoteDefaults map[string]string) (map[string][]string, map[string]string) {
++	return realmEffortMap("global", remoteEfforts, remoteDefaults)
++}
+*** Add File: internal/upstream/cn_effort_test.go
++package upstream
++
++import (
++	"encoding/json"
++	"testing"
++)
++
++// A cold client must normalize with its realm's catalog before any model discovery.
++func TestPrepareBodyColdEffortFallback(t *testing.T) {
++	for _, tc := range []struct {
++		name, realm, want string
++	}{
++		{"cn", "cn", "low"},
++		{"empty realm uses cn", "", "low"},
++		{"global", "global", "high"},
++	} {
++		t.Run(tc.name, func(t *testing.T) {
++			c := &Client{}
++			out := c.prepareBody([]byte(`{"model":"deepseek-v4.1-flash","reasoning_effort":"off","max_tokens":1000,"messages":[]}`), tc.realm, "", "")
++			var body map[string]any
++			if err := json.Unmarshal(out, &body); err != nil {
++				t.Fatal(err)
++			}
++			if got := body["reasoning_effort"]; got != tc.want {
++				t.Errorf("reasoning_effort=%v want %s", got, tc.want)
++			}
++			if got := body["max_tokens"]; got != float64(1000) {
++				t.Errorf("max_tokens=%v want 1000", got)
++			}
++			if typ, _ := getThinkingType(t, out); typ != "enabled" {
++				t.Errorf("thinking.type=%q want enabled", typ)
++			}
++		})
++	}
++}
++
++// Remote efforts and defaults remain authoritative even when the static table differs.
++func TestPrepareBodyEffortRemoteOverrides(t *testing.T) {
++	for _, realm := range []string{"cn", "global"} {
++		t.Run(realm, func(t *testing.T) {
++			c := &Client{}
++			c.storeEfforts(realm,
++				map[string][]string{"deepseek-v4.1-flash": {"off", "medium"}},
++				map[string]string{"deepseek-v4.1-flash": "medium"})
++			for _, tc := range []struct {
++				name, input, want string
++			}{
++				{"explicit effort", `{"model":"deepseek-v4.1-flash","reasoning_effort":"off","messages":[]}`, "off"},
++				{"default effort", `{"model":"deepseek-v4.1-flash","messages":[]}`, "medium"},
++			} {
++				t.Run(tc.name, func(t *testing.T) {
++					out := c.prepareBody([]byte(tc.input), realm, "", "")
++					if got, _ := objFieldString(t, out, "reasoning_effort"); got != tc.want {
++						t.Errorf("reasoning_effort=%q want %s (out=%s)", got, tc.want, out)
++					}
++				})
++			}
++		})
++	}
++}
++
++func TestPrepareBodyEffortExplicitDisabled(t *testing.T) {
++	for _, realm := range []string{"cn", "global"} {
++		t.Run(realm, func(t *testing.T) {
++			c := &Client{}
++			out := c.prepareBody([]byte(`{"model":"deepseek-v4.1-flash","thinking":{"type":"disabled"},"reasoning_effort":"off","reasoningEffort":"high","max_tokens":1000,"messages":[]}`), realm, "", "")
++			var body map[string]any
++			if err := json.Unmarshal(out, &body); err != nil {
++				t.Fatal(err)
++			}
++			if typ, _ := getThinkingType(t, out); typ != "disabled" {
++				t.Errorf("thinking.type=%q want disabled", typ)
++			}
++			for _, key := range []string{"reasoning_effort", "reasoningEffort"} {
++				if _, ok := body[key]; ok {
++					t.Errorf("%s must be absent when thinking is disabled (out=%s)", key, out)
++				}
++			}
++			if got := body["max_tokens"]; got != float64(1000) {
++				t.Errorf("max_tokens=%v want 1000", got)
++			}
++		})
++	}
++}
++
++func TestPrepareBodyEffortUnknownModelPassesThrough(t *testing.T) {
++	for _, realm := range []string{"cn", "global"} {
++		t.Run(realm, func(t *testing.T) {
++			c := &Client{}
++			for _, tc := range []struct {
++				name, input, want string
++				present           bool
++			}{
++				{"no forced effort", `{"model":"custom-model-without-efforts","messages":[]}`, "", false},
++				{"explicit effort", `{"model":"custom-model-without-efforts","reasoning_effort":"off","messages":[]}`, "off", true},
++				{"unknown deepseek explicit effort", `{"model":"deepseek-custom","reasoning_effort":"off","messages":[]}`, "off", true},
++			} {
++				t.Run(tc.name, func(t *testing.T) {
++					out := c.prepareBody([]byte(tc.input), realm, "", "")
++					got, present := objFieldString(t, out, "reasoning_effort")
++					if got != tc.want || present != tc.present {
++						t.Errorf("reasoning_effort=%q present=%v want %q/%v (out=%s)", got, present, tc.want, tc.present, out)
++					}
++				})
++			}
++		})
++	}
++}
+*** Update File: internal/server/handler.go
+@@
+ 			if kind == upstream.ErrToolCallMismatch {
+ 				fail(acct.UID)
+ 				writeOpenAIErrorHint(w, http.StatusBadRequest, "tool_call_mismatch",
++					string(respBody), h.hintOf(kind, string(respBody), bareModel, reqHasImage, uerr))
++				st.status = http.StatusBadRequest
++				return
++			}
++			// 11133 is request-scoped: preserve the upstream body and existing hint,
++			// release the lease, and return before opening a stream or penalizing accounts.
++			if kind == upstream.ErrModelParamInvalid {
++				fail(acct.UID)
++				writeOpenAIErrorHint(w, http.StatusBadRequest, "model_param_invalid",
+ 					string(respBody), h.hintOf(kind, string(respBody), bareModel, reqHasImage, uerr))
+ 				st.status = http.StatusBadRequest
+ 				return
+@@
+ 	case upstream.ErrImageInvalid:
+ 		// 图片格式/数据无效：请求的问题不是账号的问题（同一 body 换任何号都会
+ 		// 得到相同解析错误）。零动作，chatCompletions 已 fail-fast 透传。
++	case upstream.ErrModelParamInvalid:
++		// 11133 model-parameter rejection is request-scoped; no account penalty.
++		// chatCompletions returns HTTP 400 directly without rotating accounts.
+ 	case upstream.ErrBadParams:
+ 		// 请求体解析失败（400 + Unmarshal chat params failed / 11101）：发给上游的 body
+ 		// 有问题（网关截断已由 413 消灭，剩余为客户端畸形 JSON）。换了账号照样 400，
+*** Add File: internal/server/handler_model_param_invalid_test.go
++package server
++
++import (
++	"encoding/json"
++	"fmt"
++	"net/http"
++	"net/http/httptest"
++	"strings"
++	"testing"
++
++	"workbuddy2api/internal/auth"
++	"workbuddy2api/internal/upstream"
++)
++
++func TestChatModelParamInvalidReturns400WithoutAccountPenalty(t *testing.T) {
++	const raw = `{"code":11133,"msg":"Invalid request parameters","requestId":"req-model-param","extError":{"code":"model_param_invalid","message":"the request parameters were rejected by the model provider"}}`
++	const hint = "request parameters were rejected by the model provider; check message format and model capabilities"
++	for _, stream := range []bool{false, true} {
++		t.Run(fmt.Sprintf("stream=%t", stream), func(t *testing.T) {
++			calls := 0
++			up := newFakeUpstream(t, func(string) (int, string, bool) {
++				calls++
++				return http.StatusBadRequest, raw, false
++			})
++			p := testPoolWith(
++				&auth.Auth{UID: "param-a1", AccessToken: "at1", ExpiresAt: 9999999999},
++				&auth.Auth{UID: "param-a2", AccessToken: "at2", ExpiresAt: 9999999999},
++			)
++			p.SetMaxInFlight(1)
++			h := NewHandler(Config{Pool: p, Upstream: up})
++			rec := httptest.NewRecorder()
++			body := fmt.Sprintf(`{"model":"cn:deepseek-v4.1-flash","stream":%t,"messages":[{"role":"user","content":"hi"}]}`, stream)
++			h.ServeHTTP(rec, httptest.NewRequest("POST", "/v1/chat/completions", strings.NewReader(body)))
++
++			if rec.Code != http.StatusBadRequest {
++				t.Fatalf("status=%d want 400, body=%s", rec.Code, rec.Body)
++			}
++			if got := rec.Header().Get("Content-Type"); !strings.HasPrefix(got, "application/json") {
++				t.Errorf("Content-Type=%q want application/json before streaming headers", got)
++			}
++			var e hintEnvelope
++			if err := json.Unmarshal(rec.Body.Bytes(), &e); err != nil {
++				t.Fatalf("response must be JSON: %v body=%s", err, rec.Body)
++			}
++			if e.Error.Code != "model_param_invalid" || e.Error.Type != "api_error" {
++				t.Errorf("error code/type=%q/%q", e.Error.Code, e.Error.Type)
++			}
++			if e.Error.Message != raw {
++				t.Errorf("message=%q want verbatim upstream body %q", e.Error.Message, raw)
++			}
++			if e.Error.GatewayHint == nil || *e.Error.GatewayHint != hint {
++				t.Errorf("gateway_hint=%v want existing model-parameter hint", e.Error.GatewayHint)
++			}
++			if calls != 1 {
++				t.Errorf("upstream calls=%d want 1", calls)
++			}
++			for _, uid := range []string{"param-a1", "param-a2"} {
++				st, _ := p.Status(uid)
++				if st.Cooling || st.Disabled || st.ErrTotal != 0 || st.ConsecutiveFails != 0 || !st.DegradeUntil.IsZero() || st.BreakerFails != 0 || !st.BreakerUntil.IsZero() || st.InFlight != 0 {
++					t.Errorf("%s must remain healthy with its lease released: %+v", uid, st)
++				}
++			}
++		})
++	}
++}
++
++func TestApplyErrorPolicyModelParamInvalidIsNoOp(t *testing.T) {
++	p := testPoolWith(&auth.Auth{UID: "param-a1", AccessToken: "at1", ExpiresAt: 9999999999})
++	h := NewHandler(Config{Pool: p})
++	h.applyErrorPolicy("param-a1", upstream.ErrModelParamInvalid, `{"code":11133}`, "deepseek-v4.1-flash", nil)
++	st, _ := p.Status("param-a1")
++	if st.Cooling || st.Disabled || st.ErrTotal != 0 || st.ConsecutiveFails != 0 || !st.DegradeUntil.IsZero() || st.BreakerFails != 0 || !st.BreakerUntil.IsZero() {
++		t.Errorf("model-parameter rejection must not change account health: %+v", st)
++	}
++}
++
++func TestChatUnrelatedBadRequestKeepsExistingPolicy(t *testing.T) {
++	const raw = `{"code":11134,"msg":"unrelated business error"}`
++	calls := 0
++	up := newFakeUpstream(t, func(string) (int, string, bool) {
++		calls++
++		return http.StatusBadRequest, raw, false
++	})
++	p := testPoolWith(&auth.Auth{UID: "other-a1", AccessToken: "at1", ExpiresAt: 9999999999})
++	h := NewHandler(Config{Pool: p, Upstream: up})
++	rec := httptest.NewRecorder()
++	h.ServeHTTP(rec, httptest.NewRequest("POST", "/v1/chat/completions", strings.NewReader(`{"model":"cn:deepseek-v4.1-flash","messages":[{"role":"user","content":"hi"}]}`)))
++	if rec.Code != http.StatusServiceUnavailable {
++		t.Errorf("unrelated 400 status=%d want existing 503", rec.Code)
++	}
++	if calls != 1 {
++		t.Errorf("bounded smoke upstream calls=%d want 1", calls)
++	}
++	st, _ := p.Status("other-a1")
++	if st.ConsecutiveFails != 1 {
++		t.Errorf("unrelated ErrClient consecutive_fails=%d want existing 1", st.ConsecutiveFails)
++	}
++}
+*** Update File: internal/upstream/client.go
+@@
+ 	// ErrEmptyMessage 11151「a message has empty content」→ 请求级错误：同 body 换
+ 	// 任何账号都是同一结果，换号只会白扔健康号配额、最后把 400 包装成 503（issue #203）。
+ 	ErrEmptyMessage
++	ErrModelParamInvalid // 400 + 11133 模型参数无效 → 请求级错误：不罚号、不轮转
+ )
+ 
+ func (k ErrKind) String() string {
+@@
+ 		return "empty_message"
+ 	case ErrToolCallMismatch:
+ 		return "tool_call_mismatch"
++	case ErrModelParamInvalid:
++		return "model_param_invalid"
+ 	case ErrClient:
+ 		return "client"
+ 	default:
+@@
+ 	if IsWafBlocked(status, body) {
+ 		return ErrWafBlock
+ 	}
++	// 11133 is a deterministic model-parameter rejection. Match an exact structured
++	// business code only; hint text alone must not change retry/account policy.
++	if status == http.StatusBadRequest && hasBusinessCode(body, "11133") {
++		return ErrModelParamInvalid
++	}
+ 	// 图片格式/数据错误是确定性的请求级错误：同 body 换账号结果不变，直接
+ 	// fail-fast，避免把健康账号轮转一遍后仍把最终 503 返回给客户端。
+ 	// 业务码 11135 经 codeMarker 而非字面量 marker：上游 JSON 含空白
+*** Update File: internal/upstream/client_test.go
+@@
+ 		{400, `{"code": 11135, "msg": "image rejected"}`, ErrImageInvalid},
+ 		{400, `{"code": "11135", "msg": "image rejected"}`, ErrImageInvalid},
+ 		{400, `{"error": {"code": 11135, "message": "image rejected"}}`, ErrImageInvalid},
+-		// 其他 code 不得被 11135 口径误伤（防过宽）。
+-		{400, `{"code": 11133, "msg": "other business error"}`, ErrClient},
++		// 11133 有独立的请求级分类，不落图片数据错误或通用 4xx。
++		{400, `{"code": 11133, "msg": "other business error"}`, ErrModelParamInvalid},
+ 		{200, `quota exceeded`, ErrHardCredit},
+ 		// 账号级授权/配额故障（与 429 一起纳入轮换）：11140 request illegal = auth_forbidden
+ 		// 风控（需重登），14017 = quota_not_activated（试用未激活，需完成 register）。修复前
+*** Add File: internal/upstream/model_param_invalid_test.go
++package upstream
++
++import (
++	"net/http"
++	"testing"
++)
++
++func TestClassifyModelParamInvalid(t *testing.T) {
++	for _, tc := range []struct {
++		name   string
++		status int
++		body   string
++		want   ErrKind
++	}{
++		{"numeric code", 400, `{"code":11133,"msg":"Invalid request parameters"}`, ErrModelParamInvalid},
++		{"quoted code and whitespace", 400, `{"code": "11133", "msg":"rejected"}`, ErrModelParamInvalid},
++		{"nested code", 400, `{"error":{"data":{"code":"11133","message":"rejected"}}}`, ErrModelParamInvalid},
++		{"request id only", 400, `{"requestId":"11133","msg":"rejected"}`, ErrClient},
++		{"larger code", 400, `{"code":111330,"msg":"rejected"}`, ErrClient},
++		{"quoted larger code", 400, `{"code":"111331","msg":"rejected"}`, ErrClient},
++		{"malformed JSON", 400, `{"code":11133`, ErrClient},
++		{"unstructured code", 400, `11133 model_param_invalid`, ErrClient},
++		{"hint text only", 400, `{"extError":{"code":"model_param_invalid"},"msg":"Invalid request parameters"}`, ErrClient},
++		{"unrelated code", 400, `{"code":11134,"msg":"rejected"}`, ErrClient},
++		{"successful status", 200, `{"code":11133,"msg":"rejected"}`, ErrNone},
++		{"unauthorized status", 401, `{"code":11133,"msg":"rejected"}`, ErrClient},
++		{"forbidden status", 403, `{"code":11133,"msg":"rejected"}`, ErrClient},
++		{"not found status", 404, `{"code":11133,"msg":"rejected"}`, ErrNotFound},
++		{"payload too large status", 413, `{"code":11133,"msg":"rejected"}`, ErrClient},
++		{"rate status wins", 429, `{"code":11133,"msg":"rejected"}`, ErrSoftRate},
++		{"server status wins", 500, `{"code":11133,"msg":"rejected"}`, ErrServer},
++		{"payment status wins", 402, `{"code":11133,"msg":"rejected"}`, ErrHardCredit},
++		{"session fault wins", 400, `{"code":11133,"msg":"Offline user session not found"}`, ErrSessionDead},
++		{"account fault wins", 400, `{"code":11133,"msg":"request illegal"}`, ErrAccountFault},
++		{"rate message wins", 400, `{"code":11133,"msg":"rate limit"}`, ErrSoftRate},
++		{"credit message wins", 400, `{"code":11133,"msg":"credits exhausted"}`, ErrHardCredit},
++	} {
++		t.Run(tc.name, func(t *testing.T) {
++			if got := Classify(tc.status, tc.body); got != tc.want {
++				t.Fatalf("Classify(%d, %q)=%v want %v", tc.status, tc.body, got, tc.want)
++			}
++		})
++	}
++	if got := Classify(http.StatusBadRequest, `{"code":11133}`).String(); got != "model_param_invalid" {
++		t.Errorf("String()=%q want model_param_invalid", got)
++	}
++}
+*** End Patch

@@ -1,0 +1,97 @@
+{
+  "schema": "norn.judge-qualification.resources.v1",
+  "runs": [
+    {
+      "folder": "judge-qualification-v1-20261021",
+      "models": {
+        "cn:mimo-v2.6-pro": {
+          "requests": 12,
+          "response_models": [
+            "mimo-v2.6-pro"
+          ],
+          "reported_usage_requests": 12,
+          "missing_usage_requests": 0,
+          "prompt_tokens_reported": 20724,
+          "completion_tokens_reported": 1094,
+          "reasoning_tokens_reported": 0,
+          "valid_stopped": 11,
+          "latency_median_seconds": 2.4234999999999998,
+          "latency_max_seconds": 2.946
+        },
+        "cn:hy4-preview": {
+          "requests": 12,
+          "response_models": [
+            "hy4-preview"
+          ],
+          "reported_usage_requests": 12,
+          "missing_usage_requests": 0,
+          "prompt_tokens_reported": 20082,
+          "completion_tokens_reported": 71033,
+          "reasoning_tokens_reported": 70819,
+          "valid_stopped": 2,
+          "latency_median_seconds": 113.2705,
+          "latency_max_seconds": 173.432
+        }
+      },
+      "unexecuted_jobs": []
+    },
+    {
+      "folder": "judge-qualification-hy4-budget-v1-20261021",
+      "models": {
+        "cn:hy4-preview": {
+          "requests": 12,
+          "response_models": [
+            "hy4-preview"
+          ],
+          "reported_usage_requests": 11,
+          "missing_usage_requests": 1,
+          "prompt_tokens_reported": 19201,
+          "completion_tokens_reported": 107595,
+          "reasoning_tokens_reported": 106486,
+          "valid_stopped": 11,
+          "latency_median_seconds": 184.0125,
+          "latency_max_seconds": 360.003
+        }
+      },
+      "unexecuted_jobs": []
+    },
+    {
+      "folder": "judge-qualification-mimo-json-v1-20261021",
+      "models": {
+        "cn:mimo-v2.6-pro": {
+          "requests": 14,
+          "response_models": [
+            "mimo-v2.6-pro"
+          ],
+          "reported_usage_requests": 14,
+          "missing_usage_requests": 0,
+          "prompt_tokens_reported": 22612,
+          "completion_tokens_reported": 1352,
+          "reasoning_tokens_reported": 0,
+          "valid_stopped": 14,
+          "latency_median_seconds": 2.3535,
+          "latency_max_seconds": 2.764
+        }
+      },
+      "unexecuted_jobs": []
+    }
+  ],
+  "http_attempts": 50,
+  "retries": 0,
+  "http_status_counts": {
+    "200": 49,
+    "None": 1
+  },
+  "attempts_with_usage": 49,
+  "attempts_without_usage": 1,
+  "reported_total_tokens": 263693,
+  "reported_reasoning_tokens": 177305,
+  "reading_generation_calls": 0,
+  "cost_usd": null,
+  "limits": [
+    "Reported tokens exclude missing timeout usage; missing is unknown, not zero.",
+    "Workbuddy returned usage/model labels; upstream internal attempts and billing not independently verified.",
+    "Development, tests, review, model-list and status-read costs are not priced.",
+    "Baseline original wall time/max-active unavailable; reconstruction sent zero requests."
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "schema_version": "norn.local-ui-verification.v1",
+  "date": "2026-10-21",
+  "scope": "Local checkout, mock renderer, learning collection disabled; not deployed acceptance or language-model quality evidence",
+  "runtime": {"package_version": "0.8.0", "scoring": "norn.scoring.v4", "prompt": "norn.prompt.v5"},
+  "model_calls": 0,
+  "browser": "Codex in-app browser",
+  "verified": {
+    "initial_browser_language_selected_english": true,
+    "manual_chinese_switch_survives_reload": true,
+    "english_reading_after_six_rounds": true,
+    "english_followup_after_ui_switched_to_chinese": true,
+    "typed_question_preserved_on_language_switch": true,
+    "english_question_limit_remains_400_after_ui_switch": true,
+    "english_xray_axes_and_movement_labels": true,
+    "xray_keyboard_scrub_round_6_to_1_and_back": true,
+    "technical_details_collapsed_by_default": true,
+    "phone_xray_no_horizontal_overflow_at_349px": true,
+    "manual_language_target_is_only_chinese_text_in_english_main_view": true
+  },
+  "six_card_layouts": [
+    {"viewport_width": 320, "columns": 2, "rows": 3, "horizontal_overflow": false},
+    {"viewport_width": 390, "columns": 2, "rows": 3, "horizontal_overflow": false},
+    {"viewport_width": 768, "columns": 3, "rows": 2, "horizontal_overflow": false},
+    {"viewport_width": 1024, "columns": 3, "rows": 2, "horizontal_overflow": false},
+    {"viewport_width": 1440, "columns": 6, "rows": 1, "horizontal_overflow": false},
+    {"viewport_width": 1440, "xray_open": true, "available_stage_width": 760, "columns": 3, "rows": 2, "horizontal_overflow": false}
+  ],
+  "offline_suite": {"passed": 453, "skipped": 5, "subtests_passed": 615},
+  "cloudflare_build": {"passed": true, "command": "WRANGLER_DOCKER_BIN=/usr/bin/false npm run build", "note": "Existing cf beta Docker-cleanup workaround for this Worker without Containers; no deployment"},
+  "screenshots": ["docs/images/norn-bilingual-desktop.jpg", "docs/images/norn-bilingual-mobile.jpg"],
+  "limits": ["Viewport testing does not emulate a physical mobile keyboard or device", "No real English model generation was requested", "No public Worker acceptance was performed"]
+}

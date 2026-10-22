@@ -1,0 +1,316 @@
+{
+  "schema_version": "norn.eval-concurrency-smoke.v2",
+  "verified_at": "2026-10-20T17:22:44.951787+00:00",
+  "target": "local Workbuddy OpenAI API",
+  "requested_concurrency": 6,
+  "proxy": {
+    "accounts": 3,
+    "realm": "cn",
+    "per_account_limit": 2,
+    "aggregate_capacity": 6,
+    "observed_peak_in_flight": 6,
+    "observed_simultaneous_per_account": [
+      2,
+      2,
+      2
+    ],
+    "per_account_peaks": [
+      2,
+      2,
+      2
+    ],
+    "status_sample_count": 59,
+    "status_errors": [],
+    "in_flight_after": 0
+  },
+  "wall_seconds": 3.256,
+  "requests": [
+    {
+      "request": 1,
+      "model": "cn:glm-5.3-flash",
+      "finish_reason": "stop",
+      "content_is_ok": true,
+      "attempts": [
+        {
+          "model": "cn:glm-5.3-flash",
+          "max_tokens": 1000,
+          "reasoning_effort": "off",
+          "thinking": null,
+          "attempt": 1,
+          "dispatched": true,
+          "ok": true,
+          "http_status": 200,
+          "elapsed_ms": 2231,
+          "retry_delay_seconds": 0.0,
+          "usage": {
+            "prompt_tokens": 21,
+            "prompt_cache_hit_tokens": 0,
+            "cache_read_input_tokens": 0,
+            "cache_creation_input_tokens": 0,
+            "completion_tokens": 3,
+            "prompt_cache_miss_tokens": 21,
+            "total_tokens": 24,
+            "prompt_tokens_details": {
+              "cached_tokens": 0,
+              "audio_tokens": 0
+            },
+            "completion_tokens_details": {
+              "accepted_prediction_tokens": 0,
+              "rejected_prediction_tokens": 0,
+              "reasoning_tokens": 0,
+              "audio_tokens": 0
+            }
+          },
+          "response_model": "glm-5.3-flash",
+          "finish_reason": "stop"
+        }
+      ]
+    },
+    {
+      "request": 2,
+      "model": "cn:glm-5.3-flash",
+      "finish_reason": "stop",
+      "content_is_ok": true,
+      "attempts": [
+        {
+          "model": "cn:glm-5.3-flash",
+          "max_tokens": 1000,
+          "reasoning_effort": "off",
+          "thinking": null,
+          "attempt": 1,
+          "dispatched": true,
+          "ok": true,
+          "http_status": 200,
+          "elapsed_ms": 1948,
+          "retry_delay_seconds": 0.0,
+          "usage": {
+            "prompt_tokens": 21,
+            "prompt_cache_hit_tokens": 0,
+            "cache_read_input_tokens": 0,
+            "cache_creation_input_tokens": 0,
+            "completion_tokens": 3,
+            "prompt_cache_miss_tokens": 21,
+            "total_tokens": 24,
+            "prompt_tokens_details": {
+              "cached_tokens": 0,
+              "audio_tokens": 0
+            },
+            "completion_tokens_details": {
+              "accepted_prediction_tokens": 0,
+              "rejected_prediction_tokens": 0,
+              "reasoning_tokens": 0,
+              "audio_tokens": 0
+            }
+          },
+          "response_model": "glm-5.3-flash",
+          "finish_reason": "stop"
+        }
+      ]
+    },
+    {
+      "request": 3,
+      "model": "cn:glm-5.3-flash",
+      "finish_reason": "stop",
+      "content_is_ok": true,
+      "attempts": [
+        {
+          "model": "cn:glm-5.3-flash",
+          "max_tokens": 1000,
+          "reasoning_effort": "off",
+          "thinking": null,
+          "attempt": 1,
+          "dispatched": true,
+          "ok": true,
+          "http_status": 200,
+          "elapsed_ms": 2557,
+          "retry_delay_seconds": 0.0,
+          "usage": {
+            "prompt_tokens": 21,
+            "prompt_cache_hit_tokens": 0,
+            "cache_read_input_tokens": 0,
+            "cache_creation_input_tokens": 0,
+            "completion_tokens": 3,
+            "prompt_cache_miss_tokens": 21,
+            "total_tokens": 24,
+            "prompt_tokens_details": {
+              "cached_tokens": 0,
+              "audio_tokens": 0
+            },
+            "completion_tokens_details": {
+              "accepted_prediction_tokens": 0,
+              "rejected_prediction_tokens": 0,
+              "reasoning_tokens": 0,
+              "audio_tokens": 0
+            }
+          },
+          "response_model": "glm-5.3-flash",
+          "finish_reason": "stop"
+        }
+      ]
+    },
+    {
+      "request": 4,
+      "model": "cn:glm-5.3-flash",
+      "finish_reason": "stop",
+      "content_is_ok": true,
+      "attempts": [
+        {
+          "model": "cn:glm-5.3-flash",
+          "max_tokens": 1000,
+          "reasoning_effort": "off",
+          "thinking": null,
+          "attempt": 1,
+          "dispatched": true,
+          "ok": true,
+          "http_status": 200,
+          "elapsed_ms": 2149,
+          "retry_delay_seconds": 0.0,
+          "usage": {
+            "prompt_tokens": 21,
+            "prompt_cache_hit_tokens": 0,
+            "cache_read_input_tokens": 0,
+            "cache_creation_input_tokens": 0,
+            "completion_tokens": 3,
+            "prompt_cache_miss_tokens": 21,
+            "total_tokens": 24,
+            "prompt_tokens_details": {
+              "cached_tokens": 0,
+              "audio_tokens": 0
+            },
+            "completion_tokens_details": {
+              "accepted_prediction_tokens": 0,
+              "rejected_prediction_tokens": 0,
+              "reasoning_tokens": 0,
+              "audio_tokens": 0
+            }
+          },
+          "response_model": "glm-5.3-flash",
+          "finish_reason": "stop"
+        }
+      ]
+    },
+    {
+      "request": 5,
+      "model": "cn:glm-5.3-flash",
+      "finish_reason": "stop",
+      "content_is_ok": true,
+      "attempts": [
+        {
+          "model": "cn:glm-5.3-flash",
+          "max_tokens": 1000,
+          "reasoning_effort": "off",
+          "thinking": null,
+          "attempt": 1,
+          "dispatched": true,
+          "ok": true,
+          "http_status": 200,
+          "elapsed_ms": 3252,
+          "retry_delay_seconds": 0.0,
+          "usage": {
+            "prompt_tokens": 21,
+            "prompt_cache_hit_tokens": 0,
+            "cache_read_input_tokens": 0,
+            "cache_creation_input_tokens": 0,
+            "completion_tokens": 130,
+            "prompt_cache_miss_tokens": 21,
+            "total_tokens": 151,
+            "prompt_tokens_details": {
+              "cached_tokens": 0,
+              "audio_tokens": 0
+            },
+            "completion_tokens_details": {
+              "accepted_prediction_tokens": 0,
+              "rejected_prediction_tokens": 0,
+              "reasoning_tokens": 127,
+              "audio_tokens": 0
+            }
+          },
+          "response_model": "glm-5.3-flash",
+          "finish_reason": "stop"
+        }
+      ]
+    },
+    {
+      "request": 6,
+      "model": "cn:glm-5.3-flash",
+      "finish_reason": "stop",
+      "content_is_ok": true,
+      "attempts": [
+        {
+          "model": "cn:glm-5.3-flash",
+          "max_tokens": 1000,
+          "reasoning_effort": "off",
+          "thinking": null,
+          "attempt": 1,
+          "dispatched": true,
+          "ok": true,
+          "http_status": 200,
+          "elapsed_ms": 2149,
+          "retry_delay_seconds": 0.0,
+          "usage": {
+            "prompt_tokens": 21,
+            "prompt_cache_hit_tokens": 0,
+            "cache_read_input_tokens": 0,
+            "cache_creation_input_tokens": 0,
+            "completion_tokens": 3,
+            "prompt_cache_miss_tokens": 21,
+            "total_tokens": 24,
+            "prompt_tokens_details": {
+              "cached_tokens": 0,
+              "audio_tokens": 0
+            },
+            "completion_tokens_details": {
+              "accepted_prediction_tokens": 0,
+              "rejected_prediction_tokens": 0,
+              "reasoning_tokens": 0,
+              "audio_tokens": 0
+            }
+          },
+          "response_model": "glm-5.3-flash",
+          "finish_reason": "stop"
+        }
+      ]
+    }
+  ],
+  "transport": {
+    "calls": 6,
+    "requests": 6,
+    "retries": 0,
+    "succeeded": 6,
+    "failed": 0,
+    "active": 0,
+    "max_active": 6,
+    "budget_rejections": 0,
+    "cancelled_calls": 0,
+    "retry_delay_seconds": 0.0,
+    "http_status_counts": {
+      "200": 6
+    },
+    "usage": {
+      "prompt_tokens": 126,
+      "prompt_cache_hit_tokens": 0,
+      "cache_read_input_tokens": 0,
+      "cache_creation_input_tokens": 0,
+      "completion_tokens": 145,
+      "prompt_cache_miss_tokens": 126,
+      "total_tokens": 271,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "audio_tokens": 0
+      },
+      "completion_tokens_details": {
+        "accepted_prediction_tokens": 0,
+        "rejected_prediction_tokens": 0,
+        "reasoning_tokens": 127,
+        "audio_tokens": 0
+      }
+    },
+    "concurrency": 6,
+    "attempts": 1,
+    "max_requests": 6,
+    "remaining_requests": 0,
+    "budget_exhausted": true,
+    "cooldown_remaining_seconds": 0
+  },
+  "scope": "Six short synthetic GLM transport probes only. Proxy concurrency observed through authenticated status counts; no account identities or credentials recorded. Earlier mixed-model probe v2 retained including three DeepSeek 503 responses. This is not a prose-quality comparison or a production deployment."
+}

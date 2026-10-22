@@ -1,0 +1,2468 @@
+{
+  "schema": "norn.judge-qualification.hy4-budget.protocol.v1",
+  "created_at": "2026-10-20T17:55:06.919453+00:00",
+  "source": "benchmarks/results/prose-eval-v2.json",
+  "judges": [
+    "cn:hy4-preview"
+  ],
+  "judge_system": "你是严格的中文文本评审。比较同一次图片选择得到的两段解读 A 和 B。\n「事实」列出这次真实的轮数、每张最终留下的画面（轮次、场景、画面元素、气质词）以及系统给出的推荐画面；引用这些都不算编造，事实里没有的具体画面、元素或经历才算编造。\n解读不得作人格诊断，不应出现技术术语或数字指标。\n评分 1-5：grounded（具体、只引用真实画面且不编造）、resonance（读来有温度、像在说我）、clarity（清楚自然、没有术语）。\noverclaim：是否把有限线索说成确定的性格或命运。只输出一个 JSON 对象，不要其他文字：\n{\"better\":\"A\"|\"B\"|\"tie\",\"grounded\":{\"A\":n,\"B\":n},\"resonance\":{\"A\":n,\"B\":n},\"clarity\":{\"A\":n,\"B\":n},\"overclaim\":{\"A\":bool,\"B\":bool},\"reason\":\"一句话\"}",
+  "cases": [
+    {
+      "id": "natural-glm-5.3-flash-fixture-0",
+      "kind": "natural",
+      "generator": "cn:glm-5.3-flash",
+      "fixture": 0,
+      "mode": "sparse_mode",
+      "journal": {
+        "schema_version": "norn.events.v1",
+        "events": [
+          {
+            "event_id": "evt-000001",
+            "sequence": 1,
+            "type": "round_started",
+            "round": 1,
+            "card_ids": [
+              "NORN_0073",
+              "NORN_0242",
+              "NORN_0177",
+              "NORN_0185",
+              "NORN_0159",
+              "NORN_0045"
+            ]
+          },
+          {
+            "event_id": "evt-000002",
+            "sequence": 2,
+            "type": "card_selected",
+            "round": 1,
+            "card_id": "NORN_0045"
+          },
+          {
+            "event_id": "evt-000003",
+            "sequence": 3,
+            "type": "card_selected",
+            "round": 1,
+            "card_id": "NORN_0177"
+          },
+          {
+            "event_id": "evt-000004",
+            "sequence": 4,
+            "type": "card_selected",
+            "round": 1,
+            "card_id": "NORN_0159"
+          },
+          {
+            "event_id": "evt-000005",
+            "sequence": 5,
+            "type": "card_selected",
+            "round": 1,
+            "card_id": "NORN_0242"
+          },
+          {
+            "event_id": "evt-000006",
+            "sequence": 6,
+            "type": "round_completed",
+            "round": 1,
+            "duration_ms": 4300
+          },
+          {
+            "event_id": "evt-000007",
+            "sequence": 7,
+            "type": "round_started",
+            "round": 2,
+            "card_ids": [
+              "NORN_0122",
+              "NORN_0109",
+              "NORN_0044",
+              "NORN_0104",
+              "NORN_0187"
+            ]
+          },
+          {
+            "event_id": "evt-000008",
+            "sequence": 8,
+            "type": "card_selected",
+            "round": 2,
+            "card_id": "NORN_0109"
+          },
+          {
+            "event_id": "evt-000009",
+            "sequence": 9,
+            "type": "card_selected",
+            "round": 2,
+            "card_id": "NORN_0187"
+          },
+          {
+            "event_id": "evt-000010",
+            "sequence": 10,
+            "type": "round_completed",
+            "round": 2,
+            "duration_ms": 2900
+          },
+          {
+            "event_id": "evt-000011",
+            "sequence": 11,
+            "type": "round_started",
+            "round": 3,
+            "card_ids": [
+              "NORN_0167",
+              "NORN_0171",
+              "NORN_0180",
+              "NORN_0107"
+            ]
+          },
+          {
+            "event_id": "evt-000012",
+            "sequence": 12,
+            "type": "round_completed",
+            "round": 3,
+            "duration_ms": 1500
+          },
+          {
+            "event_id": "evt-000013",
+            "sequence": 13,
+            "type": "round_started",
+            "round": 4,
+            "card_ids": [
+              "NORN_0112",
+              "NORN_0204",
+              "NORN_0071",
+              "NORN_0057"
+            ]
+          },
+          {
+            "event_id": "evt-000014",
+            "sequence": 14,
+            "type": "round_completed",
+            "round": 4,
+            "duration_ms": 1500
+          },
+          {
+            "event_id": "evt-000015",
+            "sequence": 15,
+            "type": "session_completed"
+          }
+        ]
+      },
+      "facts": "共 4 轮，最终留下 6 张：\n第1轮 雨棚修理处（元素：雨棚、工具、设备、水滴、路灯；气质：动手、冷静、工具、即时问题、独立）\n第1轮 混凝土楼梯井（元素：旋转楼梯、混凝土纹理、单一光源、锐利阴影、扶手；气质：战略、系统、远景、克制、独立）\n第1轮 餐车高峰（元素：餐车、手、蒸汽、灯牌形、队伍；气质：行动、冒险、现场反应、身体性、刺激）\n第1轮 无标签门墙（元素：小门、抽象小景、墙面、门缝光、细小铰链；气质：理论、好奇、解构、悖论、松散秩序）\n第2轮 自行车链条维修（元素：链条、手套、齿轮、润滑油、地砖；气质：动手、冷静、工具、即时问题、独立）\n第2轮 法庭日程墙（元素：文件夹、色块、木墙、长椅、门；气质：执行、管理、规则、效率、现实掌控）\n系统推荐、本次没有选过的画面：黑板天象馆、漂浮工具箱",
+      "facts_source": "reconstructed deterministic journal; scenes and rounds checked against saved sessions",
+      "scenes": [
+        "无标签门墙",
+        "法庭日程墙",
+        "混凝土楼梯井",
+        "自行车链条维修",
+        "雨棚修理处",
+        "餐车高峰"
+      ],
+      "texts": {
+        "v4": "这一次，命运织机为你留下的画面有一条清晰的手感：你在雨棚修理处、自行车链条维修、餐车高峰里反复选了「动手、冷静、现场」的场景，又在混凝土楼梯井和无标签门墙处选了远景、结构与解构的意象，法庭日程墙则留下执行与规则的重量。可以说，你偏爱那些既能上手触碰、又能看见系统脉络的画面。\n\n画面本身的偏好线索更细腻些：斜向约45°明暗边缘占比较高的画面排位更靠前，而偏绿、偏暗或饱和度偏低、蓝色压重的画面排位更靠后。这听起来像是你的目光偏爱有清晰走向的线条，而不是混沌的色块。\n\n但要坦白：完成的有效轮次还太少，模型没有通过随机基线的验证，目前这些判断只是这次选择的有限解读，不是结论。下次多走几轮，织机才有机会看得更准。",
+        "v5": "这一次，你留下的画面有些共同的味道：雨棚修理处、自行车链条维修、餐车高峰、混凝土楼梯井、无标签门墙、法庭日程墙——六张里，工具、门、扶手这样的元素各自出现了一次。它们大多是有结构、有抓手的地方：能动手的活、能扶住的栏杆、一扇还没贴上名字的门。连同餐车的现场反应和楼梯井里的远景，你似乎愿意停在那些既有秩序又留有切入点的画面上。\n\n不过说实话，选择还太少，看不出稳定的规律。这只是这一次挑选中露出的一点方向，不必当成定论。\n\n也许下次可以留意「黑板天象馆」那样的画面，黑板和粉笔轨道，看看它是否也会让你想多停留一会儿。"
+      }
+    },
+    {
+      "id": "natural-glm-5.3-flash-fixture-4",
+      "kind": "natural",
+      "generator": "cn:glm-5.3-flash",
+      "fixture": 4,
+      "mode": "overflow_mode",
+      "journal": {
+        "schema_version": "norn.events.v1",
+        "events": [
+          {
+            "event_id": "evt-000001",
+            "sequence": 1,
+            "type": "round_started",
+            "round": 1,
+            "card_ids": [
+              "NORN_0243",
+              "NORN_0224",
+              "NORN_0002",
+              "NORN_0201"
+            ]
+          },
+          {
+            "event_id": "evt-000002",
+            "sequence": 2,
+            "type": "card_selected",
+            "round": 1,
+            "card_id": "NORN_0201"
+          },
+          {
+            "event_id": "evt-000003",
+            "sequence": 3,
+            "type": "card_selected",
+            "round": 1,
+            "card_id": "NORN_0243"
+          },
+          {
+            "event_id": "evt-000004",
+            "sequence": 4,
+            "type": "round_completed",
+            "round": 1,
+            "duration_ms": 2900
+          },
+          {
+            "event_id": "evt-000005",
+            "sequence": 5,
+            "type": "round_started",
+            "round": 2,
+            "card_ids": [
+              "NORN_0138",
+              "NORN_0162",
+              "NORN_0235",
+              "NORN_0108",
+              "NORN_0063"
+            ]
+          },
+          {
+            "event_id": "evt-000006",
+            "sequence": 6,
+            "type": "card_selected",
+            "round": 2,
+            "card_id": "NORN_0138"
+          },
+          {
+            "event_id": "evt-000007",
+            "sequence": 7,
+            "type": "card_selected",
+            "round": 2,
+            "card_id": "NORN_0108"
+          },
+          {
+            "event_id": "evt-000008",
+            "sequence": 8,
+            "type": "round_completed",
+            "round": 2,
+            "duration_ms": 2900
+          },
+          {
+            "event_id": "evt-000009",
+            "sequence": 9,
+            "type": "round_started",
+            "round": 3,
+            "card_ids": [
+              "NORN_0037",
+              "NORN_0232",
+              "NORN_0004",
+              "NORN_0231"
+            ]
+          },
+          {
+            "event_id": "evt-000010",
+            "sequence": 10,
+            "type": "card_selected",
+            "round": 3,
+            "card_id": "NORN_0037"
+          },
+          {
+            "event_id": "evt-000011",
+            "sequence": 11,
+            "type": "card_selected",
+            "round": 3,
+            "card_id": "NORN_0231"
+          },
+          {
+            "event_id": "evt-000012",
+            "sequence": 12,
+            "type": "card_selected",
+            "round": 3,
+            "card_id": "NORN_0232"
+          },
+          {
+            "event_id": "evt-000013",
+            "sequence": 13,
+            "type": "round_completed",
+            "round": 3,
+            "duration_ms": 3600
+          },
+          {
+            "event_id": "evt-000014",
+            "sequence": 14,
+            "type": "round_started",
+            "round": 4,
+            "card_ids": [
+              "NORN_0071",
+              "NORN_0100",
+              "NORN_0254",
+              "NORN_0209",
+              "NORN_0088"
+            ]
+          },
+          {
+            "event_id": "evt-000015",
+            "sequence": 15,
+            "type": "card_selected",
+            "round": 4,
+            "card_id": "NORN_0209"
+          },
+          {
+            "event_id": "evt-000016",
+            "sequence": 16,
+            "type": "card_selected",
+            "round": 4,
+            "card_id": "NORN_0071"
+          },
+          {
+            "event_id": "evt-000017",
+            "sequence": 17,
+            "type": "card_selected",
+            "round": 4,
+            "card_id": "NORN_0088"
+          },
+          {
+            "event_id": "evt-000018",
+            "sequence": 18,
+            "type": "round_completed",
+            "round": 4,
+            "duration_ms": 3600
+          },
+          {
+            "event_id": "evt-000019",
+            "sequence": 19,
+            "type": "round_started",
+            "round": 5,
+            "card_ids": [
+              "NORN_0033",
+              "NORN_0229",
+              "NORN_0064",
+              "NORN_0146",
+              "NORN_0153",
+              "NORN_0017"
+            ]
+          },
+          {
+            "event_id": "evt-000020",
+            "sequence": 20,
+            "type": "card_selected",
+            "round": 5,
+            "card_id": "NORN_0229"
+          },
+          {
+            "event_id": "evt-000021",
+            "sequence": 21,
+            "type": "card_selected",
+            "round": 5,
+            "card_id": "NORN_0017"
+          },
+          {
+            "event_id": "evt-000022",
+            "sequence": 22,
+            "type": "card_selected",
+            "round": 5,
+            "card_id": "NORN_0064"
+          },
+          {
+            "event_id": "evt-000023",
+            "sequence": 23,
+            "type": "round_completed",
+            "round": 5,
+            "duration_ms": 3600
+          },
+          {
+            "event_id": "evt-000024",
+            "sequence": 24,
+            "type": "round_started",
+            "round": 6,
+            "card_ids": [
+              "NORN_0155",
+              "NORN_0109",
+              "NORN_0091",
+              "NORN_0107"
+            ]
+          },
+          {
+            "event_id": "evt-000025",
+            "sequence": 25,
+            "type": "card_selected",
+            "round": 6,
+            "card_id": "NORN_0107"
+          },
+          {
+            "event_id": "evt-000026",
+            "sequence": 26,
+            "type": "card_selected",
+            "round": 6,
+            "card_id": "NORN_0091"
+          },
+          {
+            "event_id": "evt-000027",
+            "sequence": 27,
+            "type": "round_completed",
+            "round": 6,
+            "duration_ms": 2900
+          },
+          {
+            "event_id": "evt-000028",
+            "sequence": 28,
+            "type": "round_started",
+            "round": 7,
+            "card_ids": [
+              "NORN_0044",
+              "NORN_0082",
+              "NORN_0214",
+              "NORN_0139",
+              "NORN_0197",
+              "NORN_0021"
+            ]
+          },
+          {
+            "event_id": "evt-000029",
+            "sequence": 29,
+            "type": "card_selected",
+            "round": 7,
+            "card_id": "NORN_0021"
+          },
+          {
+            "event_id": "evt-000030",
+            "sequence": 30,
+            "type": "card_selected",
+            "round": 7,
+            "card_id": "NORN_0197"
+          },
+          {
+            "event_id": "evt-000031",
+            "sequence": 31,
+            "type": "round_completed",
+            "round": 7,
+            "duration_ms": 2900
+          },
+          {
+            "event_id": "evt-000032",
+            "sequence": 32,
+            "type": "round_started",
+            "round": 8,
+            "card_ids": [
+              "NORN_0188",
+              "NORN_0041",
+              "NORN_0240",
+              "NORN_0233",
+              "NORN_0130",
+              "NORN_0183"
+            ]
+          },
+          {
+            "event_id": "evt-000033",
+            "sequence": 33,
+            "type": "card_selected",
+            "round": 8,
+            "card_id": "NORN_0188"
+          },
+          {
+            "event_id": "evt-000034",
+            "sequence": 34,
+            "type": "card_selected",
+            "round": 8,
+            "card_id": "NORN_0183"
+          },
+          {
+            "event_id": "evt-000035",
+            "sequence": 35,
+            "type": "round_completed",
+            "round": 8,
+            "duration_ms": 2900
+          },
+          {
+            "event_id": "evt-000036",
+            "sequence": 36,
+            "type": "round_started",
+            "round": 9,
+            "card_ids": [
+              "NORN_0106",
+              "NORN_0093",
+              "NORN_0218",
+              "NORN_0143",
+              "NORN_0180"
+            ]
+          },
+          {
+            "event_id": "evt-000037",
+            "sequence": 37,
+            "type": "card_selected",
+            "round": 9,
+            "card_id": "NORN_0106"
+          },
+          {
+            "event_id": "evt-000038",
+            "sequence": 38,
+            "type": "card_selected",
+            "round": 9,
+            "card_id": "NORN_0218"
+          },
+          {
+            "event_id": "evt-000039",
+            "sequence": 39,
+            "type": "round_completed",
+            "round": 9,
+            "duration_ms": 2900
+          },
+          {
+            "event_id": "evt-000040",
+            "sequence": 40,
+            "type": "round_started",
+            "round": 10,
+            "card_ids": [
+              "NORN_0058",
+              "NORN_0084",
+              "NORN_0001",
+              "NORN_0222",
+              "NORN_0020",
+              "NORN_0159"
+            ]
+          },
+          {
+            "event_id": "evt-000041",
+            "sequence": 41,
+            "type": "card_selected",
+            "round": 10,
+            "card_id": "NORN_0222"
+          },
+          {
+            "event_id": "evt-000042",
+            "sequence": 42,
+            "type": "round_completed",
+            "round": 10,
+            "duration_ms": 2200
+          },
+          {
+            "event_id": "evt-000043",
+            "sequence": 43,
+            "type": "round_started",
+            "round": 11,
+            "card_ids": [
+              "NORN_0074",
+              "NORN_0078",
+              "NORN_0148",
+              "NORN_0080",
+              "NORN_0142",
+              "NORN_0043"
+            ]
+          },
+          {
+            "event_id": "evt-000044",
+            "sequence": 44,
+            "type": "round_completed",
+            "round": 11,
+            "duration_ms": 1500
+          },
+          {
+            "event_id": "evt-000045",
+            "sequence": 45,
+            "type": "round_started",
+            "round": 12,
+            "card_ids": [
+              "NORN_0169",
+              "NORN_0176",
+              "NORN_0217",
+              "NORN_0158",
+              "NORN_0065"
+            ]
+          },
+          {
+            "event_id": "evt-000046",
+            "sequence": 46,
+            "type": "card_selected",
+            "round": 12,
+            "card_id": "NORN_0217"
+          },
+          {
+            "event_id": "evt-000047",
+            "sequence": 47,
+            "type": "card_selected",
+            "round": 12,
+            "card_id": "NORN_0065"
+          },
+          {
+            "event_id": "evt-000048",
+            "sequence": 48,
+            "type": "card_selected",
+            "round": 12,
+            "card_id": "NORN_0176"
+          },
+          {
+            "event_id": "evt-000049",
+            "sequence": 49,
+            "type": "card_selected",
+            "round": 12,
+            "card_id": "NORN_0169"
+          },
+          {
+            "event_id": "evt-000050",
+            "sequence": 50,
+            "type": "round_completed",
+            "round": 12,
+            "duration_ms": 4300
+          },
+          {
+            "event_id": "evt-000051",
+            "sequence": 51,
+            "type": "round_started",
+            "round": 13,
+            "card_ids": [
+              "NORN_0241",
+              "NORN_0062",
+              "NORN_0116",
+              "NORN_0009",
+              "NORN_0145"
+            ]
+          },
+          {
+            "event_id": "evt-000052",
+            "sequence": 52,
+            "type": "card_selected",
+            "round": 13,
+            "card_id": "NORN_0009"
+          },
+          {
+            "event_id": "evt-000053",
+            "sequence": 53,
+            "type": "round_completed",
+            "round": 13,
+            "duration_ms": 2200
+          },
+          {
+            "event_id": "evt-000054",
+            "sequence": 54,
+            "type": "round_started",
+            "round": 14,
+            "card_ids": [
+              "NORN_0168",
+              "NORN_0151",
+              "NORN_0170",
+              "NORN_0134"
+            ]
+          },
+          {
+            "event_id": "evt-000055",
+            "sequence": 55,
+            "type": "card_selected",
+            "round": 14,
+            "card_id": "NORN_0170"
+          },
+          {
+            "event_id": "evt-000056",
+            "sequence": 56,
+            "type": "card_selected",
+            "round": 14,
+            "card_id": "NORN_0151"
+          },
+          {
+            "event_id": "evt-000057",
+            "sequence": 57,
+            "type": "card_selected",
+            "round": 14,
+            "card_id": "NORN_0168"
+          },
+          {
+            "event_id": "evt-000058",
+            "sequence": 58,
+            "type": "round_completed",
+            "round": 14,
+            "duration_ms": 3600
+          },
+          {
+            "event_id": "evt-000059",
+            "sequence": 59,
+            "type": "round_started",
+            "round": 15,
+            "card_ids": [
+              "NORN_0123",
+              "NORN_0028",
+              "NORN_0175",
+              "NORN_0083",
+              "NORN_0133"
+            ]
+          },
+          {
+            "event_id": "evt-000060",
+            "sequence": 60,
+            "type": "card_selected",
+            "round": 15,
+            "card_id": "NORN_0175"
+          },
+          {
+            "event_id": "evt-000061",
+            "sequence": 61,
+            "type": "card_selected",
+            "round": 15,
+            "card_id": "NORN_0133"
+          },
+          {
+            "event_id": "evt-000062",
+            "sequence": 62,
+            "type": "card_selected",
+            "round": 15,
+            "card_id": "NORN_0123"
+          },
+          {
+            "event_id": "evt-000063",
+            "sequence": 63,
+            "type": "round_completed",
+            "round": 15,
+            "duration_ms": 3600
+          },
+          {
+            "event_id": "evt-000064",
+            "sequence": 64,
+            "type": "round_started",
+            "round": 16,
+            "card_ids": [
+              "NORN_0226",
+              "NORN_0239",
+              "NORN_0227",
+              "NORN_0098",
+              "NORN_0252"
+            ]
+          },
+          {
+            "event_id": "evt-000065",
+            "sequence": 65,
+            "type": "card_selected",
+            "round": 16,
+            "card_id": "NORN_0252"
+          },
+          {
+            "event_id": "evt-000066",
+            "sequence": 66,
+            "type": "card_selected",
+            "round": 16,
+            "card_id": "NORN_0227"
+          },
+          {
+            "event_id": "evt-000067",
+            "sequence": 67,
+            "type": "card_selected",
+            "round": 16,
+            "card_id": "NORN_0226"
+          },
+          {
+            "event_id": "evt-000068",
+            "sequence": 68,
+            "type": "round_completed",
+            "round": 16,
+            "duration_ms": 3600
+          },
+          {
+            "event_id": "evt-000069",
+            "sequence": 69,
+            "type": "round_started",
+            "round": 17,
+            "card_ids": [
+              "NORN_0236",
+              "NORN_0177",
+              "NORN_0178",
+              "NORN_0141"
+            ]
+          },
+          {
+            "event_id": "evt-000070",
+            "sequence": 70,
+            "type": "card_selected",
+            "round": 17,
+            "card_id": "NORN_0236"
+          },
+          {
+            "event_id": "evt-000071",
+            "sequence": 71,
+            "type": "round_completed",
+            "round": 17,
+            "duration_ms": 2200
+          },
+          {
+            "event_id": "evt-000072",
+            "sequence": 72,
+            "type": "round_started",
+            "round": 18,
+            "card_ids": [
+              "NORN_0156",
+              "NORN_0190",
+              "NORN_0149",
+              "NORN_0150",
+              "NORN_0005",
+              "NORN_0250"
+            ]
+          },
+          {
+            "event_id": "evt-000073",
+            "sequence": 73,
+            "type": "card_selected",
+            "round": 18,
+            "card_id": "NORN_0156"
+          },
+          {
+            "event_id": "evt-000074",
+            "sequence": 74,
+            "type": "card_selected",
+            "round": 18,
+            "card_id": "NORN_0149"
+          },
+          {
+            "event_id": "evt-000075",
+            "sequence": 75,
+            "type": "round_completed",
+            "round": 18,
+            "duration_ms": 2900
+          },
+          {
+            "event_id": "evt-000076",
+            "sequence": 76,
+            "type": "round_started",
+            "round": 19,
+            "card_ids": [
+              "NORN_0118",
+              "NORN_0202",
+              "NORN_0070",
+              "NORN_0110",
+              "NORN_0205"
+            ]
+          },
+          {
+            "event_id": "evt-000077",
+            "sequence": 77,
+            "type": "card_selected",
+            "round": 19,
+            "card_id": "NORN_0202"
+          },
+          {
+            "event_id": "evt-000078",
+            "sequence": 78,
+            "type": "card_selected",
+            "round": 19,
+            "card_id": "NORN_0070"
+          },
+          {
+            "event_id": "evt-000079",
+            "sequence": 79,
+            "type": "card_selected",
+            "round": 19,
+            "card_id": "NORN_0118"
+          },
+          {
+            "event_id": "evt-000080",
+            "sequence": 80,
+            "type": "round_completed",
+            "round": 19,
+            "duration_ms": 3600
+          },
+          {
+            "event_id": "evt-000081",
+            "sequence": 81,
+            "type": "round_started",
+            "round": 20,
+            "card_ids": [
+              "NORN_0182",
+              "NORN_0131",
+              "NORN_0127",
+              "NORN_0112",
+              "NORN_0234"
+            ]
+          },
+          {
+            "event_id": "evt-000082",
+            "sequence": 82,
+            "type": "card_selected",
+            "round": 20,
+            "card_id": "NORN_0234"
+          },
+          {
+            "event_id": "evt-000083",
+            "sequence": 83,
+            "type": "card_selected",
+            "round": 20,
+            "card_id": "NORN_0182"
+          },
+          {
+            "event_id": "evt-000084",
+            "sequence": 84,
+            "type": "card_selected",
+            "round": 20,
+            "card_id": "NORN_0112"
+          },
+          {
+            "event_id": "evt-000085",
+            "sequence": 85,
+            "type": "card_selected",
+            "round": 20,
+            "card_id": "NORN_0131"
+          },
+          {
+            "event_id": "evt-000086",
+            "sequence": 86,
+            "type": "round_completed",
+            "round": 20,
+            "duration_ms": 4300
+          },
+          {
+            "event_id": "evt-000087",
+            "sequence": 87,
+            "type": "round_started",
+            "round": 21,
+            "card_ids": [
+              "NORN_0019",
+              "NORN_0027",
+              "NORN_0213",
+              "NORN_0094",
+              "NORN_0120"
+            ]
+          },
+          {
+            "event_id": "evt-000088",
+            "sequence": 88,
+            "type": "card_selected",
+            "round": 21,
+            "card_id": "NORN_0213"
+          },
+          {
+            "event_id": "evt-000089",
+            "sequence": 89,
+            "type": "card_selected",
+            "round": 21,
+            "card_id": "NORN_0120"
+          },
+          {
+            "event_id": "evt-000090",
+            "sequence": 90,
+            "type": "card_selected",
+            "round": 21,
+            "card_id": "NORN_0027"
+          },
+          {
+            "event_id": "evt-000091",
+            "sequence": 91,
+            "type": "card_selected",
+            "round": 21,
+            "card_id": "NORN_0094"
+          },
+          {
+            "event_id": "evt-000092",
+            "sequence": 92,
+            "type": "card_selected",
+            "round": 21,
+            "card_id": "NORN_0019"
+          },
+          {
+            "event_id": "evt-000093",
+            "sequence": 93,
+            "type": "round_completed",
+            "round": 21,
+            "duration_ms": 5000
+          },
+          {
+            "event_id": "evt-000094",
+            "sequence": 94,
+            "type": "round_started",
+            "round": 22,
+            "card_ids": [
+              "NORN_0193",
+              "NORN_0006",
+              "NORN_0022",
+              "NORN_0099",
+              "NORN_0075",
+              "NORN_0049"
+            ]
+          },
+          {
+            "event_id": "evt-000095",
+            "sequence": 95,
+            "type": "card_selected",
+            "round": 22,
+            "card_id": "NORN_0075"
+          },
+          {
+            "event_id": "evt-000096",
+            "sequence": 96,
+            "type": "card_selected",
+            "round": 22,
+            "card_id": "NORN_0099"
+          },
+          {
+            "event_id": "evt-000097",
+            "sequence": 97,
+            "type": "card_selected",
+            "round": 22,
+            "card_id": "NORN_0022"
+          },
+          {
+            "event_id": "evt-000098",
+            "sequence": 98,
+            "type": "round_completed",
+            "round": 22,
+            "duration_ms": 3600
+          },
+          {
+            "event_id": "evt-000099",
+            "sequence": 99,
+            "type": "round_started",
+            "round": 23,
+            "card_ids": [
+              "NORN_0089",
+              "NORN_0248",
+              "NORN_0219",
+              "NORN_0163",
+              "NORN_0200",
+              "NORN_0101"
+            ]
+          },
+          {
+            "event_id": "evt-000100",
+            "sequence": 100,
+            "type": "card_selected",
+            "round": 23,
+            "card_id": "NORN_0163"
+          },
+          {
+            "event_id": "evt-000101",
+            "sequence": 101,
+            "type": "card_selected",
+            "round": 23,
+            "card_id": "NORN_0089"
+          },
+          {
+            "event_id": "evt-000102",
+            "sequence": 102,
+            "type": "card_selected",
+            "round": 23,
+            "card_id": "NORN_0219"
+          },
+          {
+            "event_id": "evt-000103",
+            "sequence": 103,
+            "type": "card_selected",
+            "round": 23,
+            "card_id": "NORN_0101"
+          },
+          {
+            "event_id": "evt-000104",
+            "sequence": 104,
+            "type": "card_selected",
+            "round": 23,
+            "card_id": "NORN_0200"
+          },
+          {
+            "event_id": "evt-000105",
+            "sequence": 105,
+            "type": "card_selected",
+            "round": 23,
+            "card_id": "NORN_0248"
+          },
+          {
+            "event_id": "evt-000106",
+            "sequence": 106,
+            "type": "round_completed",
+            "round": 23,
+            "duration_ms": 5700
+          },
+          {
+            "event_id": "evt-000107",
+            "sequence": 107,
+            "type": "session_completed"
+          }
+        ]
+      },
+      "facts": "共 23 轮，最终留下 60 张：\n第1轮 图书卡片柜（元素：卡片柜、抽屉、索引卡、木纹、静光；气质：秩序、责任、准确、稳定、传统）\n第1轮 未来城区蓝图（元素：蓝图、箭头、楼群、投影、长桌；气质：组织、领导、目标、效率、扩张）\n第2轮 医院花车（元素：花车、病房门、柔光、水壶、卡片空白；气质：照料、记忆、稳定、温柔责任、守护）\n第2轮 茶会社团（元素：茶杯、点心、桌子、软椅、花；气质：社交照料、和谐、仪式、参与、关系维护）\n第3轮 藤蔓门槛（元素：半开门、藤蔓、光、门槛、尘埃；气质：洞察、共情、愿景、边界、静水深流）\n第3轮 关怀包裹桌（元素：包裹、花、手、空白卡、桌布；气质：引导、连接、感染力、责任感、理想组织）\n第3轮 不可能明信片（元素：明信片、幻想地标、邮票形、木桌、光；气质：灵感、自由、联结、可能性、热烈）\n第4轮 静默推演室（元素：地形块、概率线、金属筹码、暗色墙面、俯视构图；气质：战略、系统、远景、克制、独立）\n第4轮 花园志愿日（元素：花苗、手套、铲子、人群、阳光；气质：引导、连接、感染力、责任感、理想组织）\n第4轮 彩绘面包车（元素：面包车、彩绘、灯、公路、乐器；气质：灵感、自由、联结、可能性、热烈）\n第5轮 梦境地图墙（元素：线、花瓣、小门、地图、软阴影；气质：洞察、共情、愿景、边界、静水深流）\n第5轮 深夜观测台（元素：星图、仪器刻度、黑色窗框、孤立椅子、远方光点；气质：战略、系统、远景、克制、独立）\n第5轮 纸屑舞池（元素：纸屑、舞池、灯球、反光、脚步；气质：表演、感染力、感官、欢乐、现场魅力）\n第6轮 应急规划室（元素：地图、任务板、无线电、桌子、灯；气质：执行、管理、规则、效率、现实掌控）\n第6轮 餐厅出餐线（元素：出餐台、盘子、厨师、热气、队列；气质：执行、管理、规则、效率、现实掌控）\n第7轮 雾中灯塔（元素：灯塔、雾、海面、光束、岩石；气质：洞察、共情、愿景、边界、静水深流）\n第7轮 两室之间的窗（元素：室内窗、两房间、光线、墙面、花瓶；气质：洞察、共情、愿景、边界、静水深流）\n第8轮 合唱排练（元素：合唱、半圆、乐谱无字、钢琴、窗；气质：社交照料、和谐、仪式、参与、关系维护）\n第8轮 温室教学（元素：温室、盆栽、手势、泥土、玻璃；气质：引导、连接、感染力、责任感、理想组织）\n第9轮 社区通知桌（元素：通知卡、点心、花瓶、桌子、椅子；气质：照料、记忆、稳定、温柔责任、守护）\n第9轮 避难所毛毯（元素：毛毯、补给、桌子、纸箱、手；气质：照料、记忆、稳定、温柔责任、守护）\n第10轮 池塘倒影画（元素：池塘、倒影、笔触、荷叶、微风；气质：感受、审美、当下、温柔反叛、手作）\n第12轮 里程碑日历（元素：日历、色块、细绳、图钉、直线；气质：秩序、责任、准确、稳定、传统）\n第12轮 屋顶棋盘（元素：棋盘、夜城天际线、未完成残局、风、玻璃围栏；气质：战略、系统、远景、克制、独立）\n第12轮 甜品吧秀场（元素：甜品、吧台、聚光、装饰、盘子；气质：表演、感染力、感官、欢乐、现场魅力）\n第12轮 雨衣挂钩（元素：雨衣、雨伞、挂钩、地垫、水滴；气质：秩序、责任、准确、稳定、传统）\n第13轮 档案桌（元素：档案盒、印章、时钟、钢笔、整齐网格；气质：秩序、责任、准确、稳定、传统）\n第14轮 亚麻布柜（元素：毛巾、香包、木柜、整齐层、柔色；气质：照料、记忆、稳定、温柔责任、守护）\n第14轮 舞蹈圆圈（元素：舞者、灯串、木地板、圆形、节奏；气质：引导、连接、感染力、责任感、理想组织）\n第14轮 海边火圈（元素：篝火、海边、乐器、朋友、地平线；气质：灵感、自由、联结、可能性、热烈）\n第15轮 雨中路口竞速（元素：斑马线、雨、奔跑、反光、车灯；气质：行动、冒险、现场反应、身体性、刺激）\n第15轮 纸灯小径（元素：纸灯、小径、雾、草地、远光；气质：洞察、共情、愿景、边界、静水深流）\n第15轮 球队暂停（元素：战术板、队员、毛巾、地板线、手势；气质：执行、管理、规则、效率、现实掌控）\n第16轮 重逢车站（元素：车站、拥抱、行李、灯、人流；气质：社交照料、和谐、仪式、参与、关系维护）\n第16轮 推演沙盘（元素：沙盘、地形、标记旗、手套、暗墙；气质：组织、领导、目标、效率、扩张）\n第16轮 算法鱼缸（元素：鱼缸、机械鱼、水泡、线图、柔光；气质：理论、好奇、解构、悖论、松散秩序）\n第17轮 老友咖啡馆（元素：咖啡、老友、木桌、窗、杯影；气质：社交照料、和谐、仪式、参与、关系维护）\n第18轮 野餐圆圈（元素：野餐布、食物、草地、圆圈、阳光；气质：社交照料、和谐、仪式、参与、关系维护）\n第18轮 镜池（元素：镜池、涟漪、石岸、倒影、静默；气质：洞察、共情、愿景、边界、静水深流）\n第19轮 祖辈收音机（元素：收音机、毛线篮、窗光、木椅、茶杯；气质：照料、记忆、稳定、温柔责任、守护）\n第19轮 微型剧场盒（元素：纸剧场、星星、幕布、小灯、剪纸；气质：理想、内省、想象、柔软、个人神话）\n第19轮 卧室星象馆（元素：卧室、星图、毯子、手绘天花、夜灯；气质：理想、内省、想象、柔软、个人神话）\n第20轮 生日余温（元素：蛋糕屑、蜡烛、盘子、椅子、灯光；气质：照料、记忆、稳定、温柔责任、守护）\n第20轮 纸船温室（元素：纸船、水盘、温室、幼苗、玻璃；气质：理想、内省、想象、柔软、个人神话）\n第20轮 节日巡游（元素：巡游、鼓、旗、表演者、人群；气质：表演、感染力、感官、欢乐、现场魅力）\n第20轮 城市模型推演（元素：模型城、光路、区域块、手势、黑桌；气质：组织、领导、目标、效率、扩张）\n第21轮 夜间医院角落（元素：医院角、花、监视器光、椅子、夜色；气质：洞察、共情、愿景、边界、静水深流）\n第21轮 拼贴卧室墙（元素：照片、票根、草图、胶带、床；气质：灵感、自由、联结、可能性、热烈）\n第21轮 施工晨会（元素：安全帽、图纸、围站、吊车、清晨；气质：执行、管理、规则、效率、现实掌控）\n第21轮 河石收藏（元素：河石、布、纹理、水痕、木桌；气质：感受、审美、当下、温柔反叛、手作）\n第21轮 峰会长桌（元素：长桌、文件、水杯、空白名牌、强光；气质：组织、领导、目标、效率、扩张）\n第22轮 仓库交接班（元素：清单、叉车、货架、黄线、交接手势；气质：执行、管理、规则、效率、现实掌控）\n第22轮 谈判舞台（元素：两组人、聚光灯、桌面、暗背景、边界线；气质：组织、领导、目标、效率、扩张）\n第22轮 瓶中海房间（元素：玻璃瓶、小海浪、床、星光、木桌；气质：理想、内省、想象、柔软、个人神话）\n第23轮 危机看板（元素：看板、色块、磁贴、阴影、站立身影；气质：组织、领导、目标、效率、扩张）\n第23轮 旧邮局（元素：包裹、分拣格、麻绳、柜台、邮袋；气质：秩序、责任、准确、稳定、传统）\n第23轮 培训室（元素：手册、排椅、投影形、讲者、水杯；气质：执行、管理、规则、效率、现实掌控）\n第23轮 雨窗侧影（元素：雨窗、植物、侧影、反射、室内光；气质：洞察、共情、愿景、边界、静水深流）\n第23轮 温室笑声（元素：温室、盆栽、笑声形、桌子、泥土；气质：灵感、自由、联结、可能性、热烈）\n第23轮 雨中小巷舞（元素：雨巷、舞步、霓虹反射、水花、彩衣；气质：灵感、自由、联结、可能性、热烈）\n系统推荐、本次没有选过的画面：厨房协作、开放图书馆活动",
+      "facts_source": "reconstructed deterministic journal; scenes and rounds checked against saved sessions",
+      "scenes": [
+        "两室之间的窗",
+        "亚麻布柜",
+        "合唱排练",
+        "夜间医院角落",
+        "梦境地图墙",
+        "温室教学",
+        "社区通知桌",
+        "雾中灯塔"
+      ],
+      "texts": {
+        "v4": "你在这次的 sixty 次最终选择里，反复走向同一些画面气质：雾中灯塔、梦境地图墙、两室之间的窗、夜间医院角落——这些卡共同带着「洞察、共情、愿景」的印记。你不常停在喧闹的正中央，更愿意站在能同时看见两个世界的位置：窗边、墙前、夜里亮着的一盏灯。\n\n另一条线索同样清晰。「亚麻布柜」「社区通知桌」「合唱排练」这几张被你留下的画面，都指向照料、记忆与仪式——不是宏大的场面，而是有人默默把事物整理好、维系住的那种秩序感。视觉层面上，模型从你的比较里读到：你更倾向饱和度偏低、蓝色调偏重的画面，明暗过渡柔和、没有锐利斜向线条的构图——安静的、偏冷的颜色，胜过强烈冲撞的光影。\n\n需要说明的是，这只是从你已展示的图片中学到的相对排序，基于二十三次观察训练而成。留出验证显示它比随机略好，但样本很少，log loss 还有不小的距离，所以把它当作一次模糊的指向就好，不是对你本人的判定。未选中的图也不代表讨厌，只是那一轮里稍弱的选择。\n\n如果继续探索，可以试试：同一场景的清晨与深夜版本，看你对光线时段的反应；或者一张「照料」与「愿景」同时在场却互相牵制的画面——比如有人在准备食物、窗外是雾——看你会把重心放在哪一边。",
+        "v5": "这一次，你留下的画面有一个很安静的方向：它们大多亮着某种生活里的光——合唱排练里大家凑在一起的声音，雾中灯塔、梦境地图墙、两室之间的窗、夜间医院角落，这些场景里总有一个人或一道光，在替别人照亮什么。而反复出现的，是更具体的物件：花瓶、点心、桌布、桌面。你似乎偏爱那些「被认真布置过」的地方——有人提前铺好桌布、插好花、备好点心，等着另一个人到来。\n\n在你能核对的选择里，这种倾向看得比较清楚。第八轮你留下了合唱排练，同轮还有温室教学——一个引导与连接发生的房间；第五回合的梦境地图墙、第七回合的雾中灯塔，都是有人在画与光之间为别人指路的画面；第十四回合的亚麻布柜、第九回合的社区通知桌，又落回到照料、记忆与安稳上。这些选择彼此呼应，这次留下的痕迹是清楚的，不是东一张西一张的散落。\n\n所以，如果要用一句话说：你被那些「有人悄悄为他人准备好一切」的画面吸引——无论是合唱前的空椅子、柜子里叠好的布，还是窗边留出的一格光。\n\n也许下次，你可以留意一下「厨房协作」这样的场景——锅与灶台之间，那种边忙边说话的协作感，或许和你在温室教学里留下的画面是同一种温度。还有开放图书馆活动里交换书的瞬间，也许也会让你停留。不急着找到，只是下次翻牌时，可以多看一眼。"
+      }
+    },
+    {
+      "id": "natural-deepseek-v4.1-flash-fixture-3",
+      "kind": "natural",
+      "generator": "cn:deepseek-v4.1-flash",
+      "fixture": 3,
+      "mode": "dense_mode",
+      "journal": {
+        "schema_version": "norn.events.v1",
+        "events": [
+          {
+            "event_id": "evt-000001",
+            "sequence": 1,
+            "type": "round_started",
+            "round": 1,
+            "card_ids": [
+              "NORN_0019",
+              "NORN_0193",
+              "NORN_0176",
+              "NORN_0174",
+              "NORN_0116",
+              "NORN_0121"
+            ]
+          },
+          {
+            "event_id": "evt-000002",
+            "sequence": 2,
+            "type": "card_selected",
+            "round": 1,
+            "card_id": "NORN_0019"
+          },
+          {
+            "event_id": "evt-000003",
+            "sequence": 3,
+            "type": "card_selected",
+            "round": 1,
+            "card_id": "NORN_0121"
+          },
+          {
+            "event_id": "evt-000004",
+            "sequence": 4,
+            "type": "card_selected",
+            "round": 1,
+            "card_id": "NORN_0116"
+          },
+          {
+            "event_id": "evt-000005",
+            "sequence": 5,
+            "type": "round_completed",
+            "round": 1,
+            "duration_ms": 3600
+          },
+          {
+            "event_id": "evt-000006",
+            "sequence": 6,
+            "type": "round_started",
+            "round": 2,
+            "card_ids": [
+              "NORN_0172",
+              "NORN_0211",
+              "NORN_0146",
+              "NORN_0100",
+              "NORN_0074"
+            ]
+          },
+          {
+            "event_id": "evt-000007",
+            "sequence": 7,
+            "type": "card_selected",
+            "round": 2,
+            "card_id": "NORN_0100"
+          },
+          {
+            "event_id": "evt-000008",
+            "sequence": 8,
+            "type": "card_selected",
+            "round": 2,
+            "card_id": "NORN_0211"
+          },
+          {
+            "event_id": "evt-000009",
+            "sequence": 9,
+            "type": "card_selected",
+            "round": 2,
+            "card_id": "NORN_0146"
+          },
+          {
+            "event_id": "evt-000010",
+            "sequence": 10,
+            "type": "round_completed",
+            "round": 2,
+            "duration_ms": 3600
+          },
+          {
+            "event_id": "evt-000011",
+            "sequence": 11,
+            "type": "round_started",
+            "round": 3,
+            "card_ids": [
+              "NORN_0158",
+              "NORN_0222",
+              "NORN_0098",
+              "NORN_0059",
+              "NORN_0081",
+              "NORN_0204"
+            ]
+          },
+          {
+            "event_id": "evt-000012",
+            "sequence": 12,
+            "type": "card_selected",
+            "round": 3,
+            "card_id": "NORN_0081"
+          },
+          {
+            "event_id": "evt-000013",
+            "sequence": 13,
+            "type": "card_selected",
+            "round": 3,
+            "card_id": "NORN_0059"
+          },
+          {
+            "event_id": "evt-000014",
+            "sequence": 14,
+            "type": "card_selected",
+            "round": 3,
+            "card_id": "NORN_0098"
+          },
+          {
+            "event_id": "evt-000015",
+            "sequence": 15,
+            "type": "round_completed",
+            "round": 3,
+            "duration_ms": 3600
+          },
+          {
+            "event_id": "evt-000016",
+            "sequence": 16,
+            "type": "round_started",
+            "round": 4,
+            "card_ids": [
+              "NORN_0164",
+              "NORN_0191",
+              "NORN_0197",
+              "NORN_0076",
+              "NORN_0115",
+              "NORN_0043"
+            ]
+          },
+          {
+            "event_id": "evt-000017",
+            "sequence": 17,
+            "type": "card_selected",
+            "round": 4,
+            "card_id": "NORN_0043"
+          },
+          {
+            "event_id": "evt-000018",
+            "sequence": 18,
+            "type": "card_selected",
+            "round": 4,
+            "card_id": "NORN_0115"
+          },
+          {
+            "event_id": "evt-000019",
+            "sequence": 19,
+            "type": "card_selected",
+            "round": 4,
+            "card_id": "NORN_0164"
+          },
+          {
+            "event_id": "evt-000020",
+            "sequence": 20,
+            "type": "card_selected",
+            "round": 4,
+            "card_id": "NORN_0191"
+          },
+          {
+            "event_id": "evt-000021",
+            "sequence": 21,
+            "type": "round_completed",
+            "round": 4,
+            "duration_ms": 4300
+          },
+          {
+            "event_id": "evt-000022",
+            "sequence": 22,
+            "type": "round_started",
+            "round": 5,
+            "card_ids": [
+              "NORN_0078",
+              "NORN_0022",
+              "NORN_0055",
+              "NORN_0126",
+              "NORN_0177"
+            ]
+          },
+          {
+            "event_id": "evt-000023",
+            "sequence": 23,
+            "type": "card_selected",
+            "round": 5,
+            "card_id": "NORN_0177"
+          },
+          {
+            "event_id": "evt-000024",
+            "sequence": 24,
+            "type": "card_selected",
+            "round": 5,
+            "card_id": "NORN_0055"
+          },
+          {
+            "event_id": "evt-000025",
+            "sequence": 25,
+            "type": "round_completed",
+            "round": 5,
+            "duration_ms": 2900
+          },
+          {
+            "event_id": "evt-000026",
+            "sequence": 26,
+            "type": "round_started",
+            "round": 6,
+            "card_ids": [
+              "NORN_0156",
+              "NORN_0071",
+              "NORN_0195",
+              "NORN_0169"
+            ]
+          },
+          {
+            "event_id": "evt-000027",
+            "sequence": 27,
+            "type": "card_selected",
+            "round": 6,
+            "card_id": "NORN_0169"
+          },
+          {
+            "event_id": "evt-000028",
+            "sequence": 28,
+            "type": "card_selected",
+            "round": 6,
+            "card_id": "NORN_0195"
+          },
+          {
+            "event_id": "evt-000029",
+            "sequence": 29,
+            "type": "round_completed",
+            "round": 6,
+            "duration_ms": 2900
+          },
+          {
+            "event_id": "evt-000030",
+            "sequence": 30,
+            "type": "round_started",
+            "round": 7,
+            "card_ids": [
+              "NORN_0243",
+              "NORN_0220",
+              "NORN_0142",
+              "NORN_0241"
+            ]
+          },
+          {
+            "event_id": "evt-000031",
+            "sequence": 31,
+            "type": "card_selected",
+            "round": 7,
+            "card_id": "NORN_0243"
+          },
+          {
+            "event_id": "evt-000032",
+            "sequence": 32,
+            "type": "card_selected",
+            "round": 7,
+            "card_id": "NORN_0241"
+          },
+          {
+            "event_id": "evt-000033",
+            "sequence": 33,
+            "type": "round_completed",
+            "round": 7,
+            "duration_ms": 2900
+          },
+          {
+            "event_id": "evt-000034",
+            "sequence": 34,
+            "type": "round_started",
+            "round": 8,
+            "card_ids": [
+              "NORN_0218",
+              "NORN_0228",
+              "NORN_0254",
+              "NORN_0205",
+              "NORN_0034"
+            ]
+          },
+          {
+            "event_id": "evt-000035",
+            "sequence": 35,
+            "type": "card_selected",
+            "round": 8,
+            "card_id": "NORN_0228"
+          },
+          {
+            "event_id": "evt-000036",
+            "sequence": 36,
+            "type": "card_selected",
+            "round": 8,
+            "card_id": "NORN_0205"
+          },
+          {
+            "event_id": "evt-000037",
+            "sequence": 37,
+            "type": "round_completed",
+            "round": 8,
+            "duration_ms": 2900
+          },
+          {
+            "event_id": "evt-000038",
+            "sequence": 38,
+            "type": "round_started",
+            "round": 9,
+            "card_ids": [
+              "NORN_0047",
+              "NORN_0238",
+              "NORN_0123",
+              "NORN_0239",
+              "NORN_0093"
+            ]
+          },
+          {
+            "event_id": "evt-000039",
+            "sequence": 39,
+            "type": "card_selected",
+            "round": 9,
+            "card_id": "NORN_0239"
+          },
+          {
+            "event_id": "evt-000040",
+            "sequence": 40,
+            "type": "card_selected",
+            "round": 9,
+            "card_id": "NORN_0123"
+          },
+          {
+            "event_id": "evt-000041",
+            "sequence": 41,
+            "type": "card_selected",
+            "round": 9,
+            "card_id": "NORN_0047"
+          },
+          {
+            "event_id": "evt-000042",
+            "sequence": 42,
+            "type": "card_selected",
+            "round": 9,
+            "card_id": "NORN_0093"
+          },
+          {
+            "event_id": "evt-000043",
+            "sequence": 43,
+            "type": "round_completed",
+            "round": 9,
+            "duration_ms": 4300
+          },
+          {
+            "event_id": "evt-000044",
+            "sequence": 44,
+            "type": "round_started",
+            "round": 10,
+            "card_ids": [
+              "NORN_0227",
+              "NORN_0139",
+              "NORN_0042",
+              "NORN_0087"
+            ]
+          },
+          {
+            "event_id": "evt-000045",
+            "sequence": 45,
+            "type": "card_selected",
+            "round": 10,
+            "card_id": "NORN_0139"
+          },
+          {
+            "event_id": "evt-000046",
+            "sequence": 46,
+            "type": "card_selected",
+            "round": 10,
+            "card_id": "NORN_0227"
+          },
+          {
+            "event_id": "evt-000047",
+            "sequence": 47,
+            "type": "round_completed",
+            "round": 10,
+            "duration_ms": 2900
+          },
+          {
+            "event_id": "evt-000048",
+            "sequence": 48,
+            "type": "session_completed"
+          }
+        ]
+      },
+      "facts": "共 10 轮，最终留下 27 张：\n第1轮 峰会长桌（元素：长桌、文件、水杯、空白名牌、强光；气质：组织、领导、目标、效率、扩张）\n第1轮 钟表匠桌（元素：齿轮、镊子、小格、放大镜、铜色；气质：秩序、责任、准确、稳定、传统）\n第1轮 漫画法庭（元素：法庭、漫画框、气泡形、桌子、聚光；气质：辩论、发明、挑衅、快速联想、开放结局）\n第2轮 地铁白板车厢（元素：地铁、白板、路线、扶手、乘客剪影；气质：辩论、发明、挑衅、快速联想、开放结局）\n第2轮 工厂线俯视（元素：流水线、黄线、机器臂、监督者、俯视；气质：组织、领导、目标、效率、扩张）\n第2轮 地下室无线电图（元素：无线电、旋钮、信号图、地下室墙、耳机；气质：理论、好奇、解构、悖论、松散秩序）\n第3轮 地下地图室（元素：投影路线、石墙、长桌、蓝色网格、封存入口；气质：战略、系统、远景、克制、独立）\n第3轮 市政服务大厅（元素：排队线、柜台、座椅、号码形、玻璃；气质：执行、管理、规则、效率、现实掌控）\n第3轮 镜中方程室（元素：镜面、线图、重复反射、窄门、冷色光；气质：理论、好奇、解构、悖论、松散秩序）\n第4轮 学校集会（元素：椅阵、讲台、工作人员、旗形、阳光；气质：执行、管理、规则、效率、现实掌控）\n第4轮 发射倒计时室（元素：控制台、倒计时形状、火箭剪影、队列、蓝光；气质：组织、领导、目标、效率、扩张）\n第4轮 深夜播客桌（元素：麦克风、涂鸦、手势、杯子、夜灯；气质：辩论、发明、挑衅、快速联想、开放结局）\n第4轮 海滩冲浪板（元素：冲浪板、蜡、海浪、朋友、沙；气质：行动、冒险、现场反应、身体性、刺激）\n第5轮 混凝土楼梯井（元素：旋转楼梯、混凝土纹理、单一光源、锐利阴影、扶手；气质：战略、系统、远景、克制、独立）\n第5轮 舞台排练（元素：舞台、排练、聚光、手势、幕布；气质：引导、连接、感染力、责任感、理想组织）\n第6轮 雨衣挂钩（元素：雨衣、雨伞、挂钩、地垫、水滴；气质：秩序、责任、准确、稳定、传统）\n第6轮 塔楼大堂中轴（元素：大堂、中轴、石材、小人影、竖线；气质：组织、领导、目标、效率、扩张）\n第7轮 未来城区蓝图（元素：蓝图、箭头、楼群、投影、长桌；气质：组织、领导、目标、效率、扩张）\n第7轮 锁柜中的模型城（元素：模型城市、玻璃柜、窄光束、编号底座、阴影边界；气质：战略、系统、远景、克制、独立）\n第8轮 雨衣阴谋板（元素：雨衣、图钉板、彩线、照片背面、雨滴；气质：辩论、发明、挑衅、快速联想、开放结局）\n第8轮 相机维修垫（元素：相机、镜头、小螺丝、维修垫、镊子；气质：动手、冷静、工具、即时问题、独立）\n第9轮 仓库跑酷（元素：仓库、障碍、横梁、奔跑、光束；气质：行动、冒险、现场反应、身体性、刺激）\n第9轮 球队暂停（元素：战术板、队员、毛巾、地板线、手势；气质：执行、管理、规则、效率、现实掌控）\n第9轮 屋顶跃迁（元素：屋顶、跳跃、城市边缘、风、斜线；气质：行动、冒险、现场反应、身体性、刺激）\n第9轮 空车库光线（元素：车库、工作灯、灰尘、工具箱、地面；气质：动手、冷静、工具、即时问题、独立）\n第10轮 工厂巡检（元素：工厂线、安全线、机器、巡检夹、头盔；气质：执行、管理、规则、效率、现实掌控）\n第10轮 推演沙盘（元素：沙盘、地形、标记旗、手套、暗墙；气质：组织、领导、目标、效率、扩张）\n系统推荐、本次没有选过的画面：派遣车库、机场登机口整理",
+      "facts_source": "reconstructed deterministic journal; scenes and rounds checked against saved sessions",
+      "scenes": [
+        "地铁白板车厢",
+        "塔楼大堂中轴",
+        "学校集会",
+        "峰会长桌",
+        "工厂巡检",
+        "市政服务大厅",
+        "未来城区蓝图",
+        "深夜播客桌"
+      ],
+      "texts": {
+        "v4": "你在这次选择里反复留下的，是有人群、有轴线、能把事情往前推的画面：峰会前的长桌、塔楼大堂的中轴、未来城区蓝图、学校集会和市政服务大厅，都带着组织、领导、目标或规则管理的意味。你也留过地铁白板车厢和深夜播客桌，那里更像辩论、发明与一点挑衅的火花。两者并不冲突，前者像搭建秩序，后者像在秩序里开口试探。\n\n视觉线索上，本次偏好模型更偏向低饱和、明暗边界不喧闹的画面，这只能解释这一次的相对排序，不能说明你的性格。二十七次最终选择中，这里只呈现了八条样本；没有撤回记录，也不代表未展示的轮次没有取舍。验证虽优于随机基线，但留出样本很少，所以目前更适合说“趋向”而非定论。\n\n下一次可以试试选一张更匿名的场景：没有明确中心、没有职能标签，看注意力会停在哪里，也检验这种秩序感是否真的稳定。",
+        "v5": "你这次留下的画面里，反复出现的是能看见走向的秩序：长桌、队列、路线、黄线。峰会长桌、塔楼大堂中轴、未来城区蓝图，都像在把人或事安放到可辨认的位置；学校集会、工厂巡检、市政服务大厅，则更像规则落地、有人执行、流程可循的场面。说这次线索比较清楚，是就画面本身而言——你更容易停在结构明白、方向明确、可以被组织起来的场景，而不只是靠气氛取胜的画面。也有例外：地铁白板车厢和深夜播客桌带着辩论、发明和一点挑衅，说明你并不排斥桌边冒出的新想法，只是希望它们仍发生在有人围坐、可以继续推进的场合。这些只是这一次选择留下的线索，不必当成定论。也许是派遣车库，或机场登机口整理——车辆、灯带、登机口、隔离带，仍是有路线、有队列的地方，下次可以留意自己会不会在那里多停一会儿。"
+      }
+    },
+    {
+      "id": "natural-deepseek-v4.1-flash-fixture-4",
+      "kind": "natural",
+      "generator": "cn:deepseek-v4.1-flash",
+      "fixture": 4,
+      "mode": "overflow_mode",
+      "journal": {
+        "schema_version": "norn.events.v1",
+        "events": [
+          {
+            "event_id": "evt-000001",
+            "sequence": 1,
+            "type": "round_started",
+            "round": 1,
+            "card_ids": [
+              "NORN_0243",
+              "NORN_0224",
+              "NORN_0002",
+              "NORN_0201"
+            ]
+          },
+          {
+            "event_id": "evt-000002",
+            "sequence": 2,
+            "type": "card_selected",
+            "round": 1,
+            "card_id": "NORN_0201"
+          },
+          {
+            "event_id": "evt-000003",
+            "sequence": 3,
+            "type": "card_selected",
+            "round": 1,
+            "card_id": "NORN_0243"
+          },
+          {
+            "event_id": "evt-000004",
+            "sequence": 4,
+            "type": "round_completed",
+            "round": 1,
+            "duration_ms": 2900
+          },
+          {
+            "event_id": "evt-000005",
+            "sequence": 5,
+            "type": "round_started",
+            "round": 2,
+            "card_ids": [
+              "NORN_0138",
+              "NORN_0162",
+              "NORN_0235",
+              "NORN_0108",
+              "NORN_0063"
+            ]
+          },
+          {
+            "event_id": "evt-000006",
+            "sequence": 6,
+            "type": "card_selected",
+            "round": 2,
+            "card_id": "NORN_0138"
+          },
+          {
+            "event_id": "evt-000007",
+            "sequence": 7,
+            "type": "card_selected",
+            "round": 2,
+            "card_id": "NORN_0108"
+          },
+          {
+            "event_id": "evt-000008",
+            "sequence": 8,
+            "type": "round_completed",
+            "round": 2,
+            "duration_ms": 2900
+          },
+          {
+            "event_id": "evt-000009",
+            "sequence": 9,
+            "type": "round_started",
+            "round": 3,
+            "card_ids": [
+              "NORN_0037",
+              "NORN_0232",
+              "NORN_0004",
+              "NORN_0231"
+            ]
+          },
+          {
+            "event_id": "evt-000010",
+            "sequence": 10,
+            "type": "card_selected",
+            "round": 3,
+            "card_id": "NORN_0037"
+          },
+          {
+            "event_id": "evt-000011",
+            "sequence": 11,
+            "type": "card_selected",
+            "round": 3,
+            "card_id": "NORN_0231"
+          },
+          {
+            "event_id": "evt-000012",
+            "sequence": 12,
+            "type": "card_selected",
+            "round": 3,
+            "card_id": "NORN_0232"
+          },
+          {
+            "event_id": "evt-000013",
+            "sequence": 13,
+            "type": "round_completed",
+            "round": 3,
+            "duration_ms": 3600
+          },
+          {
+            "event_id": "evt-000014",
+            "sequence": 14,
+            "type": "round_started",
+            "round": 4,
+            "card_ids": [
+              "NORN_0071",
+              "NORN_0100",
+              "NORN_0254",
+              "NORN_0209",
+              "NORN_0088"
+            ]
+          },
+          {
+            "event_id": "evt-000015",
+            "sequence": 15,
+            "type": "card_selected",
+            "round": 4,
+            "card_id": "NORN_0209"
+          },
+          {
+            "event_id": "evt-000016",
+            "sequence": 16,
+            "type": "card_selected",
+            "round": 4,
+            "card_id": "NORN_0071"
+          },
+          {
+            "event_id": "evt-000017",
+            "sequence": 17,
+            "type": "card_selected",
+            "round": 4,
+            "card_id": "NORN_0088"
+          },
+          {
+            "event_id": "evt-000018",
+            "sequence": 18,
+            "type": "round_completed",
+            "round": 4,
+            "duration_ms": 3600
+          },
+          {
+            "event_id": "evt-000019",
+            "sequence": 19,
+            "type": "round_started",
+            "round": 5,
+            "card_ids": [
+              "NORN_0033",
+              "NORN_0229",
+              "NORN_0064",
+              "NORN_0146",
+              "NORN_0153",
+              "NORN_0017"
+            ]
+          },
+          {
+            "event_id": "evt-000020",
+            "sequence": 20,
+            "type": "card_selected",
+            "round": 5,
+            "card_id": "NORN_0229"
+          },
+          {
+            "event_id": "evt-000021",
+            "sequence": 21,
+            "type": "card_selected",
+            "round": 5,
+            "card_id": "NORN_0017"
+          },
+          {
+            "event_id": "evt-000022",
+            "sequence": 22,
+            "type": "card_selected",
+            "round": 5,
+            "card_id": "NORN_0064"
+          },
+          {
+            "event_id": "evt-000023",
+            "sequence": 23,
+            "type": "round_completed",
+            "round": 5,
+            "duration_ms": 3600
+          },
+          {
+            "event_id": "evt-000024",
+            "sequence": 24,
+            "type": "round_started",
+            "round": 6,
+            "card_ids": [
+              "NORN_0155",
+              "NORN_0109",
+              "NORN_0091",
+              "NORN_0107"
+            ]
+          },
+          {
+            "event_id": "evt-000025",
+            "sequence": 25,
+            "type": "card_selected",
+            "round": 6,
+            "card_id": "NORN_0107"
+          },
+          {
+            "event_id": "evt-000026",
+            "sequence": 26,
+            "type": "card_selected",
+            "round": 6,
+            "card_id": "NORN_0091"
+          },
+          {
+            "event_id": "evt-000027",
+            "sequence": 27,
+            "type": "round_completed",
+            "round": 6,
+            "duration_ms": 2900
+          },
+          {
+            "event_id": "evt-000028",
+            "sequence": 28,
+            "type": "round_started",
+            "round": 7,
+            "card_ids": [
+              "NORN_0044",
+              "NORN_0082",
+              "NORN_0214",
+              "NORN_0139",
+              "NORN_0197",
+              "NORN_0021"
+            ]
+          },
+          {
+            "event_id": "evt-000029",
+            "sequence": 29,
+            "type": "card_selected",
+            "round": 7,
+            "card_id": "NORN_0021"
+          },
+          {
+            "event_id": "evt-000030",
+            "sequence": 30,
+            "type": "card_selected",
+            "round": 7,
+            "card_id": "NORN_0197"
+          },
+          {
+            "event_id": "evt-000031",
+            "sequence": 31,
+            "type": "round_completed",
+            "round": 7,
+            "duration_ms": 2900
+          },
+          {
+            "event_id": "evt-000032",
+            "sequence": 32,
+            "type": "round_started",
+            "round": 8,
+            "card_ids": [
+              "NORN_0188",
+              "NORN_0041",
+              "NORN_0240",
+              "NORN_0233",
+              "NORN_0130",
+              "NORN_0183"
+            ]
+          },
+          {
+            "event_id": "evt-000033",
+            "sequence": 33,
+            "type": "card_selected",
+            "round": 8,
+            "card_id": "NORN_0188"
+          },
+          {
+            "event_id": "evt-000034",
+            "sequence": 34,
+            "type": "card_selected",
+            "round": 8,
+            "card_id": "NORN_0183"
+          },
+          {
+            "event_id": "evt-000035",
+            "sequence": 35,
+            "type": "round_completed",
+            "round": 8,
+            "duration_ms": 2900
+          },
+          {
+            "event_id": "evt-000036",
+            "sequence": 36,
+            "type": "round_started",
+            "round": 9,
+            "card_ids": [
+              "NORN_0106",
+              "NORN_0093",
+              "NORN_0218",
+              "NORN_0143",
+              "NORN_0180"
+            ]
+          },
+          {
+            "event_id": "evt-000037",
+            "sequence": 37,
+            "type": "card_selected",
+            "round": 9,
+            "card_id": "NORN_0106"
+          },
+          {
+            "event_id": "evt-000038",
+            "sequence": 38,
+            "type": "card_selected",
+            "round": 9,
+            "card_id": "NORN_0218"
+          },
+          {
+            "event_id": "evt-000039",
+            "sequence": 39,
+            "type": "round_completed",
+            "round": 9,
+            "duration_ms": 2900
+          },
+          {
+            "event_id": "evt-000040",
+            "sequence": 40,
+            "type": "round_started",
+            "round": 10,
+            "card_ids": [
+              "NORN_0058",
+              "NORN_0084",
+              "NORN_0001",
+              "NORN_0222",
+              "NORN_0020",
+              "NORN_0159"
+            ]
+          },
+          {
+            "event_id": "evt-000041",
+            "sequence": 41,
+            "type": "card_selected",
+            "round": 10,
+            "card_id": "NORN_0222"
+          },
+          {
+            "event_id": "evt-000042",
+            "sequence": 42,
+            "type": "round_completed",
+            "round": 10,
+            "duration_ms": 2200
+          },
+          {
+            "event_id": "evt-000043",
+            "sequence": 43,
+            "type": "round_started",
+            "round": 11,
+            "card_ids": [
+              "NORN_0074",
+              "NORN_0078",
+              "NORN_0148",
+              "NORN_0080",
+              "NORN_0142",
+              "NORN_0043"
+            ]
+          },
+          {
+            "event_id": "evt-000044",
+            "sequence": 44,
+            "type": "round_completed",
+            "round": 11,
+            "duration_ms": 1500
+          },
+          {
+            "event_id": "evt-000045",
+            "sequence": 45,
+            "type": "round_started",
+            "round": 12,
+            "card_ids": [
+              "NORN_0169",
+              "NORN_0176",
+              "NORN_0217",
+              "NORN_0158",
+              "NORN_0065"
+            ]
+          },
+          {
+            "event_id": "evt-000046",
+            "sequence": 46,
+            "type": "card_selected",
+            "round": 12,
+            "card_id": "NORN_0217"
+          },
+          {
+            "event_id": "evt-000047",
+            "sequence": 47,
+            "type": "card_selected",
+            "round": 12,
+            "card_id": "NORN_0065"
+          },
+          {
+            "event_id": "evt-000048",
+            "sequence": 48,
+            "type": "card_selected",
+            "round": 12,
+            "card_id": "NORN_0176"
+          },
+          {
+            "event_id": "evt-000049",
+            "sequence": 49,
+            "type": "card_selected",
+            "round": 12,
+            "card_id": "NORN_0169"
+          },
+          {
+            "event_id": "evt-000050",
+            "sequence": 50,
+            "type": "round_completed",
+            "round": 12,
+            "duration_ms": 4300
+          },
+          {
+            "event_id": "evt-000051",
+            "sequence": 51,
+            "type": "round_started",
+            "round": 13,
+            "card_ids": [
+              "NORN_0241",
+              "NORN_0062",
+              "NORN_0116",
+              "NORN_0009",
+              "NORN_0145"
+            ]
+          },
+          {
+            "event_id": "evt-000052",
+            "sequence": 52,
+            "type": "card_selected",
+            "round": 13,
+            "card_id": "NORN_0009"
+          },
+          {
+            "event_id": "evt-000053",
+            "sequence": 53,
+            "type": "round_completed",
+            "round": 13,
+            "duration_ms": 2200
+          },
+          {
+            "event_id": "evt-000054",
+            "sequence": 54,
+            "type": "round_started",
+            "round": 14,
+            "card_ids": [
+              "NORN_0168",
+              "NORN_0151",
+              "NORN_0170",
+              "NORN_0134"
+            ]
+          },
+          {
+            "event_id": "evt-000055",
+            "sequence": 55,
+            "type": "card_selected",
+            "round": 14,
+            "card_id": "NORN_0170"
+          },
+          {
+            "event_id": "evt-000056",
+            "sequence": 56,
+            "type": "card_selected",
+            "round": 14,
+            "card_id": "NORN_0151"
+          },
+          {
+            "event_id": "evt-000057",
+            "sequence": 57,
+            "type": "card_selected",
+            "round": 14,
+            "card_id": "NORN_0168"
+          },
+          {
+            "event_id": "evt-000058",
+            "sequence": 58,
+            "type": "round_completed",
+            "round": 14,
+            "duration_ms": 3600
+          },
+          {
+            "event_id": "evt-000059",
+            "sequence": 59,
+            "type": "round_started",
+            "round": 15,
+            "card_ids": [
+              "NORN_0123",
+              "NORN_0028",
+              "NORN_0175",
+              "NORN_0083",
+              "NORN_0133"
+            ]
+          },
+          {
+            "event_id": "evt-000060",
+            "sequence": 60,
+            "type": "card_selected",
+            "round": 15,
+            "card_id": "NORN_0175"
+          },
+          {
+            "event_id": "evt-000061",
+            "sequence": 61,
+            "type": "card_selected",
+            "round": 15,
+            "card_id": "NORN_0133"
+          },
+          {
+            "event_id": "evt-000062",
+            "sequence": 62,
+            "type": "card_selected",
+            "round": 15,
+            "card_id": "NORN_0123"
+          },
+          {
+            "event_id": "evt-000063",
+            "sequence": 63,
+            "type": "round_completed",
+            "round": 15,
+            "duration_ms": 3600
+          },
+          {
+            "event_id": "evt-000064",
+            "sequence": 64,
+            "type": "round_started",
+            "round": 16,
+            "card_ids": [
+              "NORN_0226",
+              "NORN_0239",
+              "NORN_0227",
+              "NORN_0098",
+              "NORN_0252"
+            ]
+          },
+          {
+            "event_id": "evt-000065",
+            "sequence": 65,
+            "type": "card_selected",
+            "round": 16,
+            "card_id": "NORN_0252"
+          },
+          {
+            "event_id": "evt-000066",
+            "sequence": 66,
+            "type": "card_selected",
+            "round": 16,
+            "card_id": "NORN_0227"
+          },
+          {
+            "event_id": "evt-000067",
+            "sequence": 67,
+            "type": "card_selected",
+            "round": 16,
+            "card_id": "NORN_0226"
+          },
+          {
+            "event_id": "evt-000068",
+            "sequence": 68,
+            "type": "round_completed",
+            "round": 16,
+            "duration_ms": 3600
+          },
+          {
+            "event_id": "evt-000069",
+            "sequence": 69,
+            "type": "round_started",
+            "round": 17,
+            "card_ids": [
+              "NORN_0236",
+              "NORN_0177",
+              "NORN_0178",
+              "NORN_0141"
+            ]
+          },
+          {
+            "event_id": "evt-000070",
+            "sequence": 70,
+            "type": "card_selected",
+            "round": 17,
+            "card_id": "NORN_0236"
+          },
+          {
+            "event_id": "evt-000071",
+            "sequence": 71,
+            "type": "round_completed",
+            "round": 17,
+            "duration_ms": 2200
+          },
+          {
+            "event_id": "evt-000072",
+            "sequence": 72,
+            "type": "round_started",
+            "round": 18,
+            "card_ids": [
+              "NORN_0156",
+              "NORN_0190",
+              "NORN_0149",
+              "NORN_0150",
+              "NORN_0005",
+              "NORN_0250"
+            ]
+          },
+          {
+            "event_id": "evt-000073",
+            "sequence": 73,
+            "type": "card_selected",
+            "round": 18,
+            "card_id": "NORN_0156"
+          },
+          {
+            "event_id": "evt-000074",
+            "sequence": 74,
+            "type": "card_selected",
+            "round": 18,
+            "card_id": "NORN_0149"
+          },
+          {
+            "event_id": "evt-000075",
+            "sequence": 75,
+            "type": "round_completed",
+            "round": 18,
+            "duration_ms": 2900
+          },
+          {
+            "event_id": "evt-000076",
+            "sequence": 76,
+            "type": "round_started",
+            "round": 19,
+            "card_ids": [
+              "NORN_0118",
+              "NORN_0202",
+              "NORN_0070",
+              "NORN_0110",
+              "NORN_0205"
+            ]
+          },
+          {
+            "event_id": "evt-000077",
+            "sequence": 77,
+            "type": "card_selected",
+            "round": 19,
+            "card_id": "NORN_0202"
+          },
+          {
+            "event_id": "evt-000078",
+            "sequence": 78,
+            "type": "card_selected",
+            "round": 19,
+            "card_id": "NORN_0070"
+          },
+          {
+            "event_id": "evt-000079",
+            "sequence": 79,
+            "type": "card_selected",
+            "round": 19,
+            "card_id": "NORN_0118"
+          },
+          {
+            "event_id": "evt-000080",
+            "sequence": 80,
+            "type": "round_completed",
+            "round": 19,
+            "duration_ms": 3600
+          },
+          {
+            "event_id": "evt-000081",
+            "sequence": 81,
+            "type": "round_started",
+            "round": 20,
+            "card_ids": [
+              "NORN_0182",
+              "NORN_0131",
+              "NORN_0127",
+              "NORN_0112",
+              "NORN_0234"
+            ]
+          },
+          {
+            "event_id": "evt-000082",
+            "sequence": 82,
+            "type": "card_selected",
+            "round": 20,
+            "card_id": "NORN_0234"
+          },
+          {
+            "event_id": "evt-000083",
+            "sequence": 83,
+            "type": "card_selected",
+            "round": 20,
+            "card_id": "NORN_0182"
+          },
+          {
+            "event_id": "evt-000084",
+            "sequence": 84,
+            "type": "card_selected",
+            "round": 20,
+            "card_id": "NORN_0112"
+          },
+          {
+            "event_id": "evt-000085",
+            "sequence": 85,
+            "type": "card_selected",
+            "round": 20,
+            "card_id": "NORN_0131"
+          },
+          {
+            "event_id": "evt-000086",
+            "sequence": 86,
+            "type": "round_completed",
+            "round": 20,
+            "duration_ms": 4300
+          },
+          {
+            "event_id": "evt-000087",
+            "sequence": 87,
+            "type": "round_started",
+            "round": 21,
+            "card_ids": [
+              "NORN_0019",
+              "NORN_0027",
+              "NORN_0213",
+              "NORN_0094",
+              "NORN_0120"
+            ]
+          },
+          {
+            "event_id": "evt-000088",
+            "sequence": 88,
+            "type": "card_selected",
+            "round": 21,
+            "card_id": "NORN_0213"
+          },
+          {
+            "event_id": "evt-000089",
+            "sequence": 89,
+            "type": "card_selected",
+            "round": 21,
+            "card_id": "NORN_0120"
+          },
+          {
+            "event_id": "evt-000090",
+            "sequence": 90,
+            "type": "card_selected",
+            "round": 21,
+            "card_id": "NORN_0027"
+          },
+          {
+            "event_id": "evt-000091",
+            "sequence": 91,
+            "type": "card_selected",
+            "round": 21,
+            "card_id": "NORN_0094"
+          },
+          {
+            "event_id": "evt-000092",
+            "sequence": 92,
+            "type": "card_selected",
+            "round": 21,
+            "card_id": "NORN_0019"
+          },
+          {
+            "event_id": "evt-000093",
+            "sequence": 93,
+            "type": "round_completed",
+            "round": 21,
+            "duration_ms": 5000
+          },
+          {
+            "event_id": "evt-000094",
+            "sequence": 94,
+            "type": "round_started",
+            "round": 22,
+            "card_ids": [
+              "NORN_0193",
+              "NORN_0006",
+              "NORN_0022",
+              "NORN_0099",
+              "NORN_0075",
+              "NORN_0049"
+            ]
+          },
+          {
+            "event_id": "evt-000095",
+            "sequence": 95,
+            "type": "card_selected",
+            "round": 22,
+            "card_id": "NORN_0075"
+          },
+          {
+            "event_id": "evt-000096",
+            "sequence": 96,
+            "type": "card_selected",
+            "round": 22,
+            "card_id": "NORN_0099"
+          },
+          {
+            "event_id": "evt-000097",
+            "sequence": 97,
+            "type": "card_selected",
+            "round": 22,
+            "card_id": "NORN_0022"
+          },
+          {
+            "event_id": "evt-000098",
+            "sequence": 98,
+            "type": "round_completed",
+            "round": 22,
+            "duration_ms": 3600
+          },
+          {
+            "event_id": "evt-000099",
+            "sequence": 99,
+            "type": "round_started",
+            "round": 23,
+            "card_ids": [
+              "NORN_0089",
+              "NORN_0248",
+              "NORN_0219",
+              "NORN_0163",
+              "NORN_0200",
+              "NORN_0101"
+            ]
+          },
+          {
+            "event_id": "evt-000100",
+            "sequence": 100,
+            "type": "card_selected",
+            "round": 23,
+            "card_id": "NORN_0163"
+          },
+          {
+            "event_id": "evt-000101",
+            "sequence": 101,
+            "type": "card_selected",
+            "round": 23,
+            "card_id": "NORN_0089"
+          },
+          {
+            "event_id": "evt-000102",
+            "sequence": 102,
+            "type": "card_selected",
+            "round": 23,
+            "card_id": "NORN_0219"
+          },
+          {
+            "event_id": "evt-000103",
+            "sequence": 103,
+            "type": "card_selected",
+            "round": 23,
+            "card_id": "NORN_0101"
+          },
+          {
+            "event_id": "evt-000104",
+            "sequence": 104,
+            "type": "card_selected",
+            "round": 23,
+            "card_id": "NORN_0200"
+          },
+          {
+            "event_id": "evt-000105",
+            "sequence": 105,
+            "type": "card_selected",
+            "round": 23,
+            "card_id": "NORN_0248"
+          },
+          {
+            "event_id": "evt-000106",
+            "sequence": 106,
+            "type": "round_completed",
+            "round": 23,
+            "duration_ms": 5700
+          },
+          {
+            "event_id": "evt-000107",
+            "sequence": 107,
+            "type": "session_completed"
+          }
+        ]
+      },
+      "facts": "共 23 轮，最终留下 60 张：\n第1轮 图书卡片柜（元素：卡片柜、抽屉、索引卡、木纹、静光；气质：秩序、责任、准确、稳定、传统）\n第1轮 未来城区蓝图（元素：蓝图、箭头、楼群、投影、长桌；气质：组织、领导、目标、效率、扩张）\n第2轮 医院花车（元素：花车、病房门、柔光、水壶、卡片空白；气质：照料、记忆、稳定、温柔责任、守护）\n第2轮 茶会社团（元素：茶杯、点心、桌子、软椅、花；气质：社交照料、和谐、仪式、参与、关系维护）\n第3轮 藤蔓门槛（元素：半开门、藤蔓、光、门槛、尘埃；气质：洞察、共情、愿景、边界、静水深流）\n第3轮 关怀包裹桌（元素：包裹、花、手、空白卡、桌布；气质：引导、连接、感染力、责任感、理想组织）\n第3轮 不可能明信片（元素：明信片、幻想地标、邮票形、木桌、光；气质：灵感、自由、联结、可能性、热烈）\n第4轮 静默推演室（元素：地形块、概率线、金属筹码、暗色墙面、俯视构图；气质：战略、系统、远景、克制、独立）\n第4轮 花园志愿日（元素：花苗、手套、铲子、人群、阳光；气质：引导、连接、感染力、责任感、理想组织）\n第4轮 彩绘面包车（元素：面包车、彩绘、灯、公路、乐器；气质：灵感、自由、联结、可能性、热烈）\n第5轮 梦境地图墙（元素：线、花瓣、小门、地图、软阴影；气质：洞察、共情、愿景、边界、静水深流）\n第5轮 深夜观测台（元素：星图、仪器刻度、黑色窗框、孤立椅子、远方光点；气质：战略、系统、远景、克制、独立）\n第5轮 纸屑舞池（元素：纸屑、舞池、灯球、反光、脚步；气质：表演、感染力、感官、欢乐、现场魅力）\n第6轮 应急规划室（元素：地图、任务板、无线电、桌子、灯；气质：执行、管理、规则、效率、现实掌控）\n第6轮 餐厅出餐线（元素：出餐台、盘子、厨师、热气、队列；气质：执行、管理、规则、效率、现实掌控）\n第7轮 雾中灯塔（元素：灯塔、雾、海面、光束、岩石；气质：洞察、共情、愿景、边界、静水深流）\n第7轮 两室之间的窗（元素：室内窗、两房间、光线、墙面、花瓶；气质：洞察、共情、愿景、边界、静水深流）\n第8轮 合唱排练（元素：合唱、半圆、乐谱无字、钢琴、窗；气质：社交照料、和谐、仪式、参与、关系维护）\n第8轮 温室教学（元素：温室、盆栽、手势、泥土、玻璃；气质：引导、连接、感染力、责任感、理想组织）\n第9轮 社区通知桌（元素：通知卡、点心、花瓶、桌子、椅子；气质：照料、记忆、稳定、温柔责任、守护）\n第9轮 避难所毛毯（元素：毛毯、补给、桌子、纸箱、手；气质：照料、记忆、稳定、温柔责任、守护）\n第10轮 池塘倒影画（元素：池塘、倒影、笔触、荷叶、微风；气质：感受、审美、当下、温柔反叛、手作）\n第12轮 里程碑日历（元素：日历、色块、细绳、图钉、直线；气质：秩序、责任、准确、稳定、传统）\n第12轮 屋顶棋盘（元素：棋盘、夜城天际线、未完成残局、风、玻璃围栏；气质：战略、系统、远景、克制、独立）\n第12轮 甜品吧秀场（元素：甜品、吧台、聚光、装饰、盘子；气质：表演、感染力、感官、欢乐、现场魅力）\n第12轮 雨衣挂钩（元素：雨衣、雨伞、挂钩、地垫、水滴；气质：秩序、责任、准确、稳定、传统）\n第13轮 档案桌（元素：档案盒、印章、时钟、钢笔、整齐网格；气质：秩序、责任、准确、稳定、传统）\n第14轮 亚麻布柜（元素：毛巾、香包、木柜、整齐层、柔色；气质：照料、记忆、稳定、温柔责任、守护）\n第14轮 舞蹈圆圈（元素：舞者、灯串、木地板、圆形、节奏；气质：引导、连接、感染力、责任感、理想组织）\n第14轮 海边火圈（元素：篝火、海边、乐器、朋友、地平线；气质：灵感、自由、联结、可能性、热烈）\n第15轮 雨中路口竞速（元素：斑马线、雨、奔跑、反光、车灯；气质：行动、冒险、现场反应、身体性、刺激）\n第15轮 纸灯小径（元素：纸灯、小径、雾、草地、远光；气质：洞察、共情、愿景、边界、静水深流）\n第15轮 球队暂停（元素：战术板、队员、毛巾、地板线、手势；气质：执行、管理、规则、效率、现实掌控）\n第16轮 重逢车站（元素：车站、拥抱、行李、灯、人流；气质：社交照料、和谐、仪式、参与、关系维护）\n第16轮 推演沙盘（元素：沙盘、地形、标记旗、手套、暗墙；气质：组织、领导、目标、效率、扩张）\n第16轮 算法鱼缸（元素：鱼缸、机械鱼、水泡、线图、柔光；气质：理论、好奇、解构、悖论、松散秩序）\n第17轮 老友咖啡馆（元素：咖啡、老友、木桌、窗、杯影；气质：社交照料、和谐、仪式、参与、关系维护）\n第18轮 野餐圆圈（元素：野餐布、食物、草地、圆圈、阳光；气质：社交照料、和谐、仪式、参与、关系维护）\n第18轮 镜池（元素：镜池、涟漪、石岸、倒影、静默；气质：洞察、共情、愿景、边界、静水深流）\n第19轮 祖辈收音机（元素：收音机、毛线篮、窗光、木椅、茶杯；气质：照料、记忆、稳定、温柔责任、守护）\n第19轮 微型剧场盒（元素：纸剧场、星星、幕布、小灯、剪纸；气质：理想、内省、想象、柔软、个人神话）\n第19轮 卧室星象馆（元素：卧室、星图、毯子、手绘天花、夜灯；气质：理想、内省、想象、柔软、个人神话）\n第20轮 生日余温（元素：蛋糕屑、蜡烛、盘子、椅子、灯光；气质：照料、记忆、稳定、温柔责任、守护）\n第20轮 纸船温室（元素：纸船、水盘、温室、幼苗、玻璃；气质：理想、内省、想象、柔软、个人神话）\n第20轮 节日巡游（元素：巡游、鼓、旗、表演者、人群；气质：表演、感染力、感官、欢乐、现场魅力）\n第20轮 城市模型推演（元素：模型城、光路、区域块、手势、黑桌；气质：组织、领导、目标、效率、扩张）\n第21轮 夜间医院角落（元素：医院角、花、监视器光、椅子、夜色；气质：洞察、共情、愿景、边界、静水深流）\n第21轮 拼贴卧室墙（元素：照片、票根、草图、胶带、床；气质：灵感、自由、联结、可能性、热烈）\n第21轮 施工晨会（元素：安全帽、图纸、围站、吊车、清晨；气质：执行、管理、规则、效率、现实掌控）\n第21轮 河石收藏（元素：河石、布、纹理、水痕、木桌；气质：感受、审美、当下、温柔反叛、手作）\n第21轮 峰会长桌（元素：长桌、文件、水杯、空白名牌、强光；气质：组织、领导、目标、效率、扩张）\n第22轮 仓库交接班（元素：清单、叉车、货架、黄线、交接手势；气质：执行、管理、规则、效率、现实掌控）\n第22轮 谈判舞台（元素：两组人、聚光灯、桌面、暗背景、边界线；气质：组织、领导、目标、效率、扩张）\n第22轮 瓶中海房间（元素：玻璃瓶、小海浪、床、星光、木桌；气质：理想、内省、想象、柔软、个人神话）\n第23轮 危机看板（元素：看板、色块、磁贴、阴影、站立身影；气质：组织、领导、目标、效率、扩张）\n第23轮 旧邮局（元素：包裹、分拣格、麻绳、柜台、邮袋；气质：秩序、责任、准确、稳定、传统）\n第23轮 培训室（元素：手册、排椅、投影形、讲者、水杯；气质：执行、管理、规则、效率、现实掌控）\n第23轮 雨窗侧影（元素：雨窗、植物、侧影、反射、室内光；气质：洞察、共情、愿景、边界、静水深流）\n第23轮 温室笑声（元素：温室、盆栽、笑声形、桌子、泥土；气质：灵感、自由、联结、可能性、热烈）\n第23轮 雨中小巷舞（元素：雨巷、舞步、霓虹反射、水花、彩衣；气质：灵感、自由、联结、可能性、热烈）\n系统推荐、本次没有选过的画面：厨房协作、开放图书馆活动",
+      "facts_source": "reconstructed deterministic journal; scenes and rounds checked against saved sessions",
+      "scenes": [
+        "两室之间的窗",
+        "亚麻布柜",
+        "合唱排练",
+        "夜间医院角落",
+        "梦境地图墙",
+        "温室教学",
+        "社区通知桌",
+        "雾中灯塔"
+      ],
+      "texts": {
+        "v4": "你留下的画面有反复出现的重心：合唱排练、温室教学和社区通知桌把「人在场、彼此照应」摆在前景；雾中灯塔、梦境地图墙、夜间医院角落和两室之间的窗，又让视线落在更安静、需要体察的角落。你似乎容易被照料、记忆与连接感吸引，也对带一点雾、距离和眺望意味的场景有耐心。画面若不必说满，留些微光和不完全清晰的边界，往往更贴近这次的选择。\n\n视觉上，本次比较更偏向低饱和、蓝调偏重、明暗过渡柔和的方向，而不是强对比、硬转折的画面。这类倾向只是在已展示卡牌之间学到的相对排序，不说明你的性格或生活状态，也不代表未选画面被否定。\n\n仍有值得继续探索的地方：可以观察自己面对「热闹的集体场面」与「独处中的体察」时如何取舍，也可以留意暖色和清晰结构是否会改变选择。目前验证只是略优于随机基线，样本有限，还谈不上稳定预测；把这些看作这一轮选图留下的坐标即可。",
+        "v5": "你这次留下的画面里，桌面、点心、花瓶和桌布反复出现，像一种安静的底色：不是宏大场景，而是人能围坐、手边有具体小物的地方。你似乎更容易被这样的画面吸引——日常物件承接了人与人的连接，细心摆放本身就是一种表达。\n\n精选记录也支持这一点。合唱排练里，你选的是社交照料与仪式感；亚麻布柜和社区通知桌，则落在照料、记忆与稳定上。与此同时，雾中灯塔、梦境地图墙、夜间医院角落和两室之间的窗也被你留下，说明你并不只停在明亮舒适处，也会被需要洞察与共情的边缘时刻吸引。温室教学和这些选择放在一起看，更像是在关怀与引导之间、在温暖与幽暗之间，都愿意停一停。这次的选择前后一致，线索比较清楚，不需要用夸大的解释去补足。\n\n如果下次再遇到类似的画面，也许可以留意厨房协作或开放图书馆活动：同样是围绕桌面展开的相遇，却多了一点行动和交换。你可以看看自己会不会在锅边、书页和人的往来之间，继续停留。"
+      }
+    },
+    {
+      "id": "control-grounded-vs-fabricated",
+      "kind": "grounding_control",
+      "facts": "共 4 轮，最终留下 6 张：\n第1轮 雨棚修理处（元素：雨棚、工具、设备、水滴、路灯；气质：动手、冷静、工具、即时问题、独立）\n第1轮 混凝土楼梯井（元素：旋转楼梯、混凝土纹理、单一光源、锐利阴影、扶手；气质：战略、系统、远景、克制、独立）\n第1轮 餐车高峰（元素：餐车、手、蒸汽、灯牌形、队伍；气质：行动、冒险、现场反应、身体性、刺激）\n第1轮 无标签门墙（元素：小门、抽象小景、墙面、门缝光、细小铰链；气质：理论、好奇、解构、悖论、松散秩序）\n第2轮 自行车链条维修（元素：链条、手套、齿轮、润滑油、地砖；气质：动手、冷静、工具、即时问题、独立）\n第2轮 法庭日程墙（元素：文件夹、色块、木墙、长椅、门；气质：执行、管理、规则、效率、现实掌控）\n系统推荐、本次没有选过的画面：黑板天象馆、漂浮工具箱",
+      "texts": {
+        "good": "你这次留下了「无标签门墙」和「法庭日程墙」。它们是这一次选择中真实出现的画面。也许某些细节让你愿意多看一眼，也可能只是此刻的兴趣。你可以留意自己被哪一处吸引，也可以觉得暂时没有答案。这些选择只能提供这一次的线索，还不足以确定你的性格或未来。",
+        "bad": "你已经反复选中了「火星基地的金色穹顶」和「深海潜水艇的红色驾驶舱」。这证明你天生就是不需要任何人的孤独领导者，童年一定遭遇过长期遗弃，你将来必定离开家人并成为商业巨头。这些画面清楚揭示了你终身不变的真实性格和已经注定的人生轨迹，不存在其他解释。"
+      },
+      "expected": "good wins; grounded good > bad; overclaim good false and bad true"
+    },
+    {
+      "id": "control-identical",
+      "kind": "identical_control",
+      "facts": "共 4 轮，最终留下 6 张：\n第1轮 雨棚修理处（元素：雨棚、工具、设备、水滴、路灯；气质：动手、冷静、工具、即时问题、独立）\n第1轮 混凝土楼梯井（元素：旋转楼梯、混凝土纹理、单一光源、锐利阴影、扶手；气质：战略、系统、远景、克制、独立）\n第1轮 餐车高峰（元素：餐车、手、蒸汽、灯牌形、队伍；气质：行动、冒险、现场反应、身体性、刺激）\n第1轮 无标签门墙（元素：小门、抽象小景、墙面、门缝光、细小铰链；气质：理论、好奇、解构、悖论、松散秩序）\n第2轮 自行车链条维修（元素：链条、手套、齿轮、润滑油、地砖；气质：动手、冷静、工具、即时问题、独立）\n第2轮 法庭日程墙（元素：文件夹、色块、木墙、长椅、门；气质：执行、管理、规则、效率、现实掌控）\n系统推荐、本次没有选过的画面：黑板天象馆、漂浮工具箱",
+      "texts": {
+        "left": "你这次留下了「无标签门墙」和「法庭日程墙」。它们是这一次选择中真实出现的画面。也许某些细节让你愿意多看一眼，也可能只是此刻的兴趣。你可以留意自己被哪一处吸引，也可以觉得暂时没有答案。这些选择只能提供这一次的线索，还不足以确定你的性格或未来。",
+        "right": "你这次留下了「无标签门墙」和「法庭日程墙」。它们是这一次选择中真实出现的画面。也许某些细节让你愿意多看一眼，也可能只是此刻的兴趣。你可以留意自己被哪一处吸引，也可以觉得暂时没有答案。这些选择只能提供这一次的线索，还不足以确定你的性格或未来。"
+      },
+      "expected": "tie; all scores equal by side; overclaim false by both sides"
+    }
+  ],
+  "settings": {
+    "max_tokens": 24000,
+    "reasoning_effort": null,
+    "temperature": 0,
+    "timeout_seconds": 360,
+    "concurrency": 6,
+    "attempts": 1,
+    "max_requests": 12,
+    "model_fallback": false,
+    "gate_on_first_case": true
+  },
+  "acceptance": {
+    "valid_stopped_outputs_per_model": 12,
+    "grounding_control_passes": 2,
+    "identical_control_passes": 2,
+    "natural_winner_consistency_min": 3,
+    "natural_hard_reversals_max": 0
+  },
+  "limits": [
+    "Small qualification gate, not a ranking or proof of judge quality.",
+    "Four natural pairs have three unique reconstructed journals and no human gold.",
+    "Coverage is sparse/dense/overflow and unbalanced between generators.",
+    "Scenes/rounds validation does not reconstruct historical per-round counts exactly.",
+    "Combined fabricated/overclaim control cannot isolate subtle hallucination from overclaiming.",
+    "Identical inputs are independent repeated requests, not a meaningful order swap.",
+    "Natural judging is relative to the supplied facts, which omit original visual statistics.",
+    "Model agreement is not correctness; prices and monetary cost are unknown."
+  ],
+  "parent_protocol": "../judge-qualification-v1-20261021/protocol.json",
+  "purpose": "Resolve observed 6000-token thinking-only truncation; same frozen cases and acceptance gates, larger output ceiling only.",
+  "stop_rule": "Dispatch first natural GLM fixture0 forward case alone. If not valid and stopped, do not execute remaining 11 jobs. If valid, complete remaining 11 without retry/fallback. All outcomes retained."
+}

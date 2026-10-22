@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Norn X-Ray v2</title>
+<style>
+:root {
+  --bg: #0a0a14; --panel: #0d0e18; --line: rgba(255,255,255,.07);
+  --gold: #c9a84c; --gold-soft: rgba(201,168,76,.22); --blue: #8299b0;
+  --text: #e8e4d9; --muted: #8a8678;
+  --serif: 'Palatino Linotype', 'Book Antiqua', Georgia, serif;
+  --sans: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: var(--bg); color: var(--text); font: 13px/1.6 var(--sans); -webkit-font-smoothing: antialiased; }
+.panel { max-width: 520px; margin: 0 auto; padding: 24px 16px 48px; background: var(--panel); min-height: 100vh;
+  border-left: 1px solid rgba(201,168,76,.18); border-right: 1px solid rgba(201,168,76,.18); }
+.eyebrow { font-size: 10px; letter-spacing: .22em; color: var(--muted); text-transform: uppercase; }
+h1 { font: 400 22px/1.3 var(--serif); margin: 2px 0 4px; }
+h1 em { font-style: normal; color: var(--gold); }
+.source { display: inline-block; font-size: 11px; color: var(--muted); border: 1px solid var(--line); border-radius: 999px; padding: 1px 10px; }
+h2 { font: 400 14px/1.4 var(--serif); color: var(--gold); letter-spacing: .04em; margin: 0 0 10px; }
+section { padding: 18px 0; border-top: 1px solid var(--line); }
+
+/* scrubber */
+.scrub { position: sticky; top: 0; z-index: 5; background: var(--panel); padding: 14px 0 12px; margin-top: 14px; border-top: 1px solid var(--line); }
+.scrub-row { display: flex; align-items: center; gap: 12px; }
+.play { flex: none; width: 34px; height: 34px; border-radius: 50%; border: 1px solid var(--gold); background: transparent; color: var(--gold); font-size: 13px; cursor: pointer; }
+.play:hover { background: var(--gold-soft); }
+.track { position: relative; flex: 1; height: 34px; }
+.ticks { position: absolute; left: 9px; right: 9px; top: 26px; height: 6px; }
+.tick { position: absolute; width: 4px; height: 4px; margin-left: -2px; border-radius: 50%; background: var(--gold); opacity: .55; }
+.tick.empty { background: transparent; border: 1px solid var(--muted); }
+input[type=range] { -webkit-appearance: none; appearance: none; width: 100%; height: 22px; background: transparent; position: relative; z-index: 1; cursor: pointer; }
+input[type=range]::-webkit-slider-runnable-track { height: 3px; background: linear-gradient(90deg, var(--gold) var(--fill,0%), rgba(255,255,255,.12) var(--fill,0%)); border-radius: 2px; }
+input[type=range]::-moz-range-track { height: 3px; background: rgba(255,255,255,.12); border-radius: 2px; }
+input[type=range]::-moz-range-progress { height: 3px; background: var(--gold); }
+input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 18px; height: 18px; margin-top: -7.5px; border-radius: 50%; background: var(--gold); box-shadow: 0 0 0 5px var(--gold-soft); }
+input[type=range]::-moz-range-thumb { width: 18px; height: 18px; border: 0; border-radius: 50%; background: var(--gold); box-shadow: 0 0 0 5px var(--gold-soft); }
+.round-label { flex: none; min-width: 70px; text-align: right; font: 15px var(--serif); }
+.round-label small { color: var(--muted); font: 11px var(--sans); }
+
+/* tapestry */
+.weave-wrap { position: relative; padding: 18px 22px; }
+.axis { position: absolute; font-size: 11px; color: var(--muted); white-space: nowrap; }
+.axis.t { top: 0; left: 50%; transform: translateX(-50%); }
+.axis.b { bottom: 0; left: 50%; transform: translateX(-50%); }
+.axis.l { left: 0; top: 50%; transform: translate(-50%, -50%) rotate(-90deg); transform-origin: center; left: 8px; }
+.axis.r { right: 0; top: 50%; transform: translate(50%, -50%) rotate(90deg); right: 8px; }
+.weave { position: relative; display: grid; grid-template-columns: repeat(16, 1fr); gap: 1px; aspect-ratio: 1; }
+.cell { position: relative; background-size: cover; background-position: center; border-radius: 2px;
+  opacity: var(--op, .5); filter: saturate(var(--sat, .7)) brightness(var(--bri, .8));
+  transition: opacity .35s ease, filter .35s ease, box-shadow .25s ease; }
+.cell.shown { box-shadow: inset 0 0 0 1px rgba(232,228,217,.85); }
+.cell.picked { box-shadow: 0 0 0 1.5px var(--gold), 0 0 8px 1px rgba(201,168,76,.7); z-index: 2; opacity: 1; filter: none; }
+.cell.past::after { content: ''; position: absolute; right: 1px; top: 1px; width: 4px; height: 4px; border-radius: 50%; background: var(--gold); }
+.quad { position: absolute; pointer-events: none; background: rgba(201,168,76,.35); }
+.quad.v { left: 50%; top: -4px; bottom: -4px; width: 1px; }
+.quad.h { top: 50%; left: -4px; right: -4px; height: 1px; }
+.overlay { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; overflow: visible; z-index: 3; }
+.marker { transition: transform .45s cubic-bezier(.16,1,.3,1); }
+.marker ellipse { transition: rx .45s, ry .45s; }
+.marker .halo { fill: none; stroke: rgba(5,5,12,.75); stroke-width: 5; }
+.marker .ring { fill: rgba(201,168,76,.2); stroke: var(--gold); stroke-width: 1.8; }
+.marker circle { fill: var(--gold); stroke: #0a0a14; stroke-width: 2; }
+.marker text { fill: var(--gold); font: 600 12px var(--sans); paint-order: stroke; stroke: rgba(5,5,12,.85); stroke-width: 3px; }
+.truth circle { fill: none; stroke: #eee8d9; stroke-width: 1.2; stroke-dasharray: 3 3; }
+.legend { display: flex; flex-wrap: wrap; gap: 4px 14px; margin-top: 8px; font-size: 11px; color: var(--muted); }
+.legend label { display: inline-flex; align-items: center; gap: 5px; cursor: pointer; }
+.tip { position: fixed; z-index: 20; pointer-events: none; width: 150px; background: #151627; border: 1px solid rgba(201,168,76,.35); border-radius: 6px; padding: 6px; font-size: 11px; box-shadow: 0 10px 30px rgba(0,0,0,.5); }
+.tip img { display: block; width: 100%; aspect-ratio: 3/4; object-fit: cover; border-radius: 3px; margin-bottom: 4px; }
+
+/* bars */
+.bars { display: grid; gap: 12px; }
+.bar { display: grid; grid-template-columns: 54px 1fr 54px; align-items: center; gap: 10px; font-size: 12px; }
+.bar span:first-child { text-align: right; }
+.bar span { color: var(--muted); transition: color .3s; }
+.bar span.lean { color: var(--text); }
+.bar-track { position: relative; height: 16px; }
+.bar-track::before { content: ''; position: absolute; left: 0; right: 0; top: 7.5px; height: 1px; background: rgba(255,255,255,.14); }
+.bar-track::after { content: ''; position: absolute; left: 50%; top: 2px; bottom: 2px; width: 1px; background: rgba(255,255,255,.25); }
+.band { position: absolute; top: 3px; height: 10px; border-radius: 5px; background: var(--gold-soft); transition: left .45s cubic-bezier(.16,1,.3,1), width .45s cubic-bezier(.16,1,.3,1); }
+.dot { position: absolute; top: 3px; width: 10px; height: 10px; margin-left: -5px; border-radius: 50%; background: var(--gold); transition: left .45s cubic-bezier(.16,1,.3,1); }
+.tdot { position: absolute; top: 1px; width: 14px; height: 14px; margin-left: -7px; border-radius: 50%; border: 1.2px dashed #eee8d9; transition: opacity .3s; }
+
+/* round + guesses */
+.strip { display: grid; grid-template-columns: repeat(6, 1fr); gap: 6px; }
+.thumb { position: relative; aspect-ratio: 3/4; border-radius: 4px; background-size: cover; background-position: center; opacity: .38; filter: saturate(.5); transition: opacity .3s, filter .3s; }
+.thumb.on { opacity: 1; filter: none; box-shadow: 0 0 0 1.5px var(--gold), 0 0 12px rgba(201,168,76,.4); }
+.thumb.on::after { content: '✓'; position: absolute; right: 4px; top: 2px; color: var(--gold); font-size: 12px; text-shadow: 0 0 4px #000; }
+.thumb.guess { opacity: 1; filter: none; }
+.thumb.guess.hit::after { content: '已选'; position: absolute; left: 3px; bottom: 3px; font-size: 9px; padding: 0 4px; border-radius: 3px; background: rgba(10,10,20,.8); color: var(--gold); }
+.note { margin-top: 10px; color: var(--muted); min-height: 1.6em; }
+.note b { color: var(--text); font-weight: 500; }
+.types { display: grid; gap: 7px; margin-bottom: 14px; }
+.type { display: grid; grid-template-columns: 48px 1fr 42px; gap: 10px; align-items: center; font: 13px var(--serif); }
+.type-track { height: 8px; border-radius: 4px; background: rgba(255,255,255,.06); overflow: hidden; }
+.type-fill { height: 100%; border-radius: 4px; background: var(--gold); transition: width .45s cubic-bezier(.16,1,.3,1); }
+.type:not(:first-child) .type-fill { background: var(--blue); opacity: .7; }
+.type b { font: 12px var(--sans); color: var(--muted); text-align: right; font-weight: 400; }
+.sub { font-size: 11px; color: var(--muted); margin: 4px 0 8px; }
+details { margin-top: 4px; color: var(--muted); font-size: 12px; }
+summary { cursor: pointer; color: var(--muted); }
+details pre { white-space: pre-wrap; font: 11px/1.6 ui-monospace, Menlo, monospace; margin-top: 8px; color: #b9b4a6; }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+</head>
+<body>
+<main class="panel">
+  <p class="eyebrow">The Weave / Inspector · v2 原型</p>
+  <h1>工程透视 <em>X-Ray</em></h1>
+  <span id="source" class="source">载入中…</span>
+
+  <div class="scrub">
+    <div class="scrub-row">
+      <button id="play" class="play" type="button" aria-label="播放">▶</button>
+      <div class="track">
+        <input id="slider" type="range" min="0" max="0" value="0" step="1" aria-label="回放到第几轮">
+        <div id="ticks" class="ticks" aria-hidden="true"></div>
+      </div>
+      <div id="round-label" class="round-label">0 <small>/ 0 轮</small></div>
+    </div>
+  </div>
+
+  <section>
+    <h2>命运织锦</h2>
+    <div class="weave-wrap">
+      <span class="axis t">思考 T</span><span class="axis b">情感 F</span>
+      <span class="axis l">实感 S</span><span class="axis r">直觉 N</span>
+      <div id="weave" class="weave">
+        <div class="quad v"></div><div class="quad h"></div>
+        <svg id="overlay" class="overlay" aria-hidden="true">
+          <g id="truth" class="truth"><circle r="9"></circle></g>
+          <g id="marker" class="marker"><ellipse id="ell-halo" class="halo" rx="20" ry="20"></ellipse><ellipse id="ell" class="ring" rx="20" ry="20"></ellipse><circle r="5"></circle><text x="9" y="-8">你</text></g>
+        </svg>
+      </div>
+    </div>
+    <div class="legend">
+      <span>256 张画面 · 越亮越可能吸引你</span>
+      <span>白框 本轮展示 · 金框 本轮选中</span>
+      <label id="truth-toggle" hidden><input id="show-truth" type="checkbox" checked> 虚线 = 模拟访客的真实偏好</label>
+    </div>
+  </section>
+
+  <section>
+    <h2>偏好重心</h2>
+    <div id="bars" class="bars"></div>
+    <p class="sub" style="margin-top:10px">圆点是当前估计，金色带是不确定范围；证据越多，带越窄。</p>
+  </section>
+
+  <section>
+    <h2 id="round-title">这一轮</h2>
+    <div id="strip" class="strip"></div>
+    <p id="round-note" class="note"></p>
+  </section>
+
+  <section>
+    <h2>织机此刻的猜测</h2>
+    <div id="types" class="types"></div>
+    <p class="sub">它猜你会被这些画面吸引：</p>
+    <div id="guesses" class="strip"></div>
+  </section>
+
+  <section>
+    <details>
+      <summary>工程细节</summary>
+      <pre id="detail"></pre>
+    </details>
+  </section>
+</main>
+<div id="tip" class="tip" hidden></div>
+
+<script>
+(async function () {
+  const K = 1.5;                       // tanh scale: preference weight -> [-1, 1]
+  const AXES = [
+    { neg: '内向 I', pos: '外向 E', n: 'I', p: 'E' },
+    { neg: '实感 S', pos: '直觉 N', n: 'S', p: 'N' },
+    { neg: '情感 F', pos: '思考 T', n: 'F', p: 'T' },
+    { neg: '感知 P', pos: '判断 J', n: 'P', p: 'J' },
+  ];
+  const $ = id => document.getElementById(id);
+  const data = await (await fetch('trajectory.json', { cache: 'no-store' })).json();
+  const S = data.states, R = S.length - 1;
+  const cards = data.cards, byId = Object.fromEntries(cards.map(c => [c.id, c]));
+  const squash = v => Math.tanh(v / K);
+
+  $('source').textContent = data.source === 'demo' ? '演示数据 · 模拟访客（真实偏好已知）' : '导入的真实记录';
+  $('slider').max = R;
+  if (data.truth) $('truth-toggle').hidden = false;
+
+  // ticks: filled = round with picks, hollow = no pick
+  S.slice(1).forEach((s, i) => {
+    const t = document.createElement('i');
+    t.className = 'tick' + (s.picks.length ? '' : ' empty');
+    t.style.left = `${(i + 1) / R * 100}%`;
+    $('ticks').appendChild(t);
+  });
+
+  // tapestry cells
+  const weave = $('weave'), cells = {};
+  cards.forEach(c => {
+    const el = document.createElement('div');
+    el.className = 'cell';
+    el.style.gridColumn = c.cell[0] + 1;
+    el.style.gridRow = c.cell[1] + 1;
+    el.style.backgroundImage = `url(${c.url})`;
+    el.addEventListener('pointerenter', e => showTip(c, e));
+    el.addEventListener('pointermove', moveTip);
+    el.addEventListener('pointerleave', () => { $('tip').hidden = true; });
+    weave.insertBefore(el, $('overlay'));
+    cells[c.id] = el;
+  });
+
+  // bars
+  const bars = AXES.map(a => {
+    const row = document.createElement('div'); row.className = 'bar';
+    row.innerHTML = `<span>${a.neg}</span><div class="bar-track"><div class="band"></div><div class="tdot"></div><div class="dot"></div></div><span>${a.pos}</span>`;
+    $('bars').appendChild(row);
+    return { row, band: row.querySelector('.band'), dot: row.querySelector('.dot'), tdot: row.querySelector('.tdot'),
+      neg: row.children[0], pos: row.children[2] };
+  });
+
+  let current = -1;
+  function render(r) {
+    if (r === current) return;
+    current = r;
+    const s = S[r];
+    $('slider').value = r;
+    $('slider').style.setProperty('--fill', `${R ? r / R * 100 : 0}%`);
+    $('round-label').innerHTML = `${r} <small>/ ${R} 轮</small>`;
+
+    // cell brightness from standardized score
+    const sc = s.scores, mean = sc.reduce((a, b) => a + b, 0) / sc.length;
+    const sd = Math.sqrt(sc.reduce((a, b) => a + (b - mean) ** 2, 0) / sc.length) || 1;
+    const picked = new Set(), shown = new Set(s.shown || []), now = new Set(s.picks || []);
+    S.slice(1, r).forEach(p => p.picks.forEach(id => picked.add(id)));
+    cards.forEach((c, i) => {
+      const lit = sd > 1e-9 ? 1 / (1 + Math.exp(-1.6 * (sc[i] - mean) / sd)) : 0.5;
+      const el = cells[c.id];
+      el.style.setProperty('--op', (0.16 + 0.84 * lit).toFixed(3));
+      el.style.setProperty('--sat', (0.25 + 0.9 * lit).toFixed(3));
+      el.style.setProperty('--bri', (0.45 + 0.7 * lit).toFixed(3));
+      el.classList.toggle('shown', shown.has(c.id) && !now.has(c.id));
+      el.classList.toggle('picked', now.has(c.id));
+      el.classList.toggle('past', picked.has(c.id) && !now.has(c.id));
+    });
+
+    // marker on the S-N x T-F plane, ellipse = 1.5 sigma via local Jacobian
+    const box = weave.getBoundingClientRect(), W = box.width, H = box.height;
+    const [mx, my] = [s.mean[1], s.mean[2]];
+    const px = W / 2 + squash(mx) * W / 2 * 0.94, py = H / 2 - squash(my) * H / 2 * 0.94;
+    $('marker').style.transform = `translate(${px}px, ${py}px)`;
+    const jx = W / 2 * 0.94 / K * (1 - squash(mx) ** 2), jy = H / 2 * 0.94 / K * (1 - squash(my) ** 2);
+    const c = s.cov_sn_tf, a = jx * jx * c[0][0], d = jy * jy * c[1][1], b = -jx * jy * c[0][1];
+    const tr = (a + d) / 2, det = Math.sqrt(Math.max(((a - d) / 2) ** 2 + b * b, 0));
+    const l1 = tr + det, l2 = Math.max(tr - det, 0), ang = Math.atan2(l1 - a, b || 1e-12) * 180 / Math.PI;
+    ['ell', 'ell-halo'].forEach(id => {
+      const ell = $(id);
+      ell.setAttribute('rx', Math.max(6, 1.5 * Math.sqrt(l1)).toFixed(1));
+      ell.setAttribute('ry', Math.max(6, 1.5 * Math.sqrt(l2)).toFixed(1));
+      ell.setAttribute('transform', `rotate(${b ? ang.toFixed(1) : 0})`);
+    });
+    if (data.truth) {
+      const tx = W / 2 + squash(data.truth[1]) * W / 2 * 0.94, ty = H / 2 - squash(data.truth[2]) * H / 2 * 0.94;
+      $('truth').setAttribute('transform', `translate(${tx} ${ty})`);
+      $('truth').style.display = $('show-truth').checked ? '' : 'none';
+    } else $('truth').style.display = 'none';
+
+    // bars
+    bars.forEach((bar, i) => {
+      const m = s.mean[i], e = s.sd[i];
+      const pct = v => 50 + squash(v) * 50;
+      bar.dot.style.left = `${pct(m)}%`;
+      bar.band.style.left = `${pct(m - e)}%`;
+      bar.band.style.width = `${pct(m + e) - pct(m - e)}%`;
+      const strong = Math.abs(m) > e;          // lean only when beyond 1 sigma
+      bar.neg.classList.toggle('lean', strong && m < 0);
+      bar.pos.classList.toggle('lean', strong && m > 0);
+      if (data.truth && $('show-truth').checked) { bar.tdot.style.opacity = 1; bar.tdot.style.left = `${pct(data.truth[i])}%`; }
+      else bar.tdot.style.opacity = 0;
+    });
+
+    // this round
+    $('strip').innerHTML = '';
+    if (!r) {
+      $('round-title').textContent = '还没开始';
+      $('round-note').innerHTML = '没有任何选择时，四个方向同样可能；织锦整体半亮。';
+    } else {
+      $('round-title').textContent = `第 ${r} 轮`;
+      s.shown.forEach(id => {
+        const t = document.createElement('div');
+        t.className = 'thumb' + (now.has(id) ? ' on' : '');
+        t.style.backgroundImage = `url(${byId[id].url})`;
+        t.title = `${id} · ${byId[id].type}`;
+        $('strip').appendChild(t);
+      });
+      const moves = s.delta.map((v, i) => ({ v, i })).filter(x => Math.abs(x.v) >= 0.05)
+        .sort((x, y) => Math.abs(y.v) - Math.abs(x.v)).slice(0, 2)
+        .map(x => `<b>${x.v > 0 ? AXES[x.i].pos : AXES[x.i].neg}</b> ${Math.abs(x.v).toFixed(2)}`);
+      const what = s.picks.length ? `选了 ${s.picks.length} / ${s.shown.length} 张` : `${s.shown.length} 张都没选（同样是证据）`;
+      $('round-note').innerHTML = `${what} · 用时 ${(s.duration_ms / 1000).toFixed(1)}s　→　${moves.length ? '重心移向 ' + moves.join('，') : '重心几乎不动'}`;
+    }
+
+    // guesses
+    $('types').innerHTML = s.types.slice(0, 3).map(t =>
+      `<div class="type"><span>${t.type}</span><div class="type-track"><div class="type-fill" style="width:${(t.p * 100).toFixed(1)}%"></div></div><b>${Math.round(t.p * 100)}%</b></div>`).join('');
+    $('guesses').innerHTML = '';
+    s.top.forEach(id => {
+      const t = document.createElement('div');
+      t.className = 'thumb guess' + (picked.has(id) || now.has(id) ? ' hit' : '');
+      t.style.backgroundImage = `url(${byId[id].url})`;
+      t.title = `${id} · ${byId[id].type}`;
+      $('guesses').appendChild(t);
+    });
+
+    $('detail').textContent = [
+      `模型  ${data.model}`,
+      `参数  12 个偏好权重 + 1 个"停止选择"偏置（当前 ${s.stop_bias}）`,
+      `均值  ${AXES.map((a, i) => `${a.p}/${a.n} ${s.mean[i].toFixed(2)}±${s.sd[i].toFixed(2)}`).join('  ')}`,
+      `计算  Python 一次算完全部 ${R + 1} 个状态；拖动只在本地切换，不请求后端。`,
+    ].join('\n');
+  }
+
+  function showTip(c, e) {
+    const s = S[current], i = cards.indexOf(c);
+    const rank = s.scores.filter(v => v > s.scores[i]).length + 1;
+    $('tip').innerHTML = `<img src="${c.url}" alt=""><div>${c.id} · ${c.type}</div><div style="color:var(--muted)">当前排名 ${current ? rank : '—'} / 256</div>`;
+    $('tip').hidden = false; moveTip(e);
+  }
+  function moveTip(e) {
+    const t = $('tip'), x = Math.min(e.clientX + 14, innerWidth - 160), y = Math.min(e.clientY + 14, innerHeight - 230);
+    t.style.left = `${x}px`; t.style.top = `${y}px`;
+  }
+
+  // controls
+  let timer = null;
+  const stop = () => { clearInterval(timer); timer = null; $('play').textContent = '▶'; $('play').setAttribute('aria-label', '播放'); };
+  $('play').addEventListener('click', () => {
+    if (timer) return stop();
+    if (current >= R) render(0);
+    $('play').textContent = '❚❚'; $('play').setAttribute('aria-label', '暂停');
+    timer = setInterval(() => { if (current >= R) stop(); else render(current + 1); }, 650);
+  });
+  $('slider').addEventListener('input', e => { stop(); render(Number(e.target.value)); });
+  $('show-truth').addEventListener('change', () => { const r = current; current = -1; render(r); });
+  addEventListener('resize', () => { const r = current; current = -1; render(r); });
+  render(R);
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,121 @@
+{
+  "schema_version": "norn.runtime-probe.v1",
+  "runtimes": {
+    "cpython": {
+      "python": "3.14.8 (main, Sep 30 2026, 17:55:09) [Clang 21.0.0 (clang-2100.3.34.2)]",
+      "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O"
+    },
+    "pyodide": {
+      "npm_version": "314.0.6",
+      "python": "3.14.2 (main, Aug 25 2026, 05:50:55) [Clang 23.0.0git (https:/github.com/llvm/llvm-project e5927fecf8a6ce89e1a4eac5b8",
+      "platform": "Emscripten-5.0.3-wasm32-32bit"
+    }
+  },
+  "portable_contract": "norn.numeric.decimal34.v1",
+  "portable_checks": {
+    "event_fixture": {
+      "cpython_ok": true,
+      "pyodide_ok": true,
+      "exactly_equal": true,
+      "difference_count": 0,
+      "cpython_ms": 96.36045806109905,
+      "pyodide_ms": 213.96262499999997
+    },
+    "legacy_fixture": {
+      "cpython_ok": true,
+      "pyodide_ok": true,
+      "exactly_equal": true,
+      "difference_count": 0,
+      "cpython_ms": 6.291832774877548,
+      "pyodide_ms": 13.894875000000084
+    },
+    "24_round_fixture": {
+      "cpython_ok": true,
+      "pyodide_ok": true,
+      "exactly_equal": true,
+      "difference_count": 0,
+      "cpython_ms": 74.10141685977578,
+      "pyodide_ms": 215.623667
+    },
+    "portable_edge_profiles": {
+      "cpython_ok": true,
+      "pyodide_ok": true,
+      "exactly_equal": true,
+      "difference_count": 0,
+      "cpython_ms": 28.153083752840757,
+      "pyodide_ms": 60.41091600000015,
+      "profile_hashes": {
+        "59": "sha256:733ef03d20dca0debfa63846fb87bf0ee44bcae621b83b95a25dd4e8641497fe",
+        "75": "sha256:73c30e1bb00962f78b7d509e385ec9ac2f7f6358fa14c673d20d428062febf2b"
+      }
+    },
+    "native_session": {
+      "cpython_ok": true,
+      "pyodide_ok": true,
+      "exactly_equal": true,
+      "difference_count": 0,
+      "cpython_ms": 133.98812478408217,
+      "pyodide_ms": 423.479959
+    },
+    "pressure_4096_pairs": {
+      "cpython_ok": true,
+      "pyodide_ok": true,
+      "exactly_equal": true,
+      "difference_count": 0,
+      "cpython_ms": 1019.9230420403183,
+      "pyodide_ms": 2074.4700000000003,
+      "events": 4601,
+      "model_version": "norn.preference.linear-bt.v2",
+      "feature_count": 979,
+      "pair_count": 4096,
+      "omitted_pair_count": 12288,
+      "checkpoint_hash": "sha256:ab3f1087acde770ab5da63e8f17cd70da09625177aac0fb77e82d6c156515dcc",
+      "score_hash": "sha256:bd07303e0a8c926bd43c4afb76594b0f2ac85a6a877f8458b9ccb08d35a52db0"
+    }
+  },
+  "prior_native_contract": {
+    "24_round_difference_count": 21,
+    "sample_differences": [
+      [
+        "/profile/profile_hash",
+        "sha256:05ea529020faa0c4266c4d56e0270c41731274fd0623402f9a151f75f11b5c7e",
+        "sha256:0f4c7fcb91605bbcdc41ab50f21f9e61f9f3b7c86a94935b45d072bc7aa0df90"
+      ],
+      [
+        "/profile/analysis/preference/recommendations/0/contributions/49/weight",
+        5.9055976071635703e-05,
+        5.905597607163424e-05
+      ],
+      [
+        "/profile/analysis/preference/recommendations/0/contributions/49/contribution",
+        4.560411116822216e-06,
+        4.560411116822104e-06
+      ],
+      [
+        "/profile/analysis/preference/recommendations/1/contributions/49/weight",
+        5.9055976071635703e-05,
+        5.905597607163424e-05
+      ],
+      [
+        "/profile/analysis/preference/recommendations/1/contributions/49/contribution",
+        3.985581973143183e-06,
+        3.985581973143084e-06
+      ]
+    ],
+    "round_decay_grid_difference_count": 44,
+    "round_decay_grid_size": 32896,
+    "previous_profile2_preserved_on_original_native_runtime": true
+  },
+  "constraints": {
+    "resource_import": "No module named 'resource'",
+    "threading": {
+      "Lock": "context manager works",
+      "RLock": "context manager works",
+      "Thread.start": "RuntimeError: can't start new thread"
+    },
+    "wasm_heap_bytes_after_complete_probe": 54460416,
+    "memory_scope": "WASM linear heap only; does not establish deployed Worker total memory",
+    "timings": "single local runtime samples; not deployed edge CPU measurements",
+    "scope": "Official npm Pyodide matching Cloudflare documented version; not actual workerd binding/snapshot proof"
+  }
+}

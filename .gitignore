@@ -1,0 +1,31 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+build/
+dist/
+*.egg-info/
+.env
+.env.*
+!.env.example
+node_modules/
+.generated/
+.cloudflare/
+.wrangler/
+
+# Machine-local tooling, credentials and runtime records.
+.DS_Store
+*.code-workspace
+.claude/
+.agents/
+.codex/
+.aws/
+.dev.vars
+.dev.vars.*
+*.sqlite
+*.sqlite-*
+*.sqlite3
+*.sqlite3-*
+
+# Evaluation results are publishable; process locks are not artifacts.
+*.samples.jsonl.lock

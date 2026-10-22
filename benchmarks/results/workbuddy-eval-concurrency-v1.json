@@ -1,0 +1,129 @@
+{
+  "schema_version": "norn.eval-concurrency-smoke.v1",
+  "verified_at": "2026-10-21",
+  "target": "local Workbuddy OpenAI API",
+  "concurrency": 2,
+  "wall_seconds": 2.671,
+  "requests": [
+    {
+      "model": "cn:glm-5.3-flash",
+      "finish_reason": "stop",
+      "content_is_ok": true,
+      "attempts": [
+        {
+          "model": "cn:glm-5.3-flash",
+          "max_tokens": 1000,
+          "reasoning_effort": "off",
+          "thinking": null,
+          "attempt": 1,
+          "dispatched": true,
+          "ok": true,
+          "http_status": 200,
+          "elapsed_ms": 2671,
+          "retry_delay_seconds": 0.0,
+          "usage": {
+            "cache_read_input_tokens": 0,
+            "total_tokens": 24,
+            "prompt_cache_miss_tokens": 21,
+            "completion_tokens": 3,
+            "prompt_tokens": 21,
+            "prompt_cache_hit_tokens": 0,
+            "cache_creation_input_tokens": 0,
+            "prompt_tokens_details": {
+              "audio_tokens": 0,
+              "cached_tokens": 0
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "accepted_prediction_tokens": 0,
+              "audio_tokens": 0,
+              "rejected_prediction_tokens": 0
+            }
+          },
+          "response_model": "glm-5.3-flash",
+          "finish_reason": "stop"
+        }
+      ]
+    },
+    {
+      "model": "cn:deepseek-v4.1-flash",
+      "finish_reason": "stop",
+      "content_is_ok": true,
+      "attempts": [
+        {
+          "model": "cn:deepseek-v4.1-flash",
+          "max_tokens": 1000,
+          "reasoning_effort": "off",
+          "thinking": null,
+          "attempt": 1,
+          "dispatched": true,
+          "ok": true,
+          "http_status": 200,
+          "elapsed_ms": 2571,
+          "retry_delay_seconds": 0.0,
+          "usage": {
+            "cache_read_input_tokens": 0,
+            "total_tokens": 74,
+            "prompt_cache_miss_tokens": 39,
+            "completion_tokens": 35,
+            "prompt_tokens": 39,
+            "prompt_cache_hit_tokens": 0,
+            "cache_creation_input_tokens": 0,
+            "prompt_tokens_details": {
+              "audio_tokens": 0,
+              "cached_tokens": 0
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 33,
+              "accepted_prediction_tokens": 0,
+              "audio_tokens": 0,
+              "rejected_prediction_tokens": 0
+            }
+          },
+          "response_model": "deepseek-v4.1-flash",
+          "finish_reason": "stop"
+        }
+      ]
+    }
+  ],
+  "transport": {
+    "calls": 2,
+    "requests": 2,
+    "retries": 0,
+    "succeeded": 2,
+    "failed": 0,
+    "active": 0,
+    "max_active": 2,
+    "budget_rejections": 0,
+    "retry_delay_seconds": 0.0,
+    "http_status_counts": {
+      "200": 2
+    },
+    "usage": {
+      "cache_read_input_tokens": 0,
+      "total_tokens": 98,
+      "prompt_cache_miss_tokens": 60,
+      "completion_tokens": 38,
+      "prompt_tokens": 60,
+      "prompt_cache_hit_tokens": 0,
+      "cache_creation_input_tokens": 0,
+      "prompt_tokens_details": {
+        "audio_tokens": 0,
+        "cached_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 33,
+        "accepted_prediction_tokens": 0,
+        "audio_tokens": 0,
+        "rejected_prediction_tokens": 0
+      }
+    },
+    "concurrency": 2,
+    "attempts": 2,
+    "max_requests": 4,
+    "remaining_requests": 2,
+    "budget_exhausted": false,
+    "cooldown_remaining_seconds": 0
+  },
+  "scope": "Two short synthetic transport probes only. This is not a prose-quality comparison or a production deployment."
+}

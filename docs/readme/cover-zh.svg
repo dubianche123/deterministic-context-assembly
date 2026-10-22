@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="560" viewBox="0 0 1280 560" role="img" aria-labelledby="title desc">
+<title id="title">命运织机 · 从选择中织出一条线</title>
+<desc id="desc">暗金星空中的三步互动：选择抽象画卡、织机提前猜牌、留下基于真实选图的视觉小传。三路小概率条为示意，不表示研究结果。</desc>
+<defs>
+  <radialGradient id="night"><stop stop-color="#25221e" stop-opacity=".75"/><stop offset=".75" stop-color="#111117" stop-opacity=".45"/><stop offset="1" stop-color="#09090f" stop-opacity="0"/></radialGradient>
+  <linearGradient id="edge" x2="0" y2="1"><stop stop-color="#cfb57c" stop-opacity=".58"/><stop offset="1" stop-color="#cfb57c" stop-opacity=".16"/></linearGradient>
+  <linearGradient id="card" x2="1" y2="1"><stop stop-color="#25242b"/><stop offset="1" stop-color="#12131c"/></linearGradient>
+  <linearGradient id="thread" x2="1"><stop stop-color="#cfb57c" stop-opacity=".18"/><stop offset=".5" stop-color="#e0c587"/><stop offset="1" stop-color="#cfb57c" stop-opacity=".3"/></linearGradient>
+  <linearGradient id="mooncard" x2="0" y2="1"><stop stop-color="#35454e"/><stop offset="1" stop-color="#141f2c"/></linearGradient>
+  <linearGradient id="hillcard" x2="0" y2="1"><stop stop-color="#3d3844"/><stop offset="1" stop-color="#22232c"/></linearGradient>
+  <linearGradient id="sunset" x2="0" y2="1"><stop stop-color="#63473d"/><stop offset="1" stop-color="#25202b"/></linearGradient>
+  <clipPath id="portraitclip"><rect x="1066" y="127" width="129" height="188" rx="6"/></clipPath>
+  <clipPath id="cardclip"><rect x="0" y="0" width="78" height="120" rx="5"/></clipPath>
+  <g id="picturemoon"><rect width="78" height="120" fill="url(#mooncard)"/><circle cx="54" cy="28" r="14" fill="#e0d3aa"/><path d="M-6 102 21 54 49 103 69 74 92 114V130H-6Z" fill="#1b2932"/><path d="M-4 112 29 82 57 114 85 96V130H-4Z" fill="#3a4b50"/><path d="M0 112H78" stroke="#bdc9b1" opacity=".2"/></g>
+  <g id="picturehill"><rect width="78" height="120" fill="url(#hillcard)"/><circle cx="25" cy="29" r="15" fill="#9f8c70"/><path d="M-15 92Q15 46 48 89T95 87V130H-15Z" fill="#343c3d"/><path d="M-8 110Q27 64 70 109T100 95V130H-8Z" fill="#60706a"/><path d="M-7 122Q30 97 84 123" stroke="#b9b298" fill="none" opacity=".45"/></g>
+  <g id="pictureleaf"><rect width="78" height="120" fill="url(#sunset)"/><circle cx="58" cy="26" r="21" fill="#ad7d58" opacity=".65"/><path d="M37 131Q25 69 44 13M34 103Q6 98 10 72Q35 72 34 103ZM34 83Q61 78 65 51Q40 51 34 83ZM36 61Q15 58 18 35Q39 36 36 61Z" stroke="#cbb69b" stroke-width="1.6" fill="#28322e"/></g>
+  <g id="spark"><path d="M0-7 2-2 7 0 2 2 0 7-2 2-7 0-2-2Z" fill="#e0c587"/></g>
+</defs>
+<rect width="1280" height="560" rx="20" fill="#09090f"/>
+<ellipse cx="904" cy="236" rx="414" ry="280" fill="url(#night)"/>
+<rect x=".5" y=".5" width="1279" height="559" rx="19.5" fill="none" stroke="#cfb57c" stroke-opacity=".22"/>
+<circle cx="58" cy="78" r="1" fill="#cfb57c" opacity="0.28"/><circle cx="226" cy="33" r="1.3" fill="#cfb57c" opacity="0.42"/><circle cx="470" cy="65" r="0.8" fill="#cfb57c" opacity="0.56"/><circle cx="540" cy="120" r="1" fill="#cfb57c" opacity="0.70"/><circle cx="590" cy="40" r="0.8" fill="#cfb57c" opacity="0.28"/><circle cx="733" cy="42" r="1" fill="#cfb57c" opacity="0.42"/><circle cx="800" cy="87" r="0.8" fill="#cfb57c" opacity="0.56"/><circle cx="1020" cy="55" r="1.2" fill="#cfb57c" opacity="0.70"/><circle cx="1175" cy="82" r="0.9" fill="#cfb57c" opacity="0.28"/><circle cx="1240" cy="43" r="1.5" fill="#cfb57c" opacity="0.42"/><circle cx="1235" cy="280" r="1" fill="#cfb57c" opacity="0.56"/><circle cx="1130" cy="349" r="0.9" fill="#cfb57c" opacity="0.70"/><circle cx="850" cy="353" r="1" fill="#cfb57c" opacity="0.28"/><circle cx="578" cy="402" r="0.9" fill="#cfb57c" opacity="0.42"/><circle cx="414" cy="459" r="0.8" fill="#cfb57c" opacity="0.56"/><circle cx="91" cy="464" r="1.2" fill="#cfb57c" opacity="0.70"/><circle cx="1168" cy="476" r="1" fill="#cfb57c" opacity="0.28"/><circle cx="1119" cy="521" r="0.8" fill="#cfb57c" opacity="0.42"/>
+<g font-family="Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif">
+  <g transform="translate(61 42)" stroke="#cfb57c" fill="none" stroke-width="1.1"><path d="M0-12 10 6-10 6ZM0-5V13M-10 6 0 0 10 6"/><circle r="16" stroke-opacity=".35"/></g>
+  <text x="88" y="47" fill="#cfb57c" font-size="12" letter-spacing="3.2">NORN / 命运织机</text>
+  <path d="M1142 41H1219" stroke="#cfb57c" stroke-opacity=".3"/>
+  <text x="58" y="110" fill="#ad9d7e" font-size="12" letter-spacing="2">一次关于偏好的小小相遇</text>
+  <g font-family="Georgia, 'Songti SC', 'Noto Serif CJK SC', serif" fill="#f0e8d7">
+    <text x="54" y="183" font-size="62">命运织机</text>
+    <text x="56" y="245" font-size="35" fill="#cfb57c">从心动处，织起。</text>
+  </g>
+  <text x="58" y="300" font-size="21" fill="#d9cdb5">选几张画，让织机猜一猜。</text>
+  <text x="58" y="331" font-size="19" fill="#a9a7aa">把吸引你的画面，留成一份视觉小传。</text>
+  <path d="M58 361H142" stroke="#cfb57c" stroke-opacity=".45"/>
+  <text x="58" y="394" font-size="14" fill="#929096">没有标准答案，只跟着这一刻的直觉。</text>
+  <g fill="none" stroke="#cfb57c" stroke-opacity=".25"><rect x="58" y="424" width="84" height="28" rx="14"/><rect x="151" y="424" width="118" height="28" rx="14"/><rect x="278" y="424" width="178" height="28" rx="14"/></g>
+  <g fill="#bfb5a2" font-size="11.5" text-anchor="middle"><text x="100" y="442">中 / EN</text><text x="210" y="442">本地离线可玩</text><text x="367" y="442">由你决定是否留记录</text></g>
+
+  <!-- Three pictured choices become one woven thread; the pictures are original vector abstractions. -->
+  <g transform="translate(580 156) rotate(-12 39 60)"><rect x="-5" y="-5" width="88" height="130" rx="8" fill="#101118" stroke="url(#edge)"/><g clip-path="url(#cardclip)"><use href="#pictureleaf"/></g></g>
+  <g transform="translate(629 126) rotate(3 39 60)"><rect x="-5" y="-5" width="88" height="130" rx="8" fill="#101118" stroke="url(#edge)"/><g clip-path="url(#cardclip)"><use href="#picturemoon"/></g></g>
+  <g transform="translate(680 167) rotate(13 39 60)"><rect x="-5" y="-5" width="88" height="130" rx="8" fill="#101118" stroke="#cfb57c"/><g clip-path="url(#cardclip)"><use href="#picturehill"/></g><circle cx="66" cy="108" r="8" fill="#cfb57c"/><path d="m62 108 3 3 5-6" stroke="#191820" fill="none" stroke-width="1.4"/></g>
+
+  <!-- A loom, rather than a claim of an uncertainty ellipse or a fitted embedding. -->
+  <g fill="none" stroke="#cfb57c"><circle cx="906" cy="214" r="85" stroke-opacity=".16"/><circle cx="906" cy="214" r="72" stroke-opacity=".4"/><path d="M858 156V273M877 149V280M896 143V286M915 143V286M934 149V280M953 156V273" stroke-opacity=".21"/>
+    <path d="M755 214C800 212 799 158 854 173S924 271 977 245 1017 181 1062 190M749 243C795 253 815 270 856 249S930 165 978 181 1025 249 1062 251M715 128C790 129 815 232 855 224S932 198 977 218 1030 279 1062 280" stroke="url(#thread)" stroke-width="1.8"/>
+    <path d="m852 178 108 80m-108-58 108 35m-108-12 108-10m-108 33 108-56" stroke-opacity=".21"/>
+  </g>
+  <use href="#spark" transform="translate(906 214) scale(1.5)"/>
+  <circle cx="906" cy="214" r="23" stroke="#cfb57c" stroke-opacity=".32" fill="none"/>
+  <use href="#spark" transform="translate(986 136) scale(.5)"/>
+
+  <!-- A small keepsake, made of the selected picture motifs. -->
+  <g transform="rotate(-4 1130 221)">
+    <rect x="1058" y="119" width="145" height="228" rx="10" fill="#101118" stroke="url(#edge)"/>
+    <g clip-path="url(#portraitclip)"><rect x="1066" y="127" width="129" height="188" fill="#272e34"/><use href="#picturehill" transform="translate(1066 127) scale(1.66 1.57)"/><path d="M1127 127V315" stroke="#e0c587" stroke-opacity=".24"/><rect x="1130" y="132" width="59" height="91" rx="3" fill="#171922" stroke="#cfb57c" stroke-opacity=".6"/><use href="#picturemoon" transform="translate(1133 135) scale(.68)"/></g>
+    <path d="M1074 327H1136M1074 334H1111" stroke="#cfb57c" stroke-opacity=".5"/>
+    <use href="#spark" transform="translate(1184 330) scale(.6)"/>
+  </g>
+
+  <g font-family="Georgia, 'Songti SC', serif" fill="#dccaa6" font-size="18" text-anchor="middle">
+    <text x="671" y="371">选图</text><text x="906" y="371">织机猜牌</text><text x="1130" y="371">视觉小传</text>
+  </g>
+  <g fill="#857c6c" font-size="10" letter-spacing="1.6" text-anchor="middle"><text x="671" y="391">01</text><text x="906" y="391">02</text><text x="1130" y="391">03</text></g>
+
+  <path d="M570 417H1217" stroke="#cfb57c" stroke-opacity=".15"/>
+  <text x="577" y="444" fill="#b1a082" font-size="10" letter-spacing="1.2">X-RAY · 回看每一次预测</text>
+  <g font-size="10.5" fill="#b7b1a6">
+    <text x="577" y="469">参考基线</text><text x="785" y="469">学习模型</text><text x="995" y="469">Jev · 开局自选</text>
+  </g>
+  <g stroke-width="5" stroke-linecap="round"><path d="M648 466H747M862 466H963M1100 466H1209" stroke="#25252c"/><path d="M648 466H686" stroke="#8e929d"/><path d="M862 466H922" stroke="#cfb57c"/><path d="M1100 466H1151" stroke="#82a69c" stroke-dasharray="3 5"/></g>
+  <text x="1217" y="492" fill="#6e6b71" font-size="8.5" text-anchor="end" letter-spacing="1">示意画面 · 非实验结果</text>
+  <path d="M58 510H1222" stroke="#cfb57c" stroke-opacity=".16"/>
+  <text x="58" y="535" fill="#94856b" font-size="10" letter-spacing="1.6">选图 → 提前猜牌 → 揭晓 · 一次偏好互动</text>
+  <g fill="#cfb57c"><circle cx="1200" cy="531" r="2"/><circle cx="1209" cy="531" r="2" opacity=".4"/><circle cx="1218" cy="531" r="2" opacity=".2"/></g>
+</g>
+</svg>

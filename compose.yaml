@@ -1,0 +1,16 @@
+services:
+  norn:
+    build: .
+    ports:
+      - "127.0.0.1:8765:8765"
+    read_only: true
+    volumes:
+      - norn-data:/data   # consented anonymous records survive restarts
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    restart: unless-stopped
+
+volumes:
+  norn-data:

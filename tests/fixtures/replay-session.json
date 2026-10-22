@@ -1,0 +1,20 @@
+{
+  "schema_version": "norn.events.v1",
+  "events": [
+    {"event_id": "e01", "sequence": 1, "type": "round_started", "round": 1, "card_ids": ["NORN_0001", "NORN_0002", "NORN_0003"]},
+    {"event_id": "e02", "sequence": 2, "type": "card_selected", "round": 1, "card_id": "NORN_0001"},
+    {"event_id": "e03", "sequence": 3, "type": "card_selected", "round": 1, "card_id": "NORN_0002"},
+    {"event_id": "e04", "sequence": 4, "type": "card_deselected", "round": 1, "card_id": "NORN_0001"},
+    {"event_id": "e05", "sequence": 5, "type": "card_selected", "round": 1, "card_id": "NORN_0001"},
+    {"event_id": "e06", "sequence": 6, "type": "round_completed", "round": 1, "duration_ms": 1000},
+    {"event_id": "e07", "sequence": 7, "type": "round_started", "round": 2, "card_ids": ["NORN_0001", "NORN_0003", "NORN_0004"]},
+    {"event_id": "e08", "sequence": 8, "type": "card_deselected", "round": 2, "card_id": "NORN_0001"},
+    {"event_id": "e09", "sequence": 9, "type": "card_selected", "round": 2, "card_id": "NORN_0003"},
+    {"event_id": "e10", "sequence": 10, "type": "round_completed", "round": 2, "duration_ms": 86400000},
+    {"event_id": "e11", "sequence": 11, "type": "round_started", "round": 3, "card_ids": ["NORN_0002", "NORN_0004"]},
+    {"event_id": "e12", "sequence": 12, "type": "card_deselected", "round": 3, "card_id": "NORN_0002"},
+    {"event_id": "e13", "sequence": 13, "type": "card_selected", "round": 3, "card_id": "NORN_0004"},
+    {"event_id": "e14", "sequence": 14, "type": "round_completed", "round": 3, "duration_ms": 45000},
+    {"event_id": "e15", "sequence": 15, "type": "session_completed"}
+  ]
+}

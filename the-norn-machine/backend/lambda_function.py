@@ -3,10 +3,16 @@ The Norn Machine — Lambda Handler
 Single entry point for POST /analyze
 """
 import json
-from fast_thinker import fast_think
-from template_router import route_template
-from slow_thinker import slow_think
-from dialogue_thinker import dialogue_limit_for_rounds, dialogue_think, validate_dialogue_request
+if __package__:
+    from .fast_thinker import fast_think
+    from .template_router import route_template
+    from .slow_thinker import slow_think
+    from .dialogue_thinker import dialogue_limit_for_rounds, dialogue_think, validate_dialogue_request
+else:
+    from fast_thinker import fast_think
+    from template_router import route_template
+    from slow_thinker import slow_think
+    from dialogue_thinker import dialogue_limit_for_rounds, dialogue_think, validate_dialogue_request
 
 CORS_HEADERS = {
     "Access-Control-Allow-Origin": "*",

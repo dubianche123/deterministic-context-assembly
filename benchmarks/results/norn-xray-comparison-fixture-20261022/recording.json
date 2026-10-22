@@ -1,0 +1,1979 @@
+{
+  "schema_version": "norn.events.v5",
+  "events": [
+    {
+      "event_id": "evt-000001",
+      "sequence": 1,
+      "type": "round_started",
+      "round": 1,
+      "card_ids": [
+        "PAM_0225",
+        "PAM_0033",
+        "PAM_0029",
+        "PAM_0012",
+        "PAM_0007",
+        "PAM_0239"
+      ],
+      "display": {
+        "policy": "norn.display.mixed.v2",
+        "deck": "pamela-v1@sha256:26134e1a8066b9064f4db22be7a0a97d79870947a4798092b9eff28503213b8c",
+        "roles": [
+          "predicted",
+          "predicted",
+          "contrast_unpopular",
+          "predicted",
+          "contrast_popular",
+          "random"
+        ]
+      }
+    },
+    {
+      "event_id": "evt-000002",
+      "sequence": 2,
+      "type": "round_ready",
+      "round": 1,
+      "ready_offset_ms": 0,
+      "unloaded_card_ids": [],
+      "layout": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          1
+        ]
+      ]
+    },
+    {
+      "event_id": "evt-000003",
+      "sequence": 3,
+      "type": "card_selected",
+      "round": 1,
+      "card_id": "PAM_0033",
+      "t_ms": 100,
+      "input": "mouse",
+      "layout": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          1
+        ]
+      ]
+    },
+    {
+      "event_id": "evt-000004",
+      "sequence": 4,
+      "type": "card_selected",
+      "round": 1,
+      "card_id": "PAM_0029",
+      "t_ms": 200,
+      "input": "mouse",
+      "layout": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          1
+        ]
+      ]
+    },
+    {
+      "event_id": "evt-000005",
+      "sequence": 5,
+      "type": "card_selected",
+      "round": 1,
+      "card_id": "PAM_0239",
+      "t_ms": 300,
+      "input": "mouse",
+      "layout": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          1
+        ]
+      ]
+    },
+    {
+      "event_id": "evt-000006",
+      "sequence": 6,
+      "type": "round_completed",
+      "round": 1,
+      "duration_ms": 800,
+      "hidden_ms": 0,
+      "seen_card_ids": null,
+      "hover": null
+    },
+    {
+      "event_id": "evt-000007",
+      "sequence": 7,
+      "type": "round_started",
+      "round": 2,
+      "card_ids": [
+        "PAM_0256",
+        "PAM_0190",
+        "PAM_0080",
+        "PAM_0198",
+        "PAM_0006",
+        "PAM_0130"
+      ],
+      "display": {
+        "policy": "norn.display.mixed.v2",
+        "deck": "pamela-v1@sha256:26134e1a8066b9064f4db22be7a0a97d79870947a4798092b9eff28503213b8c",
+        "roles": [
+          "predicted",
+          "random",
+          "predicted",
+          "contrast_popular",
+          "contrast_unpopular",
+          "predicted"
+        ]
+      }
+    },
+    {
+      "event_id": "evt-000008",
+      "sequence": 8,
+      "type": "round_ready",
+      "round": 2,
+      "ready_offset_ms": 0,
+      "unloaded_card_ids": [],
+      "layout": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          1
+        ]
+      ]
+    },
+    {
+      "event_id": "evt-000009",
+      "sequence": 9,
+      "type": "card_selected",
+      "round": 2,
+      "card_id": "PAM_0256",
+      "t_ms": 100,
+      "input": "mouse",
+      "layout": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          1
+        ]
+      ]
+    },
+    {
+      "event_id": "evt-000010",
+      "sequence": 10,
+      "type": "card_selected",
+      "round": 2,
+      "card_id": "PAM_0080",
+      "t_ms": 200,
+      "input": "mouse",
+      "layout": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          1
+        ]
+      ]
+    },
+    {
+      "event_id": "evt-000011",
+      "sequence": 11,
+      "type": "card_selected",
+      "round": 2,
+      "card_id": "PAM_0130",
+      "t_ms": 300,
+      "input": "mouse",
+      "layout": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          1
+        ]
+      ]
+    },
+    {
+      "event_id": "evt-000012",
+      "sequence": 12,
+      "type": "round_completed",
+      "round": 2,
+      "duration_ms": 800,
+      "hidden_ms": 0,
+      "seen_card_ids": null,
+      "hover": null
+    },
+    {
+      "event_id": "evt-000013",
+      "sequence": 13,
+      "type": "round_started",
+      "round": 3,
+      "card_ids": [
+        "PAM_0025",
+        "PAM_0172",
+        "PAM_0229",
+        "PAM_0200",
+        "PAM_0161",
+        "PAM_0175"
+      ],
+      "display": {
+        "policy": "norn.display.mixed.v2",
+        "deck": "pamela-v1@sha256:26134e1a8066b9064f4db22be7a0a97d79870947a4798092b9eff28503213b8c",
+        "roles": [
+          "contrast_unpopular",
+          "random",
+          "contrast_popular",
+          "predicted",
+          "predicted",
+          "predicted"
+        ]
+      }
+    },
+    {
+      "event_id": "evt-000014",
+      "sequence": 14,
+      "type": "round_ready",
+      "round": 3,
+      "ready_offset_ms": 0,
+      "unloaded_card_ids": [],
+      "layout": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          1
+        ]
+      ]
+    },
+    {
+      "event_id": "evt-000015",
+      "sequence": 15,
+      "type": "card_selected",
+      "round": 3,
+      "card_id": "PAM_0229",
+      "t_ms": 100,
+      "input": "mouse",
+      "layout": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          1
+        ]
+      ]
+    },
+    {
+      "event_id": "evt-000016",
+      "sequence": 16,
+      "type": "card_selected",
+      "round": 3,
+      "card_id": "PAM_0200",
+      "t_ms": 200,
+      "input": "mouse",
+      "layout": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          1
+        ]
+      ]
+    },
+    {
+      "event_id": "evt-000017",
+      "sequence": 17,
+      "type": "card_selected",
+      "round": 3,
+      "card_id": "PAM_0161",
+      "t_ms": 300,
+      "input": "mouse",
+      "layout": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          1
+        ]
+      ]
+    },
+    {
+      "event_id": "evt-000018",
+      "sequence": 18,
+      "type": "card_selected",
+      "round": 3,
+      "card_id": "PAM_0175",
+      "t_ms": 400,
+      "input": "mouse",
+      "layout": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          1
+        ]
+      ]
+    },
+    {
+      "event_id": "evt-000019",
+      "sequence": 19,
+      "type": "round_completed",
+      "round": 3,
+      "duration_ms": 900,
+      "hidden_ms": 0,
+      "seen_card_ids": null,
+      "hover": null
+    },
+    {
+      "event_id": "evt-000020",
+      "sequence": 20,
+      "type": "round_started",
+      "round": 4,
+      "card_ids": [
+        "PAM_0110",
+        "PAM_0109",
+        "PAM_0102",
+        "PAM_0010",
+        "PAM_0186",
+        "PAM_0018"
+      ],
+      "display": {
+        "policy": "norn.display.mixed.v2",
+        "deck": "pamela-v1@sha256:26134e1a8066b9064f4db22be7a0a97d79870947a4798092b9eff28503213b8c",
+        "roles": [
+          "predicted",
+          "contrast_unpopular",
+          "contrast_popular",
+          "predicted",
+          "predicted",
+          "random"
+        ]
+      }
+    },
+    {
+      "event_id": "evt-000021",
+      "sequence": 21,
+      "type": "round_ready",
+      "round": 4,
+      "ready_offset_ms": 0,
+      "unloaded_card_ids": [],
+      "layout": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          1
+        ]
+      ]
+    },
+    {
+      "event_id": "evt-000022",
+      "sequence": 22,
+      "type": "card_selected",
+      "round": 4,
+      "card_id": "PAM_0110",
+      "t_ms": 100,
+      "input": "mouse",
+      "layout": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          1
+        ]
+      ]
+    },
+    {
+      "event_id": "evt-000023",
+      "sequence": 23,
+      "type": "card_selected",
+      "round": 4,
+      "card_id": "PAM_0102",
+      "t_ms": 200,
+      "input": "mouse",
+      "layout": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          1
+        ]
+      ]
+    },
+    {
+      "event_id": "evt-000024",
+      "sequence": 24,
+      "type": "card_selected",
+      "round": 4,
+      "card_id": "PAM_0010",
+      "t_ms": 300,
+      "input": "mouse",
+      "layout": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          1
+        ]
+      ]
+    },
+    {
+      "event_id": "evt-000025",
+      "sequence": 25,
+      "type": "card_selected",
+      "round": 4,
+      "card_id": "PAM_0186",
+      "t_ms": 400,
+      "input": "mouse",
+      "layout": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          1
+        ]
+      ]
+    },
+    {
+      "event_id": "evt-000026",
+      "sequence": 26,
+      "type": "card_selected",
+      "round": 4,
+      "card_id": "PAM_0018",
+      "t_ms": 500,
+      "input": "mouse",
+      "layout": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          1
+        ]
+      ]
+    },
+    {
+      "event_id": "evt-000027",
+      "sequence": 27,
+      "type": "round_completed",
+      "round": 4,
+      "duration_ms": 1000,
+      "hidden_ms": 0,
+      "seen_card_ids": null,
+      "hover": null
+    },
+    {
+      "event_id": "evt-000028",
+      "sequence": 28,
+      "type": "round_started",
+      "round": 5,
+      "card_ids": [
+        "PAM_0047",
+        "PAM_0015",
+        "PAM_0180",
+        "PAM_0052"
+      ],
+      "display": {
+        "policy": "norn.display.mixed.v2",
+        "deck": "pamela-v1@sha256:26134e1a8066b9064f4db22be7a0a97d79870947a4798092b9eff28503213b8c",
+        "roles": [
+          "predicted",
+          "contrast_popular",
+          "contrast_unpopular",
+          "predicted"
+        ]
+      }
+    },
+    {
+      "event_id": "evt-000029",
+      "sequence": 29,
+      "type": "round_ready",
+      "round": 5,
+      "ready_offset_ms": 0,
+      "unloaded_card_ids": [],
+      "layout": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ]
+    },
+    {
+      "event_id": "evt-000030",
+      "sequence": 30,
+      "type": "card_selected",
+      "round": 5,
+      "card_id": "PAM_0047",
+      "t_ms": 100,
+      "input": "mouse",
+      "layout": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ]
+    },
+    {
+      "event_id": "evt-000031",
+      "sequence": 31,
+      "type": "card_selected",
+      "round": 5,
+      "card_id": "PAM_0180",
+      "t_ms": 200,
+      "input": "mouse",
+      "layout": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ]
+    },
+    {
+      "event_id": "evt-000032",
+      "sequence": 32,
+      "type": "card_selected",
+      "round": 5,
+      "card_id": "PAM_0052",
+      "t_ms": 300,
+      "input": "mouse",
+      "layout": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ]
+    },
+    {
+      "event_id": "evt-000033",
+      "sequence": 33,
+      "type": "round_completed",
+      "round": 5,
+      "duration_ms": 800,
+      "hidden_ms": 0,
+      "seen_card_ids": null,
+      "hover": null
+    },
+    {
+      "event_id": "evt-000034",
+      "sequence": 34,
+      "type": "round_started",
+      "round": 6,
+      "card_ids": [
+        "PAM_0017",
+        "PAM_0101",
+        "PAM_0019",
+        "PAM_0074",
+        "PAM_0241"
+      ],
+      "display": {
+        "policy": "norn.display.mixed.v2",
+        "deck": "pamela-v1@sha256:26134e1a8066b9064f4db22be7a0a97d79870947a4798092b9eff28503213b8c",
+        "roles": [
+          "contrast_popular",
+          "predicted",
+          "random",
+          "contrast_unpopular",
+          "predicted"
+        ]
+      }
+    },
+    {
+      "event_id": "evt-000035",
+      "sequence": 35,
+      "type": "round_ready",
+      "round": 6,
+      "ready_offset_ms": 0,
+      "unloaded_card_ids": [],
+      "layout": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          0
+        ]
+      ]
+    },
+    {
+      "event_id": "evt-000036",
+      "sequence": 36,
+      "type": "card_selected",
+      "round": 6,
+      "card_id": "PAM_0101",
+      "t_ms": 100,
+      "input": "mouse",
+      "layout": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          0
+        ]
+      ]
+    },
+    {
+      "event_id": "evt-000037",
+      "sequence": 37,
+      "type": "card_selected",
+      "round": 6,
+      "card_id": "PAM_0074",
+      "t_ms": 200,
+      "input": "mouse",
+      "layout": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          0
+        ]
+      ]
+    },
+    {
+      "event_id": "evt-000038",
+      "sequence": 38,
+      "type": "card_selected",
+      "round": 6,
+      "card_id": "PAM_0241",
+      "t_ms": 300,
+      "input": "mouse",
+      "layout": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          0
+        ]
+      ]
+    },
+    {
+      "event_id": "evt-000039",
+      "sequence": 39,
+      "type": "round_completed",
+      "round": 6,
+      "duration_ms": 800,
+      "hidden_ms": 0,
+      "seen_card_ids": null,
+      "hover": null
+    },
+    {
+      "event_id": "evt-000040",
+      "sequence": 40,
+      "type": "round_started",
+      "round": 7,
+      "card_ids": [
+        "PAM_0206",
+        "PAM_0151",
+        "PAM_0088",
+        "PAM_0115",
+        "PAM_0023",
+        "PAM_0051"
+      ],
+      "display": {
+        "policy": "norn.display.mixed.v2",
+        "deck": "pamela-v1@sha256:26134e1a8066b9064f4db22be7a0a97d79870947a4798092b9eff28503213b8c",
+        "roles": [
+          "predicted",
+          "predicted",
+          "predicted",
+          "contrast_unpopular",
+          "contrast_popular",
+          "random"
+        ]
+      }
+    },
+    {
+      "event_id": "evt-000041",
+      "sequence": 41,
+      "type": "round_ready",
+      "round": 7,
+      "ready_offset_ms": 0,
+      "unloaded_card_ids": [],
+      "layout": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          1
+        ]
+      ]
+    },
+    {
+      "event_id": "evt-000042",
+      "sequence": 42,
+      "type": "card_selected",
+      "round": 7,
+      "card_id": "PAM_0206",
+      "t_ms": 100,
+      "input": "mouse",
+      "layout": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          1
+        ]
+      ]
+    },
+    {
+      "event_id": "evt-000043",
+      "sequence": 43,
+      "type": "card_selected",
+      "round": 7,
+      "card_id": "PAM_0151",
+      "t_ms": 200,
+      "input": "mouse",
+      "layout": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          1
+        ]
+      ]
+    },
+    {
+      "event_id": "evt-000044",
+      "sequence": 44,
+      "type": "card_selected",
+      "round": 7,
+      "card_id": "PAM_0088",
+      "t_ms": 300,
+      "input": "mouse",
+      "layout": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          1
+        ]
+      ]
+    },
+    {
+      "event_id": "evt-000045",
+      "sequence": 45,
+      "type": "card_selected",
+      "round": 7,
+      "card_id": "PAM_0115",
+      "t_ms": 400,
+      "input": "mouse",
+      "layout": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          1
+        ]
+      ]
+    },
+    {
+      "event_id": "evt-000046",
+      "sequence": 46,
+      "type": "card_selected",
+      "round": 7,
+      "card_id": "PAM_0051",
+      "t_ms": 500,
+      "input": "mouse",
+      "layout": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          1
+        ]
+      ]
+    },
+    {
+      "event_id": "evt-000047",
+      "sequence": 47,
+      "type": "round_completed",
+      "round": 7,
+      "duration_ms": 1000,
+      "hidden_ms": 0,
+      "seen_card_ids": null,
+      "hover": null
+    },
+    {
+      "event_id": "evt-000048",
+      "sequence": 48,
+      "type": "round_started",
+      "round": 8,
+      "card_ids": [
+        "PAM_0140",
+        "PAM_0217",
+        "PAM_0122",
+        "PAM_0203"
+      ],
+      "display": {
+        "policy": "norn.display.mixed.v2",
+        "deck": "pamela-v1@sha256:26134e1a8066b9064f4db22be7a0a97d79870947a4798092b9eff28503213b8c",
+        "roles": [
+          "contrast_popular",
+          "predicted",
+          "contrast_unpopular",
+          "predicted"
+        ]
+      }
+    },
+    {
+      "event_id": "evt-000049",
+      "sequence": 49,
+      "type": "round_ready",
+      "round": 8,
+      "ready_offset_ms": 0,
+      "unloaded_card_ids": [],
+      "layout": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ]
+    },
+    {
+      "event_id": "evt-000050",
+      "sequence": 50,
+      "type": "card_selected",
+      "round": 8,
+      "card_id": "PAM_0217",
+      "t_ms": 100,
+      "input": "mouse",
+      "layout": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ]
+    },
+    {
+      "event_id": "evt-000051",
+      "sequence": 51,
+      "type": "card_selected",
+      "round": 8,
+      "card_id": "PAM_0203",
+      "t_ms": 200,
+      "input": "mouse",
+      "layout": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ]
+    },
+    {
+      "event_id": "evt-000052",
+      "sequence": 52,
+      "type": "round_completed",
+      "round": 8,
+      "duration_ms": 700,
+      "hidden_ms": 0,
+      "seen_card_ids": null,
+      "hover": null
+    },
+    {
+      "event_id": "evt-000053",
+      "sequence": 53,
+      "type": "round_started",
+      "round": 9,
+      "card_ids": [
+        "PAM_0132",
+        "PAM_0016",
+        "PAM_0003",
+        "PAM_0070",
+        "PAM_0128"
+      ],
+      "display": {
+        "policy": "norn.display.mixed.v2",
+        "deck": "pamela-v1@sha256:26134e1a8066b9064f4db22be7a0a97d79870947a4798092b9eff28503213b8c",
+        "roles": [
+          "contrast_unpopular",
+          "predicted",
+          "random",
+          "predicted",
+          "contrast_popular"
+        ]
+      }
+    },
+    {
+      "event_id": "evt-000054",
+      "sequence": 54,
+      "type": "round_ready",
+      "round": 9,
+      "ready_offset_ms": 0,
+      "unloaded_card_ids": [],
+      "layout": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          0
+        ]
+      ]
+    },
+    {
+      "event_id": "evt-000055",
+      "sequence": 55,
+      "type": "card_selected",
+      "round": 9,
+      "card_id": "PAM_0132",
+      "t_ms": 100,
+      "input": "mouse",
+      "layout": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          0
+        ]
+      ]
+    },
+    {
+      "event_id": "evt-000056",
+      "sequence": 56,
+      "type": "card_selected",
+      "round": 9,
+      "card_id": "PAM_0016",
+      "t_ms": 200,
+      "input": "mouse",
+      "layout": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          0
+        ]
+      ]
+    },
+    {
+      "event_id": "evt-000057",
+      "sequence": 57,
+      "type": "card_selected",
+      "round": 9,
+      "card_id": "PAM_0070",
+      "t_ms": 300,
+      "input": "mouse",
+      "layout": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          0
+        ]
+      ]
+    },
+    {
+      "event_id": "evt-000058",
+      "sequence": 58,
+      "type": "round_completed",
+      "round": 9,
+      "duration_ms": 800,
+      "hidden_ms": 0,
+      "seen_card_ids": null,
+      "hover": null
+    },
+    {
+      "event_id": "evt-000059",
+      "sequence": 59,
+      "type": "round_started",
+      "round": 10,
+      "card_ids": [
+        "PAM_0032",
+        "PAM_0089",
+        "PAM_0060",
+        "PAM_0220"
+      ],
+      "display": {
+        "policy": "norn.display.mixed.v2",
+        "deck": "pamela-v1@sha256:26134e1a8066b9064f4db22be7a0a97d79870947a4798092b9eff28503213b8c",
+        "roles": [
+          "contrast_unpopular",
+          "predicted",
+          "contrast_popular",
+          "predicted"
+        ]
+      }
+    },
+    {
+      "event_id": "evt-000060",
+      "sequence": 60,
+      "type": "round_ready",
+      "round": 10,
+      "ready_offset_ms": 0,
+      "unloaded_card_ids": [],
+      "layout": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ]
+    },
+    {
+      "event_id": "evt-000061",
+      "sequence": 61,
+      "type": "card_selected",
+      "round": 10,
+      "card_id": "PAM_0032",
+      "t_ms": 100,
+      "input": "mouse",
+      "layout": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ]
+    },
+    {
+      "event_id": "evt-000062",
+      "sequence": 62,
+      "type": "card_selected",
+      "round": 10,
+      "card_id": "PAM_0220",
+      "t_ms": 200,
+      "input": "mouse",
+      "layout": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ]
+    },
+    {
+      "event_id": "evt-000063",
+      "sequence": 63,
+      "type": "round_completed",
+      "round": 10,
+      "duration_ms": 700,
+      "hidden_ms": 0,
+      "seen_card_ids": null,
+      "hover": null
+    },
+    {
+      "event_id": "evt-000064",
+      "sequence": 64,
+      "type": "round_started",
+      "round": 11,
+      "card_ids": [
+        "PAM_0123",
+        "PAM_0223",
+        "PAM_0191",
+        "PAM_0165",
+        "PAM_0252"
+      ],
+      "display": {
+        "policy": "norn.display.mixed.v2",
+        "deck": "pamela-v1@sha256:26134e1a8066b9064f4db22be7a0a97d79870947a4798092b9eff28503213b8c",
+        "roles": [
+          "contrast_popular",
+          "random",
+          "contrast_unpopular",
+          "predicted",
+          "predicted"
+        ]
+      }
+    },
+    {
+      "event_id": "evt-000065",
+      "sequence": 65,
+      "type": "round_ready",
+      "round": 11,
+      "ready_offset_ms": 0,
+      "unloaded_card_ids": [],
+      "layout": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          0
+        ]
+      ]
+    },
+    {
+      "event_id": "evt-000066",
+      "sequence": 66,
+      "type": "card_selected",
+      "round": 11,
+      "card_id": "PAM_0123",
+      "t_ms": 100,
+      "input": "mouse",
+      "layout": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          0
+        ]
+      ]
+    },
+    {
+      "event_id": "evt-000067",
+      "sequence": 67,
+      "type": "card_selected",
+      "round": 11,
+      "card_id": "PAM_0165",
+      "t_ms": 200,
+      "input": "mouse",
+      "layout": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          0
+        ]
+      ]
+    },
+    {
+      "event_id": "evt-000068",
+      "sequence": 68,
+      "type": "card_selected",
+      "round": 11,
+      "card_id": "PAM_0252",
+      "t_ms": 300,
+      "input": "mouse",
+      "layout": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          0
+        ]
+      ]
+    },
+    {
+      "event_id": "evt-000069",
+      "sequence": 69,
+      "type": "round_completed",
+      "round": 11,
+      "duration_ms": 800,
+      "hidden_ms": 0,
+      "seen_card_ids": null,
+      "hover": null
+    },
+    {
+      "event_id": "evt-000070",
+      "sequence": 70,
+      "type": "round_started",
+      "round": 12,
+      "card_ids": [
+        "PAM_0072",
+        "PAM_0044",
+        "PAM_0134",
+        "PAM_0104"
+      ],
+      "display": {
+        "policy": "norn.display.mixed.v2",
+        "deck": "pamela-v1@sha256:26134e1a8066b9064f4db22be7a0a97d79870947a4798092b9eff28503213b8c",
+        "roles": [
+          "predicted",
+          "contrast_unpopular",
+          "contrast_popular",
+          "predicted"
+        ]
+      }
+    },
+    {
+      "event_id": "evt-000071",
+      "sequence": 71,
+      "type": "round_ready",
+      "round": 12,
+      "ready_offset_ms": 0,
+      "unloaded_card_ids": [],
+      "layout": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ]
+    },
+    {
+      "event_id": "evt-000072",
+      "sequence": 72,
+      "type": "card_selected",
+      "round": 12,
+      "card_id": "PAM_0104",
+      "t_ms": 100,
+      "input": "mouse",
+      "layout": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ]
+    },
+    {
+      "event_id": "evt-000073",
+      "sequence": 73,
+      "type": "round_completed",
+      "round": 12,
+      "duration_ms": 600,
+      "hidden_ms": 0,
+      "seen_card_ids": null,
+      "hover": null
+    },
+    {
+      "event_id": "evt-000074",
+      "sequence": 74,
+      "type": "session_completed"
+    }
+  ]
+}

@@ -1,0 +1,251 @@
+{
+  "schema_version": "norn.pilot-release-live.v1",
+  "date": "2026-10-21",
+  "origin": "https://norn-machine.dubianche123.workers.dev",
+  "worker_version": "49bcc208-083b-4acf-81ca-6565d1d0619b",
+  "fixture": "Automated local real-browser choices, not a human participant",
+  "fresh_generation_attempt_limit": 2,
+  "fresh_generation_attempts": 2,
+  "automatic_network_retries": 0,
+  "judge_calls": 0,
+  "calls": [
+    {
+      "route": "/api/health",
+      "method": "GET",
+      "status": 200,
+      "elapsed_ms": 2630.796,
+      "response_bytes": 158,
+      "network_attempts": 1
+    },
+    {
+      "route": "/api/analyze",
+      "method": "POST",
+      "status": 200,
+      "elapsed_ms": 5048.361,
+      "response_bytes": 13590,
+      "network_attempts": 1
+    },
+    {
+      "route": "/api/analyze",
+      "method": "POST",
+      "status": 200,
+      "elapsed_ms": 2437.514,
+      "response_bytes": 13590,
+      "network_attempts": 1
+    },
+    {
+      "route": "/api/sessions/<session>/export",
+      "method": "GET",
+      "status": 200,
+      "elapsed_ms": 1448.089,
+      "response_bytes": 31544,
+      "network_attempts": 1
+    },
+    {
+      "route": "/api/sessions/<session>/inspect",
+      "method": "GET",
+      "status": 200,
+      "elapsed_ms": 4201.03,
+      "response_bytes": 75991,
+      "network_attempts": 1
+    },
+    {
+      "route": "/api/health",
+      "method": "GET",
+      "status": 200,
+      "elapsed_ms": 1579.5,
+      "response_bytes": 158,
+      "network_attempts": 1
+    },
+    {
+      "route": "/api/sessions/<session>/export",
+      "method": "GET",
+      "status": 404,
+      "elapsed_ms": 3096.275,
+      "response_bytes": 85,
+      "network_attempts": 1
+    },
+    {
+      "route": "/api/dialogue",
+      "method": "POST",
+      "status": 200,
+      "elapsed_ms": 5243.479,
+      "response_bytes": 2110,
+      "network_attempts": 1
+    },
+    {
+      "route": "/api/dialogue",
+      "method": "POST",
+      "status": 200,
+      "elapsed_ms": 3513.753,
+      "response_bytes": 2110,
+      "network_attempts": 1
+    },
+    {
+      "route": "/api/sessions/<session>/export",
+      "method": "GET",
+      "status": 200,
+      "elapsed_ms": 1692.362,
+      "response_bytes": 31544,
+      "network_attempts": 1
+    },
+    {
+      "route": "/api/archive/export",
+      "method": "GET",
+      "status": 200,
+      "elapsed_ms": 1344.418,
+      "response_bytes": 8632,
+      "network_attempts": 1
+    },
+    {
+      "route": "/api/record/withdraw",
+      "method": "POST",
+      "status": 200,
+      "elapsed_ms": 951.627,
+      "response_bytes": 18,
+      "network_attempts": 1
+    }
+  ],
+  "checks": {
+    "original_journal_has_no_holdout_ids": true,
+    "actor_cookie_issued_without_recording_value": true,
+    "analysis_ok_real_english": true,
+    "main_only_profile_hash": true,
+    "main_only_counts": true,
+    "confirmed_archive_receipt": true,
+    "analysis_idempotent_equal_json": true,
+    "native_replay_rebuilds_profile": true,
+    "export_excludes_holdout_probe": true,
+    "inspection_and_prompt_exclude_holdout": true,
+    "different_actor_cannot_read_session": true,
+    "dialogue_ok_real_english": true,
+    "dialogue_idempotent_equal_json": true,
+    "dialogue_preserves_exact_replay_export": true,
+    "targeted_operator_export_found_own_test_row_only": true,
+    "archive_preserves_exact_probe": true,
+    "archive_preserves_exact_original_journal": true,
+    "official_deepseek_model": true,
+    "archive_dialogue_is_count_only": true,
+    "only_own_synthetic_record_withdrawn": true
+  },
+  "fixture_summary": {
+    "main_schema": "norn.events.v4",
+    "probe_schema": "norn.probe.v1",
+    "main_rounds": 5,
+    "probe_rounds": 4,
+    "main_event_count": 21,
+    "probe_event_count": 17,
+    "catalog_version": "sha256:9f713521004f9dcc253508b282aaf3d6a81f0e4fd14cfbf9852b0c802d014dc2"
+  },
+  "health": {
+    "status": "ok",
+    "provider": "openai-compatible",
+    "model": "deepseek-flash",
+    "simulated": false,
+    "offline": false,
+    "deployment": "cloudflare",
+    "session_ttl_seconds": 1800
+  },
+  "analysis": {
+    "status": "ok",
+    "provider": "openai-compatible",
+    "simulated": false,
+    "provider_calls": 1,
+    "usage": {
+      "input_tokens": 1350,
+      "uncached_input_tokens": 198,
+      "output_tokens": 125,
+      "cache_read_input_tokens": 1152,
+      "cache_creation_input_tokens": null,
+      "cached_tokens": 1152,
+      "input_tokens_observed": true,
+      "uncached_input_tokens_observed": true,
+      "output_tokens_observed": true,
+      "cache_read_input_tokens_observed": true,
+      "cache_creation_input_tokens_observed": false,
+      "cached_tokens_observed": true,
+      "source": "provider",
+      "raw": {
+        "prompt_tokens": 1350,
+        "completion_tokens": 125,
+        "total_tokens": 1475,
+        "prompt_cache_hit_tokens": 1152,
+        "prompt_cache_miss_tokens": 198,
+        "prompt_tokens_details": {
+          "cached_tokens": 1152
+        }
+      }
+    },
+    "elapsed_ms": 2265.0,
+    "language": "en",
+    "max_question_chars": 400,
+    "output_status": "ok",
+    "reason_codes": []
+  },
+  "reading": "In this visit, your eye went toward scenes where people gather and something shared takes shape: a dance circle, a circus rehearsal, a party clothes rack, a backstage moment before a launch, and a quiet hospital corner at night. The kept pictures carried motifs of string lights, rhythm, spotlight, and wooden floor. You seem drawn to moments that combine warmth, performance, and a sense of being part of something. The evidence is still thin, so this is a light impression rather than a settled pattern. If you want to explore further, a rain-lit alley dance or a busy night-market crossing might be worth trying.",
+  "analysis_retry_raw_bytes_equal": false,
+  "dialogue": {
+    "status": "ok",
+    "provider": "openai-compatible",
+    "simulated": false,
+    "provider_calls": 1,
+    "usage": {
+      "input_tokens": 1562,
+      "uncached_input_tokens": 154,
+      "output_tokens": 67,
+      "cache_read_input_tokens": 1408,
+      "cache_creation_input_tokens": null,
+      "cached_tokens": 1408,
+      "input_tokens_observed": true,
+      "uncached_input_tokens_observed": true,
+      "output_tokens_observed": true,
+      "cache_read_input_tokens_observed": true,
+      "cache_creation_input_tokens_observed": false,
+      "cached_tokens_observed": true,
+      "source": "provider",
+      "raw": {
+        "prompt_tokens": 1562,
+        "completion_tokens": 67,
+        "total_tokens": 1629,
+        "prompt_cache_hit_tokens": 1408,
+        "prompt_cache_miss_tokens": 154,
+        "prompt_tokens_details": {
+          "cached_tokens": 1408
+        }
+      }
+    },
+    "elapsed_ms": 1084.0,
+    "language": "en",
+    "max_question_chars": 400,
+    "output_status": "ok",
+    "reason_codes": []
+  },
+  "reply": "On another visit, you might notice how a scene handles shared rhythm and light—whether string lights, a spotlight, or a wooden floor draw your attention before the people do. The dance circle and circus rehearsal suggest watching for moments where performance feels communal. With only five kept pictures, treat this as a gentle clue, not a conclusion.",
+  "dialogue_retry_raw_bytes_equal": false,
+  "archived_generation": {
+    "language": "en",
+    "model": "deepseek-flash",
+    "prompt_version": "norn.prompt.v5",
+    "provider": "openai-compatible",
+    "simulated": false,
+    "status": "ok"
+  },
+  "archived_annotations": {
+    "engagement": {
+      "dialogue_turns": 1,
+      "max_turns": 1
+    }
+  },
+  "replay_profile_hash": "sha256:8e45e4188841e3754693ff48f5a85e1aa3c5e973e72ae430524ea7c04eea795b",
+  "replay_export_sha256": "c1900b877151f8b2a2df155eed12116b4c314ed06ace3f89588a2d09b5dd0cd3",
+  "result": "passed",
+  "synthetic_record_withdrawal": {
+    "withdrawn": true
+  },
+  "completed_utc": "2026-10-21T04:31:03Z",
+  "limits": [
+    "Engineering acceptance only; automated choices are not human pilot evidence.",
+    "No human prediction, personality accuracy or model ranking claim.",
+    "No secrets, visitor key, actor cookies, record ID or session ID retained."
+  ]
+}

@@ -1,0 +1,1712 @@
+{
+  "schema": "norn.judge-qualification.results.v1",
+  "created_at": "2026-10-20T18:09:42.018794+00:00",
+  "wall_seconds": 644.241,
+  "protocol": "protocol.json",
+  "transport_this_invocation": {
+    "calls": 12,
+    "requests": 12,
+    "retries": 0,
+    "succeeded": 11,
+    "failed": 1,
+    "active": 0,
+    "max_active": 6,
+    "budget_rejections": 0,
+    "cancelled_calls": 0,
+    "retry_delay_seconds": 0.0,
+    "http_status_counts": {
+      "200": 11
+    },
+    "usage": {
+      "cache_read_input_tokens": 0,
+      "cache_creation_input_tokens": 0,
+      "completion_tokens": 107595,
+      "total_tokens": 126796,
+      "prompt_tokens": 19201,
+      "prompt_cache_hit_tokens": 9344,
+      "prompt_cache_miss_tokens": 9857,
+      "prompt_tokens_details": {
+        "audio_tokens": 0,
+        "cached_tokens": 9344
+      },
+      "completion_tokens_details": {
+        "audio_tokens": 0,
+        "rejected_prediction_tokens": 0,
+        "reasoning_tokens": 106486,
+        "accepted_prediction_tokens": 0
+      }
+    },
+    "concurrency": 6,
+    "attempts": 1,
+    "max_requests": 12,
+    "remaining_requests": 0,
+    "budget_exhausted": true,
+    "cooldown_remaining_seconds": 0
+  },
+  "observed_attempt_totals": {
+    "requests": 12,
+    "retries": 0,
+    "http_status_counts": {
+      "200": 11,
+      "None": 1
+    },
+    "usage": {
+      "prompt_tokens": 19201,
+      "completion_tokens": 107595,
+      "total_tokens": 126796
+    },
+    "reasoning_tokens": 106486
+  },
+  "resumed": false,
+  "rows": [
+    {
+      "model": "cn:hy4-preview",
+      "case": "control-grounded-vs-fabricated",
+      "kind": "grounding_control",
+      "order": 0,
+      "side_labels": {
+        "A": "good",
+        "B": "bad"
+      },
+      "valid": true,
+      "strict_json": true,
+      "raw_text": "{\"better\":\"A\",\"grounded\":{\"A\":4,\"B\":1},\"resonance\":{\"A\":4,\"B\":1},\"clarity\":{\"A\":5,\"B\":2},\"overclaim\":{\"A\":false,\"B\":true},\"reason\":\"A只引用了真实保留的画面且明确不作性格或命运定论，B编造了未出现的画面并把有限线索夸大为确定的人生轨迹。\"}",
+      "finish_reason": "stop",
+      "verdict": {
+        "better": "A",
+        "grounded": {
+          "A": 4,
+          "B": 1
+        },
+        "resonance": {
+          "A": 4,
+          "B": 1
+        },
+        "clarity": {
+          "A": 5,
+          "B": 2
+        },
+        "overclaim": {
+          "A": false,
+          "B": true
+        },
+        "reason": "A只引用了真实保留的画面且明确不作性格或命运定论，B编造了未出现的画面并把有限线索夸大为确定的人生轨迹。",
+        "judge": "cn:hy4-preview",
+        "calls": [
+          {
+            "judge": "cn:hy4-preview",
+            "reasoning_effort": null,
+            "max_tokens": 24000,
+            "reused": false,
+            "attempts": [
+              {
+                "attempt": 1,
+                "dispatched": true,
+                "elapsed_ms": 181677,
+                "finish_reason": "stop",
+                "http_status": 200,
+                "max_tokens": 24000,
+                "model": "cn:hy4-preview",
+                "ok": true,
+                "reasoning_effort": null,
+                "response_model": "hy4-preview",
+                "retry_delay_seconds": 0.0,
+                "thinking": null,
+                "usage": {
+                  "cache_creation_input_tokens": 0,
+                  "cache_read_input_tokens": 0,
+                  "completion_tokens": 5953,
+                  "completion_tokens_details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 5862,
+                    "rejected_prediction_tokens": 0
+                  },
+                  "prompt_cache_hit_tokens": 0,
+                  "prompt_cache_miss_tokens": 673,
+                  "prompt_tokens": 673,
+                  "prompt_tokens_details": {
+                    "audio_tokens": 0,
+                    "cached_tokens": 0
+                  },
+                  "total_tokens": 6626
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "dispatched": true,
+          "elapsed_ms": 181677,
+          "finish_reason": "stop",
+          "http_status": 200,
+          "max_tokens": 24000,
+          "model": "cn:hy4-preview",
+          "ok": true,
+          "reasoning_effort": null,
+          "response_model": "hy4-preview",
+          "retry_delay_seconds": 0.0,
+          "thinking": null,
+          "usage": {
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 0,
+            "completion_tokens": 5953,
+            "completion_tokens_details": {
+              "accepted_prediction_tokens": 0,
+              "audio_tokens": 0,
+              "reasoning_tokens": 5862,
+              "rejected_prediction_tokens": 0
+            },
+            "prompt_cache_hit_tokens": 0,
+            "prompt_cache_miss_tokens": 673,
+            "prompt_tokens": 673,
+            "prompt_tokens_details": {
+              "audio_tokens": 0,
+              "cached_tokens": 0
+            },
+            "total_tokens": 6626
+          }
+        }
+      ],
+      "response_models": [
+        "hy4-preview"
+      ],
+      "normalized_winner": "good",
+      "normalized_scores": {
+        "grounded": {
+          "good": 4,
+          "bad": 1
+        },
+        "resonance": {
+          "good": 4,
+          "bad": 1
+        },
+        "clarity": {
+          "good": 5,
+          "bad": 2
+        },
+        "overclaim": {
+          "good": false,
+          "bad": true
+        }
+      },
+      "control_pass": true
+    },
+    {
+      "model": "cn:hy4-preview",
+      "case": "control-grounded-vs-fabricated",
+      "kind": "grounding_control",
+      "order": 1,
+      "side_labels": {
+        "A": "bad",
+        "B": "good"
+      },
+      "valid": true,
+      "strict_json": true,
+      "raw_text": "{\"better\":\"B\",\"grounded\":{\"A\":1,\"B\":5},\"resonance\":{\"A\":1,\"B\":5},\"clarity\":{\"A\":5,\"B\":5},\"overclaim\":{\"A\":true,\"B\":false},\"reason\":\"B只引用本次真实留下的画面且保持开放不判定，A则编造事实中没有的画面并把有限线索说成确定的性格与命运。\"}",
+      "finish_reason": "stop",
+      "verdict": {
+        "better": "B",
+        "grounded": {
+          "A": 1,
+          "B": 5
+        },
+        "resonance": {
+          "A": 1,
+          "B": 5
+        },
+        "clarity": {
+          "A": 5,
+          "B": 5
+        },
+        "overclaim": {
+          "A": true,
+          "B": false
+        },
+        "reason": "B只引用本次真实留下的画面且保持开放不判定，A则编造事实中没有的画面并把有限线索说成确定的性格与命运。",
+        "judge": "cn:hy4-preview",
+        "calls": [
+          {
+            "judge": "cn:hy4-preview",
+            "reasoning_effort": null,
+            "max_tokens": 24000,
+            "reused": false,
+            "attempts": [
+              {
+                "attempt": 1,
+                "dispatched": true,
+                "elapsed_ms": 172312,
+                "finish_reason": "stop",
+                "http_status": 200,
+                "max_tokens": 24000,
+                "model": "cn:hy4-preview",
+                "ok": true,
+                "reasoning_effort": null,
+                "response_model": "hy4-preview",
+                "retry_delay_seconds": 0.0,
+                "thinking": null,
+                "usage": {
+                  "cache_creation_input_tokens": 0,
+                  "cache_read_input_tokens": 0,
+                  "completion_tokens": 7994,
+                  "completion_tokens_details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 7905,
+                    "rejected_prediction_tokens": 0
+                  },
+                  "prompt_cache_hit_tokens": 576,
+                  "prompt_cache_miss_tokens": 97,
+                  "prompt_tokens": 673,
+                  "prompt_tokens_details": {
+                    "audio_tokens": 0,
+                    "cached_tokens": 576
+                  },
+                  "total_tokens": 8667
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "dispatched": true,
+          "elapsed_ms": 172312,
+          "finish_reason": "stop",
+          "http_status": 200,
+          "max_tokens": 24000,
+          "model": "cn:hy4-preview",
+          "ok": true,
+          "reasoning_effort": null,
+          "response_model": "hy4-preview",
+          "retry_delay_seconds": 0.0,
+          "thinking": null,
+          "usage": {
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 0,
+            "completion_tokens": 7994,
+            "completion_tokens_details": {
+              "accepted_prediction_tokens": 0,
+              "audio_tokens": 0,
+              "reasoning_tokens": 7905,
+              "rejected_prediction_tokens": 0
+            },
+            "prompt_cache_hit_tokens": 576,
+            "prompt_cache_miss_tokens": 97,
+            "prompt_tokens": 673,
+            "prompt_tokens_details": {
+              "audio_tokens": 0,
+              "cached_tokens": 576
+            },
+            "total_tokens": 8667
+          }
+        }
+      ],
+      "response_models": [
+        "hy4-preview"
+      ],
+      "normalized_winner": "good",
+      "normalized_scores": {
+        "grounded": {
+          "bad": 1,
+          "good": 5
+        },
+        "resonance": {
+          "bad": 1,
+          "good": 5
+        },
+        "clarity": {
+          "bad": 5,
+          "good": 5
+        },
+        "overclaim": {
+          "bad": true,
+          "good": false
+        }
+      },
+      "control_pass": true
+    },
+    {
+      "model": "cn:hy4-preview",
+      "case": "control-identical",
+      "kind": "identical_control",
+      "order": 0,
+      "side_labels": {
+        "A": "left",
+        "B": "right"
+      },
+      "valid": true,
+      "strict_json": true,
+      "raw_text": "{\"better\":\"tie\",\"grounded\":{\"A\":3,\"B\":3},\"resonance\":{\"A\":3,\"B\":3},\"clarity\":{\"A\":5,\"B\":5},\"overclaim\":{\"A\":false,\"B\":false},\"reason\":\"两段解读文字完全相同，均仅温和提及无标签门墙与法庭日程墙两张真实留存画面、没有编造也未做性格断言，但遗漏了其余四张最终画面及其具体元素，因此 grounded 与 resonance 中等、clarity 良好且均无 overclaim。\"}",
+      "finish_reason": "stop",
+      "verdict": {
+        "better": "tie",
+        "grounded": {
+          "A": 3,
+          "B": 3
+        },
+        "resonance": {
+          "A": 3,
+          "B": 3
+        },
+        "clarity": {
+          "A": 5,
+          "B": 5
+        },
+        "overclaim": {
+          "A": false,
+          "B": false
+        },
+        "reason": "两段解读文字完全相同，均仅温和提及无标签门墙与法庭日程墙两张真实留存画面、没有编造也未做性格断言，但遗漏了其余四张最终画面及其具体元素，因此 grounded 与 resonance 中等、clarity 良好且均无 overclaim。",
+        "judge": "cn:hy4-preview",
+        "calls": [
+          {
+            "judge": "cn:hy4-preview",
+            "reasoning_effort": null,
+            "max_tokens": 24000,
+            "reused": false,
+            "attempts": [
+              {
+                "attempt": 1,
+                "dispatched": true,
+                "elapsed_ms": 225737,
+                "finish_reason": "stop",
+                "http_status": 200,
+                "max_tokens": 24000,
+                "model": "cn:hy4-preview",
+                "ok": true,
+                "reasoning_effort": null,
+                "response_model": "hy4-preview",
+                "retry_delay_seconds": 0.0,
+                "thinking": null,
+                "usage": {
+                  "cache_creation_input_tokens": 0,
+                  "cache_read_input_tokens": 0,
+                  "completion_tokens": 7577,
+                  "completion_tokens_details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 7459,
+                    "rejected_prediction_tokens": 0
+                  },
+                  "prompt_cache_hit_tokens": 0,
+                  "prompt_cache_miss_tokens": 669,
+                  "prompt_tokens": 669,
+                  "prompt_tokens_details": {
+                    "audio_tokens": 0,
+                    "cached_tokens": 0
+                  },
+                  "total_tokens": 8246
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "dispatched": true,
+          "elapsed_ms": 225737,
+          "finish_reason": "stop",
+          "http_status": 200,
+          "max_tokens": 24000,
+          "model": "cn:hy4-preview",
+          "ok": true,
+          "reasoning_effort": null,
+          "response_model": "hy4-preview",
+          "retry_delay_seconds": 0.0,
+          "thinking": null,
+          "usage": {
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 0,
+            "completion_tokens": 7577,
+            "completion_tokens_details": {
+              "accepted_prediction_tokens": 0,
+              "audio_tokens": 0,
+              "reasoning_tokens": 7459,
+              "rejected_prediction_tokens": 0
+            },
+            "prompt_cache_hit_tokens": 0,
+            "prompt_cache_miss_tokens": 669,
+            "prompt_tokens": 669,
+            "prompt_tokens_details": {
+              "audio_tokens": 0,
+              "cached_tokens": 0
+            },
+            "total_tokens": 8246
+          }
+        }
+      ],
+      "response_models": [
+        "hy4-preview"
+      ],
+      "normalized_winner": "tie",
+      "normalized_scores": {
+        "grounded": {
+          "left": 3,
+          "right": 3
+        },
+        "resonance": {
+          "left": 3,
+          "right": 3
+        },
+        "clarity": {
+          "left": 5,
+          "right": 5
+        },
+        "overclaim": {
+          "left": false,
+          "right": false
+        }
+      },
+      "control_pass": true
+    },
+    {
+      "model": "cn:hy4-preview",
+      "case": "control-identical",
+      "kind": "identical_control",
+      "order": 1,
+      "side_labels": {
+        "A": "right",
+        "B": "left"
+      },
+      "valid": true,
+      "strict_json": true,
+      "raw_text": "{\"better\":\"tie\",\"grounded\":{\"A\":4,\"B\":4},\"resonance\":{\"A\":4,\"B\":4},\"clarity\":{\"A\":5,\"B\":5},\"overclaim\":{\"A\":false,\"B\":false},\"reason\":\"两段解读文字完全相同，均只如实提及最终留下的无标签门墙与法庭日程墙，未编造元素或经历，也未把线索说成确定性格或命运，因此评分相同且为平局。\"}",
+      "finish_reason": "stop",
+      "verdict": {
+        "better": "tie",
+        "grounded": {
+          "A": 4,
+          "B": 4
+        },
+        "resonance": {
+          "A": 4,
+          "B": 4
+        },
+        "clarity": {
+          "A": 5,
+          "B": 5
+        },
+        "overclaim": {
+          "A": false,
+          "B": false
+        },
+        "reason": "两段解读文字完全相同，均只如实提及最终留下的无标签门墙与法庭日程墙，未编造元素或经历，也未把线索说成确定性格或命运，因此评分相同且为平局。",
+        "judge": "cn:hy4-preview",
+        "calls": [
+          {
+            "judge": "cn:hy4-preview",
+            "reasoning_effort": null,
+            "max_tokens": 24000,
+            "reused": false,
+            "attempts": [
+              {
+                "attempt": 1,
+                "dispatched": true,
+                "elapsed_ms": 56463,
+                "finish_reason": "stop",
+                "http_status": 200,
+                "max_tokens": 24000,
+                "model": "cn:hy4-preview",
+                "ok": true,
+                "reasoning_effort": null,
+                "response_model": "hy4-preview",
+                "retry_delay_seconds": 0.0,
+                "thinking": null,
+                "usage": {
+                  "cache_creation_input_tokens": 0,
+                  "cache_read_input_tokens": 0,
+                  "completion_tokens": 3687,
+                  "completion_tokens_details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 3585,
+                    "rejected_prediction_tokens": 0
+                  },
+                  "prompt_cache_hit_tokens": 0,
+                  "prompt_cache_miss_tokens": 669,
+                  "prompt_tokens": 669,
+                  "prompt_tokens_details": {
+                    "audio_tokens": 0,
+                    "cached_tokens": 0
+                  },
+                  "total_tokens": 4356
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "dispatched": true,
+          "elapsed_ms": 56463,
+          "finish_reason": "stop",
+          "http_status": 200,
+          "max_tokens": 24000,
+          "model": "cn:hy4-preview",
+          "ok": true,
+          "reasoning_effort": null,
+          "response_model": "hy4-preview",
+          "retry_delay_seconds": 0.0,
+          "thinking": null,
+          "usage": {
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 0,
+            "completion_tokens": 3687,
+            "completion_tokens_details": {
+              "accepted_prediction_tokens": 0,
+              "audio_tokens": 0,
+              "reasoning_tokens": 3585,
+              "rejected_prediction_tokens": 0
+            },
+            "prompt_cache_hit_tokens": 0,
+            "prompt_cache_miss_tokens": 669,
+            "prompt_tokens": 669,
+            "prompt_tokens_details": {
+              "audio_tokens": 0,
+              "cached_tokens": 0
+            },
+            "total_tokens": 4356
+          }
+        }
+      ],
+      "response_models": [
+        "hy4-preview"
+      ],
+      "normalized_winner": "tie",
+      "normalized_scores": {
+        "grounded": {
+          "right": 4,
+          "left": 4
+        },
+        "resonance": {
+          "right": 4,
+          "left": 4
+        },
+        "clarity": {
+          "right": 5,
+          "left": 5
+        },
+        "overclaim": {
+          "right": false,
+          "left": false
+        }
+      },
+      "control_pass": true
+    },
+    {
+      "model": "cn:hy4-preview",
+      "case": "natural-deepseek-v4.1-flash-fixture-3",
+      "kind": "natural",
+      "order": 0,
+      "side_labels": {
+        "A": "v4",
+        "B": "v5"
+      },
+      "valid": true,
+      "strict_json": true,
+      "raw_text": "{\"better\":\"B\",\"grounded\":{\"A\":2,\"B\":3},\"resonance\":{\"A\":2,\"B\":4},\"clarity\":{\"A\":2,\"B\":5},\"overclaim\":{\"A\":false,\"B\":false},\"reason\":\"B 更具体自然地引用了更多真实画面与元素，语气温暖并明确说只是本次线索；A 则出现技术术语、未见于事实的模型流程描述与样本数错误。\"}",
+      "finish_reason": "stop",
+      "verdict": {
+        "better": "B",
+        "grounded": {
+          "A": 2,
+          "B": 3
+        },
+        "resonance": {
+          "A": 2,
+          "B": 4
+        },
+        "clarity": {
+          "A": 2,
+          "B": 5
+        },
+        "overclaim": {
+          "A": false,
+          "B": false
+        },
+        "reason": "B 更具体自然地引用了更多真实画面与元素，语气温暖并明确说只是本次线索；A 则出现技术术语、未见于事实的模型流程描述与样本数错误。",
+        "judge": "cn:hy4-preview",
+        "calls": [
+          {
+            "judge": "cn:hy4-preview",
+            "reasoning_effort": null,
+            "max_tokens": 24000,
+            "reused": false,
+            "attempts": [
+              {
+                "attempt": 1,
+                "dispatched": true,
+                "elapsed_ms": 237758,
+                "finish_reason": "stop",
+                "http_status": 200,
+                "max_tokens": 24000,
+                "model": "cn:hy4-preview",
+                "ok": true,
+                "reasoning_effort": null,
+                "response_model": "hy4-preview",
+                "retry_delay_seconds": 0.0,
+                "thinking": null,
+                "usage": {
+                  "cache_creation_input_tokens": 0,
+                  "cache_read_input_tokens": 0,
+                  "completion_tokens": 11351,
+                  "completion_tokens_details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 11251,
+                    "rejected_prediction_tokens": 0
+                  },
+                  "prompt_cache_hit_tokens": 0,
+                  "prompt_cache_miss_tokens": 1728,
+                  "prompt_tokens": 1728,
+                  "prompt_tokens_details": {
+                    "audio_tokens": 0,
+                    "cached_tokens": 0
+                  },
+                  "total_tokens": 13079
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "dispatched": true,
+          "elapsed_ms": 237758,
+          "finish_reason": "stop",
+          "http_status": 200,
+          "max_tokens": 24000,
+          "model": "cn:hy4-preview",
+          "ok": true,
+          "reasoning_effort": null,
+          "response_model": "hy4-preview",
+          "retry_delay_seconds": 0.0,
+          "thinking": null,
+          "usage": {
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 0,
+            "completion_tokens": 11351,
+            "completion_tokens_details": {
+              "accepted_prediction_tokens": 0,
+              "audio_tokens": 0,
+              "reasoning_tokens": 11251,
+              "rejected_prediction_tokens": 0
+            },
+            "prompt_cache_hit_tokens": 0,
+            "prompt_cache_miss_tokens": 1728,
+            "prompt_tokens": 1728,
+            "prompt_tokens_details": {
+              "audio_tokens": 0,
+              "cached_tokens": 0
+            },
+            "total_tokens": 13079
+          }
+        }
+      ],
+      "response_models": [
+        "hy4-preview"
+      ],
+      "normalized_winner": "v5",
+      "normalized_scores": {
+        "grounded": {
+          "v4": 2,
+          "v5": 3
+        },
+        "resonance": {
+          "v4": 2,
+          "v5": 4
+        },
+        "clarity": {
+          "v4": 2,
+          "v5": 5
+        },
+        "overclaim": {
+          "v4": false,
+          "v5": false
+        }
+      }
+    },
+    {
+      "model": "cn:hy4-preview",
+      "case": "natural-deepseek-v4.1-flash-fixture-3",
+      "kind": "natural",
+      "order": 1,
+      "side_labels": {
+        "A": "v5",
+        "B": "v4"
+      },
+      "valid": true,
+      "strict_json": true,
+      "raw_text": "{\"better\":\"A\",\"grounded\":{\"A\":3,\"B\":2},\"resonance\":{\"A\":4,\"B\":2},\"clarity\":{\"A\":5,\"B\":2},\"overclaim\":{\"A\":false,\"B\":false},\"reason\":\"A 更具体、温暖且无术语，只在推荐画面上补了事实未给的元素；B 则引入低饱和、样本与随机基线等未证实且技术化的说法，偏离真实线索。\"}",
+      "finish_reason": "stop",
+      "verdict": {
+        "better": "A",
+        "grounded": {
+          "A": 3,
+          "B": 2
+        },
+        "resonance": {
+          "A": 4,
+          "B": 2
+        },
+        "clarity": {
+          "A": 5,
+          "B": 2
+        },
+        "overclaim": {
+          "A": false,
+          "B": false
+        },
+        "reason": "A 更具体、温暖且无术语，只在推荐画面上补了事实未给的元素；B 则引入低饱和、样本与随机基线等未证实且技术化的说法，偏离真实线索。",
+        "judge": "cn:hy4-preview",
+        "calls": [
+          {
+            "judge": "cn:hy4-preview",
+            "reasoning_effort": null,
+            "max_tokens": 24000,
+            "reused": false,
+            "attempts": [
+              {
+                "attempt": 1,
+                "dispatched": true,
+                "elapsed_ms": 287994,
+                "finish_reason": "stop",
+                "http_status": 200,
+                "max_tokens": 24000,
+                "model": "cn:hy4-preview",
+                "ok": true,
+                "reasoning_effort": null,
+                "response_model": "hy4-preview",
+                "retry_delay_seconds": 0.0,
+                "thinking": null,
+                "usage": {
+                  "cache_creation_input_tokens": 0,
+                  "cache_read_input_tokens": 0,
+                  "completion_tokens": 10516,
+                  "completion_tokens_details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 10413,
+                    "rejected_prediction_tokens": 0
+                  },
+                  "prompt_cache_hit_tokens": 0,
+                  "prompt_cache_miss_tokens": 1728,
+                  "prompt_tokens": 1728,
+                  "prompt_tokens_details": {
+                    "audio_tokens": 0,
+                    "cached_tokens": 0
+                  },
+                  "total_tokens": 12244
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "dispatched": true,
+          "elapsed_ms": 287994,
+          "finish_reason": "stop",
+          "http_status": 200,
+          "max_tokens": 24000,
+          "model": "cn:hy4-preview",
+          "ok": true,
+          "reasoning_effort": null,
+          "response_model": "hy4-preview",
+          "retry_delay_seconds": 0.0,
+          "thinking": null,
+          "usage": {
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 0,
+            "completion_tokens": 10516,
+            "completion_tokens_details": {
+              "accepted_prediction_tokens": 0,
+              "audio_tokens": 0,
+              "reasoning_tokens": 10413,
+              "rejected_prediction_tokens": 0
+            },
+            "prompt_cache_hit_tokens": 0,
+            "prompt_cache_miss_tokens": 1728,
+            "prompt_tokens": 1728,
+            "prompt_tokens_details": {
+              "audio_tokens": 0,
+              "cached_tokens": 0
+            },
+            "total_tokens": 12244
+          }
+        }
+      ],
+      "response_models": [
+        "hy4-preview"
+      ],
+      "normalized_winner": "v5",
+      "normalized_scores": {
+        "grounded": {
+          "v5": 3,
+          "v4": 2
+        },
+        "resonance": {
+          "v5": 4,
+          "v4": 2
+        },
+        "clarity": {
+          "v5": 5,
+          "v4": 2
+        },
+        "overclaim": {
+          "v5": false,
+          "v4": false
+        }
+      }
+    },
+    {
+      "model": "cn:hy4-preview",
+      "case": "natural-deepseek-v4.1-flash-fixture-4",
+      "kind": "natural",
+      "order": 0,
+      "side_labels": {
+        "A": "v4",
+        "B": "v5"
+      },
+      "valid": true,
+      "strict_json": true,
+      "raw_text": "{\"better\":\"B\",\"grounded\":{\"A\":2,\"B\":4},\"resonance\":{\"A\":2,\"B\":5},\"clarity\":{\"A\":2,\"B\":5},\"overclaim\":{\"A\":false,\"B\":false},\"reason\":\"B 只引用真实画面与气质词，温暖自然且无技术术语，而 A 加入了事实未提供的低饱和、随机基线等技术化表述，削弱了具体性与温度。\"}",
+      "finish_reason": "stop",
+      "verdict": {
+        "better": "B",
+        "grounded": {
+          "A": 2,
+          "B": 4
+        },
+        "resonance": {
+          "A": 2,
+          "B": 5
+        },
+        "clarity": {
+          "A": 2,
+          "B": 5
+        },
+        "overclaim": {
+          "A": false,
+          "B": false
+        },
+        "reason": "B 只引用真实画面与气质词，温暖自然且无技术术语，而 A 加入了事实未提供的低饱和、随机基线等技术化表述，削弱了具体性与温度。",
+        "judge": "cn:hy4-preview",
+        "calls": [
+          {
+            "judge": "cn:hy4-preview",
+            "reasoning_effort": null,
+            "max_tokens": 24000,
+            "reused": false,
+            "attempts": [
+              {
+                "attempt": 1,
+                "dispatched": true,
+                "elapsed_ms": 186348,
+                "finish_reason": "stop",
+                "http_status": 200,
+                "max_tokens": 24000,
+                "model": "cn:hy4-preview",
+                "ok": true,
+                "reasoning_effort": null,
+                "response_model": "hy4-preview",
+                "retry_delay_seconds": 0.0,
+                "thinking": null,
+                "usage": {
+                  "cache_creation_input_tokens": 0,
+                  "cache_read_input_tokens": 0,
+                  "completion_tokens": 12355,
+                  "completion_tokens_details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 12257,
+                    "rejected_prediction_tokens": 0
+                  },
+                  "prompt_cache_hit_tokens": 2880,
+                  "prompt_cache_miss_tokens": 81,
+                  "prompt_tokens": 2961,
+                  "prompt_tokens_details": {
+                    "audio_tokens": 0,
+                    "cached_tokens": 2880
+                  },
+                  "total_tokens": 15316
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "dispatched": true,
+          "elapsed_ms": 186348,
+          "finish_reason": "stop",
+          "http_status": 200,
+          "max_tokens": 24000,
+          "model": "cn:hy4-preview",
+          "ok": true,
+          "reasoning_effort": null,
+          "response_model": "hy4-preview",
+          "retry_delay_seconds": 0.0,
+          "thinking": null,
+          "usage": {
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 0,
+            "completion_tokens": 12355,
+            "completion_tokens_details": {
+              "accepted_prediction_tokens": 0,
+              "audio_tokens": 0,
+              "reasoning_tokens": 12257,
+              "rejected_prediction_tokens": 0
+            },
+            "prompt_cache_hit_tokens": 2880,
+            "prompt_cache_miss_tokens": 81,
+            "prompt_tokens": 2961,
+            "prompt_tokens_details": {
+              "audio_tokens": 0,
+              "cached_tokens": 2880
+            },
+            "total_tokens": 15316
+          }
+        }
+      ],
+      "response_models": [
+        "hy4-preview"
+      ],
+      "normalized_winner": "v5",
+      "normalized_scores": {
+        "grounded": {
+          "v4": 2,
+          "v5": 4
+        },
+        "resonance": {
+          "v4": 2,
+          "v5": 5
+        },
+        "clarity": {
+          "v4": 2,
+          "v5": 5
+        },
+        "overclaim": {
+          "v4": false,
+          "v5": false
+        }
+      }
+    },
+    {
+      "model": "cn:hy4-preview",
+      "case": "natural-deepseek-v4.1-flash-fixture-4",
+      "kind": "natural",
+      "order": 1,
+      "side_labels": {
+        "A": "v5",
+        "B": "v4"
+      },
+      "valid": true,
+      "strict_json": true,
+      "raw_text": "{\"better\":\"A\",\"grounded\":{\"A\":4,\"B\":2},\"resonance\":{\"A\":5,\"B\":2},\"clarity\":{\"A\":5,\"B\":2},\"overclaim\":{\"A\":false,\"B\":false},\"reason\":\"A 具体引用真实画面、语气温润且无术语，而 B 使用了低饱和、随机基线等技术术语与数字指标，并加入了事实未支持的视觉风格和验证说法，因此 A 更优。\"}",
+      "finish_reason": "stop",
+      "verdict": {
+        "better": "A",
+        "grounded": {
+          "A": 4,
+          "B": 2
+        },
+        "resonance": {
+          "A": 5,
+          "B": 2
+        },
+        "clarity": {
+          "A": 5,
+          "B": 2
+        },
+        "overclaim": {
+          "A": false,
+          "B": false
+        },
+        "reason": "A 具体引用真实画面、语气温润且无术语，而 B 使用了低饱和、随机基线等技术术语与数字指标，并加入了事实未支持的视觉风格和验证说法，因此 A 更优。",
+        "judge": "cn:hy4-preview",
+        "calls": [
+          {
+            "judge": "cn:hy4-preview",
+            "reasoning_effort": null,
+            "max_tokens": 24000,
+            "reused": false,
+            "attempts": [
+              {
+                "attempt": 1,
+                "dispatched": true,
+                "elapsed_ms": 148430,
+                "finish_reason": "stop",
+                "http_status": 200,
+                "max_tokens": 24000,
+                "model": "cn:hy4-preview",
+                "ok": true,
+                "reasoning_effort": null,
+                "response_model": "hy4-preview",
+                "retry_delay_seconds": 0.0,
+                "thinking": null,
+                "usage": {
+                  "cache_creation_input_tokens": 0,
+                  "cache_read_input_tokens": 0,
+                  "completion_tokens": 9541,
+                  "completion_tokens_details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 9437,
+                    "rejected_prediction_tokens": 0
+                  },
+                  "prompt_cache_hit_tokens": 2880,
+                  "prompt_cache_miss_tokens": 81,
+                  "prompt_tokens": 2961,
+                  "prompt_tokens_details": {
+                    "audio_tokens": 0,
+                    "cached_tokens": 2880
+                  },
+                  "total_tokens": 12502
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "dispatched": true,
+          "elapsed_ms": 148430,
+          "finish_reason": "stop",
+          "http_status": 200,
+          "max_tokens": 24000,
+          "model": "cn:hy4-preview",
+          "ok": true,
+          "reasoning_effort": null,
+          "response_model": "hy4-preview",
+          "retry_delay_seconds": 0.0,
+          "thinking": null,
+          "usage": {
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 0,
+            "completion_tokens": 9541,
+            "completion_tokens_details": {
+              "accepted_prediction_tokens": 0,
+              "audio_tokens": 0,
+              "reasoning_tokens": 9437,
+              "rejected_prediction_tokens": 0
+            },
+            "prompt_cache_hit_tokens": 2880,
+            "prompt_cache_miss_tokens": 81,
+            "prompt_tokens": 2961,
+            "prompt_tokens_details": {
+              "audio_tokens": 0,
+              "cached_tokens": 2880
+            },
+            "total_tokens": 12502
+          }
+        }
+      ],
+      "response_models": [
+        "hy4-preview"
+      ],
+      "normalized_winner": "v5",
+      "normalized_scores": {
+        "grounded": {
+          "v5": 4,
+          "v4": 2
+        },
+        "resonance": {
+          "v5": 5,
+          "v4": 2
+        },
+        "clarity": {
+          "v5": 5,
+          "v4": 2
+        },
+        "overclaim": {
+          "v5": false,
+          "v4": false
+        }
+      }
+    },
+    {
+      "model": "cn:hy4-preview",
+      "case": "natural-glm-5.3-flash-fixture-0",
+      "kind": "natural",
+      "order": 0,
+      "side_labels": {
+        "A": "v4",
+        "B": "v5"
+      },
+      "valid": true,
+      "strict_json": true,
+      "raw_text": "{\"better\":\"B\",\"grounded\":{\"A\":2,\"B\":4},\"resonance\":{\"A\":3,\"B\":5},\"clarity\":{\"A\":2,\"B\":5},\"overclaim\":{\"A\":false,\"B\":false},\"reason\":\"B 更贴合真实画面、温暖自然且无术语，而 A 编造了 45° 边缘占比、颜色排位与随机基线等数字或技术内容。\"}",
+      "finish_reason": "stop",
+      "verdict": {
+        "better": "B",
+        "grounded": {
+          "A": 2,
+          "B": 4
+        },
+        "resonance": {
+          "A": 3,
+          "B": 5
+        },
+        "clarity": {
+          "A": 2,
+          "B": 5
+        },
+        "overclaim": {
+          "A": false,
+          "B": false
+        },
+        "reason": "B 更贴合真实画面、温暖自然且无术语，而 A 编造了 45° 边缘占比、颜色排位与随机基线等数字或技术内容。",
+        "judge": "cn:hy4-preview",
+        "calls": [
+          {
+            "judge": "cn:hy4-preview",
+            "reasoning_effort": null,
+            "max_tokens": 24000,
+            "reused": false,
+            "attempts": [
+              {
+                "attempt": 1,
+                "dispatched": true,
+                "elapsed_ms": 180733,
+                "finish_reason": "stop",
+                "http_status": 200,
+                "max_tokens": 24000,
+                "model": "cn:hy4-preview",
+                "ok": true,
+                "reasoning_effort": null,
+                "response_model": "hy4-preview",
+                "retry_delay_seconds": 0.0,
+                "thinking": null,
+                "usage": {
+                  "cache_creation_input_tokens": 0,
+                  "cache_read_input_tokens": 0,
+                  "completion_tokens": 12796,
+                  "completion_tokens_details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 12701,
+                    "rejected_prediction_tokens": 0
+                  },
+                  "prompt_cache_hit_tokens": 0,
+                  "prompt_cache_miss_tokens": 881,
+                  "prompt_tokens": 881,
+                  "prompt_tokens_details": {
+                    "audio_tokens": 0,
+                    "cached_tokens": 0
+                  },
+                  "total_tokens": 13677
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "dispatched": true,
+          "elapsed_ms": 180733,
+          "finish_reason": "stop",
+          "http_status": 200,
+          "max_tokens": 24000,
+          "model": "cn:hy4-preview",
+          "ok": true,
+          "reasoning_effort": null,
+          "response_model": "hy4-preview",
+          "retry_delay_seconds": 0.0,
+          "thinking": null,
+          "usage": {
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 0,
+            "completion_tokens": 12796,
+            "completion_tokens_details": {
+              "accepted_prediction_tokens": 0,
+              "audio_tokens": 0,
+              "reasoning_tokens": 12701,
+              "rejected_prediction_tokens": 0
+            },
+            "prompt_cache_hit_tokens": 0,
+            "prompt_cache_miss_tokens": 881,
+            "prompt_tokens": 881,
+            "prompt_tokens_details": {
+              "audio_tokens": 0,
+              "cached_tokens": 0
+            },
+            "total_tokens": 13677
+          }
+        }
+      ],
+      "response_models": [
+        "hy4-preview"
+      ],
+      "normalized_winner": "v5",
+      "normalized_scores": {
+        "grounded": {
+          "v4": 2,
+          "v5": 4
+        },
+        "resonance": {
+          "v4": 3,
+          "v5": 5
+        },
+        "clarity": {
+          "v4": 2,
+          "v5": 5
+        },
+        "overclaim": {
+          "v4": false,
+          "v5": false
+        }
+      }
+    },
+    {
+      "model": "cn:hy4-preview",
+      "case": "natural-glm-5.3-flash-fixture-0",
+      "kind": "natural",
+      "order": 1,
+      "side_labels": {
+        "A": "v5",
+        "B": "v4"
+      },
+      "valid": false,
+      "strict_json": false,
+      "raw_text": null,
+      "finish_reason": null,
+      "verdict": {
+        "better": null,
+        "calls": [
+          {
+            "judge": "cn:hy4-preview",
+            "reasoning_effort": null,
+            "max_tokens": 24000,
+            "reused": false,
+            "attempts": [
+              {
+                "attempt": 1,
+                "dispatched": true,
+                "elapsed_ms": 360003,
+                "error": "network_error",
+                "http_status": null,
+                "max_tokens": 24000,
+                "model": "cn:hy4-preview",
+                "ok": false,
+                "reasoning_effort": null,
+                "retry_delay_seconds": 0.0,
+                "thinking": null
+              }
+            ]
+          }
+        ]
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "dispatched": true,
+          "elapsed_ms": 360003,
+          "error": "network_error",
+          "http_status": null,
+          "max_tokens": 24000,
+          "model": "cn:hy4-preview",
+          "ok": false,
+          "reasoning_effort": null,
+          "retry_delay_seconds": 0.0,
+          "thinking": null
+        }
+      ],
+      "response_models": []
+    },
+    {
+      "model": "cn:hy4-preview",
+      "case": "natural-glm-5.3-flash-fixture-4",
+      "kind": "natural",
+      "order": 0,
+      "side_labels": {
+        "A": "v4",
+        "B": "v5"
+      },
+      "valid": true,
+      "strict_json": true,
+      "raw_text": "{\"better\":\"B\",\"grounded\":{\"A\":3,\"B\":2},\"resonance\":{\"A\":3,\"B\":5},\"clarity\":{\"A\":2,\"B\":5},\"overclaim\":{\"A\":false,\"B\":false},\"reason\":\"B读来更有温度且清楚自然、大量引用真实轮次与元素，而A出现log loss等技术术语与数字指标并推断事实未提供的蓝色调等视觉偏好，故B更好。\"}",
+      "finish_reason": "stop",
+      "verdict": {
+        "better": "B",
+        "grounded": {
+          "A": 3,
+          "B": 2
+        },
+        "resonance": {
+          "A": 3,
+          "B": 5
+        },
+        "clarity": {
+          "A": 2,
+          "B": 5
+        },
+        "overclaim": {
+          "A": false,
+          "B": false
+        },
+        "reason": "B读来更有温度且清楚自然、大量引用真实轮次与元素，而A出现log loss等技术术语与数字指标并推断事实未提供的蓝色调等视觉偏好，故B更好。",
+        "judge": "cn:hy4-preview",
+        "calls": [
+          {
+            "judge": "cn:hy4-preview",
+            "reasoning_effort": null,
+            "max_tokens": 24000,
+            "reused": false,
+            "attempts": [
+              {
+                "attempt": 1,
+                "dispatched": true,
+                "elapsed_ms": 218666,
+                "finish_reason": "stop",
+                "http_status": 200,
+                "max_tokens": 24000,
+                "model": "cn:hy4-preview",
+                "ok": true,
+                "reasoning_effort": null,
+                "response_model": "hy4-preview",
+                "retry_delay_seconds": 0.0,
+                "thinking": null,
+                "usage": {
+                  "cache_creation_input_tokens": 0,
+                  "cache_read_input_tokens": 0,
+                  "completion_tokens": 15053,
+                  "completion_tokens_details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 14952,
+                    "rejected_prediction_tokens": 0
+                  },
+                  "prompt_cache_hit_tokens": 0,
+                  "prompt_cache_miss_tokens": 3129,
+                  "prompt_tokens": 3129,
+                  "prompt_tokens_details": {
+                    "audio_tokens": 0,
+                    "cached_tokens": 0
+                  },
+                  "total_tokens": 18182
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "dispatched": true,
+          "elapsed_ms": 218666,
+          "finish_reason": "stop",
+          "http_status": 200,
+          "max_tokens": 24000,
+          "model": "cn:hy4-preview",
+          "ok": true,
+          "reasoning_effort": null,
+          "response_model": "hy4-preview",
+          "retry_delay_seconds": 0.0,
+          "thinking": null,
+          "usage": {
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 0,
+            "completion_tokens": 15053,
+            "completion_tokens_details": {
+              "accepted_prediction_tokens": 0,
+              "audio_tokens": 0,
+              "reasoning_tokens": 14952,
+              "rejected_prediction_tokens": 0
+            },
+            "prompt_cache_hit_tokens": 0,
+            "prompt_cache_miss_tokens": 3129,
+            "prompt_tokens": 3129,
+            "prompt_tokens_details": {
+              "audio_tokens": 0,
+              "cached_tokens": 0
+            },
+            "total_tokens": 18182
+          }
+        }
+      ],
+      "response_models": [
+        "hy4-preview"
+      ],
+      "normalized_winner": "v5",
+      "normalized_scores": {
+        "grounded": {
+          "v4": 3,
+          "v5": 2
+        },
+        "resonance": {
+          "v4": 3,
+          "v5": 5
+        },
+        "clarity": {
+          "v4": 2,
+          "v5": 5
+        },
+        "overclaim": {
+          "v4": false,
+          "v5": false
+        }
+      }
+    },
+    {
+      "model": "cn:hy4-preview",
+      "case": "natural-glm-5.3-flash-fixture-4",
+      "kind": "natural",
+      "order": 1,
+      "side_labels": {
+        "A": "v5",
+        "B": "v4"
+      },
+      "valid": true,
+      "strict_json": true,
+      "raw_text": "{\"better\":\"A\",\"grounded\":{\"A\":3,\"B\":2},\"resonance\":{\"A\":5,\"B\":2},\"clarity\":{\"A\":5,\"B\":1},\"overclaim\":{\"A\":false,\"B\":false},\"reason\":\"A 更温暖自然且基本贴合真实画面，虽有空椅子等小添笔，但 B 凭空断言饱和度与蓝色调并出现 log loss、留出验证等技术术语和数字指标，有据性与清晰度明显更差。\"}",
+      "finish_reason": "stop",
+      "verdict": {
+        "better": "A",
+        "grounded": {
+          "A": 3,
+          "B": 2
+        },
+        "resonance": {
+          "A": 5,
+          "B": 2
+        },
+        "clarity": {
+          "A": 5,
+          "B": 1
+        },
+        "overclaim": {
+          "A": false,
+          "B": false
+        },
+        "reason": "A 更温暖自然且基本贴合真实画面，虽有空椅子等小添笔，但 B 凭空断言饱和度与蓝色调并出现 log loss、留出验证等技术术语和数字指标，有据性与清晰度明显更差。",
+        "judge": "cn:hy4-preview",
+        "calls": [
+          {
+            "judge": "cn:hy4-preview",
+            "reasoning_effort": null,
+            "max_tokens": 24000,
+            "reused": false,
+            "attempts": [
+              {
+                "attempt": 1,
+                "dispatched": true,
+                "elapsed_ms": 168097,
+                "finish_reason": "stop",
+                "http_status": 200,
+                "max_tokens": 24000,
+                "model": "cn:hy4-preview",
+                "ok": true,
+                "reasoning_effort": null,
+                "response_model": "hy4-preview",
+                "retry_delay_seconds": 0.0,
+                "thinking": null,
+                "usage": {
+                  "cache_creation_input_tokens": 0,
+                  "cache_read_input_tokens": 0,
+                  "completion_tokens": 10772,
+                  "completion_tokens_details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 10664,
+                    "rejected_prediction_tokens": 0
+                  },
+                  "prompt_cache_hit_tokens": 3008,
+                  "prompt_cache_miss_tokens": 121,
+                  "prompt_tokens": 3129,
+                  "prompt_tokens_details": {
+                    "audio_tokens": 0,
+                    "cached_tokens": 3008
+                  },
+                  "total_tokens": 13901
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "dispatched": true,
+          "elapsed_ms": 168097,
+          "finish_reason": "stop",
+          "http_status": 200,
+          "max_tokens": 24000,
+          "model": "cn:hy4-preview",
+          "ok": true,
+          "reasoning_effort": null,
+          "response_model": "hy4-preview",
+          "retry_delay_seconds": 0.0,
+          "thinking": null,
+          "usage": {
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 0,
+            "completion_tokens": 10772,
+            "completion_tokens_details": {
+              "accepted_prediction_tokens": 0,
+              "audio_tokens": 0,
+              "reasoning_tokens": 10664,
+              "rejected_prediction_tokens": 0
+            },
+            "prompt_cache_hit_tokens": 3008,
+            "prompt_cache_miss_tokens": 121,
+            "prompt_tokens": 3129,
+            "prompt_tokens_details": {
+              "audio_tokens": 0,
+              "cached_tokens": 3008
+            },
+            "total_tokens": 13901
+          }
+        }
+      ],
+      "response_models": [
+        "hy4-preview"
+      ],
+      "normalized_winner": "v5",
+      "normalized_scores": {
+        "grounded": {
+          "v5": 3,
+          "v4": 2
+        },
+        "resonance": {
+          "v5": 5,
+          "v4": 2
+        },
+        "clarity": {
+          "v5": 5,
+          "v4": 1
+        },
+        "overclaim": {
+          "v5": false,
+          "v4": false
+        }
+      }
+    }
+  ],
+  "unexecuted_jobs": [],
+  "summary": {
+    "cn:hy4-preview": {
+      "requests": 12,
+      "valid_stopped": 11,
+      "strict_json": 11,
+      "controls": {
+        "grounding_control": 2,
+        "identical_control": 2
+      },
+      "natural_consistent": 3,
+      "natural_hard_reversals": 0,
+      "natural_pairs": [
+        {
+          "case": "natural-glm-5.3-flash-fixture-0",
+          "complete": false,
+          "winners": [],
+          "winner_consistent": false,
+          "hard_reversal": false,
+          "score_absolute_drift": null,
+          "overclaim_drift": []
+        },
+        {
+          "case": "natural-glm-5.3-flash-fixture-4",
+          "complete": true,
+          "winners": [
+            "v5",
+            "v5"
+          ],
+          "winner_consistent": true,
+          "hard_reversal": false,
+          "score_absolute_drift": {
+            "grounded": {
+              "v4": 1,
+              "v5": 1
+            },
+            "resonance": {
+              "v4": 1,
+              "v5": 0
+            },
+            "clarity": {
+              "v4": 1,
+              "v5": 0
+            }
+          },
+          "overclaim_drift": []
+        },
+        {
+          "case": "natural-deepseek-v4.1-flash-fixture-3",
+          "complete": true,
+          "winners": [
+            "v5",
+            "v5"
+          ],
+          "winner_consistent": true,
+          "hard_reversal": false,
+          "score_absolute_drift": {
+            "grounded": {
+              "v4": 0,
+              "v5": 0
+            },
+            "resonance": {
+              "v4": 0,
+              "v5": 0
+            },
+            "clarity": {
+              "v4": 0,
+              "v5": 0
+            }
+          },
+          "overclaim_drift": []
+        },
+        {
+          "case": "natural-deepseek-v4.1-flash-fixture-4",
+          "complete": true,
+          "winners": [
+            "v5",
+            "v5"
+          ],
+          "winner_consistent": true,
+          "hard_reversal": false,
+          "score_absolute_drift": {
+            "grounded": {
+              "v4": 0,
+              "v5": 0
+            },
+            "resonance": {
+              "v4": 0,
+              "v5": 0
+            },
+            "clarity": {
+              "v4": 0,
+              "v5": 0
+            }
+          },
+          "overclaim_drift": []
+        }
+      ],
+      "latency_seconds_median": 184.0125,
+      "latency_seconds_max": 360.003,
+      "passes_predeclared_gate": false
+    }
+  },
+  "cost_usd": null
+}

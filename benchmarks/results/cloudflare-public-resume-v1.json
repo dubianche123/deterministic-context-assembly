@@ -1,0 +1,88 @@
+{
+  "schema_version": "norn.cloud-smoke.v1",
+  "mode": "resume",
+  "runtime": "Cloudflare workerd / Python 3.14",
+  "target_origin": "https://norn-machine.dubianche123.workers.dev",
+  "provider": "mock",
+  "calls": [
+    {
+      "method": "GET",
+      "route": "/api/health",
+      "status": 200,
+      "elapsed_ms": 1944.948,
+      "response_bytes": 118,
+      "network_attempts": 1
+    },
+    {
+      "method": "GET",
+      "route": "/api/sessions/<session>/inspect",
+      "status": 200,
+      "elapsed_ms": 4206.781,
+      "response_bytes": 401790,
+      "network_attempts": 1
+    },
+    {
+      "method": "GET",
+      "route": "/api/sessions/<session>/export",
+      "status": 200,
+      "elapsed_ms": 3813.393,
+      "response_bytes": 290896,
+      "network_attempts": 1
+    },
+    {
+      "method": "POST",
+      "route": "/api/analyze",
+      "status": 200,
+      "elapsed_ms": 6856.684,
+      "response_bytes": 106384,
+      "network_attempts": 1
+    },
+    {
+      "method": "POST",
+      "route": "/api/dialogue",
+      "status": 200,
+      "elapsed_ms": 4329.906,
+      "response_bytes": 1788,
+      "network_attempts": 1
+    },
+    {
+      "method": "GET",
+      "route": "/api/sessions/<session>/inspect",
+      "status": 200,
+      "elapsed_ms": 5781.772,
+      "response_bytes": 401790,
+      "network_attempts": 1
+    },
+    {
+      "method": "GET",
+      "route": "/api/sessions/<session>/export",
+      "status": 200,
+      "elapsed_ms": 5931.825,
+      "response_bytes": 290896,
+      "network_attempts": 1
+    }
+  ],
+  "model_calls": 0,
+  "latency_scope": "client wall time including transport retries; not Worker CPU time",
+  "network_retry_policy": {
+    "additional_attempts": 2,
+    "http_status_responses_retried": false
+  },
+  "checks": {
+    "existing_actor_resume": true,
+    "reading_retry_receipt_restored": true,
+    "dialogue_retry_receipt_restored": true,
+    "no_extra_render_calls": true,
+    "full_context_frozen": true,
+    "cpython_replay_of_wasm_export": true,
+    "export_matches_original_baseline": true,
+    "preserved_across_redeployment": true
+  },
+  "profile_version": "norn.profile.v3",
+  "dialogue_turns": 3,
+  "render_calls": 4,
+  "scope": "Checks the supplied existing actor; record deployment version changes separately.",
+  "verified_at": "2026-10-20T09:07:49.877939+00:00",
+  "deployment_before": "bf9052b3686d4927bde4c7478b9f7ec9",
+  "deployment_after": "ea47741a682748169ac8573dcd178a39"
+}

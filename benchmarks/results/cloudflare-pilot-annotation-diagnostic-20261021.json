@@ -1,0 +1,239 @@
+{
+  "schema_version": "norn.pilot-release-live.v1",
+  "date": "2026-10-21",
+  "origin": "https://norn-machine.dubianche123.workers.dev",
+  "worker_version": "49bcc208-083b-4acf-81ca-6565d1d0619b",
+  "fixture": "Automated local real-browser choices, not a human participant",
+  "fresh_generation_attempt_limit": 2,
+  "fresh_generation_attempts": 2,
+  "automatic_network_retries": 0,
+  "judge_calls": 0,
+  "calls": [
+    {
+      "route": "/api/health",
+      "method": "GET",
+      "status": 200,
+      "elapsed_ms": 2686.206,
+      "response_bytes": 158,
+      "network_attempts": 1
+    },
+    {
+      "route": "/api/analyze",
+      "method": "POST",
+      "status": 200,
+      "elapsed_ms": 7016.556,
+      "response_bytes": 13567,
+      "network_attempts": 1
+    },
+    {
+      "route": "/api/analyze",
+      "method": "POST",
+      "status": 200,
+      "elapsed_ms": 3605.647,
+      "response_bytes": 13567,
+      "network_attempts": 1
+    },
+    {
+      "route": "/api/sessions/<session>/export",
+      "method": "GET",
+      "status": 200,
+      "elapsed_ms": 3576.79,
+      "response_bytes": 31544,
+      "network_attempts": 1
+    },
+    {
+      "route": "/api/sessions/<session>/inspect",
+      "method": "GET",
+      "status": 200,
+      "elapsed_ms": 2634.681,
+      "response_bytes": 75991,
+      "network_attempts": 1
+    },
+    {
+      "route": "/api/health",
+      "method": "GET",
+      "status": 200,
+      "elapsed_ms": 738.906,
+      "response_bytes": 158,
+      "network_attempts": 1
+    },
+    {
+      "route": "/api/sessions/<session>/export",
+      "method": "GET",
+      "status": 404,
+      "elapsed_ms": 2968.777,
+      "response_bytes": 85,
+      "network_attempts": 1
+    },
+    {
+      "route": "/api/dialogue",
+      "method": "POST",
+      "status": 200,
+      "elapsed_ms": 3676.863,
+      "response_bytes": 2104,
+      "network_attempts": 1
+    },
+    {
+      "route": "/api/dialogue",
+      "method": "POST",
+      "status": 200,
+      "elapsed_ms": 864.82,
+      "response_bytes": 2104,
+      "network_attempts": 1
+    },
+    {
+      "route": "/api/sessions/<session>/export",
+      "method": "GET",
+      "status": 200,
+      "elapsed_ms": 1330.909,
+      "response_bytes": 31544,
+      "network_attempts": 1
+    },
+    {
+      "route": "/api/archive/export",
+      "method": "GET",
+      "status": 200,
+      "elapsed_ms": 4081.522,
+      "response_bytes": 8609,
+      "network_attempts": 1
+    },
+    {
+      "route": "/api/record/withdraw",
+      "method": "POST",
+      "status": 200,
+      "elapsed_ms": 2471.77,
+      "response_bytes": 18,
+      "network_attempts": 1
+    }
+  ],
+  "checks": {
+    "original_journal_has_no_holdout_ids": true,
+    "actor_cookie_issued_without_recording_value": true,
+    "analysis_ok_real_english": true,
+    "main_only_profile_hash": true,
+    "main_only_counts": true,
+    "confirmed_archive_receipt": true,
+    "analysis_idempotent_equal_json": true,
+    "native_replay_rebuilds_profile": true,
+    "export_excludes_holdout_probe": true,
+    "inspection_and_prompt_exclude_holdout": true,
+    "different_actor_cannot_read_session": true,
+    "dialogue_ok_real_english": true,
+    "dialogue_idempotent_equal_json": true,
+    "dialogue_preserves_exact_replay_export": true,
+    "targeted_operator_export_found_own_test_row_only": true,
+    "archive_preserves_exact_probe": true,
+    "archive_preserves_exact_original_journal": true,
+    "official_deepseek_model": true,
+    "archive_dialogue_is_count_only": false,
+    "only_own_synthetic_record_withdrawn": true
+  },
+  "fixture_summary": {
+    "main_schema": "norn.events.v4",
+    "probe_schema": "norn.probe.v1",
+    "main_rounds": 5,
+    "probe_rounds": 4,
+    "main_event_count": 21,
+    "probe_event_count": 17,
+    "catalog_version": "sha256:9f713521004f9dcc253508b282aaf3d6a81f0e4fd14cfbf9852b0c802d014dc2"
+  },
+  "health": {
+    "status": "ok",
+    "provider": "openai-compatible",
+    "model": "deepseek-flash",
+    "simulated": false,
+    "offline": false,
+    "deployment": "cloudflare",
+    "session_ttl_seconds": 1800
+  },
+  "analysis": {
+    "status": "ok",
+    "provider": "openai-compatible",
+    "simulated": false,
+    "provider_calls": 1,
+    "usage": {
+      "input_tokens": 1350,
+      "uncached_input_tokens": 198,
+      "output_tokens": 119,
+      "cache_read_input_tokens": 1152,
+      "cache_creation_input_tokens": null,
+      "cached_tokens": 1152,
+      "input_tokens_observed": true,
+      "uncached_input_tokens_observed": true,
+      "output_tokens_observed": true,
+      "cache_read_input_tokens_observed": true,
+      "cache_creation_input_tokens_observed": false,
+      "cached_tokens_observed": true,
+      "source": "provider",
+      "raw": {
+        "prompt_tokens": 1350,
+        "completion_tokens": 119,
+        "total_tokens": 1469,
+        "prompt_cache_hit_tokens": 1152,
+        "prompt_cache_miss_tokens": 198,
+        "prompt_tokens_details": {
+          "cached_tokens": 1152
+        }
+      }
+    },
+    "elapsed_ms": 1447.0,
+    "language": "en",
+    "max_question_chars": 400,
+    "output_status": "ok",
+    "reason_codes": []
+  },
+  "reading": "Across this visit, your kept pictures leaned toward lively, shared settings: a dance circle, a circus rehearsal, and a party clothing rack, alongside a launch-event backstage and a quiet hospital corner at night. The motifs noted were string lights, rhythm, spotlight, and wooden floor. What seems to draw your eye is performance with a human pulse, and moments where insight meets care. The clues are still thin, so this is a light impression rather than a settled pattern. A possible next scene to explore: a rainy alley dance, or a night-market crossroads with lanterns and passing crowds.",
+  "analysis_retry_raw_bytes_equal": false,
+  "dialogue": {
+    "status": "ok",
+    "provider": "openai-compatible",
+    "simulated": false,
+    "provider_calls": 1,
+    "usage": {
+      "input_tokens": 1556,
+      "uncached_input_tokens": 148,
+      "output_tokens": 71,
+      "cache_read_input_tokens": 1408,
+      "cache_creation_input_tokens": null,
+      "cached_tokens": 1408,
+      "input_tokens_observed": true,
+      "uncached_input_tokens_observed": true,
+      "output_tokens_observed": true,
+      "cache_read_input_tokens_observed": true,
+      "cache_creation_input_tokens_observed": false,
+      "cached_tokens_observed": true,
+      "source": "provider",
+      "raw": {
+        "prompt_tokens": 1556,
+        "completion_tokens": 71,
+        "total_tokens": 1627,
+        "prompt_cache_hit_tokens": 1408,
+        "prompt_cache_miss_tokens": 148,
+        "prompt_tokens_details": {
+          "cached_tokens": 1408
+        }
+      }
+    },
+    "elapsed_ms": 1253.0,
+    "language": "en",
+    "max_question_chars": 400,
+    "output_status": "ok",
+    "reason_codes": []
+  },
+  "reply": "On another visit, watch for how a scene balances a spotlight moment with the people around it, as in the dance circle or circus rehearsal. You might also notice small grounding details, like string lights or a wooden floor, that make a shared setting feel lived in. The evidence remains thin, so treat this as a gentle cue rather than a fixed pattern.",
+  "dialogue_retry_raw_bytes_equal": false,
+  "result": "failed",
+  "failure": {
+    "type": "AssertionError",
+    "detail": "archive_dialogue_is_count_only"
+  },
+  "synthetic_record_withdrawal": {
+    "withdrawn": true
+  },
+  "completed_utc": "2026-10-21T04:27:43Z",
+  "limits": [
+    "Engineering acceptance only; automated choices are not human pilot evidence.",
+    "No human prediction, personality accuracy or model ranking claim.",
+    "No secrets, visitor key, actor cookies, record ID or session ID retained."
+  ]
+}

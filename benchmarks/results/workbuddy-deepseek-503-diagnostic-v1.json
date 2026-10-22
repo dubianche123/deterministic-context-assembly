@@ -1,0 +1,22 @@
+{
+  "schema": "norn.deepseek-parameter-diagnostic.v1",
+  "created_at": "2026-10-20T17:27:26.595417+00:00",
+  "request_parameters": {
+    "model": "cn:deepseek-v4.1-flash",
+    "max_tokens": 1000,
+    "temperature": 0,
+    "reasoning_effort": "off",
+    "stream": false
+  },
+  "http_status": 503,
+  "error": {
+    "error": {
+      "code": "no_healthy_account",
+      "gateway_hint": "request parameters were rejected by the model provider; check message format and model capabilities",
+      "message": "{\"code\":11133,\"msg\":\"the request parameters were rejected by the model provider\",\"requestId\":\"[opaque]\",\"extError\":{\"code\":\"invalid_request_error\",\"message\":\"the request parameters were rejected by the model provider\",\"param\":\"\",\"type\":\"invalid_request_error\",\"StatusCode\":400,\"Request\":null,\"Response\":null},\"displayMsg\":{\"en\":\"The model cannot handle this request. Please retry\",\"zh\":\"模型无法处理此请求，请重试\",\"zh-hant\":\"模型無法處理此請求，請重試\"},\"displayTips\":{\"en\":\"This model does not accept the current conversation. It is not a network issue. Please start a new task, switch models, or try again later.\",\"zh\":\"这次对话的内容这个模型不接受，与网络无关。请新建任务、换个模型或稍后重试。\",\"zh-hant\":\"本次對話內容此模型不接受，與網路無關。請新建任務、切換模型或稍後重試。\"},\"actions\":[\"SWITCH_MODEL\",\"SUBMIT_FEEDBACK\",\"NEW_CONVERSATION\"]}",
+      "type": "api_error"
+    }
+  },
+  "response_model": null,
+  "finish_reason": null
+}

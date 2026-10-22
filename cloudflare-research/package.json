@@ -1,0 +1,15 @@
+{
+  "name": "norn-cloudflare-research",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "prepare": "python3 ../scripts/prepare_cloudflare_bundle.py --deck pamela-v1 --deployment research",
+    "build": "python3 ../scripts/prepare_cloudflare_bundle.py --deck pamela-v1 --deployment research && cf build",
+    "dev": "python3 ../scripts/prepare_cloudflare_bundle.py --deck pamela-v1 --deployment research && cf dev",
+    "deploy": "python3 ../scripts/prepare_cloudflare_bundle.py --deck pamela-v1 --deployment research && cf deploy"
+  },
+  "devDependencies": {
+    "cf": "1.0.0-beta.18",
+    "wrangler": "4.151.2"
+  }
+}

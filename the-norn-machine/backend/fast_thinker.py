@@ -2,6 +2,9 @@
 The Norn Machine — Step 1: Fast Thinker
 Pure mathematical personality inference. Zero LLM involvement.
 
+Historical scorer: scoring v4 (norn/profile.py choice_analysis) never calls it.
+It runs only to replay profiles v1–v3 and for the legacy AWS Lambda handler.
+
 Algorithm:
   1. Weight = round_decay × hesitation_bonus
      - round_decay: later rounds have more weight (user's intuition sharpens)
@@ -13,9 +16,17 @@ Algorithm:
   6. Extract one optional word-level signature signal from weighted motifs
 """
 import json
+import hashlib
 import math
 from pathlib import Path
 from collections import Counter
+
+if __package__:
+    from . import numeric
+    from .ledger import ALGORITHM_VERSION, ATTRIBUTION_SCHEMA_VERSION, build_attribution
+else:
+    import numeric
+    from ledger import ALGORITHM_VERSION, ATTRIBUTION_SCHEMA_VERSION, build_attribution
 
 # Load card metadata once at cold start
 _CARDS = None
@@ -36,11 +47,28 @@ def _load_cards():
     return _CARDS
 
 
+def fast_think_preferences(journals, *, include_open=False, config=None):
+    """Learn relative image preference; the four-axis routine below is v1 replay.
+
+    No personality labels or fixed four-axis coordinates enter this model.
+    The model's predictions and validation describe choices, not personality.
+    """
+    if __package__:
+        from . import preference_model
+    else:
+        import preference_model
+    checkpoint = preference_model.train(journals, config=config, include_open=include_open)
+    return {"model": checkpoint, "summary": preference_model.summarize(checkpoint)}
+
+
 def fast_think(
     selections: list,
     total_rounds: int,
     round_durations: list = None,
     deselection_events: list = None,
+    *,
+    selection_event_ids: list = None,
+    revision_event_ids: list = None,
 ) -> dict:
     """
     Args:
@@ -50,25 +78,41 @@ def fast_think(
                          duration from cards appearing to user clicking next/reveal
         deselection_events: [{"id": "NORN_0042", "round": 1}, ...]
                             selected cards the user later cancelled
+        selection_event_ids / revision_event_ids: optional event IDs in input
+                            order; snapshots receive stable derived IDs
 
     Returns:
         Structured analysis dict ready for template routing
     """
     cards = _load_cards()
 
-    revision = _build_choice_revision(deselection_events, total_rounds)
+    selection_ids = _event_ids("selection", selections, selection_event_ids)
+    revision_inputs = deselection_events if isinstance(deselection_events, list) else []
+    revision_ids = _event_ids("revision", revision_inputs, revision_event_ids)
+    if set(selection_ids) & set(revision_ids):
+        raise ValueError("Selection and revision event IDs must be globally unique")
+    valid_revisions = _valid_choice_revisions(deselection_events)
+    revision = _summarize_choice_revision(valid_revisions, total_rounds)
+    revision_rows = [
+        {"event_id": revision_ids[index], "card_id": event["id"], "round": event["round"]}
+        for index, event in valid_revisions
+    ]
 
     # ── Build duration lookup ──
     dur_map = {}
+    raw_dur_map = {}
     if round_durations:
         for rd in round_durations:
-            duration = max(0, min(int(rd["duration_ms"]), HESITATION_MAX_DURATION_MS))
+            raw_duration = int(rd["duration_ms"])
+            duration = max(0, min(raw_duration, HESITATION_MAX_DURATION_MS))
             dur_map[rd["round"]] = duration
+            raw_dur_map[rd["round"]] = raw_duration
 
     # ── Compute hesitation percentiles ──
     # Normalize durations to [0, 1] range within the session
     # Then map to a small bonus multiplier: top hesitation → 1.12×, quickest → 1.0×
     hesitation_bonus = {}
+    normalized_durations = {}
     if dur_map and len(dur_map) > 1:
         durations = list(dur_map.values())
         d_min = min(durations)
@@ -76,24 +120,56 @@ def fast_think(
         d_range = d_max - d_min if d_max > d_min else 1
         for rnd, dur in dur_map.items():
             normalized = (dur - d_min) / d_range   # 0 = fastest, 1 = slowest
+            normalized_durations[rnd] = normalized
             hesitation_bonus[rnd] = 1.0 + normalized * (HESITATION_MAX_BONUS - 1.0)
     else:
         # Single round or no duration data → uniform bonus
         for rnd in range(1, total_rounds + 1):
             hesitation_bonus[rnd] = 1.0
 
+    duration_normalization = {
+        "count": len(dur_map),
+        "min_ms": min(dur_map.values()) if dur_map else None,
+        "max_ms": max(dur_map.values()) if dur_map else None,
+        "range_ms": (max(dur_map.values()) - min(dur_map.values())) if dur_map else None,
+        "clamp_min_ms": 0,
+        "clamp_max_ms": HESITATION_MAX_DURATION_MS,
+        "maximum_multiplier": HESITATION_MAX_BONUS,
+    }
+    round_rows = []
+    for rnd in sorted(set(range(1, total_rounds + 1)) | set(dur_map)):
+        if rnd not in dur_map:
+            normalization = "missing_duration"
+        elif len(dur_map) <= 1:
+            normalization = "insufficient_durations"
+        elif duration_normalization["range_ms"] == 0:
+            normalization = "equal_durations"
+        else:
+            normalization = "session_min_max"
+        round_rows.append({
+            "round": rnd,
+            "raw_duration_ms": raw_dur_map.get(rnd),
+            "clamped_duration_ms": dur_map.get(rnd),
+            "duration_was_clamped": rnd in dur_map and raw_dur_map[rnd] != dur_map[rnd],
+            "normalization": normalization,
+            "normalized_duration": normalized_durations.get(rnd),
+            "hesitation_multiplier": hesitation_bonus.get(rnd, 1.0),
+        })
+
     # ── Compute per-selection weights ──
     # round_decay: exponential growth so later rounds dominate
     # w(r) = e^(r / total_rounds) normalized
     weighted_coords = {dim: 0.0 for dim in DIMS}
     total_weight = 0.0
+    total_base_weight = 0.0
+    selection_rows = []
     trait_counter = Counter()
     motif_counter = Counter()
     motif_coord_sums = {}
     weighted_selections = []
     scene_list = []
 
-    for sel in selections:
+    for index, sel in enumerate(selections):
         card_id = sel["id"]
         rnd = sel["round"]
 
@@ -102,14 +178,28 @@ def fast_think(
 
         card = cards[card_id]
 
-        w = _selection_weight(rnd, total_rounds, hesitation_bonus)
+        base_weight, hesitation_multiplier, w = _selection_weight_factors(
+            rnd, total_rounds, hesitation_bonus,
+        )
         weighted_selections.append((w, card_id))
+        selection_weighted_coords = {dim: card["coords"][dim] * w for dim in DIMS}
+        selection_rows.append({
+            "event_id": selection_ids[index],
+            "card_id": card_id,
+            "round": rnd,
+            "coords": dict(card["coords"]),
+            "base_weight": base_weight,
+            "hesitation_multiplier": hesitation_multiplier,
+            "weight": w,
+            "weighted_coords": selection_weighted_coords,
+        })
 
         # Accumulate weighted coordinates
         for dim in weighted_coords:
-            weighted_coords[dim] += card["coords"][dim] * w
+            weighted_coords[dim] += selection_weighted_coords[dim]
 
         total_weight += w
+        total_base_weight += base_weight
 
         # Accumulate layer 2 data (also weighted)
         for trait in card["traits"]:
@@ -129,10 +219,22 @@ def fast_think(
     # ── Compute averages ──
     if total_weight == 0:
         # Edge case: user selected nothing
-        return _empty_result(total_rounds, revision)
+        result = _empty_result(total_rounds, revision)
+        result["attribution"] = build_attribution(
+            total_rounds=total_rounds, total_weight=total_weight,
+            total_base_weight=total_base_weight, rounds=round_rows,
+            duration_normalization=duration_normalization, selections=selection_rows,
+            revision_events=revision_rows, revision=revision,
+            max_jp_nudge=REVISION_MAX_JP_NUDGE, actual_jp_delta=0.0,
+            pre_revision=dict(result["coords_avg"]),
+            unrounded_final=dict(result["coords_avg"]), final=dict(result["coords_avg"]),
+        )
+        return result
 
     coords_avg = {dim: v / total_weight for dim, v in weighted_coords.items()}
-    coords_avg["J_P"] -= revision["strength"] * REVISION_MAX_JP_NUDGE
+    pre_revision = dict(coords_avg)
+    revision_jp_nudge = revision["strength"] * REVISION_MAX_JP_NUDGE
+    coords_avg["J_P"] -= revision_jp_nudge
 
     # ── Derive MBTI type ──
     mbti_letters = {
@@ -186,10 +288,19 @@ def fast_think(
     # ── Signature Signal: the single most specific, concrete item ──
     signature_signal = _pick_signature_signal(motif_counter, motif_coord_sums, coords_avg)
 
+    final_coords = {k: round(v, 2) for k, v in coords_avg.items()}
+    attribution = build_attribution(
+        total_rounds=total_rounds, total_weight=total_weight,
+        total_base_weight=total_base_weight, rounds=round_rows,
+        duration_normalization=duration_normalization, selections=selection_rows,
+        revision_events=revision_rows, revision=revision,
+        max_jp_nudge=REVISION_MAX_JP_NUDGE, actual_jp_delta=-revision_jp_nudge,
+        pre_revision=pre_revision, unrounded_final=coords_avg, final=final_coords,
+    )
     return {
         "mbti_type": mbti_type,
         "confidence": confidence,
-        "coords_avg": {k: round(v, 2) for k, v in coords_avg.items()},
+        "coords_avg": final_coords,
         "top_traits": top_traits,
         "top_motifs": top_motifs,
         "scenes": scene_list,
@@ -199,13 +310,18 @@ def fast_think(
         "total_selections": len(selections),
         "total_rounds": total_rounds,
         "choice_revision": revision,
+        "attribution": attribution,
     }
 
 
 def _build_choice_revision(deselection_events, total_rounds):
+    return _summarize_choice_revision(_valid_choice_revisions(deselection_events), total_rounds)
+
+
+def _valid_choice_revisions(deselection_events):
     valid_events = []
     if isinstance(deselection_events, list):
-        for event in deselection_events:
+        for index, event in enumerate(deselection_events):
             if not isinstance(event, dict):
                 continue
             try:
@@ -213,10 +329,14 @@ def _build_choice_revision(deselection_events, total_rounds):
             except (TypeError, ValueError):
                 continue
             if rnd > 0:
-                valid_events.append({"id": str(event.get("id", "")), "round": rnd})
+                valid_events.append((index, {"id": str(event.get("id", "")), "round": rnd}))
+    return valid_events
+
+
+def _summarize_choice_revision(valid_events, total_rounds):
 
     total = len(valid_events)
-    rounds_touched = len({event["round"] for event in valid_events})
+    rounds_touched = len({event["round"] for _, event in valid_events})
     rate = total / max(int(total_rounds or 1), 1)
     strength = min(rate / 1.5, 1.0)
 
@@ -239,13 +359,33 @@ def _build_choice_revision(deselection_events, total_rounds):
 
 
 def _selection_weight(round_number, total_rounds, hesitation_bonus):
-    round_decay = math.exp(round_number / max(total_rounds, 1))
-    return round_decay * hesitation_bonus.get(round_number, 1.0)
+    return _selection_weight_factors(round_number, total_rounds, hesitation_bonus)[2]
+
+
+def _selection_weight_factors(round_number, total_rounds, hesitation_bonus):
+    round_decay = numeric.exp(round_number / max(total_rounds, 1))
+    multiplier = hesitation_bonus.get(round_number, 1.0)
+    return round_decay, multiplier, round_decay * multiplier
+
+
+def _event_ids(kind, entries, provided):
+    if provided is not None:
+        if (not isinstance(provided, list) or len(provided) != len(entries)
+                or any(not isinstance(item, str) or not item for item in provided)
+                or len(set(provided)) != len(provided)):
+            raise ValueError(f"{kind}_event_ids must uniquely identify each input item")
+        return list(provided)
+    ids = []
+    for index, entry in enumerate(entries):
+        canonical = json.dumps(entry, sort_keys=True, ensure_ascii=False, separators=(",", ":"))
+        digest = hashlib.sha256(canonical.encode("utf-8")).hexdigest()[:16]
+        ids.append(f"legacy.{kind}.{index + 1}.{digest}")
+    return ids
 
 
 def _cosine_similarity(a, b):
-    mag_a = math.sqrt(sum(a.get(dim, 0) ** 2 for dim in DIMS))
-    mag_b = math.sqrt(sum(b.get(dim, 0) ** 2 for dim in DIMS))
+    mag_a = numeric.sqrt(sum(a.get(dim, 0) ** 2 for dim in DIMS))
+    mag_b = numeric.sqrt(sum(b.get(dim, 0) ** 2 for dim in DIMS))
     if mag_a == 0 or mag_b == 0:
         return 0.0
     dot = sum(a.get(dim, 0) * b.get(dim, 0) for dim in DIMS)
