@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1280" height="560" viewBox="0 0 1280 560" role="img" aria-labelledby="title desc">
-<title id="title">The Norn Machine · Choices and predictions</title>
-<desc id="desc">Choose pictures, let the loom predict, then revisit your picks in a selection recap. Baseline, learning and optional Jev bars are illustrative, not research results.</desc>
+<title id="title">The Norn Machine · Last Card</title>
+<desc id="desc">Explore at your pace, choose a final favourite after the loom seals its guess, and take home an authored character. Original vector illustration, not a performance result.</desc>
 <defs>
   <radialGradient id="night"><stop stop-color="#25221e" stop-opacity=".75"/><stop offset=".75" stop-color="#111117" stop-opacity=".45"/><stop offset="1" stop-color="#09090f" stop-opacity="0"/></radialGradient>
   <linearGradient id="edge" x2="0" y2="1"><stop stop-color="#cfb57c" stop-opacity=".58"/><stop offset="1" stop-color="#cfb57c" stop-opacity=".16"/></linearGradient>
@@ -24,15 +24,15 @@
   <g transform="translate(61 42)" stroke="#cfb57c" fill="none" stroke-width="1.1"><path d="M0-12 10 6-10 6ZM0-5V13M-10 6 0 0 10 6"/><circle r="16" stroke-opacity=".35"/></g>
   <text x="88" y="47" fill="#cfb57c" font-size="12" letter-spacing="3.2">NORN / 命运织机</text>
   <path d="M1142 41H1219" stroke="#cfb57c" stroke-opacity=".3"/>
-  <text x="58" y="110" fill="#ad9d7e" font-size="12" letter-spacing="1.8">A PICTURE-SELECTION GAME</text>
+  <text x="58" y="110" fill="#ad9d7e" font-size="12" letter-spacing="1.8">THE LAST CARD</text>
   <g font-family="Georgia, 'Songti SC', 'Noto Serif CJK SC', serif" fill="#f0e8d7">
     <text x="54" y="183" font-size="70">The Norn</text>
     <text x="56" y="249" font-size="70" fill="#f0e8d7">Machine.</text>
   </g>
-  <text x="58" y="300" font-size="21" fill="#d9cdb5">Pick pictures. Test the loom’s guesses.</text>
-  <text x="58" y="331" font-size="19" fill="#a9a7aa">Your picks, revisited.</text>
+  <text x="58" y="300" font-size="21" fill="#d9cdb5">Follow your eye. Make the loom guess.</text>
+  <text x="58" y="331" font-size="19" fill="#a9a7aa">Meet the character in your choices.</text>
   <path d="M58 361H142" stroke="#cfb57c" stroke-opacity=".45"/>
-  <text x="58" y="394" font-size="14" fill="#929096">Pick one, several, or none.</text>
+  <text x="58" y="394" font-size="14" fill="#929096">A favourite. A story. A card to share.</text>
   <g fill="none" stroke="#cfb57c" stroke-opacity=".25"><rect x="58" y="424" width="84" height="28" rx="14"/><rect x="151" y="424" width="110" height="28" rx="14"/><rect x="270" y="424" width="177" height="28" rx="14"/></g>
   <g fill="#bfb5a2" font-size="11.5" text-anchor="middle"><text x="100" y="442">EN / 中文</text><text x="206" y="442">Offline-ready</text><text x="358.5" y="442">Sharing is your choice</text></g>
 
@@ -59,19 +59,19 @@
   </g>
 
   <g font-family="Georgia, 'Songti SC', serif" fill="#dccaa6" font-size="18" text-anchor="middle">
-    <text x="671" y="371">Choose</text><text x="906" y="371">The loom guesses</text><text x="1130" y="371">Selection recap</text>
+    <text x="671" y="371">Choose</text><text x="906" y="371">Sealed guess</text><text x="1130" y="371">Your character</text>
   </g>
   <g fill="#857c6c" font-size="10" letter-spacing="1.6" text-anchor="middle"><text x="671" y="391">01</text><text x="906" y="391">02</text><text x="1130" y="391">03</text></g>
 
   <path d="M570 417H1217" stroke="#cfb57c" stroke-opacity=".15"/>
-  <text x="577" y="444" fill="#b1a082" font-size="10" letter-spacing="1.2">X-RAY · REPLAY EACH PREDICTION</text>
+  <text x="577" y="444" fill="#b1a082" font-size="10" letter-spacing="1.2">LAST CARD · ONE FINALE, A REAL REVEAL</text>
   <g font-size="10.5" fill="#b7b1a6">
-    <text x="577" y="469">Baseline</text><text x="785" y="469">Learning</text><text x="995" y="469">Jev · opt-in</text>
+    <text x="577" y="469">Sealed guess</text><text x="785" y="469">Character</text><text x="995" y="469">Local sharing</text>
   </g>
   <g stroke-width="5" stroke-linecap="round"><path d="M648 466H747M862 466H963M1100 466H1209" stroke="#25252c"/><path d="M648 466H686" stroke="#8e929d"/><path d="M862 466H922" stroke="#cfb57c"/><path d="M1100 466H1151" stroke="#82a69c" stroke-dasharray="3 5"/></g>
   <text x="1217" y="492" fill="#6e6b71" font-size="8.5" text-anchor="end" letter-spacing="1">ILLUSTRATIVE · NO PERFORMANCE CLAIM</text>
   <path d="M58 510H1222" stroke="#cfb57c" stroke-opacity=".16"/>
-  <text x="58" y="535" fill="#94856b" font-size="10" letter-spacing="1.6">CHOOSE → GUESS → REVIEW · A PICTURE-SELECTION GAME</text>
+  <text x="58" y="535" fill="#94856b" font-size="10" letter-spacing="1.6">EXPLORE → REVEAL → TAKE YOUR CHARACTER HOME</text>
   <g fill="#cfb57c"><circle cx="1200" cy="531" r="2"/><circle cx="1209" cy="531" r="2" opacity=".4"/><circle cx="1218" cy="531" r="2" opacity=".2"/></g>
 </g>
 </svg>

@@ -121,6 +121,7 @@ class NornHandler(BaseHTTPRequestHandler):
                 config = {"apiEndpoint": "/api", "provider": service.provider,
                           "offline": service.provider == "mock",
                           "collect": service.collection.enabled, "consentVersion": CONSENT_VERSION,
+                          "lastCard": service.deck is not None,
                           **({"deck": service.deck.name} if service.deck is not None else {})}
                 content = ("window.__NORN_CONFIG__ = " + json.dumps(config) + ";\n").encode("utf-8")
                 self._send(200, content, "application/javascript; charset=utf-8", head)
@@ -205,6 +206,10 @@ class NornHandler(BaseHTTPRequestHandler):
             if path.startswith("/api/jev/") and urlsplit(self.path).query:
                 raise RequestError("Jev endpoints do not accept query parameters")
             routes = {"/api/analyze": self.server.service.analyze, "/api/dialogue": self.server.service.dialogue,
+                      "/api/finale/start": self.server.service.finale_start,
+                      "/api/finale/choose": self.server.service.finale_choose,
+                      "/api/jev/finale": self._finale_jev,
+                      "/api/pacing": self.server.service.pacing,
                       "/api/replay": self.server.service.replay, "/api/preview": self.server.service.preview,
                       "/api/trajectory": self.server.service.trajectory,
                       "/api/feedback": self.server.service.record_feedback,
@@ -228,6 +233,17 @@ class NornHandler(BaseHTTPRequestHandler):
         except Exception:
             LOGGER.exception("http.unhandled_error")
             self._json(500, {"error": "本地服务暂时无法处理请求", "status": "internal_error"})
+
+    def _finale_jev(self, body):
+        service = self.server.service
+        plan = service.finale_jev_plan(body)
+        if plan.get("cached"):
+            return plan
+        try:
+            result = self.server.jev_live.predict(plan["body"])
+        except RequestError:
+            result = {"status": "failed", "provider_calls": 0}
+        return service.finale_settle_jev(plan["challenge_id"], result)
 
     def do_OPTIONS(self):
         self._json(405, {"error": "仅支持同源 GET 和 POST 请求"})

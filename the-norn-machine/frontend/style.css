@@ -1512,3 +1512,114 @@ html[lang^="en"] .xray-thumb.guess.hit::after { content: 'Picked'; }
 @media (min-width: 1100px) {
   body:has(#xray-toggle[aria-expanded="true"]) .play-feedback { right: calc(var(--xray-drawer-width) + 16px); }
 }
+
+/* The Last Card: one continuous game, then one committed finale. */
+.collect-choice { display:flex; align-items:flex-start; gap:10px; max-width:470px; margin:6px auto; padding:12px 14px; border:1px solid rgba(201,168,76,.2); border-radius:8px; font-size:12px; line-height:1.65; text-align:left; color:var(--silver); cursor:pointer; }
+.collect-choice input { flex:0 0 auto; width:17px; height:17px; margin-top:2px; accent-color:var(--gold); }
+.choice-detail { display:block; color:var(--text-secondary); font-size:11px; margin-top:4px; }
+.jev-entry-choice { border-color:rgba(184,157,210,.22); }
+.game-progress { flex-basis:100%; text-align:center; color:var(--silver); font-size:12px; letter-spacing:.03em; margin-top:-15px; }
+.btn.recommended { border-color:var(--gold); box-shadow:0 0 22px rgba(201,168,76,.15); }
+.finale-overlay { position:fixed; inset:0; z-index:2010; overflow:auto; overscroll-behavior:contain; background:radial-gradient(ellipse at 50% 30%,#24202b 0%,#10101c 44%,#0a0a14 78%); padding:100px 24px 42px; }
+.finale-stage { max-width:1040px; margin:auto; text-align:center; }
+.finale-kicker { color:var(--gold-dim); font-size:10px; letter-spacing:.3em; margin-bottom:17px; }
+.finale-stage h2 { color:#e1c98f; font:normal clamp(25px,3vw,40px)/1.35 var(--font-serif); letter-spacing:.08em; }
+.finale-stage h2:focus { outline:none; }
+.finale-description { max-width:640px; margin:18px auto 30px; line-height:1.9; font-size:14px; color:#b6adbd; }
+.finale-seal { width:108px; height:108px; border-radius:50%; border:1px solid rgba(201,168,76,.5); margin:70px auto; display:grid; place-items:center; font-size:40px; color:var(--gold); box-shadow:0 0 50px rgba(201,168,76,.13); animation:sealBreathe 2.4s ease-in-out infinite; }
+@keyframes sealBreathe { 50% { box-shadow:0 0 65px rgba(201,168,76,.27); transform:scale(1.04); } }
+.finale-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:17px; margin:18px auto 22px; max-width:960px; }
+.finale-card { position:relative; display:block; width:100%; aspect-ratio:3/4; padding:0; background:#14141f; border:1px solid rgba(255,255,255,.15); border-radius:10px; cursor:pointer; overflow:hidden; transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease; }
+.finale-card img { display:block; width:100%; height:100%; object-fit:cover; }
+.finale-card:disabled { cursor:default; opacity:1; }
+.finale-card:not(:disabled):hover { transform:translateY(-5px); border-color:#9b8554; }
+.finale-card:focus-visible,.finale-actions button:focus-visible,.share-panel button:focus-visible { outline:2px solid var(--gold); outline-offset:4px; }
+.finale-card.selected { border:2px solid #e7c66e; box-shadow:0 0 30px rgba(201,168,76,.27); }
+.finale-card.predicted { outline:2px solid #b69bd3; outline-offset:3px; }
+.finale-card.selected.predicted { outline-color:var(--gold); }
+.finale-card-number { position:absolute; top:9px; left:10px; color:#fff8e8; text-shadow:0 1px 4px #000; font:11px var(--font-serif); letter-spacing:.1em; }
+.finale-card-badge { position:absolute; padding:5px 8px; font:11px/1.4 var(--font-sans); left:7px; right:7px; text-align:center; color:#eee6d3; background:rgba(15,14,24,.9); border-radius:4px; }
+.finale-card-badge.chosen { bottom:9px; color:#e9c86f; }
+.finale-card-badge.predicted { top:8px; left:auto; color:#d5bcea; }
+.finale-status { min-height:2em; color:var(--silver); font-size:12px; line-height:1.8; margin:18px auto 10px; max-width:660px; }
+.finale-actions { display:flex; justify-content:center; gap:12px; flex-wrap:wrap; margin-top:10px; }
+.finale-actions .btn-start { margin:0; font-size:14px; min-width:220px; }
+.finale-proof { max-width:520px; margin:22px auto 9px; font-size:10px; color:#797482; }
+.finale-proof summary { cursor:pointer; min-height:30px; line-height:30px; }
+.finale-proof p { word-break:break-all; white-space:pre-wrap; text-align:left; padding:8px; }
+.finale-stage>.btn-quiet { margin-top:12px; font-size:11px; color:#91889b; }
+.persona-card { width:min(100%,580px); }
+.persona-card .persona-eyebrow { font-size:10px; letter-spacing:.18em; color:var(--gold-dim); margin:0 0 8px; }
+.persona-card .persona-title { font:normal clamp(26px,4vw,38px)/1.35 var(--font-serif); color:#e3cc96; margin:0 0 12px; }
+.persona-card .persona-tagline { color:#d7ccba; font-size:14px; line-height:1.8; margin:0 auto 22px; max-width:480px; }
+.persona-image { display:block; width:100%; height:340px; object-fit:contain; background:rgba(255,255,255,.025); border-radius:8px; border:1px solid rgba(201,168,76,.2); }
+.persona-card .persona-outcome { font-size:12px; color:#cdb77f; margin:16px 0 6px; }
+.persona-card .persona-jev { display:block; color:#c6addc; margin-bottom:9px; }
+.persona-card .persona-disclaimer { display:block; font:10px/1.7 var(--font-sans); color:#8d8793; max-width:450px; margin:8px auto 0; }
+.share-panel { margin:5px auto 20px; }
+.share-panel>div { display:flex; justify-content:center; align-items:center; gap:8px 18px; flex-wrap:wrap; }
+.share-panel p { font-size:11px; min-height:1.7em; overflow-wrap:anywhere; }
+body:has(#finale-overlay:not([hidden])) .runtime-notice { z-index:2020; }
+body:has(#finale-overlay:not([hidden])) .finale-overlay { right:0; }
+@media(min-width:1100px) {
+  body:has(#xray-toggle[aria-expanded="true"]) .finale-overlay { right:var(--xray-drawer-width); }
+  body:has(#xray-toggle[aria-expanded="true"]) .finale-grid { grid-template-columns:repeat(2,minmax(0,1fr)); max-width:520px; }
+}
+@media(max-width:768px) {
+  .finale-overlay { padding:104px 20px 30px; }
+  .finale-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px; max-width:490px; }
+  .finale-description { margin:13px auto 20px; font-size:13px; }
+  .finale-card { aspect-ratio:3/4; }
+  .finale-card-badge { font-size:10px; }
+  .finale-actions .btn-start { width:100%; min-height:48px; }
+  .finale-actions { max-width:490px; margin-inline:auto; }
+  .game-progress { margin-top:-8px; font-size:11px; padding-inline:12px; }
+  .persona-image { height:290px; }
+  .persona-card .persona-tagline { font-size:13px; }
+  .collect-choice { font-size:11px; padding:10px; }
+}
+@media(max-height:760px) and (max-width:480px) {
+  .finale-overlay { padding-top:94px; }
+  .finale-stage h2 { font-size:24px; }
+  .finale-grid { max-width:300px; gap:10px; }
+  .finale-description { margin-bottom:14px; font-size:12px; }
+  .finale-status { margin-top:12px; }
+}
+@media(prefers-reduced-motion:reduce) {
+  .finale-seal { animation:none; }
+  .finale-card { transition:none; }
+  .finale-card:not(:disabled):hover { transform:none; }
+}
+.finale-card-badge.jev { top:42px; bottom:auto; left:auto; color:#b2d3c8; }
+.xray-last-card { margin:6px 0 24px; border:1px solid rgba(201,168,76,.2); border-radius:10px; padding:15px; }
+.xray-last-card h3 { color:#dec997; font-weight:400; }
+.xray-finale-legend { display:flex; flex-wrap:wrap; gap:7px 13px; margin:13px 0 8px; }
+.xray-finale-lane { display:flex; align-items:center; gap:5px; min-width:0; font-size:10px; color:var(--silver); }
+.xray-finale-lane i { width:6px; height:6px; border-radius:50%; flex-shrink:0; background:#c9a84c; }
+.xray-finale-lane b { font-size:9px; font-weight:400; color:#c4bca8; padding-left:2px; }
+.xray-finale-lane.baseline i { background:#7e8596; }
+.xray-finale-lane.jev i { background:#b4a1d0; }
+.xray-finale-context { font-size:10px; line-height:1.7; color:#97919f; margin:7px 0 12px; overflow-wrap:anywhere; }
+.xray-finale-candidates { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px 10px; margin-top:12px; }
+.xray-finale-candidate { min-width:0; padding:6px 6px 10px; border:1px solid rgba(255,255,255,.08); border-radius:8px; background:rgba(255,255,255,.018); }
+.xray-finale-candidate.favourite { border-color:rgba(201,168,76,.65); background:rgba(201,168,76,.045); }
+.xray-finale-art { position:relative; height:110px; overflow:hidden; border-radius:4px; background:#101019; }
+.xray-finale-art img { display:block; width:100%; height:100%; object-fit:contain; }
+.xray-finale-number { position:absolute; top:5px; left:5px; font-size:9px; color:#e5ded0; text-shadow:0 1px 3px #000; }
+.xray-finale-favourite { position:absolute; right:4px; bottom:4px; max-width:calc(100% - 8px); padding:3px 5px; border-radius:3px; background:rgba(19,17,22,.92); color:#e7cd8d; font-size:9px; overflow-wrap:anywhere; }
+.xray-finale-guesses { min-height:23px; display:flex; align-items:center; flex-wrap:wrap; gap:3px 6px; padding:4px 0; }
+.xray-finale-guesses span { font-size:9px; line-height:1.5; color:#ddc784; }
+.xray-finale-guesses .jev { color:#c7b3e2; }
+.xray-finale-probability { display:grid; grid-template-columns:minmax(0,48px) minmax(8px,1fr) 27px; align-items:center; gap:4px; margin-top:6px; min-width:0; }
+.xray-finale-label { font-size:9px; line-height:1.3; color:#bcb3a4; overflow-wrap:anywhere; }
+.xray-finale-probability b { font-size:9px; font-weight:400; text-align:right; font-variant-numeric:tabular-nums; color:#d3cbbd; }
+.xray-finale-track { display:block; height:5px; background:rgba(255,255,255,.07); border-radius:3px; overflow:hidden; }
+.xray-finale-track i { display:block; height:100%; background:#c9a84c; border-radius:3px; }
+.xray-finale-probability.baseline .xray-finale-track i { background:#7e8596; }
+.xray-finale-probability.jev .xray-finale-track i { background:#b4a1d0; }
+@media(max-width:480px) {
+  .xray-last-card { padding:12px; }
+  .xray-finale-art { height:105px; }
+  .xray-finale-candidates { gap:10px 8px; }
+  .xray-finale-probability { grid-template-columns:minmax(0,44px) minmax(8px,1fr) 25px; gap:3px; }
+}

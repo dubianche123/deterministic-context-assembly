@@ -1045,3 +1045,103 @@ dimensions/digests and validation scope; the `norn-readme-refresh-partial-live-`
 reports retain each transport attempt. The separate `-assets-` report compares
 the four published browser files against source. No paid test was needed for
 this presentation update.
+
+
+## 37. The Last Card product loop — CodeX, 2026-10-22
+
+The owner asked for a fun, complete product rather than a request for free
+labelling. Last Card now connects real exploration to a sealed favourite guess,
+an authored personality character, three follow-up turns and a local PNG card.
+The same game supports optional, withdrawable research contribution. It is not
+a separate research/demo entry point.
+
+- There is no five-round gate. A visitor can finish after one completed round;
+  12 is a product/resource ceiling. `norn.pacing.v1` is an **untrained exploration
+  policy**, using completed history only. Offers have replayable probabilities,
+  draws and reasons. No terminal answer or prose enters that policy. The new
+  `scripts/evaluate_pacing.py` groups participants/visitors across a fixed
+  train/test split, retains missing-finale denominators, reports paired local,
+  baseline and covered Jev losses, and proposes an offline observational round
+  interval only with sufficient held-out coverage. No automatic loader or
+  causal policy-value claim was introduced; see `docs/pacing.md`.
+- Four uniformly sampled, genuinely unseen cards form the finale. The service
+  seals its own prediction, both probability lanes and exploration hashes
+  before exposing the candidates. The first vote, elapsed window, readiness,
+  hidden time, coarse layout and input are frozen in an idempotent choice
+  receipt. Private seals and choices survive actor recreation before a reading
+  exists. Changed votes return 409. A public hash is checked against rebuilt
+  model/profile scores, not accepted merely because it is self-consistent.
+- Jev is now selected by default when available, with a visible pre-entry
+  opt-out independent of research consent. It gets a `purpose: finale`
+  capability at entry with zero calls, then at most one attempt on the held-out
+  four cards. Its numerical input contains earlier completed rounds and the
+  new candidates, never their answer. The host persists its reservation before
+  I/O and hides the response until voting. Late outputs cannot regrade a vote.
+  Actor eight-attempt/30-minute, global 100/day, concurrency two, 15-second and
+  zero-automatic-retry bounds remain. This is separate from DeepSeek prose.
+- `norn.reading-intent.last-card.v1` supplies eight bilingual, authored
+  entertainment roles, actual favourite, contrasting exploration choices and
+  an invitation. The LLM can write a personality story even with no kept
+  exploration pictures; the story is not a measured psychological class. Real
+  hit/miss remains immutable. Old reading-intent system/task history bytes and
+  frozen research/model/event files were not changed. Terminal favourites are
+  independent sidecars, never extra training clicks or STOP events.
+- Consented open-round checkpoints still retain real choices and provisional
+  attention. Entering the finale additionally saves the latest sealed
+  exploration; a settled favourite is checkpointed before requesting prose.
+  One full reading record replaces the partial under the same visit ID.
+  Tombstones block late resurrection. Saving remains best-effort and cannot
+  guarantee delivery after a hard browser/process exit. New product cohorts
+  use `.last-card.v1` with an additional feedback-on suffix, so old frozen
+  `live-v3` readers exclude them as `other_deployment`.
+- X-Ray foregrounds the four-card terminal distribution and actual favourite.
+  Identical learning/reference distributions are merged visibly. Independent
+  Jev uses its own real bars; failed/pending/off results have no invented loss
+  or hit. Historical rolling predictions remain scrub-able below and are a
+  different target. All controls, observations, errors, roles and share posters
+  support English/Chinese and mobile. PNG generation stays on-device; an
+  invitation copies only the public site URL.
+
+Final verification and publication:
+
+- The complete final source run passed **812 tests / 1,403 subtests**, with
+  19 skips. An initial full run caught the offline-assets scanner treating the
+  clipboard invitation URL as an external bootstrap. The scanner now exempts
+  only that exact public invitation and the SVG namespace; lifecycle tests
+  verify clipboard-only behaviour. No actual network boundary was weakened.
+- A fresh Python 3.12 wheel install outside the checkout passed doctor 6/6,
+  module imports, both language lifecycles with three follow-ups and fourth
+  turn lock, immutable vote checks, and a network-blocking audit (zero network
+  attempts). The final rebuilt wheel matches **609 files** byte for byte,
+  including all 256 deck pictures and the final X-Ray frontend. SHA256:
+  `f680a644e51cfaf29781264a626640c13947d1a655c6918939c1ac116b4b5580`.
+- Real local browser checks found and fixed two gaps that fixtures initially
+  missed: unopened X-Ray must not break terminal rendering, and a one-round
+  Last Card must keep three dialogue turns rather than the legacy local cap.
+  Both now have regression cases. The four finale images wait for readiness;
+  mobile measures two rows/two columns without overflow. Actual UI downloads
+  produce 1200×1640 PNGs in their reading language. README photos were checked
+  for actual pixel dimensions; partial captures during viewport resizing were
+  replaced. Each complete X-Ray panel is 680×1750. Chinese and English reading
+  screenshots come from independent native-language readings.
+- Build, final prebuilt dry run and deployment succeeded. Worker
+  **`9b157b4e-b3c7-4020-a432-dea9f31b201e`** is live at the original URL with
+  existing secrets and bindings. The hosted Last Card check passed **19/19**:
+  one real Jev, one DeepSeek reading, one DeepSeek follow-up, zero judges and
+  no provider retries. Repeated seal/choice/reading IDs returned their receipts;
+  changed choice was rejected. The final choice was saved before prose, then
+  the full record replaced the partial. Its disposable visitor was withdrawn.
+- The independent legacy partial-record acceptance passed **37/37**, with
+  zero model calls and its own test visitors withdrawn. Published HTML, app,
+  locale and CSS bytes match the final sources. Browser inspection confirms
+  Jev checked by default, voluntary contribution unchecked, clear Typesafe
+  disclosure and the complete new welcome. Scrubbing the local replay changes
+  candidate pictures and training cutoff with no new requests.
+
+Evidence: `benchmarks/results/norn-last-card-release-20261022.json`,
+`norn-last-card-live-20261022.json`,
+`norn-last-card-legacy-partial-live-20261022.json` and
+`norn-last-card-live-assets-20261022.json`. These are synthetic integration and
+engineering checks, not human preference findings or proof of Jev superiority.
+No study data, thresholds, research locks or historical results were changed.
+The current pacing remains untrained; no learned candidate has been enabled.

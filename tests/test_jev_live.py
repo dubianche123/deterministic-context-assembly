@@ -65,6 +65,33 @@ class JevLiveTests(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(disabled.connection.execute("SELECT COUNT(*) FROM norn_jev_visits").fetchone()[0], 0)
         self.assertEqual(self.transport.calls, [])
 
+    async def test_finale_ticket_allows_one_late_prediction_and_idempotent_retry_only(self):
+        body = {**start_body("f" * 32), "purpose": "finale"}
+        ticket = self.live.start(body)["jev_session"]
+        self.assertEqual(self.live.start(body)["jev_session"], ticket)
+        self.assertEqual(self.transport.calls, [])
+        result = await self.predict(5, ticket=ticket)
+        self.assertEqual((result["status"], result["cutoff_rounds"], result["provider_calls"]), ("ok", 4, 1))
+        self.assertEqual((await self.predict(5, ticket=ticket))["provider_calls"], 0)
+        with self.assertRaises(RequestError) as second:
+            await self.predict(6, ticket=ticket)
+        self.assertEqual(second.exception.status, 409)
+        with self.assertRaises(RequestError):
+            self.live.start(start_body("f" * 32))
+        self.assertEqual(len(self.transport.calls), 1)
+
+    async def test_finale_failure_is_consumed_and_existing_visits_migrate_as_rolling(self):
+        columns = [row[1] for row in self.live.connection.execute("PRAGMA table_info(norn_jev_visits)")]
+        self.assertIn("purpose", columns)
+        self.assertEqual(self.live.connection.execute("SELECT purpose FROM norn_jev_visits WHERE ticket = ?", (self.ticket,)).fetchone()[0], "rolling")
+        ticket = self.live.start({**start_body("e" * 32), "purpose": "finale"})["jev_session"]
+        self.transport.fail = True
+        self.assertEqual((await self.predict(4, ticket=ticket))["status"], "failed")
+        self.assertEqual((await self.predict(4, ticket=ticket))["provider_calls"], 0)
+        with self.assertRaises(RequestError):
+            await self.predict(5, ticket=ticket)
+        self.assertEqual(len(self.transport.calls), 1)
+
     async def test_optin_is_play_only_and_bound_to_first_round(self):
         for fields in ({"enabled": False}, {"mode": "research"}, {"visitor": "must-not-be-accepted"},
                        {"deck": "old-deck"}, {"client_session": "invalid"}):

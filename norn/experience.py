@@ -51,29 +51,36 @@ def experience_extends(earlier, later):
             and earlier["exposures"] == later["exposures"][:len(earlier["exposures"])])
 
 
-def archive_cohort_fields(source_deployment, experience):
-    """Route the feedback intervention away from the original archive cohort.
+def archive_cohort_fields(source_deployment, experience, product=None):
+    """Route product and feedback interventions away from the original cohort.
 
     ``deployment`` is the historical reader's cohort routing label. A variant
     retains its actual host source separately, allowing the unchanged live-v3
     reader to fail closed as ``other_deployment`` while all observations remain
     in the archive. Off and old unspecified records retain their old shape.
     """
-    if experience is None or experience["round_feedback"] != "on":
+    from .product import PRODUCT_COHORT_SUFFIX, validate_product
+    if product is not None:
+        validate_product(product)
+    feedback = experience is not None and experience["round_feedback"] == "on"
+    if product is None and not feedback:
         return {"deployment": source_deployment}
     if type(source_deployment) is not str or not 1 <= len(source_deployment) <= 128:
-        raise ValueError("Feedback cohort requires a bounded source deployment")
-    return {"deployment": source_deployment + ROUND_FEEDBACK_COHORT_SUFFIX,
+        raise ValueError("Variant cohort requires a bounded source deployment")
+    return {"deployment": source_deployment
+            + (PRODUCT_COHORT_SUFFIX if product is not None else "")
+            + (ROUND_FEEDBACK_COHORT_SUFFIX if feedback else ""),
             "source_deployment": source_deployment}
 
 
 def validate_archive_cohort(record):
-    """Prevent an outbox/RPC write from mixing explicit-on data into old cohorts."""
+    """Prevent outbox/RPC writes from mixing game or feedback data into old cohorts."""
     experience = record.get("experience")
-    if experience is not None and experience["round_feedback"] == "on":
-        fields = archive_cohort_fields(record.get("source_deployment"), experience)
+    product = record.get("product")
+    if product is not None or (experience is not None and experience["round_feedback"] == "on"):
+        fields = archive_cohort_fields(record.get("source_deployment"), experience, product)
         if any(record.get(key) != value for key, value in fields.items()):
-            raise ValueError("Feedback-on record must retain its separate archive cohort")
+            raise ValueError("Product or feedback-on record must retain its separate archive cohort")
 
 
 def classify_round_feedback(record):

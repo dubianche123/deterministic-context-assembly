@@ -143,7 +143,7 @@ def validate_open_round(value, journal):
 
 
 def build_partial(journal, *, visitor, session, experiments=None, deployment="local", clock=time.time,
-                  open_round=None, experience=None):
+                  open_round=None, experience=None, product=None, finale=None, pacing=None):
     """A consented visit that has no reading yet: its journal so far, keyed by the session."""
     record = {
         "schema_version": PARTIAL_SCHEMA_VERSION,
@@ -159,14 +159,18 @@ def build_partial(journal, *, visitor, session, experiments=None, deployment="lo
     if open_round is not None:
         record["open_round"] = validate_open_round(open_round, journal)
     if experience is not None:
-        from .experience import archive_cohort_fields, validate_experience
+        from .experience import validate_experience
         record["experience"] = validate_experience(experience, journal)
-        record.update(archive_cohort_fields(deployment, record["experience"]))
+    _product_sidecars(record, product, finale, pacing)
+    if experience is not None or product is not None:
+        from .experience import archive_cohort_fields
+        record.update(archive_cohort_fields(deployment, record.get("experience"), record.get("product")))
     return record
 
 
 def build_record(bundle, generation, *, visitor, prompt_version=None, experiments=None,
-                 deployment="local", clock=time.time, language="zh", probe=None, experience=None):
+                 deployment="local", clock=time.time, language="zh", probe=None, experience=None,
+                 product=None, finale=None, pacing=None):
     """One finished reading: the raw journal is the learning fact; the rest
     identifies which code produced the reading. No derived profile is stored,
     so records stay usable after the scoring model changes. A pilot's
@@ -197,10 +201,26 @@ def build_record(bundle, generation, *, visitor, prompt_version=None, experiment
     if probe is not None:
         record["probe"] = deepcopy(probe)
     if experience is not None:
-        from .experience import archive_cohort_fields, validate_experience
+        from .experience import validate_experience
         record["experience"] = validate_experience(experience, bundle["journal"])
-        record.update(archive_cohort_fields(deployment, record["experience"]))
+    _product_sidecars(record, product, finale, pacing)
+    if experience is not None or product is not None:
+        from .experience import archive_cohort_fields
+        record.update(archive_cohort_fields(deployment, record.get("experience"), record.get("product")))
     return record
+
+
+def _product_sidecars(record, product, finale, pacing):
+    """Product observations may accompany either a pending or finished reading."""
+    if product is not None:
+        record["product"] = product
+    if finale is not None:
+        record["finale"] = finale
+    if pacing is not None:
+        record["pacing"] = pacing
+    if product is not None or finale is not None or pacing is not None:
+        from .product import validate_product_fields
+        validate_product_fields(record)
 
 
 class Collector:
@@ -326,11 +346,14 @@ def apply_operation(execute, operation):
                 or execute(SELECT_TOMBSTONE_SQL, "record", _barrier_token("record", visitor, identity))):
             return False
         from .experience import experience_extends, validate_archive_cohort, validate_experience
+        from .product import finale_extends, product_extends, validate_product_fields
+        from .pacing import trace_extends
         if "experience" in record:
             # The shared transaction boundary also validates outbox/RPC writes,
             # so another actor cannot bypass sidecar invariants.
             record["experience"] = validate_experience(record["experience"], record.get("journal"))
-            validate_archive_cohort(record)
+        validate_product_fields(record)
+        validate_archive_cohort(record)
         rows = execute(SELECT_RECORD_SQL, identity)
         if rows:
             owner, payload = rows[0]
@@ -344,11 +367,20 @@ def apply_operation(execute, operation):
                 return kind == "put" and _canonical(record) == payload
             if (not _prefix(previous["journal"], record["journal"])
                     or not _checkpoint_extends(previous, record)
-                    or not experience_extends(previous.get("experience"), record.get("experience"))):
+                    or not experience_extends(previous.get("experience"), record.get("experience"))
+                    or not product_extends(previous.get("product"), record.get("product"))
+                    or not finale_extends(previous.get("finale"), record.get("finale"))
+                    or not trace_extends(previous.get("pacing"), record.get("pacing"))):
+                return False
+            if previous.get("product") is not None and any(previous.get(key) != record.get(key)
+                    for key in ("deployment", "source_deployment")):
                 return False
             if kind == "put_partial" and _canonical(previous["journal"]) == _canonical(record["journal"]):
                 if (previous.get("open_round") == record.get("open_round")
-                        and previous.get("experience") == record.get("experience")):
+                        and previous.get("experience") == record.get("experience")
+                        and previous.get("product") == record.get("product")
+                        and previous.get("finale") == record.get("finale")
+                        and previous.get("pacing") == record.get("pacing")):
                     return True
             execute(UPDATE_RECORD_SQL, _canonical(record), record["consent_version"], identity)
             return True

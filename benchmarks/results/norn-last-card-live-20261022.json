@@ -1,0 +1,111 @@
+{
+  "schema_version": "norn.last-card-check.v1",
+  "base": "https://norn-machine.dubianche123.workers.dev",
+  "live": true,
+  "checks": {
+    "health": true,
+    "sealed_exploration_saved": true,
+    "jev_preentry_capability": true,
+    "hidden_sealed_forecast": true,
+    "four_unseen_cards": true,
+    "start_receipt_stable": true,
+    "jev_ready_without_answer_leak": true,
+    "receipt_opens_original_commitment": true,
+    "choice_retry_stable": true,
+    "choice_cannot_change": true,
+    "final_choice_saved_before_reading": true,
+    "terminal_choice_not_training": true,
+    "live_persona_reading": true,
+    "reading_preserves_seal": true,
+    "reading_retry_no_new_call": true,
+    "live_followup": true,
+    "full_record_replaces_partial": true,
+    "bounded_provider_calls": true,
+    "test_visitor_withdrawn": true
+  },
+  "provider_calls": {
+    "jev": 1,
+    "reading": 1,
+    "followup": 1
+  },
+  "scope": "Synthetic integration only; no human preference or model-quality conclusion.",
+  "http_calls": [
+    {
+      "route": "/api/health",
+      "status": 200
+    },
+    {
+      "route": "/api/record/partial",
+      "status": 200
+    },
+    {
+      "route": "/api/jev/start",
+      "status": 200
+    },
+    {
+      "route": "/api/finale/start",
+      "status": 200
+    },
+    {
+      "route": "/api/finale/start",
+      "status": 200
+    },
+    {
+      "route": "/api/jev/finale",
+      "status": 200
+    },
+    {
+      "route": "/api/finale/choose",
+      "status": 200
+    },
+    {
+      "route": "/api/finale/choose",
+      "status": 200
+    },
+    {
+      "route": "/api/finale/choose",
+      "status": 409
+    },
+    {
+      "route": "/api/archive/export",
+      "status": 200
+    },
+    {
+      "route": "/api/archive/export",
+      "status": 200
+    },
+    {
+      "route": "/api/analyze",
+      "status": 200
+    },
+    {
+      "route": "/api/analyze",
+      "status": 200
+    },
+    {
+      "route": "/api/dialogue",
+      "status": 200
+    },
+    {
+      "route": "/api/archive/export",
+      "status": 200
+    },
+    {
+      "route": "/api/archive/export",
+      "status": 200
+    },
+    {
+      "route": "/api/record/withdraw",
+      "status": 200
+    },
+    {
+      "route": "/api/archive/export",
+      "status": 200
+    },
+    {
+      "route": "/api/archive/export",
+      "status": 200
+    }
+  ],
+  "passed": true
+}

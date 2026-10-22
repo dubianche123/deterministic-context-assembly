@@ -66,10 +66,13 @@ class BudgetNamespace:
         async def reserve(attempt):
             return await actor().reserve(attempt)
 
+        async def reserve_jev(attempt):
+            return await actor().reserve_jev(attempt)
+
         async def release(attempt):
             return await actor().release(attempt)
 
-        return SimpleNamespace(reserve=reserve, release=release)
+        return SimpleNamespace(reserve=reserve, reserve_jev=reserve_jev, release=release)
 
 
 class CloudflareLiveEntryTests(unittest.IsolatedAsyncioTestCase):
@@ -235,6 +238,86 @@ class CloudflareLiveEntryTests(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(data(await self.fetch(f"/api/sessions/{key}/export")), exported)
         self.assertEqual(self.actor()._read_state()["model_calls_reserved"], 2)
         self.assertNotIn(SECRET, json.dumps(self.actor()._read_state()))
+
+    async def test_last_card_seal_choice_and_reading_survive_every_rpc_recreation(self):
+        from test_research_deck import session, research
+        from norn.finale import validate_result
+        from norn.product import PRODUCT_VERSION, PACING_POLICY_VERSION
+        self.env.NORN_DECK = "pamela-v1"
+        product = {"schema_version": PRODUCT_VERSION, "pacing_policy": PACING_POLICY_VERSION}
+        journal = session(research.RANDOM, rounds=2)
+        payload = {"journal": journal, "product": product, "challenge_id": "cf-last-card"}
+        opened = await self.fetch("/api/finale/start", "POST", payload)
+        self.assertEqual(opened.status, 200, opened.body)
+        public = data(opened)
+        self.assertFalse({"salt", "probabilities", "predicted_card_id", "journal"} & set(public))
+        self.assertEqual(data(await self.fetch("/api/finale/start", "POST", payload)), public)
+        self.assertEqual(self.calls, [], "Sealing and retrying must not generate prose")
+        self.assertIsNotNone(self.actor()._read_state(), "A seal without a reading must persist")
+        chosen = {"challenge_id": public["challenge_id"], "card_id": public["candidate_ids"][0],
+                  "elapsed_ms": 1900, "observation": {"ready_offset_ms": 400, "hidden_ms": 100,
+                  "layout": [[0, 0], [0, 1], [1, 0], [1, 1]], "input": "touch"}}
+        result_response = await self.fetch("/api/finale/choose", "POST", chosen)
+        self.assertEqual(result_response.status, 200, result_response.body)
+        result = data(result_response)
+        self.assertEqual(validate_result(result, journal), result)
+        self.assertEqual(data(await self.fetch("/api/finale/choose", "POST", chosen)), result)
+        changed = await self.fetch("/api/finale/choose", "POST", {**chosen, "card_id": public["candidate_ids"][1]})
+        self.assertEqual(changed.status, 409)
+        self.assertEqual(self.calls, [])
+        analysis = {"journal": journal, "product": product, "finale_id": public["challenge_id"],
+                    "language": "en", "request_id": "cf-last-card-reading"}
+        reading = await self.reading(analysis)
+        self.assertEqual(reading["finale"], result)
+        self.assertEqual(reading["persona"]["card_id"], chosen["card_id"])
+        self.assertEqual(reading["profile_hash"], result["profile_hash"])
+        self.assertEqual(reading["max_dialogue_turns"], 3)
+        self.assertEqual(data(await self.fetch("/api/analyze", "POST", analysis)), reading)
+        self.assertEqual(len(self.calls), 1)
+        dialogue = {"session_id": reading["session_id"], "user_message": "What is my blind spot?", "turn_id": "last-card-ask"}
+        reply = await self.fetch("/api/dialogue", "POST", dialogue)
+        self.assertEqual(reply.status, 200, reply.body)
+        self.assertEqual(len(self.calls), 2)
+        exported = data(await self.fetch(f"/api/sessions/{reading['session_id']}/export"))
+        self.assertEqual(exported["journal"], journal)
+        self.assertNotIn(chosen["card_id"], [e.get("card_id") for e in journal["events"]])
+        self.assertNotIn(SECRET, json.dumps(self.actor()._read_state()))
+
+    async def test_last_card_jev_is_hidden_single_attempt_and_durable_before_choice(self):
+        from test_research_deck import session, research
+        from test_jev_live import Transport
+        from norn.product import PRODUCT_VERSION, PACING_POLICY_VERSION
+        self.env.NORN_DECK = "pamela-v1"
+        self.env.NORN_JEV_API_KEY = SECRET
+        deck = research.load_deck("pamela-v1")
+        transport = Transport()
+        product = {"schema_version": PRODUCT_VERSION, "pacing_policy": PACING_POLICY_VERSION}
+        with patch("norn.cloud_provider._worker_transport", new=transport):
+            ticket_response = await self.fetch("/api/jev/start", "POST", {"enabled": True, "mode": "play",
+                "client_session": "a" * 32, "deck": deck.label, "purpose": "finale"})
+            self.assertEqual(ticket_response.status, 200, ticket_response.body)
+            self.assertEqual(transport.calls, [])
+            payload = {"journal": session(research.RANDOM, rounds=3), "product": product,
+                       "challenge_id": "cf-jev-finale", "jev_session": data(ticket_response)["jev_session"]}
+            opened = await self.fetch("/api/finale/start", "POST", payload)
+            self.assertEqual(opened.status, 200, opened.body)
+            public = data(opened)
+            body = {"challenge_id": public["challenge_id"]}
+            ready = await self.fetch("/api/jev/finale", "POST", body)
+            self.assertEqual(ready.status, 200, ready.body)
+            self.assertEqual(data(ready)["status"], "ready")
+            self.assertFalse({"probabilities", "predicted_card_id"} & set(data(ready)))
+            self.assertEqual(data(await self.fetch("/api/jev/finale", "POST", body))["provider_calls"], 0)
+            self.assertEqual(len(transport.calls), 1)
+            choice = await self.fetch("/api/finale/choose", "POST", {**body,
+                "card_id": public["candidate_ids"][0], "elapsed_ms": 1000})
+            self.assertEqual(choice.status, 200, choice.body)
+            self.assertEqual(data(choice)["jev"]["status"], "ok")
+            self.assertTrue(data(choice)["jev"]["hit"])
+            self.assertEqual((await self.fetch("/api/jev/finale", "POST", body)).status, 409)
+            self.assertEqual(len(transport.calls), 1)
+            self.assertEqual(self.calls, [], "A decision must not request prose")
+            self.assertNotIn(SECRET, json.dumps(data(choice)))
 
     async def test_v6_poisoned_snapshot_ledger_is_rejected_before_new_dispatch(self):
         from test_research_deck import session, research

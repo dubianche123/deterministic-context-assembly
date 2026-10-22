@@ -90,9 +90,12 @@ class OfflineAssetsTests(unittest.TestCase):
 
     def test_frontend_never_bootstraps_an_external_config(self):
         app = (FRONTEND / "app.js").read_text()
-        # An SVG namespace identifies the local DOM vocabulary; it never
-        # triggers a network request. All resource/API URLs remain local.
-        self.assertNotRegex(app.replace("http://www.w3.org/2000/svg", ""),
+        # The SVG namespace is local DOM vocabulary. The one public invitation
+        # URL is copied to the clipboard (covered by the Last Card lifecycle),
+        # never used to load config, images or a provider from the local game.
+        local_resources = app.replace("http://www.w3.org/2000/svg", "")
+        local_resources = local_resources.replace("https://norn-machine.dubianche123.workers.dev/", "")
+        self.assertNotRegex(local_resources,
                             r"https?://|cloudfront\.net|fonts\.googleapis")
 
 

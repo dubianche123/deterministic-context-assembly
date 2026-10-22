@@ -34,7 +34,7 @@ SECURITY_HEADERS = {
     "X-Frame-Options": "DENY",
     "Content-Security-Policy": "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self'; media-src 'self'; object-src 'none'; base-uri 'none'; frame-ancestors 'none'",
 }
-POST_ROUTES = {"/api/analyze", "/api/dialogue", "/api/preview", "/api/replay", "/api/feedback", "/api/trajectory", "/api/record/withdraw", "/api/record/partial", "/api/jev/start", "/api/jev/predict"}
+POST_ROUTES = {"/api/analyze", "/api/dialogue", "/api/preview", "/api/replay", "/api/feedback", "/api/trajectory", "/api/record/withdraw", "/api/record/partial", "/api/jev/start", "/api/jev/predict", "/api/finale/start", "/api/finale/choose", "/api/jev/finale", "/api/pacing"}
 ARCHIVE_NAME = "records-v2"
 EXPORT_PAGE_MAX = 500
 
@@ -419,6 +419,29 @@ class NornSession(DurableObject):
         try:
             if query:
                 raise RequestError("Jev endpoints do not accept query parameters")
+            if method == "POST" and path == "/api/jev/finale":
+                async with self._lock:
+                    service = self._actor_service(self._read_state())
+                    plan = service.finale_jev_plan(body)
+                    if plan.get("cached"):
+                        return _json_response(plan)
+                    await self._persist(service)
+                remote_quota = self.env.NORN_BUDGET.getByName("jev-play-v1")
+                class FinaleQuota:
+                    async def reserve(inner, attempt):
+                        return await remote_quota.reserve_jev(attempt)
+                    async def release(inner, attempt):
+                        return await remote_quota.release(attempt)
+                try:
+                    result = await predict(self._jev, plan["body"], deck, usable_key,
+                        actor_id=str(self.ctx.id.toString()), quota=FinaleQuota())
+                except RequestError:
+                    result = {"status": "failed", "provider_calls": 0}
+                async with self._lock:
+                    service = self._actor_service(self._read_state())
+                    response = service.finale_settle_jev(plan["challenge_id"], result)
+                    await self._persist(service)
+                return _json_response(response)
             if method in ("GET", "HEAD") and path == "/api/jev/status":
                 return _json_response(status(usable_key), head=method == "HEAD")
             if method != "POST" or path not in ("/api/jev/start", "/api/jev/predict"):
@@ -530,21 +553,21 @@ class NornSession(DurableObject):
     async def _dispatch(self, method, path, query, body):
         from norn.service import RequestError
         head = method == "HEAD"
-        pure = path in ("/api/preview", "/api/replay", "/api/trajectory") and method == "POST"
+        pure = path in ("/api/preview", "/api/replay", "/api/trajectory", "/api/pacing") and method == "POST"
         # Pure work is deliberately detached from all persisted conversations.
         service = self._actor_service() if pure else self._actor_service(self._read_state())
-        mutates = method == "POST" and path in ("/api/analyze", "/api/dialogue", "/api/feedback")
+        mutates = method == "POST" and path in ("/api/analyze", "/api/dialogue", "/api/feedback", "/api/finale/start", "/api/finale/choose")
         try:
             if method == "POST":
-                allowed = {"/api/analyze": {"journal", "request_id", "consent", "visitor", "probe", "language", "session_key", "experience", "total_rounds", "selections", "deselection_events", "round_durations"},
+                allowed = {"/api/analyze": {"journal", "request_id", "consent", "visitor", "probe", "language", "session_key", "experience", "product", "finale_id", "total_rounds", "selections", "deselection_events", "round_durations"},
                            "/api/dialogue": {"session_id", "user_message", "turn_id"},
                            "/api/feedback": {"session_id", "reading_rating", "closest_card_id"},
                            "/api/record/withdraw": {"visitor", "record_id", "all"},
-                           "/api/record/partial": {"consent", "visitor", "session_key", "journal", "open_round", "experience"}}
+                           "/api/record/partial": {"consent", "visitor", "session_key", "journal", "open_round", "experience", "product"}}
                 if path in allowed and set(body) - allowed[path]:
                     raise HTTPError("请求包含不支持的字段")
                 # A rating only annotates a stored session: no model route.
-                if mutates and path != "/api/feedback":
+                if mutates and path in ("/api/analyze", "/api/dialogue"):
                     from norn.cloud_host import model_route, HostedGenerator
                     route = model_route(self.env)
                     if path == "/api/dialogue":
@@ -577,6 +600,8 @@ class NornSession(DurableObject):
                         return _json_response(settled["body"], settled["status"])
                     service.provider = "mock"
                 action = {"/api/analyze": service.analyze, "/api/dialogue": service.dialogue,
+                          "/api/finale/start": service.finale_start, "/api/finale/choose": service.finale_choose,
+                          "/api/pacing": service.pacing,
                           "/api/preview": service.preview, "/api/replay": service.replay,
                           "/api/feedback": service.record_feedback, "/api/trajectory": service.trajectory,
                           "/api/record/withdraw": service.withdraw_record,

@@ -34,7 +34,7 @@ _REFERENCE_CLARITY = {
 }
 
 
-def build_context(profile, deck, *, language="zh"):
+def build_context(profile, deck, *, language="zh", finale=None):
     """Scope product prose to the dataset's raters without changing frozen v6 math.
 
     Named prose fields and an observed-only product reading intent are adapted.
@@ -71,6 +71,9 @@ def build_context(profile, deck, *, language="zh"):
     block["style"] = portrait_style(language)
     context["canonical_block"] = canonical_json(block)
     context["context_hash"] = content_hash(block)
+    if finale is not None:
+        from .portrait import apply_last_card_context
+        return apply_last_card_context(context, profile, deck, finale, language)
     return context
 
 

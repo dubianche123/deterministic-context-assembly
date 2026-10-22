@@ -179,6 +179,139 @@ class NornService:
                 "offline": self.provider == "mock", "limits": self.limits.snapshot(),
                 "collection": self.collection.enabled}
 
+    def _finale_entry(self, scope, key):
+        if type(key) is not str or not 1 <= len(key) <= 128:
+            raise RequestError("Invalid finale capability")
+        with self.operations._lock:
+            entry = self.operations._entries.get((scope, key))
+            if entry is None or entry.expires_at <= self.operations.clock() or not entry.done or entry.error:
+                raise RequestError("This finale has expired; start a new game", 410)
+            return entry
+
+    def finale_start(self, body):
+        from .events import content_hash
+        from .product import validate_product
+        from .collection import requested_consent, session_key
+        from .experience import validate_experience
+        from .finale import create, public_challenge
+        allowed = {"journal", "challenge_id", "product", "jev_session", "consent", "visitor",
+                   "session_key", "experience", "language"}
+        if self.deck is None or type(body) is not dict or not {"journal", "challenge_id", "product"} <= set(body) or set(body) - allowed:
+            raise RequestError("Finale start needs a sealed exploration and product version")
+        try:
+            product = validate_product(body["product"], body["journal"])
+            _, visitor = requested_consent(body)
+            session = session_key(body["session_key"]) if visitor is not None and "session_key" in body else None
+            if visitor is not None and session is None:
+                raise ValueError("A contributing game requires its visit key")
+            if visitor is None and any(k in body for k in ("session_key", "experience")):
+                raise ValueError("Private games do not submit research sidecars")
+            ticket = body.get("jev_session")
+            if ticket is not None:
+                from .jev_live import _TICKET
+                if type(ticket) is not str or not _TICKET.fullmatch(ticket):
+                    raise ValueError("Invalid pre-entry Jev capability")
+            def seal():
+                private = create(body["journal"], self.deck, body["challenge_id"])
+                private.update(product=product, visitor=visitor, session_key=session)
+                if "experience" in body:
+                    private["experience"] = validate_experience(body["experience"], private["journal"])
+                if ticket is not None:
+                    private["jev_session"] = ticket
+                    private["jev"] = {"status": "pending", "provider_calls": 0}
+                return private
+            private = self.operations.execute("finale", body["challenge_id"], content_hash(body), seal)
+            return {**public_challenge(private), "product_version": product["schema_version"],
+                    "jev_status": private["jev"]["status"]}
+        except RequestError:
+            raise
+        except ValueError as exc:
+            raise RequestError(str(exc)) from exc
+
+    def finale_choose(self, body):
+        from .events import content_hash
+        from .finale import finish
+        if (type(body) is not dict or not {"challenge_id", "card_id", "elapsed_ms"} <= set(body)
+                or set(body) - {"challenge_id", "card_id", "elapsed_ms", "observation"}):
+            raise RequestError("Choose one sealed finale picture")
+        key = body["challenge_id"]
+        def choose():
+            entry = self._finale_entry("finale", key)
+            with entry.lock:
+                try:
+                    result = finish(entry.result, body["card_id"], body["elapsed_ms"], body.get("observation"))
+                except ValueError as exc:
+                    raise RequestError(str(exc)) from exc
+                self._collect_finale(entry.result, result)
+                return result
+        return self.operations.execute("finale-choice", key, content_hash(body), choose)
+
+    def _collect_finale(self, private, result):
+        if private.get("visitor") is None or not self.collection.enabled:
+            return
+        from .collection import build_partial
+        try:
+            record = build_partial(private["journal"], visitor=private["visitor"], session=private["session_key"],
+                experiments={"display": engine_module("research_deck").arm(private["journal"]),
+                             "deck": self.deck.name, "session_key": private["session_key"]},
+                deployment=self.deployment, experience=private.get("experience"),
+                product=private["product"], finale=result, pacing=private["pacing"])
+            self.collection.submit_partial(record)
+        except Exception as exc:
+            event(LOG, "finale.checkpoint_failed", logging.ERROR, error_type=type(exc).__name__)
+
+    def finale_jev_plan(self, body):
+        """Reserve one opponent attempt before I/O; the host persists this state."""
+        from .finale import jev_journal
+        if type(body) is not dict or set(body) != {"challenge_id"}:
+            raise RequestError("Jev finale needs only its sealed challenge")
+        key = body["challenge_id"]
+        with self.operations._lock:
+            if ("finale-choice", key) in self.operations._entries:
+                raise RequestError("Jev cannot predict after the final choice", 409)
+        entry = self._finale_entry("finale", key)
+        with entry.lock:
+            private = entry.result
+            if "jev_session" not in private:
+                raise RequestError("Jev was not enabled before this game", 403)
+            if private.get("jev_started"):
+                return {"cached": True, "status": "ready" if private["jev"]["status"] == "ok" else "failed",
+                        "provider_calls": 0, "challenge_id": key}
+            private["jev_started"] = True
+            return {"cached": False, "challenge_id": key,
+                    "body": {"jev_session": private["jev_session"], "journal": jev_journal(private, self.deck)}}
+
+    def finale_settle_jev(self, key, result):
+        from .jev import DEFAULT_MODEL
+        with self.operations._lock:
+            if ("finale-choice", key) in self.operations._entries:
+                return {"status": "late", "challenge_id": key, "provider_calls": result.get("provider_calls", 0)}
+        entry = self._finale_entry("finale", key)
+        with entry.lock:
+            cards = entry.result["candidate_ids"]
+            probs = result.get("probabilities")
+            status = "failed"
+            entry.result["jev"] = {"status": "failed", "model": DEFAULT_MODEL,
+                                   "provider_calls": result.get("provider_calls", 0)}
+            if (result.get("status") == "ok" and result.get("candidate_ids") == cards
+                    and type(probs) is list and len(probs) == 4):
+                highest = max(probs)
+                predicted = next(c for c, p in zip(cards, probs) if p == highest)
+                entry.result["jev"].update(status="ok", probabilities=deepcopy(probs), predicted_card_id=predicted)
+                status = "ready"
+            return {"status": status, "challenge_id": key, "provider_calls": result.get("provider_calls", 0)}
+
+    def pacing(self, body):
+        from .product import validate_product
+        from .pacing import trace
+        if self.deck is None or type(body) is not dict or set(body) != {"journal", "product"}:
+            raise RequestError("Pacing needs this game's exploration journal")
+        try:
+            validate_product(body["product"], body["journal"])
+            return trace(body["journal"], self.deck)
+        except ValueError as exc:
+            raise RequestError(str(exc)) from exc
+
     def _render(self, prompt, **kwargs):
         # Rendering is replaceable; it cannot mutate the deterministic profile.
         self.limits.enter(self.provider != "mock")
@@ -257,10 +390,11 @@ class NornService:
         try:
             has_experience = "experience" in body
             raw_experience = body.get("experience")
+            raw_product, finale_id = body.get("product"), body.get("finale_id")
             language = body.get("language", "zh")
             if language not in ("zh", "en"):
                 raise RequestError("language must be zh or en")
-            body = {key: value for key, value in body.items() if key not in {"language", "experience"}}
+            body = {key: value for key, value in body.items() if key not in {"language", "experience", "product", "finale_id"}}
             body, visitor = requested_consent(body)
             if self.deck is not None:
                 from .collection import session_key
@@ -274,6 +408,21 @@ class NornService:
                 from .experience import validate_experience
                 if has_experience:
                     plan["experience"] = validate_experience(raw_experience, plan["bundle"]["journal"])
+                if raw_product is not None or finale_id is not None:
+                    from .product import validate_product
+                    product = validate_product(raw_product, plan["bundle"]["journal"])
+                    result = deepcopy(self._finale_entry("finale-choice", finale_id).result)
+                    private = self._finale_entry("finale", finale_id).result
+                    if (result["events_hash"] != plan["bundle"]["profile"]["events_hash"]
+                            or result["profile_hash"] != plan["bundle"]["profile"]["profile_hash"]
+                            or product != private["product"] or visitor != private.get("visitor")
+                            or session != private.get("session_key")
+                            or plan.get("experience") != private.get("experience")):
+                        raise RequestError("The reading must preserve its sealed game and privacy choice", 409)
+                    from .research_inspection import build_context
+                    context = build_context(plan["bundle"]["profile"], self.deck, language=language, finale=result)
+                    plan.update(context=context, prompt=build_analysis_prompt(context), generation=None, limit=3,
+                                product=product, finale=result, pacing=result["pacing"])
                 return plan
             probe = body.get("probe")
             body = {key: value for key, value in body.items() if key != "probe"}
@@ -294,6 +443,8 @@ class NornService:
                 bundle = build_replay_bundle(build_snapshot_profile(request, algorithm_version=self.algorithm_version))
             from .experience import validate_experience
             experience = validate_experience(raw_experience, bundle.get("journal")) if has_experience else None
+        except RequestError:
+            raise
         except ValueError as exc:
             raise RequestError(str(exc)) from exc
         versioned = bundle["profile"]
@@ -399,6 +550,9 @@ class NornService:
         if self.deck is not None:
             from .portrait import build_portrait
             response["portrait"] = build_portrait(versioned, self.deck, response["language"])
+            if plan.get("finale") is not None:
+                response["finale"] = deepcopy(plan["finale"])
+                response["persona"] = deepcopy(plan["context"]["block"]["reading_intent"]["persona"])
         if ok:
             response["session_id"] = self.sessions.create(
                 analysis, generation["text"], limit, bundle, context=plan["context"],
@@ -422,7 +576,8 @@ class NornService:
                 visitor=plan["visitor"], prompt_version=plan["context"].get("prompt_version"),
                 experiments=plan["experiments"], deployment=self.deployment,
                 language=plan["context"]["block"].get("language", "zh"), probe=plan.get("probe"),
-                experience=plan.get("experience")))
+                experience=plan.get("experience"), product=plan.get("product"),
+                finale=plan.get("finale"), pacing=plan.get("pacing")))
         except Exception as exc:
             event(LOG, "record.store_failed", logging.ERROR, error_type=type(exc).__name__)
             return None
@@ -475,7 +630,7 @@ class NornService:
         from .collection import build_partial, requested_consent, session_key, validate_open_round
         from .events import replay_events
         required = {"consent", "visitor", "session_key", "journal"}
-        if not isinstance(body, dict) or not required <= set(body) or set(body) - required - {"open_round", "experience"}:
+        if not isinstance(body, dict) or not required <= set(body) or set(body) - required - {"open_round", "experience", "product"}:
             raise RequestError("中途记录必须包含 consent, visitor, session_key, journal，可选 open_round、experience")
         if self.deck is None or not self.collection.enabled:
             return {"stored": False}
@@ -490,7 +645,7 @@ class NornService:
         except ValueError as exc:
             raise RequestError(str(exc)) from exc
         events = canonical["events"]
-        if any(event["type"] == "session_completed" for event in events):
+        if any(event["type"] == "session_completed" for event in events) and "product" not in body:
             raise RequestError("已揭示的会话请提交完整记录")
         if any(event["display"]["deck"] != self.deck.label for event in events if event["type"] == "round_started"):
             raise RequestError("这份记录来自另一版研究牌库")
@@ -498,11 +653,15 @@ class NornService:
             open_round = validate_open_round(body.get("open_round"), canonical)
             from .experience import validate_experience
             experience = validate_experience(body["experience"], canonical) if "experience" in body else None
+            from .product import validate_product
+            product = validate_product(body["product"], canonical) if "product" in body else None
+            from .pacing import trace
+            pacing = trace(canonical, self.deck) if product is not None else None
         except ValueError as exc:
             raise RequestError(str(exc)) from exc
         record = build_partial(canonical, visitor=visitor, session=session, deployment=self.deployment,
                                experiments={"display": research.arm(canonical), "deck": self.deck.name},
-                               open_round=open_round, experience=experience)
+                               open_round=open_round, experience=experience, product=product, pacing=pacing)
         stored = self.collection.submit_partial(record)
         event(LOG, "record.partial", rounds=sum(e["type"] == "round_started" for e in events), stored=bool(stored))
         return {"stored": bool(stored)}
@@ -592,7 +751,7 @@ class NornService:
     def preview(self, body):
         """Pure event-prefix projection: never seal facts, create sessions or render."""
         if self.deck is not None:
-            if (not isinstance(body, dict) or "journal" not in body or set(body) - {"journal", "compact"}
+            if (not isinstance(body, dict) or "journal" not in body or set(body) - {"journal", "compact", "product"}
                     or "compact" in body and type(body["compact"]) is not bool):
                 raise RequestError("预览请求必须包含 journal，可选 compact 必须为布尔值")
             from .research_inspection import validated
@@ -602,8 +761,11 @@ class NornService:
                 with numeric.use(numeric.NATIVE_CONTRACT):
                     profile = engine_module("research_deck").build_profile(replay["journal"], self.deck,
                                                                            replay["events_hash"])
-                return self._inspection(profile, replay["journal"], complete=replay["complete"],
-                                        compact=body.get("compact", False))
+                result = self._inspection(profile, replay["journal"], complete=replay["complete"],
+                                          compact=body.get("compact", False))
+                if "product" in body:
+                    result["pacing"] = self.pacing({"journal": body["journal"], "product": body["product"]})
+                return result
             except ValueError as exc:
                 raise RequestError(str(exc)) from exc
         numeric = engine_module("numeric")

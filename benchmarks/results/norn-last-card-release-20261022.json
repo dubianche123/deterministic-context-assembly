@@ -1,0 +1,128 @@
+{
+  "schema_version": "norn.last-card-release.v1",
+  "date": "2026-10-22",
+  "worker_version": "9b157b4e-b3c7-4020-a432-dea9f31b201e",
+  "site": "https://norn-machine.dubianche123.workers.dev/",
+  "tests": {
+    "passed": 812,
+    "skipped": 19,
+    "subtests_passed": 1403,
+    "log": "/private/tmp/norn-last-card-full-final-tests.log"
+  },
+  "wheel": {
+    "python": "3.12.13",
+    "files_verified": 609,
+    "sha256": "f680a644e51cfaf29781264a626640c13947d1a655c6918939c1ac116b4b5580",
+    "offline_complete_flow_languages": [
+      "zh",
+      "en"
+    ],
+    "blocked_network_attempts": 0,
+    "final_assets_report": "/private/tmp/norn-last-card-wheel-sp73n_94/verification-final-assets.json"
+  },
+  "hosted_checks": {
+    "new_product": "norn-last-card-live-20261022.json",
+    "legacy_partial": "norn-last-card-legacy-partial-live-20261022.json",
+    "assets": "norn-last-card-live-assets-20261022.json"
+  },
+  "resource_ledger": {
+    "jev_calls": 1,
+    "deepseek_reading_calls": 1,
+    "deepseek_followup_calls": 1,
+    "judge_calls": 0,
+    "automatic_retries": 0,
+    "test_visitors_withdrawn": true,
+    "scope": "All other implementation, browser mock captures, tests, builds and package verification were offline or used provider test doubles."
+  },
+  "screenshots": [
+    {
+      "path": "docs/images/readme-en-finale.jpg",
+      "width": 1417,
+      "height": 1000,
+      "bytes": 75506,
+      "sha256": "44f799ee9616bdb17cea51ddf84236a16bcfe7e16a7c9d6cce4ba70e027c699c"
+    },
+    {
+      "path": "docs/images/readme-en-mobile.jpg",
+      "width": 390,
+      "height": 844,
+      "bytes": 59713,
+      "sha256": "d95b6729def28c207f7a8f7d841dabd28eb84f08fd74dab9700f55decc8e6e78"
+    },
+    {
+      "path": "docs/images/readme-en-recap.jpg",
+      "width": 1440,
+      "height": 1690,
+      "bytes": 144479,
+      "sha256": "770c188583f470a8b63b2f3b859a3fc58eb29fca7dff6ca4a76ee1fef70c5021"
+    },
+    {
+      "path": "docs/images/readme-en-selection.jpg",
+      "width": 1417,
+      "height": 1000,
+      "bytes": 69438,
+      "sha256": "5d5a999d42fb93a066c4ac1e4b0b5cd5cc7b43e9e425d82118a20d2748f6bccd"
+    },
+    {
+      "path": "docs/images/readme-en-share.png",
+      "width": 1200,
+      "height": 1640,
+      "bytes": 830383,
+      "sha256": "8034cf01873052a660dd23a9a8affc876418ec010ec6bf25c1968d0115bf48b8"
+    },
+    {
+      "path": "docs/images/readme-en-xray.jpg",
+      "width": 680,
+      "height": 1750,
+      "bytes": 114471,
+      "sha256": "476e95b7ded71b98c7951e0ad84e24a136d342057c5a25d9096a82fc8c786b1e"
+    },
+    {
+      "path": "docs/images/readme-zh-finale.jpg",
+      "width": 1417,
+      "height": 1000,
+      "bytes": 71273,
+      "sha256": "fac74c4815dfa2dc28244b747e4c1156760f0ca2e7203aff7c2d6ab1cd51259a"
+    },
+    {
+      "path": "docs/images/readme-zh-mobile.jpg",
+      "width": 390,
+      "height": 844,
+      "bytes": 42284,
+      "sha256": "875ff480eb9d4bd6e7bc98a79dd9a4907a48c702eaf637f5d3dd4a4b53f9ce25"
+    },
+    {
+      "path": "docs/images/readme-zh-recap.jpg",
+      "width": 1440,
+      "height": 1690,
+      "bytes": 114132,
+      "sha256": "5704d7f05cb09d49ed30eee287f920691d245efc729599b15b1924479c6841bc"
+    },
+    {
+      "path": "docs/images/readme-zh-selection.jpg",
+      "width": 1417,
+      "height": 1000,
+      "bytes": 66167,
+      "sha256": "68bd40e9e7a365acf8871f0903feb4697cd99f040b0b44a4a6a9532eb4d6c4bf"
+    },
+    {
+      "path": "docs/images/readme-zh-share.png",
+      "width": 1200,
+      "height": 1640,
+      "bytes": 944372,
+      "sha256": "0d9ec8f52e02b9af61e3e9e9ad6f9f61d597932540636ee316a1df49482446bc"
+    },
+    {
+      "path": "docs/images/readme-zh-xray.jpg",
+      "width": 680,
+      "height": 1750,
+      "bytes": 96038,
+      "sha256": "89f65ca3522100704a9e3d69c023b1451b8ae24bc09d52e91892574b024c9b80"
+    }
+  ],
+  "screenshot_scope": "Actual browser interactions, local --mock --no-collect; separate native reading sessions for EN and ZH. X-Ray is an entire single-language panel. Share PNGs downloaded through the real UI. Viewport-resize partial captures were caught via pixel-dimension inspection and replaced. Noninteractive layout observations are not evidence of human ML benefit.",
+  "documentation_links_valid": true,
+  "brand_svg_count": 6,
+  "brand_validation": "Native SVG XML/accessibility checks and full Sharp render review; 9/9 Archify companion topology checks. Browser rendering of the companion was unavailable, not claimed as passed.",
+  "pacing": "norn.pacing.v1 remains an untrained exploratory policy. The new grouped holdout tool can refuse training and cannot automatically deploy a candidate."
+}

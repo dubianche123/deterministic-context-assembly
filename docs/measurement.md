@@ -1,105 +1,120 @@
 # Measurement
 
-What Norn can measure about itself, how to read the numbers, and how many visitors each claim needs. The README stays light; this page is for deciding changes and for showing results outside.
+Norn is a product people can play, read, question and share. Measurement keeps
+its entertainment outcomes, predictive outcomes and research conclusions
+separate. The README states the research questions; this page records the
+interpretation and sampling boundaries.
 
-## Current PAM∃LA/v6 product
+## Current Last Card product
 
-Consent v4 also archives unfinished visits as `norn.partial.v1`. The journal
-now includes genuine readiness, selection and deselection events in the current
-open round. Optional `open_round` metadata samples elapsed/hidden time, readiness,
-cumulative seen cards and hover intervals without completing the round. Its
-attention values are provisional observations at the checkpoint, not a final
-round duration. Missing metadata is missing measurement, not zero attention.
+The public path is `norn.last-card.v1` on the PAM∃LA deck and frozen v6 engine.
+Exploration uses four pictures per round, followed by one held-out finale with
+four previously undealt pictures. A game has no fixed five-round threshold.
+After each completed exploration round, `norn.pacing.v1` may advise continuing
+or offer the finale; visitors can choose it themselves after one completed
+round. The ceiling of 12 rounds is a product/resource limit. The first pacing
+policy is exploratory, not trained, and does not certify that a personal
+preference has been learned.
 
-The browser checkpoints at each deal/readiness, debounces choice changes by
-500 ms, samples an active round every 10 seconds, and attempts a keepalive flush
-of at most 60 KiB on hiding or leaving. It keeps one latest pending snapshot;
-collection never blocks choosing. Browser termination, offline operation and
-oversized exit payloads can still lose the last interaction. The server accepts
-only a genuine event-prefix extension and monotone attention progress. A partial
-checkpoint never invents `round_completed`, STOP or a sealed choice outcome.
-The eventual real full record upgrades the same visit in place; late requests
-cannot resurrect a withdrawn identity. See [storage details](deployment.md#consented-anonymous-records).
+| Outcome | What the observation answers | Interpretation limit |
+| --- | --- | --- |
+| Completed exploration and finale | Did a contributing visitor stay for the reveal? | Private play leaves no archive, so this is not a denominator of every person who opened the site. |
+| Final favourite hit / conditional loss | Did a frozen predictor anticipate the favourite among four new candidates? | Score only settled, correctly bound challenges; compare all predictors on the same candidates and outcomes. |
+| Continue / offer-finale trace | What did the policy advise, with what probability and available history? | Advice acceptance is voluntary; a logged propensity alone does not establish optimal stopping or remove self-selection. |
+| Character rating and follow-up | Did the authored entertainment interpretation resonate or invite questions? | A story rating is not personality accuracy or validation of image-model weights. |
+| Local share-card download | Did this browser request a shareable file? | A download does not prove a message was sent, a friend saw it or a new player arrived. |
+| A later game | Did the same consenting browser return? | Browser identity is neither a person nor proof of stable preferences. |
 
-Generic reading reports/evaluations skip partial rows; the frozen live-v3
-research analysis uses them only for its declared end-of-visit question. This
-storage repair does not change its outcome definitions or train v6 on the open
-round. Do not silently mix partials into completed-reading denominators or turn
-a provisional current selection into a completed-round target.
+### What is frozen and what is held out
 
-The current product uses PAM∃LA/v6. Both entry options have a visual portrait
-of the pictures actually kept and an end-of-visit guessing recap. Local forecasts
-are committed from the earlier-round prefix before the current choices. Both
-entry paths default to hiding predictions until choosing is sealed. Round
-feedback is a separate switch inside X-Ray, off by default, available only before
-entry and locked once the visit starts. It is independent of archive consent
-and of the Jev switch. Private entry alone never enables immediate feedback.
+The learning journal describes exploration only. The server freezes that
+prefix/profile, then seals the local prediction before receiving the finale
+answer. The final favourite lives in `norn.finale.result.v1` outside the journal;
+it is not fed back into the model that predicted it. Uniformly sampled unseen
+candidates prevent the final set from being chosen using the eventual answer.
+The reference and effective v6 probabilities describe the same four pictures.
+When v6 falls back to the reference, their agreement is disclosed rather than
+counted as independent support. A salted tie-break creates an honest game
+choice; it does not establish personal information.
 
-Consented records preserve the feedback setting and actual visible exposures
-in a separate experience sidecar, outside the frozen choice journal/model.
-The `norn.experience.v1` sidecar records `round_feedback: "on" | "off"`
-and `exposures` entries with `after_round`, a feedback category
-(`hit`, `miss`, `unscored` or `blank`) and `elapsed_ms` since entry. Exposure is
-recorded only after a visible animation frame, once per completed round; hidden
-pages, off-screen feedback, sealed sessions and a narrow-screen X-Ray covering it do not
-count. This is browser-observed rendering, not proof that someone read it.
-New feedback-enabled visits are routed to a separate archive cohort by both
-partial and full builders: `deployment` becomes `<source>.round-feedback.v1`,
-while `source_deployment` preserves the actual host (`cloudflare`, for example).
-Here `deployment` is a cohort-routing label, not necessarily the hosting
-platform. Off and unspecified rows keep their original shape/deployment. SQL
-archive transactions reject an on row with the ordinary deployment label or a
-mismatched source/cohort. Raw observations remain stored, not discarded.
+The finale target differs from the historical rolling target, **first finally
+kept picture in an exploration round**, and from the post-reading “closest
+picture” answer. They must not share labels or denominators. Predictions that
+were unavailable, arrived after the answer, or lack an authentic pre-choice
+binding cannot be credited as timely guesses. A replay calculation cannot
+retroactively become a live prediction. No single game proves population
+accuracy, stable personality or a causal recommendation gain.
 
-**Frozen analysis boundary.** The existing live-v3 reader still does not
-understand the experience sidecar. Its existing deployment gate does, however,
-exclude the newly routed feedback-on cohort as `other_deployment`. A read-only
-synthetic check with current builders accepted explicit-off and unspecified
-rows and rejected the one on row for that reason; no research source or lock
-changed. Before this routing repair, a same-deployment on row would be included:
-this guarantee is about new builder output and validated archive writes, not
-unmarked historical data.
+### Pacing observations
 
-Missing settings in older rows remain `unspecified`, not confirmed-off. The
-old reader's acceptance of an unspecified row does not establish no exposure;
-interpret it under its documented build/consent contract. The explicit
-[`classify_round_feedback` / `filter_explicit_feedback_off`](../norn/experience.py)
-helpers support only-off preprocessing and on/unspecified/invalid exclusion
-counts when a separately approved analysis requires that stricter sample.
-They do not run automatically, amend eligibility or turn unknowns into off.
-Any study of the retained feedback cohort needs its own protocol; self-selected
-opt-ins do not establish a causal benefit. Feedback categories record what the
-UI displayed, not authenticated model-quality labels. Private visits leave no
-research record under either feedback setting.
+The product carries exactly
+`{schema_version: "norn.last-card.v1", pacing_policy: "norn.pacing.v1"}`.
+A separately stored `norn.pacing.v1` trace binds the true completed history and
+records the policy's action, reason, offer probability, reproducible draw,
+current evidence layer, selection count and active time. A passed predictive
+gate may trigger an offer; otherwise randomized offers explore possible
+stopping opportunities. The server recomputes the trace. It never reads the
+future favourite or LLM story to decide an earlier offer.
 
-X-Ray compares the reference-rater baseline with the effective learned model on
-the same completed-round picture set, using only earlier rounds to fit the
-predictor. Jev is off by default and requires a separate, pre-entry switch. It
-can run under either archive choice. It does not enable round feedback: when
-the feedback switch is off, results stay hidden until the end. Earlier choices
-and numerical candidate features then go to Typesafe; Jev probability outputs
-stay in the page rather than the research archive. Consented experience metadata
-records the round-feedback setting and actual feedback exposures. Neither
-switch changes collection consent. Do not infer a causal Jev benefit by
-comparing self-selected opt-ins.
-See [X-Ray's contract](xray.md) for targets, timely guessing credit, fixed-prefix
-imports and exposure limits. Historical v4/v5 evaluator descriptions below
-remain scoped to the original card catalog, not current-deck evidence.
+This data permits later, versioned work on the value of another round. A new
+study must predefine outcomes, account for voluntary stopping and selective
+completion, and distinguish an offer's effect from a player's own decision.
+The current policy is not presented as learned or optimal. Existing frozen
+research code and locks remain unchanged. See [the offline pacing report](pacing.md)
+for grouped holdout evaluation, censored visits and a candidate that requires
+separate review before activation.
 
-Card quantity is already recorded through the ordered `card_ids`: each round
-has 4, 5 or 6 cards independently of device layout. Derive planned count,
-loaded-at-readiness count and cumulative ever-seen count separately. Cumulative
-visibility is not simultaneous first-screen exposure. Layout snapshots are
-recorded at readiness and choices, but the current v6 scorer fits neither
-position effects nor an additional option-count/fatigue effect. Mixed-deal role
-composition also changes with card count, so quantity effects need to be
-separated from recommendation share and layout.
+### Jev, feedback and consent
 
-These facts do not require a duplicate `card_count` event field. First-screen
-exposure, coarse layout changes and explicit count-assignment probabilities are
-future protocol candidates; adding them requires a new frozen event contract.
+Last Card defaults Jev on where it is configured and available; a pre-entry
+control lets the visitor decline it. It is used only for one finale attempt,
+not every exploration round. Earlier choices and numerical candidate features
+are sent to Typesafe. Its own sealed result must arrive before the final
+choice to count. The 15-second/zero-auto-retry and shared actor/global limits
+remain in force. A configured DeepSeek call writes the character prose
+separately. Default availability and self-selected opt-outs do not establish
+a causal Jev benefit.
 
-## Data
+Exploration round feedback remains an independent pre-entry switch, off by
+default. `norn.experience.v1` records its immutable setting and genuinely
+visible feedback exposures, with `after_round`, category and `elapsed_ms`.
+A rendered exposure is not proof of attention. Missing historical settings
+remain unspecified. Collection consent is independent of both model and
+feedback controls; a private game gets the same rewards and leaves no
+research record.
+
+### Archive and protocol boundary
+
+Current product records carry `product`, `pacing` and any settled `finale`
+sidecars outside the frozen event/profile contract. They route to
+`<source>.last-card.v1`, or
+`<source>.last-card.v1.round-feedback.v1` with exploration feedback on;
+`source_deployment` retains the actual host. Both partial and full records
+follow the same cohort rule. SQL archive validation refuses conflicting
+product/version/cohort metadata, and a late request cannot resurrect a
+withdrawn record. The older frozen visitor reader excludes these new cohorts.
+Its old protocol is not reinterpreted as a study of the new game.
+
+Consent v4 continues to support `norn.partial.v1` checkpoints: the current
+round's real readiness, choices and revisions are saved without inventing a
+completion or STOP. Provisional `open_round` attention includes elapsed/hidden
+time, seen cards, readiness and hover. It is not a final duration. Choice
+changes are debounced by 500 ms, active rounds sampled every 10 seconds, and
+hiding/leaving attempts a keepalive flush no larger than 60 KiB. Collection
+never blocks a choice. Browser termination, offline state or oversized payloads
+can lose a last interaction. The final favourite may be stored before prose
+returns; the full reading upgrades the same visit. See [the gameplay contract](last-card.md)
+and [storage details](deployment.md#consented-anonymous-records).
+
+Exploration count, readiness count, ever-seen count and layout remain distinct.
+Current four-picture play does not create old measurements of simultaneous
+first-screen exposure or train an option-count/fatigue effect. The optional
+slot layer remains dormant on the current deck. Recording an observation and
+learning its effect are different stages.
+
+## Historical v4/v5 reporting tools
+
+The commands and outcome definitions below describe the earlier card catalog and its historical evaluation contracts. They do not automatically evaluate Last Card pacing, finale choices or character stories. New product cohorts require their own explicitly versioned analysis.
 
 Only consented records (`norn.record.v2`, see [deployment.md](deployment.md#consented-anonymous-records)) are measured. Each holds the raw event journal, the hashed browser `visitor_id` with a `visit` number, versions (scoring, prompt, model), experiment arms, and two optional annotations: the 1–5 rating with the "closest card" answer, and the number of follow-up turns. `records report` recomputes the historical **v4 raw reference**, with its model version explicit. `records evaluate` additionally compares the current local v5 policy as **`hybrid_guarded`**, fitted and gated only inside each training prefix; original `hybrid` still means v4. Existing reports and new-image rules are not relabeled. See [the guarded-policy validation](choice-policy.md).
 

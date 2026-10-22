@@ -45,7 +45,9 @@ def status(key):
 
 
 def validate_start(body, deck):
-    if (type(body) is not dict or set(body) != {"enabled", "mode", "deck", "client_session"}
+    if (type(body) is not dict or set(body) - {"enabled", "mode", "deck", "client_session", "purpose"}
+            or not {"enabled", "mode", "deck", "client_session"} <= set(body)
+            or body.get("purpose", "rolling") not in ("rolling", "finale")
             or body["enabled"] is not True or body["mode"] != "play"
             or type(body["client_session"]) is not str or not _CLIENT.fullmatch(body["client_session"])
             or deck is not None and body["deck"] != deck.label):
@@ -108,6 +110,9 @@ class JevStore:
             ticket TEXT NOT NULL, round INTEGER NOT NULL, fingerprint TEXT NOT NULL,
             state TEXT NOT NULL, created_at REAL NOT NULL, expires_at REAL NOT NULL,
             result_json TEXT, PRIMARY KEY(ticket, round))""")
+        columns = [_field(row, "name") for row in _rows(sql, "PRAGMA table_info(norn_jev_visits)")]
+        if "purpose" not in columns:
+            sql.exec("ALTER TABLE norn_jev_visits ADD COLUMN purpose TEXT NOT NULL DEFAULT 'rolling'")
 
     def _prune(self, now):
         self.sql.exec("DELETE FROM norn_jev_requests WHERE expires_at <= ?", now)
@@ -118,19 +123,19 @@ class JevStore:
         now = self.clock()
         def run():
             self._prune(now)
-            old = _rows(self.sql, "SELECT ticket, deck, expires_at FROM norn_jev_visits WHERE client_session = ?",
+            old = _rows(self.sql, "SELECT ticket, deck, expires_at, purpose FROM norn_jev_visits WHERE client_session = ?",
                         body["client_session"])
             if old:
                 row = old[0]
-                if _field(row, "deck") != deck.label:
+                if _field(row, "deck") != deck.label or _field(row, "purpose") != body.get("purpose", "rolling"):
                     raise RequestError("This Jev visit belongs to another deck", 409)
                 ticket, expiry = _field(row, "ticket"), _field(row, "expires_at")
             else:
                 if _field(_rows(self.sql, "SELECT COUNT(*) AS n FROM norn_jev_visits")[0], "n") >= MAX_CALLS:
                     raise RequestError("Too many active Jev play visits", 429)
                 ticket, expiry = secrets.token_urlsafe(32), now + TTL
-                self.sql.exec("INSERT INTO norn_jev_visits VALUES (?, ?, ?, ?, NULL)",
-                              ticket, body["client_session"], deck.label, expiry)
+                self.sql.exec("INSERT INTO norn_jev_visits (ticket, client_session, deck, expires_at, last_journal, purpose) VALUES (?, ?, ?, ?, NULL, ?)",
+                              ticket, body["client_session"], deck.label, expiry, body.get("purpose", "rolling"))
             return {"status": "ready", "jev_session": ticket, "expires_at": expiry,
                     "model": DEFAULT_MODEL, "provider": "typesafe", "limits": dict(LIMITS),
                     "provider_calls": 0}
@@ -142,7 +147,7 @@ class JevStore:
         now = self.clock()
         def run():
             self._prune(now)
-            rows = _rows(self.sql, "SELECT deck, expires_at, last_journal FROM norn_jev_visits WHERE ticket = ?", ticket)
+            rows = _rows(self.sql, "SELECT deck, expires_at, last_journal, purpose FROM norn_jev_visits WHERE ticket = ?", ticket)
             if not rows:
                 raise RequestError("This Jev play visit has expired", 410)
             visit = rows[0]
@@ -161,9 +166,11 @@ class JevStore:
                     "original_provider_calls": result["provider_calls"], "provider_calls": 0}}
             previous_journal = _field(visit, "last_journal")
             if previous_journal is None:
-                if plan["round"] != 1:
+                if plan["round"] != 1 and _field(visit, "purpose") != "finale":
                     raise RequestError("Jev can only join before the first round", 409)
             else:
+                if _field(visit, "purpose") == "finale":
+                    raise RequestError("This game has already used its single Jev finale", 409)
                 old = json.loads(previous_journal)
                 if (old["schema_version"] != plan["journal"]["schema_version"]
                         or old["events"] != plan["journal"]["events"][:len(old["events"])]):

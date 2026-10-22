@@ -202,7 +202,7 @@ def _operation(row):
     scope = row["scope"]
     if type(scope) is not str:
         raise ValueError("Actor operation scope must be a string")
-    if scope != "analysis":
+    if scope not in ("analysis", "finale", "finale-choice"):
         if not scope.startswith("dialogue:"):
             raise ValueError("Actor operation scope is invalid")
         _identifier(scope[len("dialogue:"):])

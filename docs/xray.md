@@ -1,182 +1,155 @@
-# X-Ray: predictions, choices and evidence
+# X-Ray: open the loom after the reveal
 
-X-Ray explains what the model could predict from the choices available at that
-point. It stays closed during the ordinary experience. Opening, scrubbing or
-playing a replay makes no decision-model call. A Jev switch is available before
-entry, off by default and locked once the visit starts. Selecting it explicitly
-allows Typesafe predictions for this visit; opening X-Ray alone does not.
+X-Ray is the optional explanation behind Last Card. The ordinary experience is
+pictures, a sealed guess, a real reveal and an entertaining character reading.
+Technical detail stays collapsed. Opening X-Ray, scrubbing a completed visit
+or playing a replay makes no decision-model call.
 
-Both entry options reveal a visual portrait of the pictures actually kept and
-a recap of guesses fixed before the answers. Both default to hiding prediction
-hints until choices are sealed. Immediate round feedback has its own switch
-inside X-Ray: off by default, available only before entry and locked when the
-visit starts, just like the separate Jev switch. Opting out of collection does
-not switch feedback on; opting into Jev does not switch it on either. The main
-entry remains **Weave your thread**. Both archival choices provide the complete
-portrait and end-of-visit recap.
+## A reveal with an answer the loom could not see
 
-If a visitor explicitly enables round feedback, completed-round feedback can
-be shown while playing even when they consent to collection. A separate
-experience sidecar records the setting and actual visible feedback exposures;
-it does not modify frozen choice events or train the preference model on
-feedback messages. Feedback-enabled visits form a different experience from
-the original live-v3 no-feedback protocol. New on rows use a dedicated archive
-cohort excluded by that reader's existing deployment gate, while retaining raw
-data. No-exposure and unknown-exposure records remain distinct; legacy missing
-metadata is not confirmed-off. See [the analysis boundary](measurement.md) for
-routing, the historical limitation and future feedback-study requirements.
+After exploration, the server draws four pictures that were never dealt in
+this game. It freezes the exploration profile and seals the local prediction
+before the player picks a favourite. The reveal shows the favourite beside the
+guess, with an honest hit or miss. Its probabilities, candidate IDs, frozen
+history/profile hashes and salted commitment are available in the technical
+details. Ties are resolved with the sealed salt; a lucky tie-break is not
+personal evidence. The final favourite is a sidecar, not another training pick.
 
-## Honest guessing and the visual portrait
+The reference baseline and effective v6 model see the same four candidates.
+The baseline is the PAM∃LA reference-rater utility, not the original four-axis
+heuristic. If v6 falls back to that reference, X-Ray says so and presents their
+shared result honestly. Two identical outputs are not two independent pieces
+of evidence. An unaccepted candidate never replaces the effective model just
+to create an ML improvement.
 
-At each deal the browser copies the event prefix before readiness or choices
-and requests the local forecast from that prefix. A guess earns live credit
-only if it returned before any selection, deselection or round completion and
-has a unique top picture. The target is the first finally-kept picture. Keeping
-several pictures is not multiple chances to count a hit. Tied, unavailable or
-late predictions, and rounds with no retained picture, are unscored. The recap
-uses scored rounds as its denominator. A replay computed later cannot
-retroactively earn live guessing credit.
+The reading's character is an authored entertainment interpretation of real
+kept pictures and the final favourite. It can have a distinctive name, tension
+and invitation without claiming a validated personality classification. Its
+resonance rating is separate from prediction accuracy. A model's evidence
+gate qualifies a predictive claim; it does not cancel the player's character
+or their share card. See [the Last Card contract](last-card.md).
 
-The portrait uses actual finally-kept image IDs and observed visual motifs.
-It is present independently of whether the evidence gate accepts a personal
-model. Evidence warnings qualify model claims rather than declaring the
-visitor indistinguishable or spoiling the reveal. The portrait is an account
-of this visit's choices, not an MBTI classification or a personality diagnosis.
-The round score is a small game result, not a population accuracy or causal
-recommendation-benefit claim.
+## The history stays inspectable
 
-## One comparison, one set of pictures
+The completed-round replay compares the **reference** and **effective v6**
+predictor on the same previously displayed pictures. For round `r`, it fits
+only rounds `1..r-1`, then predicts the first finally-kept picture in round `r`.
+It retains every kept image for display, but several keeps are not several
+chances for a hit. No-pick rounds and rounds with fewer than two eligible
+pictures are unscored. The live historical recap also requires a unique top
+picture and a prediction returned before any interaction. A later replay
+cannot retroactively earn live credit.
 
-The main view compares the **reference baseline** (`u`) and the **effective v6
-model**, alongside the pictures actually kept. The baseline comes from the
-reference raters of this image set; it is not the original four-axis heuristic.
-The old four-axis probability adapter remains a historical comparison on its
-own cards, rather than being assigned invented coordinates on PAM∃LA images.
+These historical scores have a different target from the single-choice finale;
+their counts, labels and denominators stay separate. Candidate probabilities
+are conditional on choosing a picture in that set. They do not predict the
+complete multi-selection outcome, STOP or departure. The exposure set is
+retrospectively established, not proof of first-click visibility. One game is
+not a population accuracy estimate or a causal recommendation-benefit result.
 
-For a completed round `r`, the live comparison uses the model after rounds
-`1..r-1`, then ranks the same observed candidate set in round `r`. It never
-scores that round with a model already fitted to its answer. The row records
-the first finally-kept picture as its scored target and retains the full set
-of kept pictures for display. No-pick rounds have no picture target and are
-unscored in this comparison. Rounds with fewer than two eligible pictures are
-also unscored because they offer no ranking alternative.
+The reference, sensitivity and personal-deviation layers describe one model's
+evidence gate. The original circle was an uncertainty ellipse on the old
+four-axis deck. The whole-deck image constellation is now a secondary view;
+it ranks intrinsic picture scores, while a round comparison ranks its actual
+candidates. Neither should be labelled a prediction of a target it did not see.
 
-The displayed probabilities are **conditional on selecting a picture from that
-set**. They do not include STOP, predict a complete multiple-selection outcome,
-or measure whether the visitor will leave. The candidate set follows the
-recorded, retrospectively established exposure set; this is a conditional
-replay comparison, not a claim that first-click visibility was fully observed.
-Mean prediction loss uses only scored rounds and a common denominator. A single
-visit is not a population accuracy result or proof of a recommendation benefit.
+## Pacing is advice, not a learning certificate
 
-The reference, sensitivity and personal-deviation layers explain **one model's
-evidence gate**. They are separate from the comparison's three possible systems.
-When v6 falls back to the reference, the two predictions should be identical.
-An unaccepted candidate is never substituted to manufacture an ML improvement.
+Last Card has no fixed five-round threshold. The player may turn the final
+cards after one completed exploration round. After each completed round,
+`norn.pacing.v1` advises continuing or offers the finale from the history then
+available. A passed predictive gate can trigger an offer; otherwise randomized
+offers explore possible stopping points. The recorded trace includes the
+reason, probability and reproducible draw. Twelve rounds is a product/resource
+ceiling.
 
-The old circle was an uncertainty ellipse on the original card axes. The image
-constellation now supplies a secondary whole-deck view. Whole-deck ranking,
-recommendations among pictures not shown yet, and predictions of a completed
-round are labelled separately.
+The first policy is untrained. It must not announce that it has learned enough
+about a person. X-Ray can expose the trace and actual number of completed
+rounds without treating a voluntary decision to stop as a randomized outcome.
+Old research protocols and model locks remain unchanged.
 
-## Jev is optional and explicitly enabled before entry
+## Jev makes one optional finale guess
 
-The two local lanes need no API key. Jev is off by default. Its pre-entry
-switch explains that earlier choices and numerical candidate features go to
-Typesafe and may consume the operator's paid allowance. The switch locks when
-the visit starts and does not change archive consent. The
-independent feedback switch controls whether predictions are exposed while
-playing; by default, either entry path waits until the final reveal. The reading's optional DeepSeek call
-is a separate task.
+Where a server-held key and capacity are available, Last Card enables Jev by
+default. The pre-entry control explains the Typesafe request and lets the
+player turn it off. It locks on entry. Collection consent and the independent
+round-feedback switch do not change that choice. Jev receives earlier choices
+and numerical candidate features, not image pixels, the final favourite,
+future answers or the character reading. The context-free deck is supported;
+a deck with a position layer is refused until the comparison contract supports
+it. The optional DeepSeek call writes prose and has a different task.
 
-Each live request contains all earlier completed rounds and the just-dealt
-candidate set, never the current round's interactions, future targets, final
-profile, reading or image pixels. Numeric options are sorted under opaque IDs;
-this does not offer a slot-context prediction. The current context-free deck is
-supported; a deck with a position layer is explicitly refused. Only a configured
-server-held key enables the switch. Opening X-Ray, dragging the slider or
-replaying a cached answer sends no new prediction request.
+There are **zero Jev requests during exploration**, and at most one finale
+attempt per game. Its prediction must settle and be sealed before the player
+chooses to earn a finale hit. A late, failed or unavailable prediction has no
+hit; it is not scored as zero loss or fabricated into a third answer. Missing
+coverage and a lucky win do not establish a general Jev advantage. Inspecting
+a cached result or replaying X-Ray never dispatches another request.
 
-The Jev sidecar uses pinned `jev-1.13.0`, a 15-second total response deadline
-and zero automatic retries. Each browser actor has at most eight prediction
-attempts across its active, absolutely expiring 30-minute capabilities. A
-separate global admission bucket permits 100 attempts per UTC day and two
-concurrent calls. A durable pending receipt precedes external I/O; an unknown
-outcome is not dispatched again. Quota, timeout and invalid responses leave
-that lane unavailable, while the two local lanes and ordinary choices continue.
-Jev receipts are temporary actor state; its live probability outputs stay in
-this page and are not added to the consented learning record. The round-feedback setting
-and feedback exposures are recorded separately when collection is enabled. The API's `mode: "play"`
-identifies this prediction sidecar, not a claim that the visit opted out of
-collection.
+The pinned model is `jev-1.13.0`. The existing limits remain: a 15-second total
+deadline, zero automatic retries, at most eight attempts per browser actor
+across its absolutely expiring 30-minute capabilities, and a global bucket of
+100 attempts per UTC day with two concurrent calls. A durable pending receipt
+precedes external I/O; an unknown outcome is not automatically dispatched
+again. Quota or provider failures leave ordinary play, the local guess and the
+reading available. The finale's consented sidecar can retain its settled Jev
+status and prediction; temporary admission receipts remain actor state.
 
-Live Jev results are bound to their prefix and candidate set. Three-lane loss
-curves compare only shared covered rounds. A prediction that arrives after an
-interaction can remain available for replay but earns no live hit credit.
-Missing results are labelled unavailable or not run, never assigned zero loss.
-Neither an opt-in visit nor one lucky hit establishes a general Jev advantage.
+Exploration feedback has its own pre-entry switch, off by default. When enabled,
+`norn.experience.v1` records the setting and genuinely visible exposures outside
+the frozen journal/profile. Missing historical metadata is not confirmed-off.
+Feedback-enabled records have a separate cohort. A private game receives the
+same reveal, reading, questions and share card without creating a research
+record. See [measurement](measurement.md) for the analysis boundary.
 
 ### Offline comparisons remain available
 
-An owner can later choose saved journals and run an explicitly selected Jev
-batch with the comparison CLI. Only training-prefix choices and each held-out
-candidate set enter the request; held-out targets, later choices, readings and
-the final profile must not enter. Preserve provider/model identity,
-request/input hashes, cutoff, response status and usage. Never retry an unknown
-paid outcome automatically or replace failures with fabricated scores.
+An owner can select saved journals and explicitly request a Jev batch with the
+comparison CLI. Only the training prefix and each held-out candidate set enter
+the request; targets, later choices, readings and the final profile do not.
+Preserve model identity, request/input hashes, cutoff, response status and
+usage. Do not automatically retry an unknown paid outcome or fabricate scores
+for failures.
 
-An imported offline report replaces the complete comparison view. A fixed-prefix
-Jev batch is compared with baseline and v6 using that same fixed prefix; it is
-never overlaid on the live, round-by-round updating model. The page identifies
-the cutoff and verifies journal, deck and candidate identities. A missing Jev
-lane is labelled as not run, not as a zero score. Import performs no inference.
-These checks establish binding and integrity, not proof that a remote call
-actually occurred.
-
-Historical data support a later, explicitly versioned benchmark. They do not
-establish what an unqueried provider would have returned during the original
-visit, or how live Jev would change behavior. That requires a separately planned
-online treatment; this opt-in does not establish it.
+An imported offline report replaces the complete comparison view. Its baseline
+and v6 lanes use the same fixed prefix as Jev; they are not overlaid on a live,
+round-by-round updating model. The page identifies the cutoff and verifies
+journal, deck and candidate identities. Import makes no inference call.
+Integrity checks bind a report to data; they do not authenticate that a remote
+request occurred. Historical data cannot recover what an unqueried provider
+would have returned, or how a live opponent would change behaviour.
 
 ## Picture count and layout
 
-Each round currently draws 4, 5 or 6 cards, approximately equally often. The
-device changes arrangement, not total card count. The existing events already
-let analysis derive:
+Current Last Card exploration and finale each show four pictures. Older visits
+may have dealt four, five or six. A device changes layout, not the current
+candidate count. The existing exploration journal distinguishes:
 
 | Quantity | Source | Limit |
 | --- | --- | --- |
-| Planned count | `round_started.card_ids.length` | The number dealt, not necessarily seen |
-| Loaded at readiness | planned minus `round_ready.unloaded_card_ids.length` | A readiness snapshot; a timed-out image can load later |
-| Ever seen in this round | `round_completed.seen_card_ids.length` | Cumulative ≥50% viewport exposure; null means unmeasured |
-| Ready layout | `round_ready.layout`, aligned with card IDs | Rows/columns at readiness |
-| Layout at a choice | selection/deselection `layout` | Does not capture every intermediate resize |
-| Initial simultaneous exposure | Not recorded separately | Cannot be reconstructed from cumulative `seen_card_ids` |
+| Planned count | `round_started.card_ids.length` | Dealt, not necessarily seen |
+| Loaded at readiness | Planned minus `round_ready.unloaded_card_ids.length` | A snapshot; a timed-out image can load later |
+| Ever seen in a round | `round_completed.seen_card_ids.length` | Cumulative ≥50% viewport exposure; null is unmeasured |
+| Ready layout | `round_ready.layout`, aligned with card IDs | Coarse rows/columns at readiness |
+| Layout at a choice | Selection/deselection `layout` | Not every intermediate resize |
+| Initial simultaneous exposure | Not separately recorded | Not recoverable from cumulative exposure |
 
-The shipped context-free v6 already normalizes competition over the cards in
-its comparison set. A dormant deck-level position layer is available, but it
-is not enabled, and its prediction-comparison integration remains an activation
-gate (see the deck contract). Current visits do not fit position coefficients
-or a separate effect of option count on effort,
-fatigue, stopping or abandonment. Recording a variable and learning its effect
-are different stages.
+The finale separately records choice time and, where available, its readiness,
+hidden time, coarse layout and input method. It does not invent exploration
+events. The dormant population slot layer is not enabled on the shipped deck;
+current visits fit neither position coefficients nor a separate option-count,
+fatigue or departure effect. Recording a variable and learning its effect are
+different stages. A future count-adaptation study needs a versioned assignment
+rule and probability, first-screen exposure and relevant layout changes.
 
-The mixed policy also changes composition with total count: 4 = 2 predicted
-plus popular/unpopular contrasts; 5 adds one random card; 6 = 3 predicted,
-contrasts and one random card. Count effects must therefore be distinguished
-from changes in recommendation share, role, exposure and layout.
-
-No duplicate `card_count` fact field is needed now. A future measurement
-protocol should consider the count-assignment rule/probability, first-screen
-exposure and coarse layout changes, particularly before adapting the number of
-cards to a visitor. This is a future protocol change, not information claimed
-to exist in old records. The current frozen event/model files remain unchanged.
-
-Current interfaces and usage are documented in [the comparison guide](fast-thinker-comparison.md)
+Last Card's `product`, `pacing` and `finale` appendices stay outside the frozen
+journal/profile. Contributed records use `<source>.last-card.v1`, with a separate
+`.round-feedback.v1` suffix when enabled. The old frozen visitor-analysis reader
+excludes those cohorts; it is not silently reused as an analysis of this game.
+Current interfaces are documented in [the comparison guide](fast-thinker-comparison.md)
 and [the deck contract](research-deck.md).
 
-
-## Engineering acceptance — 2026-10-22
+## Historical engineering acceptance — 2026-10-22
 
 Release `3b7045f9-c186-441f-aca5-9fb87e984040` shipped checkpoints, a portrait,
 guessing recaps and optional live Jev. Its [archive acceptance](../benchmarks/results/norn-active-round-live-20261022.json)

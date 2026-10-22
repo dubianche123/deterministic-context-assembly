@@ -44,6 +44,10 @@
   const DECK_MIXED = 'norn.display.mixed.v2';
   const DECK_FEATURE_COUNT = 9;
   let DECK = '';
+  let LAST_CARD = false;
+  // A resource/experience bound, never a threshold for having learned a person.
+  const LAST_CARD_MAX_ROUNDS = 12;
+  const LAST_CARD_PRODUCT = Object.freeze({ schema_version: 'norn.last-card.v1', pacing_policy: 'norn.pacing.v1' });
   // Pilot only (?pilot=new-material-v1, consented visitors): after the reveal
   // seals the main journal, a few rounds of frozen new images are recorded in a
   // separate probe journal before the reading appears. See norn/probe.py.
@@ -92,6 +96,7 @@
     PILOT_PROTOCOL = Object.prototype.hasOwnProperty.call(PROBE_PROTOCOLS, pilot) ? pilot : null;
     const deck = normalizeConfigValue(runtimeConfig.deck);
     DECK = /^[a-z0-9-]{1,40}$/.test(deck) ? deck : '';
+    LAST_CARD = Boolean(DECK && runtimeConfig.lastCard === true);
     if (DECK) PILOT_PROTOCOL = null;  // the research deck is itself new material
   }
 
@@ -147,10 +152,12 @@
     playResults: new Map(),
     jevAvailable: false,
     jevEnabled: false,
+    jevChoiceTouched: false,
     jevStart: null,
     jevPredictions: new Map(),
     jevRevision: 0,
     jevMessage: null,
+    jevStatusPromise: null,
     collectionEpoch: 0,               // invalidate snapshots queued before a withdrawal
     partialSaveTimer: null,
     partialPulseTimer: null,
@@ -160,6 +167,26 @@
     record: null,                     // { record_id, unconfirmed? } of this reading, when woven in
     sessionKey: null,                 // random id of this visit: its partial record, then its full one
     withdrawBusy: false,
+    finaleChallenge: null,
+    finaleResult: null,
+    finaleRequest: null,
+    finaleChoiceRequest: null,
+    finaleSelection: null,
+    finaleStartedAt: null,
+    finaleReadyAt: null,
+    finaleHiddenSince: null,
+    finaleHiddenMs: 0,
+    finaleInput: 'unknown',
+    finaleLayout: null,
+    finaleBusy: false,
+    finaleImagesReady: false,
+    finaleJevSettled: true,
+    finaleJevAttempted: false,
+    finaleRenderEpoch: 0,
+    finaleError: null,
+    finaleBasePayload: null,
+    pacing: null,
+    shareBusy: false,
 
     // Final dialogue
     analysisResult: null,
@@ -276,6 +303,7 @@
     dom.xrayTicks     = document.getElementById('xray-ticks');
     dom.xrayRoundLabel = document.getElementById('xray-round-label');
     dom.xrayContent   = document.getElementById('xray-content');
+    dom.xrayLastCard = document.getElementById('xray-last-card');
     dom.xrayComparison = document.getElementById('xray-comparison');
     dom.xrayComparisonHeading = document.getElementById('xray-comparison-heading');
     dom.xrayComparisonMode = document.getElementById('xray-comparison-mode');
@@ -322,6 +350,32 @@
     dom.jevStatus = document.getElementById('jev-status');
     dom.playFeedback = document.getElementById('play-feedback');
     dom.portrait = document.getElementById('portrait');
+    dom.collectChoice = document.getElementById('collect-choice');
+    dom.collectOptIn = document.getElementById('collect-opt-in');
+    dom.welcomeSubtitle = document.getElementById('welcome-subtitle');
+    dom.welcomePromise = document.getElementById('welcome-promise');
+    dom.welcomeScope = document.getElementById('welcome-scope');
+    dom.welcomeLength = document.getElementById('welcome-length');
+    dom.entryPlayNote = document.getElementById('entry-play-note');
+    dom.gameProgress = document.getElementById('game-progress');
+    dom.finaleOverlay = document.getElementById('finale-overlay');
+    dom.finaleTitle = document.getElementById('finale-title');
+    dom.finaleDescription = document.getElementById('finale-description');
+    dom.finaleSeal = document.getElementById('finale-seal');
+    dom.finaleGrid = document.getElementById('finale-grid');
+    dom.finaleStatus = document.getElementById('finale-status');
+    dom.finaleRetry = document.getElementById('finale-retry');
+    dom.finaleFlip = document.getElementById('finale-flip');
+    dom.finaleContinue = document.getElementById('finale-continue');
+    dom.finaleProof = document.getElementById('finale-proof');
+    dom.finaleProofText = document.getElementById('finale-proof-text');
+    dom.finaleRestart = document.getElementById('finale-restart');
+    dom.sharePanel = document.getElementById('share-panel');
+    dom.shareCard = document.getElementById('share-card');
+    dom.shareStatus = document.getElementById('share-status');
+    dom.inviteFriend = document.getElementById('invite-friend');
+    dom.jevEntryChoice = document.getElementById('jev-entry-choice');
+    dom.jevEntryOptIn = document.getElementById('jev-entry-opt-in');
 
     if (i18n) i18n.bind(dom.languageToggle, () => {
       updateRuntimeNotice(state.analysisResult);
@@ -330,7 +384,9 @@
       if (state.analysisResult) updateRecordExport(state.analysisResult);
       syncJevChoice();
       renderPlayFeedback();
-      if (state.analysisResult) renderPortrait(state.analysisResult.portrait);
+      if (state.analysisResult) renderProductResult(state.analysisResult);
+      if (LAST_CARD) { syncGameProgress(); renderFinaleText(); }
+      if (state.finaleResult) renderFinaleXray(state.finaleResult);
       if (state.analysisResult || state.pendingAnalysisPayload) {
         dom.languageHint.hidden = false;
         dom.languageHint.textContent = tr('界面语言已切换；现有判词和追问保持原语言，下一次编织使用新语言。');
@@ -348,7 +404,7 @@
     state.ambientController = initAmbientBackground();
     updateRuntimeNotice();
 
-    dom.startBtn.addEventListener('click', () => startTest(COLLECT));
+    dom.startBtn.addEventListener('click', () => startTest(LAST_CARD ? COLLECT && dom.collectOptIn.checked === true : COLLECT));
     dom.startPrivate.addEventListener('click', () => startTest(false));
     dom.jevOptIn.addEventListener('change', () => {
       if (state.entryLocked || !state.jevAvailable) {
@@ -356,6 +412,7 @@
         return;
       }
       state.jevEnabled = dom.jevOptIn.checked === true;
+      state.jevChoiceTouched = true;
       syncEntryChoice();
       syncJevChoice();
     });
@@ -380,16 +437,47 @@
     dom.dialogueInput.addEventListener('keydown', handleDialogueKeydown);
     dom.retryAnalysis.addEventListener('click', retryAnalysis);
     dom.retryAssets.addEventListener('click', loadCards);
+    dom.finaleRetry.addEventListener('click', retryFinale);
+    dom.finaleFlip.addEventListener('click', flipFinale);
+    dom.finaleContinue.addEventListener('click', continueFinaleReading);
+    dom.finaleRestart.addEventListener('click', restartTest);
+    dom.shareCard.addEventListener('click', downloadShareCard);
+    dom.inviteFriend.addEventListener('click', inviteFriend);
+    dom.jevEntryOptIn.addEventListener('change', () => {
+      if (state.entryLocked || !state.jevAvailable) { syncJevChoice(); return; }
+      state.jevChoiceTouched = true;
+      state.jevEnabled = dom.jevEntryOptIn.checked === true;
+      syncJevChoice();
+    });
     dom.exportRecord.addEventListener('click', exportSessionRecord);
     dom.feedbackSave.addEventListener('click', submitFeedback);
     dom.feedbackSkip.addEventListener('click', skipFeedback);
     initializeXray();
     initializeAudioControls();
-    initializeJev();
+    state.jevStatusPromise = initializeJev();
     await loadCards();
   }
 
   function syncEntryChoice() {
+    if (LAST_CARD) {
+      dom.startBtn.textContent = tr('开始读心游戏');
+      dom.restartBtn.textContent = tr('再来一局');
+      dom.finaleRestart.textContent = tr('再来一局');
+      dom.startPrivate.hidden = true;
+      dom.entryLead.hidden = true;
+      dom.collectChoice.hidden = !COLLECT;
+      dom.entryDetail.hidden = !COLLECT;
+      dom.welcomeSubtitle.textContent = tr('命运底牌 · 看图读心');
+      dom.welcomePromise.textContent = tr('选几轮让你心动的图，最后考一考织机：它能猜中你的最爱吗？再带走一张属于你的命运角色卡。');
+      dom.welcomeScope.textContent = tr('AI 画面 · 娱乐性格解读 · 无需登录');
+      dom.welcomeLength.textContent = tr('想继续就继续，想揭晓就进入终局。每局只有一次翻牌，最多探索 12 轮。');
+      dom.entryPlayNote.textContent = COLLECT
+        ? tr('匿名贡献由你决定，不勾选也能获得完整解读与分享卡。')
+        : tr('本次选择只用于这一局，不留研究档案。');
+      syncForgetChoice();
+      return;
+    }
+    dom.collectChoice.hidden = true;
     // Without storage there is nothing to consent to: one plain entrance.
     dom.startBtn.textContent = COLLECT ? tr('织 入 命 运') : tr('开始猜牌试玩');
     dom.startPrivate.textContent = tr('私密体验 · 不留学习记录');
@@ -496,6 +584,7 @@
         state.displayFeatures = await loadDisplayFeatures();
       }
       await ensureBackendConfig();
+      if (LAST_CARD && state.jevStatusPromise) await state.jevStatusPromise;
       syncEntryChoice();
       dom.startBtn.disabled = false;
       dom.startPrivate.disabled = false;
@@ -660,6 +749,7 @@
     if (dom.xraySessionOptions) dom.xraySessionOptions.open = false;
     state.consent = Boolean(consent && COLLECT);
     state.playMode = Boolean(DECK);
+    if (LAST_CARD) state.cardsPerRound = { min: 4, max: 4 };
     state.experienceStartedAt = performance.now();
     state.experience = DECK ? { schema_version: 'norn.experience.v1',
       round_feedback: state.roundFeedbackEnabled ? 'on' : 'off', exposures: [] } : null;
@@ -700,10 +790,17 @@
     if (!dom.jevOptIn) return;
     dom.jevOptIn.checked = state.jevEnabled;
     dom.jevOptIn.disabled = state.entryLocked || !state.jevAvailable;
+    if (dom.jevEntryChoice) dom.jevEntryChoice.hidden = !LAST_CARD || !state.jevAvailable;
+    if (dom.jevEntryOptIn) {
+      dom.jevEntryOptIn.checked = state.jevEnabled;
+      dom.jevEntryOptIn.disabled = state.entryLocked || !state.jevAvailable;
+    }
     dom.jevStatus.textContent = state.entryLocked
-      ? tr(state.jevEnabled ? '本次已开启 · 开局后不能更改；最多 8 轮，不自动重试。' : '本次未开启 · 开局后不能更改。')
+      ? LAST_CARD ? tr(state.jevEnabled ? '本局 Jev 已开启 · 终局只封存一次，开局后不能更改。' : '本局 Jev 已关闭 · 开局后不能更改。')
+        : tr(state.jevEnabled ? '本次已开启 · 开局后不能更改；最多 8 轮，不自动重试。' : '本次未开启 · 开局后不能更改。')
       : state.jevAvailable
-        ? tr('可选付费模型 · 此前选图会发给 Typesafe，最多 8 轮；研究体验到结尾才揭晓。')
+        ? LAST_CARD ? tr('终局对照一次 · 此前选择与图片特征会发送给 Typesafe；开局前可关闭。')
+          : tr('可选付费模型 · 此前选图会发给 Typesafe，最多 8 轮；研究体验到结尾才揭晓。')
         : tr('Jev 暂不可用；本地学习模型和基线照常运行。');
     if (state.jevMessage) dom.jevStatus.textContent = tr(state.jevMessage);
   }
@@ -745,10 +842,14 @@
   }
 
   async function initializeJev() {
+    let deadline;
     try {
-      const status = await xrayRequest('/jev/status');
+      const timeout = new Promise((_, reject) => { deadline = setTimeout(() => reject(new Error('Status timeout')), 8000); });
+      const status = await Promise.race([xrayRequest('/jev/status'), timeout]);
       state.jevAvailable = status.available === true && Boolean(DECK);
+      if (LAST_CARD && state.jevAvailable && !state.entryLocked && !state.jevChoiceTouched) state.jevEnabled = true;
     } catch (_) { state.jevAvailable = false; }
+    finally { clearTimeout(deadline); }
     syncJevChoice();
   }
 
@@ -758,7 +859,8 @@
         // Independent of archival identity; never placed in exports or localStorage.
         if (typeof crypto === 'undefined' || !crypto.getRandomValues) throw new Error('No secure randomness');
         const client = Array.from(crypto.getRandomValues(new Uint8Array(16)), value => value.toString(16).padStart(2, '0')).join('');
-        const result = await xrayRequest('/jev/start', { enabled: true, mode: 'play', deck: state.deckLabel, client_session: client });
+        const result = await xrayRequest('/jev/start', { enabled: true, mode: 'play', deck: state.deckLabel, client_session: client,
+          ...(LAST_CARD ? { purpose: 'finale' } : {}) });
         if (result.status !== 'ready' || typeof result.jev_session !== 'string') throw new Error('Jev unavailable');
         return result.jev_session;
       } catch (_) {
@@ -784,7 +886,9 @@
     renderPlayFeedback();
     (async () => {
       try {
-        const data = await xrayRequest('/preview', { journal: prefix, compact: true });
+        const data = await xrayRequest('/preview', { journal: prefix, compact: true,
+          ...(LAST_CARD ? { product: LAST_CARD_PRODUCT } : {}) });
+        if (LAST_CARD) renderPacing(data.pacing, round);
         const weights = data.preference && data.preference.effective;
         if (!Array.isArray(weights) || weights.length !== DECK_FEATURE_COUNT
             || !weights.every(Number.isFinite) || !state.displayFeatures) throw new Error('No forecast');
@@ -801,7 +905,7 @@
       } catch (_) { forecast.status = 'unavailable'; }
       renderPlayFeedback();
     })();
-    if (state.jevEnabled && state.jevStart && round <= 8) {
+    if (!LAST_CARD && state.jevEnabled && state.jevStart && round <= 8) {
       (async () => {
         const token = await state.jevStart;
         if (!token) return;
@@ -877,6 +981,209 @@
       const hits = results.filter(row => row.hit).length;
       xrayText(dom.portrait, tr`事先猜中 ${hits} / ${results.length} 轮 · 打开 X-Ray 回看`, 'p', 'portrait-score');
     }
+  }
+
+  function renderProductResult(data) {
+    const persona = data && data.persona;
+    if (!persona || persona.schema_version !== 'norn.persona.v1') {
+      dom.sharePanel.hidden = true;
+      renderPortrait(data && data.portrait);
+      return;
+    }
+    const card = state.allCards.find(item => item.id === persona.card_id);
+    if (!card) { renderPortrait(data.portrait); return; }
+    dom.portrait.hidden = false;
+    dom.portrait.innerHTML = '';
+    dom.portrait.className = 'portrait persona-card';
+    dom.portrait.setAttribute('aria-label', tr('你的命运角色'));
+    xrayText(dom.portrait, tr('你的命运角色'), 'p', 'persona-eyebrow');
+    xrayText(dom.portrait, persona.title, 'h3', 'persona-title');
+    xrayText(dom.portrait, persona.tagline, 'p', 'persona-tagline');
+    const image = document.createElement('img');
+    image.src = card.url;
+    image.alt = tr('本局最爱的画面');
+    image.className = 'persona-image';
+    dom.portrait.appendChild(image);
+    const result = data.finale || state.finaleResult;
+    if (result) {
+      xrayText(dom.portrait, tr(result.hit ? '✦ 织机猜中了你的最爱' : '✦ 这一局，你给了织机一个意外'), 'p', 'persona-outcome');
+      if (result.jev && result.jev.status === 'ok') xrayText(dom.portrait,
+        tr(result.jev.hit ? 'Jev · 猜中' : 'Jev · 没猜中'), 'small', 'persona-jev');
+    }
+    xrayText(dom.portrait, persona.disclaimer || tr('根据本次选图创作的娱乐解读'), 'small', 'persona-disclaimer');
+    dom.sharePanel.hidden = false;
+    dom.shareCard.textContent = tr('保存我的命运卡');
+    dom.inviteFriend.textContent = tr('邀请朋友来测');
+  }
+
+  function shareTextLines(context, text, width, maxLines) {
+    const words = /\s/.test(text) ? text.trim().split(/\s+/).map(word => word + ' ') : Array.from(text);
+    const lines = []; let line = '';
+    const add = token => {
+      if (context.measureText(line + token).width <= width) { line += token; return; }
+      if (line.trim()) { lines.push(line.trim()); line = ''; }
+      if (context.measureText(token).width > width && Array.from(token).length > 1) {
+        for (const char of Array.from(token)) add(char);
+      } else line = token;
+    };
+    words.forEach(add);
+    if (line.trim()) lines.push(line.trim());
+    if (lines.length <= maxLines) return lines;
+    const kept = lines.slice(0, maxLines);
+    let last = kept[maxLines - 1];
+    while (last && context.measureText(last + '…').width > width) last = last.slice(0, -1);
+    kept[maxLines - 1] = last.trim() + '…';
+    return kept;
+  }
+
+  async function downloadShareCard() {
+    const persona = state.analysisResult && state.analysisResult.persona;
+    const result = state.analysisResult && state.analysisResult.finale || state.finaleResult;
+    if (state.shareBusy || !persona || !result) return;
+    const card = state.allCards.find(item => item.id === persona.card_id);
+    if (!card) return;
+    state.shareBusy = true;
+    dom.shareCard.disabled = true;
+    dom.shareStatus.textContent = tr('正在生成分享卡，图片只保存在你的设备……');
+    try {
+      const image = await new Promise((resolve, reject) => {
+        const picture = new Image();
+        picture.onload = () => resolve(picture);
+        picture.onerror = () => reject(new Error('Image unavailable'));
+        picture.src = card.url;
+      });
+      const english = persona.language === 'en';
+      const canvas = document.createElement('canvas');
+      canvas.width = 1200; canvas.height = 1640;
+      const ctx = canvas.getContext('2d');
+      ctx.fillStyle = '#0a0a14'; ctx.fillRect(0, 0, 1200, 1640);
+      ctx.strokeStyle = '#756238'; ctx.lineWidth = 2; ctx.strokeRect(36, 36, 1128, 1568);
+      ctx.fillStyle = '#b6a27a'; ctx.font = '22px Arial, sans-serif'; ctx.textAlign = 'center';
+      ctx.fillText(english ? 'THE NORN MACHINE / THE LAST CARD' : 'THE NORN MACHINE / 命运底牌', 600, 91);
+      ctx.fillStyle = '#e4d0a4'; ctx.font = '58px Georgia, "Songti SC", serif';
+      const title = shareTextLines(ctx, persona.title, 1000, 2);
+      title.forEach((line, index) => ctx.fillText(line, 600, 176 + index * 68));
+      const top = 225 + (title.length - 1) * 68, frameHeight = 700;
+      ctx.fillStyle = '#14141f'; ctx.fillRect(72, top, 1056, frameHeight);
+      const ratio = Math.min(1056 / image.naturalWidth, frameHeight / image.naturalHeight);
+      const w = image.naturalWidth * ratio, h = image.naturalHeight * ratio;
+      ctx.drawImage(image, 72 + (1056 - w) / 2, top + (frameHeight - h) / 2, w, h);
+      ctx.fillStyle = '#ece4d4'; ctx.font = '40px Georgia, "Songti SC", serif';
+      const quoteTop = top + frameHeight + 78;
+      const quote = shareTextLines(ctx, persona.tagline, 990, 2);
+      quote.forEach((line, index) => ctx.fillText(line, 600, quoteTop + index * 58));
+      if (persona.invitation) {
+        const questTop = Math.max(1150, quoteTop + quote.length * 58 + 25);
+        ctx.fillStyle = '#b6a27a'; ctx.font = '19px Arial, "PingFang SC", sans-serif';
+        ctx.fillText(english ? 'A LITTLE QUEST FOR THIS CHARACTER' : '给这个角色的一次小冒险', 600, questTop);
+        ctx.fillStyle = '#d6cdbd'; ctx.font = '27px Georgia, "Songti SC", serif';
+        shareTextLines(ctx, persona.invitation, 930, 3)
+          .forEach((line, index) => ctx.fillText(line, 600, questTop + 42 + index * 34));
+      }
+      ctx.fillStyle = '#c9a84c'; ctx.font = '26px Arial, "PingFang SC", sans-serif';
+      ctx.fillText(result.hit ? (english ? 'The loom guessed my favourite.' : '织机猜中了我的最爱。')
+        : (english ? 'I surprised the loom this time.' : '这一局，我给了织机一个意外。'), 600, 1390);
+      if (result.jev && result.jev.status === 'ok') {
+        ctx.fillStyle = '#bfa8d6'; ctx.font = '22px Arial, "PingFang SC", sans-serif';
+        ctx.fillText(english ? `Jev: ${result.jev.hit ? 'a hit' : 'a miss'}` : `Jev：${result.jev.hit ? '猜中' : '没猜中'}`, 600, 1432);
+      }
+      ctx.fillStyle = '#a3a0aa'; ctx.font = '19px Arial, "PingFang SC", sans-serif';
+      shareTextLines(ctx, persona.disclaimer || (english ? 'An entertainment reading inspired by this visit’s choices.' : '根据本次选图创作的娱乐解读'), 980, 2)
+        .forEach((line, index) => ctx.fillText(line, 600, 1512 + index * 27));
+      ctx.fillStyle = '#c6b58f'; ctx.font = '20px Arial, sans-serif';
+      ctx.fillText('norn-machine.dubianche123.workers.dev', 600, 1580);
+      const blob = await new Promise((resolve, reject) => canvas.toBlob(value => value ? resolve(value) : reject(new Error('PNG unavailable')), 'image/png'));
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = `norn-last-card-${persona.language === 'en' ? 'en' : 'zh'}.png`;
+      document.body.appendChild(link); link.click(); link.remove();
+      setTimeout(() => URL.revokeObjectURL(url), 1000);
+      dom.shareStatus.textContent = tr('分享卡已生成；可以把图片发给朋友。');
+    } catch (_) { dom.shareStatus.textContent = tr('分享卡暂时未能生成，图片加载后可以重试。'); }
+    finally { state.shareBusy = false; dom.shareCard.disabled = false; }
+  }
+
+  async function inviteFriend() {
+    const link = 'https://norn-machine.dubianche123.workers.dev/';
+    try {
+      if (!window.navigator || !window.navigator.clipboard) throw new Error('Clipboard unavailable');
+      await window.navigator.clipboard.writeText(link);
+      dom.shareStatus.textContent = tr('体验链接已复制，邀请朋友也翻一张底牌。');
+    } catch (_) { dom.shareStatus.textContent = link; }
+  }
+
+  function renderFinaleXray(result) {
+    if (!dom.xrayLastCard) return;
+    dom.xrayLastCard.hidden = !LAST_CARD || !result;
+    if (dom.xrayLastCard.hidden) return;
+    dom.xrayLastCard.innerHTML = '';
+    xrayText(dom.xrayLastCard, tr('终局 · 封存的押注'), 'h3');
+    xrayText(dom.xrayLastCard, tr('押注在你的最后一选之前封存；这里仅回放结果，不新增调用。'), 'p', 'xray-mini');
+    const ids = result.candidate_ids || [];
+    const valid = values => Array.isArray(values) && values.length === 4
+      && values.every(value => Number.isFinite(value) && value >= 0 && value <= 1)
+      && Math.abs(values.reduce((sum, value) => sum + value, 0) - 1) < 1e-5;
+    const learned = valid(result.probabilities) ? result.probabilities : null;
+    const baseline = valid(result.baseline_probabilities) ? result.baseline_probabilities : null;
+    const same = learned && baseline && learned.every((value, i) => Math.abs(value - baseline[i]) < 1e-10);
+    const jev = result.jev && result.jev.status === 'ok' ? result.jev : null;
+    const lanes = [];
+    if (learned) lanes.push({ key: 'learning', name: tr(same ? '学习模型 = 参考基线' : '学习模型'),
+      short: tr(same ? '学习 = 基线' : '学习'), values: learned });
+    if (baseline && !same) lanes.push({ key: 'baseline', name: tr('参考基线'), short: tr('基线'), values: baseline });
+    if (jev && valid(jev.probabilities)) lanes.push({ key: 'jev', name: 'Jev', short: 'Jev', values: jev.probabilities });
+
+    const legend = document.createElement('div'); legend.className = 'xray-finale-legend';
+    lanes.forEach(lane => {
+      const chip = document.createElement('div'); chip.className = `xray-finale-lane ${lane.key}`;
+      xrayText(chip, '', 'i');
+      xrayText(chip, lane.name, 'span');
+      if (lane.key === 'learning' || lane.key === 'jev')
+        xrayText(chip, tr((lane.key === 'learning' ? result.hit : jev.hit) ? '猜中' : '没猜中'), 'b');
+      legend.appendChild(chip);
+    });
+    dom.xrayLastCard.appendChild(legend);
+    if (same) xrayText(dom.xrayLastCard, tr(result.layer === 'population'
+      ? '本局回退到参考基线，两条分布相同，已合并展示。'
+      : '学习模型与参考基线的分布相同，已合并展示。'), 'p', 'xray-finale-context');
+    if (!jev || !valid(jev.probabilities)) xrayText(dom.xrayLastCard,
+      tr(result.jev && result.jev.status === 'off' ? '本局 Jev 已关闭。' : 'Jev 未提供及时有效的分布，本次不计分。'), 'p', 'xray-finale-context');
+
+    const grid = document.createElement('div'); grid.className = 'xray-finale-candidates';
+    ids.forEach((id, index) => {
+      const tile = document.createElement('article'); tile.className = 'xray-finale-candidate';
+      tile.dataset.cardId = id;
+      xrayClass(tile, 'favourite', id === result.chosen_card_id);
+      const art = document.createElement('div'); art.className = 'xray-finale-art';
+      const image = document.createElement('img');
+      image.src = xrayCardUrl(id); image.alt = tr`终局画面 ${index + 1}`; image.loading = 'lazy';
+      art.appendChild(image);
+      xrayText(art, String(index + 1).padStart(2, '0'), 'span', 'xray-finale-number');
+      if (id === result.chosen_card_id) xrayText(art, tr('你的最爱'), 'span', 'xray-finale-favourite');
+      tile.appendChild(art);
+      const guesses = document.createElement('div'); guesses.className = 'xray-finale-guesses';
+      if (id === result.predicted_card_id) xrayText(guesses, tr('织机押注'), 'span', 'learning');
+      if (jev && id === jev.predicted_card_id) xrayText(guesses, tr('Jev 押注'), 'span', 'jev');
+      tile.appendChild(guesses);
+      lanes.forEach(lane => {
+        const row = document.createElement('div'); row.className = `xray-finale-probability ${lane.key}`;
+        row.dataset.lane = lane.key;
+        xrayText(row, lane.short, 'span', 'xray-finale-label');
+        const track = document.createElement('span'); track.className = 'xray-finale-track';
+        const probability = lane.values[index];
+        track.setAttribute('role', 'meter'); track.setAttribute('aria-label', lane.name);
+        track.setAttribute('aria-valuemin', '0'); track.setAttribute('aria-valuemax', '100');
+        track.setAttribute('aria-valuenow', String(Math.round(probability * 1000) / 10));
+        const fill = document.createElement('i'); fill.style.width = `${probability * 100}%`;
+        track.appendChild(fill); row.appendChild(track);
+        xrayText(row, `${Math.round(probability * 100)}%`, 'b');
+        tile.appendChild(row);
+      });
+      grid.appendChild(tile);
+    });
+    dom.xrayLastCard.appendChild(grid);
+    xrayText(dom.xrayLastCard, tr('条形表示这四张图中的选择概率，不是性格准确率。'), 'p', 'xray-finale-context');
   }
 
   // ─── Pilot: new images after the reveal ──────────────────
@@ -994,10 +1301,37 @@
         : tr('揭示之前，再看几组没见过的画面：同样选出触动你的，也可以直接揭示。'))
       : !canDraw || state.roundNumber >= MAX_SESSION_ROUNDS
         ? tr('这次留下的线已经足够，可以揭示命运了。') : '';
+    if (LAST_CARD) {
+      dom.nextBtn.textContent = tr(state.roundNumber >= LAST_CARD_MAX_ROUNDS ? '进入终局 →' : '继续探索 →');
+      dom.revealBtn.textContent = tr('看看它的底牌');
+      dom.roundStatus.textContent = state.roundNumber >= LAST_CARD_MAX_ROUNDS
+        ? tr('已到本局 12 轮的体验上限，选好后进入终局；这不是学会偏好的门槛。') : '';
+      syncGameProgress();
+    }
+  }
+
+  function syncGameProgress() {
+    if (!dom.gameProgress) return;
+    dom.gameProgress.hidden = !LAST_CARD;
+    if (!LAST_CARD) return;
+    const suggestion = state.pacing && (state.pacing.latest && ['offer_finale', 'limit'].includes(state.pacing.latest.action)
+      || state.pacing.suggest_finale === true
+      || ['finale', 'stop', 'reveal'].includes(state.pacing.recommendation));
+    dom.gameProgress.textContent = suggestion
+      ? tr`探索第 ${state.roundNumber} 轮 · 可以试试终局了，由你决定`
+      : tr`探索第 ${state.roundNumber} 轮 · 想揭晓时，随时看看底牌`;
+    xrayClass(dom.revealBtn, 'recommended', Boolean(suggestion));
+  }
+
+  function renderPacing(pacing, round = state.roundNumber) {
+    if (!LAST_CARD || state.sessionSealed || round !== state.roundNumber) return;
+    state.pacing = pacing && typeof pacing === 'object' ? JSON.parse(JSON.stringify(pacing)) : null;
+    syncGameProgress();
   }
 
   function drawRound() {
     if (state.roundTransitioning || state.sessionSealed || state.roundNumber >= MAX_SESSION_ROUNDS
+        || (LAST_CARD && state.roundNumber >= LAST_CARD_MAX_ROUNDS)
         || state.eventJournal.events.length > MAX_SESSION_EVENTS - 5
         || (probeActive() && state.roundNumber >= state.probe.rounds.length)) return;
     closeCurrentRound();
@@ -1008,7 +1342,7 @@
     state.roundNumber++;
     dom.roundNum.textContent = probeActive() ? `${state.roundNumber}/${state.probe.rounds.length}` : state.roundNumber;
 
-    const count = randInt(state.cardsPerRound.min, state.cardsPerRound.max);
+    const count = LAST_CARD ? 4 : randInt(state.cardsPerRound.min, state.cardsPerRound.max);
     const available = state.allCards.filter(c => !state.usedCardIds.has(c.id));
     let display = null;
 
@@ -1521,6 +1855,7 @@
       window.addEventListener('pageshow', () => schedulePartialPulse());
     }
     document.addEventListener('visibilitychange', () => {
+      trackFinaleVisibility();
       const attention = state.roundAttention;
       if (!attention || attention.closed || attention.startedAt === null) return;
       const now = performance.now();
@@ -1555,6 +1890,7 @@
 
   // ─── Next Round ──────────────────────────────────────────
   function nextRound() {
+    if (LAST_CARD && state.roundNumber >= LAST_CARD_MAX_ROUNDS) { revealDestiny(); return; }
     drawRound();
   }
 
@@ -1570,7 +1906,8 @@
   }
 
   function canSavePartialVisit() {
-    return Boolean(DECK && state.consent && COLLECT && !state.sessionSealed && !probeActive()
+    const terminalCheckpoint = LAST_CARD && state.finaleBasePayload && !state.analysisBusy && !state.analysisResult;
+    return Boolean(DECK && state.consent && COLLECT && (!state.sessionSealed || terminalCheckpoint) && !probeActive()
       && hasBackendConfig() && state.eventJournal.events.length);
   }
 
@@ -1643,6 +1980,7 @@
     const openRound = openRoundCheckpoint();
     const body = JSON.stringify({ consent: CONSENT_VERSION, visitor, session_key: visitSessionKey(),
                                   journal: state.eventJournal,
+                                  ...(LAST_CARD ? { product: LAST_CARD_PRODUCT } : {}),
                                   ...(state.experience ? { experience: snapshotExperience() } : {}),
                                   ...(openRound ? { open_round: openRound } : {}) });
     state.partialPending = { body, visitor, epoch,
@@ -1663,7 +2001,8 @@
     const request = { controller: null };
     state.partialInFlight = request;
     Promise.resolve().then(() => ensureBackendConfig()).then(() => {
-      if (state.partialInFlight !== request || !canSavePartialVisit()
+      const sealedLastCard = LAST_CARD && state.sessionSealed && state.consent && COLLECT && state.finaleBasePayload;
+      if (state.partialInFlight !== request || (!canSavePartialVisit() && !sealedLastCard)
           || state.collectionEpoch !== checkpoint.epoch || visitorKey() !== checkpoint.visitor) return;
       request.controller = typeof AbortController === 'function' ? new AbortController() : null;
       return fetch(`${API_ENDPOINT}/record/partial`, { method: 'POST', headers: buildApiHeaders(),
@@ -1680,6 +2019,7 @@
   // ─── Reveal Destiny ──────────────────────────────────────
   async function revealDestiny() {
     if (state.analysisBusy || state.roundTransitioning || !state.roundOpen || state.sessionSealed || dom.revealOverlay.classList.contains('active')) return;
+    if (LAST_CARD) savePartialVisit({ keepalive: true });
     closeCurrentRound();
     appendEvent('session_completed');
     Object.freeze(state.eventJournal.events);
@@ -1703,7 +2043,21 @@
       ...(state.consent ? { consent: CONSENT_VERSION, visitor: visitorKey(true) } : {}),
       ...(state.consent && DECK ? { session_key: visitSessionKey() } : {}),
       ...(state.consent && state.probe && state.probe.journal ? { probe: state.probe.journal } : {}),
+      ...(LAST_CARD ? { product: LAST_CARD_PRODUCT } : {}),
     });
+
+    if (LAST_CARD) {
+      state.finaleBasePayload = payload;
+      // The terminal vote is separate, but leaving while it loads must retain
+      // the completed final exploration round, including its attention window.
+      savePartialVisit({ keepalive: true });
+      await beginFinale();
+      return;
+    }
+    await showReadingForPayload(payload);
+  }
+
+  async function showReadingForPayload(payload) {
 
     // Update summary
     dom.summaryRounds.textContent = state.roundNumber;
@@ -1714,6 +2068,7 @@
     stopParticles();
     state.particleController = initParticles();
     resetReading();
+    if (LAST_CARD && dom.revealHeading) dom.revealHeading.focus();
     resetDialoguePanel();
     state.pendingAnalysisPayload = payload;
 
@@ -1725,6 +2080,272 @@
 
     // Call API (if endpoint configured)
     await callAnalyzeAPI(payload);
+  }
+
+  function renderFinaleText() {
+    if (!LAST_CARD || !dom.finaleOverlay || dom.finaleOverlay.hidden) return;
+    const result = state.finaleResult;
+    dom.finaleTitle.textContent = tr(result ? result.hit ? '猜中了！' : '你给了织机一个意外。' : '命运底牌');
+    dom.finaleDescription.textContent = result
+      ? tr(result.hit ? '你最心动的，正是它提前押下的那张。' : '这一回它没猜中。属于你的故事，仍由你选中的画面开始。')
+      : state.finaleChallenge
+        ? tr('四张从未出现的画面，织机已经押好一张。哪张最让你心动？')
+        : tr('你的探索已经封存。织机正在为最后一选押下底牌……');
+    dom.finaleFlip.textContent = tr(state.finaleBusy ? '正在翻牌……' : '选好了，翻开底牌');
+    dom.finaleContinue.textContent = tr('揭晓我的命运角色 →');
+    dom.finaleRetry.textContent = tr('重试');
+    if (result && !state.finaleError) {
+      const jev = result.jev;
+      dom.finaleStatus.textContent = jev && jev.status === 'ok'
+        ? tr(jev.predicted_card_id === result.chosen_card_id ? 'Jev 也猜中了你的最爱。' : 'Jev 这一回没猜中。')
+        : state.jevEnabled ? tr('Jev 本次结果不可用；保留织机的真实竞猜结果。') : tr('这一局，只由织机与你对弈。');
+    }
+  }
+
+  async function beginFinale() {
+    if (state.finaleBusy || state.finaleResult) return;
+    state.finaleBusy = true;
+    state.finaleError = null;
+    dom.finaleOverlay.hidden = false;
+    dom.testArea.inert = true;
+    if (state.finaleStartedAt === null) state.finaleStartedAt = performance.now();
+    dom.finaleOverlay.setAttribute('aria-busy', 'true');
+    dom.finaleGrid.innerHTML = '';
+    dom.finaleSeal.hidden = false;
+    dom.finaleRetry.hidden = true;
+    dom.finaleFlip.hidden = false;
+    dom.finaleFlip.disabled = true;
+    dom.finaleContinue.hidden = true;
+    dom.finaleStatus.textContent = tr('只用此前的选择，不偷看你的最后一选。');
+    renderFinaleText();
+    dom.finaleTitle.focus();
+    try {
+      if (!(await ensureBackendConfig())) throw new Error(tr('请确认本地服务正在运行，再点击重试。你的选择已保留。'));
+      if (!state.finaleRequest) {
+        const ticket = state.jevEnabled && state.jevStart ? await state.jevStart : null;
+        state.finaleRequest = Object.freeze({ journal: state.eventJournal,
+          challenge_id: createOperationId('finale'), product: LAST_CARD_PRODUCT, language: currentLanguage(),
+          ...(ticket ? { jev_session: ticket } : {}),
+          ...(state.consent && state.experience ? { experience: snapshotExperience() } : {}),
+          ...(state.consent ? { consent: CONSENT_VERSION, visitor: visitorKey(true), session_key: visitSessionKey() } : {}),
+        });
+      }
+      const challenge = await xrayRequest('/finale/start', state.finaleRequest);
+      if (!challenge || challenge.schema_version !== 'norn.finale.challenge.v1'
+          || challenge.challenge_id !== state.finaleRequest.challenge_id
+          || !Array.isArray(challenge.candidate_ids) || challenge.candidate_ids.length !== 4
+          || new Set(challenge.candidate_ids).size !== 4
+          || challenge.candidate_ids.some(id => state.usedCardIds.has(id) || !state.allCards.some(card => card.id === id))
+          || typeof challenge.commitment !== 'string' || !challenge.commitment) throw new Error(tr('终局凭证不完整，请重试。'));
+      state.finaleChallenge = Object.freeze(challenge);
+      state.finaleJevSettled = challenge.jev_status !== 'pending';
+      dom.finaleSeal.hidden = true;
+      dom.finaleProof.hidden = false;
+      dom.finaleProofText.textContent = `${challenge.commitment}\n${challenge.events_hash || ''}`;
+      renderFinaleCards();
+      if (!state.finaleJevSettled && !state.finaleJevAttempted) await prepareFinaleJev();
+    } catch (error) {
+      state.finaleError = 'start';
+      dom.finaleStatus.textContent = tr('底牌暂时没准备好。你的探索已保留，请重试。');
+      dom.finaleRetry.hidden = false;
+    } finally {
+      state.finaleBusy = false;
+      dom.finaleOverlay.setAttribute('aria-busy', 'false');
+      renderFinaleText();
+      syncFinaleCardReadiness();
+    }
+  }
+
+  function renderFinaleCards() {
+    const challenge = state.finaleChallenge;
+    if (!challenge) return;
+    const epoch = ++state.finaleRenderEpoch;
+    state.finaleImagesReady = false;
+    const buttons = [];
+    let settled = 0, loaded = 0;
+    dom.finaleGrid.innerHTML = '';
+    dom.finaleStatus.textContent = tr('正在展开最后四张画面……');
+    challenge.candidate_ids.forEach((id, index) => {
+      const card = state.allCards.find(item => item.id === id);
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'finale-card';
+      button.disabled = true;
+      button.dataset.cardId = id;
+      button.setAttribute('role', 'radio');
+      button.setAttribute('aria-checked', 'false');
+      button.setAttribute('aria-label', tr`终局画面 ${index + 1}`);
+      const image = document.createElement('img');
+      image.alt = '';
+      let done = false;
+      const settle = ok => {
+        if (done || epoch !== state.finaleRenderEpoch) return;
+        done = true; settled++; if (ok) loaded++;
+        if (settled !== 4) return;
+        state.finaleImagesReady = loaded === 4;
+        if (state.finaleImagesReady) {
+          state.finaleError = null;
+          dom.finaleRetry.hidden = true;
+          syncFinaleCardReadiness();
+        } else {
+          state.finaleError = 'images';
+          dom.finaleStatus.textContent = tr('有画面未能加载，请重试后再选。');
+          dom.finaleRetry.hidden = false;
+        }
+      };
+      image.onload = () => settle(true);
+      image.onerror = () => settle(false);
+      image.src = card.url;
+      button.appendChild(image);
+      xrayText(button, String(index + 1).padStart(2, '0'), 'span', 'finale-card-number');
+      button.addEventListener('pointerdown', event => {
+        button.dataset.choiceInput = ['mouse', 'touch'].includes(event.pointerType) ? event.pointerType : 'unknown';
+      });
+      button.addEventListener('click', event => selectFinaleCard(id,
+        event && event.detail === 0 ? 'keyboard' : button.dataset.choiceInput || 'unknown'));
+      button.addEventListener('keydown', event => {
+        if (!['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown'].includes(event.key) || !state.finaleImagesReady || state.finaleChoiceRequest) return;
+        event.preventDefault();
+        const step = ['ArrowLeft', 'ArrowUp'].includes(event.key) ? -1 : 1;
+        const next = (index + step + 4) % 4;
+        selectFinaleCard(challenge.candidate_ids[next], 'keyboard');
+        buttons[next].focus();
+      });
+      buttons.push(button);
+      dom.finaleGrid.appendChild(button);
+      if (image.complete) settle(image.naturalWidth > 0);
+    });
+    syncFinaleCardReadiness();
+  }
+
+  function syncFinaleCardReadiness() {
+    if (!state.finaleChallenge || state.finaleResult || state.finaleError) return;
+    const ready = state.finaleImagesReady && state.finaleJevSettled && !state.finaleBusy && !state.finaleChoiceRequest;
+    if (ready && state.finaleReadyAt === null) {
+      state.finaleReadyAt = performance.now();
+      if (pageHidden()) state.finaleHiddenSince = state.finaleReadyAt;
+    }
+    Array.from(dom.finaleGrid.children).forEach(button => { button.disabled = !ready; });
+    if (state.finaleImagesReady) dom.finaleStatus.textContent = tr(state.finaleJevSettled
+      ? '选一张最心动的，再翻开底牌。' : 'Jev 正在封存自己的押注，完成后即可选图……');
+  }
+
+  async function prepareFinaleJev() {
+    state.finaleJevAttempted = true;
+    dom.finaleStatus.textContent = tr('Jev 正在封存自己的押注，完成后即可选图……');
+    const controller = typeof AbortController === 'function' ? new AbortController() : null;
+    const deadline = setTimeout(() => { if (controller) controller.abort(); }, 17000);
+    try {
+      const response = await fetch(`${API_ENDPOINT}/jev/finale`, { method: 'POST', headers: buildApiHeaders(),
+        body: JSON.stringify({ challenge_id: state.finaleChallenge.challenge_id }),
+        ...(controller ? { signal: controller.signal } : {}) });
+      const result = await response.json();
+      if (!response.ok || result.status !== 'ready') state.jevMessage = 'Jev 本次结果不可用；保留织机的真实竞猜结果。';
+    } catch (_) { state.jevMessage = 'Jev 本次结果不可用；保留织机的真实竞猜结果。'; }
+    finally { clearTimeout(deadline); state.finaleJevSettled = true; }
+  }
+
+  function trackFinaleVisibility() {
+    if (state.finaleReadyAt === null || state.finaleChoiceRequest || state.finaleResult) return;
+    const now = performance.now();
+    if (pageHidden()) {
+      if (state.finaleHiddenSince === null) state.finaleHiddenSince = now;
+    } else if (state.finaleHiddenSince !== null) {
+      state.finaleHiddenMs += Math.max(0, now - state.finaleHiddenSince);
+      state.finaleHiddenSince = null;
+    }
+  }
+
+  function measureFinaleLayout() {
+    const boxes = Array.from(dom.finaleGrid.children);
+    if (boxes.length !== 4 || boxes.some(el => typeof el.offsetTop !== 'number' || !el.offsetWidth)) return null;
+    const tops = [...new Set(boxes.map(el => el.offsetTop))].sort((a, b) => a - b);
+    const slots = boxes.map(el => [tops.indexOf(el.offsetTop),
+      boxes.filter(other => other.offsetTop === el.offsetTop && other.offsetLeft < el.offsetLeft).length]);
+    if (new Set(slots.map(slot => slot.join(':'))).size !== 4) return null;
+    return Object.freeze(slots.map(slot => Object.freeze(slot)));
+  }
+
+  function selectFinaleCard(id, input = 'unknown') {
+    if (!state.finaleImagesReady || !state.finaleJevSettled || state.finaleChoiceRequest || state.finaleBusy || state.finaleResult) return;
+    if (!state.finaleChallenge.candidate_ids.includes(id)) return;
+    state.finaleSelection = id;
+    state.finaleInput = ['mouse', 'touch', 'keyboard'].includes(input) ? input : 'unknown';
+    state.finaleLayout = measureFinaleLayout();
+    dom.finaleGrid.children && Array.from(dom.finaleGrid.children).forEach(button => {
+      const chosen = button.dataset.cardId === id;
+      button.setAttribute('aria-checked', String(chosen));
+      xrayClass(button, 'selected', chosen);
+    });
+    dom.finaleFlip.disabled = false;
+  }
+
+  async function flipFinale() {
+    if (state.finaleBusy || state.finaleResult || !state.finaleSelection || !state.finaleImagesReady) return;
+    state.finaleBusy = true;
+    state.finaleError = null;
+    dom.finaleRetry.hidden = true;
+    dom.finaleFlip.disabled = true;
+    if (!state.finaleChoiceRequest) {
+      const now = performance.now();
+      const elapsed = Math.min(MAX_ROUND_MS, Math.max(0, Math.round(now - state.finaleStartedAt)));
+      const readyOffset = Math.min(elapsed, Math.max(0, Math.round(state.finaleReadyAt - state.finaleStartedAt)));
+      const hidden = state.finaleHiddenMs + (state.finaleHiddenSince === null ? 0 : Math.max(0, now - state.finaleHiddenSince));
+      state.finaleChoiceRequest = Object.freeze({
+        challenge_id: state.finaleChallenge.challenge_id, card_id: state.finaleSelection, elapsed_ms: elapsed,
+        observation: Object.freeze({ ready_offset_ms: readyOffset,
+          hidden_ms: Math.min(elapsed - readyOffset, Math.max(0, Math.round(hidden))),
+          layout: state.finaleLayout, input: state.finaleInput }),
+      });
+    }
+    Array.from(dom.finaleGrid.children).forEach(button => { button.disabled = true; });
+    renderFinaleText();
+    try {
+      const result = await xrayRequest('/finale/choose', state.finaleChoiceRequest);
+      if (!result || result.schema_version !== 'norn.finale.result.v1'
+          || result.challenge_id !== state.finaleChallenge.challenge_id
+          || result.commitment !== state.finaleChallenge.commitment
+          || result.chosen_card_id !== state.finaleChoiceRequest.card_id
+          || !state.finaleChallenge.candidate_ids.includes(result.predicted_card_id)
+          || typeof result.hit !== 'boolean' || result.hit !== (result.predicted_card_id === result.chosen_card_id)) throw new Error('Invalid finale result');
+      state.finaleResult = Object.freeze(result);
+      renderFinaleXray(result);
+      Array.from(dom.finaleGrid.children).forEach(button => {
+        const chosen = button.dataset.cardId === result.chosen_card_id;
+        const predicted = button.dataset.cardId === result.predicted_card_id;
+        xrayClass(button, 'predicted', predicted);
+        if (chosen) xrayText(button, tr('你的最爱'), 'span', 'finale-card-badge chosen');
+        if (predicted) xrayText(button, tr('织机的押注'), 'span', 'finale-card-badge predicted');
+        if (result.jev && result.jev.status === 'ok' && result.jev.predicted_card_id === button.dataset.cardId)
+          xrayText(button, tr('Jev 的押注'), 'span', 'finale-card-badge jev');
+      });
+      dom.finaleProofText.textContent += `\n${result.salt || ''}`;
+      dom.finaleFlip.hidden = true;
+      dom.finaleContinue.hidden = false;
+      dom.finaleTitle.focus();
+    } catch (_) {
+      state.finaleError = 'choose';
+      dom.finaleStatus.textContent = tr('翻牌结果还没确认。重试只会核对同一个选择，不会重新下注。');
+      dom.finaleRetry.hidden = false;
+    } finally {
+      state.finaleBusy = false;
+      renderFinaleText();
+    }
+  }
+
+  function retryFinale() {
+    if (state.finaleBusy) return;
+    if (state.finaleError === 'images') { renderFinaleCards(); return; }
+    if (state.finaleChoiceRequest) { flipFinale(); return; }
+    beginFinale();
+  }
+
+  async function continueFinaleReading() {
+    if (!state.finaleResult || state.analysisBusy || dom.revealOverlay.classList.contains('active')) return;
+    dom.finaleOverlay.hidden = true;
+    const payload = Object.freeze({ ...state.finaleBasePayload, language: currentLanguage(),
+      finale_id: state.finaleResult.challenge_id });
+    await showReadingForPayload(payload);
   }
 
   // ─── API Call ────────────────────────────────────────────
@@ -1761,7 +2382,7 @@
       updateRecordNote();
       if (state.xraySource === 'live') scheduleXrayRefresh();
       updateRecordExport(data);
-      renderPortrait(data.portrait);
+      renderProductResult(data);
       updateRuntimeNotice(data);
       if (data.max_dialogue_turns) {
         state.dialogueLimit = resolveDialogueLimit(data.max_dialogue_turns);
@@ -2081,6 +2702,19 @@
     dom.xrayPlay.addEventListener('click', toggleXrayPlayback);
     dom.xrayEngineering.addEventListener('toggle', renderXrayDetails);
     document.addEventListener('keydown', (event) => {
+      if (LAST_CARD && !dom.finaleOverlay.hidden && event.key === 'Tab') {
+        const targets = Array.from(dom.finaleOverlay.querySelectorAll('button, summary, [tabindex="0"]'))
+          .filter(element => !element.disabled && element.getClientRects().length > 0);
+        if (targets.length) {
+          const first = targets[0], last = targets[targets.length - 1];
+          if (event.shiftKey && (document.activeElement === first || document.activeElement === dom.finaleTitle)) {
+            event.preventDefault(); last.focus();
+          } else if (!event.shiftKey && document.activeElement === last) {
+            event.preventDefault(); first.focus();
+          }
+        }
+        return;
+      }
       if (event.key === 'Escape' && state.xrayOpen) {
         event.preventDefault();
         setXrayOpen(false);
@@ -2384,26 +3018,27 @@
         : (data.source === 'session' ? tr('本次体验 · 已冻结') : tr('本次体验 · 实时'));
     dom.xrayComparisonMode.textContent = frozen
       ? tr`冻结前 ${report.training.cutoff} 轮` : tr('逐轮预测');
+    const rows = report && Array.isArray(report.rounds) ? report.rounds : [];
+    const current = rows.find(item => item.round === round);
     COMPARISON_LANES.forEach(lane => {
       const status = report && report.lanes && report.lanes[lane.id] && report.lanes[lane.id].status;
       const label = document.createElement('span');
       label.className = `xray-lane-label ${lane.id}`;
       xrayText(label, lane.letter, 'b', 'xray-lane-letter');
-      xrayText(label, lane.id === 'jev' && status !== 'ok'
+      xrayText(label, LAST_CARD && lane.id === 'learning' && current && current.same_predictions
+        ? tr('学习模型 · 本轮沿用基线') : lane.id === 'jev' && status !== 'ok'
         ? tr(status === 'failed' ? 'Jev · 结果不可用' : 'Jev · 本次未运行') : tr(lane.name), 'span');
       dom.xrayComparisonLegend.appendChild(label);
     });
     dom.xrayComparisonCards.innerHTML = '';
     dom.xrayComparisonLoss.innerHTML = '';
     dom.xrayLossValue.textContent = '';
-    const rows = report && Array.isArray(report.rounds) ? report.rounds : [];
-    const current = rows.find(item => item.round === round);
     if (!current) {
       dom.xrayComparisonContext.textContent = '';
       dom.xrayComparisonResult.textContent = frozen
         ? tr`前 ${report.training.cutoff} 轮只用于拟合。把时间轴拖到之后的轮次，查看留出对照。`
         : tr('完成一轮后，这里会把当时的预测与你的选择放在一起。');
-      dom.xrayComparisonNote.textContent = state.jevEnabled && state.playMode
+      dom.xrayComparisonNote.textContent = LAST_CARD ? tr('Jev 仅在终局封存一次；这里回放探索阶段，不产生新调用。') : state.jevEnabled && state.playMode
         ? tr('Jev 已在开局前开启。打开、拖动和播放只读取已有预测，不新增调用。')
         : tr('Jev 默认关闭；可以在开局前手动开启，或事后导入结果。');
       return;
@@ -2931,7 +3566,9 @@
     const thumb = document.createElement('div');
     thumb.className = className;
     thumb.style.backgroundImage = `url("${xrayCardUrl(id)}")`;
-    const card = state.xrayTrajectory.cards.find(item => item.id === id);
+    const cards = state.xrayTrajectory && Array.isArray(state.xrayTrajectory.cards)
+      ? state.xrayTrajectory.cards : state.allCards;
+    const card = cards.find(item => item.id === id);
     thumb.title = card ? `${id} · ${card.type}` : id;
     parent.appendChild(thumb);
     return thumb;
@@ -3189,7 +3826,8 @@
 
   function renderReading(reading) {
     if (!dom.readingText || !reading) return;
-    if (DECK) setRevealTitle(tr('你的选图回顾'), tr('回看吸引你的画面'));
+    if (LAST_CARD && state.analysisResult && state.analysisResult.persona) setRevealTitle(tr('你的命运角色'), tr('从你的选择，读一个属于你的故事'));
+    else if (DECK) setRevealTitle(tr('你的选图回顾'), tr('回看吸引你的画面'));
     else setRevealTitle(tr('命运已经织成'), 'The threads have taken shape');
 
     const cleanText = cleanMarkdown(reading);
@@ -3248,7 +3886,8 @@
 
   function resetReading() {
     if (!dom.readingText) return;
-    if (DECK) setRevealTitle(tr('正在整理你的选择……'), tr('图片、解读与猜牌回顾'));
+    if (LAST_CARD) setRevealTitle(tr('织机正在读你的底牌……'), tr('你的选择，会成为怎样的角色？'));
+    else if (DECK) setRevealTitle(tr('正在整理你的选择……'), tr('图片、解读与猜牌回顾'));
     else setRevealTitle(tr('命运正在编织……'), 'The threads of fate are converging');
     dom.readingText.classList.remove('visible');
     dom.readingText.innerHTML = '';
@@ -3523,6 +4162,7 @@
   }
 
   function getDialogueLimit(totalRounds) {
+    if (LAST_CARD) return 3;
     const rounds = Number.parseInt(totalRounds, 10) || 1;
     if (rounds <= 5) return 1;
     if (rounds <= 20) return 2;

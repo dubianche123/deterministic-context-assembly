@@ -1,16 +1,19 @@
 # Norn's current deck and v6 engine
 
-The PAM∃LA deck and v6 engine are the current Norn product path. The main
+Last Card uses the PAM∃LA deck and frozen v6 engine as Norn's current product
+path. Players explore at their own pace, challenge a sealed prediction among
+four previously undealt pictures, then receive an entertaining character
+reading, three follow-up turns and a local share card. The main
 `cloudflare/` build targets the existing `norn-machine` Worker and public URL,
 with its existing session, budget and archive bindings. There is one public
 experience; paper experiments and raw research results remain in the local
 research workspace. `cloudflare-research/` is an optional isolated build target,
 not a second product entry.
 
-**Released 2026-10-22:** the main PAM∃LA/v6 build is deployed. The
+**Earlier PAM∃LA/v6 release, 2026-10-22:** the
 [official DeepSeek integration check](../benchmarks/results/norn-v6-release-live-20261022.json)
 passed with synthetic choices; this is engineering acceptance, not human
-preference evidence. The final version is
+preference evidence. That release version was
 `5f8cd99b-33e6-4e45-bc61-2ccebd827048`; post-deploy session and final changed
 asset checks also passed. Full engineering evidence is recorded in
 [deployment](deployment.md).
@@ -58,16 +61,22 @@ The deck reads choices with three nested models:
 - **deviation:** `a·u + x8·δ`, a personal direction.
 
 The model uses the small-sample priors of the research studies. Two prequential
-e-values, each with threshold 20, decide what the reading may say:
+e-values, each with threshold 20, decide what predictive evidence may be
+claimed in X-Ray:
 - **sensitivity** is claimed only when it predicts this visitor's picks better than
   the population model;
 - **a personal deviation** is claimed only when it beats the best sensitivity-only
   model in hindsight.
 
-Otherwise the reading describes the actual choices and says that a reliable
-personal difference has not been established. Failing a gate does not prove that
-the visitor has average taste. The engine is portable Python, and tests in the research workspace
-match it against the NumPy research code.
+Failing a gate does not prove that the visitor has average taste. In that case,
+the effective prediction falls back to an accepted simpler layer; X-Ray must
+show agreement with the reference honestly. The engine is portable Python,
+and tests in the research workspace match it against the NumPy research code.
+
+Last Card's named character is a separate creative interpretation of actual
+kept pictures and the final favourite. It is entertainment, not a personality
+class inferred by v6. The new `norn.reading-intent.last-card.v1` does not change
+numeric evidence, the frozen profile or old actors' original prompts/history.
 
 ## Display v2 (`backend/research_deck.py`)
 
@@ -89,34 +98,44 @@ match it against the NumPy research code.
 - **Fallback:** if the candidate cannot be fitted, the round is drawn uniformly and
   every role is logged as `random`.
 
-## What changes for the visitor
+## The current visitor experience
 
-- X-Ray compares the reference baseline and effective v6 predictor on each
-  completed round's shared pictures, with the actual choices and a cumulative
-  card-conditional loss curve. It uses only earlier rounds to predict each
-  target. Consented visits unlock predictions after choices are sealed; private
-  demos can inspect completed rounds live. The whole-deck constellation, v6
-  evidence layers and technical JSON are collapsed.
-- Jev is disabled during visits. An explicitly generated offline report can
-  replace the whole comparison with three frozen-prefix lanes. Importing or
-  scrubbing makes no remote model calls. See [the X-Ray contract](xray.md).
-- The original generated-image probe is off for this deck.
-- The entry screen credits the dataset.
-- The reading uses the same prompts, frozen context, follow-ups, optional rating,
-  export and withdrawal as Norn. Its evidence comes from the deck's scenes and
-  motifs and from the established layer of research v6.
-- The consent text (v4, for every build) says four things beyond the stored fields:
-  - the data are also used to study how the loom learns from a few choices;
-  - each visit uses one of two ways of dealing the cards, at random;
-  - results are published only in aggregate;
-  - a visit that ends before the reveal still keeps the rounds played (a partial
-    record, replaced as each round starts and superseded by the full record; see
-    [deployment](deployment.md)).
+- Exploration shows four pictures per round, with free selection and revision.
+  The existing display policy still decides composition and screen order.
+- `norn.pacing.v1` advises continuing or offers a finale from the true completed
+  history. The player can choose the finale after one completed round. The first
+  policy is untrained; randomized offers record their probabilities. Neither a
+  five-round threshold nor a claim of sufficient learning is part of the game.
+  Twelve rounds is a product/resource ceiling.
+- The server freezes the exploration and seals its local guess before presenting
+  four uniformly sampled, previously undealt pictures. The player chooses one
+  favourite. It remains a real hit or miss, outside the learning journal.
+- Where available, Jev defaults on with a pre-entry opt-out. It makes at most one
+  finale attempt and zero exploration requests. Only a result settled before
+  the final choice earns a hit. A 15-second/zero-retry deadline and existing
+  actor/global budgets bound it. See [the X-Ray contract](xray.md).
+- The reveal leads to a picture-grounded character story, up to three follow-up
+  turns and a locally rendered PNG. Saving a card uploads nothing. DeepSeek can
+  write the prose; offline mock provides explicit authored templates.
+- X-Ray stays collapsed behind the game. It separates the finale from historical
+  exploration predictions, shows the effective v6/reference relationship and
+  retains replay, the contribution ledger and technical details.
+- The original generated-image probe is off for this deck. The entry credits
+  PAM∃LA; both private and contributing players get the complete game.
+- Consent v4 remains optional and withdrawable. It covers anonymous choices and
+  provisional attention, incomplete-visit checkpoints, and the new product,
+  pacing and finale appendices. The final favourite can be saved before prose
+  returns; a full reading replaces the same visit's partial record. The initial
+  dealing assignment remains randomized, and results are published in aggregate.
+
+See [the gameplay contract](last-card.md) and [measurement](measurement.md) for
+the distinction between a fun reveal, predictive evidence and later research.
 
 ## Population slot layer (dormant)
 
-Each round deals 4–6 cards in a uniformly random screen order, and visitors may
-favour some screen positions. A deck may therefore carry a population `context`
+Earlier variable-size rounds dealt 4–6 cards; current Last Card exploration
+uses four, still in uniformly random screen order. Visitors may favour some
+positions. A deck may therefore carry a population `context`
 (schema `norn.slot-context.v1`):
 - `offsets`: per number of cards dealt, one centred offset per reading-order slot,
   added to that card's utility;
@@ -144,7 +163,10 @@ currently shipped context-free deck.
 
 A current-deck service (`NornService(deck="pamela-v1")`, the default `norn serve`,
 or `NORN_DECK=pamela-v1` on the Worker):
-- accepts only complete v5 journals of its deck and deck version for readings;
+- accepts only complete v5 exploration journals of its deck/version for readings;
+- validates the versioned product payload, recomputes pacing from completed
+  history, and owns finale creation, pre-choice commitments and immutable answers;
+- stores the product/pacing/finale appendices outside the frozen journal/profile;
 - with consent, keeps a partial record of an unfinished visit (`/api/record/partial`);
 - refuses journals of Norn's own deck;
 - supports preview, trajectory, session inspection and replay import without
@@ -170,6 +192,11 @@ checks are not relaxed, and earlier Decimal34 checks do not establish exact
 cross-runtime replay for v6.
 
 Records carry `experiments.display` (`mixed` or `random`) and `experiments.deck`.
+Current Last Card records additionally carry the exact product declaration
+`{schema_version: "norn.last-card.v1", pacing_policy: "norn.pacing.v1"}` and route
+to `<source>.last-card.v1`, or `<source>.last-card.v1.round-feedback.v1` when the
+independent, default-off exploration feedback switch is enabled. The final
+favourite and Jev result are not fitted into the pre-choice exploration profile.
 
 ## Run and deploy
 
@@ -208,3 +235,9 @@ registered there with the context they carry. Product explanations live
 outside these frozen files. Changing the bound mathematics, event contract or
 deck still requires a new research protocol version; changing the product's
 public entry point does not create a new statistical result.
+
+The Last Card appendices and cohort are outside that frozen protocol. Its old
+visitor-analysis reader excludes these records. Reusing the same engine does
+not make the old analysis a study of new pacing, a different final-choice
+target or authored character resonance. Those questions need explicitly
+versioned outcomes and analysis; existing research locks remain unchanged.

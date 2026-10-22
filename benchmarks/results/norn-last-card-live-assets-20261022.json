@@ -1,0 +1,37 @@
+{
+  "schema_version": "norn.last-card-assets.v1",
+  "base": "https://norn-machine.dubianche123.workers.dev",
+  "worker_version": "9b157b4e-b3c7-4020-a432-dea9f31b201e",
+  "assets": [
+    {
+      "asset": "index.html",
+      "match": true,
+      "sha256": "90bdf097a17182903e988eeb4daee705a00e58ee7948db34e1a1558416395c54",
+      "source_bytes": 18883,
+      "response_bytes": 18883
+    },
+    {
+      "asset": "app.js",
+      "match": true,
+      "sha256": "adf7076ef91d51441d13b16e07901467cd3310c9e00a69d84af47a86d387d803",
+      "source_bytes": 218877,
+      "response_bytes": 218877
+    },
+    {
+      "asset": "i18n.js",
+      "match": true,
+      "sha256": "c2a8f0a37d4fbac9fb04ac89657760d07588ebd991356b45c1a3082ae681cb5b",
+      "source_bytes": 49923,
+      "response_bytes": 49923
+    },
+    {
+      "asset": "style.css",
+      "match": true,
+      "sha256": "780c65042530718bf0ca15ab8563d6b6d4e54ba749fa6875c4f905f7ae5c50d0",
+      "source_bytes": 66628,
+      "response_bytes": 66628
+    }
+  ],
+  "passed": true,
+  "model_calls": 0
+}

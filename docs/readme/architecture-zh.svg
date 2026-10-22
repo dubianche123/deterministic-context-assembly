@@ -1,19 +1,8 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg viewBox="0 0 1320 820" role="img" lang="zh-CN" aria-labelledby="archify-diagram-title archify-diagram-description" xmlns="http://www.w3.org/2000/svg" width="1320" height="820">
-  <rect width="1320" height="820" rx="18" fill="#0a0a14" />
-  <title id="archify-diagram-title">命运织机 · 系统架构</title>
-  <desc id="archify-diagram-description">命运织机的真实架构：统一计算、证据门控、冻结上下文、解读，以及独立的自选预测和同意后存档。</desc>
-  <style>
- text{font-family:Arial,"PingFang SC","Microsoft YaHei",sans-serif;fill:#e8e3d5}
- .t-muted{fill:#aaa8bd}.t-primary{fill:#f2ead6}
- .c-mask{fill:#12121f}.c-frontend,.c-backend,.c-security,.c-external,.c-database{fill:none;stroke:#605436;stroke-width:1.4}
- .a-default,.a-emphasis,.a-security,.a-dashed{fill:none;stroke:#a88d48;stroke-width:1.6}
- .a-emphasis{stroke:#c9a84c;stroke-width:2}.a-dashed{stroke:#817d9c;stroke-dasharray:5 5}.a-security{stroke:#8ba391}
- .m-default,.m-emphasis{fill:#c9a84c}.m-security{fill:#8ba391}.m-dashed{fill:#817d9c}
- .semantic-sigil{fill:none;stroke:#c9a84c;stroke-width:1.1}.sigil-fill{fill:#c9a84c;stroke:none}
- .figure-title{font-family:Georgia,"Songti SC",serif;font-size:34px;fill:#c9a84c}
- .figure-note{font-size:16px;fill:#aaa7bc}.figure-kicker{font-size:12px;fill:#968a60;letter-spacing:2.4px}
- </style>
+<svg xmlns="http://www.w3.org/2000/svg" width="1320" height="760" viewBox="0 0 1320 760" role="img" aria-labelledby="title desc" lang="zh-CN">
+  <title id="title">命运织机 · 命运底牌</title>
+  <desc id="desc">完整命运底牌流程：确定性预测、独立创作解读、Jev终局对手和经同意的版本化附录。</desc>
+  <rect width="1320" height="760" rx="18" fill="#0a0a14" />
+  <style>text{font-family:Arial,"PingFang SC","Microsoft YaHei",sans-serif;fill:#e8e3d5}.a-emphasis,.a-default,.a-security,.a-dashed{fill:none;stroke:#a88d48;stroke-width:1.6}.a-emphasis{stroke:#c9a84c;stroke-width:2}.a-dashed{stroke:#817d9c;stroke-dasharray:5 5}.a-security{stroke:#8ba391}.m-default,.m-emphasis{fill:#c9a84c}.m-security{fill:#8ba391}.m-dashed{fill:#817d9c}.heading{font-family:Georgia,"Songti SC",serif;fill:#c9a84c;font-size:32px}.muted{fill:#aaa8bd}.node-title{font-size:18px;font-weight:600}.node-sub{font-size:14px;fill:#aaa8bd}</style>
   <defs>
     <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
       <polygon points="0 0, 10 3.5, 0 7" class="m-default" />
@@ -31,163 +20,85 @@
       <path d="M 40 0 L 0 0 0 40" class="c-grid" stroke-width="0.5" />
     </pattern>
   </defs>
-  <g transform="translate(0 105)">
-    <path d="M 240 268 L 290 268" class="a-emphasis" stroke-width="1.8" marker-end="url(#arrowhead-emphasis)" />
-    <path d="M 490 268 L 540 268" class="a-emphasis" stroke-width="1.8" marker-end="url(#arrowhead-emphasis)" />
-    <path d="M 750 268 L 800 268" class="a-emphasis" stroke-width="1.8" marker-end="url(#arrowhead-emphasis)" />
-    <path d="M 1010 268 L 1060 268" class="a-emphasis" stroke-width="1.8" marker-end="url(#arrowhead-emphasis)" />
-    <path d="M 1170 316 L 1170 460" class="a-emphasis" stroke-width="1.8" marker-end="url(#arrowhead-emphasis)" />
-    <path d="M 645 316 L 645 332 Q 645 340 653 340 L 658 340 Q 666 340 666 348 L 666 428 Q 666 436 658 436 L 658 436 Q 650 436 650 444 L 650 460" class="a-default" stroke-width="1.5" marker-end="url(#arrowhead)" />
-    <path d="M 140 220 L 140 204 Q 140 196 148 196 L 158 196 Q 166 196 166 188 L 166 168 Q 166 160 158 160 L 158 160 Q 150 160 150 152 L 150 136" class="a-dashed" stroke-width="1.5" marker-end="url(#arrowhead-dashed)" />
-    <path d="M 140 316 L 140 332 Q 140 340 148 340 L 158 340 Q 166 340 166 348 L 166 428 Q 166 436 158 436 L 158 436 Q 150 436 150 444 L 150 460" class="a-dashed" stroke-width="1.5" marker-end="url(#arrowhead-dashed)" />
-    <path d="M 390 316 L 390 332 Q 390 340 398 340 L 408 340 Q 416 340 416 348 L 416 428 Q 416 436 408 436 L 408 436 Q 400 436 400 444 L 400 460" class="a-security" stroke-width="1.5" marker-end="url(#arrowhead-security)" />
-    <path d="M 260 518 L 290 518" class="a-dashed" stroke-width="1.5" marker-end="url(#arrowhead-dashed)" />
-    <g id="node-visitor-browser" aria-label="聚焦浏览器，离线图片 · 行为事件记录, 架构组件">
-      <title>浏览器 · 离线图片 · 行为事件记录 · 架构组件</title>
-      <rect x="40" y="220" width="200" height="96" rx="6" class="c-mask" />
-      <rect x="40" y="220" width="200" height="96" rx="6" class="c-frontend" stroke-width="1.5" />
-      <g aria-hidden="true" class="semantic-sigil s-frontend" transform="translate(46 226) scale(0.6875)">
-        <rect x="2" y="3" width="12" height="10" rx="2" />
-        <path d="M2 6.5h12" />
-        <circle cx="4.1" cy="4.8" r=".7" class="sigil-fill" />
-        <circle cx="6.3" cy="4.8" r=".7" class="sigil-fill" />
-      </g>
-      <text x="140.0" y="255.0" font-size="18.5" font-weight="600" text-anchor="middle" class="t-primary">浏览器</text>
-      <text x="140.0" y="279.0" font-size="15.5" text-anchor="middle" class="t-muted">离线图片</text>
-      <text x="140.0" y="296.0" font-size="15.5" text-anchor="middle" class="t-muted">行为事件记录</text>
-    </g>
-    <g id="node-python-authority" aria-label="聚焦Python 统一计算层，本地服务 / Cloudflare, 架构组件">
-      <title>Python 统一计算层 · 本地服务 / Cloudflare · 架构组件</title>
-      <rect x="290" y="220" width="200" height="96" rx="6" class="c-mask" />
-      <rect x="290" y="220" width="200" height="96" rx="6" class="c-backend" stroke-width="1.5" />
-      <g aria-hidden="true" class="semantic-sigil s-backend" transform="translate(296 226) scale(0.6875)">
-        <path d="M6 3 3 8l3 5M10 3l3 5-3 5" />
-      </g>
-      <text x="390.0" y="255.0" font-size="18.5" font-weight="600" text-anchor="middle" class="t-primary">Python 统一计算层</text>
-      <text x="390.0" y="279.0" font-size="15.5" text-anchor="middle" class="t-muted">本地服务 / Cloudflare</text>
-    </g>
-    <g id="node-sealed-preference" aria-label="聚焦画像与证据门控，仅采用获得支持的信号, 架构组件">
-      <title>画像与证据门控 · 仅采用获得支持的信号 · 架构组件</title>
-      <rect x="540" y="220" width="210" height="96" rx="6" class="c-mask" />
-      <rect x="540" y="220" width="210" height="96" rx="6" class="c-security" stroke-width="1.5" />
-      <g aria-hidden="true" class="semantic-sigil s-security" transform="translate(546 226) scale(0.6875)">
-        <path d="M8 2.2 13 4v3.5c0 3.1-1.8 5.4-5 6.5-3.2-1.1-5-3.4-5-6.5V4Z" />
-        <path d="m5.8 8 1.5 1.5 3-3" />
-      </g>
-      <text x="645.0" y="255.0" font-size="18.5" font-weight="600" text-anchor="middle" class="t-primary">画像与证据门控</text>
-      <text x="645.0" y="279.0" font-size="15.5" text-anchor="middle" class="t-muted">仅采用获得支持的信号</text>
-    </g>
-    <g id="node-frozen-reading-context" aria-label="聚焦冻结解读上下文，真实保留图片 · 有限证据, 架构组件">
-      <title>冻结解读上下文 · 真实保留图片 · 有限证据 · 架构组件</title>
-      <rect x="800" y="220" width="210" height="96" rx="6" class="c-mask" />
-      <rect x="800" y="220" width="210" height="96" rx="6" class="c-backend" stroke-width="1.5" />
-      <g aria-hidden="true" class="semantic-sigil s-backend" transform="translate(806 226) scale(0.6875)">
-        <path d="M6 3 3 8l3 5M10 3l3 5-3 5" />
-      </g>
-      <text x="905.0" y="255.0" font-size="18.5" font-weight="600" text-anchor="middle" class="t-primary">冻结解读上下文</text>
-      <text x="905.0" y="279.0" font-size="15.5" text-anchor="middle" class="t-muted">真实保留图片 · 有限证据</text>
-    </g>
-    <g id="node-language-renderer" aria-label="聚焦本地模板 / DeepSeek，离线解读 / 可选模型 API, 架构组件">
-      <title>本地模板 / DeepSeek · 离线解读 / 可选模型 API · 架构组件</title>
-      <rect x="1060" y="220" width="220" height="96" rx="6" class="c-mask" />
-      <rect x="1060" y="220" width="220" height="96" rx="6" class="c-external" stroke-width="1.5" />
-      <g aria-hidden="true" class="semantic-sigil s-external" transform="translate(1066 226) scale(0.6875)">
-        <rect x="2.5" y="5" width="8.5" height="8" rx="1.5" />
-        <path d="M8 2.5h5.5V8M13.5 2.5 7.5 8.5" />
-      </g>
-      <text x="1170.0" y="255.0" font-size="18.5" font-weight="600" text-anchor="middle" class="t-primary">本地模板 / DeepSeek</text>
-      <text x="1170.0" y="279.0" font-size="15.5" text-anchor="middle" class="t-muted">离线解读 / 可选模型 API</text>
-    </g>
-    <g id="node-visual-reading" aria-label="聚焦视觉小传与追问，本次选图的小传, 架构组件">
-      <title>视觉小传与追问 · 本次选图的小传 · 架构组件</title>
-      <rect x="1060" y="460" width="220" height="96" rx="6" class="c-mask" />
-      <rect x="1060" y="460" width="220" height="96" rx="6" class="c-frontend" stroke-width="1.5" />
-      <g aria-hidden="true" class="semantic-sigil s-frontend" transform="translate(1066 466) scale(0.6875)">
-        <rect x="2" y="3" width="12" height="10" rx="2" />
-        <path d="M2 6.5h12" />
-        <circle cx="4.1" cy="4.8" r=".7" class="sigil-fill" />
-        <circle cx="6.3" cy="4.8" r=".7" class="sigil-fill" />
-      </g>
-      <text x="1170.0" y="495.0" font-size="18.5" font-weight="600" text-anchor="middle" class="t-primary">视觉小传与追问</text>
-      <text x="1170.0" y="519.0" font-size="15.5" text-anchor="middle" class="t-muted">本次选图的小传</text>
-    </g>
-    <g id="node-xray-replay" aria-label="聚焦X 光回放，学习模型 / 基线, 架构组件">
-      <title>X 光回放 · 学习模型 / 基线 · 架构组件</title>
-      <rect x="540" y="460" width="220" height="96" rx="6" class="c-mask" />
-      <rect x="540" y="460" width="220" height="96" rx="6" class="c-frontend" stroke-width="1.5" />
-      <g aria-hidden="true" class="semantic-sigil s-frontend" transform="translate(546 466) scale(0.6875)">
-        <rect x="2" y="3" width="12" height="10" rx="2" />
-        <path d="M2 6.5h12" />
-        <circle cx="4.1" cy="4.8" r=".7" class="sigil-fill" />
-        <circle cx="6.3" cy="4.8" r=".7" class="sigil-fill" />
-      </g>
-      <text x="650.0" y="495.0" font-size="18.5" font-weight="600" text-anchor="middle" class="t-primary">X 光回放</text>
-      <text x="650.0" y="519.0" font-size="15.5" text-anchor="middle" class="t-muted">学习模型 / 基线</text>
-      <text x="650.0" y="536.0" font-size="15.5" text-anchor="middle" class="t-muted">可选 Jev 对照</text>
-    </g>
-    <g id="node-consented-archive" aria-label="聚焦经同意的存档，中途检查点 · 完整记录 · 撤回, 架构组件">
-      <title>经同意的存档 · 中途检查点 · 完整记录 · 撤回 · 架构组件</title>
-      <rect x="290" y="460" width="220" height="96" rx="6" class="c-mask" />
-      <rect x="290" y="460" width="220" height="96" rx="6" class="c-database" stroke-width="1.5" />
-      <g aria-hidden="true" class="semantic-sigil s-database" transform="translate(296 466) scale(0.6875)">
-        <ellipse cx="8" cy="4" rx="5" ry="2" />
-        <path d="M3 4v8c0 1.1 2.2 2 5 2s5-.9 5-2V4M3 8c0 1.1 2.2 2 5 2s5-.9 5-2" />
-      </g>
-      <text x="400.0" y="495.0" font-size="18.5" font-weight="600" text-anchor="middle" class="t-primary">经同意的存档</text>
-      <text x="400.0" y="519.0" font-size="15.5" text-anchor="middle" class="t-muted">中途检查点 · 完整记录</text>
-      <text x="400.0" y="536.0" font-size="15.5" text-anchor="middle" class="t-muted">撤回</text>
-    </g>
-    <g id="node-jev-prestart" aria-label="聚焦Jev · 自选预测支路，开局前选择 · 独立预算 · 基础牌库, 架构组件">
-      <title>Jev · 自选预测支路 · 开局前选择 · 独立预算 · 基础牌库 · 架构组件</title>
-      <rect x="40" y="20" width="220" height="116" rx="6" class="c-mask" />
-      <rect x="40" y="20" width="220" height="116" rx="6" class="c-external" stroke-width="1.5" />
-      <g aria-hidden="true" class="semantic-sigil s-external" transform="translate(46 26) scale(0.6875)">
-        <rect x="2.5" y="5" width="8.5" height="8" rx="1.5" />
-        <path d="M8 2.5h5.5V8M13.5 2.5 7.5 8.5" />
-      </g>
-      <text x="150.0" y="55.0" font-size="18.5" font-weight="600" text-anchor="middle" class="t-primary">Jev · 自选预测支路</text>
-      <text x="150.0" y="79.0" font-size="15.5" text-anchor="middle" class="t-muted">开局前选择 · 独立预算</text>
-      <text x="150.0" y="96.0" font-size="15.5" text-anchor="middle" class="t-muted">基础牌库</text>
-    </g>
-    <g id="node-feedback-observation" aria-label="聚焦即时反馈 · 独立记录，默认关闭 · 仅记录实际展示, 架构组件">
-      <title>即时反馈 · 独立记录 · 默认关闭 · 仅记录实际展示 · 架构组件</title>
-      <rect x="40" y="460" width="220" height="116" rx="6" class="c-mask" />
-      <rect x="40" y="460" width="220" height="116" rx="6" class="c-database" stroke-width="1.5" />
-      <g aria-hidden="true" class="semantic-sigil s-database" transform="translate(46 466) scale(0.6875)">
-        <ellipse cx="8" cy="4" rx="5" ry="2" />
-        <path d="M3 4v8c0 1.1 2.2 2 5 2s5-.9 5-2V4M3 8c0 1.1 2.2 2 5 2s5-.9 5-2" />
-      </g>
-      <text x="150.0" y="495.0" font-size="18.5" font-weight="600" text-anchor="middle" class="t-primary">即时反馈 · 独立记录</text>
-      <text x="150.0" y="519.0" font-size="15.5" text-anchor="middle" class="t-muted">默认关闭 · 仅记录实际展示</text>
-    </g>
-    <g>
-      <rect x="248.5" y="246.0" width="33.0" height="18" rx="3" fill="#0a0a14" />
-      <text x="265" y="258" class="t-muted" font-size="11.5" text-anchor="middle">事件</text>
-    </g>
-    <g>
-      <rect x="1007.0" y="246.0" width="56.0" height="18" rx="3" fill="#0a0a14" />
-      <text x="1035" y="258" class="t-muted" font-size="11.5" text-anchor="middle">生成文字</text>
-    </g>
-    <g>
-      <rect x="639.0" y="380.0" width="33.0" height="18" rx="3" fill="#0a0a14" />
-      <text x="655.5" y="392" class="t-muted" font-size="11.5" text-anchor="middle">回放</text>
-    </g>
-    <g>
-      <rect x="113.5" y="174.0" width="79.0" height="18" rx="3" fill="#0a0a14" />
-      <text x="153" y="186" class="t-muted" font-size="11.5" text-anchor="middle">选择前的历史</text>
-    </g>
-    <g>
-      <rect x="113.5" y="380.0" width="79.0" height="18" rx="3" fill="#0a0a14" />
-      <text x="153" y="392" class="t-muted" font-size="11.5" text-anchor="middle">自选即时反馈</text>
-    </g>
-    <g>
-      <rect x="375.0" y="380.0" width="56.0" height="18" rx="3" fill="#0a0a14" />
-      <text x="403" y="392" class="t-muted" font-size="11.5" text-anchor="middle">仅同意后</text>
-    </g>
+  <path d="M 220 328 L 250 328" class="a-emphasis" stroke-width="1.8" marker-end="url(#arrowhead-emphasis)" />
+  <path d="M 430 335 L 460 335" class="a-emphasis" stroke-width="1.8" marker-end="url(#arrowhead-emphasis)" />
+  <path d="M 640 328 L 670 328" class="a-emphasis" stroke-width="1.8" marker-end="url(#arrowhead-emphasis)" />
+  <path d="M 850 328 L 880 328" class="a-emphasis" stroke-width="1.8" marker-end="url(#arrowhead-emphasis)" />
+  <path d="M 1060 328 L 1090 328" class="a-emphasis" stroke-width="1.8" marker-end="url(#arrowhead-emphasis)" />
+  <path d="M 340 176 L 340 280" class="a-default" stroke-width="1.5" marker-end="url(#arrowhead)" />
+  <path d="M 430 128 L 437.5 128 Q 445 128 445 135.5 L 445 313.5 Q 445 321 452.5 321 L 460 321" class="a-default" stroke-width="1.5" marker-end="url(#arrowhead)" />
+  <path d="M 550 176 L 550 280" class="a-dashed" stroke-width="1.5" marker-end="url(#arrowhead-dashed)" />
+  <path d="M 130 376 L 130 560" class="a-security" stroke-width="1.5" marker-end="url(#arrowhead-security)" />
+  <path d="M 760 376 L 760 560" class="a-default" stroke-width="1.5" marker-end="url(#arrowhead)" />
+  <text x="40" y="43" class="heading">命运织机 · 命运底牌</text>
+  <g id="node-explore">
+    <title>直觉选图 · 单选、多选或留白</title>
+    <rect x="40" y="280" width="180" height="96" rx="7" fill="#12121f" stroke="#605436" stroke-width="1.4" />
+    <text x="130.0" y="323.0" class="node-title" text-anchor="middle">直觉选图</text>
+    <text x="130.0" y="349.0" class="node-sub" text-anchor="middle">单选、多选或留白</text>
   </g>
-  <text x="40" y="34" class="figure-kicker">NORN MACHINE  /  系统架构</text>
-  <text x="40" y="79" class="figure-title">同一份行为事实，两种运行环境</text>
-  <line x1="40" y1="725" x2="1280" y2="725" stroke="#453c29" />
-  <text x="40" y="756" class="figure-note">本地与云端共用同一套 Python 引擎，语言模型只生成文字。</text>
-  <text x="40" y="783" class="figure-note">Jev 使用独立预测预算；即时反馈只作为展示记录保存。</text>
+  <g id="node-pacing">
+    <title>节奏建议 · 继续探索或进入终局</title>
+    <rect x="250" y="280" width="180" height="96" rx="7" fill="#12121f" stroke="#605436" stroke-width="1.4" />
+    <text x="340.0" y="323.0" class="node-title" text-anchor="middle">节奏建议</text>
+    <text x="340.0" y="349.0" class="node-sub" text-anchor="middle">继续探索或进入终局</text>
+  </g>
+  <g id="node-sealed">
+    <title>封存底牌 · 四张此前未见的图片</title>
+    <rect x="460" y="280" width="180" height="96" rx="7" fill="#12121f" stroke="#8ba391" stroke-width="1.4" />
+    <text x="550.0" y="323.0" class="node-title" text-anchor="middle">封存底牌</text>
+    <text x="550.0" y="349.0" class="node-sub" text-anchor="middle">四张此前未见的图片</text>
+  </g>
+  <g id="node-reveal">
+    <title>选择与翻牌 · 唯一最爱 · 真实输赢</title>
+    <rect x="670" y="280" width="180" height="96" rx="7" fill="#12121f" stroke="#605436" stroke-width="1.4" />
+    <text x="760.0" y="314.0" class="node-title" text-anchor="middle">选择与翻牌</text>
+    <text x="760.0" y="340.0" class="node-sub" text-anchor="middle">唯一最爱</text>
+    <text x="760.0" y="358.0" class="node-sub" text-anchor="middle">真实输赢</text>
+  </g>
+  <g id="node-persona">
+    <title>角色解读 · 本地模板或 DeepSeek</title>
+    <rect x="880" y="280" width="180" height="96" rx="7" fill="#12121f" stroke="#605436" stroke-width="1.4" />
+    <text x="970.0" y="323.0" class="node-title" text-anchor="middle">角色解读</text>
+    <text x="970.0" y="349.0" class="node-sub" text-anchor="middle">本地模板或 DeepSeek</text>
+  </g>
+  <g id="node-share">
+    <title>追问与分享 · 三轮追问 · 本地 PNG</title>
+    <rect x="1090" y="280" width="180" height="96" rx="7" fill="#12121f" stroke="#605436" stroke-width="1.4" />
+    <text x="1180.0" y="314.0" class="node-title" text-anchor="middle">追问与分享</text>
+    <text x="1180.0" y="340.0" class="node-sub" text-anchor="middle">三轮追问</text>
+    <text x="1180.0" y="358.0" class="node-sub" text-anchor="middle">本地 PNG</text>
+  </g>
+  <g id="node-v6">
+    <title>共享 Python v6 · 只拟合已完成的选择</title>
+    <rect x="250" y="80" width="180" height="96" rx="7" fill="#12121f" stroke="#605436" stroke-width="1.4" />
+    <text x="340.0" y="123.0" class="node-title" text-anchor="middle">共享 Python v6</text>
+    <text x="340.0" y="149.0" class="node-sub" text-anchor="middle">只拟合已完成的选择</text>
+  </g>
+  <g id="node-jev">
+    <title>Jev 对手 · 只在终局 · 独立预算</title>
+    <rect x="460" y="80" width="180" height="96" rx="7" fill="#12121f" stroke="#605436" stroke-width="1.4" />
+    <text x="550.0" y="114.0" class="node-title" text-anchor="middle">Jev 对手</text>
+    <text x="550.0" y="140.0" class="node-sub" text-anchor="middle">只在终局</text>
+    <text x="550.0" y="158.0" class="node-sub" text-anchor="middle">独立预算</text>
+  </g>
+  <g id="node-archive">
+    <title>同意后归档 · 版本化附录 · 随时撤回</title>
+    <rect x="40" y="560" width="180" height="96" rx="7" fill="#12121f" stroke="#605436" stroke-width="1.4" />
+    <text x="130.0" y="594.0" class="node-title" text-anchor="middle">同意后归档</text>
+    <text x="130.0" y="620.0" class="node-sub" text-anchor="middle">版本化附录</text>
+    <text x="130.0" y="638.0" class="node-sub" text-anchor="middle">随时撤回</text>
+  </g>
+  <g id="node-xray">
+    <title>X-Ray 回放 · 预测 · 证据 · 贡献账本</title>
+    <rect x="670" y="560" width="180" height="96" rx="7" fill="#12121f" stroke="#605436" stroke-width="1.4" />
+    <text x="760.0" y="585.0" class="node-title" text-anchor="middle">X-Ray 回放</text>
+    <text x="760.0" y="611.0" class="node-sub" text-anchor="middle">预测</text>
+    <text x="760.0" y="629.0" class="node-sub" text-anchor="middle">证据</text>
+    <text x="760.0" y="647.0" class="node-sub" text-anchor="middle">贡献账本</text>
+  </g>
+  <text x="940" y="598" font-size="17" class="muted">角色故事是创作，</text>
+  <text x="940" y="623" font-size="17" class="muted">竞猜输赢照实保留。</text>
+  <path d="M40 708H1270" stroke="#605436" stroke-opacity=".5" />
+  <text x="40" y="737" font-size="12" fill="#c9a84c" letter-spacing="1">一局一次终局 · 再来一局重新开始 · 原生矢量架构图</text>
 </svg>

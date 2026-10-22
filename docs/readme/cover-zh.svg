@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1280" height="560" viewBox="0 0 1280 560" role="img" aria-labelledby="title desc">
-<title id="title">命运织机 · 选图、猜牌与回顾</title>
-<desc id="desc">暗金星空中的三步互动：选择图片、织机提前猜牌、回看实际留下的图片。三路概率条为示意，不表示研究结果。</desc>
+<title id="title">命运织机 · 命运底牌</title>
+<desc id="desc">跟随直觉选图，翻开服务端事先封存的底牌，再带走一个由真实选择启发的创作角色。原创矢量示意，不表示研究结果。</desc>
 <defs>
   <radialGradient id="night"><stop stop-color="#25221e" stop-opacity=".75"/><stop offset=".75" stop-color="#111117" stop-opacity=".45"/><stop offset="1" stop-color="#09090f" stop-opacity="0"/></radialGradient>
   <linearGradient id="edge" x2="0" y2="1"><stop stop-color="#cfb57c" stop-opacity=".58"/><stop offset="1" stop-color="#cfb57c" stop-opacity=".16"/></linearGradient>
@@ -24,15 +24,15 @@
   <g transform="translate(61 42)" stroke="#cfb57c" fill="none" stroke-width="1.1"><path d="M0-12 10 6-10 6ZM0-5V13M-10 6 0 0 10 6"/><circle r="16" stroke-opacity=".35"/></g>
   <text x="88" y="47" fill="#cfb57c" font-size="12" letter-spacing="3.2">NORN / 命运织机</text>
   <path d="M1142 41H1219" stroke="#cfb57c" stroke-opacity=".3"/>
-  <text x="58" y="110" fill="#ad9d7e" font-size="12" letter-spacing="2">选图、猜牌、回看结果</text>
+  <text x="58" y="110" fill="#ad9d7e" font-size="12" letter-spacing="2">跟随直觉，翻开命运底牌</text>
   <g font-family="Georgia, 'Songti SC', 'Noto Serif CJK SC', serif" fill="#f0e8d7">
-    <text x="54" y="183" font-size="62">命运织机</text>
-    <text x="56" y="245" font-size="35" fill="#cfb57c">选几张图，</text>
+    <text x="54" y="183" font-size="62">命运底牌</text>
+    <text x="56" y="245" font-size="35" fill="#cfb57c">选图，翻牌，</text>
   </g>
-  <text x="58" y="300" font-size="21" fill="#d9cdb5">看看织机猜得准不准。</text>
-  <text x="58" y="331" font-size="19" fill="#a9a7aa">结束后，回看你留下的图片。</text>
+  <text x="58" y="300" font-size="21" fill="#d9cdb5">看看织机敢押哪一张。</text>
+  <text x="58" y="331" font-size="19" fill="#a9a7aa">带走一个属于本局的角色。</text>
   <path d="M58 361H142" stroke="#cfb57c" stroke-opacity=".45"/>
-  <text x="58" y="394" font-size="14" fill="#929096">每轮选一张、多张，或者都不选。</text>
+  <text x="58" y="394" font-size="14" fill="#929096">一个最爱，一段故事，一张分享卡。</text>
   <g fill="none" stroke="#cfb57c" stroke-opacity=".25"><rect x="58" y="424" width="84" height="28" rx="14"/><rect x="151" y="424" width="118" height="28" rx="14"/><rect x="278" y="424" width="178" height="28" rx="14"/></g>
   <g fill="#bfb5a2" font-size="11.5" text-anchor="middle"><text x="100" y="442">中 / EN</text><text x="210" y="442">本地离线可玩</text><text x="367" y="442">由你决定是否留记录</text></g>
 
@@ -59,19 +59,19 @@
   </g>
 
   <g font-family="Georgia, 'Songti SC', serif" fill="#dccaa6" font-size="18" text-anchor="middle">
-    <text x="671" y="371">选图</text><text x="906" y="371">织机猜牌</text><text x="1130" y="371">选图回顾</text>
+    <text x="671" y="371">选图</text><text x="906" y="371">封存底牌</text><text x="1130" y="371">你的角色</text>
   </g>
   <g fill="#857c6c" font-size="10" letter-spacing="1.6" text-anchor="middle"><text x="671" y="391">01</text><text x="906" y="391">02</text><text x="1130" y="391">03</text></g>
 
   <path d="M570 417H1217" stroke="#cfb57c" stroke-opacity=".15"/>
-  <text x="577" y="444" fill="#b1a082" font-size="10" letter-spacing="1.2">X-RAY · 回看每一次预测</text>
+  <text x="577" y="444" fill="#b1a082" font-size="10" letter-spacing="1.2">命运底牌 · 一局一次，翻牌见真章</text>
   <g font-size="10.5" fill="#b7b1a6">
-    <text x="577" y="469">参考基线</text><text x="785" y="469">学习模型</text><text x="995" y="469">Jev · 开局自选</text>
+    <text x="577" y="469">服务端封存</text><text x="785" y="469">娱乐角色</text><text x="995" y="469">本地分享</text>
   </g>
   <g stroke-width="5" stroke-linecap="round"><path d="M648 466H747M862 466H963M1100 466H1209" stroke="#25252c"/><path d="M648 466H686" stroke="#8e929d"/><path d="M862 466H922" stroke="#cfb57c"/><path d="M1100 466H1151" stroke="#82a69c" stroke-dasharray="3 5"/></g>
   <text x="1217" y="492" fill="#6e6b71" font-size="8.5" text-anchor="end" letter-spacing="1">示意画面 · 非实验结果</text>
   <path d="M58 510H1222" stroke="#cfb57c" stroke-opacity=".16"/>
-  <text x="58" y="535" fill="#94856b" font-size="10" letter-spacing="1.6">选图 → 提前猜牌 → 选图回顾 · 本地也能玩</text>
+  <text x="58" y="535" fill="#94856b" font-size="10" letter-spacing="1.6">直觉选图 → 翻开底牌 → 带走角色 · 本地也能玩</text>
   <g fill="#cfb57c"><circle cx="1200" cy="531" r="2"/><circle cx="1209" cy="531" r="2" opacity=".4"/><circle cx="1218" cy="531" r="2" opacity=".2"/></g>
 </g>
 </svg>

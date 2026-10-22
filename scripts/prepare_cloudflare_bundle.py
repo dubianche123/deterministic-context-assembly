@@ -93,7 +93,7 @@ def bootstrap():
             raise ValueError("Worker entrypoint must have one bootstrap import marker")
         (worker / "entry.py").write_text(source.replace(marker, bootstrap), encoding="utf-8")
     frontend = ROOT / "the-norn-machine" / "frontend"
-    allowed = {"index.html", "style.css", "app.js", "i18n.js", "play-comparison.js", "runtime-config.js"}
+    allowed = {"index.html", "style.css", "app.js", "i18n.js", "play-comparison.js", "last-card.js", "runtime-config.js"}
     for path in sorted(frontend.rglob("*")):
         if not path.is_file():
             continue
@@ -121,7 +121,7 @@ def bootstrap():
     # 0 is the fallback switch back to random rounds only.
     config = {"apiEndpoint": "/api", "provider": "openai-compatible", "model": "deepseek-flash",
               "offline": False, "hosting": "cloudflare", "collect": True, "consentVersion": consent,
-              "displayMixedShare": 0.5, **({"deck": deck} if deck else {})}
+              "displayMixedShare": 0.5, "lastCard": bool(deck), **({"deck": deck} if deck else {})}
     (assets / "runtime-config.js").write_text(
         "window.__NORN_CONFIG__ = " + json.dumps(config) + ";\n", encoding="utf-8")
     asset_headers = (
