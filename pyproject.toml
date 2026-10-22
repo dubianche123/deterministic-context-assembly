@@ -7,7 +7,7 @@ name = "norn-machine"
 version = "0.8.0"
 description = "An offline-first image-selection experience with deterministic context assembly"
 readme = "README.md"
-requires-python = ">=3.10"
+requires-python = ">=3.12"
 license = {text = "MIT"}
 dependencies = []
 

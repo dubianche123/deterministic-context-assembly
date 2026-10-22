@@ -2,27 +2,56 @@
 
 # The Norn Machine · 命运织机
 
-<img src="docs/readme/cover.svg" alt="The Norn Machine: choose art, let the loom guess, reveal a visual keepsake" width="100%" />
+**Pick pictures you like. See if the loom can guess your next choice.**
 
-**English** · [简体中文](README_CN.md)
+[![CI](https://github.com/dubianche123/norn-context-engineering/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/dubianche123/norn-context-engineering/actions/workflows/ci.yml)
+[![Python 3.12+](https://img.shields.io/badge/Python-3.12%2B-3776AB?logo=python&logoColor=white)](pyproject.toml)
+[![MIT License](https://img.shields.io/badge/License-MIT-769884)](LICENSE)
+[![Cloudflare Workers](https://img.shields.io/badge/Hosted%20on-Cloudflare%20Workers-F38020?logo=cloudflare&logoColor=white)](https://norn-machine.dubianche123.workers.dev/)
+[![No API key for local mock](https://img.shields.io/badge/Local%20mock-No%20API%20key-cfb57c)](#run-locally)
 
-[Play Norn](https://norn-machine.dubianche123.workers.dev/) · [Run locally](#run-locally) · [Architecture](#architecture) · [Model and deck](docs/research-deck.md) · [MIT License](LICENSE)
+### [Play online →](https://norn-machine.dubianche123.workers.dev/) · [Run locally →](#run-locally)
+
+**English** · [简体中文](README_CN.md) · [Architecture](#architecture) · [Model and deck](docs/research-deck.md)
+
+<img src="docs/readme/cover.svg" alt="The Norn Machine: choose pictures, test predictions, and revisit your picks" width="100%" />
 
 </div>
 
-The Norn Machine is an interactive guessing game about visual preference: **can a model learn what will catch your eye next from just a few rounds of choices?** In each round, keep one, several, or none of the pictures. When you stop, Norn assembles a visual keepsake from the images you actually kept, shows how many pre-committed guesses landed along the way, and opens a short follow-up dialogue.
+Keep one, several, or none of the pictures each round. When you finish, your **selection recap** brings together the pictures you kept, a short reading based on those choices, and the results of guesses made before you chose. You can then ask follow-up questions.
 
-Under the hood, Norn is built around a strict division of labor: **deterministic Python owns the event log, sequential preference fitting, and statistical evidence gates; the language model only renders the reading from a frozen context.** Everything needed to play, fit preferences, and inspect round-by-round predictions works offline out of the box.
+Play privately, or opt in to contribute a research record you can withdraw. Round feedback and the Jev comparison are both off by default, with separate switches before starting.
+
+## See how it plays
+
+The screenshots use the local demo: real fitting and replay, labelled template prose, no external API calls or research records. They show the interface, not visitor-study results.
 
 <p align="center">
-  <img src="docs/images/norn-play1-product-zh.jpg" alt="Actual interface: a visual keepsake of retained pictures beside the interactive X-Ray prediction replay" width="900" />
-  <br /><sub>Retained pictures become a visual keepsake; scrub X-Ray to replay the model's pre-round predictions.</sub>
+  <img src="docs/readme/features-en.svg" alt="Three parts of the experience: choose pictures, compare predictions, and revisit your picks" width="100%" />
+</p>
+
+**1 / Choose pictures.** Keep what you like, and undo or change your choices freely.
+
+<p align="center">
+  <img src="docs/images/readme-en-selection.jpg" alt="English desktop selection board with the full picture grid, selected states and controls" width="900" />
+</p>
+
+**2 / Revisit your picks.** Your selection recap puts the pictures, reading and guessing results together.
+
+<p align="center">
+  <img src="docs/images/readme-en-recap.jpg" alt="English selection recap showing retained pictures, the reading and guessing results" width="900" />
+</p>
+
+**3 / Open X-Ray.** Scrub the timeline to compare each round’s predictions with your choices and inspect cumulative prediction loss. Jev runs only if you opt in before starting.
+
+<p align="center">
+  <img src="docs/images/readme-en-xray.jpg" alt="Complete English X-Ray view with picture probabilities, actual choices and the cumulative loss chart" width="680" />
 </p>
 
 <details>
-<summary>See the English mobile experience</summary>
+<summary>Play on a phone</summary>
 <p align="center">
-  <img src="docs/images/norn-play1-mobile-en.jpg" alt="The English picture-selection board on a phone" width="320" />
+  <img src="docs/images/readme-en-mobile.jpg" alt="English mobile selection board with pictures and controls fitted to a narrow screen" width="360" />
 </p>
 </details>
 
@@ -30,7 +59,7 @@ Under the hood, Norn is built around a strict division of labor: **deterministic
 
 ## Run locally
 
-Requires **Python 3.10+**. From the repository root:
+Requires **Python 3.12+**. From the repository root:
 
 ```bash
 python3 -m norn doctor
@@ -43,8 +72,8 @@ Open [localhost:8765](http://127.0.0.1:8765) (or pass `--port 8766`). All 256 We
 
 ## What you can explore
 
-- **Pre-committed guesses & visual keepsake.** Choose, undo, and revise freely. Before you interact with a round, the engine commits its top prediction from earlier rounds alone. When you finish, you get a visual portrait of the images you kept, a round-by-round hit recap, and up to three follow-up turns.
-- **Two entry paths, full control over data.** *“Weave your thread”* contributes an anonymous session to the research archive (with one-click withdrawal at any time); the private path leaves no archive record. Both deliver the exact same game, keepsake, and X-Ray replay.
+- **Your picks, revisited.** Choose, undo, and revise freely. Before you interact with a round, the engine commits its top prediction from earlier rounds alone. When you finish, you get a selection recap of the images you kept, a round-by-round hit recap, and up to three follow-up turns.
+- **Two entry paths, full control over data.** *“Weave your thread”* contributes an anonymous session to the research archive (with one-click withdrawal at any time); the private path leaves no archive record. Both deliver the exact same game, selection recap, and X-Ray replay.
 - **Interactive X-Ray timeline.** Scrub across rounds to compare reference baseline probabilities, the learning model's predictions, your actual picks, and cumulative prediction loss. By default, predictions stay sealed until you finish choosing so they don't steer your picks.
 - **Pre-entry X-Ray switches (Round Feedback & Jev).** Before starting a session, you can open X-Ray to opt into live round-by-round feedback or enable a side-by-side comparison with **Jev** (`jev-1.13.0` via Typesafe). Both switches default to off and lock once the first round deals. See the [X-Ray contract](docs/xray.md).
 - **Bilingual & responsive.** Automatically matches browser language (`zh` / `en`) with a persistent toggle, and arranges 4–6 cards into balanced multi-row grids across mobile, tablet, and desktop viewports.
@@ -58,22 +87,13 @@ python3 -m norn replay /path/to/norn-recording.json --json
 
 ## Architecture
 
-```mermaid
-flowchart TD
-    UI[Browser · 256 bundled PAMELA images] --> E[Validated event journal]
-    D[Versioned deck · reference utility & content features] --> P[Shared Python v6 engine]
-    E --> P
-    P --> V[Profile · evidence gates · additive contributions]
-    V --> X[X-Ray · round-by-round replay]
-    V --> C[Frozen reading context]
-    C --> M[Mock or configured LLM provider]
-    M --> R[Reading & native follow-up history]
-    E -. explicit consent .-> A[Learning archive]
-    R -. reading & optional feedback .-> A
-    A --> Q[Versioned research analysis]
-```
+<p align="center">
+  <img src="docs/readme/architecture-en.svg" alt="Architecture: browser events feed the shared Python engine, predictions, reading context and consented archive" width="100%" />
+</p>
 
 The local server and the Cloudflare Python Worker run the exact same Python model and event validation code.
+
+Under the hood, Norn is built around a strict division of labor: **deterministic Python owns the event log, sequential preference fitting, and statistical evidence gates; the language model only renders the reading from a frozen context.** Everything needed to play, fit preferences, and inspect round-by-round predictions works offline out of the box.
 
 ### 1. Three-layer sequential preference learning (`v6`)
 
@@ -85,11 +105,11 @@ Each card in the deck carries a human reference utility `u` (from dataset rating
 | **Sensitivity (`L1`)** | `a × u` | How strongly—or inversely—this visit aligns with the reference direction. |
 | **Personal deviation (`L2`)** | `a × u + x8 · δ` | Specific content preferences beyond general popularity. |
 
-At each round, a sequential Plackett–Luce choice model jointly scores picking among the remaining visible cards and choosing to stop, regularized by small-sample shrinkage priors. Before each round is played, each layer scores the upcoming choices out-of-sample; an **evidence gate** promotes the active explanation to `L1` or `L2` only when cumulative predictive evidence passes a strict threshold. When a visit is too short to separate personal deviation from noise, the reading stays grounded in the lower layer while the visual keepsake still highlights the exact images the visitor kept. See [deck, model, and display contract](docs/research-deck.md).
+At each round, a sequential Plackett–Luce choice model jointly scores picking among the remaining visible cards and choosing to stop, regularized by small-sample shrinkage priors. Before each round is played, each layer scores the upcoming choices out-of-sample; an **evidence gate** promotes the active explanation to `L1` or `L2` only when cumulative predictive evidence passes a strict threshold. When a visit is too short to separate personal deviation from noise, the reading stays grounded in the lower layer while the selection recap still highlights the exact images the visitor kept. See [deck, model, and display contract](docs/research-deck.md).
 
 ### 2. Mixed dealing for feedback and learning
 
-Purely recommending top-scoring cards boosts selection rates but starves the model of contrast; purely random dealing learns well but feels unresponsive. Norn assigns each session to either random dealing or **mixed dealing**—combining personal candidate picks with high- and low-reference contrast cards in a shuffled screen layout. Every card's dealing policy, deck version, and role are logged in the event journal for reproducibility.
+Top-scoring recommendations aim for immediate appeal; contrast cards give the model more varied choices to learn from. Norn assigns each session to either random dealing or **mixed dealing**—combining personal candidate picks with high- and low-reference contrast cards in a shuffled screen layout. Whether this balances enjoyment and learning for real visitors remains a research question. Every card's dealing policy, deck version, and role are logged in the event journal for reproducibility.
 
 ### 3. Frozen reading context & privacy-preserving archive
 

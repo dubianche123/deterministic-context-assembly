@@ -58,6 +58,9 @@ async function bothEntrancesFreezeOptIn() {
         { status: 200, data: { available: true, provider_calls: 0 } });
       await app.init(); await flush();
       app.dom.ambientAudio.play = () => Promise.resolve();
+      // The DOM fixture does not parse initial HTML attributes; the static
+      // contract independently checks this native <details open> state.
+      app.dom.xraySessionOptions.open = true;
       assert.equal(app.state.jevEnabled, false, 'Default entry never selects a paid model');
       assert.equal(app.state.roundFeedbackEnabled, false, 'Feedback is off for both entrances by default');
       assert.equal(app.dom.roundFeedbackOptIn.checked, false);
@@ -77,6 +80,7 @@ async function bothEntrancesFreezeOptIn() {
       await flush();
       assert.equal(app.state.consent, entrance === 'startBtn', 'Jev opt-in preserves the chosen collection entrance');
       assert.equal(app.state.entryLocked, true);
+      assert.equal(app.dom.xraySessionOptions.open, false, 'Either entrance collapses its frozen pre-entry options');
       assert.equal(app.dom.jevOptIn.disabled, true);
       assert.equal(app.dom.roundFeedbackOptIn.disabled, true);
       assert.equal(app.state.roundFeedbackEnabled, feedbackEnabled);

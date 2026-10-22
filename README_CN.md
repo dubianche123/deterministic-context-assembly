@@ -2,25 +2,56 @@
 
 # The Norn Machine · 命运织机
 
-<img src="docs/readme/cover-zh.svg" alt="命运织机：选图、织机提前猜牌、揭晓视觉小传" width="100%" />
+**选你喜欢的图，看看织机能不能猜中。**
 
-[在线体验](https://norn-machine.dubianche123.workers.dev/) · [本地运行](#本地运行) · [系统架构](#系统架构) · [模型与牌库](docs/research-deck.md) · [English](README.md) · [MIT 许可](LICENSE)
+[![持续集成状态](https://github.com/dubianche123/norn-context-engineering/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/dubianche123/norn-context-engineering/actions/workflows/ci.yml)
+[![Python 3.12+](https://img.shields.io/badge/Python-3.12%2B-3776AB?logo=python&logoColor=white)](pyproject.toml)
+[![MIT 许可](https://img.shields.io/badge/License-MIT-769884)](LICENSE)
+[![Cloudflare Workers](https://img.shields.io/badge/Hosted%20on-Cloudflare%20Workers-F38020?logo=cloudflare&logoColor=white)](https://norn-machine.dubianche123.workers.dev/)
+[![本地模拟无需 API Key](https://img.shields.io/badge/Local%20mock-No%20API%20key-cfb57c)](#本地运行)
+
+### [在线体验 →](https://norn-machine.dubianche123.workers.dev/) · [本地运行 →](#本地运行)
+
+[简体中文](README_CN.md) · [English](README.md) · [系统架构](#系统架构) · [模型与牌库](docs/research-deck.md)
+
+<img src="docs/readme/cover-zh.svg" alt="命运织机：选图、提前猜牌与选图回顾" width="100%" />
 
 </div>
 
-**命运织机（The Norn Machine）** 是一场关于视觉偏好的猜牌互动：**只靠几轮选图，模型能不能慢慢猜中你下一张会被什么吸引？** 每轮你可以留下几张、全留或一张不选；随时停下时，系统会用你实际保留的画面生成一份视觉小传，回顾每轮事先锁定的猜牌命中情况，并开放追问对话。
+每轮可以选一张、多张，或全都不选。结束后，**选图回顾**把你留下的图片、基于这些选择的解读和猜牌结果放在一起；还可以继续追问。
 
-在底层，Norn 严格拆开了两类工作：**确定性的 Python 代码掌管事件账本、序贯偏好拟合与统计证据门控；语言模型只根据冻结的上下文把结果写成判词。** 选图、拟合、回放与模拟判词全部支持零依赖离线运行。
+你可以私密体验，也可以自愿贡献可撤回的研究记录。逐轮反馈和 Jev 对照默认都关闭，需要在开局前单独勾选。
+
+## 看看怎么玩
+
+以下截图来自本地模拟演示：拟合与回放执行真实算法，解读采用标注的模拟文案，不调用外部 API、不留研究记录；仅展示界面，不代表真人研究结果。
 
 <p align="center">
-  <img src="docs/images/norn-play1-product-zh.jpg" alt="真实界面：已选图片组成的视觉小传与可拖动的 X-Ray 预测回放" width="900" />
-  <br /><sub>真实界面 · 保留的画面组成视觉小传，拖动 X-Ray 时间轴可回看每轮事前预测。</sub>
+  <img src="docs/readme/features-zh.svg" alt="三步体验：自由选图、对照预测、回看图片与解读" width="100%" />
+</p>
+
+**1 / 选图。** 留下你想选的图片，也可以撤回或改选。
+
+<p align="center">
+  <img src="docs/images/readme-zh-selection.jpg" alt="中文桌面选图：完整图片网格、已选状态和操作按钮" width="900" />
+</p>
+
+**2 / 选图回顾。** 把实际留下的图片、解读和猜牌结果放在一起回看。
+
+<p align="center">
+  <img src="docs/images/readme-zh-recap.jpg" alt="中文选图回顾：已选图片、对应解读和本次猜牌回顾" width="900" />
+</p>
+
+**3 / 打开 X-Ray。** 拖动时间轴，比较每轮预测和真实选择，再看累计预测损失。Jev 只有开局前单独勾选才会运行。
+
+<p align="center">
+  <img src="docs/images/readme-zh-xray.jpg" alt="中文 X-Ray 完整视图：图片预测概率、实际选择与累计损失曲线" width="680" />
 </p>
 
 <details>
-<summary>看看英文手机界面</summary>
+<summary>手机上也能玩</summary>
 <p align="center">
-  <img src="docs/images/norn-play1-mobile-en.jpg" alt="英文手机选图界面" width="320" />
+  <img src="docs/images/readme-zh-mobile.jpg" alt="中文手机选图界面，图片与操作区适配窄屏" width="360" />
 </p>
 </details>
 
@@ -28,7 +59,7 @@
 
 ## 本地运行
 
-需要 **Python 3.10+**。在仓库根目录执行：
+需要 **Python 3.12+**。在仓库根目录执行：
 
 ```bash
 python3 -m norn doctor
@@ -41,8 +72,8 @@ python3 -m norn serve --mock
 
 ## 核心体验与功能
 
-- **事前锁定的猜牌与视觉小传。** 支持自由选图、撤回与改选。每轮发牌时，引擎仅凭此前已完成的轮次预先锁定本轮头号猜测；结束时揭晓由实选画面组成的视觉小传、猜牌命中回顾，以及最多三轮追问。
-- **双入口设计与可控的数据边界。** *“织入命运”* 自愿贡献匿名研究记录（支持随时一键撤回单条或当前浏览器的全部记录）；*私密入口* 不留任何研究归档。两个入口提供完全一致的小传揭晓与猜牌回顾。
+- **事前锁定的猜牌与选图回顾。** 支持自由选图、撤回与改选。每轮发牌时，引擎仅凭此前已完成的轮次预先锁定本轮头号猜测；结束时揭晓由实选画面组成的选图回顾、猜牌命中回顾，以及最多三轮追问。
+- **双入口设计与可控的数据边界。** *“织入命运”* 自愿贡献匿名研究记录（支持随时一键撤回单条或当前浏览器的全部记录）；*私密入口* 不留任何研究归档。两个入口提供完全一致的选图回顾与猜牌结果。
 - **交互式 X-Ray 预测回放。** 拖动时间轴，逐轮对照参考基线概率、个人学习模型预测、你的真实选择与累计预测损失。为避免提示干扰直觉，预测反馈默认在结束选图后统一解锁。
 - **开局前可选开关（逐轮反馈 & Jev 对照）。** 开局前展开 X-Ray，可按需勾选“边玩边看每轮预测反馈”，或开启 **Jev**（通过 Typesafe 调用 `jev-1.13.0`）进行三轨预测对照。两个开关相互独立，默认关闭，开局发牌后锁定。详见 [X-Ray 设计说明](docs/xray.md)。
 - **双语切换与自适应网格。** 自动识别浏览器中英文偏好并记忆手动切换；4–6 张图在手机、平板、桌面与分栏视图下自动排布为均衡的多行网格。
@@ -56,22 +87,13 @@ python3 -m norn replay /path/to/norn-recording.json --json
 
 ## 系统架构
 
-```mermaid
-flowchart TD
-    UI[浏览器 · 内置 256 张 PAMELA 图片] --> E[严格校验的事件日志]
-    D[版本化牌库 · 参考效用与内容特征] --> P[共享 Python v6 引擎]
-    E --> P
-    P --> V[画像 · 证据门控 · 可加总贡献]
-    V --> X[X-Ray · 逐轮预测回放]
-    V --> C[冻结的判词上下文]
-    C --> M[模拟文案或显式配置的模型接口]
-    M --> R[主判词与原生多轮追问]
-    E -. 明确同意 .-> A[学习记录归档]
-    R -. 判词与可选反馈 .-> A
-    A --> Q[独立版本化的研究分析]
-```
+<p align="center">
+  <img src="docs/readme/architecture-zh.svg" alt="系统架构：浏览器事件进入共享 Python 引擎，形成预测、解读上下文和经同意的归档" width="100%" />
+</p>
 
 本地服务与 Cloudflare Python Worker 共享同一套 Python 模型与事件校验实现。
+
+在底层，Norn 严格拆开了两类工作：**确定性的 Python 代码掌管事件账本、序贯偏好拟合与统计证据门控；语言模型只根据冻结的上下文把结果写成判词。** 选图、拟合、回放与模拟判词全部支持零依赖离线运行。
 
 ### 1. 三层嵌套序贯偏好模型（`v6`）
 
@@ -83,11 +105,11 @@ flowchart TD
 | **口味敏感度（`L1`）** | `a × u` | 本次访问更贴近、较少跟随、还是反向于大众参考方向。 |
 | **个人偏离（`L2`）** | `a × u + x8 · δ` | 超出大众喜好方向的特定内容与风格偏好。 |
 
-序贯选择模型同时对“在剩余可见卡片中选哪张”与“何时停下”建模，并用小样本收缩先验抑制过拟合。每轮开始前的前瞻预测不断积累序贯证据，只有跨过对应的**证据门控（evidence gate）**，系统才会启用更深一层的个性化解释。当轮数太少、不足以区分个人偏离与随机波动时，模型判词会克制地停留在已有证据支持的层次，而主界面依然用访客真实保留的图片生成视觉小传。详见[牌库、模型与出牌契约](docs/research-deck.md)。
+序贯选择模型同时对“在剩余可见卡片中选哪张”与“何时停下”建模，并用小样本收缩先验抑制过拟合。每轮开始前的前瞻预测不断积累序贯证据，只有跨过对应的**证据门控（evidence gate）**，系统才会启用更深一层的个性化解释。当轮数太少、不足以区分个人偏离与随机波动时，模型判词会克制地停留在已有证据支持的层次，而主界面依然用访客真实保留的图片生成选图回顾。详见[牌库、模型与出牌契约](docs/research-deck.md)。
 
 ### 2. 兼顾正反馈与学习的混合出牌
 
-如果每轮只推高分预测图，选中率虽高，但模型缺少对比信号、学不到偏离；纯随机发牌利于学习，却容易让人觉得“它不懂我”。Norn 将每次会话随机分入随机出牌或**混合出牌（Mixed Dealing）**——将个人候选推荐与一热一冷的参考对比图组合，并随机打乱屏幕位置。每张卡的出牌策略、牌库版本与角色均写入事件日志，便于事后复盘。
+高分推荐更偏向当下的吸引力，对比图则给模型提供更多样的学习线索。Norn 将每次会话随机分入随机出牌或**混合出牌（Mixed Dealing）**——将个人候选推荐与一热一冷的参考对比图组合，并随机打乱屏幕位置。这能否为真实访客兼顾好玩与学习，仍是待研究的问题。每张卡的出牌策略、牌库版本与角色均写入事件日志，便于事后复盘。
 
 ### 3. 冻结上下文与隐私友好的研究归档
 

@@ -532,8 +532,17 @@ class XrayStaticContractTests(unittest.TestCase):
                          'id="xray-bars"', 'id="xray-strip"', 'id="xray-types"', 'id="xray-guesses"',
                          'id="xray-import"', 'role="status" aria-live="polite"', '<summary>工程细节</summary>'):
             self.assertIn(contract, panel)
-        self.assertNotIn("<details open", html)
-        self.assertEqual(panel.count("<details"), 2, "Current-model visuals and engineering details each stay collapsed")
+        sections = re.findall(r"<details\b[^>]*>", panel)
+        self.assertEqual(len(sections), 3, "Two inspectors plus the explicit pre-entry settings")
+        for name in ("xray-model-view", "xray-engineering"):
+            tag = next(section for section in sections if f'id="{name}"' in section)
+            self.assertNotRegex(tag, r"\bopen(?:\s|=|>)", "Inspector details stay collapsed")
+        settings = next(section for section in sections if 'id="xray-session-options"' in section)
+        self.assertRegex(settings, r"\bopen(?:\s|=|>)", "Pre-entry options are initially discoverable")
+        options = panel[panel.index(settings):panel.index("</details>", panel.index(settings))]
+        for name in ("round-feedback-opt-in", "jev-opt-in"):
+            self.assertRegex(options, rf'<input\b[^>]*id="{name}"[^>]*type="checkbox"')
+        self.assertEqual(options.count('type="checkbox"'), 2)
         self.assertLess(panel.index('id="xray-comparison"'), panel.index('id="xray-model-view"'))
         self.assertIn('id="xray-comparison-import"', panel)
         self.assertLess(panel.index('id="xray-guesses"'), panel.index("<summary>工程细节</summary>"),

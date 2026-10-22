@@ -316,6 +316,7 @@
     dom.languageToggle = document.getElementById('language-toggle');
     dom.languageHint = document.getElementById('language-hint');
     dom.jevOptIn = document.getElementById('jev-opt-in');
+    dom.xraySessionOptions = document.getElementById('xray-session-options');
     dom.roundFeedbackOptIn = document.getElementById('round-feedback-opt-in');
     dom.roundFeedbackStatus = document.getElementById('round-feedback-status');
     dom.jevStatus = document.getElementById('jev-status');
@@ -656,6 +657,7 @@
   function startTest(consent = false) {
     if (!state.allCards.length || state.entryLocked || dom.welcomeOverlay.classList.contains('dismissed')) return;
     state.entryLocked = true;
+    if (dom.xraySessionOptions) dom.xraySessionOptions.open = false;
     state.consent = Boolean(consent && COLLECT);
     state.playMode = Boolean(DECK);
     state.experienceStartedAt = performance.now();
@@ -3187,7 +3189,8 @@
 
   function renderReading(reading) {
     if (!dom.readingText || !reading) return;
-    setRevealTitle(tr('命运已经织成'), 'The threads have taken shape');
+    if (DECK) setRevealTitle(tr('你的选图回顾'), tr('回看吸引你的画面'));
+    else setRevealTitle(tr('命运已经织成'), 'The threads have taken shape');
 
     const cleanText = cleanMarkdown(reading);
     // Build paragraph structure but start empty
@@ -3245,7 +3248,8 @@
 
   function resetReading() {
     if (!dom.readingText) return;
-    setRevealTitle(tr('命运正在编织……'), 'The threads of fate are converging');
+    if (DECK) setRevealTitle(tr('正在整理你的选择……'), tr('图片、解读与猜牌回顾'));
+    else setRevealTitle(tr('命运正在编织……'), 'The threads of fate are converging');
     dom.readingText.classList.remove('visible');
     dom.readingText.innerHTML = '';
     dom.analysisError.hidden = true;

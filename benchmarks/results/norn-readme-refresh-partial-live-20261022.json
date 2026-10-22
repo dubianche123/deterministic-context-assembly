@@ -1,0 +1,13 @@
+{
+  "schema_version": "norn.partial-visit-check.v4",
+  "base": "https://norn-machine.dubianche123.workers.dev",
+  "consent_version": "norn.consent.v4",
+  "deck": "pamela-v1@sha256:26134e1a8066b9064f4db22be7a0a97d79870947a4798092b9eff28503213b8c",
+  "model_calls": 0,
+  "experience_schema_version": "norn.experience.v1",
+  "checks": {},
+  "scope": "Synthetic open-round checkpoint, explicit feedback sidecar and empty-reading integration; no model-quality or real-browser exposure claim.",
+  "failure_type": "SSLEOFError",
+  "http_calls": [],
+  "passed": false
+}

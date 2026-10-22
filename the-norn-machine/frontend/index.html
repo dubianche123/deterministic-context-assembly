@@ -8,7 +8,7 @@
   <meta property="og:title" content="The Norn Machine">
   <meta property="og:description" content="跟随直觉，选择吸引你的画面。命运正在编织。">
   <meta property="og:type" content="website">
-  <link rel="stylesheet" href="style.css?v=20261022-play2">
+  <link rel="stylesheet" href="style.css?v=20261022-readme3">
 </head>
 <body>
   <canvas id="ambient-canvas" aria-hidden="true"></canvas>
@@ -26,6 +26,8 @@
       <div><p class="xray-eyebrow">THE WEAVE / INSPECTOR</p><h2 id="xray-title" tabindex="-1">工程透视 <span lang="en">X-Ray</span></h2></div>
       <div class="xray-head-tools"><button id="xray-refresh" class="xray-button" type="button">刷新</button><button id="xray-close" class="xray-button" type="button" aria-label="关闭工程透视">关闭 ×</button></div>
     </header>
+    <details id="xray-session-options" class="xray-session-options" open>
+    <summary>开局设置</summary>
     <div class="jev-choice">
       <label><input id="round-feedback-opt-in" type="checkbox"> <span>每轮揭晓猜牌反馈</span></label>
       <p id="round-feedback-status" class="xray-mini" role="status">默认关闭 · 开启后每轮揭晓；若选择匿名织入，会记录开关与展示轮次。</p>
@@ -34,6 +36,7 @@
       <label><input id="jev-opt-in" type="checkbox" disabled> <span>开局加入 Jev 对手</span></label>
       <p id="jev-status" class="xray-mini" role="status">正在检查 Jev……</p>
     </div>
+    </details>
     <div class="xray-source-row">
       <span id="xray-source" class="xray-source">本次体验</span>
       <button id="xray-live" class="xray-button" type="button" hidden>返回本次体验</button>
@@ -121,7 +124,7 @@
       <div class="welcome-divider">✦ ✦ ✦</div>
 
       <div class="welcome-body">
-        <p>哪些画面会让你停下来？<br>选几轮，看看织机能否猜中你，再带走一份视觉小传。</p>
+        <p>哪些画面会让你停下来？<br>选几张图，看看织机能不能猜中。结束后回看你的选择，听听它的解读。</p>
         <p class="welcome-scope">画面由 AI 生成；这是一场视觉探索，不是人格测评。</p>
       </div>
 
@@ -183,7 +186,7 @@
       <p id="reveal-subtitle">The threads of fate are converging</p>
       <p id="result-mode" class="result-mode">本地演示 · 模拟文案 · 无模型调用</p>
       <p id="language-hint" class="language-hint" role="status" hidden></p>
-      <section id="portrait" class="portrait" aria-label="本次视觉小传" hidden></section>
+      <section id="portrait" class="portrait" aria-label="本次选图回顾" hidden></section>
       <div id="reading-text" class="reading-text"></div>
       <div id="analysis-error" class="analysis-error" role="alert" hidden>
         <p id="analysis-error-text"></p>
@@ -245,8 +248,8 @@
 
   <audio id="ambient-audio" src="Drifting_Near_the_Core.mp3" preload="auto" loop></audio>
   <script src="runtime-config.js?v=20261020-offline"></script>
-  <script src="i18n.js?v=20261022-play2"></script>
+  <script src="i18n.js?v=20261022-readme3"></script>
   <script src="play-comparison.js?v=20261022-play2"></script>
-  <script src="app.js?v=20261022-play2"></script>
+  <script src="app.js?v=20261022-readme3"></script>
 </body>
 </html>

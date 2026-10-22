@@ -982,3 +982,66 @@ Publication whitespace checking excludes only the historical test XML and
 proxy patch named in the preflight report: embedded traceback spaces and
 unified-diff context indentation are retained as original evidence. Product
 source, documentation and all other staged files pass the whitespace check.
+
+
+## 36. Bilingual product presentation repair — CodeX, 2026-10-22
+
+The owner rejected mixed-language and incomplete README screenshots, unnatural
+Chinese copy, and Mermaid architecture. The Regular's README hero was supplied
+as a layout reference. Both READMEs now use a clear tagline, genuine CI badge,
+useful runtime/license/hosting badges, live/local entry links, native branded
+covers and three feature cards. Each language has its own selection, recap,
+complete X-Ray and mobile screenshots. The phone image is an optional disclosure.
+Architecture is a native SVG in each language; validated Archify companion
+previews stay in `/private/tmp/norn-architecture-evidence` rather than adding
+vendor preview bundles to the repository. There is no Mermaid diagram in either
+README.
+
+- Public wording is **选图回顾 / selection recap**. The product welcome,
+  result heading, accessible labels and local sample prose are aligned.
+  Historical schema identifiers and the initial reading task bytes stay intact
+  so active native actor histories remain compatible. No frozen engine,
+  event contract, deck, learning threshold or study lock changed.
+- Result spacing is tighter. X-Ray's independent opt-ins live in a native
+  Session options disclosure: initially open before entry, automatically
+  collapsed after entry, with the same default-off and immutable settings.
+  The prediction and loss views remain primary; model and engineering details
+  stay collapsed. Tests check these exact three sections and both entry paths.
+- All eight photos were taken through real browser interactions on local
+  `--mock --no-collect`. Fitting, precommitted predictions and replay are real;
+  the reading is explicitly labelled template prose. No external model was
+  called and no research record was created for these captures. Chinese and
+  English readings began in separate visits. Each X-Ray image contains the
+  entire panel, including scope note and loss plot. Desktop images are
+  1417px wide, phones 390×844, and X-Ray 680×1060. A prematurely resized narrow
+  Chinese image was caught in review and replaced before publication.
+- English replay round 5→4→5 changed candidate pictures, the training cutoff
+  and the loss readout (1.81→1.62→1.81). Both browser consoles had no errors.
+  The matching local curves and Jev's not-run state were preserved honestly;
+  sample play is not evidence of ML or Jev superiority. Mixed-dealing prose
+  now describes design intent and a research question, not a proven live gain.
+- Local validation: final frontend/i18n/events/X-Ray/play **18 passed / 45
+  subtests**, plus portrait/native-actor compatibility **23 passed** (83
+  subtests across those scopes). An old assertion hardcoding exactly two
+  disclosures was replaced by precise assertions for all three intended
+  regions. The wheel was rebuilt with uv, installed outside the checkout on
+  Python 3.12, and passed doctor and latest-resource byte comparisons.
+- GitHub's prior release CI exposed three v4 hash failures on Python 3.10;
+  3.11 reproduces them. Python 3.12 changed float `sum` accuracy (see
+  https://docs.python.org/3.12/library/functions.html#sum). The package support
+  floor is now **3.12+**, CI runs 3.12/3.13/3.14 with fail-fast disabled, and
+  ten targeted numeric/golden tests pass on each. No golden data, arithmetic
+  implementation or assertion was weakened to claim old-version support.
+- Worker **`e8cc1ffd-aa2e-4075-a8ff-12a49cc5856e`** is deployed at the existing
+  URL with its existing model configuration, bindings and secrets. The build
+  and prebuilt dry run passed. Hosted acceptance on Python 3.12 passed **37/37**,
+  called no model, and confirmed deletion of its synthetic visitor. The first
+  Python 3.14 attempt failed at its initial TLS connection (zero checks and
+  zero dispatched HTTP calls); that transport-only report is preserved
+  separately, rather than overwritten or counted as passing.
+
+Evidence: `benchmarks/results/norn-readme-refresh-20261022.json` records image
+dimensions/digests and validation scope; the `norn-readme-refresh-partial-live-`
+reports retain each transport attempt. The separate `-assets-` report compares
+the four published browser files against source. No paid test was needed for
+this presentation update.

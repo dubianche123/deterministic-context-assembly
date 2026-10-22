@@ -1,0 +1,31 @@
+{
+  "schema_version": "norn.assets-check.v1",
+  "worker_version": "e8cc1ffd-aa2e-4075-a8ff-12a49cc5856e",
+  "model_calls": 0,
+  "assets": [
+    {
+      "asset": "index.html",
+      "curl_exit": 0,
+      "matches_source": true,
+      "sha256": "b38113b93b20404130b22d8d7ec608f5d49972cda290fe045e4416befb437a04"
+    },
+    {
+      "asset": "app.js",
+      "curl_exit": 0,
+      "matches_source": true,
+      "sha256": "2e6a1577ace0bacfe4ae5fcab3cfb8ba8e897c69369a44ddf7bc9cadb618aa01"
+    },
+    {
+      "asset": "i18n.js",
+      "curl_exit": 0,
+      "matches_source": true,
+      "sha256": "a6d5bed735c147e432af3c9f307c815221ad44320cbd5ba69da2821aedb693ca"
+    },
+    {
+      "asset": "style.css",
+      "curl_exit": 0,
+      "matches_source": true,
+      "sha256": "388cef50e9c6e10dbbcefb1dd2dc5cadfe4d4592526ac01b67cb6757eac21c98"
+    }
+  ]
+}

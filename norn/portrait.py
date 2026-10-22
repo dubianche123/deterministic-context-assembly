@@ -187,15 +187,14 @@ def mock_text(intent, *, task, user_message, turn_count, max_turns, analysis):
                 if english else "这一页还没有留下画面，这次暂时没有具体的选择可供解读。下次可以从一张让你愿意停一停的图开始，看看你会想把什么画面放在它旁边。")
     pictures = ("; and ".join(details) if english else "；以及".join(details))
     if task == "analysis":
-        return (f"In this visit's collection: {pictures}. These are details from what you kept, "
-                "a small visual record you can return to.\n\nOn another visit, try placing similar scenes with different light "
-                "or colour side by side. Notice what you want to keep together, or what you would replace. "
-                "That comparison can open a new page without turning this one into a definition of you."
+        return (f"You kept images featuring {pictures}. Together, they record the subjects, colours and styles "
+                "that caught your eye this time.\n\nOn another visit, compare similar subjects with different light "
+                "or colours and see whether your choices change. Open X-Ray to revisit what the loom predicted "
+                "before each round and compare it with what you actually kept."
                 if english else
-                f"这一回留下的画面里，有{pictures}。这些具体的色彩、场景和表现方式，组成了可以回看的这一页。"
-                "它记录的是这次你愿意留下什么，每一张也可以和旁边的画面重新搭配。\n\n"
-                "下次可以把相近的场景、不同的明暗或色彩放在一起，看看你想保留原来的组合，还是换掉其中一张。"
-                "这一页是一个继续看图的起点，不必把它当作对自己的定论。")
+                f"你这次留下的画面包括{pictures}。把它们放在一起，可以回看这次吸引你的题材、色彩和表现方式。\n\n"
+                "下次试着选几张题材相近、明暗或色彩不同的图，看看你的选择会不会改变。"
+                "也可以打开 X-Ray，回看织机每轮事先猜了什么，再与你真正留下的图片对照。")
     lowered = user_message.lower()
     if any(word in lowered for word in ("撤回", "改选", "犹豫", "undo", "deselect", "hesitat")):
         count = analysis.get("choice_revision", {}).get("total", 0)
@@ -204,9 +203,9 @@ def mock_text(intent, *, task, user_message, turn_count, max_turns, analysis):
                 if english else f"这次记录里有{count}次撤回。改选记录的是当时的操作，不能据此确定心理原因；上面这一页只收进最终留下的画面。")
     elif any(word in lowered for word in ("为什么", "依据", "证据", "准确", "性格", "why", "evidence", "accur", "personality")):
         text = (f"A checkable starting point is a picture you actually kept: {details[0]}. "
-                "The visual portrait describes its contents within this visit. It does not by itself establish "
+                "This selection recap describes its contents within this visit. It does not by itself establish "
                 "a stable preference, a personality type, or a reliable prediction of your next choice."
-                if english else f"可以核对的起点是你真正留下的画面，例如{details[0]}。视觉小传只描述这次画面里的内容；"
+                if english else f"可以核对的起点是你真正留下的画面，例如{details[0]}。这份选图回顾只描述这次画面里的内容；"
                 "这些内容本身不能证明稳定偏好、人格类型，也不能保证猜中下一次选择。")
     else:
         text = (f"Start with what you kept here: {details[0]}. Compare a similar scene in different light or colours, "

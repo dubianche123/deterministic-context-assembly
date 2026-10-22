@@ -308,7 +308,7 @@ The historical 0.7 suite passed **211 tests and 447 subtests**, with five option
 
 ## Local Python or a normal server
 
-Requires Python 3.10 or newer:
+Requires Python 3.12 or newer:
 
 ```bash
 python3 -m venv .venv
@@ -376,6 +376,6 @@ npm ci
 npm run build
 ```
 
-Install the wheel into a fresh virtual environment and run `norn doctor` from outside the checkout. CI runs Python 3.10, 3.12, and 3.14, includes the optional Pillow/Node verification paths, and repeats the isolated wheel doctor/replay/benchmark smoke. All CI checks use offline mock rather than real model services.
+Install the wheel into a fresh virtual environment and run `norn doctor` from outside the checkout. CI runs Python 3.12, 3.13, and 3.14, includes the optional Pillow/Node verification paths, and repeats the isolated wheel doctor/replay/benchmark smoke. All CI checks use offline mock rather than real model services.
 
 The final revision used the existing `cf` login. The authorized Jev secret was supplied through an inherited in-memory file descriptor to `cf deploy --secrets-file`; no secret file was written. Wrangler secret-put was unavailable because its separate login was absent. Subsequent deployments inherit the existing secrets.

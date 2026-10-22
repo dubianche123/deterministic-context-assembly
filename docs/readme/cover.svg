@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1280" height="560" viewBox="0 0 1280 560" role="img" aria-labelledby="title desc">
-<title id="title">The Norn Machine · A thread through your choices</title>
-<desc id="desc">A gold thread connects choosing abstract picture cards, precommitted loom guesses and a visual keepsake. Baseline, learning and optional Jev bars are illustrative, not research results.</desc>
+<title id="title">The Norn Machine · Choices and predictions</title>
+<desc id="desc">Choose pictures, let the loom predict, then revisit your picks in a selection recap. Baseline, learning and optional Jev bars are illustrative, not research results.</desc>
 <defs>
   <radialGradient id="night"><stop stop-color="#25221e" stop-opacity=".75"/><stop offset=".75" stop-color="#111117" stop-opacity=".45"/><stop offset="1" stop-color="#09090f" stop-opacity="0"/></radialGradient>
   <linearGradient id="edge" x2="0" y2="1"><stop stop-color="#cfb57c" stop-opacity=".58"/><stop offset="1" stop-color="#cfb57c" stop-opacity=".16"/></linearGradient>
@@ -9,7 +9,7 @@
   <linearGradient id="mooncard" x2="0" y2="1"><stop stop-color="#35454e"/><stop offset="1" stop-color="#141f2c"/></linearGradient>
   <linearGradient id="hillcard" x2="0" y2="1"><stop stop-color="#3d3844"/><stop offset="1" stop-color="#22232c"/></linearGradient>
   <linearGradient id="sunset" x2="0" y2="1"><stop stop-color="#63473d"/><stop offset="1" stop-color="#25202b"/></linearGradient>
-  <clipPath id="portraitclip"><rect x="1066" y="127" width="129" height="188" rx="6"/></clipPath>
+  <clipPath id="recapclip"><rect x="1066" y="127" width="129" height="188" rx="6"/></clipPath>
   <clipPath id="cardclip"><rect x="0" y="0" width="78" height="120" rx="5"/></clipPath>
   <g id="picturemoon"><rect width="78" height="120" fill="url(#mooncard)"/><circle cx="54" cy="28" r="14" fill="#e0d3aa"/><path d="M-6 102 21 54 49 103 69 74 92 114V130H-6Z" fill="#1b2932"/><path d="M-4 112 29 82 57 114 85 96V130H-4Z" fill="#3a4b50"/><path d="M0 112H78" stroke="#bdc9b1" opacity=".2"/></g>
   <g id="picturehill"><rect width="78" height="120" fill="url(#hillcard)"/><circle cx="25" cy="29" r="15" fill="#9f8c70"/><path d="M-15 92Q15 46 48 89T95 87V130H-15Z" fill="#343c3d"/><path d="M-8 110Q27 64 70 109T100 95V130H-8Z" fill="#60706a"/><path d="M-7 122Q30 97 84 123" stroke="#b9b298" fill="none" opacity=".45"/></g>
@@ -24,15 +24,15 @@
   <g transform="translate(61 42)" stroke="#cfb57c" fill="none" stroke-width="1.1"><path d="M0-12 10 6-10 6ZM0-5V13M-10 6 0 0 10 6"/><circle r="16" stroke-opacity=".35"/></g>
   <text x="88" y="47" fill="#cfb57c" font-size="12" letter-spacing="3.2">NORN / 命运织机</text>
   <path d="M1142 41H1219" stroke="#cfb57c" stroke-opacity=".3"/>
-  <text x="58" y="110" fill="#ad9d7e" font-size="12" letter-spacing="1.8">A SMALL ENCOUNTER WITH YOUR OWN TASTE</text>
+  <text x="58" y="110" fill="#ad9d7e" font-size="12" letter-spacing="1.8">A PICTURE-SELECTION GAME</text>
   <g font-family="Georgia, 'Songti SC', 'Noto Serif CJK SC', serif" fill="#f0e8d7">
     <text x="54" y="183" font-size="70">The Norn</text>
     <text x="56" y="249" font-size="70" fill="#f0e8d7">Machine.</text>
   </g>
-  <text x="58" y="300" font-size="21" fill="#d9cdb5">Choose art. Let the loom guess.</text>
-  <text x="58" y="331" font-size="19" fill="#a9a7aa">Keep a portrait of what caught your eye.</text>
+  <text x="58" y="300" font-size="21" fill="#d9cdb5">Pick pictures. Test the loom’s guesses.</text>
+  <text x="58" y="331" font-size="19" fill="#a9a7aa">Your picks, revisited.</text>
   <path d="M58 361H142" stroke="#cfb57c" stroke-opacity=".45"/>
-  <text x="58" y="394" font-size="14" fill="#929096">No right answer. Just what catches your eye.</text>
+  <text x="58" y="394" font-size="14" fill="#929096">Pick one, several, or none.</text>
   <g fill="none" stroke="#cfb57c" stroke-opacity=".25"><rect x="58" y="424" width="84" height="28" rx="14"/><rect x="151" y="424" width="110" height="28" rx="14"/><rect x="270" y="424" width="177" height="28" rx="14"/></g>
   <g fill="#bfb5a2" font-size="11.5" text-anchor="middle"><text x="100" y="442">EN / 中文</text><text x="206" y="442">Offline-ready</text><text x="358.5" y="442">Sharing is your choice</text></g>
 
@@ -50,16 +50,16 @@
   <circle cx="906" cy="214" r="23" stroke="#cfb57c" stroke-opacity=".32" fill="none"/>
   <use href="#spark" transform="translate(986 136) scale(.5)"/>
 
-  <!-- A small keepsake, made of the selected picture motifs. -->
+  <!-- A selection recap, assembled from the selected picture motifs. -->
   <g transform="rotate(-4 1130 221)">
     <rect x="1058" y="119" width="145" height="228" rx="10" fill="#101118" stroke="url(#edge)"/>
-    <g clip-path="url(#portraitclip)"><rect x="1066" y="127" width="129" height="188" fill="#272e34"/><use href="#picturehill" transform="translate(1066 127) scale(1.66 1.57)"/><path d="M1127 127V315" stroke="#e0c587" stroke-opacity=".24"/><rect x="1130" y="132" width="59" height="91" rx="3" fill="#171922" stroke="#cfb57c" stroke-opacity=".6"/><use href="#picturemoon" transform="translate(1133 135) scale(.68)"/></g>
+    <g clip-path="url(#recapclip)"><rect x="1066" y="127" width="129" height="188" fill="#272e34"/><use href="#picturehill" transform="translate(1066 127) scale(1.66 1.57)"/><path d="M1127 127V315" stroke="#e0c587" stroke-opacity=".24"/><rect x="1130" y="132" width="59" height="91" rx="3" fill="#171922" stroke="#cfb57c" stroke-opacity=".6"/><use href="#picturemoon" transform="translate(1133 135) scale(.68)"/></g>
     <path d="M1074 327H1136M1074 334H1111" stroke="#cfb57c" stroke-opacity=".5"/>
     <use href="#spark" transform="translate(1184 330) scale(.6)"/>
   </g>
 
   <g font-family="Georgia, 'Songti SC', serif" fill="#dccaa6" font-size="18" text-anchor="middle">
-    <text x="671" y="371">Choose</text><text x="906" y="371">The loom guesses</text><text x="1130" y="371">A visual keepsake</text>
+    <text x="671" y="371">Choose</text><text x="906" y="371">The loom guesses</text><text x="1130" y="371">Selection recap</text>
   </g>
   <g fill="#857c6c" font-size="10" letter-spacing="1.6" text-anchor="middle"><text x="671" y="391">01</text><text x="906" y="391">02</text><text x="1130" y="391">03</text></g>
 
@@ -71,7 +71,7 @@
   <g stroke-width="5" stroke-linecap="round"><path d="M648 466H747M862 466H963M1100 466H1209" stroke="#25252c"/><path d="M648 466H686" stroke="#8e929d"/><path d="M862 466H922" stroke="#cfb57c"/><path d="M1100 466H1151" stroke="#82a69c" stroke-dasharray="3 5"/></g>
   <text x="1217" y="492" fill="#6e6b71" font-size="8.5" text-anchor="end" letter-spacing="1">ILLUSTRATIVE · NO PERFORMANCE CLAIM</text>
   <path d="M58 510H1222" stroke="#cfb57c" stroke-opacity=".16"/>
-  <text x="58" y="535" fill="#94856b" font-size="10" letter-spacing="1.6">CHOOSE → PRECOMMIT → REVEAL · A VISUAL PREFERENCE PLAYGROUND</text>
+  <text x="58" y="535" fill="#94856b" font-size="10" letter-spacing="1.6">CHOOSE → GUESS → REVIEW · A PICTURE-SELECTION GAME</text>
   <g fill="#cfb57c"><circle cx="1200" cy="531" r="2"/><circle cx="1209" cy="531" r="2" opacity=".4"/><circle cx="1218" cy="531" r="2" opacity=".2"/></g>
 </g>
 </svg>

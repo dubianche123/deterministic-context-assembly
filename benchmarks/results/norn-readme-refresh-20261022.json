@@ -1,0 +1,104 @@
+{
+  "schema_version": "norn.readme-refresh.v1",
+  "date": "2026-10-22",
+  "worker_version": "e8cc1ffd-aa2e-4075-a8ff-12a49cc5856e",
+  "screenshots": [
+    {
+      "path": "docs/images/readme-en-mobile.jpg",
+      "pixels": [
+        390,
+        844
+      ],
+      "sha256": "47cb2b58d15dd4fff6ce09b5a3176d8d5f1413a0efcc926bca78891dc90a48d9"
+    },
+    {
+      "path": "docs/images/readme-en-recap.jpg",
+      "pixels": [
+        1417,
+        920
+      ],
+      "sha256": "b30d4f3afcda9268ad7bf5ca5511e2b1eede53090b39cb99ae8dcf7ab325b054"
+    },
+    {
+      "path": "docs/images/readme-en-selection.jpg",
+      "pixels": [
+        1417,
+        900
+      ],
+      "sha256": "8f118fb438cb3a7aed540fe4edd6dd189cba4b247b2ee4672e72863508e989d5"
+    },
+    {
+      "path": "docs/images/readme-en-xray.jpg",
+      "pixels": [
+        680,
+        1060
+      ],
+      "sha256": "0e3b62739e43db568b9a2253bca023eb080d22fa867c3648089cc2f471c47f7e"
+    },
+    {
+      "path": "docs/images/readme-zh-mobile.jpg",
+      "pixels": [
+        390,
+        844
+      ],
+      "sha256": "b4dfee5b7676d0ead660ae8805232946b058a22f523f3b18aa8df1d26d130b6e"
+    },
+    {
+      "path": "docs/images/readme-zh-recap.jpg",
+      "pixels": [
+        1417,
+        900
+      ],
+      "sha256": "bf776e97455946326ea2e87daa958655656145cd01e163828f1c2c1c6f92f08a"
+    },
+    {
+      "path": "docs/images/readme-zh-selection.jpg",
+      "pixels": [
+        1417,
+        900
+      ],
+      "sha256": "9d52bf6343a23386e388423d5c3157c86cd31b9b252ab89f1f6b8c94627a9b75"
+    },
+    {
+      "path": "docs/images/readme-zh-xray.jpg",
+      "pixels": [
+        680,
+        1060
+      ],
+      "sha256": "d5fe22a0c1c4405437b649009a548196641687616e8d85595e9e879d21506cb9"
+    }
+  ],
+  "capture": {
+    "source": "Local Norn --mock --no-collect, browser operated",
+    "model_calls": 0,
+    "research_records": 0,
+    "fitting_and_replay": "real engine",
+    "prose": "explicitly labelled mock",
+    "languages": "Separate visits begun in Chinese and English; no mid-reading translation"
+  },
+  "interaction_checks": {
+    "en_scrub": "Round5 to4 and back changed candidates, learned-through cutoff, loss1.81 to1.62 and back",
+    "xray_complete": "Header, timeline, candidate probabilities, actual first kept image, entire loss plot, scope note and collapsed inspectors visible",
+    "browser_console_errors": 0,
+    "mobile_grid_and_buttons_visible": true
+  },
+  "local_tests": {
+    "frontend": 18,
+    "portrait_actor": 23,
+    "subtests": 83,
+    "golden_numeric_per_python": [
+      "3.12:10 passed",
+      "3.13:10 passed",
+      "3.14:10 passed"
+    ]
+  },
+  "wheel": {
+    "doctor_exit": 0,
+    "resource_count": 11,
+    "resources_match_latest": true,
+    "requires_python": ">=3.12",
+    "offline_cards": 256,
+    "pamela_cards": 256
+  },
+  "scope": "Product presentation and engineering validation; no human study or model superiority claim"
+}
